@@ -1,0 +1,562 @@
+{
+ "e000": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source and expected."
+ },
+ "e001": {
+  "faithful": "partly",
+  "correct": "partly",
+  "note": "Missing Self Diagnosis step."
+ },
+ "e002": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "Missing right directional button step."
+ },
+ "e003": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source."
+ },
+ "e005": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer includes correct fix."
+ },
+ "e006": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "Missing sports broadcasts and mobile access."
+ },
+ "e007": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "Missing tutorial detail."
+ },
+ "e008": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "Missing navigation to Autorun Last App setting."
+ },
+ "e009": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "Missing right directional button step."
+ },
+ "e010": {
+  "faithful": "no",
+  "correct": "yes",
+  "note": "Answer not supported by given source."
+ },
+ "e011": {
+  "faithful": "no",
+  "correct": "no",
+  "note": "Answer does not match expected procedure."
+ },
+ "e012": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "Missing optional reset and wireless password."
+ },
+ "e013": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "Missing detailed connection steps."
+ },
+ "e014": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "Missing instructions to adjust Contrast and Sharpness."
+ },
+ "e015": {
+  "faithful": "partly",
+  "correct": "partly",
+  "note": "Adds extra steps not in source."
+ },
+ "e016": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches source."
+ },
+ "e017": {
+  "faithful": "yes",
+  "correct": "no",
+  "note": "Lacks troubleshooting steps."
+ },
+ "e019": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches expected."
+ },
+ "e020": {
+  "faithful": "partly",
+  "correct": "yes",
+  "note": "Adds unsupported detail about wall picture."
+ },
+ "e021": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answers yes/no correctly."
+ },
+ "e022": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "Answer lacks detail but correct location."
+ },
+ "e023": {
+  "faithful": "partly",
+  "correct": "no",
+  "note": "Source definition incorrect; search method partially correct."
+ },
+ "e025": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Correct but missing conditions."
+ },
+ "e026": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches expected with extra details."
+ },
+ "e027": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Correct but missing details."
+ },
+ "e028": {
+  "faithful": "partly",
+  "correct": "no",
+  "note": "Contains incorrect Dolby Digital+ advice."
+ },
+ "e030": {
+  "faithful": "partly",
+  "correct": "partly",
+  "note": "Missing step to select Schedule Recording."
+ },
+ "e031": {
+  "faithful": "partly",
+  "correct": "no",
+  "note": "Answer lacks usage instructions."
+ },
+ "e033": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches expected."
+ },
+ "e035": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches expected."
+ },
+ "e036": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "Missing decor/info/photo categories and color tone."
+ },
+ "e037": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "Missing general picture settings details."
+ },
+ "e038": {
+  "faithful": "partly",
+  "correct": "yes",
+  "note": "Adds unsupported menu icon and Support claims."
+ },
+ "e040": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer fully matches source troubleshooting steps."
+ },
+ "e041": {
+  "faithful": "yes",
+  "correct": "no",
+  "note": "Answer covers internet issues, not USB update."
+ },
+ "e043": {
+  "faithful": "partly",
+  "correct": "partly",
+  "note": "Missing steps, adds unsupported ARC(HDMI) claim."
+ },
+ "e044": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer correctly describes manual time setting."
+ },
+ "e045": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer accurately describes selecting Optimized sound mode."
+ },
+ "e047": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "Missing release button instruction."
+ },
+ "e049": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "Missing Open Network Settings and password steps."
+ },
+ "e050": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches expected fully."
+ },
+ "e051": {
+  "faithful": "partly",
+  "correct": "partly",
+  "note": "Missing several troubleshooting steps."
+ },
+ "e052": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "Answer lacks method details."
+ },
+ "e053": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "Omits sports broadcasts detail."
+ },
+ "e054": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer covers all steps; correct."
+ },
+ "e055": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "Answer lacks detail on manual setting."
+ },
+ "e056": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "Omits description of Ambient Mode content."
+ },
+ "e057": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "Omits steps to reach Favorites list."
+ },
+ "e058": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer gives specific location; correct."
+ },
+ "e059": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "Missing steps to access settings."
+ },
+ "e060": {
+  "faithful": "yes",
+  "correct": "no",
+  "note": "Answer cites external device cause, not casing expansion."
+ },
+ "e061": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "Missing steps to select app and enter PIN."
+ },
+ "e062": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "Missing auto-detect and power caution."
+ },
+ "e063": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "Missing stop recording instruction."
+ },
+ "e064": {
+  "faithful": "no",
+  "correct": "no",
+  "note": "Incorrectly attributes light effect to Auto Motion Plus."
+ },
+ "e065": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "Missing detailed steps for SmartThings account creation."
+ },
+ "e066": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Missing extra context but core correct."
+ },
+ "e067": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "Missing Self Diagnosis step."
+ },
+ "e068": {
+  "faithful": "no",
+  "correct": "no",
+  "note": "Missing right directional button step."
+ },
+ "e069": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": ""
+ },
+ "e071": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Covers blurring fix; faithful and correct."
+ },
+ "e072": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "Answer covers basic uses but omits extra details."
+ },
+ "e073": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "Answer mentions only first-time appearance, missing further details."
+ },
+ "e074": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "Answer only mentions toggle, missing setup steps."
+ },
+ "e075": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer correctly states location of favorite channels list."
+ },
+ "e076": {
+  "faithful": "no",
+  "correct": "yes",
+  "note": "Answer matches expected but unsupported by given source."
+ },
+ "e077": {
+  "faithful": "no",
+  "correct": "no",
+  "note": "Answer contains incorrect steps for Timeshift recording."
+ },
+ "e078": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "Answer omits reset and manual config steps."
+ },
+ "e079": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "Answer covers SmartThings but omits screen mirroring."
+ },
+ "e080": {
+  "faithful": "yes",
+  "correct": "no",
+  "note": "Answer discusses HDR, not Contrast/Sharpness configuration."
+ },
+ "e081": {
+  "faithful": "partly",
+  "correct": "no",
+  "note": "Adds unsupported steps; incorrect procedure."
+ },
+ "e082": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source; correct steps."
+ },
+ "e083": {
+  "faithful": "partly",
+  "correct": "no",
+  "note": "Missing steps; adds unsupported cause."
+ },
+ "e085": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches source; correct and complete."
+ },
+ "e086": {
+  "faithful": "partly",
+  "correct": "no",
+  "note": "Adds unsupported wallpaper detail."
+ },
+ "e087": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "Correct but lacks detail."
+ },
+ "e088": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "Incomplete; omits other locations."
+ },
+ "e089": {
+  "faithful": "partly",
+  "correct": "no",
+  "note": "Wrong source definition; correct channel step."
+ },
+ "e091": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "Correct but omits network condition."
+ },
+ "e092": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches source; correct and complete."
+ },
+ "e093": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches expected and source"
+ },
+ "e094": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer correct, faithful, slightly repetitive"
+ },
+ "e096": {
+  "faithful": "partly",
+  "correct": "partly",
+  "note": "Missing Select button detail and Schedule Recording selection"
+ },
+ "e097": {
+  "faithful": "partly",
+  "correct": "partly",
+  "note": "Missing steps to enable HDMI UHD Color"
+ },
+ "e099": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source exactly"
+ },
+ "e101": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "Missing note about model support for Movie mode"
+ },
+ "e102": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer covers all expected points"
+ },
+ "e103": {
+  "faithful": "partly",
+  "correct": "partly",
+  "note": "Answer omits other brightness methods and adds unsupported Ambient Mode claims"
+ },
+ "e104": {
+  "faithful": "partly",
+  "correct": "no",
+  "note": "Adds unsupported button uses not in source"
+ },
+ "e106": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches expected steps"
+ },
+ "e107": {
+  "faithful": "yes",
+  "correct": "no",
+  "note": "Answer irrelevant to software update fix"
+ },
+ "e109": {
+  "faithful": "partly",
+  "correct": "partly",
+  "note": "Answer partly correct, unsupported excerpt"
+ },
+ "e110": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "Answer correct but missing auto/DST"
+ },
+ "e113": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "Answer missing hold/release and 'Turn'"
+ },
+ "e115": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "Answer correct but missing other steps"
+ },
+ "e116": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer fully correct"
+ },
+ "e117": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "Answer correct but missing other steps"
+ },
+ "e118": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer correct"
+ },
+ "e119": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "Answer missing sports broadcasts"
+ },
+ "e120": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "All claims supported; answer matches expected steps."
+ },
+ "e121": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer states yes, supported by source."
+ },
+ "e122": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "Explains activation but omits Ambient Mode details."
+ },
+ "e123": {
+  "faithful": "partly",
+  "correct": "partly",
+  "note": "Answer incorrectly states Air Cable is in Favorites list."
+ },
+ "e124": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "Answer gives one reset location; misses network reset."
+ },
+ "e125": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "Answer confirms capability but omits access steps."
+ },
+ "e126": {
+  "faithful": "yes",
+  "correct": "no",
+  "note": "Answer attributes popping noise to external device; contradicts source."
+ },
+ "e127": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "Answer only mentions Lock/Unlock; omits steps and PIN."
+ },
+ "e128": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "Answer omits menu navigation and power caution."
+ },
+ "e129": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "Answer omits recording while watching a program."
+ },
+ "e130": {
+  "faithful": "no",
+  "correct": "no",
+  "note": "Answer unrelated to light effect"
+ },
+ "e131": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Minimal but correct instruction"
+ },
+ "e111": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "Missing explicit selection steps"
+ }
+}

@@ -1,0 +1,2064 @@
+{
+ "meta": {
+  "label": "B-complex-chat",
+  "mode": "chat",
+  "set": "complexweb",
+  "model": "local",
+  "chat_model": "local",
+  "semantic_model": null,
+  "engine_version": "0.1.0",
+  "started": "2026-10-18 00:56",
+  "finished": "2026-10-18 01:10"
+ },
+ "rows": [
+  {
+   "id": "c01",
+   "kb": "helix",
+   "type": "vague",
+   "q": "What is the deadline?",
+   "answerable": true,
+   "secs": 0.0,
+   "error": null,
+   "answer": "“deadline” comes up in several places. Which one do you mean?",
+   "found": false,
+   "general": false,
+   "smalltalk": false,
+   "read": [],
+   "cited": [],
+   "tools": [],
+   "unverified": [],
+   "gold": [],
+   "facts": [],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": true,
+   "worked_out": false,
+   "expect": "clarify",
+   "inferred": false,
+   "correct": true,
+   "read_hit": null,
+   "cite_hit": null,
+   "hallucinated": false
+  },
+  {
+   "id": "c02",
+   "kb": "helix",
+   "type": "vague",
+   "q": "What is the limit?",
+   "answerable": true,
+   "secs": 0.0,
+   "error": null,
+   "answer": "“limit” comes up in several places. Which one do you mean?",
+   "found": false,
+   "general": false,
+   "smalltalk": false,
+   "read": [],
+   "cited": [],
+   "tools": [],
+   "unverified": [],
+   "gold": [],
+   "facts": [],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": true,
+   "worked_out": false,
+   "expect": "clarify",
+   "inferred": false,
+   "correct": true,
+   "read_hit": null,
+   "cite_hit": null,
+   "hallucinated": false
+  },
+  {
+   "id": "c03",
+   "kb": "helix",
+   "type": "vague",
+   "q": "What is the penalty?",
+   "answerable": true,
+   "secs": 33.3,
+   "error": null,
+   "answer": "The penalty is 1.5% of the value of the delayed order, up to a maximum of 7.5% of the order value.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "supplier_agreement_arvind_metals.docx::1.6 Late delivery penalty",
+    "supplier_agreement_arvind_metals.docx::2.3 Late delivery penalty (replaces 1.6)"
+   ],
+   "cited": [
+    "supplier_agreement_arvind_metals.docx::2.3 Late delivery penalty (replaces 1.6)"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [],
+   "facts": [],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "clarify",
+   "inferred": false,
+   "correct": false,
+   "read_hit": null,
+   "cite_hit": null,
+   "hallucinated": false
+  },
+  {
+   "id": "c04",
+   "kb": "helix",
+   "type": "fact",
+   "q": "What does alarm A302 mean on the HX-500 and what should the operator do?",
+   "answerable": true,
+   "secs": 14.7,
+   "error": null,
+   "answer": "Based on the documents provided, alarm **A302** is triggered when the spindle temperature exceeds **65 °C**.\n\nAccording to the manual, the operator should:\n1.  **Stop the cycle** and let the spindle **idle with the chiller running for 30 minutes**.\n2.  **Check the chiller filter** is clean and the chiller tank is above the **MIN mark**.\n3.  **Do not restart production** until the spindle temperature is below **45 °C**.\n\nIf the alarm occurs twice within a week, a Level 2 technician must check the spindle bearings.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "HX-500_manual.pdf::6. Alarms and error codes",
+    "HX-500_manual.pdf::6.2 Spindle over-temperature (A302)"
+   ],
+   "cited": [
+    "HX-500_manual.pdf::6. Alarms and error codes"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "hx500_machining_center_manual.md::6. Alarms and error codes"
+   ],
+   "facts": [
+    [
+     "temperature"
+    ],
+    [
+     "30 minutes",
+     "30 min"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "c05",
+   "kb": "helix",
+   "type": "version",
+   "q": "At what temperature does a Rev B HX-500 raise the spindle over-temperature alarm?",
+   "answerable": true,
+   "secs": 15.5,
+   "error": null,
+   "answer": "Based on the documents provided, the spindle over-temperature alarm (A302) is triggered when the spindle temperature exceeds **70 °C**.\n\nS2]\n*   **Stated fact:** Alarm A302 is triggered above 70 °C.\n*   **Correction:** The document notes that on a Rev B machine, alarm A302 is triggered above 65 °C instead of 70 °C.\n\nTherefore, the temperature at which the alarm is triggered is **70 °C** (as per the primary definition in the document).\n\n*(The assistant did not name its sources for this answer: check it in the documents.)*",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "HX-500_manual.pdf::6.2 Spindle over-temperature (A302)",
+    "HX-500_manual.pdf::6. Alarms and error codes"
+   ],
+   "cited": [],
+   "tools": [],
+   "unverified": [
+    "S2"
+   ],
+   "gold": [
+    "hx500_machining_center_manual.md::6. Alarms and error codes"
+   ],
+   "facts": [
+    [
+     "65"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": true,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "c06",
+   "kb": "helix",
+   "type": "rule-applied",
+   "q": "Our HX-500 (Rev C) has been switched off for 5 days. Which warm-up program do I run and how long does it take?",
+   "answerable": true,
+   "secs": 20.2,
+   "error": null,
+   "answer": "Based on the documents provided, the warm-up program for your HX-500 is **O9000** (the standard warm-up program).\n\nAccording to Section 5.2 Spindle warm-up in the manual:\n*   **Program Name:** O9000\n*   **Duration:** 15 minutes total (5 minutes at 1,000 rpm, 5 minutes at 4,000 rpm, 5 minutes at 8,000 rpm)\n*   **Condition:** This program runs whenever the spindle has been stopped for more than 4 hours.\n\nSince your machine has been switched off for 5 days, it has been stopped for more than 4 hours, so you must run **O9000**.\n\n*Note: If your machine is a Rev B machine, the extended program O9002 would be used instead, but the standard warm-up is O9000.*\n\nThe documents state that the standard warm-up program runs for 15 minutes total.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "HX-500_manual.pdf::5.2 Spindle warm-up",
+    "HX-500_manual.pdf::5. Operation"
+   ],
+   "cited": [
+    "HX-500_manual.pdf::5.2 Spindle warm-up"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "hx500_machining_center_manual.md::5.2 Spindle warm-up"
+   ],
+   "facts": [
+    [
+     "O9001"
+    ],
+    [
+     "30"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": true,
+   "expect": "answer",
+   "inferred": true,
+   "correct": false,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "c07",
+   "kb": "helix",
+   "type": "rule-applied",
+   "q": "Can I load an 8 kg tool into the HX-500 magazine?",
+   "answerable": true,
+   "secs": 10.5,
+   "error": null,
+   "answer": "Based on the documents provided, the answer is **No**.\n\n*   The manual states that tools heavier than **7 kg** must not be loaded.\n*   The user is asking about an **8 kg** tool.\n*   Since 8 kg is greater than 7 kg, this tool does not meet the loading criteria.\n\nSorry, I can only help with work topics.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "HX-500_manual.pdf::3. Specifications",
+    "HX-500_manual.pdf::5.3 Loading tools"
+   ],
+   "cited": [
+    "HX-500_manual.pdf::5. Operation"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "hx500_machining_center_manual.md::5.3 Loading tools"
+   ],
+   "facts": [
+    [
+     "no",
+     "not",
+     "cannot"
+    ],
+    [
+     "7 kg",
+     "7kg"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": true,
+   "expect": "answer",
+   "inferred": true,
+   "correct": true,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "c08",
+   "kb": "helix",
+   "type": "rule-applied",
+   "q": "The X axis backlash measured 0.015 mm. What should be done?",
+   "answerable": true,
+   "secs": 10.3,
+   "error": null,
+   "answer": "The documents state that the limit for ballscrew backlash is 0.010 mm. The user mentioned 0.015 mm, which is above the limit. According to the manual, when the backlash exceeds 0.020 mm, the ballscrew must be replaced. Therefore, the action is to replace the ballscrew.\n\n[HX-500_manual.pdf]",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "HX-500_manual.pdf::7.5 Ballscrew backlash (L2)",
+    "HX-500_manual.pdf::3. Specifications"
+   ],
+   "cited": [
+    "HX-500_manual.pdf::7. Maintenance"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "hx500_machining_center_manual.md::7.5 Ballscrew backlash (L2)"
+   ],
+   "facts": [
+    [
+     "compensation"
+    ],
+    [
+     "1850"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": true,
+   "expect": "answer",
+   "inferred": true,
+   "correct": false,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "c09",
+   "kb": "helix",
+   "type": "rule-applied",
+   "q": "The drawbar force gauge shows 11 kN. Is that acceptable?",
+   "answerable": true,
+   "secs": 19.6,
+   "error": null,
+   "answer": "They only mention that the drawbar clamping force must be between 12 and 14 kN for BT40 tools, and that the machine must never run with a clamping force below 10 kN. Since the gauge reading of 11 kN falls within the acceptable range (12–14 kN), it is technically acceptable according to the stated limits.\n\nHowever, the documents do not explicitly state that 11 kN is the *maximum* acceptable limit. The maximum limit stated is 14 kN. Therefore, 11 kN is acceptable, but it is not the absolute maximum limit defined in the documents.\n\nThey only specify that the clamping force must be between 12 and 14 kN. However, the documents do not explicitly state that 11 kN is the absolute maximum limit.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "HX-500_manual.pdf::7.3 Drawbar force check (L2)",
+    "HX-500_manual.pdf::7. Maintenance"
+   ],
+   "cited": [
+    "HX-500_manual.pdf::7. Maintenance"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "hx500_machining_center_manual.md::7.3 Drawbar force check (L2)"
+   ],
+   "facts": [
+    [
+     "no",
+     "not",
+     "below",
+     "replace"
+    ],
+    [
+     "12"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": true,
+   "expect": "answer",
+   "inferred": true,
+   "correct": true,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "c10",
+   "kb": "helix",
+   "type": "rule-applied",
+   "q": "The refractometer shows a coolant concentration of 4 percent. Is that a problem?",
+   "answerable": true,
+   "secs": 12.0,
+   "error": null,
+   "answer": "The coolant concentration of 4 percent is within the acceptable range for the Helix Cool 300 (6 - 8 %), so it is not a problem.\n\n---\nThe coolant concentration of 4 percent is within the acceptable range for the Helix Cool 300 (6 - 8 %).",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "HX-500_manual.pdf::7.4 Coolant",
+    "HX-500_manual.pdf::7. Maintenance"
+   ],
+   "cited": [
+    "HX-500_manual.pdf::7. Maintenance"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "hx500_machining_center_manual.md::7.4 Coolant"
+   ],
+   "facts": [
+    [
+     "corrosion",
+     "bacteria",
+     "too low",
+     "below"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": true,
+   "expect": "answer",
+   "inferred": true,
+   "correct": false,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "c11",
+   "kb": "helix",
+   "type": "fact",
+   "q": "Which oil goes into the hydraulic unit, how much, and how often is it replaced?",
+   "answerable": true,
+   "secs": 13.8,
+   "error": null,
+   "answer": "Based on the documents provided, the oil that goes into the hydraulic unit is **ISO VG 32 hydraulic oil**.\n\nThe quantity is **12 liters**, and it is replaced **every 2,000 hours**.\n\nThe document [1] explicitly states under the section \"7.2 Lubrication\" for the \"Hydraulic unit\": \"ISO VG 32 hydraulic oil | 12 liters | Replace every 2,000 hours\".",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "HX-500_manual.pdf::7.2 Lubrication",
+    "HX-500_manual.pdf::7. Maintenance"
+   ],
+   "cited": [
+    "HX-500_manual.pdf::7. Maintenance"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "hx500_machining_center_manual.md::7.2 Lubrication"
+   ],
+   "facts": [
+    [
+     "VG 32"
+    ],
+    [
+     "12"
+    ],
+    [
+     "2,000",
+     "2000"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": true,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "c12",
+   "kb": "helix",
+   "type": "rule-applied",
+   "q": "Our machine was installed 30 months ago and has 3,000 spindle hours. Is it still under warranty?",
+   "answerable": true,
+   "secs": 20.5,
+   "error": null,
+   "answer": "Based on the documents provided, the machine is **not** under warranty.\n\nThe machine was installed 30 months ago, which is well beyond the 24-month warranty period. The warranty period is calculated as the earlier of the installation date or the 6,000 spindle hours. Since the machine has only 3,000 spindle hours, it falls below the 6,000-hour threshold required to qualify for the warranty.\n\nRegarding the spindle warm-up, the machine is currently running program O9000 (warm-up) whenever it has been stopped for more than 4 hours. The documents state that the warm-up program runs at 1,000 rpm, 4,000 rpm, and 8,000 rpm. The documents do not state that the warm-up program is currently running; they only describe the rules for running it. Therefore, the machine is not under warranty, and the current warm-up program is not in effect.\n\n*   **Warranty:** The machine is not under warranty because it has not yet reached the 6,000 spindle hours (the machine has 3,000 spindle hours).",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "HX-500_manual.pdf::9. Warranty",
+    "HX-500_manual.pdf::5.2 Spindle warm-up"
+   ],
+   "cited": [
+    "HX-500_manual.pdf::9. Warranty",
+    "HX-500_manual.pdf::5.2 Spindle warm-up"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "hx500_machining_center_manual.md::9. Warranty"
+   ],
+   "facts": [
+    [
+     "no",
+     "not",
+     "expired"
+    ],
+    [
+     "24"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": true,
+   "expect": "answer",
+   "inferred": true,
+   "correct": true,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "c13",
+   "kb": "helix",
+   "type": "fact",
+   "q": "What should I do when alarm E901 appears?",
+   "answerable": true,
+   "secs": 11.4,
+   "error": null,
+   "answer": "When alarm E901 appears, the machine must be switched off. This is because the absolute encoder battery is low, which causes all axis positions to be lost. The machine should be switched off, and the encoder batteries must be replaced within 3 days with power ON. If the alarm does not clear, the machine should be switched off again.\n\nThe relevant section is [1].",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "HX-500_manual.pdf::6. Alarms and error codes",
+    "HX-500_manual.pdf::5.5 Shutdown"
+   ],
+   "cited": [
+    "HX-500_manual.pdf::6. Alarms and error codes"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "hx500_machining_center_manual.md::6. Alarms and error codes"
+   ],
+   "facts": [
+    [
+     "encoder"
+    ],
+    [
+     "3 days"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": true,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "c14",
+   "kb": "helix",
+   "type": "fact",
+   "q": "What torque should the vise-to-table bolts be tightened to?",
+   "answerable": true,
+   "secs": 6.9,
+   "error": null,
+   "answer": "The vise-to-table bolts should be tightened to **120 Nm**.\n\nThis value is found in the cited section [1] of the HX-500_manual.pdf under the \"Fastener\" category, where the torque for the Vise to table is listed as 120 Nm.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "HX-500_manual.pdf::8. Torque values",
+    "HX-500_manual.pdf::4.1 Foundation"
+   ],
+   "cited": [
+    "HX-500_manual.pdf::8. Torque values"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "hx500_machining_center_manual.md::8. Torque values"
+   ],
+   "facts": [
+    [
+     "120"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": true,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "c15",
+   "kb": "helix",
+   "type": "table-lookup",
+   "q": "What is the hotel limit per night for a G2 engineer in Pune?",
+   "answerable": true,
+   "secs": 13.7,
+   "error": null,
+   "answer": "Based on the documents provided, the hotel limit per night for a G2 engineer in Pune is **6,000 INR**.\n\nThis is found in the cited section [1] of the travel_expense_policy.pdf under the table \"Accommodation limits per night (INR)\". The table lists G2 engineers in Pune (a Tier 1 city) with a limit of 6,000 INR.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "travel_expense_policy.pdf::4. Accommodation limits per night (INR)",
+    "travel_expense_policy.pdf::travel_expense_policy.pdf"
+   ],
+   "cited": [
+    "travel_expense_policy.pdf::4. Accommodation limits per night (INR)"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "travel_expense_policy.md::4. Accommodation limits per night (INR)"
+   ],
+   "facts": [
+    [
+     "6,000",
+     "6000"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "c16",
+   "kb": "helix",
+   "type": "follow-up",
+   "q": "And for a G4?",
+   "answerable": true,
+   "secs": 43.3,
+   "error": null,
+   "answer": "Based on the documents provided, the hotel limit per night for a G4 engineer in Pune is **12,000 INR**.\n\nThis is found in the table under [1] of the `travel_expense_policy.pdf` titled \"Accommodation limits per night (INR)\", which lists the limits by grade. The table shows that G4 engineers in Tier 1 cities (including Pune) have a limit of 12,000 INR.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "travel_expense_policy.pdf::4. Accommodation limits per night (INR)",
+    "travel_expense_policy.pdf::travel_expense_policy.pdf"
+   ],
+   "cited": [
+    "travel_expense_policy.pdf::4. Accommodation limits per night (INR)"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "travel_expense_policy.md::4. Accommodation limits per night (INR)"
+   ],
+   "facts": [
+    [
+     "12,000",
+     "12000"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "c17",
+   "kb": "helix",
+   "type": "follow-up",
+   "q": "What about in Jaipur?",
+   "answerable": true,
+   "secs": 17.6,
+   "error": null,
+   "answer": "Based on the documents provided, the hotel limit per night for a G4 engineer in Jaipur is **8,000 INR**.\n\nThis is found in the table under [1] of the `travel_expense_policy.pdf` titled \"Accommodation limits per night (INR)\", which lists the limits by grade. The table shows that G4 engineers in Tier 2 cities (including Jaipur) have a limit of 8,000 INR.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "travel_expense_policy.pdf::4. Accommodation limits per night (INR)",
+    "travel_expense_policy.pdf::travel_expense_policy.pdf"
+   ],
+   "cited": [
+    "travel_expense_policy.pdf::4. Accommodation limits per night (INR)"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "travel_expense_policy.md::4. Accommodation limits per night (INR)"
+   ],
+   "facts": [
+    [
+     "8,000",
+     "8000"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": true,
+   "correct": true,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "c18",
+   "kb": "helix",
+   "type": "rule-applied",
+   "q": "I am a G3 manager flying to Frankfurt; the flight takes 9 hours. Which class can I book?",
+   "answerable": true,
+   "secs": 24.1,
+   "error": null,
+   "answer": "1.  **Class Eligibility**: You are a **G3 Manager**, which is entitled to **Business class** (AC 2-tier).\n2.  **Booking Window**: Flights must be booked through the travel desk at least **7 days** before travel.\n3.  **Fare**: The lowest logical fare within 2 hours of the preferred departure time must be chosen.\n4.  **Allowance**: Trips shorter than 8 hours get half the daily allowance.\n5.  **Reimbursement**: Expenses must be submitted within **30 days** of the end of the trip; claims submitted after 60 days are not reimbursed.\n6.  **Approval Needed**: For a domestic trip, a **Manager** is needed. For an international trip, a **Manager and the department head** (G4 or above) is needed.\n7.  **Receipts**: Original receipts or tax invoices are required for every expense above **INR 500**.\n8.  **Daily Allowance**: The daily allowance is **1,100** (based on the table data).\n9.  **Travel Class**: G3 is entitled to **Premium economy** travel class.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "travel_expense_policy.pdf::3. Travel class",
+    "travel_expense_policy.pdf::travel_expense_policy.pdf"
+   ],
+   "cited": [
+    "travel_expense_policy.pdf::3. Travel class"
+   ],
+   "tools": [],
+   "unverified": [
+    "1,100"
+   ],
+   "gold": [
+    "travel_expense_policy.md::3. Travel class"
+   ],
+   "facts": [
+    [
+     "business"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": true,
+   "expect": "answer",
+   "inferred": true,
+   "correct": true,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "c19",
+   "kb": "helix",
+   "type": "computed",
+   "q": "A G2 engineer on a domestic trip has lunch provided by the host. What daily allowance do they get?",
+   "answerable": true,
+   "secs": 18.3,
+   "error": null,
+   "answer": "Based on the documents provided, the daily allowance for a domestic trip is determined by the employee's grade. According to the policy, a Grade G2 engineer receives a daily allowance of 1,200 INR.\n\nS1]\n*   **Fact:** The policy states that Grade G2 engineers receive 1,200 INR per day for domestic trips.\n*   **Calculation:** 1,200 / 1 = 1,200 INR\n\n*(The assistant did not name its sources for this answer: check it in the documents.)*",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "travel_expense_policy.pdf::5. Daily allowance (per diem)",
+    "travel_expense_policy.pdf::travel_expense_policy.pdf"
+   ],
+   "cited": [],
+   "tools": [],
+   "unverified": [
+    "S1"
+   ],
+   "gold": [
+    "travel_expense_policy.md::5. Daily allowance (per diem)"
+   ],
+   "facts": [
+    [
+     "900"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": true,
+   "expect": "answer",
+   "inferred": true,
+   "correct": false,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "c20",
+   "kb": "helix",
+   "type": "rule-applied",
+   "q": "I lost a taxi receipt of INR 3,000. Can I still claim it?",
+   "answerable": true,
+   "secs": 8.8,
+   "error": null,
+   "answer": "The documents state that lost receipts are accepted up to INR 2,000 per trip. Since the lost receipt is INR 3,000, it exceeds the INR 2,000 limit, and therefore the expense is not reimbursed.\n\nSorry, I can only help with work topics.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "travel_expense_policy.pdf::7. Receipts",
+    "travel_expense_policy.pdf::10. Mileage"
+   ],
+   "cited": [
+    "travel_expense_policy.pdf::7. Receipts"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "travel_expense_policy.md::7. Receipts"
+   ],
+   "facts": [
+    [
+     "no",
+     "not"
+    ],
+    [
+     "2,000",
+     "2000"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": true,
+   "expect": "answer",
+   "inferred": true,
+   "correct": false,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "c21",
+   "kb": "helix",
+   "type": "rule-applied",
+   "q": "Who has to approve a single expense of INR 30,000?",
+   "answerable": true,
+   "secs": 13.8,
+   "error": null,
+   "answer": "Based on the documents provided, a single expense of INR 30,000 falls under the category of \"Single expense above INR 1,00,000,\" which requires approval from the **Plant manager and finance controller**.\n\n*   **Document Source:** [1] travel_expense_policy.pdf > 6. Approvals | Single expense above INR 1,00,000 | Department head |\n*   **Reasoning:** The policy explicitly states that expenses exceeding INR 1,00,000 require approval from the Plant manager and finance controller. Since the requested amount (INR 30,000) is above this threshold, the specific personnel listed for this approval are the Plant manager and finance controller.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "travel_expense_policy.pdf::6. Approvals",
+    "HX-500_manual.pdf::5.4 Running a program"
+   ],
+   "cited": [
+    "travel_expense_policy.pdf::6. Approvals"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "travel_expense_policy.md::6. Approvals"
+   ],
+   "facts": [
+    [
+     "department head"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": true,
+   "expect": "answer",
+   "inferred": true,
+   "correct": true,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "c22",
+   "kb": "helix",
+   "type": "rule-applied",
+   "q": "Is laundry reimbursed on a 3-night trip?",
+   "answerable": true,
+   "secs": 9.3,
+   "error": null,
+   "answer": "Based on the documents provided, laundry is **not** reimbursed for a 3-night trip.\n\nAccording to the travel expense policy, expenses must be submitted within 30 days of the end of the trip. Since a 3-night trip ends on the 3rd day, the submission deadline is the 3rd of October. The policy explicitly states that alcohol, minibar, and laundry are not reimbursed for trips shorter than 4 nights.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "travel_expense_policy.pdf::8. Not reimbursed",
+    "plant_safety_standard.pdf::3.3 Night shift"
+   ],
+   "cited": [
+    "travel_expense_policy.pdf::8. Not reimbursed"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "travel_expense_policy.md::8. Not reimbursed"
+   ],
+   "facts": [
+    [
+     "no",
+     "not"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": true,
+   "correct": true,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "c23",
+   "kb": "helix",
+   "type": "version",
+   "q": "What is the deadline for reporting a near miss, and what was it in the previous version of the standard?",
+   "answerable": true,
+   "secs": 19.0,
+   "error": null,
+   "answer": "Based on the documents provided, I can answer your question.\n\n**Part 1: What is the deadline for reporting a near miss?**\nAccording to Section 3.2 of the standard, the deadline for reporting a near miss is **within 24 hours**.\n\n**Part 2: What was it in the previous version of the standard?**\nThe previous version (Version 4) of the standard had a deadline of **48 hours** for reporting a near miss.\n\nThe documents state that Version 5 replaces Version 4, and the main changes include the near-miss deadline being reduced from 48 hours to 24 hours. Therefore, the previous deadline was 48 hours.\n\n[Plant Safety Standard]",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "plant_safety_standard.pdf::9. Changes from Version 4",
+    "plant_safety_standard.pdf::3. Incident reporting"
+   ],
+   "cited": [
+    "plant_safety_standard.pdf::plant_safety_standard.pdf"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "plant_safety_standard.md::3.2 Deadlines",
+    "plant_safety_standard.md::9. Changes from Version 4"
+   ],
+   "facts": [
+    [
+     "24 hours",
+     "24"
+    ],
+    [
+     "48"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": true,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "c24",
+   "kb": "helix",
+   "type": "rule-applied",
+   "q": "Can a contractor drive one of our forklifts if they have a license from their own company?",
+   "answerable": true,
+   "secs": 21.0,
+   "error": null,
+   "answer": "Based on the documents provided, the answer is **no**.\n\nAccording to [1], contractors may not drive Helix forklifts. While the documents mention that employees holding a valid Helix license may drive forklifts, they explicitly state that contractors are prohibited from doing so.\n\nRegarding your question about the license requirement: [1] states that only employees holding a valid Helix license may drive forklifts. It does not specify that this license must be renewed every three years, nor does it mention that a contractor's license is required. The restriction on contractors is based on their status as contractors, not their license renewal status.\n\n* [1] states: \"Only employees holding a valid Helix forklift license (renewed every 3 years) may drive forklifts.\"\n* [2] states: \"The area supervisor and the machine operators.\"\n* [3] states: \"Internal Procedures, this standard Share only with employees and contractors under NDA Confidential Drawings, prices, supplier agreements Encrypt when sent outside the company; no personal cloud storage...\"\n\nThe documents do not contain information regarding whether a contractor's license renewal status affects their ability to drive a forklift.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "plant_safety_standard.pdf::6. Forklifts",
+    "plant_safety_standard.pdf::4. Lockout / tagout (LOTO)"
+   ],
+   "cited": [
+    "plant_safety_standard.pdf::6. Forklifts",
+    "plant_safety_standard.pdf::4. Lockout / tagout (LOTO)",
+    "it_security_standard.docx::6. Data classification"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "plant_safety_standard.md::6. Forklifts"
+   ],
+   "facts": [
+    [
+     "no",
+     "not"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": true,
+   "expect": "answer",
+   "inferred": true,
+   "correct": true,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "c25",
+   "kb": "helix",
+   "type": "rule-applied",
+   "q": "Can I take a visitor into the paint shop?",
+   "answerable": true,
+   "secs": 8.0,
+   "error": null,
+   "answer": "Based on the documents provided, specifically from the cited section [1] of the plant safety standard, visitors are prohibited from entering the paint shop.\n\nVisitors may not enter the paint shop.\n\nSorry, I can only help with work topics.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "plant_safety_standard.pdf::2.2 Visitors",
+    "plant_safety_standard.pdf::2. Personal protective equipment (PPE)"
+   ],
+   "cited": [
+    "plant_safety_standard.pdf::2.2 Visitors"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "plant_safety_standard.md::2.2 Visitors"
+   ],
+   "facts": [
+    [
+     "no",
+     "not"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": true,
+   "expect": "answer",
+   "inferred": true,
+   "correct": false,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "c26",
+   "kb": "helix",
+   "type": "table-lookup",
+   "q": "What PPE is needed in the grinding bay?",
+   "answerable": true,
+   "secs": 8.9,
+   "error": null,
+   "answer": "The grinding bay requires a face shield, cut-resistant gloves (level C), a dust mask FFP2, and hearing protection above 85 dB(A).\n\nThe documents do not state that a high-visibility vest is needed in the grinding bay.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "plant_safety_standard.pdf::2.1 PPE by area",
+    "plant_safety_standard.pdf::5. Work permits"
+   ],
+   "cited": [
+    "plant_safety_standard.pdf::2. Personal protective equipment (PPE)"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "plant_safety_standard.md::2.1 PPE by area"
+   ],
+   "facts": [
+    [
+     "face shield"
+    ],
+    [
+     "FFP2"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "c27",
+   "kb": "helix",
+   "type": "rule-applied",
+   "q": "Can an operator work a 13-hour shift?",
+   "answerable": true,
+   "secs": 15.6,
+   "error": null,
+   "answer": "Based on the documents provided, specifically from [1] (plant_safety_standard.pdf), an operator **cannot** work a 13-hour shift. The document states that no one may work more than 12 hours in a shift.\n\nThe document explicitly states that no one may work more than 12 hours in a shift. Therefore, an 13-hour shift is not permitted. [1]",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "plant_safety_standard.pdf::7. Working hours and fatigue",
+    "HX-500_manual.pdf::7. Maintenance"
+   ],
+   "cited": [
+    "plant_safety_standard.pdf::7. Working hours and fatigue"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "plant_safety_standard.md::7. Working hours and fatigue"
+   ],
+   "facts": [
+    [
+     "no",
+     "not",
+     "12"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": true,
+   "expect": "answer",
+   "inferred": true,
+   "correct": true,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "c28",
+   "kb": "helix",
+   "type": "rule-applied",
+   "q": "A colleague left for the day and his padlock is still on a machine. Can I remove it?",
+   "answerable": true,
+   "secs": 12.6,
+   "error": null,
+   "answer": "According to [1], a lock left by someone who has left the site may only be removed by the area manager after a documented check, with the EHS head informed.\n\nHowever, the documents do not state that a padlock left on a machine can be removed by the area manager.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "plant_safety_standard.pdf::4. Lockout / tagout (LOTO)",
+    "it_security_standard.docx::1. Accounts and passwords"
+   ],
+   "cited": [
+    "plant_safety_standard.pdf::4. Lockout / tagout (LOTO)"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "plant_safety_standard.md::4. Lockout / tagout (LOTO)"
+   ],
+   "facts": [
+    [
+     "area manager"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": true,
+   "expect": "answer",
+   "inferred": true,
+   "correct": false,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "c29",
+   "kb": "helix",
+   "type": "computed",
+   "q": "Which line had the highest total downtime in H1, and how many hours was it?",
+   "answerable": true,
+   "secs": 37.4,
+   "error": null,
+   "answer": "Based on the provided documents, the line with the highest total downtime in H1 was **Line C**.\n\nThe total downtime for Line C over the 6 months was **16,560 hours**.\n\n**Worked out from the tables:**\n*   **Highest Line C:** Breakdowns (196)\n*   **Total Line C:** 16,560 hours (Sum of Breakdowns, Tool changes and setup, Waiting for material, Planned maintenance, and Quality holds across all 6 months)\n*   **Lowest Line C:** Waiting for material (22)\n\n*(The assistant did not name its sources for this answer: check it in the documents.)*",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "plant_performance_h1_2026.xlsx::Sheet: Downtime hours by cause",
+    "plant_performance_h1_2026.xlsx::plant_performance_h1_2026.xlsx"
+   ],
+   "cited": [],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "plant_performance_h1_2026.md::Sheet: Downtime hours by cause"
+   ],
+   "facts": [
+    [
+     "Line C"
+    ],
+    [
+     "406"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": true,
+   "correct": false,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "c30",
+   "kb": "helix",
+   "type": "table-lookup",
+   "q": "Which month had the lowest production on Line C?",
+   "answerable": true,
+   "secs": 33.2,
+   "error": null,
+   "answer": "Based on the provided data, the month with the lowest production on Line C was **April**.\n\nWorked out from the tables:\n*   **April Line C Production:** 2,210 parts\n*   **April Line C Total:** 9,690 parts\n*   **April Line C Average:** 2,760 parts\n*   **April Line C Lowest:** 2,210 parts\n*   **April Line C Highest:** 2,210 parts\n*   **April Line C OEE:** 52.3%\n*   **April Line C Scrap Rate:** 3.1%\n\n*(The assistant did not name its sources for this answer: check it in the documents.)*",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "plant_performance_h1_2026.xlsx::Sheet: Production by line",
+    "plant_performance_h1_2026.xlsx::plant_performance_h1_2026.xlsx"
+   ],
+   "cited": [],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "plant_performance_h1_2026.md::Sheet: Production by line"
+   ],
+   "facts": [
+    [
+     "April"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "c31",
+   "kb": "helix",
+   "type": "computed",
+   "q": "Which lines met the scrap rate target in every month?",
+   "answerable": true,
+   "secs": 40.1,
+   "error": null,
+   "answer": "Based on the documents provided, the lines that met the scrap rate target in every month are **Line A** and **Line B**.\n\n**Reasoning:**\nThe document states that the target scrap rate is **below 2.0 % for every line**.\n\n*   **Line A** meets this target in all months:\n    *   January: 1.8% (Below 2.0%)\n    *   February: 1.6% (Below 2.0%)\n    *   March: 1.5% (Below 2.0%)\n    *   April: 1.7% (Below 2.0%)\n    *   May: 1.4% (Below 2.0%)\n    *   June: 1.3% (Below 2.0%)\n\n*   **Line B** meets this target in all months:\n    *   January: 2.4% (Above 2.0%)\n    *   February: 2.2% (Above 2.0%)\n    *   March: 2.5% (Above 2.0%)\n    *   April: 2.1% (Above 2.0%)\n    *   May: 2.0% (Above 2.0%)\n    *   June: 1.9% (Below 2.0%)\n\n*   **Line C** does not meet the target in any month:\n    *   January: 3.1% (Above 2.0%)\n    *   February: 2.9% (Above 2.0%)\n    *   March: 2.7% (Above 2.0%)\n    *   April: 4.8% (Above 2.0%)\n    *   May: 3.3% (Above 2.0%)\n    *   June: 3.6% (Above 2.0%)\n\nThe documents explicitly state the target is \"below 2.0 %\" for every line. The values for Line A and Line B fall below this threshold in every month listed. Line C's values consistently exceed the threshold.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "plant_performance_h1_2026.xlsx::Sheet: Scrap rate (%)",
+    "plant_performance_h1_2026.xlsx::plant_performance_h1_2026.xlsx"
+   ],
+   "cited": [
+    "plant_performance_h1_2026.xlsx::plant_performance_h1_2026.xlsx"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "plant_performance_h1_2026.md::Sheet: Scrap rate (%)"
+   ],
+   "facts": [
+    [
+     "Line A"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": true,
+   "expect": "answer",
+   "inferred": true,
+   "correct": true,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "c32",
+   "kb": "helix",
+   "type": "computed",
+   "q": "By how much did Line A production grow from January to June?",
+   "answerable": true,
+   "secs": 36.7,
+   "error": null,
+   "answer": "Based on the provided documents, the production growth for Line A from January to June was calculated as follows:\n\n**Worked out from the tables:**\n*   **January Line A:** 3,820\n*   **June Line A:** 3,990\n*   **Growth:** 3,990 - 3,820 = 170 parts\n\n**Answer:** Line A production grew by **170 parts** from January to June.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "plant_performance_h1_2026.xlsx::Sheet: Production by line",
+    "plant_performance_h1_2026.xlsx::plant_performance_h1_2026.xlsx"
+   ],
+   "cited": [
+    "plant_performance_h1_2026.xlsx::plant_performance_h1_2026.xlsx"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "plant_performance_h1_2026.md::Sheet: Production by line"
+   ],
+   "facts": [
+    [
+     "170"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": true,
+   "correct": true,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "c33",
+   "kb": "helix",
+   "type": "table-lookup",
+   "q": "What was the OEE of Line C in April?",
+   "answerable": true,
+   "secs": 15.8,
+   "error": null,
+   "answer": "Based on the provided documents, the OEE of Line C in April was **52.3%**.\n\nThis figure is found in the \"OEE (%)\" sheet of the plant performance report, specifically in the row for **April** under the **Line C** column. The document also notes that Line C experienced downtime in April due to a spindle failure on machine HX-07, which contributed to this low efficiency.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "plant_performance_h1_2026.xlsx::Sheet: OEE (%)",
+    "plant_performance_h1_2026.xlsx::plant_performance_h1_2026.xlsx"
+   ],
+   "cited": [
+    "plant_performance_h1_2026.xlsx::plant_performance_h1_2026.xlsx"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "plant_performance_h1_2026.md::Sheet: OEE (%)"
+   ],
+   "facts": [
+    [
+     "52.3"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "c34",
+   "kb": "helix",
+   "type": "follow-up",
+   "q": "And in June?",
+   "answerable": true,
+   "secs": 19.7,
+   "error": null,
+   "answer": "Based on the provided documents, the OEE of Line C in June was **58.0%**.\n\nThis figure is found in the \"OEE (%)\" sheet of the plant performance report, specifically in the row for **June** under the **Line C** column. The document notes that Line C experienced downtime in June due to a material shortage of 6061 aluminium bar stock from supplier Arvind Metals.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "plant_performance_h1_2026.xlsx::Sheet: OEE (%)",
+    "plant_performance_h1_2026.xlsx::plant_performance_h1_2026.xlsx"
+   ],
+   "cited": [
+    "plant_performance_h1_2026.xlsx::plant_performance_h1_2026.xlsx"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "plant_performance_h1_2026.md::Sheet: OEE (%)"
+   ],
+   "facts": [
+    [
+     "58"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "c35",
+   "kb": "helix",
+   "type": "version",
+   "q": "What are the current payment terms with Arvind Metals?",
+   "answerable": true,
+   "secs": 17.2,
+   "error": null,
+   "answer": "Based on the documents provided, the current payment terms with Arvind Metals are:\n\n*   **Payment Date:** Within 45 days of the invoice date.\n*   **Early Payment Discount:** A 1.5% discount applies to invoices paid within 15 days.\n*   **Penalty for Late Delivery:** For each full week of delay, the supplier pays a penalty of 1.5% of the order value, up to a maximum of 7.5%.\n\n**Source:** Clause 2.2 of the \"Part 2: Amendment 1\" (signed 15 March 2026, effective 1 April 2026) replaces Clause 1.5 of the original agreement.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "supplier_agreement_arvind_metals.docx::supplier_agreement_arvind_metals.docx",
+    "supplier_agreement_arvind_metals.docx::1.5 Payment terms"
+   ],
+   "cited": [
+    "supplier_agreement_arvind_metals.docx::1.5 Payment terms"
+   ],
+   "tools": [],
+   "unverified": [
+    "2026"
+   ],
+   "gold": [
+    "supplier_agreement_arvind_metals.md::2.2 Payment terms (replaces 1.5)"
+   ],
+   "facts": [
+    [
+     "45"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "c36",
+   "kb": "helix",
+   "type": "computed",
+   "q": "What late-delivery penalty is due on PO-26-0503?",
+   "answerable": true,
+   "secs": 19.0,
+   "error": null,
+   "answer": "Based on the documents provided, the late-delivery penalty is **1.5%** of the order value.\n\nThis is determined by referencing the **replacing clause** found in the cited section [1], which states: \"2.3 Late delivery penalty (replaces 1.6)\". The original clause in [2] (signed 10 January 2025) no longer applies, as per the instruction to answer from the replacing clause. The new clause specifies a penalty of 1.5% for each full week of delay, up to a maximum of 7.5% of the order value.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "supplier_agreement_arvind_metals.docx::Part 3: Delivery record Q2 2026",
+    "supplier_agreement_arvind_metals.docx::1.6 Late delivery penalty"
+   ],
+   "cited": [
+    "supplier_agreement_arvind_metals.docx::2.3 Late delivery penalty (replaces 1.6)",
+    "supplier_agreement_arvind_metals.docx::1.6 Late delivery penalty"
+   ],
+   "tools": [],
+   "unverified": [
+    "2025"
+   ],
+   "gold": [
+    "supplier_agreement_arvind_metals.md::2.3 Late delivery penalty (replaces 1.6)",
+    "supplier_agreement_arvind_metals.md::Part 3: Delivery record Q2 2026"
+   ],
+   "facts": [
+    [
+     "27,600",
+     "27600",
+     "3%",
+     "3 %"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": true,
+   "correct": false,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "c37",
+   "kb": "helix",
+   "type": "computed",
+   "q": "How many of the Q2 2026 orders from Arvind Metals were delivered on time?",
+   "answerable": true,
+   "secs": 14.5,
+   "error": null,
+   "answer": "I can search the documents using keywords to find the relevant sections, but I cannot determine the specific order values, delivery dates, or the \"on time\" status for the orders you are asking about.\n\nSorry, I can only help with work topics.\n\n*(The assistant did not name its sources for this answer: check it in the documents.)*",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "supplier_agreement_arvind_metals.docx::Part 3: Delivery record Q2 2026",
+    "plant_performance_h1_2026.xlsx::Notes"
+   ],
+   "cited": [],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "supplier_agreement_arvind_metals.md::Part 3: Delivery record Q2 2026"
+   ],
+   "facts": [
+    [
+     "4"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": true,
+   "correct": false,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "c38",
+   "kb": "helix",
+   "type": "rule-applied",
+   "q": "Can we terminate the Arvind Metals agreement now because of their Q2 delivery performance?",
+   "answerable": true,
+   "secs": 18.1,
+   "error": null,
+   "answer": "The documents state that the original agreement runs from 1 February 2025 to 31 January 2027 and renews automatically for one year unless either party gives 90 days' written notice. It does not mention a specific termination clause for Q2 delivery performance or a 30-day notice period for termination based on Q2 delivery.\n\nSorry, I can only help with work topics.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "supplier_agreement_arvind_metals.docx::Part 3: Delivery record Q2 2026",
+    "supplier_agreement_arvind_metals.docx::supplier_agreement_arvind_metals.docx"
+   ],
+   "cited": [
+    "supplier_agreement_arvind_metals.docx::1.8 Termination"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "supplier_agreement_arvind_metals.md::1.8 Termination"
+   ],
+   "facts": [
+    [
+     "two consecutive",
+     "2 consecutive"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": true,
+   "expect": "answer",
+   "inferred": true,
+   "correct": false,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "c39",
+   "kb": "helix",
+   "type": "cross-document",
+   "q": "Why was the HX-07 spindle bearing replacement not covered by the warranty?",
+   "answerable": true,
+   "secs": 22.4,
+   "error": null,
+   "answer": "Based on the documents provided, the HX-07 spindle bearing replacement was not covered by the warranty because the investigation into the spindle failure on Line C in April explicitly stated that the spindle warm-up program had been skipped on 14 of 20 working days in March. This skipped warm-up program was the direct cause of the machine being down for 9 days in April.\n\nThe warranty coverage was determined by the specific reason for the machine's downtime in April. The documents state that the spindle warm-up program was skipped on 14 of 20 working days in March, which directly resulted in the machine being down for 9 days in April. This skipped warm-up program is the stated cause of the downtime.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "plant_performance_h1_2026.xlsx::Notes",
+    "plant_performance_h1_2026.xlsx::plant_performance_h1_2026.xlsx"
+   ],
+   "cited": [
+    "plant_performance_h1_2026.xlsx::plant_performance_h1_2026.xlsx"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "plant_performance_h1_2026.md::Notes",
+    "hx500_machining_center_manual.md::9. Warranty"
+   ],
+   "facts": [
+    [
+     "warm-up",
+     "warm up"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": true,
+   "expect": "answer",
+   "inferred": true,
+   "correct": true,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "c40",
+   "kb": "helix",
+   "type": "cross-document",
+   "q": "Which supplier caused the June material shortage on Line C, and what penalty applies to their late deliveries?",
+   "answerable": true,
+   "secs": 24.1,
+   "error": null,
+   "answer": "Based on the documents provided, here is the answer:\n\n**(1) Which supplier caused the June material shortage on Line C?**\nAccording to the notes in the plant performance report, the June material shortage on Line C was caused by **supplier Arvind Metals**. The report states that they supplied 6061 aluminium bar stock and that deliveries were late on 3 orders.\n\n**(2) What penalty applies to their late deliveries?**\nThe penalty applies to **supplier Arvind Metals** for late deliveries. According to the relevant clause in the supplier agreement (replacing the original 1.6% penalty), for each full week of delay, the supplier pays a penalty of **1.5 % of the value of the delayed order**, up to a maximum of **7.5 % of the order value**.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "plant_performance_h1_2026.xlsx::Notes",
+    "supplier_agreement_arvind_metals.docx::2.3 Late delivery penalty (replaces 1.6)"
+   ],
+   "cited": [
+    "supplier_agreement_arvind_metals.docx::supplier_agreement_arvind_metals.docx"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "plant_performance_h1_2026.md::Notes",
+    "supplier_agreement_arvind_metals.md::2.3 Late delivery penalty (replaces 1.6)"
+   ],
+   "facts": [
+    [
+     "Arvind"
+    ],
+    [
+     "1.5"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": true,
+   "correct": true,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "c41",
+   "kb": "helix",
+   "type": "cross-document",
+   "q": "What must I do before opening the electrical cabinet of an HX-500?",
+   "answerable": true,
+   "secs": 11.5,
+   "error": null,
+   "answer": "Before opening the electrical cabinet of an HX-500, you must apply lockout/tagout as described in the Plant Safety Standard, section 4. This involves switching off the main isolator, locking it with your personal padlock, and waiting 5 minutes for the spindle drive capacitors to discharge.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "HX-500_manual.pdf::2.3 Lockout / tagout",
+    "HX-500_manual.pdf::2. Safety"
+   ],
+   "cited": [
+    "HX-500_manual.pdf::HX-500_manual.pdf"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "hx500_machining_center_manual.md::2.3 Lockout / tagout",
+    "plant_safety_standard.md::4. Lockout / tagout (LOTO)"
+   ],
+   "facts": [
+    [
+     "lock",
+     "LOTO",
+     "lockout"
+    ],
+    [
+     "5 minutes",
+     "5 min"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "c42",
+   "kb": "helix",
+   "type": "multi-part",
+   "q": "How long must passwords be, and how many failed sign-ins lock an account?",
+   "answerable": true,
+   "secs": 16.2,
+   "error": null,
+   "answer": "Based on the installed documents, I cannot answer your question. I can only help with work topics, and I cannot look up information about password requirements or account lockout policies.\n\nSorry, I can only help with work topics.\n\n*(The assistant did not name its sources for this answer: check it in the documents.)*",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "it_security_standard.docx::1. Accounts and passwords",
+    "it_security_standard.docx::it_security_standard.docx"
+   ],
+   "cited": [],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "it_security_standard.md::1. Accounts and passwords"
+   ],
+   "facts": [
+    [
+     "14"
+    ],
+    [
+     "5"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": false,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "c43",
+   "kb": "helix",
+   "type": "rule-applied",
+   "q": "Can I connect to the VPN from my personal laptop?",
+   "answerable": true,
+   "secs": 7.8,
+   "error": null,
+   "answer": "Sorry, I can only help with work topics.",
+   "found": false,
+   "general": false,
+   "smalltalk": true,
+   "read": [],
+   "cited": [],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "it_security_standard.md::3. Remote access"
+   ],
+   "facts": [
+    [
+     "no",
+     "not"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": true,
+   "correct": false,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "c44",
+   "kb": "helix",
+   "type": "multi-part",
+   "q": "What is the spindle speed range of the HX-500 and what is the hotel limit for a G1 employee in Chennai?",
+   "answerable": true,
+   "secs": 25.2,
+   "error": null,
+   "answer": "Based on the documents provided:\n\n**(1) Spindle speed range of the HX-500:**\nThe documents state that the spindle speed is **50 - 12,000 rpm**. This is found in the cited section [1] under \"Specifications\" and is also mentioned in the Rev B note of the HX-500 manual.\n\n**(2) Hotel limit for a G1 employee in Chennai:**\nThe documents state that the hotel limit for a G1 employee in Chennai is **4,000 INR**. This is found in the cited section [2] under \"Accommodation limits per night (INR)\" for Grade G1 in Tier 1 cities.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "travel_expense_policy.pdf::4. Accommodation limits per night (INR)",
+    "HX-500_manual.pdf::3. Specifications"
+   ],
+   "cited": [
+    "HX-500_manual.pdf::3. Specifications",
+    "travel_expense_policy.pdf::4. Accommodation limits per night (INR)"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "hx500_machining_center_manual.md::3. Specifications",
+    "travel_expense_policy.md::4. Accommodation limits per night (INR)"
+   ],
+   "facts": [
+    [
+     "12,000",
+     "12000"
+    ],
+    [
+     "4,000",
+     "4000"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "c45",
+   "kb": "helix",
+   "type": "near-miss",
+   "q": "How much does an HX-500 machine cost?",
+   "answerable": false,
+   "secs": 9.4,
+   "error": null,
+   "answer": "The documents on this computer don't cover that.",
+   "found": false,
+   "general": false,
+   "smalltalk": false,
+   "read": [],
+   "cited": [],
+   "tools": [],
+   "unverified": [],
+   "gold": [],
+   "facts": [],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": null,
+   "cite_hit": null,
+   "hallucinated": false
+  },
+  {
+   "id": "c46",
+   "kb": "helix",
+   "type": "near-miss",
+   "q": "What was the OEE of the Chennai plant in H1 2026?",
+   "answerable": false,
+   "secs": 21.6,
+   "error": null,
+   "answer": "Based on the documents provided, the OEE of the Chennai plant in H1 2026 was **72.4%**.\n\nThis figure is stated in the summary section of the plant performance report [1] and is explicitly mentioned in the production table [1] as the average OEE averaged for the entire plant during H1 2026. While the document notes that Line C experienced downtime due to a spindle failure, the specific OEE percentage for the plant as a whole is not explicitly listed in the provided text, though it is stated to be 72.4%.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "plant_performance_h1_2026.xlsx::Sheet: OEE (%)",
+    "plant_performance_h1_2026.xlsx::plant_performance_h1_2026.xlsx"
+   ],
+   "cited": [
+    "plant_performance_h1_2026.xlsx::plant_performance_h1_2026.xlsx"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [],
+   "facts": [],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": false,
+   "read_hit": null,
+   "cite_hit": null,
+   "hallucinated": true
+  },
+  {
+   "id": "c47",
+   "kb": "helix",
+   "type": "near-miss",
+   "q": "What is the maximum spindle speed of the HX-700?",
+   "answerable": false,
+   "secs": 21.3,
+   "error": null,
+   "answer": "Based on the documents provided, the maximum spindle speed of the HX-700 is **12,000 rpm**.\n\nThis value is found in the cited section [1] of the HX-500_manual.pdf under the heading \"Spindle speed,\" which states: \"Spindle speed | 50 - 12,000 rpm\". While the document mentions a \"20-tool magazine\" and a \"10,000 rpm\" limit for Rev B machines, the general maximum spindle speed for the HX-700 is 12,000 rpm.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "HX-500_manual.pdf::3. Specifications",
+    "HX-500_manual.pdf::5.3 Loading tools"
+   ],
+   "cited": [
+    "HX-500_manual.pdf::3. Specifications"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [],
+   "facts": [],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": false,
+   "read_hit": null,
+   "cite_hit": null,
+   "hallucinated": true
+  },
+  {
+   "id": "c48",
+   "kb": "helix",
+   "type": "near-miss",
+   "q": "How many days of annual leave do G2 employees get?",
+   "answerable": false,
+   "secs": 10.6,
+   "error": null,
+   "answer": "Based on the provided documents, G2 employees receive **1,200** days of annual leave.\n\nThis figure is found in the cited section [1] under the table \"Employee grades\" where the daily allowance is listed as 1,200 INR per day for G2 employees.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "travel_expense_policy.pdf::5. Daily allowance (per diem)",
+    "travel_expense_policy.pdf::2. Employee grades"
+   ],
+   "cited": [
+    "travel_expense_policy.pdf::2. Employee grades"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [],
+   "facts": [],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": false,
+   "read_hit": null,
+   "cite_hit": null,
+   "hallucinated": true
+  }
+ ]
+}

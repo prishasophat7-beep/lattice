@@ -1,0 +1,457 @@
+{
+ "a01": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches parental leave duration."
+ },
+ "a02": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Confirms parental leave is paid."
+ },
+ "a03": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches sick leave days and note rule."
+ },
+ "a04": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches core collaboration hours."
+ },
+ "a05": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches home office stipend amount."
+ },
+ "a06": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches required office days."
+ },
+ "a07": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "Answer gives match % not salary %."
+ },
+ "a08": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches compensation review timing."
+ },
+ "a09": {
+  "faithful": "yes",
+  "correct": "no",
+  "note": "Incorrectly adds stipend+internet instead of learning budget."
+ },
+ "a10": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches gift limit."
+ },
+ "a11": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Exact match"
+ },
+ "a12": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Address and port correct"
+ },
+ "a13": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches usage description"
+ },
+ "a14": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Steps as per source"
+ },
+ "a15": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "SMS not allowed"
+ },
+ "a16": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Length 14 chars"
+ },
+ "a17": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Request in #it-help"
+ },
+ "a18": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Review within 2 business days"
+ },
+ "a19": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "71% phishing share"
+ },
+ "a20": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Call ext. 4357"
+ },
+ "a21": {
+  "faithful": "partly",
+  "correct": "yes",
+  "note": "Domain name slightly off; other facts correct."
+ },
+ "a22": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "All steps present, order varied."
+ },
+ "a23": {
+  "faithful": "no",
+  "correct": "no",
+  "note": "Incorrectly denies allowance."
+ },
+ "a24": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Correct range."
+ },
+ "n01": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches source."
+ },
+ "n02": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Correct fix."
+ },
+ "n03": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Correctly cites fix."
+ },
+ "n04": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "Missing clock speed."
+ },
+ "n05": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "Missing flash size."
+ },
+ "n06": {
+  "faithful": "no",
+  "correct": "no",
+  "note": "Incorrect signal name."
+ },
+ "n07": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches revision C changes."
+ },
+ "n08": {
+  "faithful": "yes",
+  "correct": "no",
+  "note": "Answer gives new boot time, not improvement."
+ },
+ "n09": {
+  "faithful": "no",
+  "correct": "no",
+  "note": "CO2 sensor info not in sources."
+ },
+ "n10": {
+  "faithful": "no",
+  "correct": "no",
+  "note": "Operating temperature range not in sources."
+ },
+ "n11": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Installation time matches source."
+ },
+ "n12": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Tools list matches source."
+ },
+ "n13": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Terminal O/B correctly identified."
+ },
+ "n14": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer correctly states incompatibility."
+ },
+ "n15": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Eco mode description matches source."
+ },
+ "n16": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Schedule points count matches source."
+ },
+ "n17": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source exactly."
+ },
+ "n18": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source exactly."
+ },
+ "n19": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source steps."
+ },
+ "n20": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source table."
+ },
+ "n21": {
+  "faithful": "no",
+  "correct": "yes",
+  "note": "Answer correct but source missing compatibility info."
+ },
+ "n22": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source troubleshooting table."
+ },
+ "n23": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source self-heating value."
+ },
+ "n24": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source operating temperature."
+ },
+ "s01": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches failed test in table."
+ },
+ "s02": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches measured distortion and target."
+ },
+ "s03": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches source SNR value."
+ },
+ "s04": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "Missing location Suwon."
+ },
+ "s05": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches source count."
+ },
+ "s06": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches source resolution."
+ },
+ "s07": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches source date."
+ },
+ "s08": {
+  "faithful": "yes",
+  "correct": "no",
+  "note": "Missing date and wrong person."
+ },
+ "s09": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches source yield."
+ },
+ "s10": {
+  "faithful": "no",
+  "correct": "no",
+  "note": "Wrong improvement figure."
+ },
+ "s11": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Correctly states no redesign needed."
+ },
+ "s12": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches source budget."
+ },
+ "s13": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches Equipment FY2026 Actual"
+ },
+ "s15": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches source reason"
+ },
+ "s16": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches unit cost"
+ },
+ "s17": {
+  "faithful": "no",
+  "correct": "no",
+  "note": "Incorrect difference"
+ },
+ "s18": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches source"
+ },
+ "s19": {
+  "faithful": "no",
+  "correct": "no",
+  "note": "Contradicts pass result"
+ },
+ "s20": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches schedule"
+ },
+ "k01": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches LED meaning"
+ },
+ "k02": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches LED meaning"
+ },
+ "k03": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches description"
+ },
+ "k04": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source: do not factory reset."
+ },
+ "k05": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches escalation table for E-217 after manual upload."
+ },
+ "k06": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Steps match section 4.1 No Internet."
+ },
+ "k08": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches escalation table for suspected security issue."
+ },
+ "k09": {
+  "faithful": "no",
+  "correct": "no",
+  "note": "Wrong escalation: hardware fault to RMA team."
+ },
+ "k10": {
+  "faithful": "no",
+  "correct": "no",
+  "note": "Missing required: serial, firmware, ISP."
+ },
+ "k11": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches diagnostic flow 64% resolution."
+ },
+ "k12": {
+  "faithful": "no",
+  "correct": "yes",
+  "note": "Answer not in provided Executive Summary source."
+ },
+ "k13": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches Key Metrics CSAT and target."
+ },
+ "k14": {
+  "faithful": "partly",
+  "correct": "yes",
+  "note": "Percentage wrong but conclusion correct."
+ },
+ "k15": {
+  "faithful": "no",
+  "correct": "no",
+  "note": "answer gives Q3 total, not difference"
+ },
+ "k16": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "missing week number"
+ },
+ "k17": {
+  "faithful": "no",
+  "correct": "no",
+  "note": "unsupported ticket count"
+ },
+ "k18": {
+  "faithful": "no",
+  "correct": "no",
+  "note": "answer is base warranty, not with Care+"
+ },
+ "k19": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "correct"
+ },
+ "k20": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "correct"
+ },
+ "k21": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "correct"
+ },
+ "k22": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "correct"
+ },
+ "k23": {
+  "faithful": "no",
+  "correct": "no",
+  "note": "amber INTERNET means WAN up, no IP"
+ },
+ "k24": {
+  "faithful": "partly",
+  "correct": "yes",
+  "note": "adds unsupported instructions"
+ },
+ "k25": {
+  "faithful": "no",
+  "correct": "yes",
+  "note": "Answer matches expected but not in sources"
+ }
+}

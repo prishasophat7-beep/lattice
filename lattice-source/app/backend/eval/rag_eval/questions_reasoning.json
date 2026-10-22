@@ -1,0 +1,48 @@
+{
+  "about": "Reasoning questions over the Sample Knowledge Base (the images bundle: user_manual.docx, leave_policy.pdf, quarterly_report.xlsx, performance_metrics.csv, requirements.txt, config.xml, manifest.json). Same format as questions_samples.json, plus expect ('clarify': a vague first question, the right reply asks back) and inferred (true: not stated word for word, worked out from the documents). Types: vague, vague-in-context, inferential, multi-part, compare, follow-up, partial, near-miss (a topic next to what the documents cover).",
+  "bundles": {
+    "images": "sample_kb_taskflow_images.zip"
+  },
+  "questions": [
+    {"id": "r01", "kb": "images", "type": "vague", "q": "What is the approval?", "expect": "clarify"},
+    {"id": "r02", "kb": "images", "type": "vague", "q": "What is the version?", "expect": "clarify"},
+    {"id": "r03", "kb": "images", "type": "vague", "q": "How long?", "expect": "clarify"},
+
+    {"id": "r04", "kb": "images", "type": "fact", "q": "How many days of privilege leave can be carried forward?", "facts": [["45"]], "gold": ["leave_policy.pdf::A. Privilege Leave & Casual / Sick Leave"], "conv": "r-carry"},
+    {"id": "r05", "kb": "images", "type": "vague-in-context", "q": "And what is the limit for encashment?", "facts": [["15"]], "gold": ["leave_policy.pdf::A. Privilege Leave & Casual / Sick Leave"], "conv": "r-carry"},
+
+    {"id": "r06", "kb": "images", "type": "inferential", "q": "Can I carry 50 days of privilege leave into next year?", "polarity": "no", "facts": [["no", "cannot", "can't", "not"], ["45"]], "gold": ["leave_policy.pdf::A. Privilege Leave & Casual / Sick Leave"], "inferred": true},
+    {"id": "r07", "kb": "images", "type": "inferential", "q": "I was sick for 3 days in a row. Do I need a medical certificate?", "polarity": "yes", "facts": [["yes", "need", "required", "requires"], ["2"]], "gold": ["leave_policy.pdf::A. Privilege Leave & Casual / Sick Leave"], "inferred": true},
+    {"id": "r08", "kb": "images", "type": "inferential", "q": "How many sick days in a row can I take without a medical certificate?", "facts": [["2", "two"]], "gold": ["leave_policy.pdf::A. Privilege Leave & Casual / Sick Leave"], "inferred": true},
+    {"id": "r09", "kb": "images", "type": "inferential", "q": "Can I combine casual leave with privilege leave for a longer break?", "polarity": "no", "facts": [["no", "cannot", "can't", "not"]], "gold": ["leave_policy.pdf::A. Privilege Leave & Casual / Sick Leave"], "inferred": true},
+    {"id": "r10", "kb": "images", "type": "inferential", "q": "I want 5 days of privilege leave starting next Monday and today is Thursday. Is that allowed?", "polarity": "no", "facts": [["no", "not", "cannot"], ["7"]], "gold": ["leave_policy.pdf::A. Privilege Leave & Casual / Sick Leave"], "inferred": true},
+    {"id": "r11", "kb": "images", "type": "inferential", "q": "This is my third child. How many weeks of maternity leave do I get?", "facts": [["12"]], "gold": ["leave_policy.pdf::B. Maternity / Paternity Leave"], "inferred": true},
+    {"id": "r12", "kb": "images", "type": "inferential", "q": "Will TaskFlow Pro run on a laptop with 2 GB of RAM?", "polarity": "no", "facts": [["no", "not", "below"], ["4 GB", "4GB", "4 gb"]], "gold": ["user_manual.docx::Requirements"], "inferred": true},
+    {"id": "r13", "kb": "images", "type": "inferential", "q": "I am 30 years old. Do I get the paid medical checkup leave?", "polarity": "no", "facts": [["no", "not", "35"]], "gold": ["leave_policy.pdf::E. Official Medical Checkup Leave"], "inferred": true},
+
+    {"id": "r14", "kb": "images", "type": "multi-part", "q": "Which Python packages does the API use and which leave needs a medical certificate?", "facts": [["fastapi"], ["sick", "CL/SL", "casual"]], "gold": ["requirements.txt::Core Packages", "leave_policy.pdf::A. Privilege Leave & Casual / Sick Leave"]},
+    {"id": "r15", "kb": "images", "type": "multi-part", "q": "What is the minimum RAM for TaskFlow and how many paid holidays does the company observe?", "facts": [["4 GB", "4GB"], ["10", "ten"]], "gold": ["user_manual.docx::Requirements", "leave_policy.pdf::HOLIDAYS"]},
+    {"id": "r16", "kb": "images", "type": "multi-part", "q": "How long do invitation links stay valid, and when must the manager approve a leave request?", "facts": [["7"], ["2"]], "gold": ["user_manual.docx::Adding Team Members", "leave_policy.pdf::Leave Approval Procedure"]},
+
+    {"id": "r17", "kb": "images", "type": "compare", "q": "Which month had the best margin?", "facts": [["March"]], "gold": ["quarterly_report.xlsx::Sheet: Q1 Summary"]},
+    {"id": "r18", "kb": "images", "type": "compare", "q": "Which month had the lowest expenses?", "facts": [["January"]], "gold": ["quarterly_report.xlsx::Sheet: Q1 Summary"]},
+    {"id": "r19", "kb": "images", "type": "compare", "q": "Compare March vs January profit.", "facts": [["25,800", "25800"]], "gold": ["quarterly_report.xlsx::Sheet: Q1 Summary"], "inferred": true},
+    {"id": "r20", "kb": "images", "type": "compare", "q": "By how much did revenue grow from January to February?", "facts": [["15,400", "15400"]], "gold": ["quarterly_report.xlsx::Sheet: Q1 Summary"], "inferred": true},
+    {"id": "r21", "kb": "images", "type": "compare", "q": "Which award gives more leave days, Employee of the Year or Quarterly Star Performer?", "facts": [["Employee of the Year"]], "gold": ["leave_policy.pdf::D. Award Leave"], "inferred": true},
+
+    {"id": "r22", "kb": "images", "type": "follow-up", "q": "What was the revenue in January?", "facts": [["248,500", "248500"]], "gold": ["quarterly_report.xlsx::Sheet: Q1 Summary"], "conv": "r-rev"},
+    {"id": "r23", "kb": "images", "type": "follow-up", "q": "And in March?", "facts": [["291,400", "291400"]], "gold": ["quarterly_report.xlsx::Sheet: Q1 Summary"], "conv": "r-rev"},
+    {"id": "r24", "kb": "images", "type": "follow-up", "q": "What is the increase between the two?", "facts": [["42,900", "42900"]], "gold": ["quarterly_report.xlsx::Sheet: Q1 Summary"], "conv": "r-rev", "inferred": true},
+
+    {"id": "r25", "kb": "images", "type": "partial", "q": "How many days of privilege leave do I get, and is there an overtime allowance?", "facts": [["18"], ["not", "no ", "don't"]], "gold": ["leave_policy.pdf::A. Privilege Leave & Casual / Sick Leave"]},
+
+    {"id": "r26", "kb": "images", "type": "near-miss", "q": "How do I reset my password in TaskFlow?", "answerable": false},
+    {"id": "r27", "kb": "images", "type": "near-miss", "q": "How much does TaskFlow Pro cost per user?", "answerable": false},
+    {"id": "r28", "kb": "images", "type": "near-miss", "q": "How many days of bereavement leave do contractors get?", "answerable": false},
+    {"id": "r29", "kb": "images", "type": "near-miss", "q": "What was the profit in April?", "answerable": false},
+
+    {"id": "r30", "kb": "images", "type": "fact", "q": "What does the user manual say about the Image Type preference?", "answerable": false},
+    {"id": "r31", "kb": "images", "type": "fact", "q": "What does the user_manual.docx say about the Theme preference?", "facts": [["Light"], ["Dark"], ["System"]], "gold": ["user_manual.docx::User Preferences"]},
+    {"id": "r32", "kb": "images", "type": "fact", "q": "What does the leave_policy.pdf say about marriage leave?", "facts": [["5"]], "gold": ["leave_policy.pdf::C. Marriage And Compassionate Leave"]}
+  ]
+}

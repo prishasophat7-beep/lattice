@@ -1,0 +1,452 @@
+{
+ "a01": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source."
+ },
+ "a02": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source."
+ },
+ "a03": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source."
+ },
+ "a04": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source."
+ },
+ "a05": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source."
+ },
+ "a06": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source."
+ },
+ "a07": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "Answer incomplete; missing 4% limit."
+ },
+ "a08": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source."
+ },
+ "a09": {
+  "faithful": "partly",
+  "correct": "no",
+  "note": "Answer incorrectly adds internet cost; wrong total."
+ },
+ "a10": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source."
+ },
+ "a11": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Exact match"
+ },
+ "a12": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches source"
+ },
+ "a13": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches source"
+ },
+ "a14": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Steps match source"
+ },
+ "a15": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches source"
+ },
+ "a16": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches source"
+ },
+ "a17": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches source"
+ },
+ "a18": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches source"
+ },
+ "a19": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches source"
+ },
+ "a20": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches source"
+ },
+ "a21": {
+  "faithful": "partly",
+  "correct": "yes",
+  "note": "Domain name slightly off but red flags captured."
+ },
+ "a22": {
+  "faithful": "partly",
+  "correct": "yes",
+  "note": "Adds unconditional IT call step not in source."
+ },
+ "a23": {
+  "faithful": "no",
+  "correct": "no",
+  "note": "Denies allowance; source mentions $1500 PD."
+ },
+ "a24": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Correct range matches source."
+ },
+ "n01": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches troubleshooting table exactly."
+ },
+ "n02": {
+  "faithful": "partly",
+  "correct": "no",
+  "note": "Describes generic install; omits PAK-2/C-wire fix."
+ },
+ "n03": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Correctly cites FW-1822 fix."
+ },
+ "n04": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "Gives MCU but omits 160 MHz clock speed."
+ },
+ "n05": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "States SRAM only; omits 2 MB flash."
+ },
+ "n06": {
+  "faithful": "no",
+  "correct": "no",
+  "note": "Pin 7 signal mis-typed; should be RLY_OB."
+ },
+ "n07": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches expected and source."
+ },
+ "n08": {
+  "faithful": "yes",
+  "correct": "no",
+  "note": "Answer gives new boot time, not improvement."
+ },
+ "n10": {
+  "faithful": "no",
+  "correct": "yes",
+  "note": "Answer matches expected but unsupported by source."
+ },
+ "n11": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source and expected."
+ },
+ "n12": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer includes required tools per source."
+ },
+ "n13": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source and expected."
+ },
+ "n14": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source and expected."
+ },
+ "n15": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source and expected."
+ },
+ "n16": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source and expected."
+ },
+ "n17": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source and expected."
+ },
+ "n18": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source."
+ },
+ "n19": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Steps match upgrade procedure."
+ },
+ "n20": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Android version matches table."
+ },
+ "n21": {
+  "faithful": "no",
+  "correct": "yes",
+  "note": "Claim about compatibility not in sources."
+ },
+ "n22": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Error code solution matches table."
+ },
+ "n23": {
+  "faithful": "no",
+  "correct": "no",
+  "note": "Heating claim unsupported; expected 1.8."
+ },
+ "n24": {
+  "faithful": "no",
+  "correct": "no",
+  "note": "Temperature range unsupported; expected 0-45."
+ },
+ "s01": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Distortion test failed as shown."
+ },
+ "s02": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Measured and target values correct."
+ },
+ "s03": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "SNR value matches source."
+ },
+ "s04": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "Missing location; date correct."
+ },
+ "s05": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source."
+ },
+ "s06": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source."
+ },
+ "s07": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source."
+ },
+ "s08": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "Missing deadline; who correct."
+ },
+ "s09": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source."
+ },
+ "s10": {
+  "faithful": "no",
+  "correct": "no",
+  "note": "Answer incorrect; cites distortion not improvement."
+ },
+ "s11": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source."
+ },
+ "s12": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source."
+ },
+ "s13": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source."
+ },
+ "s15": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source and expected."
+ },
+ "s16": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source and expected."
+ },
+ "s17": {
+  "faithful": "no",
+  "correct": "no",
+  "note": "Answer incorrect; source shows 23 not 123."
+ },
+ "s18": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source and expected."
+ },
+ "s19": {
+  "faithful": "no",
+  "correct": "no",
+  "note": "Answer contradicts source; corner MTF passes."
+ },
+ "s20": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source and expected."
+ },
+ "k01": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source and expected."
+ },
+ "k02": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source and expected."
+ },
+ "k03": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source and expected."
+ },
+ "k04": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source and expected."
+ },
+ "k05": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches expected"
+ },
+ "k06": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Steps match source"
+ },
+ "k08": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Correct"
+ },
+ "k09": {
+  "faithful": "no",
+  "correct": "no",
+  "note": "Wrong team and time"
+ },
+ "k10": {
+  "faithful": "no",
+  "correct": "no",
+  "note": "Missing required items"
+ },
+ "k11": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches"
+ },
+ "k12": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Correct"
+ },
+ "k13": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Correct"
+ },
+ "k14": {
+  "faithful": "no",
+  "correct": "no",
+  "note": "Wrong percentage"
+ },
+ "k15": {
+  "faithful": "no",
+  "correct": "no",
+  "note": "Incorrect diff"
+ },
+ "k16": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "Missing week number."
+ },
+ "k17": {
+  "faithful": "no",
+  "correct": "no",
+  "note": "Unsupported number; missing advice."
+ },
+ "k18": {
+  "faithful": "no",
+  "correct": "no",
+  "note": "Wrong warranty length."
+ },
+ "k19": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Correct."
+ },
+ "k20": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Correct."
+ },
+ "k21": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Correct."
+ },
+ "k22": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Correct."
+ },
+ "k23": {
+  "faithful": "no",
+  "correct": "no",
+  "note": "Incorrect LED meaning."
+ },
+ "k24": {
+  "faithful": "partly",
+  "correct": "yes",
+  "note": "Adds unsupported advice."
+ },
+ "k25": {
+  "faithful": "no",
+  "correct": "no",
+  "note": "CSAT percentage not in sources."
+ }
+}

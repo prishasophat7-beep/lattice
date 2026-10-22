@@ -1,0 +1,51 @@
+{
+ "about": "Remaining chat questions for the OpenRouter free tier.",
+ "bundles": {
+  "helix": "sample_kb_helix_complex.zip"
+ },
+ "questions": [
+  {
+   "id": "c39",
+   "kb": "helix",
+   "type": "cross-document",
+   "q": "Why was the HX-07 spindle bearing replacement not covered by the warranty?",
+   "facts": [
+    [
+     "warm-up",
+     "warm up"
+    ]
+   ],
+   "gold": [
+    "plant_performance_h1_2026.md::Notes",
+    "hx500_machining_center_manual.md::9. Warranty"
+   ],
+   "inferred": true
+  },
+  {
+   "id": "c40",
+   "kb": "helix",
+   "type": "cross-document",
+   "q": "Which supplier caused the June material shortage on Line C, and what penalty applies to their late deliveries?",
+   "facts": [
+    [
+     "Arvind"
+    ],
+    [
+     "1.5"
+    ]
+   ],
+   "gold": [
+    "plant_performance_h1_2026.md::Notes",
+    "supplier_agreement_arvind_metals.md::2.3 Late delivery penalty (replaces 1.6)"
+   ],
+   "inferred": true
+  },
+  {
+   "id": "c46",
+   "kb": "helix",
+   "type": "near-miss",
+   "q": "What was the OEE of the Chennai plant in H1 2026?",
+   "answerable": false
+  }
+ ]
+}

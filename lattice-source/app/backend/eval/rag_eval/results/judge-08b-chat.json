@@ -1,0 +1,417 @@
+{
+ "a01": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source exactly."
+ },
+ "a03": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Both facts present and correct."
+ },
+ "a04": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Correctly states core hours."
+ },
+ "a05": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Stipend amount correct."
+ },
+ "a06": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Correctly states two days."
+ },
+ "a07": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer correct and faithful."
+ },
+ "a09": {
+  "faithful": "partly",
+  "correct": "yes",
+  "note": "Total correct; extra claim unsupported."
+ },
+ "a11": {
+  "faithful": "partly",
+  "correct": "yes",
+  "note": "Extension correct; HR claim wrong."
+ },
+ "a12": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Both server address and port correct."
+ },
+ "a13": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Correctly states VPN usage."
+ },
+ "a14": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "Missing QR code step"
+ },
+ "a15": {
+  "faithful": "partly",
+  "correct": "yes",
+  "note": "Unsupported other doc claims"
+ },
+ "a16": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Correct"
+ },
+ "a17": {
+  "faithful": "partly",
+  "correct": "no",
+  "note": "Incorrect steps, missing request"
+ },
+ "a18": {
+  "faithful": "no",
+  "correct": "no",
+  "note": "Wrong time, unsupported"
+ },
+ "a19": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Correct"
+ },
+ "a20": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Correct"
+ },
+ "a21": {
+  "faithful": "partly",
+  "correct": "partly",
+  "note": "Missing look-alike and urgency"
+ },
+ "a22": {
+  "faithful": "no",
+  "correct": "no",
+  "note": "Wrong contact, unsupported"
+ },
+ "a23": {
+  "faithful": "no",
+  "correct": "no",
+  "note": "Missed learning budget $1500"
+ },
+ "a24": {
+  "faithful": "partly",
+  "correct": "yes",
+  "note": "Answer adds unsupported Alicia detail."
+ },
+ "n01": {
+  "faithful": "no",
+  "correct": "yes",
+  "note": "Answer not supported by sources."
+ },
+ "n02": {
+  "faithful": "partly",
+  "correct": "no",
+  "note": "Fix step contradicts source."
+ },
+ "n04": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches source."
+ },
+ "n05": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches source."
+ },
+ "n06": {
+  "faithful": "no",
+  "correct": "no",
+  "note": "Answer contradicts source."
+ },
+ "n07": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Includes extra detail."
+ },
+ "n08": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches source."
+ },
+ "n09": {
+  "faithful": "partly",
+  "correct": "yes",
+  "note": "Accuracy not in source."
+ },
+ "n10": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches source."
+ },
+ "n11": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source and expected."
+ },
+ "n12": {
+  "faithful": "partly",
+  "correct": "yes",
+  "note": "Adds unsupported optional C-wire claim."
+ },
+ "n13": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Correctly identifies O/B terminal."
+ },
+ "n14": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Correctly states cannot use with baseboard heaters."
+ },
+ "n15": {
+  "faithful": "no",
+  "correct": "yes",
+  "note": "Adds unsupported details about Eco mode."
+ },
+ "n16": {
+  "faithful": "no",
+  "correct": "no",
+  "note": "Incorrectly states 4 schedule points; source says 8."
+ },
+ "n17": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Correctly states 7-day observation period."
+ },
+ "n19": {
+  "faithful": "no",
+  "correct": "yes",
+  "note": "Adds unsupported update steps beyond nimbus-cli mention."
+ },
+ "n20": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Correctly gives minimum Android version."
+ },
+ "n21": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Correctly states Rev A units not supported."
+ },
+ "n22": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source and expected."
+ },
+ "n23": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Correctly states 1.8°C heating."
+ },
+ "n24": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Correctly gives 0-45°C range."
+ },
+ "s01": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Correctly identifies distortion failure."
+ },
+ "s02": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Correctly gives measured and target."
+ },
+ "s03": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Correctly states SNR 38.1 dB."
+ },
+ "s04": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Correctly states location and date."
+ },
+ "s05": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Correctly states twenty modules."
+ },
+ "s06": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Correctly states 50 MP resolution."
+ },
+ "s07": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Correctly states EVT2 build date."
+ },
+ "s08": {
+  "faithful": "yes",
+  "correct": "partly",
+  "note": "Missing owner Patel"
+ },
+ "s09": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Correct"
+ },
+ "s10": {
+  "faithful": "no",
+  "correct": "no",
+  "note": "Wrong improvement value"
+ },
+ "s11": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Correct"
+ },
+ "s12": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Correct"
+ },
+ "s13": {
+  "faithful": "yes",
+  "correct": "no",
+  "note": "Wrong metric, gave total"
+ },
+ "s14": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Correct"
+ },
+ "s16": {
+  "faithful": "partly",
+  "correct": "no",
+  "note": "Extra false unit cost"
+ },
+ "s17": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Correct"
+ },
+ "s18": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Correct"
+ },
+ "s19": {
+  "faithful": "partly",
+  "correct": "yes",
+  "note": "Distortion claim incorrect; sharpness claim ok."
+ },
+ "k01": {
+  "faithful": "no",
+  "correct": "no",
+  "note": "Amber INTERNET LED means WAN up, no IP."
+ },
+ "k02": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Blinking green POWER LED = booting/updating."
+ },
+ "k03": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "E-217 = checksum fail, router runs old firmware."
+ },
+ "k04": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Do not factory reset for E-217; manual upload advised."
+ },
+ "k05": {
+  "faithful": "partly",
+  "correct": "no",
+  "note": "Incorrectly says RMA team; correct is Tier 2 Firmware 4h."
+ },
+ "k06": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Steps match source: check LED, ISP, power-cycle, logs, escalate."
+ },
+ "k07": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Firmware 2.9.1+ fixes 5GHz throughput issue."
+ },
+ "k09": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "RMA team handles hardware fault within 1 business day."
+ },
+ "k10": {
+  "faithful": "partly",
+  "correct": "partly",
+  "note": "Missing ISP; includes symptom instead of ISP."
+ },
+ "k11": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source and expected value."
+ },
+ "k12": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches source and expected."
+ },
+ "k13": {
+  "faithful": "partly",
+  "correct": "partly",
+  "note": "CSAT correct; target wrong."
+ },
+ "k14": {
+  "faithful": "partly",
+  "correct": "yes",
+  "note": "Correct conclusion but wrong numbers."
+ },
+ "k15": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches source and expected."
+ },
+ "k16": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches source and expected."
+ },
+ "k17": {
+  "faithful": "partly",
+  "correct": "yes",
+  "note": "Number correct; recommendation unsupported."
+ },
+ "k18": {
+  "faithful": "no",
+  "correct": "no",
+  "note": "Wrong warranty length; should be 5 years."
+ },
+ "k19": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches source and expected."
+ },
+ "k21": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches source and expected."
+ },
+ "k22": {
+  "faithful": "partly",
+  "correct": "no",
+  "note": "Partly faithful; missing hiring plan info."
+ },
+ "k23": {
+  "faithful": "partly",
+  "correct": "yes",
+  "note": "Partly faithful; correct meaning."
+ },
+ "k25": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Fully faithful and correct."
+ }
+}

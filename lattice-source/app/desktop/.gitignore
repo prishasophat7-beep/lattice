@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.env.local
+src-tauri/target/
+src-tauri/gen/
+
+# UI test output
+ui-tests/.engine-data/
+ui-tests/.results/
+ui-tests/report/
+ui-tests/*.log

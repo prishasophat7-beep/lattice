@@ -1,0 +1,386 @@
+{
+ "meta": {
+  "label": "B4-reasoning-chat",
+  "mode": "chat",
+  "set": "reasoning",
+  "model": "local",
+  "chat_model": "local",
+  "semantic_model": null,
+  "engine_version": "0.1.0",
+  "started": "2026-10-18 03:31",
+  "finished": "2026-10-18 03:37"
+ },
+ "rows": [
+  {
+   "id": "r08",
+   "kb": "images",
+   "type": "inferential",
+   "q": "How many sick days in a row can I take without a medical certificate?",
+   "answerable": true,
+   "secs": 80.9,
+   "error": null,
+   "answer": "Based on the documents provided, you can take **10 working days** in a row without a medical certificate.\n\nThis is the **Official Medical Checkup Leave** (E), which is permitted for employees. According to the policy:\n*   **Official Medical Checkup Leave** is available for employees.\n*   It is **not permitted** for Casual / Sick Leave (CL/SL).\n*   It is **not permitted** for Privilege Leave (PL).\n*   It is **not permitted** for Marriage leave.\n*   It is **not permitted** for Award leave.\n\nThe documents state that CL/SL of more than 2 consecutive days requires a medical certificate, but they do not state that Official Medical Checkup Leave requires one. The documents also state that CL/SL of more than 2 consecutive days requires a medical certificate, implying that the medical certificate is required for the specific condition of \"more than 2 consecutive days\" for CL/SL, but not necessarily for the Official Medical Checkup Leave itself.\n\n*   **Official Medical Checkup Leave** is not permitted for Casual / Sick Leave (CL/SL).\n*   **Official Medical Checkup Leave** is not permitted for Privilege Leave (PL).\n*   **Official Medical Checkup Leave** is not permitted for Marriage leave.\n*   **Official Medical Checkup Leave** is not permitted for Award leave.\n\n*(The answer was cut off.)*",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "leave_policy.pdf::A. Privilege Leave & Casual / Sick Leave",
+    "leave_policy.pdf::leave_policy.pdf"
+   ],
+   "cited": [
+    "leave_policy.pdf::leave_policy.pdf",
+    "leave_policy.pdf::Leave Approval Procedure"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "leave_policy.pdf::A. Privilege Leave & Casual / Sick Leave"
+   ],
+   "facts": [
+    [
+     "2",
+     "two"
+    ]
+   ],
+   "reference": "",
+   "shown": [
+    "leave_policy.pdf::figure_000.png"
+   ],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": true,
+   "expect": "answer",
+   "inferred": true,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "r14",
+   "kb": "images",
+   "type": "multi-part",
+   "q": "Which Python packages does the API use and which leave needs a medical certificate?",
+   "answerable": true,
+   "secs": 29.6,
+   "error": null,
+   "answer": "Part 1: Python packages used by the API are: fastapi==0.115.6, uvicorn[standard]==0.32.1, pydantic==2.10.4, pydantic-settings==2.7.0, sqlalchemy==2.0.36, alembic==1.14.0, psycopg[binary]==3.2.3, python-jose[cryptography]==3.3.0, passlib[bcrypt]==1.7.4, python-multipart==0.0.20. Part 2: Maternity leave requires a medical certificate.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "leave_policy.pdf::Policy:",
+    "leave_policy.pdf::A. Privilege Leave & Casual / Sick Leave",
+    "leave_policy.pdf::B. Maternity / Paternity Leave",
+    "requirements.txt::requirements.txt"
+   ],
+   "cited": [
+    "requirements.txt::requirements.txt"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "requirements.txt::Core Packages",
+    "leave_policy.pdf::A. Privilege Leave & Casual / Sick Leave"
+   ],
+   "facts": [
+    [
+     "fastapi"
+    ],
+    [
+     "sick",
+     "CL/SL",
+     "casual"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": false,
+   "read_hit": true,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "r21",
+   "kb": "images",
+   "type": "compare",
+   "q": "Which award gives more leave days, Employee of the Year or Quarterly Star Performer?",
+   "answerable": true,
+   "secs": 20.2,
+   "error": null,
+   "answer": "The documents don't cover this.",
+   "found": false,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "leave_policy.pdf::D. Award Leave"
+   ],
+   "cited": [],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "leave_policy.pdf::D. Award Leave"
+   ],
+   "facts": [
+    [
+     "Employee of the Year"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": true,
+   "correct": false,
+   "read_hit": true,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "r22",
+   "kb": "images",
+   "type": "follow-up",
+   "q": "What was the revenue in January?",
+   "answerable": true,
+   "secs": 4.5,
+   "error": null,
+   "answer": "248,500",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "quarterly_report.xlsx::Sheet: Q1 Summary"
+   ],
+   "cited": [
+    "quarterly_report.xlsx::Sheet: Q1 Summary"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "quarterly_report.xlsx::Sheet: Q1 Summary"
+   ],
+   "facts": [
+    [
+     "248,500",
+     "248500"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "r23",
+   "kb": "images",
+   "type": "follow-up",
+   "q": "And in March?",
+   "answerable": true,
+   "secs": 31.8,
+   "error": null,
+   "answer": "291,400",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "quarterly_report.xlsx::Sheet: Q1 Summary",
+    "leave_policy.pdf::LEAVE POLICY",
+    "user_manual.docx::Introduction",
+    "quarterly_report.xlsx::quarterly_report.xlsx"
+   ],
+   "cited": [
+    "quarterly_report.xlsx::Sheet: Q1 Summary",
+    "quarterly_report.xlsx::quarterly_report.xlsx"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "quarterly_report.xlsx::Sheet: Q1 Summary"
+   ],
+   "facts": [
+    [
+     "291,400",
+     "291400"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "r24",
+   "kb": "images",
+   "type": "follow-up",
+   "q": "What is the increase between the two?",
+   "answerable": true,
+   "secs": 61.6,
+   "error": null,
+   "answer": "42,900\n\n*(The assistant did not name its sources for this answer: check it in the documents.)*",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "quarterly_report.xlsx::quarterly_report.xlsx",
+    "quarterly_report.xlsx::Sheet: Q1 Summary"
+   ],
+   "cited": [],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "quarterly_report.xlsx::Sheet: Q1 Summary"
+   ],
+   "facts": [
+    [
+     "42,900",
+     "42900"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": true,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "r26",
+   "kb": "images",
+   "type": "near-miss",
+   "q": "How do I reset my password in TaskFlow?",
+   "answerable": false,
+   "secs": 31.9,
+   "error": null,
+   "answer": "The documents don't cover this.",
+   "found": false,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "user_manual.docx::Introduction",
+    "user_manual.docx::Configuration",
+    "user_manual.docx::User Preferences",
+    "user_manual.docx::About"
+   ],
+   "cited": [],
+   "tools": [],
+   "unverified": [],
+   "gold": [],
+   "facts": [],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": null,
+   "cite_hit": null,
+   "hallucinated": false
+  },
+  {
+   "id": "r27",
+   "kb": "images",
+   "type": "near-miss",
+   "q": "How much does TaskFlow Pro cost per user?",
+   "answerable": false,
+   "secs": 69.6,
+   "error": null,
+   "answer": "The documents on this computer don't cover that.",
+   "found": false,
+   "general": false,
+   "smalltalk": false,
+   "read": [],
+   "cited": [],
+   "tools": [],
+   "unverified": [],
+   "gold": [],
+   "facts": [],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": null,
+   "cite_hit": null,
+   "hallucinated": false
+  },
+  {
+   "id": "r30",
+   "kb": "images",
+   "type": "fact",
+   "q": "What does the user manual say about the Image Type preference?",
+   "answerable": false,
+   "secs": 30.4,
+   "error": null,
+   "answer": "The user manual states that the default view is 'Board' for the Image Type preference.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "user_manual.docx::Configuration",
+    "manifest.json::manifest.json"
+   ],
+   "cited": [
+    "user_manual.docx::Configuration",
+    "manifest.json::manifest.json",
+    "leave_policy.pdf::Leave Approval Procedure"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [],
+   "facts": [],
+   "reference": "",
+   "shown": [
+    "leave_policy.pdf::figure_000.png"
+   ],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": false,
+   "read_hit": null,
+   "cite_hit": null,
+   "hallucinated": true
+  }
+ ]
+}

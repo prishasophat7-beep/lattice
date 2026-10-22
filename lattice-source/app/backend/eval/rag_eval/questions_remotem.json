@@ -1,0 +1,176 @@
+{
+ "about": "Subset of questions_complex.json for a server model on the OpenRouter free tier (50 requests a day).",
+ "bundles": {
+  "helix": "sample_kb_helix_complex.zip"
+ },
+ "questions": [
+  {
+   "id": "c04",
+   "kb": "helix",
+   "type": "fact",
+   "q": "What does alarm A302 mean on the HX-500 and what should the operator do?",
+   "facts": [
+    [
+     "temperature"
+    ],
+    [
+     "30 minutes",
+     "30 min"
+    ]
+   ],
+   "gold": [
+    "hx500_machining_center_manual.md::6. Alarms and error codes"
+   ]
+  },
+  {
+   "id": "c06",
+   "kb": "helix",
+   "type": "rule-applied",
+   "q": "Our HX-500 (Rev C) has been switched off for 5 days. Which warm-up program do I run and how long does it take?",
+   "facts": [
+    [
+     "O9001"
+    ],
+    [
+     "30"
+    ]
+   ],
+   "gold": [
+    "hx500_machining_center_manual.md::5.2 Spindle warm-up"
+   ],
+   "inferred": true
+  },
+  {
+   "id": "c12",
+   "kb": "helix",
+   "type": "rule-applied",
+   "q": "Our machine was installed 30 months ago and has 3,000 spindle hours. Is it still under warranty?",
+   "polarity": "no",
+   "facts": [
+    [
+     "no",
+     "not",
+     "expired"
+    ],
+    [
+     "24"
+    ]
+   ],
+   "gold": [
+    "hx500_machining_center_manual.md::9. Warranty"
+   ],
+   "inferred": true
+  },
+  {
+   "id": "c19",
+   "kb": "helix",
+   "type": "computed",
+   "q": "A G2 engineer on a domestic trip has lunch provided by the host. What daily allowance do they get?",
+   "facts": [
+    [
+     "900"
+    ]
+   ],
+   "gold": [
+    "travel_expense_policy.md::5. Daily allowance (per diem)"
+   ],
+   "inferred": true
+  },
+  {
+   "id": "c20",
+   "kb": "helix",
+   "type": "rule-applied",
+   "q": "I lost a taxi receipt of INR 3,000. Can I still claim it?",
+   "polarity": "no",
+   "facts": [
+    [
+     "no",
+     "not"
+    ],
+    [
+     "2,000",
+     "2000"
+    ]
+   ],
+   "gold": [
+    "travel_expense_policy.md::7. Receipts"
+   ],
+   "inferred": true
+  },
+  {
+   "id": "c29",
+   "kb": "helix",
+   "type": "computed",
+   "q": "Which line had the highest total downtime in H1, and how many hours was it?",
+   "facts": [
+    [
+     "Line C"
+    ],
+    [
+     "406"
+    ]
+   ],
+   "gold": [
+    "plant_performance_h1_2026.md::Sheet: Downtime hours by cause"
+   ],
+   "inferred": true
+  },
+  {
+   "id": "c35",
+   "kb": "helix",
+   "type": "version",
+   "q": "What are the current payment terms with Arvind Metals?",
+   "facts": [
+    [
+     "45"
+    ]
+   ],
+   "gold": [
+    "supplier_agreement_arvind_metals.md::2.2 Payment terms (replaces 1.5)"
+   ]
+  },
+  {
+   "id": "c36",
+   "kb": "helix",
+   "type": "computed",
+   "q": "What late-delivery penalty is due on PO-26-0503?",
+   "facts": [
+    [
+     "27,600",
+     "27600",
+     "3%",
+     "3 %"
+    ]
+   ],
+   "gold": [
+    "supplier_agreement_arvind_metals.md::2.3 Late delivery penalty (replaces 1.6)",
+    "supplier_agreement_arvind_metals.md::Part 3: Delivery record Q2 2026"
+   ],
+   "inferred": true
+  },
+  {
+   "id": "c38",
+   "kb": "helix",
+   "type": "rule-applied",
+   "q": "Can we terminate the Arvind Metals agreement now because of their Q2 delivery performance?",
+   "polarity": "no",
+   "facts": [
+    [
+     "two consecutive",
+     "2 consecutive"
+    ]
+   ],
+   "gold": [
+    "supplier_agreement_arvind_metals.md::1.8 Termination"
+   ],
+   "inferred": true
+  },
+  {
+   "id": "c45",
+   "kb": "helix",
+   "type": "near-miss",
+   "q": "How much does an HX-500 machine cost?",
+   "answerable": false
+  }
+ ]
+}

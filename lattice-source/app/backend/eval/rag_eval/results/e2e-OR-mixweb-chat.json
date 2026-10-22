@@ -1,0 +1,657 @@
+{
+ "meta": {
+  "label": "OR-mixweb-chat",
+  "mode": "chat",
+  "set": "mixweb",
+  "model": "nvidia/nemotron-3-super-120b-a12b:free",
+  "chat_model": "nvidia/nemotron-3-super-120b-a12b:free",
+  "semantic_model": null,
+  "engine_version": "0.1.0",
+  "started": "2026-10-19 10:45",
+  "finished": "2026-10-19 10:51"
+ },
+ "rows": [
+  {
+   "id": "m01",
+   "kb": "helix",
+   "type": "vague",
+   "q": "warranty?",
+   "answerable": true,
+   "secs": 30.5,
+   "error": null,
+   "answer": "The HX‑500 vertical machining center is warranted for **24 months from installation or 6,000 spindle hours, whichever occurs first**.  \n\nThe warranty **does not cover**:  \n- Damage from crashes  \n- Use of non‑approved coolant  \n- Maintenance not carried out according to chapter 7 of the manual  \n\n**Spindle bearings** are covered for **12 months** only if the warm‑up rules in section 5.2 have been followed (the controller logs warm‑up runs).  \n\nAll details are from the HX‑500 manual, section 9 Warranty [1].",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "HX-500_manual.pdf::9. Warranty"
+   ],
+   "cited": [
+    "HX-500_manual.pdf::9. Warranty"
+   ],
+   "tools": [
+    "read_section(S1)",
+    "note(S1)",
+    "note(S1)",
+    "note(S1)"
+   ],
+   "unverified": [],
+   "gold": [],
+   "facts": [
+    [
+     "24 months"
+    ],
+    [
+     "6,000",
+     "6000"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "m02",
+   "kb": "helix",
+   "type": "vague",
+   "q": "the machine is overheating, what now?",
+   "answerable": true,
+   "secs": 51.5,
+   "error": null,
+   "answer": "If the machine is overheating (spindle over‑temperature alarm A302), follow the procedure: stop the cycle, let the spindle idle with the chiller running for 30 minutes, check that the chiller filter is clean and the chiller tank is above the MIN mark, and do not restart production until the spindle temperature is below 45 °C. If the alarm occurs twice in one week, a Level 2 technician must check the spindle bearings [1].  \n\nAlso ensure the ambient temperature is within 10–35 °C and relative humidity below 75 % [2].  \n\nIf the overheating results in an injury, near miss, fire, spill of >5 L oil/chemicals, or damage to a machine guard, report it per the plant safety standard [3].",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "HX-500_manual.pdf::6.2 Spindle over-temperature (A302)",
+    "HX-500_manual.pdf::4.2 Environment",
+    "plant_safety_standard.pdf::3.1 What to report"
+   ],
+   "cited": [
+    "HX-500_manual.pdf::6.2 Spindle over-temperature (A302)",
+    "HX-500_manual.pdf::4.2 Environment",
+    "plant_safety_standard.pdf::3.1 What to report"
+   ],
+   "tools": [
+    "search_manuals(overheating)",
+    "search_manuals(temperature)",
+    "read_section(S4)",
+    "read_section(S5)",
+    "read_section(S3)",
+    "note(S4)",
+    "note(S3)",
+    "note(S5)"
+   ],
+   "unverified": [],
+   "gold": [],
+   "facts": [
+    [
+     "30 minutes",
+     "30 min"
+    ],
+    [
+     "chiller",
+     "cool"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": false,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "m03",
+   "kb": "helix",
+   "type": "vague",
+   "q": "receipts",
+   "answerable": true,
+   "secs": 30.2,
+   "error": null,
+   "answer": "**Travel expense policy – receipts**\n\n- **Required receipts:** Original receipts or tax invoices are needed for every expense above **INR 500**, except the daily allowance. [1]  \n- **Lost receipts:** A self‑declaration is accepted for amounts up to **INR 2,000 per trip**; expenses above that are not reimbursed. [1]  \n- **GST detail:** Receipts must display the supplier’s GST number where applicable. [1]  \n- **Tolls & parking:** These are reimbursed at actual cost **with receipts**. [2] [1] travel_expense_policy.pdf > 7. Receipts [2] travel_expense_policy.pdf > 10. Mileage",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "travel_expense_policy.pdf::7. Receipts",
+    "travel_expense_policy.pdf::10. Mileage"
+   ],
+   "cited": [
+    "travel_expense_policy.pdf::7. Receipts",
+    "travel_expense_policy.pdf::10. Mileage"
+   ],
+   "tools": [
+    "read_section(S1)",
+    "read_section(S2)",
+    "note(S1)",
+    "note(S1)",
+    "note(S1)",
+    "note(S2)"
+   ],
+   "unverified": [],
+   "gold": [],
+   "facts": [
+    [
+     "500",
+     "2,000",
+     "2000"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "m04",
+   "kb": "helix",
+   "type": "general+kb",
+   "q": "What is OEE, and what was Line C's OEE in April?",
+   "answerable": true,
+   "secs": 22.4,
+   "error": null,
+   "answer": "OEE stands for **Overall Equipment Effectiveness**, a measure of manufacturing productivity that combines availability, performance, and quality.  \nLine C’s OEE in April was **52.3 %** [1]. [1] Overall equipment effectiveness (OEE) averaged 72.4 % against a target of 75 %. [1] April | 80.9 | 76.4 | 52.3 (OEE (%) table).",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "plant_performance_h1_2026.xlsx::plant_performance_h1_2026.xlsx",
+    "plant_performance_h1_2026.xlsx::Summary"
+   ],
+   "cited": [
+    "plant_performance_h1_2026.xlsx::plant_performance_h1_2026.xlsx"
+   ],
+   "tools": [
+    "read_section(S2)",
+    "read_section(S3)",
+    "note(S2)",
+    "note(S2)"
+   ],
+   "unverified": [],
+   "gold": [],
+   "facts": [
+    [
+     "availability",
+     "performance",
+     "effectiveness"
+    ],
+    [
+     "52.3"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "m05",
+   "kb": "helix",
+   "type": "general+kb",
+   "q": "What is backlash on a CNC axis, and when do we have to replace the ballscrew?",
+   "answerable": true,
+   "secs": 23.4,
+   "error": null,
+   "answer": "**1. What is backlash on a CNC axis?**  \nBacklash is the play measured on each axis with a dial indicator, and the acceptable limit is 0.010 mm [1].\n\n**2. When do we have to replace the ballscrew?**  \nThe ballscrew must be replaced when the measured backlash exceeds 0.020 mm [1]. As part of routine maintenance, backlash is checked every 2,000 hours by a Level 2 technician [2].",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "HX-500_manual.pdf::7.5 Ballscrew backlash (L2)",
+    "HX-500_manual.pdf::7.1 Maintenance schedule"
+   ],
+   "cited": [
+    "HX-500_manual.pdf::7.5 Ballscrew backlash (L2)",
+    "HX-500_manual.pdf::7.1 Maintenance schedule"
+   ],
+   "tools": [
+    "read_section(S1)",
+    "read_section(S3)",
+    "note(S1)",
+    "note(S1)",
+    "note(S3)"
+   ],
+   "unverified": [],
+   "gold": [],
+   "facts": [
+    [
+     "play",
+     "clearance",
+     "lost motion",
+     "gap",
+     "reversal"
+    ],
+    [
+     "0.020",
+     "0.02"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "m06",
+   "kb": "helix",
+   "type": "general+kb",
+   "q": "Explain lockout/tagout in simple terms and tell me what our standard requires before opening an HX-500 electrical cabinet.",
+   "answerable": true,
+   "secs": 57.9,
+   "error": null,
+   "answer": "**Part 1 – Explain lockout/tagout in simple terms**  \nLockout/tagout (LOTO) is a safety procedure that ensures a machine is properly shut off and cannot be started up again while maintenance or servicing is being performed. According to the Plant Safety Standard, the steps are:  \n1. Inform the area supervisor and machine operators.  \n2. Switch off the equipment using the normal stop.  \n3. Isolate all energy sources (electrical, pneumatic, hydraulic, stored mechanical).  \n4. Apply your personal padlock and tag to every isolation point; each person working on the equipment uses their own lock.  \n5. Release any stored energy and wait the discharge time specified in the machine manual.  \n6. Verify that zero energy remains by trying to start the machine and measuring voltage.  \n7. After the work is done, remove only your own lock. A lock left by someone who has left the site may be removed only by the area manager after a documented check, with the EHS head informed.  \nThis procedure protects workers from unexpected energization or release of hazardous energy. [1]\n\n**Part 2 – What our standard requires before opening an HX‑500 electrical cabinet**  \nBefore opening the electrical cabinet on an HX‑500 vertical machining center, you must apply lockout/tagout as described in the Plant Safety Standard, section 4. Specifically, you need to:  \n- Switch off the main isolator,  \n- Lock it with your personal padlock, and  \n- Wait 5 minutes for the spindle drive capacitors to discharge.  \nThis requirement applies to any maintenance task marked (L2) and is explicitly stated in the HX‑500 manual. [2]",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "HX-500_manual.pdf::2.3 Lockout / tagout",
+    "plant_safety_standard.pdf::4. Lockout / tagout (LOTO)"
+   ],
+   "cited": [
+    "plant_safety_standard.pdf::4. Lockout / tagout (LOTO)",
+    "HX-500_manual.pdf::2.3 Lockout / tagout"
+   ],
+   "tools": [
+    "read_section(S1)",
+    "read_section(S4)",
+    "note(S4)",
+    "note(S1)"
+   ],
+   "unverified": [],
+   "gold": [],
+   "facts": [
+    [
+     "energy",
+     "isolat"
+    ],
+    [
+     "lock"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "m07",
+   "kb": "helix",
+   "type": "general+kb",
+   "q": "What is a refractometer, and what coolant concentration does the HX-500 need?",
+   "answerable": true,
+   "secs": 19.5,
+   "error": null,
+   "answer": "A refractometer is an instrument that measures the refractive index of a liquid; in machining coolant systems it is used to determine the concentration of water‑miscible coolant by correlating the refractive index with the percentage of coolant in the mixture.\n\nThe HX‑500 requires a water‑miscible coolant concentration of **6 %–8 %** (measured as refractometer reading × 1.0 for Helix Cool 300) [1]. Below 5 % there is a risk of corrosion and bacterial growth; above 10 % the coolant may foam and irritate the skin. The coolant concentration should be checked daily as part of the start‑up procedure [2].  \n\n> **General knowledge:** A refractometer works by passing light through a sample and measuring how much the light bends; the bending angle changes with the concentration of dissolved substances, allowing the user to read the concentration directly from a scale.",
+   "found": true,
+   "general": true,
+   "smalltalk": false,
+   "read": [
+    "HX-500_manual.pdf::7.4 Coolant",
+    "HX-500_manual.pdf::5.1 Daily start-up"
+   ],
+   "cited": [
+    "HX-500_manual.pdf::7.4 Coolant",
+    "HX-500_manual.pdf::5.1 Daily start-up"
+   ],
+   "tools": [
+    "read_section(S1)",
+    "note(S1)",
+    "read_section(S3)"
+   ],
+   "unverified": [],
+   "gold": [],
+   "facts": [
+    [
+     "light",
+     "refract",
+     "measure"
+    ],
+    [
+     "6 - 8",
+     "6-8",
+     "6 to 8",
+     "6–8"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": false,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "m08",
+   "kb": "helix",
+   "type": "general+kb",
+   "q": "Convert the HX-500's maximum spindle speed to radians per second.",
+   "answerable": true,
+   "secs": 47.7,
+   "error": null,
+   "answer": "The HX‑500 manual states the spindle speed range as 50 – 12,000 rpm [1].  \nThe maximum speed is therefore 12,000 rpm.\n\nConverting revolutions per minute to radians per second:  \nrad/s = rpm × 2\\pi / 60 = rpm × \\pi / 30\n\n12{,}000 × \\pi / 30 = 400\\pi \\ rad/s ≈ 1256.64 \\ rad/s\n\n**Result:** The HX‑500’s maximum spindle speed is **≈ 1256.64 rad/s** (exactly 400\\pi rad/s). [1]",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [],
+   "cited": [
+    "HX-500_manual.pdf::3. Specifications"
+   ],
+   "tools": [
+    "note(S1)",
+    "calculate(12000 * 3.141592653589793 / 30)"
+   ],
+   "unverified": [],
+   "gold": [],
+   "facts": [
+    [
+     "1256",
+     "1,256",
+     "1257",
+     "1,257"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": true,
+   "correct": true,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "m09",
+   "kb": "helix",
+   "type": "general+kb",
+   "q": "Why does a face shield matter in the grinding bay, and what else must I wear there?",
+   "answerable": true,
+   "secs": 31.7,
+   "error": null,
+   "answer": "**Why a face shield matters in the grinding bay**  \nthe PPE table shows that in the grinding bay, “Safety glasses + face shield” are required, indicating that a face shield is necessary for adequate protection there [1].\n\n**What else you must wear in the grinding bay**  \nBesides the safety glasses and face shield, the required PPE for the grinding bay includes:  \n- Safety shoes  \n- Hearing protection  \n- Cut‑resistant gloves (level C)  \n- Dust mask FFP2  \n\nAll of these are listed as “Required” in the same PPE table for the grinding bay [1].",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "plant_safety_standard.pdf::2.1 PPE by area"
+   ],
+   "cited": [
+    "plant_safety_standard.pdf::2.1 PPE by area"
+   ],
+   "tools": [
+    "read_section(S1)",
+    "search_manuals(face shield)",
+    "read_section(S1)",
+    "note(S1)",
+    "note(S1)"
+   ],
+   "unverified": [],
+   "gold": [],
+   "facts": [
+    [
+     "face shield"
+    ],
+    [
+     "FFP2",
+     "dust mask"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": true,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "m10",
+   "kb": "helix",
+   "type": "follow-up",
+   "q": "What is the hotel limit per night for a G2 engineer in Pune?",
+   "answerable": true,
+   "secs": 23.9,
+   "error": null,
+   "answer": "The hotel limit per night for a G2 engineer in Pune is **INR 6,000**.\n\n**Reasoning:**\n- Pune is listed as a Tier 1 city in the travel expense policy [1].\n- For grade G2, the accommodation limit in a Tier 1 city is INR 6,000 per night [1]. [1] travel_expense_policy.pdf > 4. Accommodation limits per night (INR)",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "travel_expense_policy.pdf::4. Accommodation limits per night (INR)"
+   ],
+   "cited": [
+    "travel_expense_policy.pdf::4. Accommodation limits per night (INR)"
+   ],
+   "tools": [
+    "search_manuals(Tier 2 city)",
+    "read_section(S1)",
+    "note(S1)",
+    "note(S1)"
+   ],
+   "unverified": [],
+   "gold": [],
+   "facts": [
+    [
+     "6,000",
+     "6000"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "m11",
+   "kb": "helix",
+   "type": "general+kb",
+   "q": "Roughly how much is that in US dollars?",
+   "answerable": true,
+   "secs": 14.5,
+   "error": "503: The language model is busy or still loading; try again shortly",
+   "answer": "",
+   "found": false,
+   "general": false,
+   "smalltalk": false,
+   "read": [],
+   "cited": [],
+   "tools": [],
+   "unverified": [],
+   "gold": [],
+   "facts": [
+    [
+     "$",
+     "USD",
+     "dollar"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": true,
+   "correct": false,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "m12",
+   "kb": "helix",
+   "type": "general",
+   "q": "What is the capital of France?",
+   "answerable": true,
+   "secs": 14.5,
+   "error": "503: The language model is busy or still loading; try again shortly",
+   "answer": "",
+   "found": false,
+   "general": false,
+   "smalltalk": false,
+   "read": [],
+   "cited": [],
+   "tools": [],
+   "unverified": [],
+   "gold": [],
+   "facts": [
+    [
+     "Paris"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": false,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "m13",
+   "kb": "helix",
+   "type": "near-miss",
+   "q": "How much does the HX-700 weigh?",
+   "answerable": false,
+   "secs": 14.5,
+   "error": "503: The language model is busy or still loading; try again shortly",
+   "answer": "",
+   "found": false,
+   "general": false,
+   "smalltalk": false,
+   "read": [],
+   "cited": [],
+   "tools": [],
+   "unverified": [],
+   "gold": [],
+   "facts": [],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": false,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "m14",
+   "kb": "helix",
+   "type": "vague",
+   "q": "what changed in the supplier contract?",
+   "answerable": true,
+   "secs": 14.4,
+   "error": "503: The language model is busy or still loading; try again shortly",
+   "answer": "",
+   "found": false,
+   "general": false,
+   "smalltalk": false,
+   "read": [],
+   "cited": [],
+   "tools": [],
+   "unverified": [],
+   "gold": [],
+   "facts": [
+    [
+     "replace",
+     "1.5",
+     "45 days",
+     "2.2",
+     "2.3"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": false,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  }
+ ]
+}

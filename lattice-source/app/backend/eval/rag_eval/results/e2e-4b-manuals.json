@@ -1,0 +1,3706 @@
+{
+ "meta": {
+  "label": "4b-manuals",
+  "mode": "manuals",
+  "set": "samples",
+  "model": "local",
+  "chat_model": "local",
+  "semantic_model": "embeddinggemma-300M-Q8_0",
+  "engine_version": "0.1.0",
+  "started": "2026-10-06 13:14",
+  "finished": "2026-10-06 16:29"
+ },
+ "rows": [
+  {
+   "id": "a01",
+   "kb": "acme",
+   "type": "fact",
+   "q": "How many weeks of parental leave do employees get?",
+   "answerable": true,
+   "secs": 32.6,
+   "error": null,
+   "answer": "Employees get 16 weeks of fully paid parental leave.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "employee_handbook_2026.pdf::3 Working Hours and Leave"
+   ],
+   "cited": [
+    "employee_handbook_2026.pdf::3 Working Hours and Leave"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "employee_handbook_2026.pdf::3 Working Hours and Leave"
+   ],
+   "facts": [
+    [
+     "16"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "a02",
+   "kb": "acme",
+   "type": "follow-up",
+   "q": "Is it paid?",
+   "answerable": true,
+   "secs": 497.6,
+   "error": null,
+   "answer": "Yes, parental leave is fully paid. It is provided for all parents within 12 months of birth or adoption.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "employee_handbook_2026.pdf::4 Compensation and Benefits",
+    "employee_handbook_2026.pdf::5 Code of Conduct",
+    "employee_handbook_2026.pdf::3 Working Hours and Leave"
+   ],
+   "cited": [
+    "employee_handbook_2026.pdf::3 Working Hours and Leave"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "employee_handbook_2026.pdf::3 Working Hours and Leave"
+   ],
+   "facts": [
+    [
+     "fully paid",
+     "yes"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "a03",
+   "kb": "acme",
+   "type": "table",
+   "q": "How many sick days do we get per year, and when is a doctor's note needed?",
+   "answerable": true,
+   "secs": 117.6,
+   "error": null,
+   "answer": "You are entitled to 10 sick days per year. A doctor's note is not needed for up to 3 consecutive days of sick leave.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "employee_handbook_2026.pdf::3 Working Hours and Leave",
+    "employee_handbook_2026.pdf::3.1 Remote Work"
+   ],
+   "cited": [
+    "employee_handbook_2026.pdf::3 Working Hours and Leave"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "employee_handbook_2026.pdf::3 Working Hours and Leave"
+   ],
+   "facts": [
+    [
+     "10"
+    ],
+    [
+     "3"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "a04",
+   "kb": "acme",
+   "type": "fact",
+   "q": "What are Acme's core collaboration hours?",
+   "answerable": true,
+   "secs": 33.6,
+   "error": null,
+   "answer": "Acme's core collaboration hours are 10:00 to 15:00 in your local time zone.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "employee_handbook_2026.pdf::3 Working Hours and Leave"
+   ],
+   "cited": [
+    "employee_handbook_2026.pdf::3 Working Hours and Leave"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "employee_handbook_2026.pdf::3 Working Hours and Leave"
+   ],
+   "facts": [
+    [
+     "10:00",
+     "10 am",
+     "10am",
+     "10 a.m"
+    ],
+    [
+     "15:00",
+     "3 pm",
+     "3pm",
+     "3 p.m"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "a05",
+   "kb": "acme",
+   "type": "fact",
+   "q": "How much is the home office stipend?",
+   "answerable": true,
+   "secs": 21.0,
+   "error": null,
+   "answer": "The home office stipend is USD 750.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "employee_handbook_2026.pdf::3.1 Remote Work"
+   ],
+   "cited": [
+    "employee_handbook_2026.pdf::3.1 Remote Work"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "employee_handbook_2026.pdf::3.1 Remote Work"
+   ],
+   "facts": [
+    [
+     "750"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "a06",
+   "kb": "acme",
+   "type": "fact",
+   "q": "How many days a week do employees who live near an office have to work there?",
+   "answerable": true,
+   "secs": 117.5,
+   "error": null,
+   "answer": "Employees who live within 50 km of an office must work from the office at least two days per week (Tuesday and Thursday).",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "employee_handbook_2026.pdf::3.1 Remote Work"
+   ],
+   "cited": [
+    "employee_handbook_2026.pdf::3.1 Remote Work"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "employee_handbook_2026.pdf::3.1 Remote Work"
+   ],
+   "facts": [
+    [
+     "two",
+     "2"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "a07",
+   "kb": "acme",
+   "type": "table",
+   "q": "What is the 401(k) match?",
+   "answerable": true,
+   "secs": 29.1,
+   "error": null,
+   "answer": "The 401(k) match is 100% on the first 4% of salary, with immediate vesting.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "employee_handbook_2026.pdf::4 Compensation and Benefits"
+   ],
+   "cited": [
+    "employee_handbook_2026.pdf::4 Compensation and Benefits"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "employee_handbook_2026.pdf::4 Compensation and Benefits"
+   ],
+   "facts": [
+    [
+     "4%",
+     "4 %",
+     "4 percent"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "a08",
+   "kb": "acme",
+   "type": "fact",
+   "q": "When is compensation reviewed?",
+   "answerable": true,
+   "secs": 24.3,
+   "error": null,
+   "answer": "Compensation is reviewed once a year in March.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "employee_handbook_2026.pdf::4 Compensation and Benefits"
+   ],
+   "cited": [
+    "employee_handbook_2026.pdf::4 Compensation and Benefits"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "employee_handbook_2026.pdf::4 Compensation and Benefits"
+   ],
+   "facts": [
+    [
+     "march"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "a09",
+   "kb": "acme",
+   "type": "arithmetic",
+   "q": "What is the learning budget plus the home office stipend in total?",
+   "answerable": true,
+   "secs": 71.8,
+   "error": null,
+   "answer": "The total is USD 2,250 (USD 1,500 learning budget plus USD 750 home office stipend).",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "employee_handbook_2026.pdf::3.1 Remote Work",
+    "employee_handbook_2026.pdf::4 Compensation and Benefits"
+   ],
+   "cited": [
+    "employee_handbook_2026.pdf::3.1 Remote Work",
+    "employee_handbook_2026.pdf::4 Compensation and Benefits"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "employee_handbook_2026.pdf::4 Compensation and Benefits",
+    "employee_handbook_2026.pdf::3.1 Remote Work"
+   ],
+   "facts": [
+    [
+     "2,250",
+     "2250"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "a10",
+   "kb": "acme",
+   "type": "fact",
+   "q": "What is the maximum value of a gift I can accept from a vendor?",
+   "answerable": true,
+   "secs": 24.2,
+   "error": null,
+   "answer": "You may accept gifts worth up to USD 100 from customers or vendors.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "employee_handbook_2026.pdf::5 Code of Conduct"
+   ],
+   "cited": [
+    "employee_handbook_2026.pdf::5 Code of Conduct"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "employee_handbook_2026.pdf::5 Code of Conduct"
+   ],
+   "facts": [
+    [
+     "100"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "a11",
+   "kb": "acme",
+   "type": "fact",
+   "q": "What is the IT help desk extension?",
+   "answerable": true,
+   "secs": 160.0,
+   "error": null,
+   "answer": "The IT help desk extension is 4357 (HELP).",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "employee_handbook_2026.pdf::6 Getting Help",
+    "it_setup_guide.docx::Getting Support"
+   ],
+   "cited": [
+    "employee_handbook_2026.pdf::6 Getting Help"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "employee_handbook_2026.pdf::6 Getting Help",
+    "it_setup_guide.docx::Getting Support",
+    "security_awareness_training_module2.docx::Reporting Suspicious Messages"
+   ],
+   "facts": [
+    [
+     "4357"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "a12",
+   "kb": "acme",
+   "type": "fact",
+   "q": "What is the VPN server address and port?",
+   "answerable": true,
+   "secs": 30.1,
+   "error": null,
+   "answer": "The VPN server address is vpn.acme-corp.com and the port is 4500.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "it_setup_guide.docx::Connecting to VPN"
+   ],
+   "cited": [
+    "it_setup_guide.docx::Connecting to VPN"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "it_setup_guide.docx::Connecting to VPN"
+   ],
+   "facts": [
+    [
+     "vpn.acme-corp.com"
+    ],
+    [
+     "4500"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "a13",
+   "kb": "acme",
+   "type": "follow-up",
+   "q": "When do I need it?",
+   "answerable": true,
+   "secs": 146.0,
+   "error": null,
+   "answer": "You need to connect to the Acme SecureConnect VPN only for internal tools such as the build servers, the finance data warehouse, and staging environments.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "it_setup_guide.docx::Connecting to VPN"
+   ],
+   "cited": [
+    "it_setup_guide.docx::Connecting to VPN"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "it_setup_guide.docx::Connecting to VPN"
+   ],
+   "facts": [
+    [
+     "build server",
+     "finance",
+     "staging",
+     "internal"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "a14",
+   "kb": "acme",
+   "type": "procedure",
+   "q": "How do I set up multi-factor authentication?",
+   "answerable": true,
+   "secs": 156.3,
+   "error": null,
+   "answer": "To set up multi-factor authentication (MFA), follow these steps:\n\n1. Install Okta Verify from the App Store or Google Play.\n2. On the MFA setup screen, choose Okta Verify and scan the QR code.\n3. Approve the test push notification.\n4. (Optional) Register a YubiKey as a backup factor.\n\nYou can use Okta Verify on your phone or a YubiKey provided by IT on request. SMS codes are not allowed.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "it_setup_guide.docx::Multi-Factor Authentication",
+    "it_setup_guide.docx::Signing In"
+   ],
+   "cited": [
+    "it_setup_guide.docx::Multi-Factor Authentication"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "it_setup_guide.docx::Multi-Factor Authentication"
+   ],
+   "facts": [
+    [
+     "okta verify"
+    ],
+    [
+     "qr"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "a15",
+   "kb": "acme",
+   "type": "yes/no",
+   "q": "Can I use SMS codes for MFA?",
+   "answerable": true,
+   "secs": 58.1,
+   "error": null,
+   "answer": "No, SMS codes are not allowed for MFA.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "it_setup_guide.docx::Multi-Factor Authentication"
+   ],
+   "cited": [
+    "it_setup_guide.docx::Multi-Factor Authentication"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "it_setup_guide.docx::Multi-Factor Authentication"
+   ],
+   "facts": [
+    [
+     "no",
+     "not allowed"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "a16",
+   "kb": "acme",
+   "type": "fact",
+   "q": "What is the minimum password length?",
+   "answerable": true,
+   "secs": 118.4,
+   "error": null,
+   "answer": "The minimum password length is 14 characters.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "security_awareness_training_module2.docx::Password Hygiene"
+   ],
+   "cited": [
+    "security_awareness_training_module2.docx::Password Hygiene"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "it_setup_guide.docx::Signing In",
+    "security_awareness_training_module2.docx::Password Hygiene"
+   ],
+   "facts": [
+    [
+     "14"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "a17",
+   "kb": "acme",
+   "type": "fact",
+   "q": "How do I get Figma installed?",
+   "answerable": true,
+   "secs": 23.7,
+   "error": null,
+   "answer": "To get Figma installed, request it in the #it-help channel.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "it_setup_guide.docx::Software Catalog"
+   ],
+   "cited": [
+    "it_setup_guide.docx::Software Catalog"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "it_setup_guide.docx::Software Catalog"
+   ],
+   "facts": [
+    [
+     "it-help"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "a18",
+   "kb": "acme",
+   "type": "fact",
+   "q": "How long does Security take to review a software request?",
+   "answerable": true,
+   "secs": 24.8,
+   "error": null,
+   "answer": "Security reviews software requests within 2 business days.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "it_setup_guide.docx::Software Catalog"
+   ],
+   "cited": [
+    "it_setup_guide.docx::Software Catalog"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "it_setup_guide.docx::Software Catalog"
+   ],
+   "facts": [
+    [
+     "2 business days",
+     "two business days"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "a19",
+   "kb": "acme",
+   "type": "fact",
+   "q": "What share of security incidents at Acme started with phishing in 2025?",
+   "answerable": true,
+   "secs": 27.1,
+   "error": null,
+   "answer": "In 2025, 71% of the security incidents investigated at Acme started with a phishing email or message.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "security_awareness_training_module2.docx::Why Phishing Matters"
+   ],
+   "cited": [
+    "security_awareness_training_module2.docx::Why Phishing Matters"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "security_awareness_training_module2.docx::Why Phishing Matters"
+   ],
+   "facts": [
+    [
+     "71"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "a20",
+   "kb": "acme",
+   "type": "procedure",
+   "q": "What should I do if I entered my password on a phishing page?",
+   "answerable": true,
+   "secs": 118.5,
+   "error": null,
+   "answer": "Call the IT help desk at ext. 4357 immediately.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "security_awareness_training_module2.docx::Reporting Suspicious Messages",
+    "security_awareness_training_module2.docx::Knowledge Check"
+   ],
+   "cited": [
+    "security_awareness_training_module2.docx::Reporting Suspicious Messages"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "security_awareness_training_module2.docx::Reporting Suspicious Messages"
+   ],
+   "facts": [
+    [
+     "4357"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "a21",
+   "kb": "acme",
+   "type": "fact",
+   "q": "What were the red flags in the example payroll phishing email?",
+   "answerable": true,
+   "secs": 153.8,
+   "error": null,
+   "answer": "The red flags in the example payroll phishing email were:\n1. Look-alike domain: acme-c0rp-hr.com uses a zero instead of the letter o.\n2. Urgency and threats: 'within 24 HOURS' and 'delayed payment' are designed to rush you.\n3. Suspicious link: the link goes to acme-payroll-verify.co, not an acme-corp.com address.\n4. Generic greeting and typos: 'Dear Employee' and 'Departmnet'.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "security_awareness_training_module2.docx::Anatomy of a Phishing Email",
+    "security_awareness_training_module2.docx::Workshop Notes",
+    "security_awareness_training_module2.docx::Knowledge Check"
+   ],
+   "cited": [
+    "security_awareness_training_module2.docx::Anatomy of a Phishing Email"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "security_awareness_training_module2.docx::Anatomy of a Phishing Email"
+   ],
+   "facts": [
+    [
+     "look-alike",
+     "acme-c0rp",
+     "zero"
+    ],
+    [
+     "urgen"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "a22",
+   "kb": "acme",
+   "type": "typos",
+   "q": "i clicked a link in a fishing email and typed my pasword what now",
+   "answerable": true,
+   "secs": 152.3,
+   "error": null,
+   "answer": "Call the IT help desk at ext. 4357 immediately. Security will reply within 1 hour to let you know if the message was safe.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "security_awareness_training_module2.docx::Reporting Suspicious Messages",
+    "security_awareness_training_module2.docx::Anatomy of a Phishing Email"
+   ],
+   "cited": [
+    "security_awareness_training_module2.docx::Reporting Suspicious Messages"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "security_awareness_training_module2.docx::Reporting Suspicious Messages"
+   ],
+   "facts": [
+    [
+     "4357"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "a23",
+   "kb": "acme",
+   "type": "reworded",
+   "q": "Is there a yearly allowance for professional development?",
+   "answerable": true,
+   "secs": 139.2,
+   "error": null,
+   "answer": "Yes, there is a yearly learning budget allowance of USD 1,500 per year for courses, books, and conferences.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "employee_handbook_2026.pdf::4 Compensation and Benefits",
+    "employee_handbook_2026.pdf::3 Working Hours and Leave"
+   ],
+   "cited": [
+    "employee_handbook_2026.pdf::4 Compensation and Benefits"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "employee_handbook_2026.pdf::4 Compensation and Benefits"
+   ],
+   "facts": [
+    [
+     "1,500",
+     "1500"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "a24",
+   "kb": "acme",
+   "type": "other-language",
+   "q": "¿Cuántos días de vacaciones pagadas tengo al año?",
+   "answerable": true,
+   "secs": 156.0,
+   "error": null,
+   "answer": "El número de días de vacaciones pagadas (PTO) al año depende de su antigüedad: 18 días si tiene menos de 3 años de servicio, y 27 días si tiene 3 años o más. Se pueden llevar hasta 5 días de saldo a la siguiente año.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "employee_handbook_2026.pdf::3 Working Hours and Leave",
+    "security_awareness_training_module2.docx::Anatomy of a Phishing Email"
+   ],
+   "cited": [
+    "employee_handbook_2026.pdf::3 Working Hours and Leave"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "employee_handbook_2026.pdf::3 Working Hours and Leave"
+   ],
+   "facts": [
+    [
+     "18"
+    ],
+    [
+     "27"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "a25",
+   "kb": "acme",
+   "type": "not-in-docs",
+   "q": "What is the dress code?",
+   "answerable": false,
+   "secs": 165.6,
+   "error": null,
+   "answer": "The documents don't cover this.",
+   "found": false,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "employee_handbook_2026.pdf::1 Welcome",
+    "employee_handbook_2026.pdf::2 Organization",
+    "employee_handbook_2026.pdf::3 Working Hours and Leave",
+    "employee_handbook_2026.pdf::5 Code of Conduct"
+   ],
+   "cited": [],
+   "tools": [],
+   "unverified": [],
+   "gold": [],
+   "facts": [],
+   "reference": "",
+   "correct": true,
+   "read_hit": null,
+   "cite_hit": null,
+   "hallucinated": false
+  },
+  {
+   "id": "a26",
+   "kb": "acme",
+   "type": "not-in-docs",
+   "q": "How many days of jury duty leave do we get?",
+   "answerable": false,
+   "secs": 173.3,
+   "error": null,
+   "answer": "The documents don't cover this.",
+   "found": false,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "employee_handbook_2026.pdf::3 Working Hours and Leave",
+    "employee_handbook_2026.pdf::3.1 Remote Work"
+   ],
+   "cited": [],
+   "tools": [],
+   "unverified": [],
+   "gold": [],
+   "facts": [],
+   "reference": "",
+   "correct": true,
+   "read_hit": null,
+   "cite_hit": null,
+   "hallucinated": false
+  },
+  {
+   "id": "a27",
+   "kb": "acme",
+   "type": "not-in-docs",
+   "q": "What is the name of Acme's CEO?",
+   "answerable": false,
+   "secs": 269.8,
+   "error": null,
+   "answer": "The documents don't cover this.",
+   "found": false,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "employee_handbook_2026.pdf::2 Organization"
+   ],
+   "cited": [],
+   "tools": [],
+   "unverified": [],
+   "gold": [],
+   "facts": [],
+   "reference": "",
+   "correct": true,
+   "read_hit": null,
+   "cite_hit": null,
+   "hallucinated": false
+  },
+  {
+   "id": "n01",
+   "kb": "nimbus",
+   "type": "fact",
+   "q": "What does error E2 mean?",
+   "answerable": true,
+   "secs": 269.3,
+   "error": null,
+   "answer": "Error E2 means 'Power stealing unstable'. To fix it, install the PAK-2 adapter or connect a C wire.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "x2_installation_and_user_guide.pdf::5 Troubleshooting",
+    "firmware_release_notes_v3_2.docx::Bug Fixes"
+   ],
+   "cited": [
+    "x2_installation_and_user_guide.pdf::5 Troubleshooting"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "x2_installation_and_user_guide.pdf::5 Troubleshooting"
+   ],
+   "facts": [
+    [
+     "power stealing",
+     "power-stealing"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "n02",
+   "kb": "nimbus",
+   "type": "follow-up",
+   "q": "How do I fix it?",
+   "answerable": true,
+   "secs": 277.9,
+   "error": null,
+   "answer": "To fix error E2 (Power stealing unstable), install the PAK-2 adapter or connect a C wire.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "x2_installation_and_user_guide.pdf::5 Troubleshooting",
+    "firmware_release_notes_v3_2.docx::Bug Fixes",
+    "x2_hardware_design_spec.pdf::3 Power Subsystem",
+    "firmware_release_notes_v3_2.docx::Highlights"
+   ],
+   "cited": [
+    "x2_installation_and_user_guide.pdf::5 Troubleshooting"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "x2_installation_and_user_guide.pdf::5 Troubleshooting"
+   ],
+   "facts": [
+    [
+     "PAK-2",
+     "c wire",
+     "c-wire"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "n03",
+   "kb": "nimbus",
+   "type": "follow-up",
+   "q": "Was there a firmware fix for it?",
+   "answerable": true,
+   "secs": 334.7,
+   "error": null,
+   "answer": "Yes, firmware fixes were released for the E2 error. The fix for 'Brown-out reset during Wi-Fi TX on power-stealing installs (E2)' was included in firmware versions 3.2.0 and later, replacing affected versions 3.0.0 through 3.1.4. The fix is identified by ticket ID FW-1822.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "firmware_release_notes_v3_2.docx::Bug Fixes",
+    "firmware_release_notes_v3_2.docx::Highlights",
+    "x2_installation_and_user_guide.pdf::5 Troubleshooting"
+   ],
+   "cited": [
+    "firmware_release_notes_v3_2.docx::Bug Fixes"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "firmware_release_notes_v3_2.docx::Bug Fixes",
+    "firmware_release_notes_v3_2.docx::Highlights"
+   ],
+   "facts": [
+    [
+     "FW-1822",
+     "3.2"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "n04",
+   "kb": "nimbus",
+   "type": "fact",
+   "q": "Which microcontroller does the X2 use and at what clock speed?",
+   "answerable": true,
+   "secs": 237.4,
+   "error": null,
+   "answer": "The X2 uses an STM32U585 microcontroller running at a clock speed of 160 MHz.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "x2_hardware_design_spec.pdf::2.1 Main Controller",
+    "x2_hardware_design_spec.pdf::2 System Architecture"
+   ],
+   "cited": [
+    "x2_hardware_design_spec.pdf::2.1 Main Controller"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "x2_hardware_design_spec.pdf::2.1 Main Controller"
+   ],
+   "facts": [
+    [
+     "STM32U585"
+    ],
+    [
+     "160"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "n05",
+   "kb": "nimbus",
+   "type": "fact",
+   "q": "How much flash and SRAM does the main controller have?",
+   "answerable": true,
+   "secs": 23.4,
+   "error": null,
+   "answer": "The main controller has 2 MB of flash and 786 KB of SRAM.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "x2_hardware_design_spec.pdf::2.1 Main Controller"
+   ],
+   "cited": [
+    "x2_hardware_design_spec.pdf::2.1 Main Controller"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "x2_hardware_design_spec.pdf::2.1 Main Controller"
+   ],
+   "facts": [
+    [
+     "2 MB",
+     "2MB"
+    ],
+    [
+     "786"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "n06",
+   "kb": "nimbus",
+   "type": "table",
+   "q": "What is on pin 7 of the board-to-board connector?",
+   "answerable": true,
+   "secs": 36.4,
+   "error": null,
+   "answer": "Pin 7 is the Heat pump reversing valve signal (RLY_OB).",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "x2_hardware_design_spec.pdf::5 Interfaces and Pinout"
+   ],
+   "cited": [
+    "x2_hardware_design_spec.pdf::5 Interfaces and Pinout"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "x2_hardware_design_spec.pdf::5 Interfaces and Pinout"
+   ],
+   "facts": [
+    [
+     "RLY_OB",
+     "reversing valve"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "n07",
+   "kb": "nimbus",
+   "type": "table",
+   "q": "What changed in revision C of the hardware spec?",
+   "answerable": true,
+   "secs": 240.6,
+   "error": null,
+   "answer": "Revision C (dated 2026-09-12) included relay board rework, pinout corrections, and a compliance section.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "x2_hardware_design_spec.pdf::1.2 Revision History",
+    "x2_hardware_design_spec.pdf::Preface"
+   ],
+   "cited": [
+    "x2_hardware_design_spec.pdf::1.2 Revision History"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "x2_hardware_design_spec.pdf::1.2 Revision History"
+   ],
+   "facts": [
+    [
+     "relay board"
+    ],
+    [
+     "pinout"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "n09",
+   "kb": "nimbus",
+   "type": "table",
+   "q": "Which CO2 sensor is used and how accurate is it?",
+   "answerable": true,
+   "secs": 376.0,
+   "error": null,
+   "answer": "The CO2 sensor used is the Sensirion SCD41. Its accuracy is +/- (40 ppm + 5%).",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "x2_hardware_design_spec.pdf::4 Sensors",
+    "x2_hardware_design_spec.pdf::4.1 Calibration",
+    "x2_hardware_design_spec.pdf::1.2 Revision History"
+   ],
+   "cited": [
+    "x2_hardware_design_spec.pdf::4 Sensors"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "x2_hardware_design_spec.pdf::4 Sensors"
+   ],
+   "facts": [
+    [
+     "SCD41"
+    ],
+    [
+     "40 ppm"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "n08",
+   "kb": "nimbus",
+   "type": "arithmetic",
+   "q": "By how many seconds did boot time improve in firmware 3.2.0?",
+   "answerable": true,
+   "secs": 699.9,
+   "error": null,
+   "answer": "Boot time improved by 4.3 seconds, reducing from 9.4 s to 5.1 s.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "firmware_release_notes_v3_2.docx::Highlights"
+   ],
+   "cited": [
+    "firmware_release_notes_v3_2.docx::Highlights"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "firmware_release_notes_v3_2.docx::Highlights"
+   ],
+   "facts": [
+    [
+     "4.3"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "n10",
+   "kb": "nimbus",
+   "type": "fact",
+   "q": "What is the operating temperature range of the X2?",
+   "answerable": true,
+   "secs": 644.6,
+   "error": null,
+   "answer": "The operating temperature range is 0 to 45 °C.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "x2_hardware_design_spec.pdf::6 Environmental and Compliance",
+    "x2_hardware_design_spec.pdf::1 Overview"
+   ],
+   "cited": [
+    "x2_hardware_design_spec.pdf::6 Environmental and Compliance"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "x2_hardware_design_spec.pdf::6 Environmental and Compliance"
+   ],
+   "facts": [
+    [
+     "0"
+    ],
+    [
+     "45"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "n11",
+   "kb": "nimbus",
+   "type": "fact",
+   "q": "How long does installation usually take?",
+   "answerable": true,
+   "secs": 608.4,
+   "error": null,
+   "answer": "Installation typically takes about 30 minutes.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "x2_installation_and_user_guide.pdf::3 Installation",
+    "x2_installation_and_user_guide.pdf::3.2 Mounting",
+    "x2_installation_and_user_guide.pdf::4.2 Schedules"
+   ],
+   "cited": [
+    "x2_installation_and_user_guide.pdf::3 Installation",
+    "x2_installation_and_user_guide.pdf::3.1 Wiring"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "x2_installation_and_user_guide.pdf::3 Installation"
+   ],
+   "facts": [
+    [
+     "30 min"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "n12",
+   "kb": "nimbus",
+   "type": "fact",
+   "q": "What tools do I need to install the thermostat?",
+   "answerable": true,
+   "secs": 396.8,
+   "error": null,
+   "answer": "To install the thermostat, you will need a Phillips screwdriver, a drill with a 3/16-inch bit for the anchors, and a smartphone with the Nimbus app installed.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "x2_installation_and_user_guide.pdf::3 Installation",
+    "x2_installation_and_user_guide.pdf::3.1 Wiring"
+   ],
+   "cited": [
+    "x2_installation_and_user_guide.pdf::3 Installation",
+    "x2_installation_and_user_guide.pdf::3.1 Wiring"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "x2_installation_and_user_guide.pdf::3 Installation"
+   ],
+   "facts": [
+    [
+     "screwdriver"
+    ],
+    [
+     "drill",
+     "3/16"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "n13",
+   "kb": "nimbus",
+   "type": "table",
+   "q": "Which terminal is used for the heat pump reversing valve?",
+   "answerable": true,
+   "secs": 281.4,
+   "error": null,
+   "answer": "The O/B terminal (Orange or dark blue) is used for the heat pump reversing valve.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "x2_installation_and_user_guide.pdf::3.1 Wiring",
+    "x2_hardware_design_spec.pdf::5 Interfaces and Pinout"
+   ],
+   "cited": [
+    "x2_installation_and_user_guide.pdf::3.1 Wiring"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "x2_installation_and_user_guide.pdf::3.1 Wiring"
+   ],
+   "facts": [
+    [
+     "O/B"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "n14",
+   "kb": "nimbus",
+   "type": "yes/no",
+   "q": "Can I use the X2 with electric baseboard heaters?",
+   "answerable": true,
+   "secs": 87.5,
+   "error": null,
+   "answer": "No. The X2 is designed for 24 V low-voltage heating and cooling systems only. You must not connect it to 120 V or 240 V line-voltage heating systems, such as baseboard heaters.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "x2_installation_and_user_guide.pdf::1 Safety Information"
+   ],
+   "cited": [
+    "x2_installation_and_user_guide.pdf::1 Safety Information"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "x2_installation_and_user_guide.pdf::1 Safety Information"
+   ],
+   "facts": [
+    [
+     "no",
+     "not",
+     "do not"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "n15",
+   "kb": "nimbus",
+   "type": "table",
+   "q": "What does Eco mode do?",
+   "answerable": true,
+   "secs": 259.2,
+   "error": null,
+   "answer": "Eco mode uses wider set points when nobody is home to save energy.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "x2_installation_and_user_guide.pdf::4.1 Modes"
+   ],
+   "cited": [
+    "x2_installation_and_user_guide.pdf::4.1 Modes"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "x2_installation_and_user_guide.pdf::4.1 Modes"
+   ],
+   "facts": [
+    [
+     "wider",
+     "nobody"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "n16",
+   "kb": "nimbus",
+   "type": "fact",
+   "q": "How many schedule points can I set per day?",
+   "answerable": true,
+   "secs": 82.2,
+   "error": null,
+   "answer": "You can set up to 8 schedule points per day.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "x2_installation_and_user_guide.pdf::4.2 Schedules"
+   ],
+   "cited": [
+    "x2_installation_and_user_guide.pdf::4.2 Schedules"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "x2_installation_and_user_guide.pdf::4.2 Schedules"
+   ],
+   "facts": [
+    [
+     "8",
+     "eight"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "n17",
+   "kb": "nimbus",
+   "type": "fact",
+   "q": "How long does Adaptive Recovery observe the home before it starts working?",
+   "answerable": true,
+   "secs": 255.6,
+   "error": null,
+   "answer": "Adaptive Recovery observes the home for the first 7 days after it is enabled.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "firmware_release_notes_v3_2.docx::Adaptive Recovery",
+    "x2_installation_and_user_guide.pdf::4.2 Schedules"
+   ],
+   "cited": [
+    "firmware_release_notes_v3_2.docx::Adaptive Recovery"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "firmware_release_notes_v3_2.docx::Adaptive Recovery"
+   ],
+   "facts": [
+    [
+     "7 days",
+     "seven days",
+     "first 7"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "n18",
+   "kb": "nimbus",
+   "type": "fact",
+   "q": "What is the maximum early start for Adaptive Recovery?",
+   "answerable": true,
+   "secs": 121.2,
+   "error": null,
+   "answer": "The maximum early start for Adaptive Recovery is 2 hours.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "firmware_release_notes_v3_2.docx::Adaptive Recovery",
+    "x2_installation_and_user_guide.pdf::4.2 Schedules"
+   ],
+   "cited": [
+    "firmware_release_notes_v3_2.docx::Adaptive Recovery"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "firmware_release_notes_v3_2.docx::Adaptive Recovery"
+   ],
+   "facts": [
+    [
+     "2 hours",
+     "two hours"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "n19",
+   "kb": "nimbus",
+   "type": "procedure",
+   "q": "How do I update a lab unit to 3.2.0 manually?",
+   "answerable": true,
+   "secs": 222.0,
+   "error": null,
+   "answer": "To manually update a lab unit to version 3.2.0, follow these steps:\n\n1. Connect your computer to the same network as the thermostat.\n2. Run the command: **nimbus-cli device update --serial <serial> --fw 3.2.0**.\n3. Wait for the device to reboot (about 60 seconds). Do not remove the display during the update.\n4. Confirm the version under Menu > Settings > About.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "firmware_release_notes_v3_2.docx::Upgrade Procedure"
+   ],
+   "cited": [
+    "firmware_release_notes_v3_2.docx::Upgrade Procedure"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "firmware_release_notes_v3_2.docx::Upgrade Procedure"
+   ],
+   "facts": [
+    [
+     "nimbus-cli"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "n20",
+   "kb": "nimbus",
+   "type": "table",
+   "q": "What is the minimum Android app version?",
+   "answerable": true,
+   "secs": 25.3,
+   "error": null,
+   "answer": "The minimum Android app version is 5.8.1.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "firmware_release_notes_v3_2.docx::Compatibility"
+   ],
+   "cited": [
+    "firmware_release_notes_v3_2.docx::Compatibility"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "firmware_release_notes_v3_2.docx::Compatibility"
+   ],
+   "facts": [
+    [
+     "5.8.1"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "n21",
+   "kb": "nimbus",
+   "type": "yes/no",
+   "q": "Are Rev A units supported by firmware 3.2?",
+   "answerable": true,
+   "secs": 228.6,
+   "error": null,
+   "answer": "No, Rev A units are not supported. The firmware 3.2.0 requires Rev B main board for X2 hardware; Rev A (EVT1) units are explicitly not supported.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "firmware_release_notes_v3_2.docx::Compatibility"
+   ],
+   "cited": [
+    "firmware_release_notes_v3_2.docx::Compatibility"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "firmware_release_notes_v3_2.docx::Compatibility"
+   ],
+   "facts": [
+    [
+     "not supported",
+     "no"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "n22",
+   "kb": "nimbus",
+   "type": "reworded",
+   "q": "The thermostat rejected my home network password. How do I fix it?",
+   "answerable": true,
+   "secs": 154.8,
+   "error": null,
+   "answer": "If the thermostat shows error code E3 (Wi-Fi authentication failed), re-enter the Wi-Fi password in the Nimbus app.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "x2_installation_and_user_guide.pdf::4 Using Your Thermostat",
+    "x2_installation_and_user_guide.pdf::4.1 Modes",
+    "x2_installation_and_user_guide.pdf::4.2 Schedules",
+    "firmware_release_notes_v3_2.docx::Highlights",
+    "x2_installation_and_user_guide.pdf::5 Troubleshooting"
+   ],
+   "cited": [
+    "x2_installation_and_user_guide.pdf::5 Troubleshooting"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "x2_installation_and_user_guide.pdf::5 Troubleshooting"
+   ],
+   "facts": [
+    [
+     "re-enter",
+     "reenter"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "n23",
+   "kb": "nimbus",
+   "type": "reworded",
+   "q": "How much does the device heat up its own case?",
+   "answerable": true,
+   "secs": 247.2,
+   "error": null,
+   "answer": "The device heats up its own enclosure by up to 1.8 °C.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "x2_hardware_design_spec.pdf::4.1 Calibration",
+    "x2_installation_and_user_guide.pdf::1 Safety Information"
+   ],
+   "cited": [
+    "x2_hardware_design_spec.pdf::4.1 Calibration"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "x2_hardware_design_spec.pdf::4.1 Calibration"
+   ],
+   "facts": [
+    [
+     "1.8"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "n24",
+   "kb": "nimbus",
+   "type": "other-language",
+   "q": "X2의 동작 온도 범위는 얼마입니까?",
+   "answerable": true,
+   "secs": 229.8,
+   "error": null,
+   "answer": "X2의 동작 온도 범위는 0 도 C 에서 45 도 C 입니다.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "x2_hardware_design_spec.pdf::6 Environmental and Compliance",
+    "x2_hardware_design_spec.pdf::1.1 Scope"
+   ],
+   "cited": [
+    "x2_hardware_design_spec.pdf::6 Environmental and Compliance"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "x2_hardware_design_spec.pdf::6 Environmental and Compliance"
+   ],
+   "facts": [
+    [
+     "0"
+    ],
+    [
+     "45"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "n25",
+   "kb": "nimbus",
+   "type": "not-in-docs",
+   "q": "What is the retail price of the X2?",
+   "answerable": false,
+   "secs": 403.0,
+   "error": null,
+   "answer": "The documents don't cover this.",
+   "found": false,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "x2_hardware_design_spec.pdf::3 Power Subsystem",
+    "x2_hardware_design_spec.pdf::1 Overview"
+   ],
+   "cited": [],
+   "tools": [],
+   "unverified": [],
+   "gold": [],
+   "facts": [],
+   "reference": "",
+   "correct": true,
+   "read_hit": null,
+   "cite_hit": null,
+   "hallucinated": false
+  },
+  {
+   "id": "n26",
+   "kb": "nimbus",
+   "type": "not-in-docs",
+   "q": "Does the X2 work with Apple HomeKit?",
+   "answerable": false,
+   "secs": 541.7,
+   "error": null,
+   "answer": "The documents don't cover this.",
+   "found": false,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "x2_hardware_design_spec.pdf::1 Overview",
+    "x2_hardware_design_spec.pdf::6 Environmental and Compliance",
+    "x2_installation_and_user_guide.pdf::1 Safety Information"
+   ],
+   "cited": [],
+   "tools": [],
+   "unverified": [],
+   "gold": [],
+   "facts": [],
+   "reference": "",
+   "correct": true,
+   "read_hit": null,
+   "cite_hit": null,
+   "hallucinated": false
+  },
+  {
+   "id": "s01",
+   "kb": "camera",
+   "type": "fact",
+   "q": "Which test failed in the MCN5 test campaign?",
+   "answerable": true,
+   "secs": 339.1,
+   "error": null,
+   "answer": "The Distortion test failed. The result was 1.2%, which exceeded the target of <= 1.0%.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "report.pdf::Results",
+    "report.pdf::Image Quality Metrics",
+    "meeting_notes.docx::MCN5 Test Results",
+    "report.pdf::Introduction"
+   ],
+   "cited": [
+    "report.pdf::Results",
+    "report.pdf::Image Quality Metrics",
+    "meeting_notes.docx::MCN5 Test Results"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "report.pdf::Image Quality Metrics",
+    "report.pdf::Conclusion"
+   ],
+   "facts": [
+    [
+     "distortion"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "s02",
+   "kb": "camera",
+   "type": "table",
+   "q": "What was the measured distortion and what was the target?",
+   "answerable": true,
+   "secs": 125.4,
+   "error": null,
+   "answer": "The measured distortion was 1.2%, and the target was <= 1.0%.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "report.pdf::Image Quality Metrics"
+   ],
+   "cited": [
+    "report.pdf::Image Quality Metrics"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "report.pdf::Image Quality Metrics"
+   ],
+   "facts": [
+    [
+     "1.2"
+    ],
+    [
+     "1.0"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "s03",
+   "kb": "camera",
+   "type": "table",
+   "q": "What is the SNR at 1000 lux?",
+   "answerable": true,
+   "secs": 129.8,
+   "error": null,
+   "answer": "The Signal-to-noise ratio (SNR) at 1,000 lux is 38.1 dB.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "report.pdf::Background",
+    "report.pdf::Image Quality Metrics"
+   ],
+   "cited": [
+    "report.pdf::Image Quality Metrics"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "report.pdf::Image Quality Metrics"
+   ],
+   "facts": [
+    [
+     "38.1"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "s04",
+   "kb": "camera",
+   "type": "fact",
+   "q": "Where and when was the MCN5 testing done?",
+   "answerable": true,
+   "secs": 165.2,
+   "error": null,
+   "answer": "The MCN5 testing was conducted at the Suwon optics lab between July 7 and September 12, 2026.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "meeting_notes.docx::Camera Team Weekly Sync - September 22, 2026",
+    "report.pdf::Introduction",
+    "report.pdf::Results",
+    "meeting_notes.docx::MCN5 Test Results"
+   ],
+   "cited": [
+    "report.pdf::Introduction",
+    "report.pdf::Background"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "report.pdf::Introduction"
+   ],
+   "facts": [
+    [
+     "suwon"
+    ],
+    [
+     "july"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "s05",
+   "kb": "camera",
+   "type": "fact",
+   "q": "How many modules were tested?",
+   "answerable": true,
+   "secs": 27.1,
+   "error": null,
+   "answer": "Twenty production-sample modules were tested.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "report.pdf::Test Methodology"
+   ],
+   "cited": [
+    "report.pdf::Test Methodology"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "report.pdf::Test Methodology"
+   ],
+   "facts": [
+    [
+     "twenty",
+     "20"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "s06",
+   "kb": "camera",
+   "type": "fact",
+   "q": "What is the resolution of the MCN5 sensor?",
+   "answerable": true,
+   "secs": 24.5,
+   "error": null,
+   "answer": "The MCN5 sensor has a resolution of 50 MP.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "report.pdf::Background"
+   ],
+   "cited": [
+    "report.pdf::Background"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "report.pdf::Background"
+   ],
+   "facts": [
+    [
+     "50"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "s07",
+   "kb": "camera",
+   "type": "fact",
+   "q": "When is the EVT2 build scheduled?",
+   "answerable": true,
+   "secs": 23.2,
+   "error": null,
+   "answer": "The EVT2 build is scheduled for October 20, 2026.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "meeting_notes.docx::EVT2 Build Schedule"
+   ],
+   "cited": [
+    "meeting_notes.docx::EVT2 Build Schedule"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "meeting_notes.docx::EVT2 Build Schedule",
+    "meeting_notes.docx::Decisions"
+   ],
+   "facts": [
+    [
+     "october 20",
+     "20 october",
+     "oct 20",
+     "2026-10-20",
+     "20 oct"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "s08",
+   "kb": "camera",
+   "type": "table",
+   "q": "Who delivers the recalibrated distortion profile, and by when?",
+   "answerable": true,
+   "secs": 135.3,
+   "error": null,
+   "answer": "M. Chen must deliver the recalibrated distortion profile by October 10, 2026.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "meeting_notes.docx::MCN5 Test Results",
+    "meeting_notes.docx::EVT2 Build Schedule",
+    "report.pdf::Conclusion"
+   ],
+   "cited": [
+    "meeting_notes.docx::EVT2 Build Schedule"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "meeting_notes.docx::Action Items",
+    "meeting_notes.docx::EVT2 Build Schedule"
+   ],
+   "facts": [
+    [
+     "patel"
+    ],
+    [
+     "10"
+    ]
+   ],
+   "reference": "",
+   "correct": false,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "s09",
+   "kb": "camera",
+   "type": "fact",
+   "q": "What is the lens supplier's yield on the latest lot?",
+   "answerable": true,
+   "secs": 19.9,
+   "error": null,
+   "answer": "The lens supplier's yield on the latest lot is 97.4%.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "meeting_notes.docx::Supplier Update"
+   ],
+   "cited": [
+    "meeting_notes.docx::Supplier Update"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "meeting_notes.docx::Supplier Update"
+   ],
+   "facts": [
+    [
+     "97.4"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "s10",
+   "kb": "camera",
+   "type": "follow-up",
+   "q": "How much did it improve?",
+   "answerable": true,
+   "secs": 102.7,
+   "error": null,
+   "answer": "The lens supplier's yield improved by 5.6 percentage points, rising from 91.8% to 97.4%.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "meeting_notes.docx::Supplier Update"
+   ],
+   "cited": [
+    "meeting_notes.docx::Supplier Update"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "meeting_notes.docx::Supplier Update"
+   ],
+   "facts": [
+    [
+     "5.6"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "s11",
+   "kb": "camera",
+   "type": "yes/no",
+   "q": "Does the distortion problem require a lens redesign?",
+   "answerable": true,
+   "secs": 149.8,
+   "error": null,
+   "answer": "No, the distortion problem does not require a lens redesign. The team agreed the issue is correctable in the ISP and does not require a lens redesign.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "meeting_notes.docx::MCN5 Test Results",
+    "report.pdf::Results",
+    "report.pdf::Conclusion"
+   ],
+   "cited": [
+    "meeting_notes.docx::MCN5 Test Results"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "meeting_notes.docx::Decisions",
+    "meeting_notes.docx::MCN5 Test Results"
+   ],
+   "facts": [
+    [
+     "no",
+     "not"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "s12",
+   "kb": "camera",
+   "type": "table",
+   "q": "What is the FY2027 equipment budget?",
+   "answerable": true,
+   "secs": 47.9,
+   "error": null,
+   "answer": "The FY2027 equipment budget is $186,000.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "budget.xlsx::Sheet: Summary"
+   ],
+   "cited": [
+    "budget.xlsx::Sheet: Summary"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "budget.xlsx::Sheet: Summary"
+   ],
+   "facts": [
+    [
+     "186"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "s13",
+   "kb": "camera",
+   "type": "follow-up",
+   "q": "And how much was it in FY2026?",
+   "answerable": true,
+   "secs": 136.8,
+   "error": null,
+   "answer": "The FY2026 equipment budget was $142,000.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "budget.xlsx::Sheet: Summary",
+    "budget.xlsx::Sheet: Equipment Detail",
+    "budget.xlsx::Sheet: Notes"
+   ],
+   "cited": [
+    "budget.xlsx::Sheet: Summary"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "budget.xlsx::Sheet: Summary"
+   ],
+   "facts": [
+    [
+     "142"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "s14",
+   "kb": "camera",
+   "type": "table",
+   "q": "What is the total FY2027 budget and how much did it change?",
+   "answerable": true,
+   "secs": 32.9,
+   "error": null,
+   "answer": "The total FY2027 budget is $770K. It represents a change of +10.5% compared to the previous year.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "budget.xlsx::Sheet: Summary"
+   ],
+   "cited": [
+    "budget.xlsx::Sheet: Summary"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "budget.xlsx::Sheet: Summary"
+   ],
+   "facts": [
+    [
+     "770"
+    ],
+    [
+     "10.5"
+    ]
+   ],
+   "reference": "",
+   "correct": false,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "s15",
+   "kb": "camera",
+   "type": "fact",
+   "q": "Why is travel spending going down?",
+   "answerable": true,
+   "secs": 107.3,
+   "error": null,
+   "answer": "Travel spending is going down because supplier audits will be held remotely.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "budget.xlsx::Sheet: Notes"
+   ],
+   "cited": [
+    "budget.xlsx::Sheet: Notes"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "budget.xlsx::Sheet: Notes"
+   ],
+   "facts": [
+    [
+     "remote"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "s16",
+   "kb": "camera",
+   "type": "table",
+   "q": "How much does the optical test bench cost?",
+   "answerable": true,
+   "secs": 89.7,
+   "error": null,
+   "answer": "The optical test bench costs $92,000.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "budget.xlsx::Sheet: Equipment Detail"
+   ],
+   "cited": [
+    "budget.xlsx::Sheet: Equipment Detail"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "budget.xlsx::Sheet: Equipment Detail"
+   ],
+   "facts": [
+    [
+     "92"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "s17",
+   "kb": "camera",
+   "type": "arithmetic",
+   "q": "How much more is budgeted for personnel in FY2027 than was spent in FY2026?",
+   "answerable": true,
+   "secs": 28.9,
+   "error": null,
+   "answer": "The budget for personnel in FY2027 is $412K, which is $23K more than the $389K spent in FY2026.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "budget.xlsx::Sheet: Summary"
+   ],
+   "cited": [
+    "budget.xlsx::Sheet: Summary"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "budget.xlsx::Sheet: Summary"
+   ],
+   "facts": [
+    [
+     "23"
+    ]
+   ],
+   "reference": "",
+   "correct": false,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "s18",
+   "kb": "camera",
+   "type": "cross-doc",
+   "q": "Which failed test is the team fixing before EVT2, and how?",
+   "answerable": true,
+   "secs": 23.4,
+   "error": null,
+   "answer": "The team is fixing the distortion test before EVT2. They are doing this by recalibrating the lens distortion correction profile in the ISP.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "report.pdf::Conclusion"
+   ],
+   "cited": [
+    "report.pdf::Conclusion"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "report.pdf::Conclusion",
+    "meeting_notes.docx::Decisions",
+    "meeting_notes.docx::MCN5 Test Results"
+   ],
+   "facts": [
+    [
+     "distortion"
+    ],
+    [
+     "isp"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "s19",
+   "kb": "camera",
+   "type": "reworded",
+   "q": "Was the sharpness at the edges of the image good enough?",
+   "answerable": true,
+   "secs": 63.4,
+   "error": null,
+   "answer": "Yes, the sharpness at the edges was good enough. The MTF50 (corner) result was 0.31 cycles/pixel, which meets the target of >= 0.28 cycles/pixel.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "report.pdf::Results"
+   ],
+   "cited": [
+    "report.pdf::Results",
+    "report.pdf::Image Quality Metrics"
+   ],
+   "tools": [],
+   "unverified": [
+    "0.28 cycles"
+   ],
+   "gold": [
+    "report.pdf::Image Quality Metrics"
+   ],
+   "facts": [
+    [
+     "0.31"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "s20",
+   "kb": "camera",
+   "type": "other-language",
+   "q": "EVT2 बिल्ड कब निर्धारित है?",
+   "answerable": true,
+   "secs": 95.7,
+   "error": null,
+   "answer": "EVT2 बिल्ड 20 अक्टूबर, 2026 निर्धारित है।",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "meeting_notes.docx::EVT2 Build Schedule"
+   ],
+   "cited": [
+    "meeting_notes.docx::EVT2 Build Schedule"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "meeting_notes.docx::EVT2 Build Schedule",
+    "meeting_notes.docx::Decisions"
+   ],
+   "facts": [
+    [
+     "20"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "s21",
+   "kb": "camera",
+   "type": "not-in-docs",
+   "q": "How many people are on the camera team?",
+   "answerable": false,
+   "secs": 115.5,
+   "error": null,
+   "answer": "There are 5 people on the camera team: J. Kim, A. Patel, M. Chen, S. Lee, and R. Gomez.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "meeting_notes.docx::Camera Team Weekly Sync - September 22, 2026"
+   ],
+   "cited": [
+    "meeting_notes.docx::Camera Team Weekly Sync - September 22, 2026"
+   ],
+   "tools": [],
+   "unverified": [
+    "5"
+   ],
+   "gold": [],
+   "facts": [],
+   "reference": "",
+   "correct": false,
+   "read_hit": null,
+   "cite_hit": null,
+   "hallucinated": true
+  },
+  {
+   "id": "s22",
+   "kb": "camera",
+   "type": "not-in-docs",
+   "q": "Which phone model will launch with the MCN5 sensor?",
+   "answerable": false,
+   "secs": 135.7,
+   "error": null,
+   "answer": "The documents don't cover this.",
+   "found": false,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "report.pdf::Introduction",
+    "report.pdf::Background",
+    "report.pdf::Test Methodology"
+   ],
+   "cited": [],
+   "tools": [],
+   "unverified": [],
+   "gold": [],
+   "facts": [],
+   "reference": "",
+   "correct": true,
+   "read_hit": null,
+   "cite_hit": null,
+   "hallucinated": false
+  },
+  {
+   "id": "k01",
+   "kb": "skylink",
+   "type": "table",
+   "q": "What does an amber INTERNET LED mean?",
+   "answerable": true,
+   "secs": 221.5,
+   "error": null,
+   "answer": "An amber INTERNET LED indicates that the WAN is up but there is no IP address from the ISP (WAN up, no IP from ISP). If the LED remains amber after reseating the WAN cable and power-cycling the modem and router, ask the customer to contact their ISP to confirm there is no outage.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "r7_router_troubleshooting_guide.pdf::2 LED Status Reference",
+    "r7_router_troubleshooting_guide.pdf::4 Common Issues",
+    "r7_router_troubleshooting_guide.pdf::4.1 No Internet"
+   ],
+   "cited": [
+    "r7_router_troubleshooting_guide.pdf::2 LED Status Reference",
+    "r7_router_troubleshooting_guide.pdf::4 Common Issues",
+    "r7_router_troubleshooting_guide.pdf::4.3 Firmware Update Failure"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "r7_router_troubleshooting_guide.pdf::2 LED Status Reference"
+   ],
+   "facts": [
+    [
+     "no ip",
+     "wan up"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "k02",
+   "kb": "skylink",
+   "type": "table",
+   "q": "What does a blinking green POWER LED mean?",
+   "answerable": true,
+   "secs": 12.5,
+   "error": null,
+   "answer": "A blinking green POWER LED indicates that the device is booting or updating.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "r7_router_troubleshooting_guide.pdf::2 LED Status Reference"
+   ],
+   "cited": [
+    "r7_router_troubleshooting_guide.pdf::2 LED Status Reference"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "r7_router_troubleshooting_guide.pdf::2 LED Status Reference"
+   ],
+   "facts": [
+    [
+     "boot",
+     "updating"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "k03",
+   "kb": "skylink",
+   "type": "fact",
+   "q": "What does error E-217 mean?",
+   "answerable": true,
+   "secs": 29.9,
+   "error": null,
+   "answer": "Error E-217 means the downloaded firmware image did not pass its checksum check, usually because the download was interrupted. The router keeps running the old firmware, so it is safe.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "r7_router_troubleshooting_guide.pdf::4.3 Firmware Update Failure"
+   ],
+   "cited": [
+    "r7_router_troubleshooting_guide.pdf::4.3 Firmware Update Failure"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "r7_router_troubleshooting_guide.pdf::4.3 Firmware Update Failure"
+   ],
+   "facts": [
+    [
+     "checksum"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "k04",
+   "kb": "skylink",
+   "type": "follow-up",
+   "q": "Should agents ask the customer to factory reset for it?",
+   "answerable": true,
+   "secs": 216.1,
+   "error": null,
+   "answer": "No, agents should not ask customers to factory reset the router for error E-217.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "r7_router_troubleshooting_guide.pdf::4.3 Firmware Update Failure"
+   ],
+   "cited": [
+    "r7_router_troubleshooting_guide.pdf::4.3 Firmware Update Failure"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "r7_router_troubleshooting_guide.pdf::4.3 Firmware Update Failure"
+   ],
+   "facts": [
+    [
+     "no",
+     "do not"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "k05",
+   "kb": "skylink",
+   "type": "follow-up",
+   "q": "If it still fails after a manual upload, who handles it and how fast?",
+   "answerable": true,
+   "secs": 232.1,
+   "error": null,
+   "answer": "The issue is handled by the Tier 2 Firmware team. The expected response time is 4 business hours.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "r7_router_troubleshooting_guide.pdf::4.3 Firmware Update Failure",
+    "r7_router_troubleshooting_guide.pdf::5 Escalation"
+   ],
+   "cited": [
+    "r7_router_troubleshooting_guide.pdf::5 Escalation"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "r7_router_troubleshooting_guide.pdf::5 Escalation"
+   ],
+   "facts": [
+    [
+     "tier 2"
+    ],
+    [
+     "4 business hours",
+     "four business hours"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "k06",
+   "kb": "skylink",
+   "type": "procedure",
+   "q": "What are the steps for a customer with no internet?",
+   "answerable": true,
+   "secs": 216.8,
+   "error": null,
+   "answer": "Follow these steps for a customer with no internet:\n1. Confirm whether all devices or only one device is affected.\n2. Check the INTERNET LED. If off, reseat the WAN cable at both ends.\n3. Power-cycle the modem first, wait 2 minutes, then power-cycle the router.\n4. If the INTERNET LED stays amber, ask the customer to contact their ISP to confirm there is no outage.\n5. If still unresolved, collect WAN logs (Admin Console > Diagnostics > Export) and escalate.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "r7_router_troubleshooting_guide.pdf::3 Diagnostic Flow",
+    "r7_router_troubleshooting_guide.pdf::4 Common Issues",
+    "r7_router_troubleshooting_guide.pdf::4.1 No Internet",
+    "r7_router_troubleshooting_guide.pdf::5 Escalation"
+   ],
+   "cited": [
+    "r7_router_troubleshooting_guide.pdf::3 Diagnostic Flow",
+    "r7_router_troubleshooting_guide.pdf::4 Common Issues",
+    "r7_router_troubleshooting_guide.pdf::4.1 No Internet",
+    "r7_router_troubleshooting_guide.pdf::4.3 Firmware Update Failure"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "r7_router_troubleshooting_guide.pdf::4.1 No Internet"
+   ],
+   "facts": [
+    [
+     "power-cycle",
+     "power cycle"
+    ],
+    [
+     "isp"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "k07",
+   "kb": "skylink",
+   "type": "fact",
+   "q": "Which firmware version fixes the 5 GHz throughput issue?",
+   "answerable": true,
+   "secs": 178.4,
+   "error": null,
+   "answer": "Firmware version 2.9.1 or later fixes the 5 GHz throughput issue.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "r7_router_troubleshooting_guide.pdf::4 Common Issues",
+    "r7_router_troubleshooting_guide.pdf::4.1 No Internet",
+    "r7_router_troubleshooting_guide.pdf::4.2 Slow Wi-Fi"
+   ],
+   "cited": [
+    "r7_router_troubleshooting_guide.pdf::4 Common Issues",
+    "r7_router_troubleshooting_guide.pdf::4.1 No Internet",
+    "r7_router_troubleshooting_guide.pdf::4.2 Slow Wi-Fi",
+    "r7_router_troubleshooting_guide.pdf::4.3 Firmware Update Failure"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "r7_router_troubleshooting_guide.pdf::4.2 Slow Wi-Fi",
+    "q3_2026_support_review.docx::Ticket Volume"
+   ],
+   "facts": [
+    [
+     "2.9.1"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "k08",
+   "kb": "skylink",
+   "type": "table",
+   "q": "What is the target response time for a suspected security issue?",
+   "answerable": true,
+   "secs": 133.2,
+   "error": null,
+   "answer": "The target response time for a suspected security issue (unknown admin login) is 1 hour, 24/7.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "r7_router_troubleshooting_guide.pdf::5 Escalation",
+    "q3_2026_support_review.docx::Key Metrics"
+   ],
+   "cited": [
+    "r7_router_troubleshooting_guide.pdf::5 Escalation"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "r7_router_troubleshooting_guide.pdf::5 Escalation"
+   ],
+   "facts": [
+    [
+     "1 hour",
+     "one hour"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "k09",
+   "kb": "skylink",
+   "type": "table",
+   "q": "Who handles a router hardware fault and how quickly?",
+   "answerable": true,
+   "secs": 229.6,
+   "error": null,
+   "answer": "A hardware fault is indicated by an amber POWER LED. This is handled by the RMA team with a target response time of 1 business day.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "skylink_limited_warranty.pdf::4 How to Make a Claim",
+    "r7_router_troubleshooting_guide.pdf::5 Escalation"
+   ],
+   "cited": [
+    "r7_router_troubleshooting_guide.pdf::5 Escalation"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "r7_router_troubleshooting_guide.pdf::5 Escalation"
+   ],
+   "facts": [
+    [
+     "rma"
+    ],
+    [
+     "1 business day",
+     "one business day"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "k10",
+   "kb": "skylink",
+   "type": "fact",
+   "q": "What should an agent collect before starting troubleshooting?",
+   "answerable": true,
+   "secs": 300.1,
+   "error": null,
+   "answer": "Before starting troubleshooting, an agent should collect the router serial number (found on the label under the device), the firmware version (found in Admin Console > System), and the customer's ISP. All three items must be logged in the ticket.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "r7_router_troubleshooting_guide.pdf::1 Introduction",
+    "r7_router_troubleshooting_guide.pdf::Preface"
+   ],
+   "cited": [
+    "r7_router_troubleshooting_guide.pdf::Preface",
+    "r7_router_troubleshooting_guide.pdf::1 Introduction"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "r7_router_troubleshooting_guide.pdf::1 Introduction"
+   ],
+   "facts": [
+    [
+     "serial"
+    ],
+    [
+     "firmware"
+    ],
+    [
+     "isp"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "k11",
+   "kb": "skylink",
+   "type": "fact",
+   "q": "What share of no-internet tickets does the diagnostic flow resolve?",
+   "answerable": true,
+   "secs": 150.0,
+   "error": null,
+   "answer": "The diagnostic flow resolves about 64% of no-internet tickets.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "r7_router_troubleshooting_guide.pdf::3 Diagnostic Flow"
+   ],
+   "cited": [
+    "r7_router_troubleshooting_guide.pdf::3 Diagnostic Flow"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "r7_router_troubleshooting_guide.pdf::3 Diagnostic Flow"
+   ],
+   "facts": [
+    [
+     "64"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "k12",
+   "kb": "skylink",
+   "type": "fact",
+   "q": "How many tickets were resolved in Q3?",
+   "answerable": true,
+   "secs": 202.5,
+   "error": null,
+   "answer": "12,480 tickets were resolved in Q3.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "q3_2026_support_review.docx::Executive Summary",
+    "q3_2026_support_review.docx::Key Metrics"
+   ],
+   "cited": [
+    "q3_2026_support_review.docx::Key Metrics"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "q3_2026_support_review.docx::Key Metrics"
+   ],
+   "facts": [
+    [
+     "12,480",
+     "12480"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "k13",
+   "kb": "skylink",
+   "type": "table",
+   "q": "What was CSAT in Q3 and what was the target?",
+   "answerable": true,
+   "secs": 83.8,
+   "error": null,
+   "answer": "The CSAT in Q3 was 91.3%, and the target was 90%.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "q3_2026_support_review.docx::Executive Summary",
+    "q3_2026_support_review.docx::Key Metrics"
+   ],
+   "cited": [
+    "q3_2026_support_review.docx::Key Metrics"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "q3_2026_support_review.docx::Key Metrics"
+   ],
+   "facts": [
+    [
+     "91.3"
+    ],
+    [
+     "90"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "k14",
+   "kb": "skylink",
+   "type": "follow-up",
+   "q": "Did first contact resolution meet its target too?",
+   "answerable": true,
+   "secs": 288.9,
+   "error": null,
+   "answer": "No, first contact resolution did not meet its target. The actual value for Q3 2026 was 61%, while the target was 65%.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "q3_2026_support_review.docx::Key Metrics",
+    "q3_2026_support_review.docx::Q4 Priorities"
+   ],
+   "cited": [
+    "q3_2026_support_review.docx::Key Metrics"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "q3_2026_support_review.docx::Key Metrics"
+   ],
+   "facts": [
+    [
+     "no",
+     "behind",
+     "did not",
+     "not"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "k15",
+   "kb": "skylink",
+   "type": "arithmetic",
+   "q": "How many more tickets were resolved in Q3 than in Q2?",
+   "answerable": true,
+   "secs": 383.7,
+   "error": null,
+   "answer": "1,924 more tickets were resolved in Q3 than in Q2.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "q3_2026_support_review.docx::Executive Summary",
+    "q3_2026_support_review.docx::Key Metrics"
+   ],
+   "cited": [
+    "q3_2026_support_review.docx::Key Metrics"
+   ],
+   "tools": [],
+   "unverified": [
+    "1,924"
+   ],
+   "gold": [
+    "q3_2026_support_review.docx::Key Metrics"
+   ],
+   "facts": [
+    [
+     "924"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "k16",
+   "kb": "skylink",
+   "type": "fact",
+   "q": "What was the peak weekly ticket volume in Q3, and in which week?",
+   "answerable": true,
+   "secs": 90.2,
+   "error": null,
+   "answer": "The peak weekly ticket volume in Q3 was 1,260 tickets in week 34.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "q3_2026_support_review.docx::Ticket Volume"
+   ],
+   "cited": [
+    "q3_2026_support_review.docx::Ticket Volume"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "q3_2026_support_review.docx::Ticket Volume"
+   ],
+   "facts": [
+    [
+     "1,260",
+     "1260"
+    ],
+    [
+     "34"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "k17",
+   "kb": "skylink",
+   "type": "cross-doc",
+   "q": "How many tickets did failed firmware updates cause in Q3, and what should agents tell the customer to try first?",
+   "answerable": true,
+   "secs": 370.8,
+   "error": null,
+   "answer": "Failed firmware updates caused 1,870 tickets in Q3. Agents should tell the customer to click **Retry download**. If it fails twice, send them the direct download link from KA-0388 and walk them through **Upload file manually**.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "q3_2026_support_review.docx::Top Contact Drivers",
+    "r7_router_troubleshooting_guide.pdf::4.3 Firmware Update Failure",
+    "q3_2026_support_review.docx::Ticket Volume"
+   ],
+   "cited": [
+    "q3_2026_support_review.docx::Top Contact Drivers"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "q3_2026_support_review.docx::Top Contact Drivers",
+    "r7_router_troubleshooting_guide.pdf::4.3 Firmware Update Failure"
+   ],
+   "facts": [
+    [
+     "1,870",
+     "1870"
+    ],
+    [
+     "retry"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "k18",
+   "kb": "skylink",
+   "type": "table",
+   "q": "How long is the R7 warranty with Care+?",
+   "answerable": true,
+   "secs": 79.9,
+   "error": null,
+   "answer": "The R7 router warranty with Skylink Care+ is extended to 5 years.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "skylink_limited_warranty.pdf::2 Warranty Period"
+   ],
+   "cited": [
+    "skylink_limited_warranty.pdf::2 Warranty Period"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "skylink_limited_warranty.pdf::2 Warranty Period"
+   ],
+   "facts": [
+    [
+     "5 years",
+     "five years",
+     "5-year",
+     "5 year"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "k19",
+   "kb": "skylink",
+   "type": "table",
+   "q": "How long is the warranty on M3 mesh nodes without Care+?",
+   "answerable": true,
+   "secs": 35.1,
+   "error": null,
+   "answer": "The warranty on M3 mesh nodes without Skylink Care+ is 2 years.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "skylink_limited_warranty.pdf::2 Warranty Period"
+   ],
+   "cited": [
+    "skylink_limited_warranty.pdf::2 Warranty Period"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "skylink_limited_warranty.pdf::2 Warranty Period"
+   ],
+   "facts": [
+    [
+     "2 years",
+     "two years",
+     "2-year",
+     "2 year"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "k20",
+   "kb": "skylink",
+   "type": "yes/no",
+   "q": "Is liquid damage covered by the warranty?",
+   "answerable": true,
+   "secs": 470.8,
+   "error": null,
+   "answer": "No, liquid damage is not covered by the warranty. The documents state that damage caused by liquid is explicitly excluded.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "skylink_limited_warranty.pdf::3 What Is Not Covered"
+   ],
+   "cited": [
+    "skylink_limited_warranty.pdf::3 What Is Not Covered"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "skylink_limited_warranty.pdf::3 What Is Not Covered"
+   ],
+   "facts": [
+    [
+     "no",
+     "not covered",
+     "not"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "k21",
+   "kb": "skylink",
+   "type": "fact",
+   "q": "How soon do replacement products ship after Skylink receives the return?",
+   "answerable": true,
+   "secs": 75.1,
+   "error": null,
+   "answer": "Replacement products ship within 5 business days of receipt.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "skylink_limited_warranty.pdf::4 How to Make a Claim"
+   ],
+   "cited": [
+    "skylink_limited_warranty.pdf::4 How to Make a Claim"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "skylink_limited_warranty.pdf::4 How to Make a Claim"
+   ],
+   "facts": [
+    [
+     "5 business days",
+     "five business days"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "k22",
+   "kb": "skylink",
+   "type": "fact",
+   "q": "What is the Q4 hiring plan for support?",
+   "answerable": true,
+   "secs": 483.0,
+   "error": null,
+   "answer": "The Q4 hiring plan includes hiring 6 seasonal agents for the holiday peak starting 1 December.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "q3_2026_support_review.docx::Q4 Priorities"
+   ],
+   "cited": [
+    "q3_2026_support_review.docx::Q4 Priorities"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "q3_2026_support_review.docx::Q4 Priorities"
+   ],
+   "facts": [
+    [
+     "6",
+     "six"
+    ],
+    [
+     "seasonal"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "k23",
+   "kb": "skylink",
+   "type": "reworded",
+   "q": "The customer says the light for the router's connection to the provider is orange. What does that indicate?",
+   "answerable": true,
+   "secs": 348.4,
+   "error": null,
+   "answer": "An orange (amber) INTERNET light indicates that the WAN is up but there is no IP address from the ISP. If the light remains amber after power-cycling the modem and router, the customer should contact their ISP to confirm there is no outage.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "r7_router_troubleshooting_guide.pdf::2 LED Status Reference",
+    "r7_router_troubleshooting_guide.pdf::4 Common Issues",
+    "r7_router_troubleshooting_guide.pdf::4.1 No Internet"
+   ],
+   "cited": [
+    "r7_router_troubleshooting_guide.pdf::2 LED Status Reference",
+    "r7_router_troubleshooting_guide.pdf::4 Common Issues",
+    "r7_router_troubleshooting_guide.pdf::4.1 No Internet",
+    "r7_router_troubleshooting_guide.pdf::4.3 Firmware Update Failure"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "r7_router_troubleshooting_guide.pdf::2 LED Status Reference"
+   ],
+   "facts": [
+    [
+     "no ip",
+     "wan up"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "k24",
+   "kb": "skylink",
+   "type": "typos",
+   "q": "wat dose amber wps led meen",
+   "answerable": true,
+   "secs": 95.8,
+   "error": null,
+   "answer": "An amber WPS LED indicates that pairing has failed.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "r7_router_troubleshooting_guide.pdf::2 LED Status Reference",
+    "r7_router_troubleshooting_guide.pdf::4 Common Issues",
+    "r7_router_troubleshooting_guide.pdf::4.1 No Internet"
+   ],
+   "cited": [
+    "r7_router_troubleshooting_guide.pdf::2 LED Status Reference"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "r7_router_troubleshooting_guide.pdf::2 LED Status Reference"
+   ],
+   "facts": [
+    [
+     "fail"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "k25",
+   "kb": "skylink",
+   "type": "other-language",
+   "q": "3분기 고객 만족도(CSAT)는 얼마였나요?",
+   "answerable": true,
+   "secs": 171.3,
+   "error": null,
+   "answer": "3분기 고객 만족도 (CSAT) 은 91.3% 였습니다.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "q3_2026_support_review.docx::Executive Summary",
+    "q3_2026_support_review.docx::Key Metrics",
+    "q3_2026_support_review.docx::Customer Feedback"
+   ],
+   "cited": [
+    "q3_2026_support_review.docx::Key Metrics"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "q3_2026_support_review.docx::Key Metrics"
+   ],
+   "facts": [
+    [
+     "91.3"
+    ]
+   ],
+   "reference": "",
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "k26",
+   "kb": "skylink",
+   "type": "not-in-docs",
+   "q": "Who is the CEO of Skylink?",
+   "answerable": false,
+   "secs": 269.8,
+   "error": null,
+   "answer": "The documents don't cover this.",
+   "found": false,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "skylink_limited_warranty.pdf::1 What This Warranty Covers",
+    "skylink_limited_warranty.pdf::5 Limitation of Liability"
+   ],
+   "cited": [],
+   "tools": [],
+   "unverified": [],
+   "gold": [],
+   "facts": [],
+   "reference": "",
+   "correct": true,
+   "read_hit": null,
+   "cite_hit": null,
+   "hallucinated": false
+  },
+  {
+   "id": "k27",
+   "kb": "skylink",
+   "type": "not-in-docs",
+   "q": "How many support agents does Skylink employ?",
+   "answerable": false,
+   "secs": 130.8,
+   "error": null,
+   "answer": "The documents don't cover this.",
+   "found": false,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "skylink_limited_warranty.pdf::4 How to Make a Claim"
+   ],
+   "cited": [],
+   "tools": [],
+   "unverified": [],
+   "gold": [],
+   "facts": [],
+   "reference": "",
+   "correct": true,
+   "read_hit": null,
+   "cite_hit": null,
+   "hallucinated": false
+  },
+  {
+   "id": "k28",
+   "kb": "skylink",
+   "type": "not-in-docs",
+   "q": "Does the R7 router support Wi-Fi 7?",
+   "answerable": false,
+   "secs": 467.8,
+   "error": null,
+   "answer": "The documents don't cover this.",
+   "found": false,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "r7_router_troubleshooting_guide.pdf::2 LED Status Reference",
+    "r7_router_troubleshooting_guide.pdf::4.2 Slow Wi-Fi"
+   ],
+   "cited": [],
+   "tools": [],
+   "unverified": [],
+   "gold": [],
+   "facts": [],
+   "reference": "",
+   "correct": true,
+   "read_hit": null,
+   "cite_hit": null,
+   "hallucinated": false
+  }
+ ]
+}

@@ -1,0 +1,771 @@
+{
+ "meta": {
+  "label": "images-08b-manuals",
+  "mode": "manuals",
+  "set": "samples",
+  "model": "qwen-08b",
+  "chat_model": "qwen-08b",
+  "semantic_model": null,
+  "engine_version": "0.1.0",
+  "started": "2026-10-13 14:55",
+  "finished": "2026-10-13 15:00"
+ },
+ "rows": [
+  {
+   "id": "m01",
+   "kb": "images",
+   "type": "image",
+   "q": "How many tasks are overdue on the TaskFlow dashboard?",
+   "answerable": true,
+   "secs": 33.2,
+   "error": null,
+   "answer": "3",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "user_manual.docx::Overview"
+   ],
+   "cited": [
+    "user_manual.docx::Overview",
+    "user_manual.docx::Creating a Project",
+    "user_manual.docx::Reports"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "user_manual.docx::Overview"
+   ],
+   "facts": [
+    [
+     "3"
+    ]
+   ],
+   "reference": "",
+   "shown": [
+    "user_manual.docx::figure_000.png",
+    "user_manual.docx::figure_001.png",
+    "user_manual.docx::figure_002.png"
+   ],
+   "figures": [
+    "user_manual.docx::figure_000.png"
+   ],
+   "figure_hit": true,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "m02",
+   "kb": "images",
+   "type": "image",
+   "q": "How many active projects and open tasks does the dashboard show?",
+   "answerable": true,
+   "secs": 38.0,
+   "error": null,
+   "answer": "Active Projects: 12, Open Tasks: 87",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "user_manual.docx::Dashboard",
+    "user_manual.docx::Overview"
+   ],
+   "cited": [
+    "user_manual.docx::Dashboard",
+    "user_manual.docx::Overview",
+    "user_manual.docx::Creating a Project",
+    "user_manual.docx::Reports"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "user_manual.docx::Overview"
+   ],
+   "facts": [
+    [
+     "12"
+    ],
+    [
+     "87"
+    ]
+   ],
+   "reference": "",
+   "shown": [
+    "user_manual.docx::figure_000.png",
+    "user_manual.docx::figure_001.png",
+    "user_manual.docx::figure_002.png"
+   ],
+   "figures": [
+    "user_manual.docx::figure_000.png"
+   ],
+   "figure_hit": true,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "m03",
+   "kb": "images",
+   "type": "image",
+   "q": "Whose name is in the welcome message on the dashboard screenshot?",
+   "answerable": true,
+   "secs": 7.9,
+   "error": null,
+   "answer": "Priya",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "user_manual.docx::Overview"
+   ],
+   "cited": [
+    "user_manual.docx::Overview",
+    "user_manual.docx::Creating a Project"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "user_manual.docx::Overview"
+   ],
+   "facts": [
+    [
+     "Priya"
+    ]
+   ],
+   "reference": "",
+   "shown": [
+    "user_manual.docx::figure_000.png",
+    "user_manual.docx::figure_001.png"
+   ],
+   "figures": [
+    "user_manual.docx::figure_000.png"
+   ],
+   "figure_hit": true,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "m04",
+   "kb": "images",
+   "type": "image",
+   "q": "In the create project example, which project key and template were used?",
+   "answerable": true,
+   "secs": 6.9,
+   "error": null,
+   "answer": "Project Key: WEB, Template: Kanban",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "user_manual.docx::Creating a Project"
+   ],
+   "cited": [
+    "user_manual.docx::Creating a Project"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "user_manual.docx::Creating a Project"
+   ],
+   "facts": [
+    [
+     "WEB"
+    ],
+    [
+     "Kanban"
+    ]
+   ],
+   "reference": "",
+   "shown": [
+    "user_manual.docx::figure_001.png"
+   ],
+   "figures": [
+    "user_manual.docx::figure_001.png"
+   ],
+   "figure_hit": true,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "m05",
+   "kb": "images",
+   "type": "image",
+   "q": "What target end date is entered in the Create New Project example?",
+   "answerable": true,
+   "secs": 9.5,
+   "error": null,
+   "answer": "2027-02-26",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "user_manual.docx::Creating a Project"
+   ],
+   "cited": [
+    "user_manual.docx::Creating a Project"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "user_manual.docx::Creating a Project"
+   ],
+   "facts": [
+    [
+     "2027-02-26",
+     "26 Feb",
+     "February 26",
+     "26/02/2027"
+    ]
+   ],
+   "reference": "",
+   "shown": [
+    "user_manual.docx::figure_001.png"
+   ],
+   "figures": [
+    "user_manual.docx::figure_001.png"
+   ],
+   "figure_hit": true,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "m06",
+   "kb": "images",
+   "type": "image",
+   "q": "How many story points were left on day 10 of WEB Sprint 14?",
+   "answerable": true,
+   "secs": 7.6,
+   "error": null,
+   "answer": "4",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "user_manual.docx::Reports"
+   ],
+   "cited": [
+    "user_manual.docx::Reports"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "user_manual.docx::Reports"
+   ],
+   "facts": [
+    [
+     "4"
+    ]
+   ],
+   "reference": "",
+   "shown": [
+    "user_manual.docx::figure_002.png"
+   ],
+   "figures": [
+    "user_manual.docx::figure_002.png"
+   ],
+   "figure_hit": true,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "m07",
+   "kb": "images",
+   "type": "image",
+   "q": "How many story points did WEB Sprint 14 start with, and when did the sprint run?",
+   "answerable": true,
+   "secs": 8.5,
+   "error": null,
+   "answer": "WEB Sprint 14 started with 60 story points and ran from Nov 2 to Nov 13.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "user_manual.docx::Reports"
+   ],
+   "cited": [
+    "user_manual.docx::Reports"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "user_manual.docx::Reports"
+   ],
+   "facts": [
+    [
+     "60"
+    ],
+    [
+     "Nov 2",
+     "2 Nov",
+     "November 2"
+    ]
+   ],
+   "reference": "",
+   "shown": [
+    "user_manual.docx::figure_002.png"
+   ],
+   "figures": [
+    "user_manual.docx::figure_002.png"
+   ],
+   "figure_hit": true,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "m08",
+   "kb": "images",
+   "type": "image",
+   "q": "On which days did the actual line in the sprint burndown plateau?",
+   "answerable": true,
+   "secs": 7.2,
+   "error": null,
+   "answer": "D3-D4",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "user_manual.docx::Reports"
+   ],
+   "cited": [
+    "user_manual.docx::Reports"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "user_manual.docx::Reports"
+   ],
+   "facts": [
+    [
+     "D3",
+     "day 3"
+    ],
+    [
+     "D4",
+     "day 4"
+    ]
+   ],
+   "reference": "",
+   "shown": [
+    "user_manual.docx::figure_002.png"
+   ],
+   "figures": [
+    "user_manual.docx::figure_002.png"
+   ],
+   "figure_hit": true,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "m09",
+   "kb": "images",
+   "type": "picture-request",
+   "q": "Show me the sprint burndown chart",
+   "answerable": true,
+   "secs": 1.8,
+   "error": null,
+   "answer": "Pictures in the documents about \"sprint burndown\". Select one to see it larger.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [],
+   "cited": [
+    "user_manual.docx::Reports"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "user_manual.docx::Reports"
+   ],
+   "facts": [],
+   "reference": "",
+   "shown": [
+    "user_manual.docx::figure_002.png"
+   ],
+   "figures": [
+    "user_manual.docx::figure_002.png"
+   ],
+   "figure_hit": true,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "m10",
+   "kb": "images",
+   "type": "picture-request",
+   "q": "Can I see a screenshot of the dashboard?",
+   "answerable": true,
+   "secs": 1.4,
+   "error": null,
+   "answer": "Pictures in the documents. Select one to see it larger.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [],
+   "cited": [
+    "user_manual.docx::Overview",
+    "user_manual.docx::Creating a Project",
+    "user_manual.docx::Reports",
+    "leave_policy.pdf::Leave Approval Procedure"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "user_manual.docx::Overview"
+   ],
+   "facts": [],
+   "reference": "",
+   "shown": [
+    "user_manual.docx::figure_000.png",
+    "user_manual.docx::figure_001.png",
+    "user_manual.docx::figure_002.png",
+    "leave_policy.pdf::figure_000.png"
+   ],
+   "figures": [
+    "user_manual.docx::figure_000.png"
+   ],
+   "figure_hit": true,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "m11",
+   "kb": "images",
+   "type": "image",
+   "q": "In the leave approval workflow, what happens when the reporting manager rejects a request?",
+   "answerable": true,
+   "secs": 8.6,
+   "error": null,
+   "answer": "The reporting manager rejects the request within 2 working days. If the request is longer than 5 working days, HOD approval is required. If the request is rejected, the reason is recorded in the system.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "leave_policy.pdf::Leave Approval Procedure"
+   ],
+   "cited": [
+    "leave_policy.pdf::Leave Approval Procedure"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "leave_policy.pdf::Leave Approval Procedure"
+   ],
+   "facts": [
+    [
+     "reason"
+    ]
+   ],
+   "reference": "",
+   "shown": [
+    "leave_policy.pdf::figure_000.png"
+   ],
+   "figures": [
+    "leave_policy.pdf::figure_000.png"
+   ],
+   "figure_hit": true,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "m12",
+   "kb": "images",
+   "type": "image",
+   "q": "Does a leave request of 5 days or fewer need HOD approval?",
+   "answerable": true,
+   "secs": 8.1,
+   "error": null,
+   "answer": "Yes",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "leave_policy.pdf::Leave Approval Procedure"
+   ],
+   "cited": [
+    "leave_policy.pdf::Leave Approval Procedure"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "leave_policy.pdf::Leave Approval Procedure"
+   ],
+   "facts": [
+    [
+     "no",
+     "not",
+     "skip"
+    ]
+   ],
+   "reference": "",
+   "shown": [
+    "leave_policy.pdf::figure_000.png"
+   ],
+   "figures": [
+    "leave_policy.pdf::figure_000.png"
+   ],
+   "figure_hit": true,
+   "correct": false,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "m13",
+   "kb": "images",
+   "type": "picture-request",
+   "q": "Show me the leave approval workflow diagram",
+   "answerable": true,
+   "secs": 1.9,
+   "error": null,
+   "answer": "Pictures in leave_policy.pdf about \"approval workflow\". Select one to see it larger.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [],
+   "cited": [
+    "leave_policy.pdf::Leave Approval Procedure"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "leave_policy.pdf::Leave Approval Procedure"
+   ],
+   "facts": [],
+   "reference": "",
+   "shown": [
+    "leave_policy.pdf::figure_000.png"
+   ],
+   "figures": [
+    "leave_policy.pdf::figure_000.png"
+   ],
+   "figure_hit": true,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "m14",
+   "kb": "images",
+   "type": "procedure",
+   "q": "What are the steps to create a new project in TaskFlow Pro?",
+   "answerable": true,
+   "secs": 57.9,
+   "error": null,
+   "answer": "1. Go to **Projects** and click **New Project**. 2. Enter a **Project Name** and a 2-6 letter **Project Key** (used as a task prefix, e.g. WEB-142). 3. Choose a **Template**: Kanban, Scrum, Waterfall, or Blank. 4. Set the **Start Date** and **Target End Date**. 5. Choose **Visibility**: Team members only, Entire workspace, or Private.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "user_manual.docx::Creating a Project",
+    "user_manual.docx::Adding Team Members",
+    "user_manual.docx::Task Assignment",
+    "user_manual.docx::Features"
+   ],
+   "cited": [
+    "user_manual.docx::Features",
+    "user_manual.docx::Overview",
+    "user_manual.docx::Creating a Project",
+    "user_manual.docx::Reports"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "user_manual.docx::Creating a Project"
+   ],
+   "facts": [
+    [
+     "project key"
+    ],
+    [
+     "template"
+    ],
+    [
+     "create"
+    ]
+   ],
+   "reference": "",
+   "shown": [
+    "user_manual.docx::figure_000.png",
+    "user_manual.docx::figure_001.png",
+    "user_manual.docx::figure_002.png"
+   ],
+   "figures": [
+    "user_manual.docx::figure_001.png"
+   ],
+   "figure_hit": true,
+   "correct": false,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "m15",
+   "kb": "images",
+   "type": "table",
+   "q": "How many days of privilege leave do employees get per year, and how many can be carried forward?",
+   "answerable": true,
+   "secs": 28.5,
+   "error": null,
+   "answer": "18 days; 45 days",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "leave_policy.pdf::A. Privilege Leave & Casual / Sick Leave",
+    "leave_policy.pdf::B. Maternity / Paternity Leave"
+   ],
+   "cited": [
+    "leave_policy.pdf::A. Privilege Leave & Casual / Sick Leave"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "leave_policy.pdf::A. Privilege Leave & Casual / Sick Leave"
+   ],
+   "facts": [
+    [
+     "18"
+    ],
+    [
+     "45"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "m16",
+   "kb": "images",
+   "type": "fact",
+   "q": "What keyboard shortcut opens global search in TaskFlow Pro?",
+   "answerable": true,
+   "secs": 6.5,
+   "error": null,
+   "answer": "Ctrl+K",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "user_manual.docx::Navigation"
+   ],
+   "cited": [
+    "user_manual.docx::Navigation"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "user_manual.docx::Navigation"
+   ],
+   "facts": [
+    [
+     "Ctrl+K",
+     "Ctrl + K"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "m17",
+   "kb": "images",
+   "type": "not-in-docs",
+   "q": "What was the velocity of WEB Sprint 13?",
+   "answerable": false,
+   "secs": 7.0,
+   "error": null,
+   "answer": "Velocity: 10 points",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "user_manual.docx::Reports"
+   ],
+   "cited": [
+    "user_manual.docx::Reports"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [],
+   "facts": [],
+   "reference": "",
+   "shown": [
+    "user_manual.docx::figure_002.png"
+   ],
+   "figures": [],
+   "figure_hit": null,
+   "correct": false,
+   "read_hit": null,
+   "cite_hit": null,
+   "hallucinated": true
+  },
+  {
+   "id": "m18",
+   "kb": "images",
+   "type": "not-in-docs",
+   "q": "Who approved the leave request shown in the approval workflow diagram?",
+   "answerable": false,
+   "secs": 29.0,
+   "error": null,
+   "answer": "The reporting manager",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "leave_policy.pdf::Leave Approval Procedure"
+   ],
+   "cited": [
+    "leave_policy.pdf::Leave Approval Procedure",
+    "user_manual.docx::Overview"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [],
+   "facts": [],
+   "reference": "",
+   "shown": [
+    "leave_policy.pdf::figure_000.png",
+    "user_manual.docx::figure_000.png"
+   ],
+   "figures": [],
+   "figure_hit": null,
+   "correct": false,
+   "read_hit": null,
+   "cite_hit": null,
+   "hallucinated": true
+  }
+ ]
+}

@@ -1,0 +1,385 @@
+{
+ "model": "qwen3-0.6b",
+ "output_mode": "native",
+ "kb_version": "2026.09.22-sample",
+ "asked": 9,
+ "answered": 9,
+ "correct": 4,
+ "located": 3,
+ "answerable": 8,
+ "avg_seconds": 34.3,
+ "requests": 15,
+ "rows": [
+  {
+   "question": "What was Disney's total revenue in Q1 fiscal 2025 and how much did it grow?",
+   "found": true,
+   "answer": "Total revenue: $24.7 billion; growth: 5%",
+   "citations": [
+    {
+     "doc_id": "pi-91f252d29c6c476b9329876f851e1852",
+     "doc_name": "q1-fy25-earnings.pdf",
+     "node_id": "0000",
+     "title": "Financial Results for the Quarter:; Key Points:",
+     "locator": "page 1",
+     "pages": [
+      1
+     ]
+    },
+    {
+     "doc_id": "pi-91f252d29c6c476b9329876f851e1852",
+     "doc_name": "q1-fy25-earnings.pdf",
+     "node_id": "0005",
+     "title": "Entertainment",
+     "locator": "pages 4-7",
+     "pages": [
+      4,
+      5,
+      6,
+      7
+     ]
+    }
+   ],
+   "considered": [
+    {
+     "doc_id": "pi-91f252d29c6c476b9329876f851e1852",
+     "doc_name": "q1-fy25-earnings.pdf",
+     "node_id": "0000",
+     "title": "Financial Results for the Quarter:; Key Points:",
+     "locator": "page 1",
+     "pages": [
+      1
+     ]
+    },
+    {
+     "doc_id": "pi-91f252d29c6c476b9329876f851e1852",
+     "doc_name": "q1-fy25-earnings.pdf",
+     "node_id": "0005",
+     "title": "Entertainment",
+     "locator": "pages 4-7",
+     "pages": [
+      4,
+      5,
+      6,
+      7
+     ]
+    }
+   ],
+   "seconds": {
+    "route": 0.007,
+    "select": 19.81,
+    "answer": 57.31,
+    "total": 77.12
+   },
+   "model_requests": 2,
+   "unverified_numbers": [],
+   "correct": true,
+   "located": true
+  },
+  {
+   "question": "Why did capital expenditures increase this quarter?",
+   "found": false,
+   "answer": "The knowledge base does not appear to cover this question.",
+   "citations": [],
+   "considered": [],
+   "seconds": {
+    "route": 0.001,
+    "select": 18.82,
+    "total": 18.82
+   },
+   "model_requests": 1,
+   "unverified_numbers": [],
+   "correct": false,
+   "located": false
+  },
+  {
+   "question": "What was the effective income tax rate this quarter, and why did it go up?",
+   "found": false,
+   "answer": "The knowledge base does not appear to cover this question.",
+   "citations": [],
+   "considered": [],
+   "seconds": {
+    "route": 0.001,
+    "select": 4.89,
+    "total": 4.89
+   },
+   "model_requests": 1,
+   "unverified_numbers": [],
+   "correct": false,
+   "located": false
+  },
+  {
+   "question": "What was ESPN+ average monthly revenue per paid subscriber?",
+   "found": true,
+   "answer": "6.36",
+   "citations": [
+    {
+     "doc_id": "pi-91f252d29c6c476b9329876f851e1852",
+     "doc_name": "q1-fy25-earnings.pdf",
+     "node_id": "0005",
+     "title": "Entertainment",
+     "locator": "pages 4-7",
+     "pages": [
+      4,
+      5,
+      6,
+      7
+     ]
+    },
+    {
+     "doc_id": "pi-91f252d29c6c476b9329876f851e1852",
+     "doc_name": "q1-fy25-earnings.pdf",
+     "node_id": "0006",
+     "title": "Sports",
+     "locator": "pages 7-8",
+     "pages": [
+      7,
+      8
+     ]
+    }
+   ],
+   "considered": [
+    {
+     "doc_id": "pi-91f252d29c6c476b9329876f851e1852",
+     "doc_name": "q1-fy25-earnings.pdf",
+     "node_id": "0005",
+     "title": "Entertainment",
+     "locator": "pages 4-7",
+     "pages": [
+      4,
+      5,
+      6,
+      7
+     ]
+    },
+    {
+     "doc_id": "pi-91f252d29c6c476b9329876f851e1852",
+     "doc_name": "q1-fy25-earnings.pdf",
+     "node_id": "0006",
+     "title": "Sports",
+     "locator": "pages 7-8",
+     "pages": [
+      7,
+      8
+     ]
+    }
+   ],
+   "seconds": {
+    "route": 0.001,
+    "select": 3.27,
+    "answer": 69.27,
+    "total": 72.54
+   },
+   "model_requests": 2,
+   "unverified_numbers": [],
+   "correct": true,
+   "located": true
+  },
+  {
+   "question": "How much did the hurricanes hurt the Experiences segment?",
+   "found": true,
+   "answer": "2 million.",
+   "citations": [
+    {
+     "doc_id": "pi-91f252d29c6c476b9329876f851e1852",
+     "doc_name": "q1-fy25-earnings.pdf",
+     "node_id": "0007",
+     "title": "Experiences",
+     "locator": "page 9",
+     "pages": [
+      9
+     ]
+    }
+   ],
+   "considered": [
+    {
+     "doc_id": "pi-91f252d29c6c476b9329876f851e1852",
+     "doc_name": "q1-fy25-earnings.pdf",
+     "node_id": "0007",
+     "title": "Experiences",
+     "locator": "page 9",
+     "pages": [
+      9
+     ]
+    }
+   ],
+   "seconds": {
+    "route": 0.001,
+    "select": 3.56,
+    "answer": 7.6,
+    "total": 11.16
+   },
+   "model_requests": 2,
+   "unverified_numbers": [],
+   "correct": false,
+   "located": false
+  },
+  {
+   "question": "What percentage of the India joint venture does Disney hold?",
+   "found": true,
+   "answer": "37%",
+   "citations": [
+    {
+     "doc_id": "pi-91f252d29c6c476b9329876f851e1852",
+     "doc_name": "q1-fy25-earnings.pdf",
+     "node_id": "0004",
+     "title": "Star India",
+     "locator": "page 4",
+     "pages": [
+      4
+     ]
+    }
+   ],
+   "considered": [
+    {
+     "doc_id": "pi-91f252d29c6c476b9329876f851e1852",
+     "doc_name": "q1-fy25-earnings.pdf",
+     "node_id": "0004",
+     "title": "Star India",
+     "locator": "page 4",
+     "pages": [
+      4
+     ]
+    }
+   ],
+   "seconds": {
+    "route": 0.001,
+    "select": 3.28,
+    "answer": 6.61,
+    "total": 9.89
+   },
+   "model_requests": 2,
+   "unverified_numbers": [],
+   "correct": true,
+   "located": true
+  },
+  {
+   "question": "Why did corporate and unallocated shared expenses increase?",
+   "found": false,
+   "answer": "The knowledge base does not appear to cover this question.",
+   "citations": [],
+   "considered": [],
+   "seconds": {
+    "route": 0.0,
+    "select": 4.41,
+    "total": 4.41
+   },
+   "model_requests": 1,
+   "unverified_numbers": [],
+   "correct": false,
+   "located": false
+  },
+  {
+   "question": "What operating income growth does Disney expect for Experiences in fiscal 2025?",
+   "found": true,
+   "answer": "The operating income growth for Experiences in fiscal 2025 is $15 million.",
+   "citations": [
+    {
+     "doc_id": "pi-91f252d29c6c476b9329876f851e1852",
+     "doc_name": "q1-fy25-earnings.pdf",
+     "node_id": "0005",
+     "title": "Entertainment",
+     "locator": "pages 4-7",
+     "pages": [
+      4,
+      5,
+      6,
+      7
+     ]
+    },
+    {
+     "doc_id": "pi-91f252d29c6c476b9329876f851e1852",
+     "doc_name": "q1-fy25-earnings.pdf",
+     "node_id": "0007",
+     "title": "Experiences",
+     "locator": "page 9",
+     "pages": [
+      9
+     ]
+    }
+   ],
+   "considered": [
+    {
+     "doc_id": "pi-91f252d29c6c476b9329876f851e1852",
+     "doc_name": "q1-fy25-earnings.pdf",
+     "node_id": "0005",
+     "title": "Entertainment",
+     "locator": "pages 4-7",
+     "pages": [
+      4,
+      5,
+      6,
+      7
+     ]
+    },
+    {
+     "doc_id": "pi-91f252d29c6c476b9329876f851e1852",
+     "doc_name": "q1-fy25-earnings.pdf",
+     "node_id": "0007",
+     "title": "Experiences",
+     "locator": "page 9",
+     "pages": [
+      9
+     ]
+    }
+   ],
+   "seconds": {
+    "route": 0.001,
+    "select": 3.65,
+    "answer": 48.97,
+    "total": 52.62
+   },
+   "model_requests": 2,
+   "unverified_numbers": [],
+   "correct": false,
+   "located": false
+  },
+  {
+   "question": "How many employees does Disney have?",
+   "found": false,
+   "answer": "The documents do not cover it.",
+   "citations": [],
+   "considered": [
+    {
+     "doc_id": "pi-91f252d29c6c476b9329876f851e1852",
+     "doc_name": "q1-fy25-earnings.pdf",
+     "node_id": "0000",
+     "title": "Financial Results for the Quarter:; Key Points:",
+     "locator": "page 1",
+     "pages": [
+      1
+     ]
+    },
+    {
+     "doc_id": "pi-91f252d29c6c476b9329876f851e1852",
+     "doc_name": "q1-fy25-earnings.pdf",
+     "node_id": "0001",
+     "title": "Guidance and Outlook:; Message From Our CEO:",
+     "locator": "page 2",
+     "pages": [
+      2
+     ]
+    },
+    {
+     "doc_id": "pi-91f252d29c6c476b9329876f851e1852",
+     "doc_name": "q1-fy25-earnings.pdf",
+     "node_id": "0002",
+     "title": "SUMMARIZED FINANCIAL RESULTS; SUMMARIZED SEGMENT FINANCIAL RESULTS",
+     "locator": "page 3",
+     "pages": [
+      3
+     ]
+    }
+   ],
+   "seconds": {
+    "route": 0.001,
+    "select": 24.45,
+    "answer": 33.15,
+    "total": 57.61
+   },
+   "model_requests": 2,
+   "unverified_numbers": [],
+   "correct": true,
+   "located": null
+  }
+ ]
+}

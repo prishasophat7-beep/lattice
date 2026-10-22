@@ -1,0 +1,1380 @@
+{
+ "meta": {
+  "label": "B2-reasoning-manuals",
+  "mode": "manuals",
+  "set": "reasoning",
+  "model": "local",
+  "chat_model": "local",
+  "semantic_model": null,
+  "engine_version": "0.1.0",
+  "started": "2026-10-18 02:40",
+  "finished": "2026-10-18 02:50"
+ },
+ "rows": [
+  {
+   "id": "r01",
+   "kb": "images",
+   "type": "vague",
+   "q": "What is the approval?",
+   "answerable": true,
+   "secs": 0.0,
+   "error": null,
+   "answer": "“approval” comes up in several places. Which one do you mean?",
+   "found": false,
+   "general": false,
+   "smalltalk": false,
+   "read": [],
+   "cited": [],
+   "tools": [],
+   "unverified": [],
+   "gold": [],
+   "facts": [],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": true,
+   "worked_out": false,
+   "expect": "clarify",
+   "inferred": false,
+   "correct": true,
+   "read_hit": null,
+   "cite_hit": null,
+   "hallucinated": false
+  },
+  {
+   "id": "r02",
+   "kb": "images",
+   "type": "vague",
+   "q": "What is the version?",
+   "answerable": true,
+   "secs": 0.0,
+   "error": null,
+   "answer": "“version” comes up in several places. Which one do you mean?",
+   "found": false,
+   "general": false,
+   "smalltalk": false,
+   "read": [],
+   "cited": [],
+   "tools": [],
+   "unverified": [],
+   "gold": [],
+   "facts": [],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": true,
+   "worked_out": false,
+   "expect": "clarify",
+   "inferred": false,
+   "correct": true,
+   "read_hit": null,
+   "cite_hit": null,
+   "hallucinated": false
+  },
+  {
+   "id": "r03",
+   "kb": "images",
+   "type": "vague",
+   "q": "How long?",
+   "answerable": true,
+   "secs": 0.0,
+   "error": null,
+   "answer": "Several parts of the documents give durations. Which one do you mean?",
+   "found": false,
+   "general": false,
+   "smalltalk": false,
+   "read": [],
+   "cited": [],
+   "tools": [],
+   "unverified": [],
+   "gold": [],
+   "facts": [],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": true,
+   "worked_out": false,
+   "expect": "clarify",
+   "inferred": false,
+   "correct": true,
+   "read_hit": null,
+   "cite_hit": null,
+   "hallucinated": false
+  },
+  {
+   "id": "r04",
+   "kb": "images",
+   "type": "fact",
+   "q": "How many days of privilege leave can be carried forward?",
+   "answerable": true,
+   "secs": 22.8,
+   "error": null,
+   "answer": "Up to 45 days",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "leave_policy.pdf::A. Privilege Leave & Casual / Sick Leave"
+   ],
+   "cited": [
+    "leave_policy.pdf::A. Privilege Leave & Casual / Sick Leave"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "leave_policy.pdf::A. Privilege Leave & Casual / Sick Leave"
+   ],
+   "facts": [
+    [
+     "45"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "r05",
+   "kb": "images",
+   "type": "vague-in-context",
+   "q": "And what is the limit for encashment?",
+   "answerable": true,
+   "secs": 26.7,
+   "error": null,
+   "answer": "Up to 15 days at year-end",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "leave_policy.pdf::Policy:",
+    "leave_policy.pdf::E. Official Medical Checkup Leave",
+    "leave_policy.pdf::HOLIDAYS",
+    "user_manual.docx::Adding Team Members",
+    "leave_policy.pdf::A. Privilege Leave & Casual / Sick Leave"
+   ],
+   "cited": [
+    "leave_policy.pdf::A. Privilege Leave & Casual / Sick Leave"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "leave_policy.pdf::A. Privilege Leave & Casual / Sick Leave"
+   ],
+   "facts": [
+    [
+     "15"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "r06",
+   "kb": "images",
+   "type": "inferential",
+   "q": "Can I carry 50 days of privilege leave into next year?",
+   "answerable": true,
+   "secs": 11.1,
+   "error": null,
+   "answer": "Yes. The documents state: Leave Type: Privilege Leave (PL) · Carry Forward: Up to 45 days",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "leave_policy.pdf::A. Privilege Leave & Casual / Sick Leave"
+   ],
+   "cited": [
+    "leave_policy.pdf::A. Privilege Leave & Casual / Sick Leave"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "leave_policy.pdf::A. Privilege Leave & Casual / Sick Leave"
+   ],
+   "facts": [
+    [
+     "no",
+     "cannot",
+     "can't",
+     "not"
+    ],
+    [
+     "45"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": true,
+   "expect": "answer",
+   "inferred": true,
+   "correct": false,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "r07",
+   "kb": "images",
+   "type": "inferential",
+   "q": "I was sick for 3 days in a row. Do I need a medical certificate?",
+   "answerable": true,
+   "secs": 8.7,
+   "error": null,
+   "answer": "Medical certificate required for Casual / Sick Leave (CL/SL) of more than 2 consecutive days.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "leave_policy.pdf::A. Privilege Leave & Casual / Sick Leave"
+   ],
+   "cited": [
+    "leave_policy.pdf::A. Privilege Leave & Casual / Sick Leave"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "leave_policy.pdf::A. Privilege Leave & Casual / Sick Leave"
+   ],
+   "facts": [
+    [
+     "yes",
+     "need",
+     "required",
+     "requires"
+    ],
+    [
+     "2"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": true,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "r08",
+   "kb": "images",
+   "type": "inferential",
+   "q": "How many sick days in a row can I take without a medical certificate?",
+   "answerable": true,
+   "secs": 20.7,
+   "error": null,
+   "answer": "1 day",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "leave_policy.pdf::A. Privilege Leave & Casual / Sick Leave"
+   ],
+   "cited": [
+    "leave_policy.pdf::A. Privilege Leave & Casual / Sick Leave"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "leave_policy.pdf::A. Privilege Leave & Casual / Sick Leave"
+   ],
+   "facts": [
+    [
+     "2",
+     "two"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": true,
+   "correct": false,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "r09",
+   "kb": "images",
+   "type": "inferential",
+   "q": "Can I combine casual leave with privilege leave for a longer break?",
+   "answerable": true,
+   "secs": 24.7,
+   "error": null,
+   "answer": "No. The documents state: Leave Type: Casual / Sick Leave (CL/SL) · Carry Forward: Not permitted",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "leave_policy.pdf::A. Privilege Leave & Casual / Sick Leave",
+    "leave_policy.pdf::B. Maternity / Paternity Leave",
+    "leave_policy.pdf::C. Marriage And Compassionate Leave"
+   ],
+   "cited": [
+    "leave_policy.pdf::A. Privilege Leave & Casual / Sick Leave",
+    "leave_policy.pdf::B. Maternity / Paternity Leave",
+    "leave_policy.pdf::C. Marriage And Compassionate Leave"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "leave_policy.pdf::A. Privilege Leave & Casual / Sick Leave"
+   ],
+   "facts": [
+    [
+     "no",
+     "cannot",
+     "can't",
+     "not"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": true,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "r10",
+   "kb": "images",
+   "type": "inferential",
+   "q": "I want 5 days of privilege leave starting next Monday and today is Thursday. Is that allowed?",
+   "answerable": true,
+   "secs": 18.1,
+   "error": null,
+   "answer": "The documents don't cover this.",
+   "found": false,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "leave_policy.pdf::A. Privilege Leave & Casual / Sick Leave",
+    "leave_policy.pdf::HOLIDAYS",
+    "leave_policy.pdf::ANNEXURE"
+   ],
+   "cited": [],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "leave_policy.pdf::A. Privilege Leave & Casual / Sick Leave"
+   ],
+   "facts": [
+    [
+     "no",
+     "not",
+     "cannot"
+    ],
+    [
+     "7"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": true,
+   "correct": false,
+   "read_hit": true,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "r11",
+   "kb": "images",
+   "type": "inferential",
+   "q": "This is my third child. How many weeks of maternity leave do I get?",
+   "answerable": true,
+   "secs": 4.1,
+   "error": null,
+   "answer": "12 weeks",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "leave_policy.pdf::B. Maternity / Paternity Leave"
+   ],
+   "cited": [
+    "leave_policy.pdf::B. Maternity / Paternity Leave"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "leave_policy.pdf::B. Maternity / Paternity Leave"
+   ],
+   "facts": [
+    [
+     "12"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": true,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "r12",
+   "kb": "images",
+   "type": "inferential",
+   "q": "Will TaskFlow Pro run on a laptop with 2 GB of RAM?",
+   "answerable": true,
+   "secs": 34.4,
+   "error": null,
+   "answer": "false",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "user_manual.docx::Requirements",
+    "user_manual.docx::Installation",
+    "user_manual.docx::Features"
+   ],
+   "cited": [
+    "user_manual.docx::Requirements",
+    "user_manual.docx::Installation",
+    "user_manual.docx::Features",
+    "user_manual.docx::Overview"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "user_manual.docx::Requirements"
+   ],
+   "facts": [
+    [
+     "no",
+     "not",
+     "below"
+    ],
+    [
+     "4 GB",
+     "4GB",
+     "4 gb"
+    ]
+   ],
+   "reference": "",
+   "shown": [
+    "user_manual.docx::figure_000.png"
+   ],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": true,
+   "correct": false,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "r13",
+   "kb": "images",
+   "type": "inferential",
+   "q": "I am 30 years old. Do I get the paid medical checkup leave?",
+   "answerable": true,
+   "secs": 5.2,
+   "error": null,
+   "answer": "Yes, employees aged 35 years and above are entitled to one day of paid leave per calendar year to undergo the company-sponsored annual health checkup at an empanelled hospital. The checkup report receipt must be uploaded to the HRMS portal within 7 days.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "leave_policy.pdf::E. Official Medical Checkup Leave"
+   ],
+   "cited": [
+    "leave_policy.pdf::E. Official Medical Checkup Leave"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "leave_policy.pdf::E. Official Medical Checkup Leave"
+   ],
+   "facts": [
+    [
+     "no",
+     "not",
+     "35"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": true,
+   "correct": false,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "r14",
+   "kb": "images",
+   "type": "multi-part",
+   "q": "Which Python packages does the API use and which leave needs a medical certificate?",
+   "answerable": true,
+   "secs": 30.8,
+   "error": null,
+   "answer": "Part 1: Python packages used by the API:\n- fastapi==0.115.6\n- uvicorn[standard]==0.32.1\n- pydantic==2.10.4\n- pydantic-settings==2.7.0\n- sqlalchemy==2.0.36\n- alembic==1.14.0\n- psycopg[binary]==3.2.3\n- python-jose[cryptography]==3.3.0\n- passlib[bcrypt]==1.7.4\n- python-multipart==0.0.20\n\nPart 2: Leave needing a medical certificate:\n- Casual / Sick Leave (CL/SL) of more than 2 consecutive days requires a medical certificate from a registered practitioner.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "leave_policy.pdf::Policy:",
+    "leave_policy.pdf::A. Privilege Leave & Casual / Sick Leave",
+    "leave_policy.pdf::B. Maternity / Paternity Leave",
+    "requirements.txt::requirements.txt"
+   ],
+   "cited": [
+    "requirements.txt::requirements.txt"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "requirements.txt::Core Packages",
+    "leave_policy.pdf::A. Privilege Leave & Casual / Sick Leave"
+   ],
+   "facts": [
+    [
+     "fastapi"
+    ],
+    [
+     "sick",
+     "CL/SL",
+     "casual"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "r15",
+   "kb": "images",
+   "type": "multi-part",
+   "q": "What is the minimum RAM for TaskFlow and how many paid holidays does the company observe?",
+   "answerable": true,
+   "secs": 31.6,
+   "error": null,
+   "answer": "Minimum RAM: 4 GB RAM. Paid holidays: 10.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "user_manual.docx::Introduction",
+    "user_manual.docx::About",
+    "user_manual.docx::Requirements",
+    "leave_policy.pdf::HOLIDAYS"
+   ],
+   "cited": [
+    "user_manual.docx::Introduction",
+    "user_manual.docx::Requirements",
+    "leave_policy.pdf::HOLIDAYS"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "user_manual.docx::Requirements",
+    "leave_policy.pdf::HOLIDAYS"
+   ],
+   "facts": [
+    [
+     "4 GB",
+     "4GB"
+    ],
+    [
+     "10",
+     "ten"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "r16",
+   "kb": "images",
+   "type": "multi-part",
+   "q": "How long do invitation links stay valid, and when must the manager approve a leave request?",
+   "answerable": true,
+   "secs": 15.6,
+   "error": null,
+   "answer": "1. Invitation links stay valid for 1 year. 2. The manager must approve a leave request within 2 working days.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "leave_policy.pdf::A. Privilege Leave & Casual / Sick Leave",
+    "leave_policy.pdf::Leave Approval Procedure",
+    "user_manual.docx::Integrations"
+   ],
+   "cited": [
+    "leave_policy.pdf::A. Privilege Leave & Casual / Sick Leave",
+    "leave_policy.pdf::Leave Approval Procedure"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "user_manual.docx::Adding Team Members",
+    "leave_policy.pdf::Leave Approval Procedure"
+   ],
+   "facts": [
+    [
+     "7"
+    ],
+    [
+     "2"
+    ]
+   ],
+   "reference": "",
+   "shown": [
+    "leave_policy.pdf::figure_000.png"
+   ],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": false,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "r17",
+   "kb": "images",
+   "type": "compare",
+   "q": "Which month had the best margin?",
+   "answerable": true,
+   "secs": 7.6,
+   "error": null,
+   "answer": "March",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "quarterly_report.xlsx::Sheet: Q1 Summary"
+   ],
+   "cited": [
+    "quarterly_report.xlsx::Sheet: Q1 Summary"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "quarterly_report.xlsx::Sheet: Q1 Summary"
+   ],
+   "facts": [
+    [
+     "March"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "r18",
+   "kb": "images",
+   "type": "compare",
+   "q": "Which month had the lowest expenses?",
+   "answerable": true,
+   "secs": 7.4,
+   "error": null,
+   "answer": "Worked out from the table: Lowest Expenses: January (181,200)",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "quarterly_report.xlsx::Sheet: Q1 Summary"
+   ],
+   "cited": [
+    "quarterly_report.xlsx::Sheet: Q1 Summary"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "quarterly_report.xlsx::Sheet: Q1 Summary"
+   ],
+   "facts": [
+    [
+     "January"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": true,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "r19",
+   "kb": "images",
+   "type": "compare",
+   "q": "Compare March vs January profit.",
+   "answerable": true,
+   "secs": 8.6,
+   "error": null,
+   "answer": "March profit: 93,100; January profit: 67,300; Difference: 25,800",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "quarterly_report.xlsx::Sheet: Q1 Summary"
+   ],
+   "cited": [
+    "quarterly_report.xlsx::Sheet: Q1 Summary"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "quarterly_report.xlsx::Sheet: Q1 Summary"
+   ],
+   "facts": [
+    [
+     "25,800",
+     "25800"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": true,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "r20",
+   "kb": "images",
+   "type": "compare",
+   "q": "By how much did revenue grow from January to February?",
+   "answerable": true,
+   "secs": 9.0,
+   "error": null,
+   "answer": "15,400",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "quarterly_report.xlsx::Sheet: Q1 Summary"
+   ],
+   "cited": [
+    "quarterly_report.xlsx::Sheet: Q1 Summary"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "quarterly_report.xlsx::Sheet: Q1 Summary"
+   ],
+   "facts": [
+    [
+     "15,400",
+     "15400"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": true,
+   "expect": "answer",
+   "inferred": true,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "r21",
+   "kb": "images",
+   "type": "compare",
+   "q": "Which award gives more leave days, Employee of the Year or Quarterly Star Performer?",
+   "answerable": true,
+   "secs": 18.6,
+   "error": null,
+   "answer": "The documents don't cover this.",
+   "found": false,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "leave_policy.pdf::D. Award Leave"
+   ],
+   "cited": [],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "leave_policy.pdf::D. Award Leave"
+   ],
+   "facts": [
+    [
+     "Employee of the Year"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": true,
+   "correct": false,
+   "read_hit": true,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "r22",
+   "kb": "images",
+   "type": "follow-up",
+   "q": "What was the revenue in January?",
+   "answerable": true,
+   "secs": 6.8,
+   "error": null,
+   "answer": "248,500",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "quarterly_report.xlsx::Sheet: Q1 Summary"
+   ],
+   "cited": [
+    "quarterly_report.xlsx::Sheet: Q1 Summary"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "quarterly_report.xlsx::Sheet: Q1 Summary"
+   ],
+   "facts": [
+    [
+     "248,500",
+     "248500"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "r23",
+   "kb": "images",
+   "type": "follow-up",
+   "q": "And in March?",
+   "answerable": true,
+   "secs": 33.0,
+   "error": null,
+   "answer": "291,400",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "quarterly_report.xlsx::Sheet: Q1 Summary",
+    "leave_policy.pdf::LEAVE POLICY",
+    "user_manual.docx::Introduction",
+    "quarterly_report.xlsx::quarterly_report.xlsx"
+   ],
+   "cited": [
+    "quarterly_report.xlsx::Sheet: Q1 Summary",
+    "quarterly_report.xlsx::quarterly_report.xlsx"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "quarterly_report.xlsx::Sheet: Q1 Summary"
+   ],
+   "facts": [
+    [
+     "291,400",
+     "291400"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "r24",
+   "kb": "images",
+   "type": "follow-up",
+   "q": "What is the increase between the two?",
+   "answerable": true,
+   "secs": 25.9,
+   "error": null,
+   "answer": "100",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "config.xml::<component name=\"ProjectCodeStyleConfiguration\">",
+    "config.xml::<code_scheme name=\"Project\" version=\"173\">",
+    "config.xml::<HTMLCodeStyleSettings>",
+    "config.xml::<option name=\"SPACE_BEFORE_FUNCTION_LEFT_PARENTH\" value=\"false\" />"
+   ],
+   "cited": [
+    "config.xml::<component name=\"ProjectCodeStyleConfiguration\">",
+    "config.xml::<code_scheme name=\"Project\" version=\"173\">",
+    "config.xml::<HTMLCodeStyleSettings>",
+    "config.xml::<option name=\"SPACE_BEFORE_FUNCTION_LEFT_PARENTH\" value=\"false\" />"
+   ],
+   "tools": [],
+   "unverified": [
+    "100"
+   ],
+   "gold": [
+    "quarterly_report.xlsx::Sheet: Q1 Summary"
+   ],
+   "facts": [
+    [
+     "42,900",
+     "42900"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": true,
+   "correct": false,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "r25",
+   "kb": "images",
+   "type": "partial",
+   "q": "How many days of privilege leave do I get, and is there an overtime allowance?",
+   "answerable": true,
+   "secs": 28.2,
+   "error": null,
+   "answer": "18 days; No overtime allowance.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "leave_policy.pdf::A. Privilege Leave & Casual / Sick Leave",
+    "leave_policy.pdf::B. Maternity / Paternity Leave"
+   ],
+   "cited": [
+    "leave_policy.pdf::A. Privilege Leave & Casual / Sick Leave"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "leave_policy.pdf::A. Privilege Leave & Casual / Sick Leave"
+   ],
+   "facts": [
+    [
+     "18"
+    ],
+    [
+     "not",
+     "no ",
+     "don't"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "r26",
+   "kb": "images",
+   "type": "near-miss",
+   "q": "How do I reset my password in TaskFlow?",
+   "answerable": false,
+   "secs": 20.1,
+   "error": null,
+   "answer": "The user manual states that the default view for User Preferences is 'Board'. It also mentions that Admins connect integrations from 'Settings > Workspace > Integrations'.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "user_manual.docx::Introduction",
+    "user_manual.docx::Configuration",
+    "user_manual.docx::User Preferences",
+    "leave_policy.pdf::Purpose and Scope:"
+   ],
+   "cited": [
+    "user_manual.docx::Introduction",
+    "user_manual.docx::Configuration",
+    "leave_policy.pdf::Purpose and Scope:"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [],
+   "facts": [],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": false,
+   "read_hit": null,
+   "cite_hit": null,
+   "hallucinated": true
+  },
+  {
+   "id": "r27",
+   "kb": "images",
+   "type": "near-miss",
+   "q": "How much does TaskFlow Pro cost per user?",
+   "answerable": false,
+   "secs": 40.7,
+   "error": null,
+   "answer": "The documents don't cover this.",
+   "found": false,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "user_manual.docx::Introduction",
+    "user_manual.docx::About",
+    "user_manual.docx::Requirements",
+    "user_manual.docx::TaskFlow Pro 4.2 - User Manual"
+   ],
+   "cited": [],
+   "tools": [],
+   "unverified": [],
+   "gold": [],
+   "facts": [],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": null,
+   "cite_hit": null,
+   "hallucinated": false
+  },
+  {
+   "id": "r28",
+   "kb": "images",
+   "type": "near-miss",
+   "q": "How many days of bereavement leave do contractors get?",
+   "answerable": false,
+   "secs": 13.9,
+   "error": null,
+   "answer": "18 days",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "leave_policy.pdf::A. Privilege Leave & Casual / Sick Leave",
+    "leave_policy.pdf::E. Official Medical Checkup Leave"
+   ],
+   "cited": [
+    "leave_policy.pdf::A. Privilege Leave & Casual / Sick Leave"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [],
+   "facts": [],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": false,
+   "read_hit": null,
+   "cite_hit": null,
+   "hallucinated": true
+  },
+  {
+   "id": "r29",
+   "kb": "images",
+   "type": "near-miss",
+   "q": "What was the profit in April?",
+   "answerable": false,
+   "secs": 21.7,
+   "error": null,
+   "answer": "The documents don't cover this.",
+   "found": false,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "quarterly_report.xlsx::quarterly_report.xlsx",
+    "leave_policy.pdf::LEAVE POLICY"
+   ],
+   "cited": [],
+   "tools": [],
+   "unverified": [],
+   "gold": [],
+   "facts": [],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": null,
+   "cite_hit": null,
+   "hallucinated": false
+  },
+  {
+   "id": "r30",
+   "kb": "images",
+   "type": "fact",
+   "q": "What does the user manual say about the Image Type preference?",
+   "answerable": false,
+   "secs": 28.5,
+   "error": null,
+   "answer": "The user manual states that the default view is 'Board'.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "user_manual.docx::Configuration",
+    "manifest.json::manifest.json"
+   ],
+   "cited": [
+    "user_manual.docx::Configuration",
+    "manifest.json::manifest.json",
+    "leave_policy.pdf::Leave Approval Procedure"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [],
+   "facts": [],
+   "reference": "",
+   "shown": [
+    "leave_policy.pdf::figure_000.png"
+   ],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": false,
+   "read_hit": null,
+   "cite_hit": null,
+   "hallucinated": true
+  },
+  {
+   "id": "r31",
+   "kb": "images",
+   "type": "fact",
+   "q": "What does the user_manual.docx say about the Theme preference?",
+   "answerable": true,
+   "secs": 25.6,
+   "error": null,
+   "answer": "The Theme preference is set to 'System' in the User Preferences section of the TaskFlow Pro 4.2 manual.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "user_manual.docx::User Preferences"
+   ],
+   "cited": [
+    "user_manual.docx::User Preferences"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "user_manual.docx::User Preferences"
+   ],
+   "facts": [
+    [
+     "Light"
+    ],
+    [
+     "Dark"
+    ],
+    [
+     "System"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": false,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "r32",
+   "kb": "images",
+   "type": "fact",
+   "q": "What does the leave_policy.pdf say about marriage leave?",
+   "answerable": true,
+   "secs": 63.6,
+   "error": null,
+   "answer": "Marriage leave: 5 working days, available once during employment, to be taken within 1 month of the wedding date. Proof (invitation or certificate) is required.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "leave_policy.pdf::C. Marriage And Compassionate Leave",
+    "leave_policy.pdf::leave_policy.pdf"
+   ],
+   "cited": [
+    "leave_policy.pdf::C. Marriage And Compassionate Leave"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "leave_policy.pdf::C. Marriage And Compassionate Leave"
+   ],
+   "facts": [
+    [
+     "5"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  }
+ ]
+}

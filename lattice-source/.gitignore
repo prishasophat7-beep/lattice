@@ -1,0 +1,26 @@
+# environments and build output
+.venv/
+.venv-eval/
+node_modules/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+target/
+
+# secrets and local settings
+.env
+.env.*
+
+# models and large or regenerated data
+*.gguf
+*.npz
+app/runtime/
+app/backend/eval/rag_eval/data/
+app/backend/eval/rag_eval/work/
+
+# logs and test output
+*.log
+*.bak

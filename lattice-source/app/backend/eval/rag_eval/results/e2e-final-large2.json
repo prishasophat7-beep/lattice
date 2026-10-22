@@ -1,0 +1,559 @@
+{
+ "meta": {
+  "label": "final-large2",
+  "mode": "manuals",
+  "set": "large",
+  "model": "local",
+  "chat_model": "local",
+  "semantic_model": null,
+  "engine_version": "0.1.0",
+  "started": "2026-10-17 20:37",
+  "finished": "2026-10-17 20:49"
+ },
+ "rows": [
+  {
+   "id": "L01",
+   "kb": "helix",
+   "type": "deep-fact",
+   "q": "What torque are the Z-axis motor coupling screws on the HX-900 tightened to?",
+   "answerable": true,
+   "secs": 44.2,
+   "error": null,
+   "answer": "38 Nm",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "HX-500_manual.pdf::8. Torque values",
+    "HX-500_manual.pdf::9. Warranty",
+    "HX-900_service_manual.pdf::37.4 Replace the encoder bearing"
+   ],
+   "cited": [
+    "HX-900_service_manual.pdf::37.4 Replace the encoder bearing"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [],
+   "facts": [
+    [
+     "38 Nm",
+     "38 N"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "L02",
+   "kb": "helix",
+   "type": "deep-fact",
+   "q": "What holding torque must the HX-900 rotary table brake have?",
+   "answerable": true,
+   "secs": 59.6,
+   "error": null,
+   "answer": "900 Nm",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "HX-900_service_manual.pdf::14.5 Inspect the rotary table cable",
+    "HX-900_service_manual.pdf::14.6 Clean the rotary table valve",
+    "HX-900_service_manual.pdf::16. Linear Guide service",
+    "HX-900_service_manual.pdf::13.2 Clean the door interlock fuse"
+   ],
+   "cited": [
+    "HX-900_service_manual.pdf::13.2 Clean the door interlock fuse"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [],
+   "facts": [
+    [
+     "900 Nm",
+     "900 N"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "L03",
+   "kb": "helix",
+   "type": "long-section",
+   "q": "When may an HX-900 be released to production after commissioning?",
+   "answerable": true,
+   "secs": 78.0,
+   "error": null,
+   "answer": "The machine may be released to production only after the 72-hour dry run is completed without any alarm and the commissioning engineer and the plant manager have both signed form HX9-COM-7.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "HX-900_service_manual.pdf::HX-900_service_manual.pdf",
+    "HX-900_service_manual.pdf::17. Encoder maintenance",
+    "HX-900_service_manual.pdf::18. Servo Amplifier service",
+    "HX-900_service_manual.pdf::22.6 Lubricate the spindle cartridge relay"
+   ],
+   "cited": [
+    "HX-900_service_manual.pdf::HX-900_service_manual.pdf"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [],
+   "facts": [
+    [
+     "72"
+    ],
+    [
+     "HX9-COM-7",
+     "sign"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "L04",
+   "kb": "helix",
+   "type": "deep-fact",
+   "q": "How often must the HX-900 spindle cartridge be rebuilt?",
+   "answerable": true,
+   "secs": 45.7,
+   "error": null,
+   "answer": "15,000 operating hours",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "HX-900_service_manual.pdf::2.6 Check the spindle cartridge belt",
+    "HX-900_service_manual.pdf::22.1 Inspect the spindle cartridge fuse",
+    "HX-900_service_manual.pdf::22.5 Measure the spindle cartridge hose",
+    "HX-900_service_manual.pdf::5.5 Tighten the way covers coupling"
+   ],
+   "cited": [
+    "HX-900_service_manual.pdf::5.5 Tighten the way covers coupling"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [],
+   "facts": [
+    [
+     "15,000",
+     "15000"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "L05",
+   "kb": "helix",
+   "type": "big-table",
+   "q": "What is the price of part HX9-4471?",
+   "answerable": true,
+   "secs": 64.7,
+   "error": null,
+   "answer": "2,350 INR",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "HX-900_service_manual.pdf::30.3 Lubricate the electrical cabinet sensor",
+    "HX-900_spare_parts.xlsx::Parts list"
+   ],
+   "cited": [
+    "HX-900_spare_parts.xlsx::Parts list"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [],
+   "facts": [
+    [
+     "2,350",
+     "2350"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": true,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "L06",
+   "kb": "helix",
+   "type": "big-table",
+   "q": "Which HX-900 spare part has the longest lead time?",
+   "answerable": true,
+   "secs": 50.2,
+   "error": null,
+   "answer": "Worked out from the table: Highest Lead time (days): HX9-4970 (95)",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "HX-900_spare_parts.xlsx::Parts list"
+   ],
+   "cited": [
+    "HX-900_spare_parts.xlsx::Parts list"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [],
+   "facts": [
+    [
+     "HX9-4970",
+     "rebuild kit"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": true,
+   "expect": "answer",
+   "inferred": true,
+   "correct": true,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "L07",
+   "kb": "helix",
+   "type": "partial-table",
+   "q": "What was the highest bearing temperature in the HX-900 spindle log?",
+   "answerable": true,
+   "secs": 59.1,
+   "error": null,
+   "answer": "61.4 C",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "HX-900_spindle_log.csv::HX-900_spindle_log.csv",
+    "HX-900_spindle_log.csv::Sheet: Spindle log"
+   ],
+   "cited": [
+    "HX-900_spindle_log.csv::HX-900_spindle_log.csv",
+    "HX-900_spindle_log.csv::Sheet: Spindle log"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [],
+   "facts": [
+    [
+     "61.4"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "L08",
+   "kb": "helix",
+   "type": "cross-document",
+   "q": "What does alarm C-2087 mean on the HX-900, and what does the replacement part cost?",
+   "answerable": true,
+   "secs": 113.9,
+   "error": null,
+   "answer": "1. What does alarm C-2087 mean on the HX-900: Alarm C-2087 means a way cover jam. The procedure states to stop the axes, remove chips from the cover lip, and replace the cover wiper strip (part HX9-4471) if the cover is torn. If the electrical cabinet shows wear above 50 %, replace the switch before the next shift.\n2. what does the replacement part cost: 2,350 INR",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "HX-900_service_manual.pdf::30.3 Lubricate the electrical cabinet sensor",
+    "HX-900_spare_parts.xlsx::HX-900 Spare Parts Catalogue",
+    "HX-900_spare_parts.xlsx::Parts list",
+    "HX-900_service_manual.pdf::30. Electrical Cabinet service"
+   ],
+   "cited": [
+    "HX-900_service_manual.pdf::30.3 Lubricate the electrical cabinet sensor",
+    "HX-900_service_manual.pdf::30. Electrical Cabinet service",
+    "HX-900_spare_parts.xlsx::Parts list"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [],
+   "facts": [
+    [
+     "jam",
+     "way cover"
+    ],
+    [
+     "2,350",
+     "2350"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": true,
+   "correct": true,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "L09",
+   "kb": "helix",
+   "type": "near-miss",
+   "q": "What torque are the Z-axis motor coupling screws on the HX-950 tightened to?",
+   "answerable": false,
+   "secs": 51.4,
+   "error": null,
+   "answer": "The documents don't cover this.",
+   "found": false,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "HX-500_manual.pdf::9. Warranty",
+    "HX-500_manual.pdf::8. Torque values",
+    "HX-900_service_manual.pdf::37.4 Replace the encoder bearing"
+   ],
+   "cited": [],
+   "tools": [],
+   "unverified": [],
+   "gold": [],
+   "facts": [],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": null,
+   "cite_hit": null,
+   "hallucinated": false
+  },
+  {
+   "id": "L10",
+   "kb": "helix",
+   "type": "follow-up",
+   "q": "What is the price of part HX9-4471?",
+   "answerable": true,
+   "secs": 64.9,
+   "error": null,
+   "answer": "2,350 INR",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "HX-900_service_manual.pdf::30.3 Lubricate the electrical cabinet sensor",
+    "HX-900_spare_parts.xlsx::Parts list"
+   ],
+   "cited": [
+    "HX-900_spare_parts.xlsx::Parts list"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [],
+   "facts": [
+    [
+     "2,350",
+     "2350"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": true,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "L11",
+   "kb": "helix",
+   "type": "follow-up",
+   "q": "And its lead time?",
+   "answerable": true,
+   "secs": 73.0,
+   "error": null,
+   "answer": "10 days",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "HX-900_spare_parts.xlsx::Parts list",
+    "HX-900_spare_parts.xlsx::HX-900 Spare Parts Catalogue",
+    "HX-900_spare_parts.xlsx::HX-900_spare_parts.xlsx",
+    "HX-900_service_manual.pdf::30.3 Lubricate the electrical cabinet sensor"
+   ],
+   "cited": [
+    "HX-900_spare_parts.xlsx::Parts list",
+    "HX-900_service_manual.pdf::30.3 Lubricate the electrical cabinet sensor"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [],
+   "facts": [
+    [
+     "10 days",
+     "10"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": true,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "L12",
+   "kb": "helix",
+   "type": "fresh-in-conversation",
+   "q": "What is the hotel limit per night for a G2 engineer in Pune?",
+   "answerable": true,
+   "secs": 5.9,
+   "error": null,
+   "answer": "6,000",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "travel_expense_policy.pdf::4. Accommodation limits per night (INR)"
+   ],
+   "cited": [
+    "travel_expense_policy.pdf::4. Accommodation limits per night (INR)"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [],
+   "facts": [
+    [
+     "6,000",
+     "6000"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "L13",
+   "kb": "helix",
+   "type": "fresh-in-conversation",
+   "q": "Which lines met the scrap rate target in every month?",
+   "answerable": true,
+   "secs": 8.2,
+   "error": null,
+   "answer": "Line A",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "plant_performance_h1_2026.xlsx::Sheet: Scrap rate (%)"
+   ],
+   "cited": [
+    "plant_performance_h1_2026.xlsx::Sheet: Scrap rate (%)"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [],
+   "facts": [
+    [
+     "Line A"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  }
+ ]
+}

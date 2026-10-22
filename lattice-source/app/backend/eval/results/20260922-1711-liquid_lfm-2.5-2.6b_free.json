@@ -1,0 +1,141 @@
+{
+ "model": "liquid/lfm-2.5-2.6b:free",
+ "output_mode": "native",
+ "kb_version": "2026.09.22-sample",
+ "asked": 3,
+ "answered": 3,
+ "correct": 2,
+ "located": 2,
+ "answerable": 3,
+ "avg_seconds": 33.2,
+ "requests": 6,
+ "rows": [
+  {
+   "question": "What was Disney's total revenue in Q1 fiscal 2025 and how much did it grow?",
+   "found": true,
+   "answer": "Disney's total revenue in Q1 fiscal 2025 was $24.7 billion, representing a 5% increase from $23.5 billion in Q1 fiscal 2024.",
+   "citations": [
+    {
+     "doc_id": "pi-91f252d29c6c476b9329876f851e1852",
+     "doc_name": "q1-fy25-earnings.pdf",
+     "node_id": "0000",
+     "title": "Financial Results for the Quarter:; Key Points:",
+     "locator": "page 1",
+     "pages": [
+      1
+     ]
+    }
+   ],
+   "considered": [
+    {
+     "doc_id": "pi-91f252d29c6c476b9329876f851e1852",
+     "doc_name": "q1-fy25-earnings.pdf",
+     "node_id": "0000",
+     "title": "Financial Results for the Quarter:; Key Points:",
+     "locator": "page 1",
+     "pages": [
+      1
+     ]
+    }
+   ],
+   "seconds": {
+    "route": 0.001,
+    "select": 32.83,
+    "answer": 6.19,
+    "total": 39.02
+   },
+   "model_requests": 2,
+   "correct": true,
+   "located": true
+  },
+  {
+   "question": "Why did capital expenditures increase this quarter?",
+   "found": true,
+   "answer": "Capital expenditures increased to $2.5 billion from $1.3 billion primarily due to higher spend on cruise ship fleet expansion at the Experiences segment.",
+   "citations": [
+    {
+     "doc_id": "pi-91f252d29c6c476b9329876f851e1852",
+     "doc_name": "q1-fy25-earnings.pdf",
+     "node_id": "0012",
+     "title": "Capital Expenditures; Depreciation Expense",
+     "locator": "page 12",
+     "pages": [
+      12
+     ]
+    }
+   ],
+   "considered": [
+    {
+     "doc_id": "pi-91f252d29c6c476b9329876f851e1852",
+     "doc_name": "q1-fy25-earnings.pdf",
+     "node_id": "0012",
+     "title": "Capital Expenditures; Depreciation Expense",
+     "locator": "page 12",
+     "pages": [
+      12
+     ]
+    }
+   ],
+   "seconds": {
+    "route": 0.001,
+    "select": 9.42,
+    "answer": 5.47,
+    "total": 14.89
+   },
+   "model_requests": 2,
+   "correct": true,
+   "located": true
+  },
+  {
+   "question": "What was the effective income tax rate this quarter, and why did it go up?",
+   "found": true,
+   "answer": "The effective income tax rate for Q1 FY25 (quarter ended December 28, 2024) was approximately 27.75% ($1,016M in income taxes divided by $3,660M in pre-tax income). It went up because the excluded items (restructuring and impairment charges and amortization of TFCF and Hulu intangible assets) increased by $143M and $397M respectively compared to the prior year, which reduced after-tax income relative to pre-tax income, causing the effective tax rate to rise from approximately 25.1% to 27.75%.",
+   "citations": [
+    {
+     "doc_id": "pi-91f252d29c6c476b9329876f851e1852",
+     "doc_name": "q1-fy25-earnings.pdf",
+     "node_id": "0013",
+     "title": "THE WALT DISNEY COMPANY CONDENSED CONSOLIDATED STATEMENTS OF INCOME (unaudited; $ in millions, except per share data)",
+     "locator": "page 13",
+     "pages": [
+      13
+     ]
+    }
+   ],
+   "considered": [
+    {
+     "doc_id": "pi-91f252d29c6c476b9329876f851e1852",
+     "doc_name": "q1-fy25-earnings.pdf",
+     "node_id": "0013",
+     "title": "THE WALT DISNEY COMPANY CONDENSED CONSOLIDATED STATEMENTS OF INCOME (unaudited; $ in millions, except per share data)",
+     "locator": "page 13",
+     "pages": [
+      13
+     ]
+    },
+    {
+     "doc_id": "pi-91f252d29c6c476b9329876f851e1852",
+     "doc_name": "q1-fy25-earnings.pdf",
+     "node_id": "0016",
+     "title": "NON-GAAP FINANCIAL MEASURES",
+     "locator": "pages 17-20",
+     "pages": [
+      17,
+      18,
+      19,
+      20
+     ]
+    }
+   ],
+   "seconds": {
+    "route": 0.0,
+    "select": 7.46,
+    "answer": 38.1,
+    "total": 45.57
+   },
+   "model_requests": 2,
+   "correct": false,
+   "located": false
+  }
+ ]
+}

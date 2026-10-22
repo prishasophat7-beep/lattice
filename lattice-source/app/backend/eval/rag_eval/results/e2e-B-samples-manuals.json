@@ -1,0 +1,2273 @@
+{
+ "meta": {
+  "label": "B-samples-manuals",
+  "mode": "manuals",
+  "set": "samples",
+  "model": "local",
+  "chat_model": "local",
+  "semantic_model": null,
+  "engine_version": "0.1.0",
+  "started": "2026-10-18 00:18"
+ },
+ "rows": [
+  {
+   "id": "a01",
+   "kb": "acme",
+   "type": "fact",
+   "q": "How many weeks of parental leave do employees get?",
+   "answerable": true,
+   "secs": 21.9,
+   "error": null,
+   "answer": "16 weeks",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "employee_handbook_2026.pdf::3 Working Hours and Leave"
+   ],
+   "cited": [
+    "employee_handbook_2026.pdf::3 Working Hours and Leave"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "employee_handbook_2026.pdf::3 Working Hours and Leave"
+   ],
+   "facts": [
+    [
+     "16"
+    ]
+   ],
+   "reference": "",
+   "shown": [
+    "employee_handbook_2026.pdf::figure_001.png"
+   ],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "a02",
+   "kb": "acme",
+   "type": "follow-up",
+   "q": "Is it paid?",
+   "answerable": true,
+   "secs": 102.7,
+   "error": null,
+   "answer": "Yes. The documents state: *Figure 2: Paid time off allowance increases with years of service*",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "employee_handbook_2026.pdf::1.1 Our Values",
+    "employee_handbook_2026.pdf::2 Organization",
+    "employee_handbook_2026.pdf::3 Working Hours and Leave"
+   ],
+   "cited": [
+    "employee_handbook_2026.pdf::1.1 Our Values",
+    "employee_handbook_2026.pdf::2 Organization",
+    "employee_handbook_2026.pdf::3 Working Hours and Leave"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "employee_handbook_2026.pdf::3 Working Hours and Leave"
+   ],
+   "facts": [
+    [
+     "fully paid",
+     "yes"
+    ]
+   ],
+   "reference": "",
+   "shown": [
+    "employee_handbook_2026.pdf::figure_000.png"
+   ],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": true,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "a03",
+   "kb": "acme",
+   "type": "table",
+   "q": "How many sick days do we get per year, and when is a doctor's note needed?",
+   "answerable": true,
+   "secs": 107.3,
+   "error": null,
+   "answer": "10 days per year; No doctor's note needed for up to 3 consecutive days.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "employee_handbook_2026.pdf::2 Organization",
+    "employee_handbook_2026.pdf::3 Working Hours and Leave",
+    "employee_handbook_2026.pdf::3.1 Remote Work"
+   ],
+   "cited": [
+    "employee_handbook_2026.pdf::3 Working Hours and Leave"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "employee_handbook_2026.pdf::3 Working Hours and Leave"
+   ],
+   "facts": [
+    [
+     "10"
+    ],
+    [
+     "3"
+    ]
+   ],
+   "reference": "",
+   "shown": [
+    "employee_handbook_2026.pdf::figure_001.png"
+   ],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "a04",
+   "kb": "acme",
+   "type": "fact",
+   "q": "What are Acme's core collaboration hours?",
+   "answerable": true,
+   "secs": 21.2,
+   "error": null,
+   "answer": "10:00 to 15:00",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "employee_handbook_2026.pdf::3 Working Hours and Leave"
+   ],
+   "cited": [
+    "employee_handbook_2026.pdf::3 Working Hours and Leave"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "employee_handbook_2026.pdf::3 Working Hours and Leave"
+   ],
+   "facts": [
+    [
+     "10:00",
+     "10 am",
+     "10am",
+     "10 a.m"
+    ],
+    [
+     "15:00",
+     "3 pm",
+     "3pm",
+     "3 p.m"
+    ]
+   ],
+   "reference": "",
+   "shown": [
+    "employee_handbook_2026.pdf::figure_001.png"
+   ],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "a05",
+   "kb": "acme",
+   "type": "fact",
+   "q": "How much is the home office stipend?",
+   "answerable": true,
+   "secs": 22.1,
+   "error": null,
+   "answer": "750",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "employee_handbook_2026.pdf::3.1 Remote Work"
+   ],
+   "cited": [
+    "employee_handbook_2026.pdf::3.1 Remote Work"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "employee_handbook_2026.pdf::3.1 Remote Work"
+   ],
+   "facts": [
+    [
+     "750"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "a06",
+   "kb": "acme",
+   "type": "fact",
+   "q": "How many days a week do employees who live near an office have to work there?",
+   "answerable": true,
+   "secs": 72.6,
+   "error": null,
+   "answer": "The documents don't cover this.",
+   "found": false,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "employee_handbook_2026.pdf::3.1 Remote Work"
+   ],
+   "cited": [],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "employee_handbook_2026.pdf::3.1 Remote Work"
+   ],
+   "facts": [
+    [
+     "two",
+     "2"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": false,
+   "read_hit": true,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "a07",
+   "kb": "acme",
+   "type": "table",
+   "q": "What is the 401(k) match?",
+   "answerable": true,
+   "secs": 14.3,
+   "error": null,
+   "answer": "100%",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "employee_handbook_2026.pdf::4 Compensation and Benefits"
+   ],
+   "cited": [
+    "employee_handbook_2026.pdf::4 Compensation and Benefits"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "employee_handbook_2026.pdf::4 Compensation and Benefits"
+   ],
+   "facts": [
+    [
+     "4%",
+     "4 %",
+     "4 percent"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": false,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "a08",
+   "kb": "acme",
+   "type": "fact",
+   "q": "When is compensation reviewed?",
+   "answerable": true,
+   "secs": 13.3,
+   "error": null,
+   "answer": "Compensation is reviewed once a year in March.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "employee_handbook_2026.pdf::4 Compensation and Benefits"
+   ],
+   "cited": [
+    "employee_handbook_2026.pdf::4 Compensation and Benefits"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "employee_handbook_2026.pdf::4 Compensation and Benefits"
+   ],
+   "facts": [
+    [
+     "march"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "a09",
+   "kb": "acme",
+   "type": "arithmetic",
+   "q": "What is the learning budget plus the home office stipend in total?",
+   "answerable": true,
+   "secs": 24.8,
+   "error": null,
+   "answer": "USD 750 + USD 50 = USD 800",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "employee_handbook_2026.pdf::5 Code of Conduct",
+    "employee_handbook_2026.pdf::3.1 Remote Work"
+   ],
+   "cited": [
+    "employee_handbook_2026.pdf::3.1 Remote Work"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "employee_handbook_2026.pdf::4 Compensation and Benefits",
+    "employee_handbook_2026.pdf::3.1 Remote Work"
+   ],
+   "facts": [
+    [
+     "2,250",
+     "2250"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": false,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "a10",
+   "kb": "acme",
+   "type": "fact",
+   "q": "What is the maximum value of a gift I can accept from a vendor?",
+   "answerable": true,
+   "secs": 17.4,
+   "error": null,
+   "answer": "100",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "employee_handbook_2026.pdf::5 Code of Conduct"
+   ],
+   "cited": [
+    "employee_handbook_2026.pdf::5 Code of Conduct"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "employee_handbook_2026.pdf::5 Code of Conduct"
+   ],
+   "facts": [
+    [
+     "100"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "a11",
+   "kb": "acme",
+   "type": "fact",
+   "q": "What is the IT help desk extension?",
+   "answerable": true,
+   "secs": 38.7,
+   "error": null,
+   "answer": "4357",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "it_setup_guide.docx::Getting Support"
+   ],
+   "cited": [
+    "it_setup_guide.docx::Getting Support"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "employee_handbook_2026.pdf::6 Getting Help",
+    "it_setup_guide.docx::Getting Support",
+    "security_awareness_training_module2.docx::Reporting Suspicious Messages"
+   ],
+   "facts": [
+    [
+     "4357"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "a12",
+   "kb": "acme",
+   "type": "fact",
+   "q": "What is the VPN server address and port?",
+   "answerable": true,
+   "secs": 16.3,
+   "error": null,
+   "answer": "Server address: vpn.acme-corp.com, Port: 4500",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "it_setup_guide.docx::Connecting to VPN"
+   ],
+   "cited": [
+    "it_setup_guide.docx::Connecting to VPN"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "it_setup_guide.docx::Connecting to VPN"
+   ],
+   "facts": [
+    [
+     "vpn.acme-corp.com"
+    ],
+    [
+     "4500"
+    ]
+   ],
+   "reference": "",
+   "shown": [
+    "it_setup_guide.docx::figure_001.png"
+   ],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "a13",
+   "kb": "acme",
+   "type": "follow-up",
+   "q": "When do I need it?",
+   "answerable": true,
+   "secs": 93.2,
+   "error": null,
+   "answer": "It is required for internal tools such as the build servers, the finance data warehouse and staging environments.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "it_setup_guide.docx::Connecting to VPN",
+    "it_setup_guide.docx::Software Catalog",
+    "security_awareness_training_module2.docx::Why Phishing Matters"
+   ],
+   "cited": [
+    "it_setup_guide.docx::Connecting to VPN",
+    "it_setup_guide.docx::Software Catalog",
+    "security_awareness_training_module2.docx::Why Phishing Matters"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "it_setup_guide.docx::Connecting to VPN"
+   ],
+   "facts": [
+    [
+     "build server",
+     "finance",
+     "staging",
+     "internal"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "a14",
+   "kb": "acme",
+   "type": "procedure",
+   "q": "How do I set up multi-factor authentication?",
+   "answerable": true,
+   "secs": 43.9,
+   "error": null,
+   "answer": "1. Install Okta Verify from the App Store or Google Play. 2. On the MFA setup screen, choose Okta Verify and scan the QR code. 3. Approve the test push notification. 4. Optional: register a YubiKey as a backup factor.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "it_setup_guide.docx::Multi-Factor Authentication",
+    "it_setup_guide.docx::Connecting to VPN",
+    "it_setup_guide.docx::Software Catalog"
+   ],
+   "cited": [
+    "it_setup_guide.docx::Multi-Factor Authentication"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "it_setup_guide.docx::Multi-Factor Authentication"
+   ],
+   "facts": [
+    [
+     "okta verify"
+    ],
+    [
+     "qr"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "a15",
+   "kb": "acme",
+   "type": "yes/no",
+   "q": "Can I use SMS codes for MFA?",
+   "answerable": true,
+   "secs": 56.6,
+   "error": null,
+   "answer": "No. The documents state: SMS codes are not allowed.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "it_setup_guide.docx::Multi-Factor Authentication"
+   ],
+   "cited": [
+    "it_setup_guide.docx::Multi-Factor Authentication"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "it_setup_guide.docx::Multi-Factor Authentication"
+   ],
+   "facts": [
+    [
+     "no",
+     "not allowed"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "a16",
+   "kb": "acme",
+   "type": "fact",
+   "q": "What is the minimum password length?",
+   "answerable": true,
+   "secs": 88.9,
+   "error": null,
+   "answer": "14 characters",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "security_awareness_training_module2.docx::Password Hygiene"
+   ],
+   "cited": [
+    "security_awareness_training_module2.docx::Password Hygiene"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "it_setup_guide.docx::Signing In",
+    "security_awareness_training_module2.docx::Password Hygiene"
+   ],
+   "facts": [
+    [
+     "14"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "a17",
+   "kb": "acme",
+   "type": "fact",
+   "q": "How do I get Figma installed?",
+   "answerable": true,
+   "secs": 26.4,
+   "error": null,
+   "answer": "Request in #it-help",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "it_setup_guide.docx::Software Catalog"
+   ],
+   "cited": [
+    "it_setup_guide.docx::Software Catalog"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "it_setup_guide.docx::Software Catalog"
+   ],
+   "facts": [
+    [
+     "it-help"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "a18",
+   "kb": "acme",
+   "type": "fact",
+   "q": "How long does Security take to review a software request?",
+   "answerable": true,
+   "secs": 19.6,
+   "error": null,
+   "answer": "2 business days",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "it_setup_guide.docx::Software Catalog"
+   ],
+   "cited": [
+    "it_setup_guide.docx::Software Catalog"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "it_setup_guide.docx::Software Catalog"
+   ],
+   "facts": [
+    [
+     "2 business days",
+     "two business days"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "a19",
+   "kb": "acme",
+   "type": "fact",
+   "q": "What share of security incidents at Acme started with phishing in 2025?",
+   "answerable": true,
+   "secs": 15.2,
+   "error": null,
+   "answer": "71%",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "security_awareness_training_module2.docx::Why Phishing Matters"
+   ],
+   "cited": [
+    "security_awareness_training_module2.docx::Why Phishing Matters"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "security_awareness_training_module2.docx::Why Phishing Matters"
+   ],
+   "facts": [
+    [
+     "71"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "a20",
+   "kb": "acme",
+   "type": "procedure",
+   "q": "What should I do if I entered my password on a phishing page?",
+   "answerable": true,
+   "secs": 50.6,
+   "error": null,
+   "answer": "Call the IT help desk at ext. 4357 immediately.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "security_awareness_training_module2.docx::Reporting Suspicious Messages",
+    "security_awareness_training_module2.docx::Knowledge Check"
+   ],
+   "cited": [
+    "security_awareness_training_module2.docx::Reporting Suspicious Messages"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "security_awareness_training_module2.docx::Reporting Suspicious Messages"
+   ],
+   "facts": [
+    [
+     "4357"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "a21",
+   "kb": "acme",
+   "type": "fact",
+   "q": "What were the red flags in the example payroll phishing email?",
+   "answerable": true,
+   "secs": 66.4,
+   "error": null,
+   "answer": "Look-alike domain: acme-corp-hr.com (uses zero instead of o); Urgency and threats: 'within 24 HOURS' and 'delayed payment'; Suspicious link: acme-payroll-verify.co (not acme-corp.com); Generic greeting and typos: 'Dear Employee' and 'Departmnet'",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "security_awareness_training_module2.docx::Anatomy of a Phishing Email",
+    "security_awareness_training_module2.docx::Reporting Suspicious Messages",
+    "security_awareness_training_module2.docx::Password Hygiene",
+    "security_awareness_training_module2.docx::Knowledge Check"
+   ],
+   "cited": [
+    "security_awareness_training_module2.docx::Anatomy of a Phishing Email"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "security_awareness_training_module2.docx::Anatomy of a Phishing Email"
+   ],
+   "facts": [
+    [
+     "look-alike",
+     "acme-c0rp",
+     "zero"
+    ],
+    [
+     "urgen"
+    ]
+   ],
+   "reference": "",
+   "shown": [
+    "security_awareness_training_module2.docx::figure_000.png"
+   ],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "a22",
+   "kb": "acme",
+   "type": "typos",
+   "q": "i clicked a link in a fishing email and typed my pasword what now",
+   "answerable": true,
+   "secs": 66.9,
+   "error": null,
+   "answer": "1. Call IT help desk at ext. 4357 immediately. 2. Security will reply within 1 hour. 3. Do not click links, open attachments or reply. 4. Click the **Report Phish** button in Gmail (or forward to phish@acme-corp.com). 5. If you already clicked or entered your password, call the IT help desk at ext. 4357 immediately",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "security_awareness_training_module2.docx::Reporting Suspicious Messages",
+    "security_awareness_training_module2.docx::Password Hygiene",
+    "security_awareness_training_module2.docx::Workshop Notes",
+    "security_awareness_training_module2.docx::Anatomy of a Phishing Email"
+   ],
+   "cited": [
+    "security_awareness_training_module2.docx::Reporting Suspicious Messages"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "security_awareness_training_module2.docx::Reporting Suspicious Messages"
+   ],
+   "facts": [
+    [
+     "4357"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "a23",
+   "kb": "acme",
+   "type": "reworded",
+   "q": "Is there a yearly allowance for professional development?",
+   "answerable": true,
+   "secs": 97.1,
+   "error": null,
+   "answer": "No. The documents state: *Figure 2: Paid time off allowance increases with years of service*",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "employee_handbook_2026.pdf::3 Working Hours and Leave",
+    "employee_handbook_2026.pdf::3.1 Remote Work"
+   ],
+   "cited": [
+    "employee_handbook_2026.pdf::3 Working Hours and Leave",
+    "employee_handbook_2026.pdf::3.1 Remote Work"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "employee_handbook_2026.pdf::4 Compensation and Benefits"
+   ],
+   "facts": [
+    [
+     "1,500",
+     "1500"
+    ]
+   ],
+   "reference": "",
+   "shown": [
+    "employee_handbook_2026.pdf::figure_001.png"
+   ],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": true,
+   "expect": "answer",
+   "inferred": false,
+   "correct": false,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "a24",
+   "kb": "acme",
+   "type": "other-language",
+   "q": "¿Cuántos días de vacaciones pagadas tengo al año?",
+   "answerable": true,
+   "secs": 38.3,
+   "error": null,
+   "answer": "18-27 días",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "employee_handbook_2026.pdf::1.1 Our Values",
+    "employee_handbook_2026.pdf::2 Organization",
+    "employee_handbook_2026.pdf::3 Working Hours and Leave",
+    "security_awareness_training_module2.docx::Anatomy of a Phishing Email"
+   ],
+   "cited": [
+    "employee_handbook_2026.pdf::3 Working Hours and Leave"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "employee_handbook_2026.pdf::3 Working Hours and Leave"
+   ],
+   "facts": [
+    [
+     "18"
+    ],
+    [
+     "27"
+    ]
+   ],
+   "reference": "",
+   "shown": [
+    "employee_handbook_2026.pdf::figure_001.png"
+   ],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "a25",
+   "kb": "acme",
+   "type": "not-in-docs",
+   "q": "What is the dress code?",
+   "answerable": false,
+   "secs": 10.6,
+   "error": null,
+   "answer": "The documents don't cover this.",
+   "found": false,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "employee_handbook_2026.pdf::1.1 Our Values",
+    "employee_handbook_2026.pdf::5 Code of Conduct"
+   ],
+   "cited": [],
+   "tools": [],
+   "unverified": [],
+   "gold": [],
+   "facts": [],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": null,
+   "cite_hit": null,
+   "hallucinated": false
+  },
+  {
+   "id": "a26",
+   "kb": "acme",
+   "type": "not-in-docs",
+   "q": "How many days of jury duty leave do we get?",
+   "answerable": false,
+   "secs": 6.2,
+   "error": null,
+   "answer": "18-27 days/year",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "employee_handbook_2026.pdf::3 Working Hours and Leave"
+   ],
+   "cited": [
+    "employee_handbook_2026.pdf::3 Working Hours and Leave"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [],
+   "facts": [],
+   "reference": "",
+   "shown": [
+    "employee_handbook_2026.pdf::figure_001.png"
+   ],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": false,
+   "read_hit": null,
+   "cite_hit": null,
+   "hallucinated": true
+  },
+  {
+   "id": "a27",
+   "kb": "acme",
+   "type": "not-in-docs",
+   "q": "What is the name of Acme's CEO?",
+   "answerable": false,
+   "secs": 18.4,
+   "error": null,
+   "answer": "The documents don't cover this.",
+   "found": false,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "employee_handbook_2026.pdf::1.1 Our Values",
+    "employee_handbook_2026.pdf::2 Organization"
+   ],
+   "cited": [],
+   "tools": [],
+   "unverified": [],
+   "gold": [],
+   "facts": [],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": null,
+   "cite_hit": null,
+   "hallucinated": false
+  },
+  {
+   "id": "n01",
+   "kb": "nimbus",
+   "type": "fact",
+   "q": "What does error E2 mean?",
+   "answerable": true,
+   "secs": 35.6,
+   "error": null,
+   "answer": "E2: Power stealing unstable",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "firmware_release_notes_v3_2.docx::Bug Fixes",
+    "x2_installation_and_user_guide.pdf::5 Troubleshooting",
+    "firmware_release_notes_v3_2.docx::Highlights"
+   ],
+   "cited": [
+    "firmware_release_notes_v3_2.docx::Bug Fixes",
+    "x2_installation_and_user_guide.pdf::5 Troubleshooting"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "x2_installation_and_user_guide.pdf::5 Troubleshooting"
+   ],
+   "facts": [
+    [
+     "power stealing",
+     "power-stealing"
+    ]
+   ],
+   "reference": "",
+   "shown": [
+    "x2_installation_and_user_guide.pdf::figure_003.png"
+   ],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "n02",
+   "kb": "nimbus",
+   "type": "follow-up",
+   "q": "How do I fix it?",
+   "answerable": true,
+   "secs": 39.7,
+   "error": null,
+   "answer": "The amber led means the system is in a fault state. The specific fault is Brown-out reset (E2) during Wi-Fi TX on power-stealing installs. To fix it, update the firmware to version 3.2.0 or later.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "x2_installation_and_user_guide.pdf::3.2 Mounting",
+    "firmware_release_notes_v3_2.docx::Bug Fixes",
+    "x2_hardware_design_spec.pdf::5 Interfaces and Pinout",
+    "firmware_release_notes_v3_2.docx::Highlights"
+   ],
+   "cited": [
+    "firmware_release_notes_v3_2.docx::Bug Fixes",
+    "firmware_release_notes_v3_2.docx::Highlights"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "x2_installation_and_user_guide.pdf::5 Troubleshooting"
+   ],
+   "facts": [
+    [
+     "PAK-2",
+     "c wire",
+     "c-wire"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": false,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "n03",
+   "kb": "nimbus",
+   "type": "follow-up",
+   "q": "Was there a firmware fix for it?",
+   "answerable": true,
+   "secs": 40.8,
+   "error": null,
+   "answer": "Yes, there was a firmware fix for it. The issue is listed as FW-1822: Brown-out reset during Wi-Fi TX on power-stealing installs (E2). The affected version range is 3.0.0 - 3.1.4.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "firmware_release_notes_v3_2.docx::Bug Fixes",
+    "firmware_release_notes_v3_2.docx::Known Issues",
+    "firmware_release_notes_v3_2.docx::Upgrade Procedure",
+    "firmware_release_notes_v3_2.docx::Compatibility"
+   ],
+   "cited": [
+    "firmware_release_notes_v3_2.docx::Bug Fixes"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "firmware_release_notes_v3_2.docx::Bug Fixes",
+    "firmware_release_notes_v3_2.docx::Highlights"
+   ],
+   "facts": [
+    [
+     "FW-1822",
+     "3.2"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "n04",
+   "kb": "nimbus",
+   "type": "fact",
+   "q": "Which microcontroller does the X2 use and at what clock speed?",
+   "answerable": true,
+   "secs": 33.5,
+   "error": null,
+   "answer": "STM32U585",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "x2_hardware_design_spec.pdf::2.1 Main Controller",
+    "x2_hardware_design_spec.pdf::2 System Architecture"
+   ],
+   "cited": [
+    "x2_hardware_design_spec.pdf::2.1 Main Controller",
+    "x2_hardware_design_spec.pdf::2 System Architecture"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "x2_hardware_design_spec.pdf::2.1 Main Controller"
+   ],
+   "facts": [
+    [
+     "STM32U585"
+    ],
+    [
+     "160"
+    ]
+   ],
+   "reference": "",
+   "shown": [
+    "x2_hardware_design_spec.pdf::figure_000.png"
+   ],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": false,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "n05",
+   "kb": "nimbus",
+   "type": "fact",
+   "q": "How much flash and SRAM does the main controller have?",
+   "answerable": true,
+   "secs": 6.9,
+   "error": null,
+   "answer": "786 KB",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "x2_hardware_design_spec.pdf::2.1 Main Controller"
+   ],
+   "cited": [
+    "x2_hardware_design_spec.pdf::2.1 Main Controller"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "x2_hardware_design_spec.pdf::2.1 Main Controller"
+   ],
+   "facts": [
+    [
+     "2 MB",
+     "2MB"
+    ],
+    [
+     "786"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": false,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "n06",
+   "kb": "nimbus",
+   "type": "table",
+   "q": "What is on pin 7 of the board-to-board connector?",
+   "answerable": true,
+   "secs": 5.4,
+   "error": null,
+   "answer": "RYL_OB",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "x2_hardware_design_spec.pdf::5 Interfaces and Pinout"
+   ],
+   "cited": [
+    "x2_hardware_design_spec.pdf::5 Interfaces and Pinout"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "x2_hardware_design_spec.pdf::5 Interfaces and Pinout"
+   ],
+   "facts": [
+    [
+     "RLY_OB",
+     "reversing valve"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": false,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "n07",
+   "kb": "nimbus",
+   "type": "table",
+   "q": "What changed in revision C of the hardware spec?",
+   "answerable": true,
+   "secs": 36.6,
+   "error": null,
+   "answer": "The relay board was reworked, pinout corrections were made, and a compliance section was added.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "x2_hardware_design_spec.pdf::1.2 Revision History",
+    "x2_hardware_design_spec.pdf::2 System Architecture",
+    "x2_hardware_design_spec.pdf::2.1 Main Controller",
+    "x2_hardware_design_spec.pdf::Preface"
+   ],
+   "cited": [
+    "x2_hardware_design_spec.pdf::1.2 Revision History",
+    "x2_hardware_design_spec.pdf::2 System Architecture",
+    "x2_hardware_design_spec.pdf::2.1 Main Controller"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "x2_hardware_design_spec.pdf::1.2 Revision History"
+   ],
+   "facts": [
+    [
+     "relay board"
+    ],
+    [
+     "pinout"
+    ]
+   ],
+   "reference": "",
+   "shown": [
+    "x2_hardware_design_spec.pdf::figure_000.png"
+   ],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "n08",
+   "kb": "nimbus",
+   "type": "arithmetic",
+   "q": "By how many seconds did boot time improve in firmware 3.2.0?",
+   "answerable": true,
+   "secs": 29.8,
+   "error": null,
+   "answer": "5.1 s",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "firmware_release_notes_v3_2.docx::Highlights",
+    "firmware_release_notes_v3_2.docx::Adaptive Recovery"
+   ],
+   "cited": [
+    "firmware_release_notes_v3_2.docx::Highlights"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "firmware_release_notes_v3_2.docx::Highlights"
+   ],
+   "facts": [
+    [
+     "4.3"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": false,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "n09",
+   "kb": "nimbus",
+   "type": "table",
+   "q": "Which CO2 sensor is used and how accurate is it?",
+   "answerable": true,
+   "secs": 18.9,
+   "error": null,
+   "answer": "The documents don't cover this.",
+   "found": false,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "x2_hardware_design_spec.pdf::2 System Architecture",
+    "x2_hardware_design_spec.pdf::4.1 Calibration",
+    "x2_hardware_design_spec.pdf::1.2 Revision History",
+    "x2_hardware_design_spec.pdf::4 Sensors"
+   ],
+   "cited": [],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "x2_hardware_design_spec.pdf::4 Sensors"
+   ],
+   "facts": [
+    [
+     "SCD41"
+    ],
+    [
+     "40 ppm"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": false,
+   "read_hit": true,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "n10",
+   "kb": "nimbus",
+   "type": "fact",
+   "q": "What is the operating temperature range of the X2?",
+   "answerable": true,
+   "secs": 29.5,
+   "error": null,
+   "answer": "0 to 45 °C",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "x2_hardware_design_spec.pdf::2.2 Wireless Connectivity",
+    "x2_hardware_design_spec.pdf::6 Environmental and Compliance"
+   ],
+   "cited": [
+    "x2_hardware_design_spec.pdf::6 Environmental and Compliance"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "x2_hardware_design_spec.pdf::6 Environmental and Compliance"
+   ],
+   "facts": [
+    [
+     "0"
+    ],
+    [
+     "45"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "n11",
+   "kb": "nimbus",
+   "type": "fact",
+   "q": "How long does installation usually take?",
+   "answerable": true,
+   "secs": 29.7,
+   "error": null,
+   "answer": "30 minutes",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "x2_installation_and_user_guide.pdf::4.2 Schedules"
+   ],
+   "cited": [
+    "x2_installation_and_user_guide.pdf::4.2 Schedules"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "x2_installation_and_user_guide.pdf::3 Installation"
+   ],
+   "facts": [
+    [
+     "30 min"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "n12",
+   "kb": "nimbus",
+   "type": "fact",
+   "q": "What tools do I need to install the thermostat?",
+   "answerable": true,
+   "secs": 17.5,
+   "error": null,
+   "answer": "Phillips screwdriver, a drill with a 3/16-inch bit, and a smartphone with the Nimbus app installed.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "x2_installation_and_user_guide.pdf::3 Installation",
+    "x2_installation_and_user_guide.pdf::3.1 Wiring",
+    "x2_installation_and_user_guide.pdf::3.2 Mounting"
+   ],
+   "cited": [
+    "x2_installation_and_user_guide.pdf::3 Installation",
+    "x2_installation_and_user_guide.pdf::3.1 Wiring"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "x2_installation_and_user_guide.pdf::3 Installation"
+   ],
+   "facts": [
+    [
+     "screwdriver"
+    ],
+    [
+     "drill",
+     "3/16"
+    ]
+   ],
+   "reference": "",
+   "shown": [
+    "x2_installation_and_user_guide.pdf::figure_001.png"
+   ],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "n13",
+   "kb": "nimbus",
+   "type": "table",
+   "q": "Which terminal is used for the heat pump reversing valve?",
+   "answerable": true,
+   "secs": 15.8,
+   "error": null,
+   "answer": "O/B",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "x2_installation_and_user_guide.pdf::2 What's in the Box",
+    "x2_installation_and_user_guide.pdf::3 Installation",
+    "x2_installation_and_user_guide.pdf::3.1 Wiring"
+   ],
+   "cited": [
+    "x2_installation_and_user_guide.pdf::2 What's in the Box",
+    "x2_installation_and_user_guide.pdf::3 Installation",
+    "x2_installation_and_user_guide.pdf::3.1 Wiring"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "x2_installation_and_user_guide.pdf::3.1 Wiring"
+   ],
+   "facts": [
+    [
+     "O/B"
+    ]
+   ],
+   "reference": "",
+   "shown": [
+    "x2_installation_and_user_guide.pdf::figure_001.png"
+   ],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "n14",
+   "kb": "nimbus",
+   "type": "yes/no",
+   "q": "Can I use the X2 with electric baseboard heaters?",
+   "answerable": true,
+   "secs": 37.5,
+   "error": null,
+   "answer": "No. The Nimbus X2 is designed for 24 V low-voltage heating and cooling systems only. Improper installation can damage your equipment or cause injury. If you are not comfortable working with household wiring, contact a licensed HVAC professional. Do not connect to 120 V or 240 V line-voltage heating systems (for example baseboard heaters). Do not install in bathrooms or other locations where the unit may get wet. Keep the thermostat away from direct sunlight, drafts and heat sources such as lamps.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "x2_installation_and_user_guide.pdf::1 Safety Information",
+    "x2_installation_and_user_guide.pdf::2 What's in the Box",
+    "x2_installation_and_user_guide.pdf::3 Installation"
+   ],
+   "cited": [
+    "x2_installation_and_user_guide.pdf::1 Safety Information"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "x2_installation_and_user_guide.pdf::1 Safety Information"
+   ],
+   "facts": [
+    [
+     "no",
+     "not",
+     "do not"
+    ]
+   ],
+   "reference": "",
+   "shown": [
+    "x2_installation_and_user_guide.pdf::figure_000.png"
+   ],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "n15",
+   "kb": "nimbus",
+   "type": "table",
+   "q": "What does Eco mode do?",
+   "answerable": true,
+   "secs": 30.3,
+   "error": null,
+   "answer": "Eco mode uses wider set points when nobody is home",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "x2_installation_and_user_guide.pdf::4.1 Modes",
+    "x2_installation_and_user_guide.pdf::4.2 Schedules"
+   ],
+   "cited": [
+    "x2_installation_and_user_guide.pdf::4.1 Modes",
+    "x2_installation_and_user_guide.pdf::4.2 Schedules"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "x2_installation_and_user_guide.pdf::4.1 Modes"
+   ],
+   "facts": [
+    [
+     "wider",
+     "nobody"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "n16",
+   "kb": "nimbus",
+   "type": "fact",
+   "q": "How many schedule points can I set per day?",
+   "answerable": true,
+   "secs": 12.7,
+   "error": null,
+   "answer": "8",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "x2_installation_and_user_guide.pdf::4.2 Schedules"
+   ],
+   "cited": [
+    "x2_installation_and_user_guide.pdf::4.2 Schedules"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "x2_installation_and_user_guide.pdf::4.2 Schedules"
+   ],
+   "facts": [
+    [
+     "8",
+     "eight"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "n17",
+   "kb": "nimbus",
+   "type": "fact",
+   "q": "How long does Adaptive Recovery observe the home before it starts working?",
+   "answerable": true,
+   "secs": 28.4,
+   "error": null,
+   "answer": "7 days",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "firmware_release_notes_v3_2.docx::Adaptive Recovery"
+   ],
+   "cited": [
+    "firmware_release_notes_v3_2.docx::Adaptive Recovery"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "firmware_release_notes_v3_2.docx::Adaptive Recovery"
+   ],
+   "facts": [
+    [
+     "7 days",
+     "seven days",
+     "first 7"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "n18",
+   "kb": "nimbus",
+   "type": "fact",
+   "q": "What is the maximum early start for Adaptive Recovery?",
+   "answerable": true,
+   "secs": 9.7,
+   "error": null,
+   "answer": "2 hours",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "firmware_release_notes_v3_2.docx::Adaptive Recovery"
+   ],
+   "cited": [
+    "firmware_release_notes_v3_2.docx::Adaptive Recovery"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "firmware_release_notes_v3_2.docx::Adaptive Recovery"
+   ],
+   "facts": [
+    [
+     "2 hours",
+     "two hours"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "n19",
+   "kb": "nimbus",
+   "type": "procedure",
+   "q": "How do I update a lab unit to 3.2.0 manually?",
+   "answerable": true,
+   "secs": 32.3,
+   "error": null,
+   "answer": "1. Connect your computer to the same network as the thermostat. 2. Run nimbus-cli device update --serial <serial> --fw 3.2.0. 3. Wait for the device to reboot (about 60 seconds). Do not remove the display during the update. 4. Confirm the version under Menu > Settings > About.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "firmware_release_notes_v3_2.docx::Upgrade Procedure"
+   ],
+   "cited": [
+    "firmware_release_notes_v3_2.docx::Upgrade Procedure"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "firmware_release_notes_v3_2.docx::Upgrade Procedure"
+   ],
+   "facts": [
+    [
+     "nimbus-cli"
+    ]
+   ],
+   "reference": "",
+   "shown": [
+    "firmware_release_notes_v3_2.docx::figure_001.png"
+   ],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "n20",
+   "kb": "nimbus",
+   "type": "table",
+   "q": "What is the minimum Android app version?",
+   "answerable": true,
+   "secs": 6.0,
+   "error": null,
+   "answer": "5.8.1",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "firmware_release_notes_v3_2.docx::Compatibility"
+   ],
+   "cited": [
+    "firmware_release_notes_v3_2.docx::Compatibility"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "firmware_release_notes_v3_2.docx::Compatibility"
+   ],
+   "facts": [
+    [
+     "5.8.1"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "n21",
+   "kb": "nimbus",
+   "type": "yes/no",
+   "q": "Are Rev A units supported by firmware 3.2?",
+   "answerable": true,
+   "secs": 15.8,
+   "error": null,
+   "answer": "Rev A units are not supported by firmware 3.2.0. This is stated in the Compatibility section under 'X2 hardware' where it says: 'Rev A (EVT1) units not supported'.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "firmware_release_notes_v3_2.docx::Preface",
+    "firmware_release_notes_v3_2.docx::Highlights",
+    "firmware_release_notes_v3_2.docx::New Features",
+    "firmware_release_notes_v3_2.docx::Compatibility"
+   ],
+   "cited": [
+    "firmware_release_notes_v3_2.docx::Preface",
+    "firmware_release_notes_v3_2.docx::Highlights",
+    "firmware_release_notes_v3_2.docx::New Features",
+    "firmware_release_notes_v3_2.docx::Compatibility"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "firmware_release_notes_v3_2.docx::Compatibility"
+   ],
+   "facts": [
+    [
+     "not supported",
+     "no"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "n22",
+   "kb": "nimbus",
+   "type": "reworded",
+   "q": "The thermostat rejected my home network password. How do I fix it?",
+   "answerable": true,
+   "secs": 15.6,
+   "error": null,
+   "answer": "The error code E3 indicates Wi-Fi authentication failed. To fix it, re-enter the Wi-Fi password in the app.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "x2_installation_and_user_guide.pdf::4.1 Modes",
+    "x2_installation_and_user_guide.pdf::4.2 Schedules",
+    "x2_installation_and_user_guide.pdf::5 Troubleshooting",
+    "firmware_release_notes_v3_2.docx::Upgrade Procedure"
+   ],
+   "cited": [
+    "x2_installation_and_user_guide.pdf::5 Troubleshooting",
+    "firmware_release_notes_v3_2.docx::Upgrade Procedure"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "x2_installation_and_user_guide.pdf::5 Troubleshooting"
+   ],
+   "facts": [
+    [
+     "re-enter",
+     "reenter"
+    ]
+   ],
+   "reference": "",
+   "shown": [
+    "x2_installation_and_user_guide.pdf::figure_003.png",
+    "firmware_release_notes_v3_2.docx::figure_001.png"
+   ],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": true,
+   "read_hit": true,
+   "cite_hit": true,
+   "hallucinated": false
+  },
+  {
+   "id": "n23",
+   "kb": "nimbus",
+   "type": "reworded",
+   "q": "How much does the device heat up its own case?",
+   "answerable": true,
+   "secs": 21.0,
+   "error": null,
+   "answer": "The device heats up its own case by approximately 0.5 W (0.5 Watts) to meet ENERGY STAR Smart Thermostat v1.1 requirements.",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "x2_hardware_design_spec.pdf::1 Overview",
+    "x2_hardware_design_spec.pdf::1.2 Revision History",
+    "x2_hardware_design_spec.pdf::2 System Architecture",
+    "x2_installation_and_user_guide.pdf::1 Safety Information"
+   ],
+   "cited": [
+    "x2_hardware_design_spec.pdf::1 Overview"
+   ],
+   "tools": [],
+   "unverified": [],
+   "gold": [
+    "x2_hardware_design_spec.pdf::4.1 Calibration"
+   ],
+   "facts": [
+    [
+     "1.8"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": false,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  },
+  {
+   "id": "n24",
+   "kb": "nimbus",
+   "type": "other-language",
+   "q": "X2의 동작 온도 범위는 얼마입니까?",
+   "answerable": true,
+   "secs": 36.9,
+   "error": null,
+   "answer": "10°C ~ 40°C",
+   "found": true,
+   "general": false,
+   "smalltalk": false,
+   "read": [
+    "x2_hardware_design_spec.pdf::1.2 Revision History",
+    "x2_hardware_design_spec.pdf::2 System Architecture",
+    "x2_hardware_design_spec.pdf::2.1 Main Controller",
+    "x2_hardware_design_spec.pdf::1.1 Scope"
+   ],
+   "cited": [
+    "x2_hardware_design_spec.pdf::1.1 Scope",
+    "x2_hardware_design_spec.pdf::1.2 Revision History"
+   ],
+   "tools": [],
+   "unverified": [
+    "10°C",
+    "40°C"
+   ],
+   "gold": [
+    "x2_hardware_design_spec.pdf::6 Environmental and Compliance"
+   ],
+   "facts": [
+    [
+     "0"
+    ],
+    [
+     "45"
+    ]
+   ],
+   "reference": "",
+   "shown": [],
+   "figures": [],
+   "figure_hit": null,
+   "clarified": false,
+   "worked_out": false,
+   "expect": "answer",
+   "inferred": false,
+   "correct": false,
+   "read_hit": false,
+   "cite_hit": false,
+   "hallucinated": false
+  }
+ ]
+}

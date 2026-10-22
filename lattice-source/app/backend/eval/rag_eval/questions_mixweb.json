@@ -1,0 +1,20 @@
+{
+ "about": "Chat over the Helix documents in the web platform export: vague questions, follow-ups, and questions that need general knowledge together with the documents (the answer must carry both).",
+ "bundles": {"helix": "Helix_Precision_knowledge_base.zip"},
+ "questions": [
+  {"id": "m01", "kb": "helix", "type": "vague", "q": "warranty?", "facts": [["24 months"], ["6,000", "6000"]]},
+  {"id": "m02", "kb": "helix", "type": "vague", "q": "the machine is overheating, what now?", "facts": [["30 minutes", "30 min"], ["chiller", "cool"]]},
+  {"id": "m03", "kb": "helix", "type": "vague", "q": "receipts", "facts": [["500", "2,000", "2000"]]},
+  {"id": "m04", "kb": "helix", "type": "general+kb", "q": "What is OEE, and what was Line C's OEE in April?", "facts": [["availability", "performance", "effectiveness"], ["52.3"]]},
+  {"id": "m05", "kb": "helix", "type": "general+kb", "q": "What is backlash on a CNC axis, and when do we have to replace the ballscrew?", "facts": [["play", "clearance", "lost motion", "gap", "reversal"], ["0.020", "0.02"]]},
+  {"id": "m06", "kb": "helix", "type": "general+kb", "q": "Explain lockout/tagout in simple terms and tell me what our standard requires before opening an HX-500 electrical cabinet.", "facts": [["energy", "isolat"], ["lock"]]},
+  {"id": "m07", "kb": "helix", "type": "general+kb", "q": "What is a refractometer, and what coolant concentration does the HX-500 need?", "facts": [["light", "refract", "measure"], ["6 - 8", "6-8", "6 to 8", "6–8"]]},
+  {"id": "m08", "kb": "helix", "type": "general+kb", "q": "Convert the HX-500's maximum spindle speed to radians per second.", "facts": [["1256", "1,256", "1257", "1,257"]], "inferred": true},
+  {"id": "m09", "kb": "helix", "type": "general+kb", "q": "Why does a face shield matter in the grinding bay, and what else must I wear there?", "facts": [["face shield"], ["FFP2", "dust mask"]]},
+  {"id": "m10", "kb": "helix", "type": "follow-up", "q": "What is the hotel limit per night for a G2 engineer in Pune?", "facts": [["6,000", "6000"]], "conv": "m-hotel"},
+  {"id": "m11", "kb": "helix", "type": "general+kb", "q": "Roughly how much is that in US dollars?", "facts": [["$", "USD", "dollar"]], "conv": "m-hotel", "inferred": true},
+  {"id": "m12", "kb": "helix", "type": "general", "q": "What is the capital of France?", "facts": [["Paris"]]},
+  {"id": "m13", "kb": "helix", "type": "near-miss", "q": "How much does the HX-700 weigh?", "answerable": false},
+  {"id": "m14", "kb": "helix", "type": "vague", "q": "what changed in the supplier contract?", "facts": [["replace", "1.5", "45 days", "2.2", "2.3"]]}
+ ]
+}

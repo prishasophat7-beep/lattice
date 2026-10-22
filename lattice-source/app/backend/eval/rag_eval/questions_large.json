@@ -1,0 +1,19 @@
+{
+ "about": "Large documents in the web platform export (Helix_Large_knowledge_base.zip, built by make_large_kb.py + make_web_bundle.py): an ~80-page service manual with facts deep inside and one ~30,000-character section, a complete 500-row parts table, a partly exported 2,000-row log, and the six Helix documents as distractors. Plus the follow-up case from the final test.",
+ "bundles": {"helix": "Helix_Large_knowledge_base.zip"},
+ "questions": [
+  {"id": "L01", "kb": "helix", "type": "deep-fact", "q": "What torque are the Z-axis motor coupling screws on the HX-900 tightened to?", "facts": [["38 Nm", "38 N"]]},
+  {"id": "L02", "kb": "helix", "type": "deep-fact", "q": "What holding torque must the HX-900 rotary table brake have?", "facts": [["900 Nm", "900 N"]]},
+  {"id": "L03", "kb": "helix", "type": "long-section", "q": "When may an HX-900 be released to production after commissioning?", "facts": [["72"], ["HX9-COM-7", "sign"]]},
+  {"id": "L04", "kb": "helix", "type": "deep-fact", "q": "How often must the HX-900 spindle cartridge be rebuilt?", "facts": [["15,000", "15000"]]},
+  {"id": "L05", "kb": "helix", "type": "big-table", "q": "What is the price of part HX9-4471?", "facts": [["2,350", "2350"]]},
+  {"id": "L06", "kb": "helix", "type": "big-table", "q": "Which HX-900 spare part has the longest lead time?", "facts": [["HX9-4970", "rebuild kit"]], "inferred": true},
+  {"id": "L07", "kb": "helix", "type": "partial-table", "q": "What was the highest bearing temperature in the HX-900 spindle log?", "facts": [["61.4"]]},
+  {"id": "L08", "kb": "helix", "type": "cross-document", "q": "What does alarm C-2087 mean on the HX-900, and what does the replacement part cost?", "facts": [["jam", "way cover"], ["2,350", "2350"]], "inferred": true},
+  {"id": "L09", "kb": "helix", "type": "near-miss", "q": "What torque are the Z-axis motor coupling screws on the HX-950 tightened to?", "answerable": false},
+  {"id": "L10", "kb": "helix", "type": "follow-up", "q": "What is the price of part HX9-4471?", "facts": [["2,350", "2350"]], "conv": "L-part"},
+  {"id": "L11", "kb": "helix", "type": "follow-up", "q": "And its lead time?", "facts": [["10 days", "10"]], "conv": "L-part"},
+  {"id": "L12", "kb": "helix", "type": "fresh-in-conversation", "q": "What is the hotel limit per night for a G2 engineer in Pune?", "facts": [["6,000", "6000"]], "conv": "L-fresh"},
+  {"id": "L13", "kb": "helix", "type": "fresh-in-conversation", "q": "Which lines met the scrap rate target in every month?", "facts": [["Line A"]], "conv": "L-fresh"}
+ ]
+}

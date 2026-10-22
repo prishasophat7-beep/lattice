@@ -1,0 +1,401 @@
+{
+ "model": "qwen3.5-0.8b",
+ "output_mode": "native",
+ "kb_version": "2026.09.22-sample",
+ "asked": 9,
+ "answered": 9,
+ "correct": 4,
+ "located": 4,
+ "answerable": 8,
+ "avg_seconds": 27.8,
+ "requests": 18,
+ "rows": [
+  {
+   "question": "What was Disney's total revenue in Q1 fiscal 2025 and how much did it grow?",
+   "found": true,
+   "answer": "Disney's total revenue in Q1 fiscal 2025 was $24,690 million, which grew by approximately 4.7% compared to the prior year.",
+   "citations": [
+    {
+     "doc_id": "pi-91f252d29c6c476b9329876f851e1852",
+     "doc_name": "q1-fy25-earnings.pdf",
+     "node_id": "0013",
+     "title": "THE WALT DISNEY COMPANY CONDENSED CONSOLIDATED STATEMENTS OF INCOME (unaudited; $ in millions, except per share data)",
+     "locator": "page 13",
+     "pages": [
+      13
+     ]
+    },
+    {
+     "doc_id": "pi-91f252d29c6c476b9329876f851e1852",
+     "doc_name": "q1-fy25-earnings.pdf",
+     "node_id": "0015",
+     "title": "DTC PRODUCT DESCRIPTIONS AND KEY DEFINITIONS",
+     "locator": "page 16",
+     "pages": [
+      16
+     ]
+    }
+   ],
+   "considered": [
+    {
+     "doc_id": "pi-91f252d29c6c476b9329876f851e1852",
+     "doc_name": "q1-fy25-earnings.pdf",
+     "node_id": "0001",
+     "title": "Guidance and Outlook:; Message From Our CEO:",
+     "locator": "page 2",
+     "pages": [
+      2
+     ]
+    },
+    {
+     "doc_id": "pi-91f252d29c6c476b9329876f851e1852",
+     "doc_name": "q1-fy25-earnings.pdf",
+     "node_id": "0013",
+     "title": "THE WALT DISNEY COMPANY CONDENSED CONSOLIDATED STATEMENTS OF INCOME (unaudited; $ in millions, except per share data)",
+     "locator": "page 13",
+     "pages": [
+      13
+     ]
+    },
+    {
+     "doc_id": "pi-91f252d29c6c476b9329876f851e1852",
+     "doc_name": "q1-fy25-earnings.pdf",
+     "node_id": "0015",
+     "title": "DTC PRODUCT DESCRIPTIONS AND KEY DEFINITIONS",
+     "locator": "page 16",
+     "pages": [
+      16
+     ]
+    }
+   ],
+   "seconds": {
+    "route": 0.004,
+    "select": 29.16,
+    "answer": 40.9,
+    "total": 70.06
+   },
+   "model_requests": 2,
+   "unverified_numbers": [
+    "4.7%"
+   ],
+   "correct": false,
+   "located": false
+  },
+  {
+   "question": "Why did capital expenditures increase this quarter?",
+   "found": true,
+   "answer": "Capital expenditures increased to $2.5 billion due to higher spend on cruise ship fleet expansion at the Experiences segment.",
+   "citations": [
+    {
+     "doc_id": "pi-91f252d29c6c476b9329876f851e1852",
+     "doc_name": "q1-fy25-earnings.pdf",
+     "node_id": "0012",
+     "title": "Capital Expenditures; Depreciation Expense",
+     "locator": "page 12",
+     "pages": [
+      12
+     ]
+    }
+   ],
+   "considered": [
+    {
+     "doc_id": "pi-91f252d29c6c476b9329876f851e1852",
+     "doc_name": "q1-fy25-earnings.pdf",
+     "node_id": "0012",
+     "title": "Capital Expenditures; Depreciation Expense",
+     "locator": "page 12",
+     "pages": [
+      12
+     ]
+    }
+   ],
+   "seconds": {
+    "route": 0.001,
+    "select": 8.0,
+    "answer": 13.96,
+    "total": 21.96
+   },
+   "model_requests": 2,
+   "unverified_numbers": [],
+   "correct": true,
+   "located": true
+  },
+  {
+   "question": "What was the effective income tax rate this quarter, and why did it go up?",
+   "found": true,
+   "answer": "The effective income tax rate was 27.8%.\n\nReason for increase: The increase was due to a non-cash tax charge in connection with the Star India Transaction.",
+   "citations": [
+    {
+     "doc_id": "pi-91f252d29c6c476b9329876f851e1852",
+     "doc_name": "q1-fy25-earnings.pdf",
+     "node_id": "0010",
+     "title": "Interest Expense, net; Equity in the Income of Investees; Income Taxes",
+     "locator": "page 10",
+     "pages": [
+      10
+     ]
+    }
+   ],
+   "considered": [
+    {
+     "doc_id": "pi-91f252d29c6c476b9329876f851e1852",
+     "doc_name": "q1-fy25-earnings.pdf",
+     "node_id": "0010",
+     "title": "Interest Expense, net; Equity in the Income of Investees; Income Taxes",
+     "locator": "page 10",
+     "pages": [
+      10
+     ]
+    }
+   ],
+   "seconds": {
+    "route": 0.001,
+    "select": 7.51,
+    "answer": 16.79,
+    "total": 24.3
+   },
+   "model_requests": 2,
+   "unverified_numbers": [],
+   "correct": true,
+   "located": true
+  },
+  {
+   "question": "What was ESPN+ average monthly revenue per paid subscriber?",
+   "found": true,
+   "answer": "1.5",
+   "citations": [
+    {
+     "doc_id": "pi-91f252d29c6c476b9329876f851e1852",
+     "doc_name": "q1-fy25-earnings.pdf",
+     "node_id": "0015",
+     "title": "DTC PRODUCT DESCRIPTIONS AND KEY DEFINITIONS",
+     "locator": "page 16",
+     "pages": [
+      16
+     ]
+    }
+   ],
+   "considered": [
+    {
+     "doc_id": "pi-91f252d29c6c476b9329876f851e1852",
+     "doc_name": "q1-fy25-earnings.pdf",
+     "node_id": "0015",
+     "title": "DTC PRODUCT DESCRIPTIONS AND KEY DEFINITIONS",
+     "locator": "page 16",
+     "pages": [
+      16
+     ]
+    }
+   ],
+   "seconds": {
+    "route": 0.001,
+    "select": 8.47,
+    "answer": 18.23,
+    "total": 26.7
+   },
+   "model_requests": 2,
+   "unverified_numbers": [
+    "1.5"
+   ],
+   "correct": false,
+   "located": false
+  },
+  {
+   "question": "How much did the hurricanes hurt the Experiences segment?",
+   "found": true,
+   "answer": "Hurricane Milton",
+   "citations": [
+    {
+     "doc_id": "pi-91f252d29c6c476b9329876f851e1852",
+     "doc_name": "q1-fy25-earnings.pdf",
+     "node_id": "0007",
+     "title": "Experiences",
+     "locator": "page 9",
+     "pages": [
+      9
+     ]
+    }
+   ],
+   "considered": [
+    {
+     "doc_id": "pi-91f252d29c6c476b9329876f851e1852",
+     "doc_name": "q1-fy25-earnings.pdf",
+     "node_id": "0007",
+     "title": "Experiences",
+     "locator": "page 9",
+     "pages": [
+      9
+     ]
+    }
+   ],
+   "seconds": {
+    "route": 0.002,
+    "select": 8.06,
+    "answer": 12.8,
+    "total": 20.85
+   },
+   "model_requests": 2,
+   "unverified_numbers": [],
+   "correct": false,
+   "located": false
+  },
+  {
+   "question": "What percentage of the India joint venture does Disney hold?",
+   "found": true,
+   "answer": "37%",
+   "citations": [
+    {
+     "doc_id": "pi-91f252d29c6c476b9329876f851e1852",
+     "doc_name": "q1-fy25-earnings.pdf",
+     "node_id": "0004",
+     "title": "Star India",
+     "locator": "page 4",
+     "pages": [
+      4
+     ]
+    }
+   ],
+   "considered": [
+    {
+     "doc_id": "pi-91f252d29c6c476b9329876f851e1852",
+     "doc_name": "q1-fy25-earnings.pdf",
+     "node_id": "0004",
+     "title": "Star India",
+     "locator": "page 4",
+     "pages": [
+      4
+     ]
+    }
+   ],
+   "seconds": {
+    "route": 0.001,
+    "select": 7.79,
+    "answer": 14.92,
+    "total": 22.71
+   },
+   "model_requests": 2,
+   "unverified_numbers": [],
+   "correct": true,
+   "located": true
+  },
+  {
+   "question": "Why did corporate and unallocated shared expenses increase?",
+   "found": true,
+   "answer": "Corporate and unallocated shared expenses increased $152 million for the quarter, primarily due to a legal settlement.",
+   "citations": [
+    {
+     "doc_id": "pi-91f252d29c6c476b9329876f851e1852",
+     "doc_name": "q1-fy25-earnings.pdf",
+     "node_id": "0009",
+     "title": "Corporate and Unallocated Shared Expenses; Restructuring and Impairment Charges",
+     "locator": "page 9",
+     "pages": [
+      9
+     ]
+    }
+   ],
+   "considered": [
+    {
+     "doc_id": "pi-91f252d29c6c476b9329876f851e1852",
+     "doc_name": "q1-fy25-earnings.pdf",
+     "node_id": "0009",
+     "title": "Corporate and Unallocated Shared Expenses; Restructuring and Impairment Charges",
+     "locator": "page 9",
+     "pages": [
+      9
+     ]
+    }
+   ],
+   "seconds": {
+    "route": 0.001,
+    "select": 9.11,
+    "answer": 17.8,
+    "total": 26.92
+   },
+   "model_requests": 2,
+   "unverified_numbers": [],
+   "correct": true,
+   "located": true
+  },
+  {
+   "question": "What operating income growth does Disney expect for Experiences in fiscal 2025?",
+   "found": true,
+   "answer": "12%",
+   "citations": [
+    {
+     "doc_id": "pi-91f252d29c6c476b9329876f851e1852",
+     "doc_name": "q1-fy25-earnings.pdf",
+     "node_id": "0007",
+     "title": "Experiences",
+     "locator": "page 9",
+     "pages": [
+      9
+     ]
+    }
+   ],
+   "considered": [
+    {
+     "doc_id": "pi-91f252d29c6c476b9329876f851e1852",
+     "doc_name": "q1-fy25-earnings.pdf",
+     "node_id": "0007",
+     "title": "Experiences",
+     "locator": "page 9",
+     "pages": [
+      9
+     ]
+    }
+   ],
+   "seconds": {
+    "route": 0.001,
+    "select": 8.1,
+    "answer": 8.59,
+    "total": 16.69
+   },
+   "model_requests": 2,
+   "unverified_numbers": [],
+   "correct": false,
+   "located": false
+  },
+  {
+   "question": "How many employees does Disney have?",
+   "found": true,
+   "answer": "1,000",
+   "citations": [
+    {
+     "doc_id": "pi-91f252d29c6c476b9329876f851e1852",
+     "doc_name": "q1-fy25-earnings.pdf",
+     "node_id": "0015",
+     "title": "DTC PRODUCT DESCRIPTIONS AND KEY DEFINITIONS",
+     "locator": "page 16",
+     "pages": [
+      16
+     ]
+    }
+   ],
+   "considered": [
+    {
+     "doc_id": "pi-91f252d29c6c476b9329876f851e1852",
+     "doc_name": "q1-fy25-earnings.pdf",
+     "node_id": "0015",
+     "title": "DTC PRODUCT DESCRIPTIONS AND KEY DEFINITIONS",
+     "locator": "page 16",
+     "pages": [
+      16
+     ]
+    }
+   ],
+   "seconds": {
+    "route": 0.001,
+    "select": 7.87,
+    "answer": 12.03,
+    "total": 19.9
+   },
+   "model_requests": 2,
+   "unverified_numbers": [
+    "1,000"
+   ],
+   "correct": false,
+   "located": null
+  }
+ ]
+}

@@ -1,0 +1,64 @@
+{
+  "about": "Complex questions over the Helix Precision bundle (sample_kb_helix_complex.zip): a 9-chapter machine manual with Rev B/Rev C differences, a safety standard with a version change log, a travel policy with grade x city tables, a 4-sheet plant performance report, a supplier agreement with an amendment that replaces clauses and a delivery record, and an IT security standard. Types: fact, table-lookup (two-key), rule-applied (inferred), computed, version (Rev B / amendment / changes), cross-document, multi-part, vague, follow-up, near-miss.",
+  "bundles": {
+    "helix": "sample_kb_helix_complex.zip"
+  },
+  "questions": [
+    {"id": "c01", "kb": "helix", "type": "vague", "q": "What is the deadline?", "expect": "clarify"},
+    {"id": "c02", "kb": "helix", "type": "vague", "q": "What is the limit?", "expect": "clarify"},
+    {"id": "c03", "kb": "helix", "type": "vague", "q": "What is the penalty?", "expect": "clarify"},
+
+    {"id": "c04", "kb": "helix", "type": "fact", "q": "What does alarm A302 mean on the HX-500 and what should the operator do?", "facts": [["temperature"], ["30 minutes", "30 min"]], "gold": ["hx500_machining_center_manual.md::6. Alarms and error codes"]},
+    {"id": "c05", "kb": "helix", "type": "version", "q": "At what temperature does a Rev B HX-500 raise the spindle over-temperature alarm?", "facts": [["65"]], "gold": ["hx500_machining_center_manual.md::6. Alarms and error codes"]},
+    {"id": "c06", "kb": "helix", "type": "rule-applied", "q": "Our HX-500 (Rev C) has been switched off for 5 days. Which warm-up program do I run and how long does it take?", "facts": [["O9001"], ["30"]], "gold": ["hx500_machining_center_manual.md::5.2 Spindle warm-up"], "inferred": true},
+    {"id": "c07", "kb": "helix", "type": "rule-applied", "q": "Can I load an 8 kg tool into the HX-500 magazine?", "polarity": "no", "facts": [["no", "not", "cannot"], ["7 kg", "7kg"]], "gold": ["hx500_machining_center_manual.md::5.3 Loading tools"], "inferred": true},
+    {"id": "c08", "kb": "helix", "type": "rule-applied", "q": "The X axis backlash measured 0.015 mm. What should be done?", "facts": [["compensation"], ["1850"]], "gold": ["hx500_machining_center_manual.md::7.5 Ballscrew backlash (L2)"], "inferred": true},
+    {"id": "c09", "kb": "helix", "type": "rule-applied", "q": "The drawbar force gauge shows 11 kN. Is that acceptable?", "polarity": "no", "facts": [["no", "not", "below", "replace"], ["12"]], "gold": ["hx500_machining_center_manual.md::7.3 Drawbar force check (L2)"], "inferred": true},
+    {"id": "c10", "kb": "helix", "type": "rule-applied", "q": "The refractometer shows a coolant concentration of 4 percent. Is that a problem?", "polarity": "yes", "facts": [["corrosion", "bacteria", "too low", "below"]], "gold": ["hx500_machining_center_manual.md::7.4 Coolant"], "inferred": true},
+    {"id": "c11", "kb": "helix", "type": "fact", "q": "Which oil goes into the hydraulic unit, how much, and how often is it replaced?", "facts": [["VG 32"], ["12"], ["2,000", "2000"]], "gold": ["hx500_machining_center_manual.md::7.2 Lubrication"]},
+    {"id": "c12", "kb": "helix", "type": "rule-applied", "q": "Our machine was installed 30 months ago and has 3,000 spindle hours. Is it still under warranty?", "polarity": "no", "facts": [["no", "not", "expired"], ["24"]], "gold": ["hx500_machining_center_manual.md::9. Warranty"], "inferred": true},
+    {"id": "c13", "kb": "helix", "type": "fact", "q": "What should I do when alarm E901 appears?", "facts": [["encoder"], ["3 days"]], "gold": ["hx500_machining_center_manual.md::6. Alarms and error codes"]},
+    {"id": "c14", "kb": "helix", "type": "fact", "q": "What torque should the vise-to-table bolts be tightened to?", "facts": [["120"]], "gold": ["hx500_machining_center_manual.md::8. Torque values"]},
+
+    {"id": "c15", "kb": "helix", "type": "table-lookup", "q": "What is the hotel limit per night for a G2 engineer in Pune?", "facts": [["6,000", "6000"]], "gold": ["travel_expense_policy.md::4. Accommodation limits per night (INR)"], "conv": "c-hotel"},
+    {"id": "c16", "kb": "helix", "type": "follow-up", "q": "And for a G4?", "facts": [["12,000", "12000"]], "gold": ["travel_expense_policy.md::4. Accommodation limits per night (INR)"], "conv": "c-hotel"},
+    {"id": "c17", "kb": "helix", "type": "follow-up", "q": "What about in Jaipur?", "facts": [["8,000", "8000"]], "gold": ["travel_expense_policy.md::4. Accommodation limits per night (INR)"], "conv": "c-hotel", "inferred": true},
+    {"id": "c18", "kb": "helix", "type": "rule-applied", "q": "I am a G3 manager flying to Frankfurt; the flight takes 9 hours. Which class can I book?", "facts": [["business"]], "gold": ["travel_expense_policy.md::3. Travel class"], "inferred": true},
+    {"id": "c19", "kb": "helix", "type": "computed", "q": "A G2 engineer on a domestic trip has lunch provided by the host. What daily allowance do they get?", "facts": [["900"]], "gold": ["travel_expense_policy.md::5. Daily allowance (per diem)"], "inferred": true},
+    {"id": "c20", "kb": "helix", "type": "rule-applied", "q": "I lost a taxi receipt of INR 3,000. Can I still claim it?", "polarity": "no", "facts": [["no", "not"], ["2,000", "2000"]], "gold": ["travel_expense_policy.md::7. Receipts"], "inferred": true},
+    {"id": "c21", "kb": "helix", "type": "rule-applied", "q": "Who has to approve a single expense of INR 30,000?", "facts": [["department head"]], "gold": ["travel_expense_policy.md::6. Approvals"], "inferred": true},
+    {"id": "c22", "kb": "helix", "type": "rule-applied", "q": "Is laundry reimbursed on a 3-night trip?", "polarity": "no", "facts": [["no", "not"]], "gold": ["travel_expense_policy.md::8. Not reimbursed"], "inferred": true},
+
+    {"id": "c23", "kb": "helix", "type": "version", "q": "What is the deadline for reporting a near miss, and what was it in the previous version of the standard?", "facts": [["24 hours", "24"], ["48"]], "gold": ["plant_safety_standard.md::3.2 Deadlines", "plant_safety_standard.md::9. Changes from Version 4"]},
+    {"id": "c24", "kb": "helix", "type": "rule-applied", "q": "Can a contractor drive one of our forklifts if they have a license from their own company?", "polarity": "no", "facts": [["no", "not"]], "gold": ["plant_safety_standard.md::6. Forklifts"], "inferred": true},
+    {"id": "c25", "kb": "helix", "type": "rule-applied", "q": "Can I take a visitor into the paint shop?", "polarity": "no", "facts": [["no", "not"]], "gold": ["plant_safety_standard.md::2.2 Visitors"], "inferred": true},
+    {"id": "c26", "kb": "helix", "type": "table-lookup", "q": "What PPE is needed in the grinding bay?", "facts": [["face shield"], ["FFP2"]], "gold": ["plant_safety_standard.md::2.1 PPE by area"]},
+    {"id": "c27", "kb": "helix", "type": "rule-applied", "q": "Can an operator work a 13-hour shift?", "polarity": "no", "facts": [["no", "not", "12"]], "gold": ["plant_safety_standard.md::7. Working hours and fatigue"], "inferred": true},
+    {"id": "c28", "kb": "helix", "type": "rule-applied", "q": "A colleague left for the day and his padlock is still on a machine. Can I remove it?", "polarity": "no", "facts": [["area manager"]], "gold": ["plant_safety_standard.md::4. Lockout / tagout (LOTO)"], "inferred": true},
+
+    {"id": "c29", "kb": "helix", "type": "computed", "q": "Which line had the highest total downtime in H1, and how many hours was it?", "facts": [["Line C"], ["406"]], "gold": ["plant_performance_h1_2026.md::Sheet: Downtime hours by cause"], "inferred": true},
+    {"id": "c30", "kb": "helix", "type": "table-lookup", "q": "Which month had the lowest production on Line C?", "facts": [["April"]], "gold": ["plant_performance_h1_2026.md::Sheet: Production by line"]},
+    {"id": "c31", "kb": "helix", "type": "computed", "q": "Which lines met the scrap rate target in every month?", "facts": [["Line A"]], "gold": ["plant_performance_h1_2026.md::Sheet: Scrap rate (%)"], "inferred": true},
+    {"id": "c32", "kb": "helix", "type": "computed", "q": "By how much did Line A production grow from January to June?", "facts": [["170"]], "gold": ["plant_performance_h1_2026.md::Sheet: Production by line"], "inferred": true},
+    {"id": "c33", "kb": "helix", "type": "table-lookup", "q": "What was the OEE of Line C in April?", "facts": [["52.3"]], "gold": ["plant_performance_h1_2026.md::Sheet: OEE (%)"], "conv": "c-oee"},
+    {"id": "c34", "kb": "helix", "type": "follow-up", "q": "And in June?", "facts": [["58"]], "gold": ["plant_performance_h1_2026.md::Sheet: OEE (%)"], "conv": "c-oee"},
+
+    {"id": "c35", "kb": "helix", "type": "version", "q": "What are the current payment terms with Arvind Metals?", "facts": [["45"]], "gold": ["supplier_agreement_arvind_metals.md::2.2 Payment terms (replaces 1.5)"]},
+    {"id": "c36", "kb": "helix", "type": "computed", "q": "What late-delivery penalty is due on PO-26-0503?", "facts": [["27,600", "27600", "3%", "3 %"]], "gold": ["supplier_agreement_arvind_metals.md::2.3 Late delivery penalty (replaces 1.6)", "supplier_agreement_arvind_metals.md::Part 3: Delivery record Q2 2026"], "inferred": true},
+    {"id": "c37", "kb": "helix", "type": "computed", "q": "How many of the Q2 2026 orders from Arvind Metals were delivered on time?", "facts": [["4"]], "gold": ["supplier_agreement_arvind_metals.md::Part 3: Delivery record Q2 2026"], "inferred": true},
+    {"id": "c38", "kb": "helix", "type": "rule-applied", "q": "Can we terminate the Arvind Metals agreement now because of their Q2 delivery performance?", "polarity": "no", "facts": [["two consecutive", "2 consecutive"]], "gold": ["supplier_agreement_arvind_metals.md::1.8 Termination"], "inferred": true},
+
+    {"id": "c39", "kb": "helix", "type": "cross-document", "q": "Why was the HX-07 spindle bearing replacement not covered by the warranty?", "facts": [["warm-up", "warm up"]], "gold": ["plant_performance_h1_2026.md::Notes", "hx500_machining_center_manual.md::9. Warranty"], "inferred": true},
+    {"id": "c40", "kb": "helix", "type": "cross-document", "q": "Which supplier caused the June material shortage on Line C, and what penalty applies to their late deliveries?", "facts": [["Arvind"], ["1.5"]], "gold": ["plant_performance_h1_2026.md::Notes", "supplier_agreement_arvind_metals.md::2.3 Late delivery penalty (replaces 1.6)"], "inferred": true},
+    {"id": "c41", "kb": "helix", "type": "cross-document", "q": "What must I do before opening the electrical cabinet of an HX-500?", "facts": [["lock", "LOTO", "lockout"], ["5 minutes", "5 min"]], "gold": ["hx500_machining_center_manual.md::2.3 Lockout / tagout", "plant_safety_standard.md::4. Lockout / tagout (LOTO)"]},
+
+    {"id": "c42", "kb": "helix", "type": "multi-part", "q": "How long must passwords be, and how many failed sign-ins lock an account?", "facts": [["14"], ["5"]], "gold": ["it_security_standard.md::1. Accounts and passwords"]},
+    {"id": "c43", "kb": "helix", "type": "rule-applied", "q": "Can I connect to the VPN from my personal laptop?", "polarity": "no", "facts": [["no", "not"]], "gold": ["it_security_standard.md::3. Remote access"], "inferred": true},
+    {"id": "c44", "kb": "helix", "type": "multi-part", "q": "What is the spindle speed range of the HX-500 and what is the hotel limit for a G1 employee in Chennai?", "facts": [["12,000", "12000"], ["4,000", "4000"]], "gold": ["hx500_machining_center_manual.md::3. Specifications", "travel_expense_policy.md::4. Accommodation limits per night (INR)"]},
+
+    {"id": "c45", "kb": "helix", "type": "near-miss", "q": "How much does an HX-500 machine cost?", "answerable": false},
+    {"id": "c46", "kb": "helix", "type": "near-miss", "q": "What was the OEE of the Chennai plant in H1 2026?", "answerable": false},
+    {"id": "c47", "kb": "helix", "type": "near-miss", "q": "What is the maximum spindle speed of the HX-700?", "answerable": false},
+    {"id": "c48", "kb": "helix", "type": "near-miss", "q": "How many days of annual leave do G2 employees get?", "answerable": false}
+  ]
+}

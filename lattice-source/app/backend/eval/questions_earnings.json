@@ -1,0 +1,19 @@
+[
+  {"q": "What was Disney's total revenue in Q1 fiscal 2025 and how much did it grow?",
+   "facts": [["24.7", "24,690"], ["5%", "5 %", "5 percent"]], "pages": [1, 3]},
+  {"q": "Why did capital expenditures increase this quarter?",
+   "facts": [["cruise"], ["2.5", "2,466"]], "pages": [12]},
+  {"q": "What was the effective income tax rate this quarter, and why did it go up?",
+   "facts": [["27.8"], ["star india"]], "pages": [10]},
+  {"q": "What was ESPN+ average monthly revenue per paid subscriber?",
+   "facts": [["6.36"]], "pages": [8]},
+  {"q": "How much did the hurricanes hurt the Experiences segment?",
+   "facts": [["120"]], "pages": [1]},
+  {"q": "What percentage of the India joint venture does Disney hold?",
+   "facts": [["37"]], "pages": [4]},
+  {"q": "Why did corporate and unallocated shared expenses increase?",
+   "facts": [["legal settlement"]], "pages": [9]},
+  {"q": "What operating income growth does Disney expect for Experiences in fiscal 2025?",
+   "facts": [["6%", "6 %"], ["8%", "8 %"]], "pages": [2]},
+  {"q": "How many employees does Disney have?", "facts": null, "pages": []}
+]

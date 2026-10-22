@@ -1,0 +1,462 @@
+{
+ "a01": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source and expected."
+ },
+ "a02": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source and expected."
+ },
+ "a03": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source and expected."
+ },
+ "a04": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source and expected."
+ },
+ "a05": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source and expected."
+ },
+ "a06": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source and expected."
+ },
+ "a07": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source and expected."
+ },
+ "a08": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source and expected."
+ },
+ "a09": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source and expected."
+ },
+ "a10": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source and expected."
+ },
+ "a11": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source."
+ },
+ "a12": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source."
+ },
+ "a13": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source."
+ },
+ "a14": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source."
+ },
+ "a15": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source."
+ },
+ "a16": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source."
+ },
+ "a17": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source."
+ },
+ "a18": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source."
+ },
+ "a19": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source."
+ },
+ "a20": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source."
+ },
+ "a21": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "All red flags correctly identified."
+ },
+ "a22": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Correct steps given."
+ },
+ "a23": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Allowance correctly stated."
+ },
+ "a24": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Correct PTO days."
+ },
+ "n01": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Meaning correctly given."
+ },
+ "n02": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Fix correctly stated."
+ },
+ "n03": {
+  "faithful": "partly",
+  "correct": "yes",
+  "note": "Firmware fix info correct, version added."
+ },
+ "n04": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Microcontroller and speed correct."
+ },
+ "n05": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Memory specs correct."
+ },
+ "n06": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Pin 7 correctly identified."
+ },
+ "n07": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer includes required changes; faithful and correct."
+ },
+ "n09": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches expected sensor and accuracy."
+ },
+ "n08": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source."
+ },
+ "n10": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source."
+ },
+ "n11": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source."
+ },
+ "n12": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source."
+ },
+ "n13": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source."
+ },
+ "n14": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source."
+ },
+ "n15": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source."
+ },
+ "n16": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source."
+ },
+ "n17": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source."
+ },
+ "n18": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source."
+ },
+ "n19": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches source upgrade procedure."
+ },
+ "n20": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches compatibility table."
+ },
+ "n21": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches compatibility note."
+ },
+ "n22": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches troubleshooting table."
+ },
+ "n23": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches heating spec."
+ },
+ "n24": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches operating temperature range."
+ },
+ "s01": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches failed distortion test."
+ },
+ "s02": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches measured and target values."
+ },
+ "s03": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches SNR value."
+ },
+ "s04": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Matches location and date."
+ },
+ "s05": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source exactly."
+ },
+ "s06": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source."
+ },
+ "s07": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source."
+ },
+ "s08": {
+  "faithful": "yes",
+  "correct": "no",
+  "note": "Answer matches source but expected differs."
+ },
+ "s09": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source."
+ },
+ "s10": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source."
+ },
+ "s11": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source."
+ },
+ "s12": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source."
+ },
+ "s13": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source."
+ },
+ "s14": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source."
+ },
+ "s15": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source."
+ },
+ "s16": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source."
+ },
+ "s17": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source."
+ },
+ "s18": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source."
+ },
+ "s19": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source."
+ },
+ "s20": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source."
+ },
+ "k01": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source."
+ },
+ "k02": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source."
+ },
+ "k03": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source."
+ },
+ "k04": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches source."
+ },
+ "k05": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Answer matches escalation table exactly."
+ },
+ "k06": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Steps match diagnostic flow; includes power-cycle and ISP."
+ },
+ "k07": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Firmware version 2.9.1 or later fixes 5 GHz issue."
+ },
+ "k08": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Target response 1 hour, 24/7 for security issue."
+ },
+ "k09": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "RMA team handles hardware fault in 1 business day."
+ },
+ "k10": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Collect serial, firmware version, ISP before troubleshooting."
+ },
+ "k11": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Diagnostic flow resolves about 64% of no-internet tickets."
+ },
+ "k12": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "12,480 tickets resolved in Q3 per KPI dashboard."
+ },
+ "k13": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "CSAT 91.3% in Q3, target 90% per KPI."
+ },
+ "k14": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "First contact resolution 61% vs target 65%; not met."
+ },
+ "k15": {
+  "faithful": "no",
+  "correct": "no",
+  "note": "Incorrect difference, should be 924"
+ },
+ "k16": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Correct"
+ },
+ "k17": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Correct"
+ },
+ "k18": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Correct"
+ },
+ "k19": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Correct"
+ },
+ "k21": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Correct"
+ },
+ "k22": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Correct"
+ },
+ "k23": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Correct"
+ },
+ "k24": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Correct"
+ },
+ "k25": {
+  "faithful": "yes",
+  "correct": "yes",
+  "note": "Correct"
+ }
+}

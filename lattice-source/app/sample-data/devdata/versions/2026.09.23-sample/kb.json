@@ -1,0 +1,26 @@
+{
+ "format_version": 1,
+ "kb_version": "2026.09.23-sample",
+ "source_format": "pageindex",
+ "created_at": "2026-09-23T02:45:49.135857+00:00",
+ "pageindex_version": "0.2.10",
+ "files": {
+  "content/docs/pi-91f252d29c6c476b9329876f851e1852/doc.json": "848e93d4926e596f0d74ba1179f51c29ac8ae036263f130c99c3608b01c3face",
+  "content/docs/pi-91f252d29c6c476b9329876f851e1852/pages.json": "90cd60e4f3fa353f14395938b3e736c68d54dd5e275f1802c19ff536f407d08f",
+  "content/docs/pi-91f252d29c6c476b9329876f851e1852/tree.json": "74e09087a4d9156f2255bd787dde39936509e0e6b535870046a738e83a84c5e0",
+  "content/manifest.json": "fb92577d51732bfe00838f33c1417f03969e9556b11a083e860fc8fb2a09de96",
+  "originals/q1-fy25-earnings.pdf": "edb5d4c78cc2c403f2387a7b8aa7134c1a96018acb489722d13aa6a968ae93bb"
+ },
+ "documents": [
+  {
+   "id": "pi-91f252d29c6c476b9329876f851e1852",
+   "title": "Disney Q1 FY25 earnings release",
+   "description": "Sample document for testing",
+   "tags": [
+    "Finance",
+    "Sample"
+   ],
+   "language": "en"
+  }
+ ]
+}
