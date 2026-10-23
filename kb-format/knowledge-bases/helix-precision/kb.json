@@ -1,0 +1,852 @@
+{
+  "name": "Helix Precision",
+  "description": "Helix Precision (test export)",
+  "source": {
+    "file": "Helix_Precision_knowledge_base.zip",
+    "generated_at": "2026-10-15T18:00:00Z"
+  },
+  "modules": [
+    {
+      "id": "hx-500-manual-about-this-manual",
+      "title": "HX-500 manual: About this manual",
+      "pages": null,
+      "source": "HX-500_manual.pdf"
+    },
+    {
+      "id": "hx-500-manual-safety",
+      "title": "HX-500 manual: Safety",
+      "pages": null,
+      "source": "HX-500_manual.pdf"
+    },
+    {
+      "id": "hx-500-manual-specifications",
+      "title": "HX-500 manual: Specifications",
+      "pages": null,
+      "source": "HX-500_manual.pdf"
+    },
+    {
+      "id": "hx-500-manual-installation",
+      "title": "HX-500 manual: Installation",
+      "pages": null,
+      "source": "HX-500_manual.pdf"
+    },
+    {
+      "id": "hx-500-manual-operation",
+      "title": "HX-500 manual: Operation",
+      "pages": null,
+      "source": "HX-500_manual.pdf"
+    },
+    {
+      "id": "hx-500-manual-alarms-and-error-codes",
+      "title": "HX-500 manual: Alarms and error codes",
+      "pages": null,
+      "source": "HX-500_manual.pdf"
+    },
+    {
+      "id": "hx-500-manual-maintenance",
+      "title": "HX-500 manual: Maintenance",
+      "pages": null,
+      "source": "HX-500_manual.pdf"
+    },
+    {
+      "id": "hx-500-manual-torque-values",
+      "title": "HX-500 manual: Torque values",
+      "pages": null,
+      "source": "HX-500_manual.pdf"
+    },
+    {
+      "id": "hx-500-manual-warranty",
+      "title": "HX-500 manual: Warranty",
+      "pages": null,
+      "source": "HX-500_manual.pdf"
+    },
+    {
+      "id": "it-security-standard",
+      "title": "It security standard",
+      "pages": null,
+      "source": "it_security_standard.docx",
+      "summary": "Passwords must be at least 14 characters long and must not contain the user name."
+    },
+    {
+      "id": "plant-performance-h1-2026",
+      "title": "Plant performance h1 2026",
+      "pages": null,
+      "source": "plant_performance_h1_2026.xlsx",
+      "summary": "Pune produced 61,240 good parts in H1 2026 against a target of 60,000."
+    },
+    {
+      "id": "plant-safety-standard",
+      "title": "Plant safety standard",
+      "pages": null,
+      "source": "plant_safety_standard.pdf",
+      "summary": "This standard applies to all employees, contractors and visitors at the Pune and Chennai plants."
+    },
+    {
+      "id": "supplier-agreement-arvind-metals-part-1-original-agreement-s",
+      "title": "Supplier agreement arvind metals: Part 1: Original agreement (signed 10 January 2025)",
+      "pages": null,
+      "source": "supplier_agreement_arvind_metals.docx"
+    },
+    {
+      "id": "supplier-agreement-arvind-metals-part-2-amendment-1-signed-1",
+      "title": "Supplier agreement arvind metals: Part 2: Amendment 1 (signed 15 March 2026, effective 1 April 2026)",
+      "pages": null,
+      "source": "supplier_agreement_arvind_metals.docx"
+    },
+    {
+      "id": "supplier-agreement-arvind-metals-part-3-delivery-record-q2-2",
+      "title": "Supplier agreement arvind metals: Part 3: Delivery record Q2 2026",
+      "pages": null,
+      "source": "supplier_agreement_arvind_metals.docx"
+    },
+    {
+      "id": "travel-expense-policy",
+      "title": "Travel expense policy",
+      "pages": null,
+      "source": "travel_expense_policy.pdf",
+      "summary": "This policy sets the rules for business travel, accommodation, daily allowances and the reimbursement of expenses."
+    }
+  ],
+  "sections": [
+    {
+      "id": "hx-500-manual-about-this-manual/01-about-this-manual",
+      "module": "hx-500-manual-about-this-manual",
+      "title": "1. About this manual",
+      "pages": null,
+      "images": [],
+      "file": "modules/hx-500-manual-about-this-manual/01-about-this-manual.md",
+      "text": "This manual covers the HX-500 vertical machining center built from serial number HX5-2201 onwards (Rev C controller, firmware 4.x). Machines with serial numbers up to HX5-2200 use the Rev B controller; where Rev B behaves differently it is stated in a \"Rev B note\". Read chapter 2 (Safety) before operating the machine. Only operators who have completed the Level 1 HX-500 training may run programs; only Level 2 technicians may perform the tasks marked (L2).",
+      "summary": "This manual covers the HX 500 vertical machining center built from serial number HX5 2201 onwards (Rev C controller, firmware 4.x)."
+    },
+    {
+      "id": "hx-500-manual-safety/01-general-safety-rules",
+      "module": "hx-500-manual-safety",
+      "title": "2.1 General safety rules",
+      "pages": null,
+      "images": [],
+      "file": "modules/hx-500-manual-safety/01-general-safety-rules.md",
+      "text": "Never open the enclosure door while the spindle is turning. The door interlock stops the spindle within 2 seconds; do not bypass it. Wear safety glasses at all times in the machining area. Gloves must not be worn while the spindle is running. Long hair must be tied back and loose clothing secured. Keep the floor area within 1 meter of the machine free of chips and coolant.",
+      "summary": "Never open the enclosure door while the spindle is turning."
+    },
+    {
+      "id": "hx-500-manual-safety/02-emergency-stop",
+      "module": "hx-500-manual-safety",
+      "title": "2.2 Emergency stop",
+      "pages": null,
+      "images": [],
+      "file": "modules/hx-500-manual-safety/02-emergency-stop.md",
+      "text": "Press the red EMERGENCY STOP button on the operator panel or on the side of the enclosure. All axes and the spindle stop and hydraulic pressure is released. To restart: remove the cause, twist the button to release it, press RESET, then re-home all axes (HOME ALL).",
+      "summary": "Press the red EMERGENCY STOP button on the operator panel or on the side of the enclosure."
+    },
+    {
+      "id": "hx-500-manual-safety/03-lockout-tagout",
+      "module": "hx-500-manual-safety",
+      "title": "2.3 Lockout / tagout",
+      "pages": null,
+      "images": [],
+      "file": "modules/hx-500-manual-safety/03-lockout-tagout.md",
+      "text": "Before any maintenance task marked (L2), and before opening the electrical cabinet, apply lockout/tagout as described in the Plant Safety Standard, section 4. Switch off the main isolator, lock it with your personal padlock, and wait 5 minutes for the spindle drive capacitors to discharge.",
+      "summary": "Before any maintenance task marked (L2), and before opening the electrical cabinet, apply lockout/tagout as described in the Plant Safety Standard, section 4."
+    },
+    {
+      "id": "hx-500-manual-specifications/01-specifications",
+      "module": "hx-500-manual-specifications",
+      "title": "3. Specifications",
+      "pages": null,
+      "images": [],
+      "file": "modules/hx-500-manual-specifications/01-specifications.md",
+      "text": "Item Value Table size 1,100 x 500 mm Max table load 600 kg Travel X / Y / Z 850 / 510 / 560 mm Spindle taper BT40 Spindle speed 50 - 12,000 rpm Spindle power 15 kW (30 min rating), 11 kW continuous Tool magazine 24 tools Max tool weight 7 kg Max tool length 300 mm Tool change time 1.8 s (tool to tool) Rapid traverse 36 m/min Positioning accuracy +/- 0.005 mm Repeatability +/- 0.003 mm Air supply 6 bar minimum, 8 bar maximum, dry and filtered Power supply 400 V, 3 phase, 50 Hz, 35 kVA Coolant tank 250 liters Machine weight 5,800 kg Rev B note: Rev B machines have a 20-tool magazine and a 10,000 rpm spindle. All other values are the same.",
+      "summary": "Item Value Table size 1,100 x 500 mm Max table load 600 kg Travel X / Y / Z 850 / 510 / 560 mm Spindle taper BT40 Spindle speed 50 12,000 rpm Spindle power 15 kW (30 min rating), 11 kW continuous Tool magazine 24 tools M"
+    },
+    {
+      "id": "hx-500-manual-installation/01-foundation",
+      "module": "hx-500-manual-installation",
+      "title": "4.1 Foundation",
+      "pages": null,
+      "images": [],
+      "file": "modules/hx-500-manual-installation/01-foundation.md",
+      "text": "The machine must stand on a reinforced concrete floor at least 200 mm thick. Level the machine to within 0.02 mm/m using the six leveling bolts. Re-check the level after the first month of operation and then every 6 months.",
+      "summary": "The machine must stand on a reinforced concrete floor at least 200 mm thick."
+    },
+    {
+      "id": "hx-500-manual-installation/02-environment",
+      "module": "hx-500-manual-installation",
+      "title": "4.2 Environment",
+      "pages": null,
+      "images": [],
+      "file": "modules/hx-500-manual-installation/02-environment.md",
+      "text": "Ambient temperature 10 - 35 °C, relative humidity below 75 % (non-condensing). For accuracy work (tolerances below 0.01 mm) the room temperature must be held within +/- 1 °C of 20 °C.",
+      "summary": "Ambient temperature 10 35 °C, relative humidity below 75 % (non condensing)."
+    },
+    {
+      "id": "hx-500-manual-installation/03-electrical-connection",
+      "module": "hx-500-manual-installation",
+      "title": "4.3 Electrical connection",
+      "pages": null,
+      "images": [],
+      "file": "modules/hx-500-manual-installation/03-electrical-connection.md",
+      "text": "The machine must be connected by a qualified electrician to a dedicated circuit protected by a 63 A slow-blow fuse. The protective earth resistance must not exceed 0.1 ohm.",
+      "summary": "The machine must be connected by a qualified electrician to a dedicated circuit protected by a 63 A slow blow fuse."
+    },
+    {
+      "id": "hx-500-manual-operation/01-daily-start-up",
+      "module": "hx-500-manual-operation",
+      "title": "5.1 Daily start-up",
+      "pages": null,
+      "images": [],
+      "file": "modules/hx-500-manual-operation/01-daily-start-up.md",
+      "text": "1. Check the air pressure gauge: 6 - 8 bar. 2. Check the way-lube oil level (sight glass at least half full). 3. Check the coolant level and concentration (see 7.4). 4. Switch on the main isolator and wait for the controller to boot (about 90 seconds). 5. Release the emergency stop and press RESET. 6. Press HOME ALL to home the axes. 7. Run the spindle warm-up program (see 5.2).",
+      "summary": "1."
+    },
+    {
+      "id": "hx-500-manual-operation/02-spindle-warm-up",
+      "module": "hx-500-manual-operation",
+      "title": "5.2 Spindle warm-up",
+      "pages": null,
+      "images": [],
+      "file": "modules/hx-500-manual-operation/02-spindle-warm-up.md",
+      "text": "Run program O9000 (warm-up) whenever the spindle has been stopped for more than 4 hours, and always at the start of each shift. The program runs the spindle for 5 minutes at 1,000 rpm, 5 minutes at 4,000 rpm and 5 minutes at 8,000 rpm (15 minutes total). If the machine has been stopped for more than 72 hours, use the extended program O9001 instead (30 minutes, up to 12,000 rpm). Rev B note: on Rev B machines the extended program is O9002 and runs up to 10,000 rpm.",
+      "summary": "Run program O9000 (warm up) whenever the spindle has been stopped for more than 4 hours, and always at the start of each shift."
+    },
+    {
+      "id": "hx-500-manual-operation/03-loading-tools",
+      "module": "hx-500-manual-operation",
+      "title": "5.3 Loading tools",
+      "pages": null,
+      "images": [],
+      "file": "modules/hx-500-manual-operation/03-loading-tools.md",
+      "text": "Tools are loaded at the tool-change station with the spindle stopped. Each tool must be measured on the presetter and its length and diameter entered in the tool table before use. Tools heavier than 7 kg or longer than 300 mm must not be loaded. Adjacent pockets must be left empty for tools with a diameter above 80 mm (maximum 125 mm with empty adjacent pockets).",
+      "summary": "Tools are loaded at the tool change station with the spindle stopped."
+    },
+    {
+      "id": "hx-500-manual-operation/04-running-a-program",
+      "module": "hx-500-manual-operation",
+      "title": "5.4 Running a program",
+      "pages": null,
+      "images": [],
+      "file": "modules/hx-500-manual-operation/04-running-a-program.md",
+      "text": "Select the program, run it first in DRY RUN mode with the feed override at 25 % and single block on, then run the first part with the rapid override at 25 %. Only after the first part has been measured and approved may the program run in automatic mode at 100 % override.",
+      "summary": "Select the program, run it first in DRY RUN mode with the feed override at 25 % and single block on, then run the first part with the rapid override at 25 %."
+    },
+    {
+      "id": "hx-500-manual-operation/05-shutdown",
+      "module": "hx-500-manual-operation",
+      "title": "5.5 Shutdown",
+      "pages": null,
+      "images": [],
+      "file": "modules/hx-500-manual-operation/05-shutdown.md",
+      "text": "At the end of the last shift: remove chips from the table, park the axes with program O9010, switch the coolant pump off, and switch off the main isolator. Do not switch off the main isolator while an alarm is active; record the alarm number first.",
+      "summary": "At the end of the last shift: remove chips from the table, park the axes with program O9010, switch the coolant pump off, and switch off the main isolator."
+    },
+    {
+      "id": "hx-500-manual-alarms-and-error-codes/01-alarms-and-error-codes",
+      "module": "hx-500-manual-alarms-and-error-codes",
+      "title": "6. Alarms and error codes",
+      "pages": null,
+      "images": [],
+      "file": "modules/hx-500-manual-alarms-and-error-codes/01-alarms-and-error-codes.md",
+      "text": "Code Meaning Operator action Escalate to A101 Air pressure low (below 6 bar) Check the compressor and the air filter; machine stops at the end of the current block Maintenance if not cleared in 15 min A102 Way-lube oil level low Refill way-lube oil (ISO VG 68) - A103 Coolant level low Top up coolant - A110 Door open during cycle Close the door and press CYCLE START - A205 Tool not clamped Do not restart; check the pull stud and the tool holder Level 2 technician A206 Tool change timeout Press RESET, run the tool changer recovery (M-code M190) Level 2 technician if it repeats A210 Tool length exceeds limit Check the tool table entry against the presetter - A301 Spindle overload Reduce the feed or depth of cut; check the tool for wear Maintenance if it repeats 3 times in a shift A302 Spindle over-temperature (above 70 °C) Stop the cycle; let the spindle cool for 30 minutes; check the chiller Maintenance A303 Spindle vibration high Stop; check the tool balance and the tool holder Level 2 technician A401 X axis following error Press RESET; re-home; if it repeats stop the machine Maintenance A402 Y axis following error As A401 Maintenance A403 Z axis following error As A401; check the Z counterbalance pressure (55 - 60 bar) Maintenance A501 Hydraulic pressure low Stop; check the hydraulic oil level and the pump Maintenance A601 Chiller fault Stop the spindle; check the chiller power and the filter Maintenance E900 Controller battery low Replace the controller battery within 7 days with power ON (L2) Level 2 technician E901 Absolute encoder battery low Replace the encoder batteries within 3 days with power ON, otherwise all axis positions are lost (L2) Level 2 technician E950 Controller communication error Switch off, wait 1 minute, switch on IT / Controls engineer Rev B note: on Rev B machines alarm A302 is triggered above 65 °C instead of 70 °C, and alarm A303 does not exist.",
+      "summary": "Code Meaning Operator action Escalate to A101 Air pressure low (below 6 bar) Check the compressor and the air filter; machine stops at the end of the current block Maintenance if not cleared in 15 min A102 Way lube oil l"
+    },
+    {
+      "id": "hx-500-manual-alarms-and-error-codes/02-clearing-a-tool-change-timeout-a206",
+      "module": "hx-500-manual-alarms-and-error-codes",
+      "title": "6.1 Clearing a tool change timeout (A206)",
+      "pages": null,
+      "images": [],
+      "file": "modules/hx-500-manual-alarms-and-error-codes/02-clearing-a-tool-change-timeout-a206.md",
+      "text": "1. Press RESET. 2. Switch to MDI mode and run M190 (tool changer recovery). 3. Check that the tool number on the screen matches the tool in the spindle. 4. If A206 occurs again within the same shift, stop and call a Level 2 technician.",
+      "summary": "1."
+    },
+    {
+      "id": "hx-500-manual-alarms-and-error-codes/03-spindle-over-temperature-a302",
+      "module": "hx-500-manual-alarms-and-error-codes",
+      "title": "6.2 Spindle over-temperature (A302)",
+      "pages": null,
+      "images": [],
+      "file": "modules/hx-500-manual-alarms-and-error-codes/03-spindle-over-temperature-a302.md",
+      "text": "Stop the cycle and let the spindle idle with the chiller running for 30 minutes. Check that the chiller filter is clean and the chiller tank is above the MIN mark. Do not restart production until the spindle temperature is below 45 °C. If A302 occurs twice in one week, a Level 2 technician must check the spindle bearings.",
+      "summary": "Stop the cycle and let the spindle idle with the chiller running for 30 minutes."
+    },
+    {
+      "id": "hx-500-manual-maintenance/01-maintenance-schedule",
+      "module": "hx-500-manual-maintenance",
+      "title": "7.1 Maintenance schedule",
+      "pages": null,
+      "images": [],
+      "file": "modules/hx-500-manual-maintenance/01-maintenance-schedule.md",
+      "text": "Interval Task Done by Daily Clean chips from table and enclosure; check air, lube and coolant levels Operator Weekly Clean the coolant tank strainer; check the way covers for damage; drain the air filter water Operator Monthly Clean the chiller filter; check the tool changer gripper; check the Z counterbalance pressure Operator Every 500 hours Replace the air filter element; check the spindle drawbar force (L2) Level 2 technician Every 2,000 hours Replace the hydraulic oil and filter; check the ballscrew backlash (L2) Level 2 technician Every 4,000 hours or 2 years Replace the coolant completely and clean the tank; replace the controller battery (L2) Level 2 technician Every 8,000 hours Spindle bearing inspection by the manufacturer's service Helix service Whichever comes first applies where both hours and years are given.",
+      "summary": "Interval Task Done by Daily Clean chips from table and enclosure; check air, lube and coolant levels Operator Weekly Clean the coolant tank strainer; check the way covers for damage; drain the air filter water Operator M"
+    },
+    {
+      "id": "hx-500-manual-maintenance/02-lubrication",
+      "module": "hx-500-manual-maintenance",
+      "title": "7.2 Lubrication",
+      "pages": null,
+      "images": [],
+      "file": "modules/hx-500-manual-maintenance/02-lubrication.md",
+      "text": "Point Lubricant Quantity Interval Way-lube tank ISO VG 68 slideway oil 2 liters Refill when below half Hydraulic unit ISO VG 32 hydraulic oil 12 liters Replace every 2,000 hours Tool changer cam NLGI 2 lithium grease 10 g Every 1,000 hours Spindle Sealed for life - Do not lubricate",
+      "summary": "Point Lubricant Quantity Interval Way lube tank ISO VG 68 slideway oil 2 liters Refill when below half Hydraulic unit ISO VG 32 hydraulic oil 12 liters Replace every 2,000 hours Tool changer cam NLGI 2 lithium grease 10 "
+    },
+    {
+      "id": "hx-500-manual-maintenance/03-drawbar-force-check-l2",
+      "module": "hx-500-manual-maintenance",
+      "title": "7.3 Drawbar force check (L2)",
+      "pages": null,
+      "images": [],
+      "file": "modules/hx-500-manual-maintenance/03-drawbar-force-check-l2.md",
+      "text": "The drawbar clamping force must be between 12 and 14 kN for BT40 tools. Measure with the drawbar force gauge. If the force is below 12 kN, replace the disc spring stack. Never run the machine with a clamping force below 10 kN.",
+      "summary": "The drawbar clamping force must be between 12 and 14 kN for BT40 tools."
+    },
+    {
+      "id": "hx-500-manual-maintenance/04-coolant",
+      "module": "hx-500-manual-maintenance",
+      "title": "7.4 Coolant",
+      "pages": null,
+      "images": [],
+      "file": "modules/hx-500-manual-maintenance/04-coolant.md",
+      "text": "Use water-miscible coolant at 6 - 8 % concentration (refractometer reading x 1.0 for Helix Cool 300). Below 5 % there is a risk of corrosion and bacterial growth; above 10 % the coolant foams and can irritate the skin. Check the concentration daily and the pH weekly (target pH 8.5 - 9.5).",
+      "summary": "Use water miscible coolant at 6 8 % concentration (refractometer reading x 1.0 for Helix Cool 300)."
+    },
+    {
+      "id": "hx-500-manual-maintenance/05-ballscrew-backlash-l2",
+      "module": "hx-500-manual-maintenance",
+      "title": "7.5 Ballscrew backlash (L2)",
+      "pages": null,
+      "images": [],
+      "file": "modules/hx-500-manual-maintenance/05-ballscrew-backlash-l2.md",
+      "text": "Measure the backlash on each axis with a dial indicator. The limit is 0.010 mm. Between 0.010 and 0.020 mm, enter backlash compensation in parameter group 1850. Above 0.020 mm the ballscrew must be replaced.",
+      "summary": "Measure the backlash on each axis with a dial indicator."
+    },
+    {
+      "id": "hx-500-manual-torque-values/01-torque-values",
+      "module": "hx-500-manual-torque-values",
+      "title": "8. Torque values",
+      "pages": null,
+      "images": [],
+      "file": "modules/hx-500-manual-torque-values/01-torque-values.md",
+      "text": "Fastener Size Torque Leveling bolt lock nut M24 200 Nm Vise to table M16 120 Nm Fixture to table M12 70 Nm Tool holder pull stud M16 100 Nm (BT40) Way cover screws M6 10 Nm",
+      "summary": "Fastener Size Torque Leveling bolt lock nut M24 200 Nm Vise to table M16 120 Nm Fixture to table M12 70 Nm Tool holder pull stud M16 100 Nm (BT40) Way cover screws M6 10 Nm"
+    },
+    {
+      "id": "hx-500-manual-warranty/01-warranty",
+      "module": "hx-500-manual-warranty",
+      "title": "9. Warranty",
+      "pages": null,
+      "images": [],
+      "file": "modules/hx-500-manual-warranty/01-warranty.md",
+      "text": "The machine is covered for 24 months from installation or 6,000 spindle hours, whichever comes first. The warranty does not cover damage from crashes, use of non-approved coolant, or maintenance not carried out according to chapter 7. Spindle bearings are covered for 12 months only if the warm-up rules in 5.2 have been followed (the controller logs warm-up runs).",
+      "summary": "The machine is covered for 24 months from installation or 6,000 spindle hours, whichever comes first."
+    },
+    {
+      "id": "it-security-standard/01-accounts-and-passwords",
+      "module": "it-security-standard",
+      "title": "1. Accounts and passwords",
+      "pages": null,
+      "images": [],
+      "file": "modules/it-security-standard/01-accounts-and-passwords.md",
+      "text": "Passwords must be at least 14 characters long and must not contain the user name. Passwords for normal accounts expire every 180 days; passwords for administrator accounts every 90 days. The last 10 passwords cannot be reused. After 5 failed sign-in attempts the account is locked for 30 minutes. The IT service desk can unlock it earlier after verifying the user's identity by a call-back to the registered mobile number. Shared accounts are not allowed, except machine-controller accounts on the shop floor, which are managed by the controls team.",
+      "summary": "Passwords must be at least 14 characters long and must not contain the user name."
+    },
+    {
+      "id": "it-security-standard/02-multi-factor-authentication-mfa",
+      "module": "it-security-standard",
+      "title": "2. Multi-factor authentication (MFA)",
+      "pages": null,
+      "images": [],
+      "file": "modules/it-security-standard/02-multi-factor-authentication-mfa.md",
+      "text": "MFA is required for email, VPN, the ERP system and every administrator account. Authenticator app codes are preferred; SMS codes are allowed only for employees without a company smartphone. Hardware security keys are mandatory for domain administrators.",
+      "summary": "MFA is required for email, VPN, the ERP system and every administrator account."
+    },
+    {
+      "id": "it-security-standard/03-remote-access",
+      "module": "it-security-standard",
+      "title": "3. Remote access",
+      "pages": null,
+      "images": [],
+      "file": "modules/it-security-standard/03-remote-access.md",
+      "text": "Remote access is only through the company VPN from a company laptop. Personal devices may access email and Teams through the mobile app with MFA, but may not connect to the VPN. Remote access to shop-floor machine controllers is not allowed, except for Helix service engineers through the vendor access gateway, with a work order and the approval of the plant controls engineer for each session.",
+      "summary": "Remote access is only through the company VPN from a company laptop."
+    },
+    {
+      "id": "it-security-standard/04-usb-and-removable-media",
+      "module": "it-security-standard",
+      "title": "4. USB and removable media",
+      "pages": null,
+      "images": [],
+      "file": "modules/it-security-standard/04-usb-and-removable-media.md",
+      "text": "USB storage devices are blocked on all office computers. On the shop floor, CNC programs are transferred through the DNC server; USB sticks may only be used on machines without a network connection (list kept by the controls team), and only sticks issued by IT, which are scanned at the kiosk before each use.",
+      "summary": "USB storage devices are blocked on all office computers."
+    },
+    {
+      "id": "it-security-standard/05-software",
+      "module": "it-security-standard",
+      "title": "5. Software",
+      "pages": null,
+      "images": [],
+      "file": "modules/it-security-standard/05-software.md",
+      "text": "Only software from the company software center may be installed. Requests for other software go through the IT service desk and need the approval of the information security officer (ISO). Freeware and browser extensions are treated the same way.",
+      "summary": "Only software from the company software center may be installed."
+    },
+    {
+      "id": "it-security-standard/06-data-classification",
+      "module": "it-security-standard",
+      "title": "6. Data classification",
+      "pages": null,
+      "images": [],
+      "file": "modules/it-security-standard/06-data-classification.md",
+      "text": "Class Examples Rules Public Product brochures No restrictions Internal Procedures, this standard Share only with employees and contractors under NDA Confidential Drawings, prices, supplier agreements Encrypt when sent outside the company; no personal cloud storage Restricted Salary data, personal data, customer IP Access on named-person basis; encrypt at rest and in transit; printing needs the data owner's approval",
+      "summary": "Class Examples Rules Public Product brochures No restrictions Internal Procedures, this standard Share only with employees and contractors under NDA Confidential Drawings, prices, supplier agreements Encrypt when sent ou"
+    },
+    {
+      "id": "it-security-standard/07-incidents",
+      "module": "it-security-standard",
+      "title": "7. Incidents",
+      "pages": null,
+      "images": [],
+      "file": "modules/it-security-standard/07-incidents.md",
+      "text": "Report suspected phishing with the \"Report phishing\" button in Outlook. Report a lost or stolen laptop or phone to the IT service desk within 2 hours, and to the police within 24 hours if stolen. Security incidents involving personal data must be escalated to the data protection officer within 24 hours.",
+      "summary": "Report suspected phishing with the \"Report phishing\" button in Outlook."
+    },
+    {
+      "id": "it-security-standard/08-exceptions",
+      "module": "it-security-standard",
+      "title": "8. Exceptions",
+      "pages": null,
+      "images": [],
+      "file": "modules/it-security-standard/08-exceptions.md",
+      "text": "Exceptions to this standard need a written risk assessment and the approval of the chief information security officer (CISO). Exceptions are valid for at most 6 months and must be reviewed before they are renewed.",
+      "summary": "Exceptions to this standard need a written risk assessment and the approval of the chief information security officer (CISO)."
+    },
+    {
+      "id": "plant-performance-h1-2026/01-summary",
+      "module": "plant-performance-h1-2026",
+      "title": "Summary",
+      "pages": null,
+      "images": [],
+      "file": "modules/plant-performance-h1-2026/01-summary.md",
+      "text": "Pune produced 61,240 good parts in H1 2026 against a target of 60,000. Overall equipment effectiveness (OEE) averaged 72.4 % against a target of 75 %. Line C was the main source of downtime because of the spindle failure on machine HX-07 in April (see the downtime table).",
+      "summary": "Pune produced 61,240 good parts in H1 2026 against a target of 60,000."
+    },
+    {
+      "id": "plant-performance-h1-2026/02-sheet-production-by-line",
+      "module": "plant-performance-h1-2026",
+      "title": "Sheet: Production by line",
+      "pages": null,
+      "images": [],
+      "file": "modules/plant-performance-h1-2026/02-sheet-production-by-line.md",
+      "text": "Month Line A Line B Line C Total January 3,820 3,410 2,950 10,180 February 3,760 3,480 3,020 10,260 March 3,910 3,550 3,140 10,600 April 3,880 3,600 2,210 9,690 May 3,950 3,620 2,890 10,460 June 3,990 3,710 2,350 10,050 H1 Total 23,310 21,370 16,560 61,240",
+      "summary": "Month Line A Line B Line C Total January 3,820 3,410 2,950 10,180 February 3,760 3,480 3,020 10,260 March 3,910 3,550 3,140 10,600 April 3,880 3,600 2,210 9,690 May 3,950 3,620 2,890 10,460 June 3,990 3,710 2,350 10,050 "
+    },
+    {
+      "id": "plant-performance-h1-2026/03-sheet-scrap-rate",
+      "module": "plant-performance-h1-2026",
+      "title": "Sheet: Scrap rate (%)",
+      "pages": null,
+      "images": [],
+      "file": "modules/plant-performance-h1-2026/03-sheet-scrap-rate.md",
+      "text": "Month Line A Line B Line C January 1.8 2.4 3.1 February 1.6 2.2 2.9 March 1.5 2.5 2.7 April 1.7 2.1 4.8 May 1.4 2.0 3.3 June 1.3 1.9 3.6 Target scrap rate: below 2.0 % for every line.",
+      "summary": "Month Line A Line B Line C January 1.8 2.4 3.1 February 1.6 2.2 2.9 March 1.5 2.5 2.7 April 1.7 2.1 4.8 May 1.4 2.0 3.3 June 1.3 1.9 3.6 Target scrap rate: below 2.0 % for every line."
+    },
+    {
+      "id": "plant-performance-h1-2026/04-sheet-downtime-hours-by-cause",
+      "module": "plant-performance-h1-2026",
+      "title": "Sheet: Downtime hours by cause",
+      "pages": null,
+      "images": [],
+      "file": "modules/plant-performance-h1-2026/04-sheet-downtime-hours-by-cause.md",
+      "text": "Cause Line A Line B Line C Breakdowns 42 58 196 Tool changes and setup 88 104 97 Waiting for material 16 35 22 Planned maintenance 60 60 60 Quality holds 9 14 31",
+      "summary": "Cause Line A Line B Line C Breakdowns 42 58 196 Tool changes and setup 88 104 97 Waiting for material 16 35 22 Planned maintenance 60 60 60 Quality holds 9 14 31"
+    },
+    {
+      "id": "plant-performance-h1-2026/05-sheet-oee",
+      "module": "plant-performance-h1-2026",
+      "title": "Sheet: OEE (%)",
+      "pages": null,
+      "images": [],
+      "file": "modules/plant-performance-h1-2026/05-sheet-oee.md",
+      "text": "Month Line A Line B Line C January 80.2 74.5 66.1 February 79.8 75.1 67.4 March 81.5 76.0 68.9 April 80.9 76.4 52.3 May 82.1 77.2 63.8 June 82.6 77.9 58.0 OEE target: 75 %.",
+      "summary": "Month Line A Line B Line C January 80.2 74.5 66.1 February 79.8 75.1 67.4 March 81.5 76.0 68.9 April 80.9 76.4 52.3 May 82.1 77.2 63.8 June 82.6 77.9 58.0 OEE target: 75 %."
+    },
+    {
+      "id": "plant-performance-h1-2026/06-notes",
+      "module": "plant-performance-h1-2026",
+      "title": "Notes",
+      "pages": null,
+      "images": [],
+      "file": "modules/plant-performance-h1-2026/06-notes.md",
+      "text": "April, Line C: HX-07 spindle bearing failure; the machine was down for 9 days. The investigation found that the spindle warm-up program had been skipped on 14 of 20 working days in March, so the bearing replacement was not covered by the warranty. June, Line C: material shortage of 6061 aluminium bar stock from supplier Arvind Metals (late deliveries on 3 orders). Line B introduced quick-change fixtures in March, which cut its average setup time from 48 to 35 minutes.",
+      "summary": "April, Line C: HX 07 spindle bearing failure; the machine was down for 9 days."
+    },
+    {
+      "id": "plant-safety-standard/01-scope",
+      "module": "plant-safety-standard",
+      "title": "1. Scope",
+      "pages": null,
+      "images": [],
+      "file": "modules/plant-safety-standard/01-scope.md",
+      "text": "This standard applies to all employees, contractors and visitors at the Pune and Chennai plants. Where a local rule is stricter, the stricter rule applies. Version 5 replaces Version 4 (2024); the main changes are listed in section 9.",
+      "summary": "This standard applies to all employees, contractors and visitors at the Pune and Chennai plants."
+    },
+    {
+      "id": "plant-safety-standard/02-ppe-by-area",
+      "module": "plant-safety-standard",
+      "title": "2.1 PPE by area",
+      "pages": null,
+      "images": [],
+      "file": "modules/plant-safety-standard/02-ppe-by-area.md",
+      "text": "Area Safety shoes Safety glasses Hearing protection Gloves Other Machining hall Required Required Required above 85 dB(A) Not while spindles run - Grinding bay Required Required + face shield Required Cut-resistant (level C) Dust mask FFP2 Heat treatment Required Required - Heat-resistant Aluminized apron above 400 °C Paint shop Required Goggles - Nitrile Respirator A2P3 Warehouse Required - - Work gloves High-visibility vest Offices - - - - - Quality lab Required Required - - Lab coat",
+      "summary": "Area Safety shoes Safety glasses Hearing protection Gloves Other Machining hall Required Required Required above 85 dB(A) Not while spindles run Grinding bay Required Required + face shield Required Cut resistant (level "
+    },
+    {
+      "id": "plant-safety-standard/03-visitors",
+      "module": "plant-safety-standard",
+      "title": "2.2 Visitors",
+      "pages": null,
+      "images": [],
+      "file": "modules/plant-safety-standard/03-visitors.md",
+      "text": "Visitors must be escorted at all times in production areas and wear safety shoes, safety glasses and a visitor vest. Visitors may not enter the heat treatment area or the paint shop. Visitors who are not wearing safety shoes may only use the marked visitor walkway.",
+      "summary": "Visitors must be escorted at all times in production areas and wear safety shoes, safety glasses and a visitor vest."
+    },
+    {
+      "id": "plant-safety-standard/04-contractors",
+      "module": "plant-safety-standard",
+      "title": "2.3 Contractors",
+      "pages": null,
+      "images": [],
+      "file": "modules/plant-safety-standard/04-contractors.md",
+      "text": "Contractors must complete the safety induction (45 minutes) before starting work and receive a contractor badge valid for 12 months. Contractors working at height or on electrical equipment also need a work permit (section 5) for each job.",
+      "summary": "Contractors must complete the safety induction (45 minutes) before starting work and receive a contractor badge valid for 12 months."
+    },
+    {
+      "id": "plant-safety-standard/05-what-to-report",
+      "module": "plant-safety-standard",
+      "title": "3.1 What to report",
+      "pages": null,
+      "images": [],
+      "file": "modules/plant-safety-standard/05-what-to-report.md",
+      "text": "Report every injury, near miss, fire, spill of more than 5 liters of oil or chemicals, and any damage to a machine guard.",
+      "summary": "Report every injury, near miss, fire, spill of more than 5 liters of oil or chemicals, and any damage to a machine guard."
+    },
+    {
+      "id": "plant-safety-standard/06-deadlines",
+      "module": "plant-safety-standard",
+      "title": "3.2 Deadlines",
+      "pages": null,
+      "images": [],
+      "file": "modules/plant-safety-standard/06-deadlines.md",
+      "text": "Event Report to Deadline Serious injury (hospital treatment, fracture, amputation) Plant manager and EHS head by phone Immediately, within 1 hour Lost-time injury EHS head Within 4 hours First-aid injury Shift supervisor Before the end of the shift Near miss Shift supervisor, through the HSE app Within 24 hours Fire (any size) Fire control room (extension 333) Immediately Chemical spill above 5 liters EHS head Within 2 hours A written investigation report must be completed within 7 calendar days for lost-time and serious injuries, and within 14 days for near misses with a high potential severity.",
+      "summary": "Event Report to Deadline Serious injury (hospital treatment, fracture, amputation) Plant manager and EHS head by phone Immediately, within 1 hour Lost time injury EHS head Within 4 hours First aid injury Shift supervisor"
+    },
+    {
+      "id": "plant-safety-standard/07-night-shift",
+      "module": "plant-safety-standard",
+      "title": "3.3 Night shift",
+      "pages": null,
+      "images": [],
+      "file": "modules/plant-safety-standard/07-night-shift.md",
+      "text": "On the night shift (22:00 - 06:00) the shift supervisor acts for the plant manager for the first report. The plant manager must still be informed by 08:00.",
+      "summary": "On the night shift (22:00 06:00) the shift supervisor acts for the plant manager for the first report."
+    },
+    {
+      "id": "plant-safety-standard/08-lockout-tagout-loto",
+      "module": "plant-safety-standard",
+      "title": "4. Lockout / tagout (LOTO)",
+      "pages": null,
+      "images": [],
+      "file": "modules/plant-safety-standard/08-lockout-tagout-loto.md",
+      "text": "1. Inform the area supervisor and the machine operators. 2. Switch off the equipment using the normal stop. 3. Isolate all energy sources: electrical, pneumatic, hydraulic, stored mechanical energy. 4. Apply your personal padlock and tag to every isolation point. Every person working on the equipment applies their own lock. 5. Release stored energy and wait the discharge time stated in the machine manual. 6. Verify zero energy: try to start the machine and measure voltage. 7. After the work, remove only your own lock. A lock left by someone who has left the site may only be removed by the area manager after a documented check, with the EHS head informed.",
+      "summary": "1."
+    },
+    {
+      "id": "plant-safety-standard/09-work-permits",
+      "module": "plant-safety-standard",
+      "title": "5. Work permits",
+      "pages": null,
+      "images": [],
+      "file": "modules/plant-safety-standard/09-work-permits.md",
+      "text": "A work permit signed by the area supervisor and EHS is required for: hot work (welding, grinding, cutting outside the grinding bay), work at height above 1.8 meters, confined space entry, and electrical work on live equipment. Permits are valid for one shift. Hot work requires a fire watch for 30 minutes after the work ends. Electrical work on live equipment above 50 V additionally needs the approval of the plant electrical engineer.",
+      "summary": "A work permit signed by the area supervisor and EHS is required for: hot work (welding, grinding, cutting outside the grinding bay), work at height above 1.8 meters, confined space entry, and electrical work on live equi"
+    },
+    {
+      "id": "plant-safety-standard/10-forklifts",
+      "module": "plant-safety-standard",
+      "title": "6. Forklifts",
+      "pages": null,
+      "images": [],
+      "file": "modules/plant-safety-standard/10-forklifts.md",
+      "text": "Only employees holding a valid Helix forklift license (renewed every 3 years) may drive forklifts. Speed limit 10 km/h in the warehouse and 5 km/h in production halls. Pedestrians have priority on marked walkways. Contractors may not drive Helix forklifts.",
+      "summary": "Only employees holding a valid Helix forklift license (renewed every 3 years) may drive forklifts."
+    },
+    {
+      "id": "plant-safety-standard/11-working-hours-and-fatigue",
+      "module": "plant-safety-standard",
+      "title": "7. Working hours and fatigue",
+      "pages": null,
+      "images": [],
+      "file": "modules/plant-safety-standard/11-working-hours-and-fatigue.md",
+      "text": "No one may work more than 12 hours in a shift or more than 60 hours in a week, including overtime. Between two shifts there must be a rest period of at least 11 hours. Exceptions need the written approval of the plant manager and may not be used for more than 2 consecutive weeks.",
+      "summary": "No one may work more than 12 hours in a shift or more than 60 hours in a week, including overtime."
+    },
+    {
+      "id": "plant-safety-standard/12-training",
+      "module": "plant-safety-standard",
+      "title": "8. Training",
+      "pages": null,
+      "images": [],
+      "file": "modules/plant-safety-standard/12-training.md",
+      "text": "Training Who Refresh General safety induction Everyone Every 2 years Fire extinguisher use Everyone in production Every year First aid 1 person per 25 employees per shift Every 2 years LOTO Maintenance and Level 2 technicians Every year Forklift Forklift drivers Every 3 years",
+      "summary": "Training Who Refresh General safety induction Everyone Every 2 years Fire extinguisher use Everyone in production Every year First aid 1 person per 25 employees per shift Every 2 years LOTO Maintenance and Level 2 techni"
+    },
+    {
+      "id": "plant-safety-standard/13-changes-from-version-4",
+      "module": "plant-safety-standard",
+      "title": "9. Changes from Version 4",
+      "pages": null,
+      "images": [],
+      "file": "modules/plant-safety-standard/13-changes-from-version-4.md",
+      "text": "The near-miss deadline is now 24 hours (was 48 hours). Hearing protection is required in the machining hall above 85 dB(A) (was 90 dB(A)). Contractor badges are valid for 12 months (were 6 months). The maximum working week is 60 hours (was 64 hours).",
+      "summary": "The near miss deadline is now 24 hours (was 48 hours)."
+    },
+    {
+      "id": "supplier-agreement-arvind-metals-part-1-original-agreement-s/01-scope",
+      "module": "supplier-agreement-arvind-metals-part-1-original-agreement-s",
+      "title": "1.1 Scope",
+      "pages": null,
+      "images": [],
+      "file": "modules/supplier-agreement-arvind-metals-part-1-original-agreement-s/01-scope.md",
+      "text": "Arvind Metals supplies aluminium bar stock (grades 6061-T6 and 7075-T6) and steel bar (EN8, EN24) to the Helix Precision plants in Pune and Chennai.",
+      "summary": "Arvind Metals supplies aluminium bar stock (grades 6061 T6 and 7075 T6) and steel bar (EN8, EN24) to the Helix Precision plants in Pune and Chennai."
+    },
+    {
+      "id": "supplier-agreement-arvind-metals-part-1-original-agreement-s/02-term",
+      "module": "supplier-agreement-arvind-metals-part-1-original-agreement-s",
+      "title": "1.2 Term",
+      "pages": null,
+      "images": [],
+      "file": "modules/supplier-agreement-arvind-metals-part-1-original-agreement-s/02-term.md",
+      "text": "The agreement runs from 1 February 2025 to 31 January 2027 and renews automatically for one year unless either party gives 90 days' written notice.",
+      "summary": "The agreement runs from 1 February 2025 to 31 January 2027 and renews automatically for one year unless either party gives 90 days' written notice."
+    },
+    {
+      "id": "supplier-agreement-arvind-metals-part-1-original-agreement-s/03-prices",
+      "module": "supplier-agreement-arvind-metals-part-1-original-agreement-s",
+      "title": "1.3 Prices",
+      "pages": null,
+      "images": [],
+      "file": "modules/supplier-agreement-arvind-metals-part-1-original-agreement-s/03-prices.md",
+      "text": "Prices are fixed per quarter and linked to the LME aluminium price of the last month of the previous quarter. A change of more than 5 % in the LME price allows either party to request a price review.",
+      "summary": "Prices are fixed per quarter and linked to the LME aluminium price of the last month of the previous quarter."
+    },
+    {
+      "id": "supplier-agreement-arvind-metals-part-1-original-agreement-s/04-delivery",
+      "module": "supplier-agreement-arvind-metals-part-1-original-agreement-s",
+      "title": "1.4 Delivery",
+      "pages": null,
+      "images": [],
+      "file": "modules/supplier-agreement-arvind-metals-part-1-original-agreement-s/04-delivery.md",
+      "text": "Delivery within 10 working days of the purchase order. On-time delivery target: 95 % of orders per quarter.",
+      "summary": "Delivery within 10 working days of the purchase order."
+    },
+    {
+      "id": "supplier-agreement-arvind-metals-part-1-original-agreement-s/05-payment-terms",
+      "module": "supplier-agreement-arvind-metals-part-1-original-agreement-s",
+      "title": "1.5 Payment terms",
+      "pages": null,
+      "images": [],
+      "file": "modules/supplier-agreement-arvind-metals-part-1-original-agreement-s/05-payment-terms.md",
+      "text": "Payment within 60 days of the invoice date.",
+      "summary": "Payment within 60 days of the invoice date."
+    },
+    {
+      "id": "supplier-agreement-arvind-metals-part-1-original-agreement-s/06-late-delivery-penalty",
+      "module": "supplier-agreement-arvind-metals-part-1-original-agreement-s",
+      "title": "1.6 Late delivery penalty",
+      "pages": null,
+      "images": [],
+      "file": "modules/supplier-agreement-arvind-metals-part-1-original-agreement-s/06-late-delivery-penalty.md",
+      "text": "For each full week of delay the supplier pays a penalty of 1 % of the value of the delayed order, up to a maximum of 5 % of the order value.",
+      "summary": "For each full week of delay the supplier pays a penalty of 1 % of the value of the delayed order, up to a maximum of 5 % of the order value."
+    },
+    {
+      "id": "supplier-agreement-arvind-metals-part-1-original-agreement-s/07-quality",
+      "module": "supplier-agreement-arvind-metals-part-1-original-agreement-s",
+      "title": "1.7 Quality",
+      "pages": null,
+      "images": [],
+      "file": "modules/supplier-agreement-arvind-metals-part-1-original-agreement-s/07-quality.md",
+      "text": "Each delivery must come with a mill test certificate. Material that fails incoming inspection is returned at the supplier's cost and must be replaced within 5 working days.",
+      "summary": "Each delivery must come with a mill test certificate."
+    },
+    {
+      "id": "supplier-agreement-arvind-metals-part-1-original-agreement-s/08-termination",
+      "module": "supplier-agreement-arvind-metals-part-1-original-agreement-s",
+      "title": "1.8 Termination",
+      "pages": null,
+      "images": [],
+      "file": "modules/supplier-agreement-arvind-metals-part-1-original-agreement-s/08-termination.md",
+      "text": "Helix may terminate the agreement with 30 days' notice if on-time delivery is below 85 % for two consecutive quarters.",
+      "summary": "Helix may terminate the agreement with 30 days' notice if on time delivery is below 85 % for two consecutive quarters."
+    },
+    {
+      "id": "supplier-agreement-arvind-metals-part-2-amendment-1-signed-1/01-part-2-amendment-1-signed-15-march-2026-effective-1-april-20",
+      "module": "supplier-agreement-arvind-metals-part-2-amendment-1-signed-1",
+      "title": "Part 2: Amendment 1 (signed 15 March 2026, effective 1 April 2026)",
+      "pages": null,
+      "images": [],
+      "file": "modules/supplier-agreement-arvind-metals-part-2-amendment-1-signed-1/01-part-2-amendment-1-signed-15-march-2026-effective-1-april-20.md",
+      "text": "The following clauses replace the corresponding clauses of the original agreement. All other clauses remain unchanged.",
+      "summary": "The following clauses replace the corresponding clauses of the original agreement."
+    },
+    {
+      "id": "supplier-agreement-arvind-metals-part-2-amendment-1-signed-1/02-delivery-replaces-1-4",
+      "module": "supplier-agreement-arvind-metals-part-2-amendment-1-signed-1",
+      "title": "2.1 Delivery (replaces 1.4)",
+      "pages": null,
+      "images": [],
+      "file": "modules/supplier-agreement-arvind-metals-part-2-amendment-1-signed-1/02-delivery-replaces-1-4.md",
+      "text": "Delivery within 7 working days of the purchase order for 6061-T6 and within 10 working days for all other grades. On-time delivery target: 97 % of orders per quarter.",
+      "summary": "Delivery within 7 working days of the purchase order for 6061 T6 and within 10 working days for all other grades."
+    },
+    {
+      "id": "supplier-agreement-arvind-metals-part-2-amendment-1-signed-1/03-payment-terms-replaces-1-5",
+      "module": "supplier-agreement-arvind-metals-part-2-amendment-1-signed-1",
+      "title": "2.2 Payment terms (replaces 1.5)",
+      "pages": null,
+      "images": [],
+      "file": "modules/supplier-agreement-arvind-metals-part-2-amendment-1-signed-1/03-payment-terms-replaces-1-5.md",
+      "text": "Payment within 45 days of the invoice date. An early-payment discount of 1.5 % applies to invoices paid within 15 days.",
+      "summary": "Payment within 45 days of the invoice date."
+    },
+    {
+      "id": "supplier-agreement-arvind-metals-part-2-amendment-1-signed-1/04-late-delivery-penalty-replaces-1-6",
+      "module": "supplier-agreement-arvind-metals-part-2-amendment-1-signed-1",
+      "title": "2.3 Late delivery penalty (replaces 1.6)",
+      "pages": null,
+      "images": [],
+      "file": "modules/supplier-agreement-arvind-metals-part-2-amendment-1-signed-1/04-late-delivery-penalty-replaces-1-6.md",
+      "text": "For each full week of delay the supplier pays a penalty of 1.5 % of the value of the delayed order, up to a maximum of 7.5 % of the order value. No penalty applies to delays caused by force majeure notified in writing within 48 hours.",
+      "summary": "For each full week of delay the supplier pays a penalty of 1.5 % of the value of the delayed order, up to a maximum of 7.5 % of the order value."
+    },
+    {
+      "id": "supplier-agreement-arvind-metals-part-2-amendment-1-signed-1/05-safety-stock-new-clause",
+      "module": "supplier-agreement-arvind-metals-part-2-amendment-1-signed-1",
+      "title": "2.4 Safety stock (new clause)",
+      "pages": null,
+      "images": [],
+      "file": "modules/supplier-agreement-arvind-metals-part-2-amendment-1-signed-1/05-safety-stock-new-clause.md",
+      "text": "Arvind Metals keeps a safety stock of at least 4 tonnes of 6061-T6 bar at its Pune warehouse reserved for Helix.",
+      "summary": "Arvind Metals keeps a safety stock of at least 4 tonnes of 6061 T6 bar at its Pune warehouse reserved for Helix."
+    },
+    {
+      "id": "supplier-agreement-arvind-metals-part-3-delivery-record-q2-2/01-part-3-delivery-record-q2-2026",
+      "module": "supplier-agreement-arvind-metals-part-3-delivery-record-q2-2",
+      "title": "Part 3: Delivery record Q2 2026",
+      "pages": null,
+      "images": [],
+      "file": "modules/supplier-agreement-arvind-metals-part-3-delivery-record-q2-2/01-part-3-delivery-record-q2-2026.md",
+      "text": "PO number Grade Order value (INR) Due date Delivered Days late PO-26-0412 6061-T6 8,40,000 8 Apr 2026 8 Apr 2026 0 PO-26-0457 7075-T6 5,10,000 22 Apr 2026 21 Apr 2026 0 PO-26-0503 6061-T6 9,20,000 12 May 2026 26 May 2026 14 PO-26-0538 EN24 3,60,000 27 May 2026 27 May 2026 0 PO-26-0561 6061-T6 7,80,000 3 Jun 2026 13 Jun 2026 10 PO-26-0590 6061-T6 6,50,000 17 Jun 2026 25 Jun 2026 8 PO-26-0602 EN8 2,90,000 24 Jun 2026 24 Jun 2026 0",
+      "summary": "PO number Grade Order value (INR) Due date Delivered Days late PO 26 0412 6061 T6 8,40,000 8 Apr 2026 8 Apr 2026 0 PO 26 0457 7075 T6 5,10,000 22 Apr 2026 21 Apr 2026 0 PO 26 0503 6061 T6 9,20,000 12 May 2026 26 May 2026"
+    },
+    {
+      "id": "travel-expense-policy/01-purpose",
+      "module": "travel-expense-policy",
+      "title": "1. Purpose",
+      "pages": null,
+      "images": [],
+      "file": "modules/travel-expense-policy/01-purpose.md",
+      "text": "This policy sets the rules for business travel, accommodation, daily allowances and the reimbursement of expenses. It applies to all employees. Expenses must be submitted in the Expense portal within 30 days of the end of the trip; claims submitted after 60 days are not reimbursed.",
+      "summary": "This policy sets the rules for business travel, accommodation, daily allowances and the reimbursement of expenses."
+    },
+    {
+      "id": "travel-expense-policy/02-employee-grades",
+      "module": "travel-expense-policy",
+      "title": "2. Employee grades",
+      "pages": null,
+      "images": [],
+      "file": "modules/travel-expense-policy/02-employee-grades.md",
+      "text": "Grade Examples G1 Operators, technicians, clerks G2 Engineers, supervisors, specialists G3 Managers G4 Senior managers, plant managers G5 Directors and above",
+      "summary": "Grade Examples G1 Operators, technicians, clerks G2 Engineers, supervisors, specialists G3 Managers G4 Senior managers, plant managers G5 Directors and above"
+    },
+    {
+      "id": "travel-expense-policy/03-travel-class",
+      "module": "travel-expense-policy",
+      "title": "3. Travel class",
+      "pages": null,
+      "images": [],
+      "file": "modules/travel-expense-policy/03-travel-class.md",
+      "text": "Grade Air (domestic) Air (international, up to 6 hours) Air (international, over 6 hours) Train G1 Economy Economy Economy AC 3-tier G2 Economy Economy Premium economy AC 2-tier G3 Economy Premium economy Business AC 2-tier G4 Economy Business Business AC 1st class G5 Business Business Business AC 1st class Flights must be booked through the travel desk at least 7 days before travel. Bookings made less than 7 days ahead need the approval of the employee's manager with a reason. The lowest logical fare within 2 hours of the preferred departure time must be chosen.",
+      "summary": "Grade Air (domestic) Air (international, up to 6 hours) Air (international, over 6 hours) Train G1 Economy Economy Economy AC 3 tier G2 Economy Economy Premium economy AC 2 tier G3 Economy Premium economy Business AC 2 t"
+    },
+    {
+      "id": "travel-expense-policy/04-accommodation-limits-per-night-inr",
+      "module": "travel-expense-policy",
+      "title": "4. Accommodation limits per night (INR)",
+      "pages": null,
+      "images": [],
+      "file": "modules/travel-expense-policy/04-accommodation-limits-per-night-inr.md",
+      "text": "Grade Tier 1 city Tier 2 city Other G1 4,000 3,000 2,500 G2 6,000 4,500 3,500 G3 8,000 6,000 4,500 G4 12,000 8,000 6,000 G5 Actuals Actuals Actuals Tier 1 cities: Mumbai, Delhi NCR, Bengaluru, Chennai, Hyderabad, Pune, Kolkata. Tier 2 cities: Ahmedabad, Jaipur, Coimbatore, Nagpur, Kochi, Indore and other state capitals. Staying with friends or relatives instead of a hotel is allowed and is compensated with a flat INR 1,000 per night.",
+      "summary": "Grade Tier 1 city Tier 2 city Other G1 4,000 3,000 2,500 G2 6,000 4,500 3,500 G3 8,000 6,000 4,500 G4 12,000 8,000 6,000 G5 Actuals Actuals Actuals Tier 1 cities: Mumbai, Delhi NCR, Bengaluru, Chennai, Hyderabad, Pune, K"
+    },
+    {
+      "id": "travel-expense-policy/05-daily-allowance-per-diem",
+      "module": "travel-expense-policy",
+      "title": "5. Daily allowance (per diem)",
+      "pages": null,
+      "images": [],
+      "file": "modules/travel-expense-policy/05-daily-allowance-per-diem.md",
+      "text": "The daily allowance covers meals, local conveyance within the city and incidentals. Grade Domestic (INR per day) International (USD per day) G1 800 50 G2 1,200 70 G3 1,600 90 G4 2,000 110 G5 2,500 130 Trips shorter than 8 hours get half the daily allowance. If meals are provided by the host or included in a conference fee, the allowance is reduced by 25 % for each main meal provided (breakfast, lunch, dinner). The allowance is not paid for days of personal leave taken during a trip.",
+      "summary": "The daily allowance covers meals, local conveyance within the city and incidentals."
+    },
+    {
+      "id": "travel-expense-policy/06-approvals",
+      "module": "travel-expense-policy",
+      "title": "6. Approvals",
+      "pages": null,
+      "images": [],
+      "file": "modules/travel-expense-policy/06-approvals.md",
+      "text": "Expense Approval needed Domestic trip Manager International trip Manager and the department head (G4 or above) Single expense above INR 25,000 Department head Single expense above INR 1,00,000 Plant manager and finance controller Accommodation above the grade limit Department head, before the booking Business-class air for a grade not entitled to it Managing director",
+      "summary": "Expense Approval needed Domestic trip Manager International trip Manager and the department head (G4 or above) Single expense above INR 25,000 Department head Single expense above INR 1,00,000 Plant manager and finance c"
+    },
+    {
+      "id": "travel-expense-policy/07-receipts",
+      "module": "travel-expense-policy",
+      "title": "7. Receipts",
+      "pages": null,
+      "images": [],
+      "file": "modules/travel-expense-policy/07-receipts.md",
+      "text": "Original receipts or tax invoices are required for every expense above INR 500, except the daily allowance. Lost receipts: a self-declaration is accepted up to INR 2,000 per trip; above that the expense is not reimbursed. Receipts must show the GST number of the supplier where applicable.",
+      "summary": "Original receipts or tax invoices are required for every expense above INR 500, except the daily allowance."
+    },
+    {
+      "id": "travel-expense-policy/08-not-reimbursed",
+      "module": "travel-expense-policy",
+      "title": "8. Not reimbursed",
+      "pages": null,
+      "images": [],
+      "file": "modules/travel-expense-policy/08-not-reimbursed.md",
+      "text": "Alcohol, minibar, laundry for trips shorter than 4 nights, personal entertainment, traffic fines, upgrades bought by the employee, travel insurance bought separately (the company policy covers all business trips), and expenses for accompanying family members.",
+      "summary": "Alcohol, minibar, laundry for trips shorter than 4 nights, personal entertainment, traffic fines, upgrades bought by the employee, travel insurance bought separately (the company policy covers all business trips), and ex"
+    },
+    {
+      "id": "travel-expense-policy/09-advances",
+      "module": "travel-expense-policy",
+      "title": "9. Advances",
+      "pages": null,
+      "images": [],
+      "file": "modules/travel-expense-policy/09-advances.md",
+      "text": "An advance of up to 80 % of the estimated trip cost may be requested for trips longer than 3 days or for international trips. The advance must be settled within 15 days of return; unsettled advances are recovered from the next salary.",
+      "summary": "An advance of up to 80 % of the estimated trip cost may be requested for trips longer than 3 days or for international trips."
+    },
+    {
+      "id": "travel-expense-policy/10-mileage",
+      "module": "travel-expense-policy",
+      "title": "10. Mileage",
+      "pages": null,
+      "images": [],
+      "file": "modules/travel-expense-policy/10-mileage.md",
+      "text": "Use of a personal car for business travel is reimbursed at INR 12 per km, and a personal two-wheeler at INR 5 per km, for distances above 20 km per day. Tolls and parking are reimbursed at actuals with receipts.",
+      "summary": "Use of a personal car for business travel is reimbursed at INR 12 per km, and a personal two wheeler at INR 5 per km, for distances above 20 km per day."
+    }
+  ]
+}

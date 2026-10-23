@@ -6,7 +6,8 @@ import path from 'node:path';
 import readline from 'node:readline';
 
 const dir = path.resolve(process.argv[2] || 'knowledge-bases/inspectai-studio');
-const srv = spawn(process.execPath, [path.join(dir, 'mcp-server/server.mjs')], { stdio: ['pipe', 'pipe', 'inherit'] });
+const server = path.join(path.dirname(new URL(import.meta.url).pathname), '..', 'mcp-server', 'server.mjs');
+const srv = spawn(process.execPath, [server], { stdio: ['pipe', 'pipe', 'inherit'], env: { ...process.env, KB_DIR: dir } });
 const waiting = new Map();
 readline.createInterface({ input: srv.stdout }).on('line', l => { const m = JSON.parse(l); waiting.get(m.id)?.(m); waiting.delete(m.id); });
 let next = 1;

@@ -69,6 +69,8 @@ from .pipeline import (CLOSING_REPLIES, MAX_CLARIFY_OPTIONS, MAX_CONTEXT_TURNS, 
 from .calc import CalcError, calculate
 from .search import tokenize
 from .vague import vague_clarification
+from .interview import Interview
+from .kbfolder import Extras, load_extras
 from .focus import (focus_of, heading, mixed_parts, navigation, near, part_label, short_text, step_to, steps,
                     task_sections, walk_request)
 from .settings import Settings
@@ -182,6 +184,9 @@ class Engine:
         self.catalog: dict[str, bundle.DocEntry] = {}
         self.catalog_unmatched: list[str] = []  # catalog ids that name no document (a bundle mistake)
         self.load_error: str | None = None
+        # a sem-ai-kb knowledge base (see kbfolder.py): its AGENTS.md, needs-review.md and decision tree
+        self.kb_extras: Extras | None = None
+        self.interview: Interview | None = None
         self.attachments = AttachmentStore(settings.data_dir / "attachments")
         try:  # files left behind by conversations never asked in, or deleted before this was done
             self.attachments.prune({conversation_of(h) for h in self.history.read(limit=None)})
@@ -239,6 +244,7 @@ class Engine:
 
     def reload(self) -> None:
         self.semantic, self._semantic_key = None, None  # new documents: a new index
+        self.kb_extras, self.interview = None, None
         try:
             loaded = bundle.load_active(self.settings.data_dir)
         except (bundle.BundleError, KnowledgeBaseError) as e:
@@ -283,7 +289,20 @@ class Engine:
                                  # a server model asked not to think may think anyway (Qwen 3.5 27B
                                  # at the office: "got stuck writing" on every question)
                                  may_think=self.llm.thinking_off)
+        if self.manifest.source_format == "semkb":
+            try:
+                self.kb_extras = load_extras(bundle.version_dir(self.settings.data_dir, self.manifest.kb_version) / bundle.CONTENT)
+                self.interview = Interview(self.pipeline.docs, self.kb_extras)
+                self.pipeline.kb_notes = self.kb_extras.notes
+            except (KnowledgeBaseError, OSError) as e:  # the sections still answer without them
+                log.warning("knowledge base extras not loaded: %s", e)
         self.start_semantic()
+
+    def interview_question(self, question: str, pipeline: Pipeline, scope: set[int] | None) -> Clarification | None:
+        """A first question's question back from the knowledge base's decision tree (see interview.py)."""
+        if self.interview is None or pipeline is not self.pipeline:
+            return None
+        return self.interview.clarification(question, pipeline.index, scope)
 
     async def model_label(self, cfg: LLMConfig) -> str:
         """The model's name for the chat agent to tell users: a server model by its name, the
@@ -1444,7 +1463,10 @@ def create_app(settings: Settings | None = None, model: Model | None = None) -> 
         reply = smalltalk_reply(req.question)
         if reply is not None:  # "who are you": an introduction, not "which document?"
             return AskResult(question=req.question, found=False, answer=reply, smalltalk=True)
-        vague = None if context or req.doc_ids else vague_clarification(req.question, pipeline.index, scope)
+        # a first question: the knowledge base's own decision tree asks back first, then vague.py
+        vague = None if context or req.doc_ids or req.section else engine.interview_question(req.question, pipeline, scope)
+        if vague is None and not (context or req.doc_ids):
+            vague = vague_clarification(req.question, pipeline.index, scope)
         if vague is not None:  # "what is the limit?": which one (see vague.py)
             return AskResult(question=req.question, found=False, answer=vague.prompt, clarify=vague)
         engine.start_semantic()
@@ -1510,6 +1532,11 @@ def create_app(settings: Settings | None = None, model: Model | None = None) -> 
             # chat" and "make it shorter" are about the conversation, not vague
             if not req.doc_ids and not _ABOUT_CHAT.search(req.question) \
                     and not engine.context_for(req.conversation_id, replacing=req.replaces):
+                # the knowledge base's own decision tree first ("How do I train?": which project type)
+                vague = None if req.section else engine.interview_question(req.question, pipeline, scope)
+                if vague is not None:
+                    return AskResult(question=req.question, found=False, answer=vague.prompt, clarify=vague,
+                                     mode="chat")
                 # "How long?" with no topic: a larger model's assistant asks what is meant; a small one
                 # (documents only) declined it as a general question (final check), so it is asked here
                 vague = vague_clarification(req.question, pipeline.index, scope,
@@ -1562,6 +1589,8 @@ def create_app(settings: Settings | None = None, model: Model | None = None) -> 
                                             _attachments_named(req.question, attached,
                                                                lambda aid: engine.attachments.text(conversation, aid))),
             model_label=await engine.model_label(engine.chat_llm),
+            kb_guide=engine.kb_extras.guide if engine.kb_extras else "",
+            kb_notes=engine.kb_extras.notes if engine.kb_extras else "",
             documents_only=await engine.chat_is_small(engine.chat_llm),
             tier=engine.chat_tier(), earlier=engine.earlier_sections(req.conversation_id, req.replaces), place=place,
             picked=picked_section(req),

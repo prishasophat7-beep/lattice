@@ -15,12 +15,12 @@ in [STRUCTURE.md](STRUCTURE.md); the converted InspectAI knowledge base is in
 | Search index | Built by Lattice at import (`search.py`, optional embeddings) | `kb.json`: every section's plain text, title, pages and images, ready for BM25 |
 | Clarifying questions | Worked out at run time by heuristics (`vague.py`, `focus.py`) or left to the model (`ask_user`) | Written down in `interaction/decision-tree.json`: questions, options, variables and results |
 | Agent behaviour | Lattice's built-in system prompt (`chat.py` `CHAT_INSTRUCTIONS`) | `AGENTS.md` shipped with each knowledge base |
-| Known gaps | Not recorded | `needs-review.md` (hand-maintained) + `needs-review.generated.md` (from each build) |
+| Known gaps | Not recorded | `needs-review.md`: hand-written notes plus a block of auto-detected gaps rewritten by each build |
 | Pictures | `images/figure_NNN.png` in the nested zip; descriptions in a separate "Image Descriptions" chapter at the end | `images/page_NNN_imgK.png`; description written next to the picture in its section |
 | Page numbers | `start_page` / `end_page` per node (null in InspectAI, TaskFlow, Helix) | `pages: [start, end]` in front matter and `kb.json` (null when the export has none) |
 | Page scans | Not included (some exports include the original PDF) | `pages/page_NNN.jpg` expected; Lattice exports have none, so empty |
 | Section summaries | One-line `summary` per node | Not in the spec; the converter keeps them as an extra `summary` field in `kb.json` |
-| Serving | Only through the Lattice app | Any agent harness: files only, or the zero-dependency MCP server (`mcp-server/server.mjs`) |
+| Serving | Only through the Lattice app | Lattice imports it (source format `semkb`); any other agent can read the files with `AGENTS.md` as instructions |
 
 ## What the new structure fixes from the 22 Oct test findings
 
@@ -46,7 +46,7 @@ in [STRUCTURE.md](STRUCTURE.md); the converted InspectAI knowledge base is in
 - **Bold UI labels**: the guide asks for `**Train**`-style bold labels from the OCR. The sample
   exports have no such markup (InspectAI has none), so the converter keeps the text as it is.
 - **Images named `page_000`**: when the export has no page numbers, pictures are named
-  `page_000_imgK.png` and listed in `needs-review.generated.md`.
+  `page_000_imgK.png` and listed in `needs-review.md`.
 - **Lattice cannot read this layout yet.** Importing it needs a new loader in
   `backend/oasis_engine/loaders.py` (read `kb.json` and the section files) and probably using
   `decision-tree.json` in place of the `vague.py` heuristics.
@@ -67,8 +67,8 @@ in [STRUCTURE.md](STRUCTURE.md); the converted InspectAI knowledge base is in
 4. Matches each section to its `page_index.json` record **in document order** for pages and
    summary. Matching by title alone mixed up "2.2 Importing Images" and "3.2 Importing Images".
 5. Writes the section files, module READMEs, `index.md`, `kb.json`, pictures and
-   `needs-review.generated.md`; copies the MCP server; creates `AGENTS.md`, `README.md`,
-   `CLAUDE.md`, `needs-review.md` and `decision-tree.json` only if they don't exist yet.
+   the auto-detected block of `needs-review.md`; creates `AGENTS.md` (with an Interview tone
+   section), `README.md` and `decision-tree.json` only if they don't exist yet.
 
 ## All 8 sample bundles, converted
 
@@ -88,11 +88,8 @@ have the one-question starter tree.
 
 ## Checks run
 
-- `node tools/smoke-test.mjs knowledge-bases/inspectai-studio`: 19 checks over JSON-RPC
-  (initialize, ping, tools/list, the interview down two paths, "something else", a bad option,
-  four searches, modules, a section, an unknown section, needs-review). All pass.
-- Rebuilding leaves `AGENTS.md`, `needs-review.md` and `decision-tree.json` unchanged (checksums).
-- Every node, result and module named in the decision tree exists.
-- Skylink: "E-217 firmware update failed", "slow wifi 5 GHz", "R7 warranty Care+" and
-  "LED blinking amber" each find the right section first; citations come out as
-  *(R7 router troubleshooting guide, p. 1)*.
+- Lattice's engine tests: the original 386 plus 12 for this format (`tests/test_semkb.py`): import of a
+  zipped folder, loading, pictures with their whole description, AGENTS.md and needs-review.md for
+  the model, the decision tree's questions back, and the Manuals and Chat flows through the API.
+- All 8 sample knowledge bases import into Lattice; asking back behaves as with the parser's bundles,
+  or better ("How do I annotate text?" now asks Method 1 or Method 2).

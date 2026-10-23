@@ -198,6 +198,13 @@ each 1-2 minutes on a laptop CPU. Options (untested): fewer calls for the local 
 
 ---
 
+## 11. Tests fail with pydantic-ai 2.60 (Confirmed)
+
+`pyproject.toml` asks for `pydantic-ai-slim[openai]>=2.40`. A fresh install picks up 2.60, where
+`tests/test_api_manuals.py::test_conversation_context_and_history` fails (a validation retry changes
+the prompts the test inspects). 386/386 pass with 2.40, 2.45 and 2.50. Pin an upper bound
+(`>=2.40,<2.60`) until the test or the code is adjusted.
+
 ## 10. Data issues (not code)
 
 - **Two knowledge bases named "Sample Knowledge Base":** `page_index.json` of

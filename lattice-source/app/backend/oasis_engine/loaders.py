@@ -470,4 +470,7 @@ def load(root: Path, source_format: str) -> list[Doc]:
         return load_markdown(root)
     if source_format == "export":
         return load_export(root)
+    if source_format == "semkb":  # a sem-ai-kb folder (kb.json, modules/, ...): see kbfolder.py
+        from .kbfolder import load_semkb
+        return load_semkb(root)
     raise KnowledgeBaseError(f"Unknown knowledge-base format {source_format!r}")

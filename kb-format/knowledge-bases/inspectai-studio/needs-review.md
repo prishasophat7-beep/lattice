@@ -1,7 +1,7 @@
 # Needs review
 
 Known gaps in the manual. Edit this file as gaps are resolved; the agent reads it before
-asserting values. Never overwritten by the build (its fresh scan is needs-review.generated.md).
+asserting values. Never overwritten by the build.
 
 - **all modules**: the export has no page numbers (`start_page` is null for every section), so
   citations name the module and section instead of a page. Re-export with page numbers to fix.

@@ -1,0 +1,50 @@
+{
+  "start": "document",
+  "nodes": {
+    "document": {
+      "ask": "Which document is your question about?",
+      "options": [
+        {
+          "label": "R7 router troubleshooting guide",
+          "next": "result:r7-router-troubleshooting-guide"
+        },
+        {
+          "label": "Q3 2026 support review",
+          "next": "result:q3-2026-support-review"
+        },
+        {
+          "label": "Skylink limited warranty",
+          "next": "result:skylink-limited-warranty"
+        },
+        {
+          "label": "Something else",
+          "next": "open"
+        }
+      ]
+    }
+  },
+  "resolve": {},
+  "results": {
+    "r7-router-troubleshooting-guide": {
+      "modules": [
+        "r7-router-troubleshooting-guide"
+      ],
+      "summary": "R7 router troubleshooting guide",
+      "ask_next": []
+    },
+    "q3-2026-support-review": {
+      "modules": [
+        "q3-2026-support-review"
+      ],
+      "summary": "Q3 2026 support review",
+      "ask_next": []
+    },
+    "skylink-limited-warranty": {
+      "modules": [
+        "skylink-limited-warranty"
+      ],
+      "summary": "Skylink limited warranty",
+      "ask_next": []
+    }
+  }
+}

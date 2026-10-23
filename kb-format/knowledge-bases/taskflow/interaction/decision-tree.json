@@ -1,0 +1,129 @@
+{
+  "start": "document",
+  "nodes": {
+    "document-1": {
+      "ask": "Which part of User manual?",
+      "options": [
+        {
+          "label": "Introduction",
+          "next": "result:user-manual-introduction"
+        },
+        {
+          "label": "Features",
+          "next": "result:user-manual-features"
+        },
+        {
+          "label": "Configuration",
+          "next": "result:user-manual-configuration"
+        },
+        {
+          "label": "Something else",
+          "next": "open"
+        }
+      ]
+    },
+    "document": {
+      "ask": "Which document is your question about?",
+      "options": [
+        {
+          "label": "User manual",
+          "next": "document-1"
+        },
+        {
+          "label": "Leave policy",
+          "next": "result:leave-policy"
+        },
+        {
+          "label": "Performance metrics",
+          "next": "result:performance-metrics"
+        },
+        {
+          "label": "Quarterly report",
+          "next": "result:quarterly-report"
+        },
+        {
+          "label": "Manifest",
+          "next": "result:manifest"
+        },
+        {
+          "label": "Config",
+          "next": "result:config"
+        },
+        {
+          "label": "Requirements",
+          "next": "result:requirements"
+        },
+        {
+          "label": "Something else",
+          "next": "open"
+        }
+      ]
+    }
+  },
+  "resolve": {},
+  "results": {
+    "user-manual-introduction": {
+      "modules": [
+        "user-manual-introduction"
+      ],
+      "summary": "User manual: Introduction",
+      "ask_next": []
+    },
+    "user-manual-features": {
+      "modules": [
+        "user-manual-features"
+      ],
+      "summary": "User manual: Features",
+      "ask_next": []
+    },
+    "user-manual-configuration": {
+      "modules": [
+        "user-manual-configuration"
+      ],
+      "summary": "User manual: Configuration",
+      "ask_next": []
+    },
+    "leave-policy": {
+      "modules": [
+        "leave-policy"
+      ],
+      "summary": "Leave policy",
+      "ask_next": []
+    },
+    "performance-metrics": {
+      "modules": [
+        "performance-metrics"
+      ],
+      "summary": "Performance metrics",
+      "ask_next": []
+    },
+    "quarterly-report": {
+      "modules": [
+        "quarterly-report"
+      ],
+      "summary": "Quarterly report",
+      "ask_next": []
+    },
+    "manifest": {
+      "modules": [
+        "manifest"
+      ],
+      "summary": "Manifest",
+      "ask_next": []
+    },
+    "config": {
+      "modules": [
+        "config"
+      ],
+      "summary": "Config",
+      "ask_next": []
+    },
+    "requirements": {
+      "modules": [
+        "requirements"
+      ],
+      "summary": "Requirements",
+      "ask_next": []
+    }
+  }
+}

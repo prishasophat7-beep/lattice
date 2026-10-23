@@ -144,7 +144,7 @@ export interface KbDocument {
 
 export interface KbInfo {
   kb_version: string;
-  source_format: "pageindex" | "markdown";
+  source_format: "pageindex" | "markdown" | "export" | "semkb";
   created_at: string | null;
   /** Catalog entries in kb.json whose id names no document: the web team's bundle has a mistake. */
   catalog_unmatched?: string[];

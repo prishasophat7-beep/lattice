@@ -1,0 +1,277 @@
+"""sem-ai-kb knowledge bases: a folder (or a zip of it) built from a manual by kb-format/tools/build-kb.mjs.
+
+    kb.json                         {"name", "description", "modules": [...], "sections": [...]}
+    index.md, README.md             for people; not read here
+    AGENTS.md                       how the assistant should behave (given to the chat model)
+    needs-review.md                 known gaps in the manual (given to the model before it answers)
+    interaction/decision-tree.json  the clarifying interview (see interview.py)
+    modules/<module>/NN-<slug>.md   one section of the manual, with YAML front matter
+    images/page_NNN_imgK.png        the manual's pictures; a section's "Image description:" line says
+                                    what one shows
+
+Each source file the modules came from ("source" in kb.json) becomes one Doc: its modules are its
+top-level sections and their sections the next level, with the manual's own headings, so the rest of
+the engine (search, focus, "Same step in", walkthroughs) works on it as on any Markdown document.
+Page numbers and summaries come from kb.json; pictures keep their whole description.
+"""
+from __future__ import annotations
+
+import json
+import re
+from dataclasses import dataclass, field
+from pathlib import Path
+
+from .loaders import (_IMAGE_REF, KnowledgeBaseError, _figure, _notes, _plain_description, parse_markdown,
+                      repair_mojibake)
+from .models import Doc, clean
+
+KB_INDEX = "kb.json"
+AGENTS = "AGENTS.md"
+NEEDS_REVIEW = "needs-review.md"
+DECISION_TREE = "interaction/decision-tree.json"
+# what an import keeps: everything else in the folder (scripts, an MCP server, notes) stays out
+KEPT = re.compile(r"(kb\.json|index\.md|README\.md|AGENTS\.md|needs-review\.md|interaction/decision-tree\.json"
+                  r"|modules/[^/]+/[^/]+\.md|images/[^/]+\.(?:png|jpe?g|gif|webp)|pages/[^/]+\.(?:png|jpe?g))",
+                  re.IGNORECASE)
+# a picture's description is read in full where the picture is, up to this length
+DESCRIPTION_CHARS = 1500
+
+_FRONT = re.compile(r"\A﻿?---\r?\n(.*?)\r?\n---\r?\n", re.DOTALL)
+_PAGES_LINE = re.compile(r"^_Manual (?:pp?\.\s*[\d–-]+|pages not recorded)_\s*$", re.MULTILINE)
+# a picture as build-kb.mjs writes it: the image, its path line, and its description line if it has one
+_PICTURE_BLOCK = re.compile(r"!\[([^\]]*)\]\(\s*(?:\.\./\.\./)?images/([^)\s]+)\s*\)[ \t]*"
+                            r"(?:\n\s*Image path: [^\n]*)?(?:\n\s*Image description: ([^\n]*))?")
+_PATH_LINE = re.compile(r"^Image path: .*$\n?", re.MULTILINE)
+_DESCRIPTION_LINE = re.compile(r"^Image description: (.+)$\n?", re.MULTILINE)
+_NUMBER = re.compile(r"^\s*\d+(?:\.\d+)*\.?\s+")
+
+
+def is_semkb_index(data: object) -> bool:
+    """A sem-ai-kb kb.json (modules and sections), not Lattice's own bundle manifest of that name."""
+    return (isinstance(data, dict) and "format_version" not in data and isinstance(data.get("modules"), list)
+            and isinstance(data.get("sections"), list))
+
+
+def read_index(root: Path) -> dict:
+    try:
+        data = json.loads((Path(root) / KB_INDEX).read_text(encoding="utf-8-sig"))
+    except (OSError, ValueError) as e:
+        raise KnowledgeBaseError(f"{KB_INDEX} is missing or not valid JSON: {e}") from e
+    if not is_semkb_index(data):
+        raise KnowledgeBaseError(f"{KB_INDEX} has no modules and sections")
+    for s in data["sections"]:
+        if not isinstance(s, dict) or not all(isinstance(s.get(k), str) for k in ("id", "module", "file")):
+            raise KnowledgeBaseError(f"{KB_INDEX}: a section without id, module or file: {str(s)[:80]}")
+    return data
+
+
+def source_of(module: dict, index: dict) -> str:
+    return str(module.get("source") or index.get("name") or "manual")
+
+
+def doc_id_for(source: str) -> str:
+    return "kb-" + (re.sub(r"[^a-z0-9]+", "-", source.lower()).strip("-")[:60] or "manual")
+
+
+def _bare(title: str) -> str:
+    return re.sub(r"[^a-z0-9]+", " ", _NUMBER.sub("", title).lower()).strip()
+
+
+def _demote(text: str) -> str:
+    """A section's own sub-headings ("## 2.2.1 Option A") one level below the section, outside code."""
+    out, fence = [], False
+    for line in text.splitlines():
+        if re.match(r"^\s*(```|~~~)", line):
+            fence = not fence
+        out.append("#" + line if not fence and re.match(r"^#{1,5}\s", line) else line)
+    return "\n".join(out)
+
+
+def section_body(root: Path, entry: dict, described: dict[str, str]) -> str:
+    """The section file's text without its front matter, title and page line; pictures as
+    ![caption](images/<file>) with their description noted in `described`."""
+    path = Path(root) / entry["file"]
+    try:
+        text = repair_mojibake(path.read_text(encoding="utf-8-sig"))
+    except OSError as e:
+        raise KnowledgeBaseError(f"{entry['file']}: {e}") from e
+    text = _FRONT.sub("", text, count=1).lstrip()
+    lines = text.splitlines()
+    if lines and lines[0].startswith("# "):  # the section's title, given by its heading in the document
+        lines = lines[1:]
+    text = _PAGES_LINE.sub("", "\n".join(lines))
+
+    def picture(m: re.Match) -> str:
+        name = m.group(2).strip()
+        if m.group(3):
+            described[name] = m.group(3).strip()
+        return f"![{m.group(1)}](images/{name})"
+
+    text = _PICTURE_BLOCK.sub(picture, text)
+    text = _DESCRIPTION_LINE.sub("", _PATH_LINE.sub("", text))
+    return _demote(re.sub(r"\n{3,}", "\n\n", text).strip())
+
+
+@dataclass
+class _Expected:
+    depth: int
+    title: str
+    kb_ids: list[str]
+    pages: list | None
+    summary: str | None
+
+
+def load_semkb(root: Path) -> list[Doc]:
+    root = Path(root)
+    index = read_index(root)
+    modules = [m for m in index["modules"] if isinstance(m, dict) and isinstance(m.get("id"), str)]
+    if not modules:
+        raise KnowledgeBaseError(f"{KB_INDEX} lists no modules")
+    by_module: dict[str, list[dict]] = {}
+    for s in index["sections"]:
+        by_module.setdefault(s["module"], []).append(s)
+    sources = list(dict.fromkeys(source_of(m, index) for m in modules))
+    docs = []
+    for source in sources:
+        mods = [m for m in modules if source_of(m, index) == source]
+        described: dict[str, str] = {}
+        lines: list[str] = []
+        expected: list[_Expected] = []
+        for m in mods:
+            title = str(m.get("title") or m["id"])
+            if len(sources) > 1 and ": " in title and title.split(": ", 1)[0].lower() in source.lower().replace("_", " "):
+                title = title.split(": ", 1)[1]  # "HX-500 manual: Maintenance" in the HX-500 manual is "Maintenance"
+            secs = list(by_module.get(m["id"], []))
+            intro = None
+            # a module's first section with the module's own heading ("2 Image Classification") is its intro
+            if secs and (_bare(secs[0]["title"]) == _bare(title) or secs[0]["id"].endswith(f"/01-{m['id']}")):
+                intro = secs.pop(0)
+            heading = clean(intro["title"]) if intro and _bare(intro["title"]) == _bare(title) else clean(title)
+            lines += [f"# {heading}", ""]
+            if intro:
+                lines += [section_body(root, intro, described), ""]
+            expected.append(_Expected(0, heading, [f"module:{m['id']}"] + ([intro["id"]] if intro else []),
+                                      m.get("pages") or (intro or {}).get("pages"),
+                                      m.get("summary") or (intro or {}).get("summary")))
+            for s in secs:
+                lines += [f"## {clean(s['title'])}", "", section_body(root, s, described), ""]
+                expected.append(_Expected(1, clean(s["title"]), [s["id"]], s.get("pages"), s.get("summary")))
+        doc = parse_markdown("\n".join(lines), doc_id_for(source), source)
+        _apply(doc, expected)
+        _attach_pictures(doc, root, described)
+        doc.assets_dir = root
+        doc.title = source
+        suffix = Path(source).suffix.lstrip(".").lower()
+        if suffix:
+            doc.meta["type"] = suffix
+        # the document's description: its module's summary, else the first section summary the
+        # export wrote (the overview comes first in a manual)
+        given = next((str(m["summary"]) for m in mods if m.get("summary")), "")
+        first = next((s.summary for s in doc.sections.values() if s.summary and not s.summary_is_fallback), "")
+        doc.description = clean(given) or first or doc.description
+        docs.append(doc)
+    return docs
+
+
+def _apply(doc: Doc, expected: list[_Expected]) -> None:
+    """kb.json's ids, pages and summaries onto the parsed sections, matched in document order."""
+    want = iter(expected)
+    current = next(want, None)
+    for sec in doc.sections.values():
+        if current is None:
+            break
+        if sec.depth == current.depth and sec.title == current.title:
+            sec.kb_ids = list(current.kb_ids)
+            pages = current.pages
+            if isinstance(pages, list) and len(pages) == 2 and all(isinstance(p, int) for p in pages):
+                sec.start_page, sec.end_page = pages
+            if current.summary:
+                sec.summary, sec.summary_is_fallback = clean(str(current.summary)), False
+            current = next(want, None)
+
+
+def _attach_pictures(doc: Doc, root: Path, described: dict[str, str]) -> None:
+    """Pictures are shown with answers; the model reads each one's whole description where it is."""
+    for sec in doc.sections.values():
+        sec.images = []
+        for caption, ref in _IMAGE_REF.findall(sec.own_text):
+            name = ref.strip()
+            if (root / "images" / name).is_file() and name not in sec.images:
+                sec.images.append(name)
+                sec.image_notes[name] = _notes(caption.replace("screenshot ", "").strip(),
+                                               _plain_description(described.get(name, "")))
+
+        def figure(m: re.Match) -> str:
+            what = _plain_description(described.get(m.group(2).strip(), ""))
+            if len(what) > DESCRIPTION_CHARS:
+                what = what[:DESCRIPTION_CHARS].rsplit(" ", 1)[0] + " ..."
+            caption = re.sub(r"^screenshot\s*(p\.\s*\d+)?\s*", "", m.group(1)).strip()
+            return _figure(caption, what)
+
+        sec.own_text = _IMAGE_REF.sub(figure, sec.own_text)
+
+
+# ── what the knowledge base says beyond its sections ──
+
+@dataclass
+class Extras:
+    name: str = ""
+    guide: str = ""      # AGENTS.md, as instructions for the chat model
+    notes: str = ""      # needs-review.md: the known gaps, one per line
+    tree: dict | None = None
+    module_titles: dict[str, str] = field(default_factory=dict)
+    section_module: dict[str, str] = field(default_factory=dict)
+    section_titles: dict[str, str] = field(default_factory=dict)
+
+
+# AGENTS.md sections about the folder itself, not about how to answer: left out of the model's instructions
+_NOT_FOR_MODEL = re.compile(r"^(how to use the kb|maintenance)\b", re.IGNORECASE)
+
+
+def guide_for_model(text: str) -> str:
+    parts = re.split(r"(?m)^(?=## )", text)
+    kept = [p for p in parts if not (p.startswith("## ") and _NOT_FOR_MODEL.match(p[3:].strip()))]
+    return re.sub(r"\n{3,}", "\n\n", "".join(kept)).strip()
+
+
+def notes_for_model(text: str) -> str:
+    """needs-review.md's entries (lines starting with "- "), without its header and markers."""
+    text = re.sub(r"<!--.*?-->", "", text, flags=re.DOTALL)
+    items, current = [], None
+    for line in text.splitlines():
+        if line.startswith("- "):
+            if current:
+                items.append(current)
+            current = line[2:].strip()
+        elif current is not None and line.startswith("  ") and line.strip():
+            current += " " + line.strip()
+        elif not line.strip() and current:
+            items.append(current)
+            current = None
+    if current:
+        items.append(current)
+    items = [i.replace("**", "") for i in items if i and i.lower() != "none found"]
+    return "\n".join(f"- {i}" for i in items)
+
+
+def load_extras(root: Path) -> Extras:
+    root = Path(root)
+    index = read_index(root)
+    read = lambda rel: (root / rel).read_text(encoding="utf-8-sig") if (root / rel).is_file() else ""
+    tree = None
+    if (root / DECISION_TREE).is_file():
+        try:
+            data = json.loads(read(DECISION_TREE))
+            if isinstance(data, dict) and isinstance(data.get("nodes"), dict) and data.get("start") in data["nodes"]:
+                tree = data
+        except ValueError:
+            tree = None  # a broken tree: no interview, the usual questions back still work
+    return Extras(
+        name=str(index.get("name") or ""),
+        guide=guide_for_model(read(AGENTS)),
+        notes=notes_for_model(read(NEEDS_REVIEW)),
+        tree=tree,
+        module_titles={m["id"]: str(m.get("title") or m["id"]) for m in index["modules"] if isinstance(m, dict) and "id" in m},
+        section_module={s["id"]: s["module"] for s in index["sections"]},
+        section_titles={s["id"]: str(s.get("title") or "") for s in index["sections"]},
+    )

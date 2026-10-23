@@ -67,7 +67,9 @@ WRAP_UP_TOTAL = 16_000
 RETRY_DELAY_S = 2.0
 DOCUMENTS_LISTED = 40     # in the instructions; list_documents shows the rest
 LIST_RESULTS = 50
-ATTACHMENT_PREVIEW_CHARS = 4_000  # of a file the question is about, given with the question
+ATTACHMENT_PREVIEW_CHARS = 4_000
+KB_GUIDE_CHARS = 6_000  # a knowledge base's AGENTS.md, given with the instructions
+KB_NOTES_CHARS = 3_000  # its needs-review.md  # of a file the question is about, given with the question
 
 CHAT_INSTRUCTIONS = """\
 You are Lattice, an assistant for the staff of a manufacturing company.
@@ -478,6 +480,9 @@ class ChatDeps:
     tier: str = "remote"
     notes: list[dict] = field(default_factory=list)  # the evidence ledger: {claim, ref, quote, ok}
     first_turn: bool = True  # the conversation's first question (only then may it ask back)
+    # a sem-ai-kb knowledge base: its AGENTS.md (how to behave) and needs-review.md (known gaps)
+    kb_guide: str = ""
+    kb_notes: str = ""
 
     def in_scope(self) -> list[int]:
         return [i for i in range(len(self.docs)) if self.allowed is None or i in self.allowed]
@@ -617,6 +622,12 @@ class ChatAgent:
                     if len(docs) > DOCUMENTS_LISTED else "")
             text = (base + (LEDGER if d.tier == "remote" else "") + _about_yourself(d.model_label, d.documents_only) +
                     "\n\nDocuments installed on this machine:\n" + "\n".join(lines) + more)
+            if d.kb_guide:  # the knowledge base's own instructions; the rules above still come first
+                text += ("\n\nInstructions that come with this knowledge base (follow them where they do not "
+                         "conflict with the rules above):\n" + d.kb_guide[:KB_GUIDE_CHARS])
+            if d.kb_notes:
+                text += ("\n\nKnown gaps in the documents (do not guess these; say the documents do not cover "
+                         "them):\n" + d.kb_notes[:KB_NOTES_CHARS])
             if d.attachments:
                 text += "\n\nFiles the user attached to this conversation (read them with read_attachment):\n" + \
                         "\n".join(f"- {a.id}: {a.name} ({a.chars:,} characters)" for a in d.attachments)
@@ -958,7 +969,7 @@ class ChatAgent:
                   attachment_text: AttachmentReader | None = None, about: list[str] = (),
                   model_label: str = "", documents_only: bool = False, tier: str = "remote",
                   earlier: list[tuple[int, str]] = (), place: tuple[int, str] | None = None,
-                  picked: tuple[int, str] | None = None) -> AskResult:
+                  picked: tuple[int, str] | None = None, kb_guide: str = "", kb_notes: str = "") -> AskResult:
         """about: ids of attached files this question is about; their text comes with the question.
         documents_only: no general-knowledge answers (a model too small to get them right).
         tier: "remote" (a large model on a server) or "local" (on this computer: fewer, larger steps).
@@ -976,7 +987,7 @@ class ChatAgent:
             deps = ChatDeps(docs=docs, index=index, allowed=allowed, find_pictures=find_pictures,
                             semantic=semantic, attachments=list(attachments or []), attachment_text=attachment_text,
                             about=set(about), model_label=model_label, documents_only=documents_only,
-                            tier=tier, first_turn=not context)
+                            tier=tier, first_turn=not context, kb_guide=kb_guide, kb_notes=kb_notes)
             prompt = await self._with_presearch(question, deps, context or [], earlier, place, picked)
             # weather, news, prices today: no model here knows them, and any answer would be invented
             if LIVE_QUESTION.search(question) and not deps.attachments and not about_documents(deps):

@@ -1,0 +1,50 @@
+{
+  "start": "document",
+  "nodes": {
+    "document": {
+      "ask": "Which document is your question about?",
+      "options": [
+        {
+          "label": "Report",
+          "next": "result:report"
+        },
+        {
+          "label": "Meeting notes",
+          "next": "result:meeting-notes"
+        },
+        {
+          "label": "Budget",
+          "next": "result:budget"
+        },
+        {
+          "label": "Something else",
+          "next": "open"
+        }
+      ]
+    }
+  },
+  "resolve": {},
+  "results": {
+    "report": {
+      "modules": [
+        "report"
+      ],
+      "summary": "Report",
+      "ask_next": []
+    },
+    "meeting-notes": {
+      "modules": [
+        "meeting-notes"
+      ],
+      "summary": "Meeting notes",
+      "ask_next": []
+    },
+    "budget": {
+      "modules": [
+        "budget"
+      ],
+      "summary": "Budget",
+      "ask_next": []
+    }
+  }
+}
