@@ -77,17 +77,17 @@ def _bare(title: str) -> str:
     return re.sub(r"[^a-z0-9]+", " ", _NUMBER.sub("", title).lower()).strip()
 
 
-def _demote(text: str) -> str:
-    """A section's own sub-headings ("## 2.2.1 Option A") one level below the section, outside code."""
+def _demote(text: str, by: int = 1) -> str:
+    """A section's own sub-headings ("## 2.2.1 Option A") `by` levels lower, outside code."""
     out, fence = [], False
     for line in text.splitlines():
         if re.match(r"^\s*(```|~~~)", line):
             fence = not fence
-        out.append("#" + line if not fence and re.match(r"^#{1,5}\s", line) else line)
+        out.append("#" * by + line if not fence and re.match(r"^#{1,5}\s", line) else line)
     return "\n".join(out)
 
 
-def section_body(root: Path, entry: dict, described: dict[str, str]) -> str:
+def section_body(root: Path, entry: dict, described: dict[str, str], depth: int = 1) -> str:
     """The section file's text without its front matter, title and page line; pictures as
     ![caption](images/<file>) with their description noted in `described`."""
     path = Path(root) / entry["file"]
@@ -109,7 +109,7 @@ def section_body(root: Path, entry: dict, described: dict[str, str]) -> str:
 
     text = _PICTURE_BLOCK.sub(picture, text)
     text = _DESCRIPTION_LINE.sub("", _PATH_LINE.sub("", text))
-    return _demote(re.sub(r"\n{3,}", "\n\n", text).strip())
+    return _demote(re.sub(r"\n{3,}", "\n\n", text).strip(), depth)
 
 
 @dataclass
@@ -137,6 +137,14 @@ def load_semkb(root: Path) -> list[Doc]:
         described: dict[str, str] = {}
         lines: list[str] = []
         expected: list[_Expected] = []
+        # several modules: under one title heading, as in the parser's own Markdown ("# HX-500_manual.pdf",
+        # then its chapters). The search reads codes in a document's top headings as the document's
+        # name ("HX-500"); with each module a top heading, "Q2" in "Part 3: Delivery record Q2 2026"
+        # stopped counting as a search word and the delivery record was not found (4B test, 23 Oct)
+        top = 0
+        if len(mods) > 1:
+            lines += [f"# {clean(source)}", ""]
+            top = 1
         for m in mods:
             title = str(m.get("title") or m["id"])
             if len(sources) > 1 and ": " in title and title.split(": ", 1)[0].lower() in source.lower().replace("_", " "):
@@ -147,15 +155,15 @@ def load_semkb(root: Path) -> list[Doc]:
             if secs and (_bare(secs[0]["title"]) == _bare(title) or secs[0]["id"].endswith(f"/01-{m['id']}")):
                 intro = secs.pop(0)
             heading = clean(intro["title"]) if intro and _bare(intro["title"]) == _bare(title) else clean(title)
-            lines += [f"# {heading}", ""]
+            lines += [f"{'#' * (top + 1)} {heading}", ""]
             if intro:
-                lines += [section_body(root, intro, described), ""]
-            expected.append(_Expected(0, heading, [f"module:{m['id']}"] + ([intro["id"]] if intro else []),
+                lines += [section_body(root, intro, described, top + 1), ""]
+            expected.append(_Expected(top, heading, [f"module:{m['id']}"] + ([intro["id"]] if intro else []),
                                       m.get("pages") or (intro or {}).get("pages"),
                                       m.get("summary") or (intro or {}).get("summary")))
             for s in secs:
-                lines += [f"## {clean(s['title'])}", "", section_body(root, s, described), ""]
-                expected.append(_Expected(1, clean(s["title"]), [s["id"]], s.get("pages"), s.get("summary")))
+                lines += [f"{'#' * (top + 2)} {clean(s['title'])}", "", section_body(root, s, described, top + 1), ""]
+                expected.append(_Expected(top + 1, clean(s["title"]), [s["id"]], s.get("pages"), s.get("summary")))
         doc = parse_markdown("\n".join(lines), doc_id_for(source), source)
         _apply(doc, expected)
         _attach_pictures(doc, root, described)
@@ -234,8 +242,15 @@ def guide_for_model(text: str) -> str:
     return re.sub(r"\n{3,}", "\n\n", "".join(kept)).strip()
 
 
+# the block build-kb.mjs rewrites with what it detects (pictures without a description, missing page
+# numbers): notes for whoever maintains the knowledge base, not facts about the manual's content.
+# Given to a small model as "known gaps", they made it decline questions the documents do answer.
+_AUTO_BLOCK = re.compile(r"<!-- auto-detected gaps.*?-->.*?<!-- end of auto-detected gaps -->", re.DOTALL)
+
+
 def notes_for_model(text: str) -> str:
-    """needs-review.md's entries (lines starting with "- "), without its header and markers."""
+    """needs-review.md's hand-written entries (lines starting with "- "), without the auto-detected block."""
+    text = _AUTO_BLOCK.sub("", text)
     text = re.sub(r"<!--.*?-->", "", text, flags=re.DOTALL)
     items, current = [], None
     for line in text.splitlines():

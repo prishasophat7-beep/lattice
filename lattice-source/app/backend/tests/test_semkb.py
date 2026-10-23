@@ -102,7 +102,7 @@ Known gaps.
 
 <!-- auto-detected gaps: rewritten by tools/build-kb.mjs on every build -->
 
-- none found
+- **classification/03-importing-images.md**: picture page_013_img1.png named page 000
 
 <!-- end of auto-detected gaps -->
 """
@@ -153,10 +153,14 @@ def test_each_source_file_is_one_document_with_modules_and_sections(tmp_path):
     assert len(docs) == 1
     doc = docs[0]
     assert doc.title == "Vision_Studio_Guide.pdf" and doc.meta["type"] == "pdf"
-    tops = [s for s in doc.sections.values() if s.parent is None]
+    # the file's name on top (as in the parser's Markdown), its modules under it
+    roots = [s for s in doc.sections.values() if s.parent is None]
+    assert [s.title for s in roots] == ["Vision_Studio_Guide.pdf"]
+    tops = [doc.sections[c] for c in roots[0].children]
     # a module's first section with the module's heading is its intro, not a section of its own
     assert [s.title for s in tops] == ["2 Image Classification", "3 Anomaly Detection", "4 Text Reading"]
     assert tops[0].kb_ids == ["module:classification", "classification/01-classification"]
+    assert doc.locator(tops[0].children[0]) == "2 Image Classification > 2.1 Training (p. 12)"
     training = next(s for s in doc.sections.values() if s.kb_ids == ["classification/02-training"])
     assert (training.start_page, training.end_page) == (12, 12)
     assert training.summary == "Summary of 2.1 Training." and not training.summary_is_fallback
@@ -164,6 +168,25 @@ def test_each_source_file_is_one_document_with_modules_and_sections(tmp_path):
     # sub-headings of a section ("Option A") are its children, as in the manual
     assert [doc.sections[c].title for c in importing.children] == ["2.2.1 Option A: From a folder",
                                                                    "2.2.2 Option B: From a camera"]
+
+
+def test_codes_in_module_titles_still_count_as_search_words(tmp_path):
+    """ "Q2" in "Part 3: Delivery record Q2 2026": with modules as a document's top headings, the search
+    read such codes as the document's name and dropped them from the question (Helix 4B test)."""
+    root = write_semkb(tmp_path / "kb")
+    index = json.loads((root / "kb.json").read_text())
+    (root / "modules" / "records").mkdir()
+    (root / "modules" / "records" / "01-records.md").write_text(
+        "---\nid: records/01-records\nmodule: records\ntitle: \"Part 3: Delivery record Q2 2026\"\npages: null\n---\n\n"
+        "# Part 3: Delivery record Q2 2026\n\n| PO | Days late |\n|---|---|\n| PO-26-0503 | 14 |\n", encoding="utf-8")
+    index["modules"].append({"id": "records", "title": "Part 3: Delivery record Q2 2026", "pages": None,
+                             "source": "Vision_Studio_Guide.pdf"})
+    index["sections"].append({"id": "records/01-records", "module": "records", "title": "Part 3: Delivery record Q2 2026",
+                              "pages": None, "images": [], "file": "modules/records/01-records.md", "text": ""})
+    (root / "kb.json").write_text(json.dumps(index), encoding="utf-8")
+    docs = load_semkb(root)
+    hit = SectionIndex(docs).search("Which orders were late in Q2?")[0]
+    assert docs[hit.doc_index].sections[hit.node_id].title == "Part 3: Delivery record Q2 2026"
 
 
 def test_pictures_keep_their_whole_description(tmp_path):
@@ -184,6 +207,7 @@ def test_agents_and_needs_review_are_read_for_the_model(tmp_path):
         "- classification/02-training.md: batch size is not documented."]
     assert guide_for_model("## Maintenance\nx\n## Grounding rules\ny") == "## Grounding rules\ny"
     assert notes_for_model("<!-- a -->\n- none found\n<!-- b -->") == ""
+    assert "page 000" not in extras.notes  # build-detected gaps are for maintainers, not the model
 
 
 # ── import ──
