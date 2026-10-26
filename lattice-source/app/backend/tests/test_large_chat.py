@@ -138,3 +138,45 @@ def test_worked_out_figures_are_not_flagged_as_missing():
     assert unverified_numbers(answer, sources, "How much penalty?") == ["12,345"]
     # a wrong sum is still flagged
     assert "2,76,000" in unverified_numbers("9,20,000 × 3% = 2,76,000", sources, "penalty?")
+
+
+# ── general knowledge (26 Oct: "too fixated on the documents") ──
+
+def _nimbus():
+    md = ("# X2 guide\n\n## 5 Troubleshooting\n\nE2: Power stealing unstable. Install the PAK-2 adapter or connect a "
+          "C wire. The C wire terminal is next to R; 24 VAC.\n\n## 6 Wiring\n\nConnect R, W, Y and the C wire.\n")
+    return parse_markdown(md, "x2", "x2.md")
+
+
+def _ask(question, reply):
+    doc = _nimbus()
+    return asyncio.run(ChatAgent(ChatScript([{"text": reply}]).model).ask(question, [doc], SectionIndex([doc]),
+                                                                         context_tokens=32_768))
+
+
+def test_asked_for_general_knowledge_it_is_answered_not_replaced():
+    r = _ask("Apart from the documents, what is a C wire in general?",
+             "A C wire (common wire) is the return leg of the 24 VAC transformer circuit; it gives a thermostat "
+             "continuous power.")
+    assert r.found and r.answer.startswith("A C wire (common wire)") and r.general and not r.citations
+
+
+def test_the_hedge_before_a_general_explanation_goes():
+    r = _ask("Apart from the documents, what is a C wire?",
+             "The documents do not define a C wire.\n\nGeneral knowledge: A C wire is the common return wire of "
+             "the 24 VAC circuit.")
+    assert "do not define" not in r.answer and "**General knowledge:**" in r.answer
+
+
+def test_a_general_definition_keeps_its_label_beside_document_facts():
+    r = _ask("What is power stealing in thermostats generally, and why does the X2 show E2?",
+             "General knowledge: Power stealing means a thermostat draws a small current through the call wire "
+             "to power itself.\n\nE2 means power stealing unstable; install the PAK-2 adapter or connect a C "
+             "wire [S1].")
+    assert "**General knowledge:** Power stealing means" in r.answer and r.citations
+
+
+def test_an_unlabelled_in_general_paragraph_is_labelled():
+    r = _ask("How do 5 GHz and 2.4 GHz differ, and what does the guide say about E2?",
+             "In general, 5 GHz is faster but has a shorter range.\n\nE2: power stealing unstable; install the PAK-2 adapter [S1].")
+    assert r.answer.startswith("> **General knowledge:** In general, 5 GHz")

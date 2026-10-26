@@ -37,7 +37,7 @@ from .calc import CalcError, calculate as evaluate
 from .embeddings import SemanticIndex, union
 from .llm import QUOTA_MESSAGE, BudgetExceeded, RequestBudget, describe_error, quota_exhausted, run_settings
 from .models import Doc
-from .numbers import numbers_in, unverified_numbers, without_step_numbers
+from .numbers import codes_in, numbers_in, unverified_numbers, without_step_numbers
 from .loops import Looping as _Looping, repeating_from, without_repeated_sentences
 from .support import _ASKING, made_up, only_unchecked_figures, stated_as_is, wrong_kind_of_figure
 from .pipeline import (AskResult, Citation, Clarification, ClarifyOption, Evidence, ProviderBusy, plain_typography,
@@ -175,11 +175,15 @@ quoting the section's own words (several notes may go in one call). A fact whose
 in the documents as you read it: read again, or leave it out. Base a worked-out answer only on \
 noted facts and calculations."""
 GENERAL_KNOWLEDGE = """\
-If the documents do not cover something, you may answer it from general knowledge. Put everything \
-that comes from general knowledge in its own paragraph that starts with "General knowledge:". When \
-a question asks what a general term means or how something works in general ("What is backlash?") \
-and the documents do not explain it, explain it from general knowledge; do not reply only that the \
-documents do not define it. Never \
+Use both sources, as a knowledgeable colleague would. Facts about the company and its products \
+(settings, figures, part numbers, procedures, names, dates, policies) come from the documents. \
+Concepts, definitions, background, how things work in general, comparisons and advice come from \
+your general knowledge whenever the documents do not explain them, and always when the user asks \
+for it ("apart from the documents", "in general", "what is X"). Answer such a part fully and \
+confidently; do not open with "the documents do not define it". A question that needs both gets \
+both: the documents' facts with their references, and the general explanation. Put everything \
+that comes from general knowledge in its own paragraph that starts with "General knowledge:", \
+without references. Never \
 invent company-specific facts (settings, figures, part numbers, procedures, names, dates) that the \
 documents do not state: when the documents do not describe a company procedure (how to reset a \
 password in the company's tool), say so first, and never present general advice as steps from \
@@ -551,6 +555,46 @@ def referenced_sections(doc: Doc, nid: str) -> list[str]:
         if target and target != nid and target not in out and not (own and m.group(1) == own.group(1)):
             out.append(target)
     return out
+
+
+# a question that asks for general knowledge itself: "apart from the documents, what is ...", "in general"
+GENERAL_ASK = re.compile(
+    r"\b(?:apart|aside|besides|other than|outside(?: of)?|beyond|not)\s+(?:from\s+)?(?:the|our|these|your|what)?\s*"
+    r"(?:documents?|docs?|manuals?|files?|knowledge base|the documents say)\b|\bin general\b|\bgenerally\b|"
+    r"\bgeneral(?:ly)? speaking\b|\bin simple terms\b|\b(?:from|using|with) (?:your |general |common )+knowledge\b|"
+    r"\b(?:the )?concept of\b|\bin layman'?s terms\b", re.IGNORECASE)
+# a paragraph the model wrote from general knowledge but did not label ("In general, 5 GHz is faster ...")
+_GENERAL_LEAD = re.compile(r"^\s*(?:\*\*|__)?(?:in general|generally(?: speaking)?|in simple terms|broadly speaking|"
+                           r"as a general rule|in layman'?s terms)\b[,:]?", re.IGNORECASE)
+
+
+def label_general_leads(answer: str) -> str:
+    """Paragraphs that open "In general, ..." and cite nothing get the "General knowledge:" label."""
+    out = []
+    for p in re.split(r"\n\s*\n", answer):
+        if _GENERAL_LEAD.match(p) and not re.search(r"\[S?\d+\]", p) and not _GENERAL.match(p.strip()):
+            p = "General knowledge: " + p.strip()
+        out.append(p)
+    return "\n\n".join(out)
+
+
+_HEDGE = re.compile(r"^\W*(?:the |our )?(?:provided )?(?:documents?|manuals?|guides?)\b[^.\n]{0,40}\b(?:do|does)\s*(?:not|n't)\s+"
+                    r"(?:explicitly |specifically |directly )?(?:define|explain|describe|cover|say what)\b[^.\n]{0,80}[.:]\s*$",
+                    re.IGNORECASE)
+
+
+def without_hedge_before_general(answer: str) -> str:
+    """"The documents do not define a C wire." alone in a paragraph (or line), followed by the general
+    explanation of it: the explanation is the answer; the hedge goes (the general-knowledge label
+    already says where it comes from)."""
+    if not re.search(r"(?im)^[ \t>*_]*general knowledge:", answer):
+        return answer
+    out = []
+    for para in re.split(r"\n\s*\n", answer):
+        lines = [ln for ln in para.split("\n") if not _HEDGE.match(ln.strip())]
+        if lines and any(ln.strip() for ln in lines):
+            out.append("\n".join(lines))
+    return "\n\n".join(out)
 
 
 DRAWN_SHARE = 0.5  # of an answer's words found in what was read, for it to be drawn from it
@@ -1186,10 +1230,19 @@ class ChatAgent:
                         lambda m: f"[S{m.group(1)}]" if f"S{m.group(1)}" in deps.refs else m.group(0),
                         normalize_refs(answer))
         answer, citations = self._resolve(_BARE_REFS.sub("", answer), deps)
-        answer = without_section_numbers(unlabel_document_paragraphs(answer, deps))
+        asks_general = not documents_only and bool(GENERAL_ASK.search(question))
+        # a "General knowledge:" paragraph that only restates the documents loses its label, except when
+        # general knowledge was asked for; then unlabelled "In general, ..." paragraphs get one
+        if not asks_general:
+            answer = unlabel_document_paragraphs(answer, deps)
+        if not documents_only:
+            answer = without_hedge_before_general(label_general_leads(answer))
+        answer = without_section_numbers(answer)
         answer = without_contradicted_not_covered(answer, "\n".join([*deps.read.values(), *deps.shown.values()]))
-        if not citations and not deps.files_used:  # small models often forget the markers
+        implied = False
+        if not citations and not deps.files_used and not asks_general:  # small models often forget the markers
             citations = [_citation(docs, *deps.refs[r]) for r in implied_sources(_documents_part(answer), deps, question)]
+            implied = bool(citations)
         answer, general_part = mark_general(answer)
         # earlier answers count too: "summarize our chat" repeats their figures
         # and the names of the documents read ("the R7 guide": R7 is in the title, not the text)
@@ -1250,8 +1303,14 @@ class ChatAgent:
             if (made_up(question, own, sources, index, cited_text)
                     or only_unchecked_figures(own, unverified_numbers(own, sources, question), question)
                     or wrong_kind_of_figure(question, own)):
-                return not_covered(NOT_COVERED_REPLY if about_documents(deps) or not documents_only
-                                   else SMALL_MODEL_REPLY)
+                if implied and not documents_only:
+                    # the model named no source, and the sections guessed for it do not hold the answer:
+                    # it answered from general knowledge ("Apart from the documents, what is a C wire?"
+                    # was replaced by "The documents don't cover that"; 26 Oct). Shown as that, not hidden
+                    citations = []
+                else:
+                    return not_covered(NOT_COVERED_REPLY if about_documents(deps) or not documents_only
+                                       else SMALL_MODEL_REPLY)
         if documents_only:  # a small model: general knowledge is not shown, however it was written
             if general_part:
                 answer, general_part = _documents_part(answer).strip(), False
@@ -1269,7 +1328,7 @@ class ChatAgent:
             if note and not numbers_in(answer) <= numbers_in(note):
                 answer += f"\n\n*Note: the document includes only part of this table. It says: {note}*"
         unsourced = (not documents_only and not general_part and not citations and not deps.files_used
-                     and not about_self and bool(deps.read) and about_documents(deps)
+                     and not about_self and not asks_general and bool(deps.read) and about_documents(deps)
                      and drawn_from(answer, "\n".join(deps.read.values())))
         if unsourced:
             # it read the documents and wrote no general-knowledge part, but named no source: an answer
@@ -1595,7 +1654,10 @@ def unlabel_document_paragraphs(answer: str, deps: ChatDeps) -> str:
     for p in re.split(r"\n\s*\n", answer):
         if _is_general(p):
             body = _GENERAL.sub("", p.lstrip().lstrip("> ").strip(), count=1)
-            if implied_sources(body, deps):
+            # ... only a stated fact (a figure, a date, a code) that the sections hold; a definition or an
+            # explanation in the documents' words keeps its label ("Power stealing means a thermostat
+            # draws ... through the call wire" lost it, and read as if from the documents; 26 Oct)
+            if (numbers_in(body) or codes_in(body)) and implied_sources(body, deps):
                 p = body
         out.append(p)
     return "\n\n".join(out)

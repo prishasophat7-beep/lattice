@@ -53,7 +53,7 @@ from pydantic_ai.models import Model
 
 from . import __version__, bundle
 from .attachments import AttachmentError, AttachmentStore
-from .chat import _ABOUT_SELF_OR_CHAT, HISTORY_TURNS, LIVE_REPLY, ChatAgent, live_only
+from .chat import _ABOUT_SELF_OR_CHAT, GENERAL_ASK, HISTORY_TURNS, LIVE_REPLY, ChatAgent, live_only
 from .config import (AppConfig, Connection, EmbeddingConnection, effective_llm, load_config, public_view,
                      save_config)
 from .embeddings import EmbeddingClient, EmbeddingError, SemanticIndex
@@ -1579,7 +1579,8 @@ def create_app(settings: Settings | None = None, model: Model | None = None) -> 
                 return result
             # "what is the limit?" as a first question: which one (see vague.py); "summarize our
             # chat" and "make it shorter" are about the conversation, not vague
-            if not req.doc_ids and not _ABOUT_CHAT.search(req.question) \
+            # "apart from the documents, what is ...": general knowledge is asked for, not a document's part
+            if not req.doc_ids and not _ABOUT_CHAT.search(req.question) and not GENERAL_ASK.search(req.question) \
                     and not engine.context_for(req.conversation_id, replacing=req.replaces):
                 # the knowledge base's own decision tree first ("How do I train?": which project type)
                 vague = None if req.section else engine.interview_question(req.question, pipeline, scope)
@@ -1596,7 +1597,7 @@ def create_app(settings: Settings | None = None, model: Model | None = None) -> 
                                      mode="chat")
             # "How do I add data?" where the manual gives a Type 1 and a Type 2: asked back here, as in
             # Manuals mode, rather than left to the assistant (which asks only on a first question)
-            if not _ABOUT_CHAT.search(req.question):
+            if not _ABOUT_CHAT.search(req.question) and not GENERAL_ASK.search(req.question):
                 which = which_way_for(req, pipeline, place)
                 if which is not None:
                     return AskResult(question=req.question, found=False, answer=which.prompt, clarify=which,
