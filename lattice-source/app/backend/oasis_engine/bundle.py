@@ -93,6 +93,20 @@ def _safe_member(name: str) -> str:
     return name
 
 
+def _long_path(path: Path) -> Path:
+    r"""On Windows, prefix an absolute path with \\?\ so pathlib can read and write paths longer
+    than MAX_PATH (260). A knowledge base of long folder and file names (a manual's section
+    titles, slugified) can reach that under %LOCALAPPDATA%\<app id>\versions\<kb version>\content\... .
+    The prefix is idempotent and preserved by pathlib's / joins, so a prefixed root makes every
+    path below it work; on other platforms the path is returned unchanged."""
+    if os.name != "nt":
+        return path
+    s = str(path)
+    if s.startswith("\\\\?\\"):
+        return path
+    return Path("\\\\?\\" + os.path.abspath(s))
+
+
 def _replace(src: Path, dst: Path, attempts: int = 8, delay: float = 0.1) -> None:
     """os.replace, retried briefly: on Windows an antivirus scanner (or the search indexer) that is
     still reading freshly written files makes the rename fail with "Access is denied" for a moment."""
@@ -133,7 +147,7 @@ def read_manifest(version_dir: Path) -> Manifest:
 
 def load_version(version_dir: Path) -> tuple[Manifest, list[Doc]]:
     manifest = read_manifest(version_dir)
-    docs = load(Path(version_dir) / CONTENT, manifest.source_format)
+    docs = load(_long_path(Path(version_dir) / CONTENT), manifest.source_format)
     return manifest, docs
 
 
@@ -168,7 +182,7 @@ def remove_version(data_dir: Path, kb_version: str) -> None:
         raise BundleError(f"Knowledge-base version {kb_version!r} is not installed")
     if kb_version == active_version(data_dir):
         raise BundleError("The version in use cannot be removed; switch to another one first")
-    target = _versions(data_dir) / kb_version
+    target = _long_path(_versions(data_dir) / kb_version)
     trash = target.with_name(target.name + ".removing")  # never left half-deleted under its own name
     shutil.rmtree(trash, ignore_errors=True)
     _replace(target, trash)
@@ -224,7 +238,7 @@ def import_export(zf: zipfile.ZipFile, names: set[str], data_dir: Path, make_act
     if not documents:
         raise BundleError(f"{EXPORT_INDEX} lists no documents")
     kb_version = _export_version(index, raw)
-    final = _versions(data_dir) / kb_version
+    final = _long_path(_versions(data_dir) / kb_version)
     index_hash = hashlib.sha256(raw).hexdigest()
     if final.exists():
         try:
@@ -377,7 +391,7 @@ def import_semkb(zf: zipfile.ZipFile, names: set[str], prefix: str, data_dir: Pa
     for n in kept:
         content_hash.update(n[len(prefix):].encode() + b"\0" + hashlib.sha256(zf.read(n)).digest())
     kb_version = f"{name}-{content_hash.hexdigest()[:10]}"
-    final = _versions(data_dir) / kb_version
+    final = _long_path(_versions(data_dir) / kb_version)
     if final.exists():
         if make_active:
             activate(data_dir, kb_version)
@@ -473,7 +487,7 @@ def import_bundle(zip_path: Path, data_dir: Path, *, make_active: bool = True) -
         if not any(p.startswith(CONTENT + "/") for p in listed):
             raise BundleError(f"Bundle has no {CONTENT}/ folder")
 
-        final = _versions(data_dir) / manifest.kb_version
+        final = _long_path(_versions(data_dir) / manifest.kb_version)
         if final.exists():
             try:
                 same = read_manifest(final).files == manifest.files
