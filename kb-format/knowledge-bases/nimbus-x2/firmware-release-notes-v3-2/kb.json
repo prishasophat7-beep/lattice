@@ -1,0 +1,169 @@
+{
+  "format_version": 2,
+  "generator": "convert_kb.py",
+  "document": {
+    "id": "firmware-release-notes-v3-2",
+    "title": "Firmware release notes v3 2",
+    "filename": "firmware_release_notes_v3_2.docx",
+    "type": "docx",
+    "pages": null,
+    "summary": "Summarizes the headline changes in 3.2.0: Adaptive Recovery, monthly energy reports, faster boot and a power-stealing stability fix. Describes the two new features in detail. Lists six fixed issues with their ticket IDs, including E2 brown-outs and schedule drift across daylight saving changes. Lists open issues in 3.2.0 such as a missing display calibration table warning and slow reports for heat pump systems."
+  },
+  "modules": [
+    {
+      "id": "highlights",
+      "title": "Highlights",
+      "heading": "Highlights",
+      "pages": null,
+      "sections": [
+        "highlights/01-highlights"
+      ],
+      "summary": "Summarizes the headline changes in 3.2.0: Adaptive Recovery, monthly energy reports, faster boot and a power-stealing stability fix."
+    },
+    {
+      "id": "new-features",
+      "title": "New Features",
+      "heading": "New Features",
+      "pages": null,
+      "sections": [
+        "new-features/01-adaptive-recovery",
+        "new-features/02-energy-reports"
+      ],
+      "summary": "Describes the two new features in detail."
+    },
+    {
+      "id": "bug-fixes",
+      "title": "Bug Fixes",
+      "heading": "Bug Fixes",
+      "pages": null,
+      "sections": [
+        "bug-fixes/01-bug-fixes"
+      ],
+      "summary": "Lists six fixed issues with their ticket IDs, including E2 brown-outs and schedule drift across daylight saving changes."
+    },
+    {
+      "id": "known-issues",
+      "title": "Known Issues",
+      "heading": "Known Issues",
+      "pages": null,
+      "sections": [
+        "known-issues/01-known-issues"
+      ],
+      "summary": "Lists open issues in 3.2.0 such as a missing display calibration table warning and slow reports for heat pump systems."
+    },
+    {
+      "id": "upgrade-procedure",
+      "title": "Upgrade Procedure",
+      "heading": "Upgrade Procedure",
+      "pages": null,
+      "sections": [
+        "upgrade-procedure/01-upgrade-procedure"
+      ],
+      "summary": "Gives the steps for updating via the app or via the nimbus-cli tool for lab units, with example command output."
+    },
+    {
+      "id": "compatibility",
+      "title": "Compatibility",
+      "heading": "Compatibility",
+      "pages": null,
+      "sections": [
+        "compatibility/01-compatibility"
+      ],
+      "summary": "States which hardware revisions and app versions support firmware 3.2.0."
+    }
+  ],
+  "sections": [
+    {
+      "id": "highlights/01-highlights",
+      "module": "highlights",
+      "title": "Highlights",
+      "pages": null,
+      "file": "modules/highlights/01-highlights.md",
+      "images": [],
+      "summary": "Summarizes the headline changes in 3.2.0: Adaptive Recovery, monthly energy reports, faster boot and a power-stealing stability fix.",
+      "text": "Adaptive Recovery learns your home's heating and cooling rates and pre-conditions before schedule changes. Monthly Energy Reports in the Nimbus app compare usage with the previous year. Boot time reduced from 9.4 s to 5.1 s. Fixes brown-out resets on some power-stealing installations (E2 errors)."
+    },
+    {
+      "id": "new-features/01-adaptive-recovery",
+      "module": "new-features",
+      "title": "Adaptive Recovery",
+      "pages": null,
+      "file": "modules/new-features/01-adaptive-recovery.md",
+      "images": [],
+      "summary": "Explains how Adaptive Recovery estimates heating/cooling rates over 7 days and caps early start at 2 hours.",
+      "text": "Adaptive Recovery observes how quickly the home heats and cools over the first 7 days after it is enabled. It then starts heating or cooling ahead of each schedule change so the target is reached on time. Early start is capped at 2 hours and is disabled in Eco mode. The feature is on by default for new installs and off by default for existing users, who will be prompted in the app."
+    },
+    {
+      "id": "new-features/02-energy-reports",
+      "module": "new-features",
+      "title": "Energy Reports",
+      "pages": null,
+      "file": "modules/new-features/02-energy-reports.md",
+      "images": [
+        "images/page_000_img1.png"
+      ],
+      "summary": "Describes the monthly energy report screen showing runtime by mode and comparison with last year.",
+      "text": "On the first day of each month, the app generates an energy report showing heating, cooling and Eco runtime, plus a comparison with the same month last year. Reports require at least 30 days of history. Figure 1: Energy report screen in the Nimbus mobile app Figure 1: Energy report screen in the Nimbus mobile app"
+    },
+    {
+      "id": "bug-fixes/01-bug-fixes",
+      "module": "bug-fixes",
+      "title": "Bug Fixes",
+      "pages": null,
+      "file": "modules/bug-fixes/01-bug-fixes.md",
+      "images": [],
+      "summary": "Lists six fixed issues with their ticket IDs, including E2 brown-outs and schedule drift across daylight saving changes.",
+      "text": "ID Issue Affected versions FW-1822 Brown-out reset during Wi-Fi TX on power-stealing installs (E2) 3.0.0 - 3.1.4 FW-1850 Schedule shifted by one hour after daylight saving change 3.1.0 - 3.1.4 FW-1861 Humidity reading stuck at 0% after sensor soft reset 3.1.2 - 3.1.4 FW-1877 Fan kept running for 90 s after cooling ended despite 'Fan: Auto' 3.1.4 FW-1893 Display did not wake on approach when ambient light below 5 lux 3.0.0 - 3.1.4 FW-1902 BLE setup failed on some Android 16 devices 3.1.3 - 3.1.4"
+    },
+    {
+      "id": "known-issues/01-known-issues",
+      "module": "known-issues",
+      "title": "Known Issues",
+      "pages": null,
+      "file": "modules/known-issues/01-known-issues.md",
+      "images": [],
+      "summary": "Lists open issues in 3.2.0 such as a missing display calibration table warning and slow reports for heat pump systems.",
+      "text": "On some early EVT units, the update log shows 'display calibration table missing'. This is harmless; default calibration is used. (FW-1910) Energy reports may take up to 24 hours to appear for dual-fuel heat pump systems. (FW-1915)"
+    },
+    {
+      "id": "upgrade-procedure/01-upgrade-procedure",
+      "module": "upgrade-procedure",
+      "title": "Upgrade Procedure",
+      "pages": null,
+      "file": "modules/upgrade-procedure/01-upgrade-procedure.md",
+      "images": [
+        "images/page_000_img2.png"
+      ],
+      "summary": "Gives the steps for updating via the app or via the nimbus-cli tool for lab units, with example command output.",
+      "text": "Most customers receive the update automatically overnight. Lab and field-test units can be updated manually with the nimbus-cli tool: 1. Connect your computer to the same network as the thermostat. 2. Run nimbus-cli device update --serial <serial> --fw 3.2.0. 3. Wait for the device to reboot (about 60 seconds). Do not remove the display during the update. 4. Confirm the version under Menu > Settings > About. Figure 2: Example nimbus-cli output for a successful update to 3.2.0 Figure 2: Example nimbus-cli output for a successful update to 3.2.0"
+    },
+    {
+      "id": "compatibility/01-compatibility",
+      "module": "compatibility",
+      "title": "Compatibility",
+      "pages": null,
+      "file": "modules/compatibility/01-compatibility.md",
+      "images": [],
+      "summary": "States which hardware revisions and app versions support firmware 3.2.0.",
+      "text": "Component Minimum version Notes X2 hardware Rev B main board Rev A (EVT1) units not supported Nimbus app (iOS) 5.8.0 Required for Energy Reports Nimbus app (Android) 5.8.1 Includes BLE fix for Android 16 nimbus-cli 2.4.0 Lab/field-test use only"
+    }
+  ],
+  "images": [
+    {
+      "path": "images/page_000_img1.png",
+      "original": "figure_000.png",
+      "section": "new-features/02-energy-reports",
+      "page": null,
+      "description": "Figure 1: Energy report screen in the Nimbus mobile app",
+      "description_from": "caption"
+    },
+    {
+      "path": "images/page_000_img2.png",
+      "original": "figure_001.png",
+      "section": "upgrade-procedure/01-upgrade-procedure",
+      "page": null,
+      "description": "Figure 2: Example nimbus-cli output for a successful update to 3.2.0",
+      "description_from": "caption"
+    }
+  ]
+}

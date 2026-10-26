@@ -1,0 +1,523 @@
+{
+  "kb_id": "2b931fb8-ec3c-4d32-959e-a474e4c2d45c",
+  "kb_name": "Acme People & IT Knowledge Base",
+  "kb_description": "Employee handbook, IT onboarding guide and security awareness training for Acme Corp employees.",
+  "generated_at": "2026-09-28T09:13:44.090215+00:00",
+  "total_files": 3,
+  "indexed_files": 3,
+  "documents": [
+    {
+      "file_id": "063d4da7-3603-4625-9429-db94c08c10e7",
+      "filename": "employee_handbook_2026.pdf",
+      "relative_path": "employee_handbook_2026.pdf",
+      "file_type": "pdf",
+      "file_size": 69585,
+      "parser_engine": "mcp_ocr",
+      "parsed_at": "2026-09-28T09:10:52.004113+00:00",
+      "page_count": 3,
+      "node_count": 11,
+      "has_images": true,
+      "image_count": 2,
+      "image_files": [
+        "images/figure_000.png",
+        "images/figure_001.png"
+      ],
+      "doc_summary": "Welcomes new employees to Acme Corp and explains the purpose of the handbook. Shows the leadership team org chart and headcount by department. Covers core hours, paid time off by tenure, other leave types and remote work rules. Describes pay schedule, reviews and the main benefits including health, 401(k) match and learning budget. Summarizes expected behavior, anti-harassment rules, conflicts of interest and how to report concerns. Provides contacts for HR, IT, payroll, facilities and the emplo",
+      "sections": [
+        {
+          "node_id": "0001",
+          "title": "Welcome",
+          "type": "section",
+          "level": 1,
+          "section_number": "1",
+          "start_page": 1,
+          "end_page": 1,
+          "summary": "Welcomes new employees to Acme Corp and explains the purpose of the handbook.",
+          "section_id": "welcome/01-welcome",
+          "section_file": "employee-handbook-2026/modules/welcome/01-welcome.md"
+        },
+        {
+          "node_id": "0002",
+          "title": "Our Values",
+          "type": "section",
+          "level": 2,
+          "section_number": "1.1",
+          "start_page": 1,
+          "end_page": 1,
+          "summary": "Lists Acme's four company values: customer obsession, ownership, candor and craft.",
+          "section_id": "welcome/02-our-values",
+          "section_file": "employee-handbook-2026/modules/welcome/02-our-values.md"
+        },
+        {
+          "node_id": "0003",
+          "title": "Organization",
+          "type": "section",
+          "level": 1,
+          "section_number": "2",
+          "start_page": 1,
+          "end_page": 1,
+          "summary": "Shows the leadership team org chart and headcount by department.",
+          "section_id": "organization/01-organization",
+          "section_file": "employee-handbook-2026/modules/organization/01-organization.md"
+        },
+        {
+          "node_id": "0004",
+          "title": "Working Hours and Leave",
+          "type": "section",
+          "level": 1,
+          "section_number": "3",
+          "start_page": 2,
+          "end_page": 2,
+          "summary": "Covers core hours, paid time off by tenure, other leave types and remote work rules.",
+          "section_id": "working-hours-and-leave/01-working-hours-and-leave",
+          "section_file": "employee-handbook-2026/modules/working-hours-and-leave/01-working-hours-and-leave.md"
+        },
+        {
+          "node_id": "0005",
+          "title": "Table (6 rows x 3 cols)",
+          "type": "table",
+          "level": 2,
+          "section_number": null,
+          "start_page": 2,
+          "end_page": 2,
+          "summary": "Leave allowance table for PTO, holidays, sick leave, 16-week parental leave, bereavement and volunteer days.",
+          "section_id": "working-hours-and-leave/01-working-hours-and-leave",
+          "section_file": "employee-handbook-2026/modules/working-hours-and-leave/01-working-hours-and-leave.md"
+        },
+        {
+          "node_id": "0006",
+          "title": "Remote Work",
+          "type": "section",
+          "level": 2,
+          "section_number": "3.1",
+          "start_page": 2,
+          "end_page": 2,
+          "summary": "Explains the hybrid policy of 2 office days per week, fully remote eligibility and the home office stipend.",
+          "section_id": "working-hours-and-leave/02-remote-work",
+          "section_file": "employee-handbook-2026/modules/working-hours-and-leave/02-remote-work.md"
+        },
+        {
+          "node_id": "0007",
+          "title": "Compensation and Benefits",
+          "type": "section",
+          "level": 1,
+          "section_number": "4",
+          "start_page": 2,
+          "end_page": 3,
+          "summary": "Describes pay schedule, reviews and the main benefits including health, 401(k) match and learning budget.",
+          "section_id": "compensation-and-benefits/01-compensation-and-benefits",
+          "section_file": "employee-handbook-2026/modules/compensation-and-benefits/01-compensation-and-benefits.md"
+        },
+        {
+          "node_id": "0008",
+          "title": "Table (6 rows x 2 cols)",
+          "type": "table",
+          "level": 2,
+          "section_number": null,
+          "start_page": 3,
+          "end_page": 3,
+          "summary": "Benefits table covering health insurance premiums, 4% 401(k) match, learning and wellness budgets, insurance and stock options.",
+          "section_id": "compensation-and-benefits/01-compensation-and-benefits",
+          "section_file": "employee-handbook-2026/modules/compensation-and-benefits/01-compensation-and-benefits.md"
+        },
+        {
+          "node_id": "0009",
+          "title": "Code of Conduct",
+          "type": "section",
+          "level": 1,
+          "section_number": "5",
+          "start_page": 3,
+          "end_page": 3,
+          "summary": "Summarizes expected behavior, anti-harassment rules, conflicts of interest and how to report concerns.",
+          "section_id": "code-of-conduct/01-code-of-conduct",
+          "section_file": "employee-handbook-2026/modules/code-of-conduct/01-code-of-conduct.md"
+        },
+        {
+          "node_id": "0010",
+          "title": "Getting Help",
+          "type": "section",
+          "level": 1,
+          "section_number": "6",
+          "start_page": 3,
+          "end_page": 3,
+          "summary": "Provides contacts for HR, IT, payroll, facilities and the employee assistance program.",
+          "section_id": "getting-help/01-getting-help",
+          "section_file": "employee-handbook-2026/modules/getting-help/01-getting-help.md"
+        },
+        {
+          "node_id": "0011",
+          "title": "Table (5 rows x 3 cols)",
+          "type": "table",
+          "level": 2,
+          "section_number": null,
+          "start_page": 3,
+          "end_page": 3,
+          "summary": "Contact table for HR, IT help desk (ext. 4357), payroll, facilities and the 24/7 employee assistance program.",
+          "section_id": "getting-help/01-getting-help",
+          "section_file": "employee-handbook-2026/modules/getting-help/01-getting-help.md"
+        }
+      ],
+      "folder": "employee-handbook-2026/",
+      "topics": [
+        "year",
+        "leave",
+        "days",
+        "work",
+        "remote",
+        "office",
+        "paid",
+        "usd"
+      ],
+      "codes": [],
+      "related": [],
+      "modules": [
+        {
+          "id": "welcome",
+          "title": "Welcome",
+          "pages": [
+            1,
+            1
+          ]
+        },
+        {
+          "id": "organization",
+          "title": "Organization",
+          "pages": [
+            1,
+            1
+          ]
+        },
+        {
+          "id": "working-hours-and-leave",
+          "title": "Working Hours and Leave",
+          "pages": [
+            2,
+            2
+          ]
+        },
+        {
+          "id": "compensation-and-benefits",
+          "title": "Compensation and Benefits",
+          "pages": [
+            2,
+            3
+          ]
+        },
+        {
+          "id": "code-of-conduct",
+          "title": "Code of Conduct",
+          "pages": [
+            3,
+            3
+          ]
+        },
+        {
+          "id": "getting-help",
+          "title": "Getting Help",
+          "pages": [
+            3,
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "file_id": "44a43db8-afe6-4fc4-8c85-f583679cd9cd",
+      "filename": "it_setup_guide.docx",
+      "relative_path": "it_setup_guide.docx",
+      "file_type": "docx",
+      "file_size": 81029,
+      "parser_engine": "mcp_ocr",
+      "parsed_at": "2026-09-28T09:11:30.640257+00:00",
+      "page_count": null,
+      "node_count": 8,
+      "has_images": true,
+      "image_count": 2,
+      "image_files": [
+        "images/figure_000.png",
+        "images/figure_001.png"
+      ],
+      "doc_summary": "Explains that laptops ship a week before start and what new hires receive by personal email. Shows the Acme single sign-on page and the steps for first sign-in and setting a password. Describes mandatory MFA using Okta Verify push or a hardware security key, with setup steps. Explains when the SecureConnect VPN is needed and shows the correct connection settings. Lists the standard applications installed for everyone and how to request additional software. Gives IT support channels and expected ",
+      "sections": [
+        {
+          "node_id": "0001",
+          "title": "Before Your First Day",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Explains that laptops ship a week before start and what new hires receive by personal email.",
+          "section_id": "before-your-first-day/01-before-your-first-day",
+          "section_file": "it-setup-guide/modules/before-your-first-day/01-before-your-first-day.md"
+        },
+        {
+          "node_id": "0002",
+          "title": "Signing In",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Shows the Acme single sign-on page and the steps for first sign-in and setting a password.",
+          "section_id": "signing-in/01-signing-in",
+          "section_file": "it-setup-guide/modules/signing-in/01-signing-in.md"
+        },
+        {
+          "node_id": "0003",
+          "title": "Multi-Factor Authentication",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Describes mandatory MFA using Okta Verify push or a hardware security key, with setup steps.",
+          "section_id": "multi-factor-authentication/01-multi-factor-authentication",
+          "section_file": "it-setup-guide/modules/multi-factor-authentication/01-multi-factor-authentication.md"
+        },
+        {
+          "node_id": "0004",
+          "title": "Connecting to VPN",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Explains when the SecureConnect VPN is needed and shows the correct connection settings.",
+          "section_id": "connecting-to-vpn/01-connecting-to-vpn",
+          "section_file": "it-setup-guide/modules/connecting-to-vpn/01-connecting-to-vpn.md"
+        },
+        {
+          "node_id": "0005",
+          "title": "Table (5 rows x 2 cols)",
+          "type": "table",
+          "level": 2,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "VPN settings table: server vpn.acme-corp.com, IKEv2/IPsec on port 4500, SAML SSO with Okta Verify and split tunneling.",
+          "section_id": "connecting-to-vpn/01-connecting-to-vpn",
+          "section_file": "it-setup-guide/modules/connecting-to-vpn/01-connecting-to-vpn.md"
+        },
+        {
+          "node_id": "0006",
+          "title": "Software Catalog",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Lists the standard applications installed for everyone and how to request additional software.",
+          "section_id": "software-catalog/01-software-catalog",
+          "section_file": "it-setup-guide/modules/software-catalog/01-software-catalog.md"
+        },
+        {
+          "node_id": "0007",
+          "title": "Table (7 rows x 3 cols)",
+          "type": "table",
+          "level": 2,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Software catalog table of standard apps (Slack, Google Workspace, Zoom, 1Password, Jira/Confluence) and request-only apps (GitHub, Figma).",
+          "section_id": "software-catalog/01-software-catalog",
+          "section_file": "it-setup-guide/modules/software-catalog/01-software-catalog.md"
+        },
+        {
+          "node_id": "0008",
+          "title": "Getting Support",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Gives IT support channels and expected response times.",
+          "section_id": "getting-support/01-getting-support",
+          "section_file": "it-setup-guide/modules/getting-support/01-getting-support.md"
+        }
+      ],
+      "folder": "it-setup-guide/",
+      "topics": [
+        "authentication",
+        "sso",
+        "multi-factor",
+        "vpn",
+        "okta",
+        "verify",
+        "request",
+        "secureconnect"
+      ],
+      "codes": [],
+      "related": [],
+      "modules": [
+        {
+          "id": "before-your-first-day",
+          "title": "Before Your First Day",
+          "pages": null
+        },
+        {
+          "id": "signing-in",
+          "title": "Signing In",
+          "pages": null
+        },
+        {
+          "id": "multi-factor-authentication",
+          "title": "Multi-Factor Authentication",
+          "pages": null
+        },
+        {
+          "id": "connecting-to-vpn",
+          "title": "Connecting to VPN",
+          "pages": null
+        },
+        {
+          "id": "software-catalog",
+          "title": "Software Catalog",
+          "pages": null
+        },
+        {
+          "id": "getting-support",
+          "title": "Getting Support",
+          "pages": null
+        }
+      ]
+    },
+    {
+      "file_id": "2f2e3fdc-5212-4931-b4d0-d5e5c4defd98",
+      "filename": "security_awareness_training_module2.docx",
+      "relative_path": "security_awareness_training_module2.docx",
+      "file_type": "docx",
+      "file_size": 152655,
+      "parser_engine": "mcp_ocr",
+      "parsed_at": "2026-09-28T09:12:03.915510+00:00",
+      "page_count": null,
+      "node_count": 6,
+      "has_images": true,
+      "image_count": 2,
+      "image_files": [
+        "images/figure_000.png",
+        "images/figure_001.png"
+      ],
+      "doc_summary": "Explains that phishing caused most security incidents at Acme in 2025 and why every employee is a target. Walks through an annotated fake payroll email and the four red flags it contains. Explains how to use the Report Phish button and what to do if you already clicked a link. Recommends passphrases, the password manager and never reusing work passwords. Includes a photo of the whiteboard from the August phishing workshop listing red flags and the next session date. Lists four quiz questions emp",
+      "sections": [
+        {
+          "node_id": "0001",
+          "title": "Why Phishing Matters",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Explains that phishing caused most security incidents at Acme in 2025 and why every employee is a target.",
+          "section_id": "why-phishing-matters/01-why-phishing-matters",
+          "section_file": "security-awareness-training-module2/modules/why-phishing-matters/01-why-phishing-matters.md"
+        },
+        {
+          "node_id": "0002",
+          "title": "Anatomy of a Phishing Email",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Walks through an annotated fake payroll email and the four red flags it contains.",
+          "section_id": "anatomy-of-a-phishing-email/01-anatomy-of-a-phishing-email",
+          "section_file": "security-awareness-training-module2/modules/anatomy-of-a-phishing-email/01-anatomy-of-a-phishing-email.md"
+        },
+        {
+          "node_id": "0003",
+          "title": "Reporting Suspicious Messages",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Explains how to use the Report Phish button and what to do if you already clicked a link.",
+          "section_id": "reporting-suspicious-messages/01-reporting-suspicious-messages",
+          "section_file": "security-awareness-training-module2/modules/reporting-suspicious-messages/01-reporting-suspicious-messages.md"
+        },
+        {
+          "node_id": "0004",
+          "title": "Password Hygiene",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Recommends passphrases, the password manager and never reusing work passwords.",
+          "section_id": "password-hygiene/01-password-hygiene",
+          "section_file": "security-awareness-training-module2/modules/password-hygiene/01-password-hygiene.md"
+        },
+        {
+          "node_id": "0005",
+          "title": "Workshop Notes",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Includes a photo of the whiteboard from the August phishing workshop listing red flags and the next session date.",
+          "section_id": "workshop-notes/01-workshop-notes",
+          "section_file": "security-awareness-training-module2/modules/workshop-notes/01-workshop-notes.md"
+        },
+        {
+          "node_id": "0006",
+          "title": "Knowledge Check",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Lists four quiz questions employees must answer to complete the module.",
+          "section_id": "knowledge-check/01-knowledge-check",
+          "section_file": "security-awareness-training-module2/modules/knowledge-check/01-knowledge-check.md"
+        }
+      ],
+      "folder": "security-awareness-training-module2/",
+      "topics": [
+        "phishing",
+        "workshop",
+        "password",
+        "email",
+        "reporting",
+        "suspicious",
+        "matters",
+        "message"
+      ],
+      "codes": [],
+      "related": [],
+      "modules": [
+        {
+          "id": "why-phishing-matters",
+          "title": "Why Phishing Matters",
+          "pages": null
+        },
+        {
+          "id": "anatomy-of-a-phishing-email",
+          "title": "Anatomy of a Phishing Email",
+          "pages": null
+        },
+        {
+          "id": "reporting-suspicious-messages",
+          "title": "Reporting Suspicious Messages",
+          "pages": null
+        },
+        {
+          "id": "password-hygiene",
+          "title": "Password Hygiene",
+          "pages": null
+        },
+        {
+          "id": "workshop-notes",
+          "title": "Workshop Notes",
+          "pages": null
+        },
+        {
+          "id": "knowledge-check",
+          "title": "Knowledge Check",
+          "pages": null
+        }
+      ]
+    }
+  ]
+}

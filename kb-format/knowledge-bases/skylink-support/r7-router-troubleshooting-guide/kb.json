@@ -1,0 +1,206 @@
+{
+  "format_version": 2,
+  "generator": "convert_kb.py",
+  "document": {
+    "id": "r7-router-troubleshooting-guide",
+    "title": "R7 router troubleshooting guide",
+    "filename": "r7_router_troubleshooting_guide.pdf",
+    "type": "pdf",
+    "pages": 3,
+    "summary": "Explains that this guide is for Tier 1 agents handling Skylink R7 router tickets and lists what to collect before troubleshooting. Shows the front panel LEDs and explains what each color and blink pattern means. Presents the no-internet decision flowchart that routes agents from power checks to reboot to Tier 2 escalation. Covers the three most frequent issue types: no internet, slow Wi-Fi and failed firmware updates."
+  },
+  "modules": [
+    {
+      "id": "introduction",
+      "title": "Introduction",
+      "heading": "1 Introduction",
+      "pages": [
+        1,
+        1
+      ],
+      "sections": [
+        "introduction/01-introduction"
+      ],
+      "summary": "Explains that this guide is for Tier 1 agents handling Skylink R7 router tickets and lists what to collect before troubleshooting."
+    },
+    {
+      "id": "led-status-reference",
+      "title": "LED Status Reference",
+      "heading": "2 LED Status Reference",
+      "pages": [
+        1,
+        1
+      ],
+      "sections": [
+        "led-status-reference/01-led-status-reference"
+      ],
+      "summary": "Shows the front panel LEDs and explains what each color and blink pattern means."
+    },
+    {
+      "id": "diagnostic-flow",
+      "title": "Diagnostic Flow",
+      "heading": "3 Diagnostic Flow",
+      "pages": [
+        1,
+        2
+      ],
+      "sections": [
+        "diagnostic-flow/01-diagnostic-flow"
+      ],
+      "summary": "Presents the no-internet decision flowchart that routes agents from power checks to reboot to Tier 2 escalation."
+    },
+    {
+      "id": "common-issues",
+      "title": "Common Issues",
+      "heading": "4 Common Issues",
+      "pages": [
+        2,
+        3
+      ],
+      "sections": [
+        "common-issues/01-no-internet",
+        "common-issues/02-slow-wi-fi",
+        "common-issues/03-firmware-update-failure"
+      ],
+      "summary": "Covers the three most frequent issue types: no internet, slow Wi-Fi and failed firmware updates."
+    },
+    {
+      "id": "escalation",
+      "title": "Escalation",
+      "heading": "5 Escalation",
+      "pages": [
+        3,
+        3
+      ],
+      "sections": [
+        "escalation/01-escalation"
+      ],
+      "summary": "Defines when and how to escalate to Tier 2 or Engineering, with response-time targets."
+    }
+  ],
+  "sections": [
+    {
+      "id": "introduction/01-introduction",
+      "module": "introduction",
+      "title": "1 Introduction",
+      "pages": [
+        1,
+        1
+      ],
+      "file": "modules/introduction/01-introduction.md",
+      "images": [],
+      "summary": "Explains that this guide is for Tier 1 agents handling Skylink R7 router tickets and lists what to collect before troubleshooting.",
+      "text": "This guide helps Tier 1 support agents resolve the most common Skylink R7 router issues on the first contact. Follow the sections in order unless the customer's symptom clearly matches a specific issue in Section 4. Before starting, collect the router serial number (on the label under the device), the firmware version (Admin Console > System) and the customer's ISP. Log all three in the ticket."
+    },
+    {
+      "id": "led-status-reference/01-led-status-reference",
+      "module": "led-status-reference",
+      "title": "2 LED Status Reference",
+      "pages": [
+        1,
+        1
+      ],
+      "file": "modules/led-status-reference/01-led-status-reference.md",
+      "images": [
+        "images/page_001_img1.png"
+      ],
+      "summary": "Shows the front panel LEDs and explains what each color and blink pattern means.",
+      "text": "The front panel LEDs are the fastest way to narrow down a problem. Ask the customer to describe the color and whether each light is solid or blinking. Figure 1: R7 front panel with an amber INTERNET indicator Figure 1: R7 front panel with an amber INTERNET indicator LED Solid green Blinking green Amber Off POWER Normal Booting / updating Hardware fault No power INTERNET Online Traffic WAN up, no IP from ISP No WAN cable 2.4G / 5G Radio on Traffic Radio error Radio disabled LAN Device connected Traffic - No device WPS Paired Pairing (2 min) Pairing failed Idle"
+    },
+    {
+      "id": "diagnostic-flow/01-diagnostic-flow",
+      "module": "diagnostic-flow",
+      "title": "3 Diagnostic Flow",
+      "pages": [
+        1,
+        2
+      ],
+      "file": "modules/diagnostic-flow/01-diagnostic-flow.md",
+      "images": [
+        "images/page_001_img2.png"
+      ],
+      "summary": "Presents the no-internet decision flowchart that routes agents from power checks to reboot to Tier 2 escalation.",
+      "text": "Use this flow for any 'no internet' contact. It resolves about 64% of these tickets without escalation. Figure 2: No-internet diagnostic flowchart Figure 2: No-internet diagnostic flowchart When closing a ticket, always use the resolution code shown in the flowchart so that reporting stays accurate."
+    },
+    {
+      "id": "common-issues/01-no-internet",
+      "module": "common-issues",
+      "title": "4.1 No Internet",
+      "pages": [
+        2,
+        2
+      ],
+      "file": "modules/common-issues/01-no-internet.md",
+      "images": [],
+      "summary": "Gives step-by-step checks for a customer with no internet connection, including power cycling and verifying the WAN cable.",
+      "text": "1. Confirm whether all devices or only one device is affected. 2. Check the INTERNET LED. If off, reseat the WAN cable at both ends. 3. Power-cycle the modem first, wait 2 minutes, then power-cycle the router. 4. If the INTERNET LED stays amber, ask the customer to contact their ISP to confirm there is no outage. 5. If still unresolved, collect WAN logs (Admin Console > Diagnostics > Export) and escalate."
+    },
+    {
+      "id": "common-issues/02-slow-wi-fi",
+      "module": "common-issues",
+      "title": "4.2 Slow Wi-Fi",
+      "pages": [
+        2,
+        2
+      ],
+      "file": "modules/common-issues/02-slow-wi-fi.md",
+      "images": [],
+      "summary": "Lists causes of slow Wi-Fi such as band choice, placement, channel congestion and outdated firmware.",
+      "text": "Ask the customer to run a speed test next to the router, then in the problem room. Recommend the 5 GHz network for devices within two rooms of the router. Move the router off the floor and away from microwaves and fish tanks. Enable Auto Channel (Wireless > Advanced) to avoid congested channels. Confirm firmware is 2.9.1 or later, which fixes a 5 GHz throughput issue."
+    },
+    {
+      "id": "common-issues/03-firmware-update-failure",
+      "module": "common-issues",
+      "title": "4.3 Firmware Update Failure",
+      "pages": [
+        3,
+        3
+      ],
+      "file": "modules/common-issues/03-firmware-update-failure.md",
+      "images": [
+        "images/page_003_img1.png"
+      ],
+      "summary": "Explains error E-217 (checksum mismatch after download) and how to retry or upload the firmware manually.",
+      "text": "Error E-217 means the downloaded firmware image did not pass its checksum check, usually because the download was interrupted. The router keeps running the old firmware, so it is safe. Figure 3: Admin Console showing firmware update error E-217 Figure 3: Admin Console showing firmware update error E-217 Ask the customer to click Retry download. If it fails twice, send them the direct download link from KA-0388 and walk them through Upload file manually. Do not ask customers to factory reset for this error."
+    },
+    {
+      "id": "escalation/01-escalation",
+      "module": "escalation",
+      "title": "5 Escalation",
+      "pages": [
+        3,
+        3
+      ],
+      "file": "modules/escalation/01-escalation.md",
+      "images": [],
+      "summary": "Defines when and how to escalate to Tier 2 or Engineering, with response-time targets.",
+      "text": "Escalate only after completing the relevant steps above and attaching logs. Tickets escalated without logs will be returned. Condition Escalate to Target response No internet after full diagnostic flow Tier 2 Network 4 business hours POWER LED amber (hardware fault) RMA team 1 business day E-217 after manual upload Tier 2 Firmware 4 business hours Suspected security issue (unknown admin login) Security on-call 1 hour, 24/7 More than 20 tickets with same symptom in 1 hour Incident manager 15 minutes"
+    }
+  ],
+  "images": [
+    {
+      "path": "images/page_001_img1.png",
+      "original": "figure_000.png",
+      "section": "led-status-reference/01-led-status-reference",
+      "page": 1,
+      "description": "Figure 1: R7 front panel with an amber INTERNET indicator",
+      "description_from": "caption"
+    },
+    {
+      "path": "images/page_001_img2.png",
+      "original": "figure_001.png",
+      "section": "diagnostic-flow/01-diagnostic-flow",
+      "page": 1,
+      "description": "Figure 2: No-internet diagnostic flowchart",
+      "description_from": "caption"
+    },
+    {
+      "path": "images/page_003_img1.png",
+      "original": "figure_002.png",
+      "section": "common-issues/03-firmware-update-failure",
+      "page": 3,
+      "description": "Figure 3: Admin Console showing firmware update error E-217",
+      "description_from": "caption"
+    }
+  ]
+}

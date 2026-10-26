@@ -1,0 +1,152 @@
+{
+  "_draft": true,
+  "start": "start",
+  "nodes": {
+    "group-1": {
+      "ask": "Which of these is it?",
+      "options": [
+        {
+          "label": "About this manual",
+          "next": "result:about-this-manual"
+        },
+        {
+          "label": "Safety",
+          "next": "result:safety"
+        },
+        {
+          "label": "Specifications",
+          "next": "result:specifications"
+        },
+        {
+          "label": "Installation",
+          "next": "result:installation"
+        },
+        {
+          "label": "Operation",
+          "next": "result:operation"
+        },
+        {
+          "label": "None of these",
+          "next": "start"
+        }
+      ]
+    },
+    "group-2": {
+      "ask": "Which of these is it?",
+      "options": [
+        {
+          "label": "Alarms and error codes",
+          "next": "result:alarms-and-error-codes"
+        },
+        {
+          "label": "Maintenance",
+          "next": "result:maintenance"
+        },
+        {
+          "label": "Torque values",
+          "next": "result:torque-values"
+        },
+        {
+          "label": "Warranty",
+          "next": "result:warranty"
+        },
+        {
+          "label": "None of these",
+          "next": "start"
+        }
+      ]
+    },
+    "start": {
+      "ask": "Which part of HX-500 manual is your question about?",
+      "options": [
+        {
+          "label": "About this manual … Operation",
+          "next": "group-1"
+        },
+        {
+          "label": "Alarms and error codes … Warranty",
+          "next": "group-2"
+        },
+        {
+          "label": "Something else",
+          "next": "open"
+        }
+      ]
+    }
+  },
+  "resolve": {},
+  "results": {
+    "about-this-manual": {
+      "modules": [
+        "about-this-manual"
+      ],
+      "summary": "About this manual",
+      "start_hint": "about-this-manual/01-about-this-manual",
+      "ask_next": []
+    },
+    "safety": {
+      "modules": [
+        "safety"
+      ],
+      "summary": "Safety",
+      "start_hint": "safety/01-general-safety-rules",
+      "ask_next": []
+    },
+    "specifications": {
+      "modules": [
+        "specifications"
+      ],
+      "summary": "Specifications",
+      "start_hint": "specifications/01-specifications",
+      "ask_next": []
+    },
+    "installation": {
+      "modules": [
+        "installation"
+      ],
+      "summary": "Installation",
+      "start_hint": "installation/01-foundation",
+      "ask_next": []
+    },
+    "operation": {
+      "modules": [
+        "operation"
+      ],
+      "summary": "Operation",
+      "start_hint": "operation/01-daily-start-up",
+      "ask_next": []
+    },
+    "alarms-and-error-codes": {
+      "modules": [
+        "alarms-and-error-codes"
+      ],
+      "summary": "Alarms and error codes",
+      "start_hint": "alarms-and-error-codes/01-alarms-and-error-codes",
+      "ask_next": []
+    },
+    "maintenance": {
+      "modules": [
+        "maintenance"
+      ],
+      "summary": "Maintenance",
+      "start_hint": "maintenance/01-maintenance-schedule",
+      "ask_next": []
+    },
+    "torque-values": {
+      "modules": [
+        "torque-values"
+      ],
+      "summary": "Torque values",
+      "start_hint": "torque-values/01-torque-values",
+      "ask_next": []
+    },
+    "warranty": {
+      "modules": [
+        "warranty"
+      ],
+      "summary": "Warranty",
+      "start_hint": "warranty/01-warranty",
+      "ask_next": []
+    }
+  }
+}

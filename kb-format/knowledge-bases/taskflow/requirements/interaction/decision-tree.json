@@ -1,0 +1,78 @@
+{
+  "_draft": true,
+  "start": "start",
+  "nodes": {
+    "start": {
+      "ask": "Which part of Requirements is your question about?",
+      "options": [
+        {
+          "label": "Web API Dependencies",
+          "next": "result:web-api-dependencies"
+        },
+        {
+          "label": "Install:  pip install -r requirements.txt",
+          "next": "result:install-pip-install-r-requirements-txt"
+        },
+        {
+          "label": "Core Packages",
+          "next": "result:core-packages"
+        },
+        {
+          "label": "Development Packages",
+          "next": "result:development-packages"
+        },
+        {
+          "label": "HTTP client (httpx)",
+          "next": "result:http-client-httpx"
+        },
+        {
+          "label": "Something else",
+          "next": "open"
+        }
+      ]
+    }
+  },
+  "resolve": {},
+  "results": {
+    "web-api-dependencies": {
+      "modules": [
+        "web-api-dependencies"
+      ],
+      "summary": "Web API Dependencies",
+      "start_hint": "web-api-dependencies/01-web-api-dependencies",
+      "ask_next": []
+    },
+    "install-pip-install-r-requirements-txt": {
+      "modules": [
+        "install-pip-install-r-requirements-txt"
+      ],
+      "summary": "Install:  pip install -r requirements.txt",
+      "start_hint": "install-pip-install-r-requirements-txt/01-install-pip-install-r-requirements-txt",
+      "ask_next": []
+    },
+    "core-packages": {
+      "modules": [
+        "core-packages"
+      ],
+      "summary": "Core Packages",
+      "start_hint": "core-packages/01-core-packages",
+      "ask_next": []
+    },
+    "development-packages": {
+      "modules": [
+        "development-packages"
+      ],
+      "summary": "Development Packages",
+      "start_hint": "development-packages/01-development-packages",
+      "ask_next": []
+    },
+    "http-client-httpx": {
+      "modules": [
+        "http-client-httpx"
+      ],
+      "summary": "HTTP client (httpx)",
+      "start_hint": "http-client-httpx/01-http-client-httpx",
+      "ask_next": []
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "_draft": true,
+  "start": "start",
+  "nodes": {
+    "start": {
+      "ask": "Which part of HX-900 spindle log is your question about?",
+      "options": [
+        {
+          "label": "Sheet: Spindle log",
+          "next": "result:sheet-spindle-log"
+        },
+        {
+          "label": "Something else",
+          "next": "open"
+        }
+      ]
+    }
+  },
+  "resolve": {},
+  "results": {
+    "sheet-spindle-log": {
+      "modules": [
+        "sheet-spindle-log"
+      ],
+      "summary": "Sheet: Spindle log",
+      "start_hint": "sheet-spindle-log/01-sheet-spindle-log",
+      "ask_next": []
+    }
+  }
+}

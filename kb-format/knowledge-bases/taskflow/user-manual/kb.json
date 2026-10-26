@@ -1,0 +1,174 @@
+{
+  "format_version": 2,
+  "generator": "convert_kb.py",
+  "document": {
+    "id": "user-manual",
+    "title": "User manual",
+    "filename": "user_manual.docx",
+    "type": "docx",
+    "pages": null,
+    "summary": "User manual for TaskFlow Pro 4.2, a team project management tool, covering system requirements, installation, the dashboard, project creation, member roles, task assignment, reporting and settings. It closes with configuration of user preferences and third-party integrations such as Slack, GitHub and Google Calendar."
+  },
+  "modules": [
+    {
+      "id": "introduction",
+      "title": "Introduction",
+      "heading": "Introduction",
+      "pages": null,
+      "sections": [
+        "introduction/01-about",
+        "introduction/02-requirements",
+        "introduction/03-installation"
+      ],
+      "summary": "Introduces TaskFlow Pro 4.2, describing what the product does, the system requirements, and how to install it."
+    },
+    {
+      "id": "features",
+      "title": "Features",
+      "heading": "Features",
+      "pages": null,
+      "sections": [
+        "features/01-dashboard",
+        "features/02-project-management",
+        "features/03-reports",
+        "features/04-settings"
+      ],
+      "summary": "Describes the core features of TaskFlow Pro: the dashboard, project management workflows, reports and settings."
+    },
+    {
+      "id": "configuration",
+      "title": "Configuration",
+      "heading": "Configuration",
+      "pages": null,
+      "sections": [
+        "configuration/01-user-preferences",
+        "configuration/02-integrations"
+      ],
+      "summary": "Covers configuring personal preferences and connecting third-party integrations."
+    }
+  ],
+  "sections": [
+    {
+      "id": "introduction/01-about",
+      "module": "introduction",
+      "title": "About",
+      "pages": null,
+      "file": "modules/introduction/01-about.md",
+      "images": [],
+      "summary": "TaskFlow Pro is a web and desktop project management tool for teams of 5-500 that combines Kanban boards, Gantt timelines, time tracking and reporting.",
+      "text": "TaskFlow Pro 4.2 is a collaborative project management application for teams of 5 to 500 people. It combines Kanban boards, Gantt timelines, time tracking and reporting in a single workspace, and is available as a browser application and as a desktop client for Windows and macOS. This manual is written for project managers, team members and workspace administrators. Administrator-only features are marked (Admin)."
+    },
+    {
+      "id": "introduction/02-requirements",
+      "module": "introduction",
+      "title": "Requirements",
+      "pages": null,
+      "file": "modules/introduction/02-requirements.md",
+      "images": [],
+      "summary": "Lists supported browsers, desktop OS versions, minimum hardware (4 GB RAM, dual-core CPU) and network requirements for TaskFlow Pro.",
+      "text": "Component Minimum Recommended Browser Chrome 118, Edge 118, Firefox 120, Safari 17 Latest stable release Desktop OS Windows 10 (22H2), macOS 13 Ventura Windows 11, macOS 15 Memory 4 GB RAM 8 GB RAM CPU Dual-core 2.0 GHz Quad-core 2.5 GHz Network 2 Mbps, ports 443 and 8443 open 10 Mbps Screen resolution of at least 1366 x 768 is required; Gantt view is best used at 1920 x 1080 or higher."
+    },
+    {
+      "id": "introduction/03-installation",
+      "module": "introduction",
+      "title": "Installation",
+      "pages": null,
+      "file": "modules/introduction/03-installation.md",
+      "images": [],
+      "summary": "Explains how to access the web version, install the desktop client via the installer, and sign in for the first time using SSO or email.",
+      "text": "Web: Open https://app.taskflowpro.example and sign in with your work email or your organisation's SSO provider. Desktop client: 1. Download TaskFlowPro-Setup-4.2.0.exe (Windows) or TaskFlowPro-4.2.0.dmg (macOS) from the Help > Downloads page. 2. Run the installer and accept the default install location. 3. Launch TaskFlow Pro and enter your workspace URL, e.g. acme.taskflowpro.example. 4. Sign in. On first launch, the setup wizard asks for your time zone and default notification preferences. Silent install for IT departments: TaskFlowPro-Setup-4.2.0.exe /S /D=C:\\Apps\\TaskFlowPro."
+    },
+    {
+      "id": "features/01-dashboard",
+      "module": "features",
+      "title": "Dashboard",
+      "pages": null,
+      "file": "modules/features/01-dashboard.md",
+      "images": [
+        "images/page_000_img1.png"
+      ],
+      "summary": "The dashboard is the landing page that summarises a user's projects, tasks and team activity.",
+      "text": "Overview The dashboard is the first screen you see after signing in. It contains: KPI cards - Active Projects, Open Tasks, Due This Week, and Overdue (highlighted red when greater than zero). Tasks Completed per Week - a bar chart covering the last eight weeks. Recent Activity - the latest updates from projects you belong to. Click any KPI card to open a filtered task list. Widgets can be rearranged by dragging their title bar. GLOBAL SCENE: A desktop web application screenshot of the TaskFlow Pro dashboard with a dark navy left sidebar and a light grey main canvas. KEY OBJECTS: Four white KPI cards across the top read Active Projects 12, Open Tasks 87, Due This Week 14 and Overdue 3 (the last in red); below them a blue bar chart titled 'Tasks Completed per Week' rises from W1 to W8, and a 'Recent Activity' feed lists five team actions with green status dots. TEXT & LABELS: Sidebar items Dashboard (highlighted blue), Projects, Tasks, Team, Reports, Settings; header reads 'Welcome back, Priya' with a 'Search projects...' box at top right. Navigation The left sidebar provides access to Dashboard, Projects, Tasks, Team, Reports and Settings. Collapse it with the << control at the bottom. Keyboard shortcuts: Shortcut Action Ctrl+K Open global search G then P Go to Projects G then D Go to Dashboard N New task in current project ? Show all shortcuts"
+    },
+    {
+      "id": "features/02-project-management",
+      "module": "features",
+      "title": "Project Management",
+      "pages": null,
+      "file": "modules/features/02-project-management.md",
+      "images": [
+        "images/page_000_img2.png"
+      ],
+      "summary": "Explains how to create projects, add team members with roles, and assign tasks.",
+      "text": "Creating a Project 1. Go to Projects and click New Project. 2. Enter a Project Name and a 2-6 letter Project Key (used as a task prefix, e.g. WEB-142). 3. Choose a Template: Kanban, Scrum, Waterfall, or Blank. 4. Set the Start Date and Target End Date. 5. Choose Visibility: Team members only, Entire workspace, or Private. 6. Click Create. The project key cannot be changed after creation. GLOBAL SCENE: A modal dialog titled 'Create New Project' overlaid on a dimmed grey background. KEY OBJECTS: Six stacked labelled input fields and two buttons at the bottom right — an outlined 'Cancel' and a solid blue 'Create'; a close 'X' sits in the top-right corner. TEXT & LABELS: Project Name 'Website Redesign 2026', Project Key 'WEB', Template 'Kanban (To Do / In Progress / Review / Done)', Start Date '2026-11-02', Target End Date '2027-02-26', Visibility 'Team members only'. Adding Team Members Open the project, select Members > Invite, and enter one or more email addresses. Each member receives a role: Role Permissions Owner Full control including deleting the project Manager Edit project settings, manage members and sprints Contributor Create, edit and comment on tasks Viewer Read-only access Invitations expire after 7 days. Guests outside your domain count toward the guest seat limit. Task Assignment Open a task and choose a person in the Assignee field, or drag a task card onto a team member's avatar on the board. A task can have one assignee and any number of watchers. Set Estimate in hours or story points and a Due Date. The Workload view shows allocated hours per person per week; members above 40 hours are flagged in orange."
+    },
+    {
+      "id": "features/03-reports",
+      "module": "features",
+      "title": "Reports",
+      "pages": null,
+      "file": "modules/features/03-reports.md",
+      "images": [
+        "images/page_000_img3.png"
+      ],
+      "summary": "Describes built-in reports - burndown, velocity, time tracking and overdue tasks - and export to PDF/CSV (see figure_002.png).",
+      "text": "Built-in reports are available under Reports: Sprint Burndown - remaining story points against the ideal line. Velocity - points completed per sprint for the last 10 sprints. Time Tracking - logged hours by person, project and week. Overdue Tasks - all tasks past due, grouped by assignee. Every report can be exported to PDF or CSV and scheduled for weekly email delivery. GLOBAL SCENE: A line chart report titled 'Sprint Burndown - WEB Sprint 14 (Nov 2 - Nov 13)' on a white background. KEY OBJECTS: A grey diagonal 'Ideal' line falls from 60 to 0 story points across days D1-D10, while a blue 'Actual' line with circular markers stays above ideal mid-sprint (plateau around D3-D4 at 52-50 points) before dropping steeply to 4 points on D10. TEXT & LABELS: Y-axis 'Story points' with ticks 0-60 in steps of 10; X-axis D1 through D10; legend at bottom right reads Ideal and Actual."
+    },
+    {
+      "id": "features/04-settings",
+      "module": "features",
+      "title": "Settings",
+      "pages": null,
+      "file": "modules/features/04-settings.md",
+      "images": [],
+      "summary": "Settings covers profile details, notification channels, security options such as two-factor authentication, and workspace administration for admins.",
+      "text": "The Settings page has four tabs: Profile, Notifications, Security (two-factor authentication, active sessions), and Workspace (Admin) for billing, seat management and data retention policies."
+    },
+    {
+      "id": "configuration/01-user-preferences",
+      "module": "configuration",
+      "title": "User Preferences",
+      "pages": null,
+      "file": "modules/configuration/01-user-preferences.md",
+      "images": [],
+      "summary": "Users can set theme, language, time zone, start of week, date format and default board view from Settings > Profile.",
+      "text": "Preference Options Default Theme Light, Dark, System System Language English, German, French, Spanish, Japanese English Time zone Any IANA zone Browser time zone Start of week Sunday, Monday Monday Date format DD/MM/YYYY, MM/DD/YYYY, YYYY-MM-DD YYYY-MM-DD Default view Board, List, Gantt Board"
+    },
+    {
+      "id": "configuration/02-integrations",
+      "module": "configuration",
+      "title": "Integrations",
+      "pages": null,
+      "file": "modules/configuration/02-integrations.md",
+      "images": [],
+      "summary": "Lists supported integrations (Slack, Microsoft Teams, GitHub, GitLab, Google Calendar, Jira import) and how admins connect them with OAuth.",
+      "text": "Admins connect integrations from Settings > Workspace > Integrations: Slack / Microsoft Teams - post task updates to channels. GitHub / GitLab - link commits and pull requests via task keys such as WEB-142 in commit messages. Google Calendar / Outlook - sync due dates. Jira import - migrate projects, issues and attachments. Each integration uses OAuth 2.0; tokens can be revoked at any time from the same page."
+    }
+  ],
+  "images": [
+    {
+      "path": "images/page_000_img1.png",
+      "original": "figure_000.png",
+      "section": "features/01-dashboard",
+      "page": null,
+      "description": "GLOBAL SCENE: A desktop web application screenshot of the TaskFlow Pro dashboard with a dark navy left sidebar and a light grey main canvas. KEY OBJECTS: Four white KPI cards across the top read Active Projects 12, Open Tasks 87, Due This Week 14 and Overdue 3 (the last in red); below them a blue bar chart titled 'Tasks Completed per Week' rises from W1 to W8, and a 'Recent Activity' feed lists five team actions with green status dots. TEXT & LABELS: Sidebar items Dashboard (highlighted blue), Projects, Tasks, Team, Reports, Settings; header reads 'Welcome back, Priya' with a 'Search projects...' box at top right.",
+      "description_from": "description"
+    },
+    {
+      "path": "images/page_000_img2.png",
+      "original": "figure_001.png",
+      "section": "features/02-project-management",
+      "page": null,
+      "description": "GLOBAL SCENE: A modal dialog titled 'Create New Project' overlaid on a dimmed grey background. KEY OBJECTS: Six stacked labelled input fields and two buttons at the bottom right — an outlined 'Cancel' and a solid blue 'Create'; a close 'X' sits in the top-right corner. TEXT & LABELS: Project Name * 'Website Redesign 2026', Project Key * 'WEB', Template 'Kanban (To Do / In Progress / Review / Done)', Start Date '2026-11-02', Target End Date '2027-02-26', Visibility 'Team members only'.",
+      "description_from": "description"
+    },
+    {
+      "path": "images/page_000_img3.png",
+      "original": "figure_002.png",
+      "section": "features/03-reports",
+      "page": null,
+      "description": "GLOBAL SCENE: A line chart report titled 'Sprint Burndown - WEB Sprint 14 (Nov 2 - Nov 13)' on a white background. KEY OBJECTS: A grey diagonal 'Ideal' line falls from 60 to 0 story points across days D1-D10, while a blue 'Actual' line with circular markers stays above ideal mid-sprint (plateau around D3-D4 at 52-50 points) before dropping steeply to 4 points on D10. TEXT & LABELS: Y-axis 'Story points' with ticks 0-60 in steps of 10; X-axis D1 through D10; legend at bottom right reads Ideal and Actual.",
+      "description_from": "description"
+    }
+  ]
+}

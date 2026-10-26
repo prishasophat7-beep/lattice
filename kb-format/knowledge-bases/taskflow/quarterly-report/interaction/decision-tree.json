@@ -1,0 +1,30 @@
+{
+  "_draft": true,
+  "start": "start",
+  "nodes": {
+    "start": {
+      "ask": "Which part of Quarterly report is your question about?",
+      "options": [
+        {
+          "label": "Quarterly report",
+          "next": "result:quarterly-report"
+        },
+        {
+          "label": "Something else",
+          "next": "open"
+        }
+      ]
+    }
+  },
+  "resolve": {},
+  "results": {
+    "quarterly-report": {
+      "modules": [
+        "quarterly-report"
+      ],
+      "summary": "Quarterly report",
+      "start_hint": "quarterly-report/01-sheet-q1-summary",
+      "ask_next": []
+    }
+  }
+}

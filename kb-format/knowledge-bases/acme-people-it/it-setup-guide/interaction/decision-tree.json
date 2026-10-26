@@ -1,0 +1,90 @@
+{
+  "_draft": true,
+  "start": "start",
+  "nodes": {
+    "start": {
+      "ask": "Which part of It setup guide is your question about?",
+      "options": [
+        {
+          "label": "Before Your First Day",
+          "next": "result:before-your-first-day"
+        },
+        {
+          "label": "Signing In",
+          "next": "result:signing-in"
+        },
+        {
+          "label": "Multi-Factor Authentication",
+          "next": "result:multi-factor-authentication"
+        },
+        {
+          "label": "Connecting to VPN",
+          "next": "result:connecting-to-vpn"
+        },
+        {
+          "label": "Software Catalog",
+          "next": "result:software-catalog"
+        },
+        {
+          "label": "Getting Support",
+          "next": "result:getting-support"
+        },
+        {
+          "label": "Something else",
+          "next": "open"
+        }
+      ]
+    }
+  },
+  "resolve": {},
+  "results": {
+    "before-your-first-day": {
+      "modules": [
+        "before-your-first-day"
+      ],
+      "summary": "Before Your First Day",
+      "start_hint": "before-your-first-day/01-before-your-first-day",
+      "ask_next": []
+    },
+    "signing-in": {
+      "modules": [
+        "signing-in"
+      ],
+      "summary": "Signing In",
+      "start_hint": "signing-in/01-signing-in",
+      "ask_next": []
+    },
+    "multi-factor-authentication": {
+      "modules": [
+        "multi-factor-authentication"
+      ],
+      "summary": "Multi-Factor Authentication",
+      "start_hint": "multi-factor-authentication/01-multi-factor-authentication",
+      "ask_next": []
+    },
+    "connecting-to-vpn": {
+      "modules": [
+        "connecting-to-vpn"
+      ],
+      "summary": "Connecting to VPN",
+      "start_hint": "connecting-to-vpn/01-connecting-to-vpn",
+      "ask_next": []
+    },
+    "software-catalog": {
+      "modules": [
+        "software-catalog"
+      ],
+      "summary": "Software Catalog",
+      "start_hint": "software-catalog/01-software-catalog",
+      "ask_next": []
+    },
+    "getting-support": {
+      "modules": [
+        "getting-support"
+      ],
+      "summary": "Getting Support",
+      "start_hint": "getting-support/01-getting-support",
+      "ask_next": []
+    }
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "_draft": true,
+  "start": "start",
+  "nodes": {
+    "start": {
+      "ask": "Which part of X2 installation and user guide is your question about?",
+      "options": [
+        {
+          "label": "Safety Information",
+          "next": "result:safety-information"
+        },
+        {
+          "label": "What's in the Box",
+          "next": "result:what-s-in-the-box"
+        },
+        {
+          "label": "Installation",
+          "next": "result:installation"
+        },
+        {
+          "label": "Using Your Thermostat",
+          "next": "result:using-your-thermostat"
+        },
+        {
+          "label": "Troubleshooting",
+          "next": "result:troubleshooting"
+        },
+        {
+          "label": "Something else",
+          "next": "open"
+        }
+      ]
+    }
+  },
+  "resolve": {},
+  "results": {
+    "safety-information": {
+      "modules": [
+        "safety-information"
+      ],
+      "summary": "Safety Information",
+      "start_hint": "safety-information/01-safety-information",
+      "ask_next": []
+    },
+    "what-s-in-the-box": {
+      "modules": [
+        "what-s-in-the-box"
+      ],
+      "summary": "What's in the Box",
+      "start_hint": "what-s-in-the-box/01-what-s-in-the-box",
+      "ask_next": []
+    },
+    "installation": {
+      "modules": [
+        "installation"
+      ],
+      "summary": "Installation",
+      "start_hint": "installation/01-installation",
+      "ask_next": []
+    },
+    "using-your-thermostat": {
+      "modules": [
+        "using-your-thermostat"
+      ],
+      "summary": "Using Your Thermostat",
+      "start_hint": "using-your-thermostat/01-using-your-thermostat",
+      "ask_next": []
+    },
+    "troubleshooting": {
+      "modules": [
+        "troubleshooting"
+      ],
+      "summary": "Troubleshooting",
+      "start_hint": "troubleshooting/01-troubleshooting",
+      "ask_next": []
+    }
+  }
+}

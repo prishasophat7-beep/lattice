@@ -1,0 +1,222 @@
+{
+  "format_version": 2,
+  "generator": "convert_kb.py",
+  "document": {
+    "id": "employee-handbook-2026",
+    "title": "Employee handbook 2026",
+    "filename": "employee_handbook_2026.pdf",
+    "type": "pdf",
+    "pages": 3,
+    "summary": "Welcomes new employees to Acme Corp and explains the purpose of the handbook. Shows the leadership team org chart and headcount by department. Covers core hours, paid time off by tenure, other leave types and remote work rules. Describes pay schedule, reviews and the main benefits including health, 401(k) match and learning budget. Summarizes expected behavior, anti-harassment rules, conflicts of interest and how to report concerns."
+  },
+  "modules": [
+    {
+      "id": "welcome",
+      "title": "Welcome",
+      "heading": "1 Welcome",
+      "pages": [
+        1,
+        1
+      ],
+      "sections": [
+        "welcome/01-welcome",
+        "welcome/02-our-values"
+      ],
+      "summary": "Welcomes new employees to Acme Corp and explains the purpose of the handbook."
+    },
+    {
+      "id": "organization",
+      "title": "Organization",
+      "heading": "2 Organization",
+      "pages": [
+        1,
+        1
+      ],
+      "sections": [
+        "organization/01-organization"
+      ],
+      "summary": "Shows the leadership team org chart and headcount by department."
+    },
+    {
+      "id": "working-hours-and-leave",
+      "title": "Working Hours and Leave",
+      "heading": "3 Working Hours and Leave",
+      "pages": [
+        2,
+        2
+      ],
+      "sections": [
+        "working-hours-and-leave/01-working-hours-and-leave",
+        "working-hours-and-leave/02-remote-work"
+      ],
+      "summary": "Covers core hours, paid time off by tenure, other leave types and remote work rules."
+    },
+    {
+      "id": "compensation-and-benefits",
+      "title": "Compensation and Benefits",
+      "heading": "4 Compensation and Benefits",
+      "pages": [
+        2,
+        3
+      ],
+      "sections": [
+        "compensation-and-benefits/01-compensation-and-benefits"
+      ],
+      "summary": "Describes pay schedule, reviews and the main benefits including health, 401(k) match and learning budget."
+    },
+    {
+      "id": "code-of-conduct",
+      "title": "Code of Conduct",
+      "heading": "5 Code of Conduct",
+      "pages": [
+        3,
+        3
+      ],
+      "sections": [
+        "code-of-conduct/01-code-of-conduct"
+      ],
+      "summary": "Summarizes expected behavior, anti-harassment rules, conflicts of interest and how to report concerns."
+    },
+    {
+      "id": "getting-help",
+      "title": "Getting Help",
+      "heading": "6 Getting Help",
+      "pages": [
+        3,
+        3
+      ],
+      "sections": [
+        "getting-help/01-getting-help"
+      ],
+      "summary": "Provides contacts for HR, IT, payroll, facilities and the employee assistance program."
+    }
+  ],
+  "sections": [
+    {
+      "id": "welcome/01-welcome",
+      "module": "welcome",
+      "title": "1 Welcome",
+      "pages": [
+        1,
+        1
+      ],
+      "file": "modules/welcome/01-welcome.md",
+      "images": [],
+      "summary": "Welcomes new employees to Acme Corp and explains the purpose of the handbook.",
+      "text": "Welcome to Acme Corp! Whether you joined this week or ten years ago, this handbook explains how we work together, what you can expect from us and what we expect from you. It does not replace your employment agreement; where the two differ, your agreement applies. Acme builds workflow software used by more than 4,000 companies. We have about 300 employees across offices in Austin, Toronto and Lisbon, plus a growing remote team."
+    },
+    {
+      "id": "welcome/02-our-values",
+      "module": "welcome",
+      "title": "1.1 Our Values",
+      "pages": [
+        1,
+        1
+      ],
+      "file": "modules/welcome/02-our-values.md",
+      "images": [],
+      "summary": "Lists Acme's four company values: customer obsession, ownership, candor and craft.",
+      "text": "Customers first - we start with the customer's problem, not our solution. Own it - if you see a problem, you own it until it is solved or handed off clearly. Be candid - give and ask for direct feedback, kindly. Sweat the craft - quality is everyone's job."
+    },
+    {
+      "id": "organization/01-organization",
+      "module": "organization",
+      "title": "2 Organization",
+      "pages": [
+        1,
+        1
+      ],
+      "file": "modules/organization/01-organization.md",
+      "images": [
+        "images/page_001_img1.png"
+      ],
+      "summary": "Shows the leadership team org chart and headcount by department.",
+      "text": "Acme is led by the CEO and four executives. Each department has a head who reports to one of these executives. The chart below shows the structure as of September 2026. Figure 1: Acme Corp leadership team and department headcount Figure 1: Acme Corp leadership team and department headcount Up-to-date team information, including managers and office locations, is always available in the People directory in Workday."
+    },
+    {
+      "id": "working-hours-and-leave/01-working-hours-and-leave",
+      "module": "working-hours-and-leave",
+      "title": "3 Working Hours and Leave",
+      "pages": [
+        2,
+        2
+      ],
+      "file": "modules/working-hours-and-leave/01-working-hours-and-leave.md",
+      "images": [
+        "images/page_002_img1.png"
+      ],
+      "summary": "Covers core hours, paid time off by tenure, other leave types and remote work rules.",
+      "text": "Our core collaboration hours are 10:00 to 15:00 in your local time zone. Outside of those hours, you are free to organize your day as works best for you and your team. Figure 2: Paid time off allowance increases with years of service Figure 2: Paid time off allowance increases with years of service Leave type Allowance Notes Paid time off (PTO) 18-27 days/year Based on tenure; up to 5 days carry over Company holidays 11 days/year Published each December Sick leave 10 days/year No doctor's note needed for up to 3 consecutive days Parental leave 16 weeks, fully paid For all parents, within 12 months of birth or adoption Bereavement Up to 10 days Depending on relationship Volunteer day 2 days/year For registered non-profits"
+    },
+    {
+      "id": "working-hours-and-leave/02-remote-work",
+      "module": "working-hours-and-leave",
+      "title": "3.1 Remote Work",
+      "pages": [
+        2,
+        2
+      ],
+      "file": "modules/working-hours-and-leave/02-remote-work.md",
+      "images": [],
+      "summary": "Explains the hybrid policy of 2 office days per week, fully remote eligibility and the home office stipend.",
+      "text": "Employees who live within 50 km of an office work from the office at least two days per week (Tuesday and Thursday are team days). Fully remote roles are approved by the department head. All employees receive a one-time USD 750 home office stipend and USD 50 per month for internet costs."
+    },
+    {
+      "id": "compensation-and-benefits/01-compensation-and-benefits",
+      "module": "compensation-and-benefits",
+      "title": "4 Compensation and Benefits",
+      "pages": [
+        2,
+        3
+      ],
+      "file": "modules/compensation-and-benefits/01-compensation-and-benefits.md",
+      "images": [],
+      "summary": "Describes pay schedule, reviews and the main benefits including health, 401(k) match and learning budget.",
+      "text": "Employees are paid semi-monthly on the 15th and last business day of each month. Compensation is reviewed once a year in March, based on performance and market data. Benefit Details Health, dental, vision Acme pays 90% of premiums for employees and 75% for dependents 401(k) 100% match on the first 4% of salary, vesting immediately Learning budget USD 1,500 per year for courses, books and conferences Wellness USD 60 per month for gym, apps or classes Life and disability 2x salary life insurance; short and long-term disability Equity Stock options for all full-time employees, 4-year vesting with 1-year cliff"
+    },
+    {
+      "id": "code-of-conduct/01-code-of-conduct",
+      "module": "code-of-conduct",
+      "title": "5 Code of Conduct",
+      "pages": [
+        3,
+        3
+      ],
+      "file": "modules/code-of-conduct/01-code-of-conduct.md",
+      "images": [],
+      "summary": "Summarizes expected behavior, anti-harassment rules, conflicts of interest and how to report concerns.",
+      "text": "We expect everyone to treat colleagues, customers and partners with respect. Harassment and discrimination of any kind are not tolerated. Disclose any potential conflict of interest to your manager and HR. Do not accept gifts worth more than USD 100 from customers or vendors. Protect confidential information, including customer data and unreleased product plans. Report concerns to your manager, HR, or anonymously via the EthicsLine (ethics.acme-corp.com)."
+    },
+    {
+      "id": "getting-help/01-getting-help",
+      "module": "getting-help",
+      "title": "6 Getting Help",
+      "pages": [
+        3,
+        3
+      ],
+      "file": "modules/getting-help/01-getting-help.md",
+      "images": [],
+      "summary": "Provides contacts for HR, IT, payroll, facilities and the employee assistance program.",
+      "text": "Topic Contact Hours HR questions people@acme-corp.com / #ask-people Mon-Fri 9:00-17:00 IT help desk ext. 4357 (HELP) / #it-help 24/7 for urgent issues Payroll payroll@acme-corp.com Mon-Fri 9:00-17:00 Facilities #facilities Office hours Employee Assistance Program 1-800-555-0199 24/7, confidential"
+    }
+  ],
+  "images": [
+    {
+      "path": "images/page_001_img1.png",
+      "original": "figure_000.png",
+      "section": "organization/01-organization",
+      "page": 1,
+      "description": "Figure 1: Acme Corp leadership team and department headcount",
+      "description_from": "caption"
+    },
+    {
+      "path": "images/page_002_img1.png",
+      "original": "figure_001.png",
+      "section": "working-hours-and-leave/01-working-hours-and-leave",
+      "page": 2,
+      "description": "Figure 2: Paid time off allowance increases with years of service",
+      "description_from": "caption"
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "format_version": 2,
+  "generator": "convert_kb.py",
+  "document": {
+    "id": "meeting-notes",
+    "title": "Meeting notes",
+    "filename": "meeting_notes.docx",
+    "type": "docx",
+    "pages": null,
+    "summary": "Weekly camera team meeting notes with attendees and location."
+  },
+  "modules": [
+    {
+      "id": "overview",
+      "title": "Overview",
+      "heading": "Overview",
+      "pages": null,
+      "sections": [
+        "overview/01-camera-team-weekly-sync-september-22-2026"
+      ],
+      "summary": "Weekly camera team meeting notes with attendees and location."
+    },
+    {
+      "id": "agenda",
+      "title": "Agenda",
+      "heading": "Agenda",
+      "pages": null,
+      "sections": [
+        "agenda/01-agenda"
+      ],
+      "summary": "Lists three agenda items: MCN5 test review, EVT2 schedule, and lens supplier update."
+    },
+    {
+      "id": "discussion",
+      "title": "Discussion",
+      "heading": "Discussion",
+      "pages": null,
+      "sections": [
+        "discussion/01-mcn5-test-results",
+        "discussion/02-evt2-build-schedule",
+        "discussion/03-supplier-update"
+      ],
+      "summary": "Covers discussion of test results, build timing and supplier quality."
+    },
+    {
+      "id": "decisions",
+      "title": "Decisions",
+      "heading": "Decisions",
+      "pages": null,
+      "sections": [
+        "decisions/01-decisions"
+      ],
+      "summary": "Decided on ISP-based distortion correction and keeping the EVT2 date."
+    },
+    {
+      "id": "action-items",
+      "title": "Action Items",
+      "heading": "Action Items",
+      "pages": null,
+      "sections": [
+        "action-items/01-action-items"
+      ],
+      "summary": "Four action items with owners and due dates between Sept 30 and Oct 15."
+    }
+  ],
+  "sections": [
+    {
+      "id": "overview/01-camera-team-weekly-sync-september-22-2026",
+      "module": "overview",
+      "title": "Camera Team Weekly Sync - September 22, 2026",
+      "pages": null,
+      "file": "modules/overview/01-camera-team-weekly-sync-september-22-2026.md",
+      "images": [],
+      "summary": "Weekly camera team meeting notes with attendees and location.",
+      "text": "Attendees: J. Kim (lead), A. Patel, M. Chen, S. Lee, R. Gomez Location: Conference Room 4B / video call"
+    },
+    {
+      "id": "agenda/01-agenda",
+      "module": "agenda",
+      "title": "Agenda",
+      "pages": null,
+      "file": "modules/agenda/01-agenda.md",
+      "images": [],
+      "summary": "Lists three agenda items: MCN5 test review, EVT2 schedule, and lens supplier update.",
+      "text": "1. MCN5 test results review 2. EVT2 build schedule 3. Supplier update for lens assemblies"
+    },
+    {
+      "id": "discussion/01-mcn5-test-results",
+      "module": "discussion",
+      "title": "MCN5 Test Results",
+      "pages": null,
+      "file": "modules/discussion/01-mcn5-test-results.md",
+      "images": [],
+      "summary": "Team reviewed Q3 results and agreed the distortion failure can be fixed in the ISP without lens redesign.",
+      "text": "A. Patel presented the Q3 test report. All metrics passed except distortion (1.2% vs. 1.0% target). The team agreed the issue is correctable in the ISP and does not require a lens redesign."
+    },
+    {
+      "id": "discussion/02-evt2-build-schedule",
+      "module": "discussion",
+      "title": "EVT2 Build Schedule",
+      "pages": null,
+      "file": "modules/discussion/02-evt2-build-schedule.md",
+      "images": [],
+      "summary": "EVT2 stays on October 20; the distortion profile is due October 10 for firmware inclusion.",
+      "text": "The EVT2 build remains scheduled for October 20, 2026. M. Chen noted that the recalibrated distortion profile must be delivered by October 10 to be included in the build firmware."
+    },
+    {
+      "id": "discussion/03-supplier-update",
+      "module": "discussion",
+      "title": "Supplier Update",
+      "pages": null,
+      "file": "modules/discussion/03-supplier-update.md",
+      "images": [],
+      "summary": "Lens supplier fixed the August coating defect; yield improved from 91.8% to 97.4%.",
+      "text": "S. Lee reported that the lens supplier has resolved the coating defect seen in August. Yield on the latest lot is 97.4%, up from 91.8%."
+    },
+    {
+      "id": "decisions/01-decisions",
+      "module": "decisions",
+      "title": "Decisions",
+      "pages": null,
+      "file": "modules/decisions/01-decisions.md",
+      "images": [],
+      "summary": "Decided on ISP-based distortion correction and keeping the EVT2 date.",
+      "text": "Proceed with ISP-based distortion correction; no lens redesign. Keep the EVT2 date of October 20."
+    },
+    {
+      "id": "action-items/01-action-items",
+      "module": "action-items",
+      "title": "Action Items",
+      "pages": null,
+      "file": "modules/action-items/01-action-items.md",
+      "images": [],
+      "summary": "Four action items with owners and due dates between Sept 30 and Oct 15.",
+      "text": "Owner Action Due A. Patel Deliver recalibrated distortion profile 2026-10-10 M. Chen Integrate profile into EVT2 firmware 2026-10-15 S. Lee Confirm supplier yield on next two lots 2026-10-06 R. Gomez Update project budget for EVT2 2026-09-30"
+    }
+  ],
+  "images": []
+}

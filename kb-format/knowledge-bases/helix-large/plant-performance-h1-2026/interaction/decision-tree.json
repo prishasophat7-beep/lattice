@@ -1,0 +1,90 @@
+{
+  "_draft": true,
+  "start": "start",
+  "nodes": {
+    "start": {
+      "ask": "Which part of Plant performance h1 2026 is your question about?",
+      "options": [
+        {
+          "label": "Summary",
+          "next": "result:summary"
+        },
+        {
+          "label": "Sheet: Production by line",
+          "next": "result:sheet-production-by-line"
+        },
+        {
+          "label": "Sheet: Scrap rate (%)",
+          "next": "result:sheet-scrap-rate"
+        },
+        {
+          "label": "Sheet: Downtime hours by cause",
+          "next": "result:sheet-downtime-hours-by-cause"
+        },
+        {
+          "label": "Sheet: OEE (%)",
+          "next": "result:sheet-oee"
+        },
+        {
+          "label": "Notes",
+          "next": "result:notes"
+        },
+        {
+          "label": "Something else",
+          "next": "open"
+        }
+      ]
+    }
+  },
+  "resolve": {},
+  "results": {
+    "summary": {
+      "modules": [
+        "summary"
+      ],
+      "summary": "Summary",
+      "start_hint": "summary/01-summary",
+      "ask_next": []
+    },
+    "sheet-production-by-line": {
+      "modules": [
+        "sheet-production-by-line"
+      ],
+      "summary": "Sheet: Production by line",
+      "start_hint": "sheet-production-by-line/01-sheet-production-by-line",
+      "ask_next": []
+    },
+    "sheet-scrap-rate": {
+      "modules": [
+        "sheet-scrap-rate"
+      ],
+      "summary": "Sheet: Scrap rate (%)",
+      "start_hint": "sheet-scrap-rate/01-sheet-scrap-rate",
+      "ask_next": []
+    },
+    "sheet-downtime-hours-by-cause": {
+      "modules": [
+        "sheet-downtime-hours-by-cause"
+      ],
+      "summary": "Sheet: Downtime hours by cause",
+      "start_hint": "sheet-downtime-hours-by-cause/01-sheet-downtime-hours-by-cause",
+      "ask_next": []
+    },
+    "sheet-oee": {
+      "modules": [
+        "sheet-oee"
+      ],
+      "summary": "Sheet: OEE (%)",
+      "start_hint": "sheet-oee/01-sheet-oee",
+      "ask_next": []
+    },
+    "notes": {
+      "modules": [
+        "notes"
+      ],
+      "summary": "Notes",
+      "start_hint": "notes/01-notes",
+      "ask_next": []
+    }
+  }
+}

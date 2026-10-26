@@ -1,0 +1,1550 @@
+{
+  "kb_id": 101,
+  "kb_name": "Helix Precision",
+  "kb_description": "Helix Precision (test export)",
+  "generated_at": "2026-10-15T18:00:00Z",
+  "total_files": 6,
+  "indexed_files": 6,
+  "documents": [
+    {
+      "filename": "HX-500_manual.pdf",
+      "relative_path": "HX-500_manual.pdf",
+      "file_type": ".pdf",
+      "file_size": 10515,
+      "parser_engine": "mcp_ocr",
+      "page_count": null,
+      "node_count": 29,
+      "has_images": false,
+      "image_count": 0,
+      "image_files": [],
+      "doc_summary": "This manual covers the HX 500 vertical machining center built from serial number HX5 2201 onwards (Rev C controller, firmware 4.x).",
+      "sections": [
+        {
+          "node_id": "0001",
+          "title": "HX-500_manual.pdf",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "This manual covers the HX 500 vertical machining center built from serial number HX5 2201 onwards (Rev C controller, firmware 4.x)."
+        },
+        {
+          "node_id": "0002",
+          "title": "HX-500 Vertical Machining Center - Operator and Maintenance Manual (Rev C)",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "HX-500 Vertical Machining Center - Operator and Maintenance Manual (Rev C)"
+        },
+        {
+          "node_id": "0003",
+          "title": "1. About this manual",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "This manual covers the HX 500 vertical machining center built from serial number HX5 2201 onwards (Rev C controller, firmware 4.x).",
+          "section_id": "about-this-manual/01-about-this-manual",
+          "section_file": "hx-500-manual/modules/about-this-manual/01-about-this-manual.md"
+        },
+        {
+          "node_id": "0004",
+          "title": "2. Safety",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "2. Safety",
+          "section_id": "safety/01-general-safety-rules",
+          "section_file": "hx-500-manual/modules/safety/01-general-safety-rules.md"
+        },
+        {
+          "node_id": "0005",
+          "title": "2.1 General safety rules",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Never open the enclosure door while the spindle is turning.",
+          "section_id": "safety/01-general-safety-rules",
+          "section_file": "hx-500-manual/modules/safety/01-general-safety-rules.md"
+        },
+        {
+          "node_id": "0006",
+          "title": "2.2 Emergency stop",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Press the red EMERGENCY STOP button on the operator panel or on the side of the enclosure.",
+          "section_id": "safety/02-emergency-stop",
+          "section_file": "hx-500-manual/modules/safety/02-emergency-stop.md"
+        },
+        {
+          "node_id": "0007",
+          "title": "2.3 Lockout / tagout",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Before any maintenance task marked (L2), and before opening the electrical cabinet, apply lockout/tagout as described in the Plant Safety Standard, section 4.",
+          "section_id": "safety/03-lockout-tagout",
+          "section_file": "hx-500-manual/modules/safety/03-lockout-tagout.md"
+        },
+        {
+          "node_id": "0008",
+          "title": "3. Specifications",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Item Value Table size 1,100 x 500 mm Max table load 600 kg Travel X / Y / Z 850 / 510 / 560 mm Spindle taper BT40 Spindle speed 50 12,000 rpm Spindle power 15 kW (30 min rating), 11 kW continuous Tool magazine 24 tools M",
+          "section_id": "specifications/01-specifications",
+          "section_file": "hx-500-manual/modules/specifications/01-specifications.md"
+        },
+        {
+          "node_id": "0009",
+          "title": "4. Installation",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "4. Installation",
+          "section_id": "installation/01-foundation",
+          "section_file": "hx-500-manual/modules/installation/01-foundation.md"
+        },
+        {
+          "node_id": "0010",
+          "title": "4.1 Foundation",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "The machine must stand on a reinforced concrete floor at least 200 mm thick.",
+          "section_id": "installation/01-foundation",
+          "section_file": "hx-500-manual/modules/installation/01-foundation.md"
+        },
+        {
+          "node_id": "0011",
+          "title": "4.2 Environment",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Ambient temperature 10 35 °C, relative humidity below 75 % (non condensing).",
+          "section_id": "installation/02-environment",
+          "section_file": "hx-500-manual/modules/installation/02-environment.md"
+        },
+        {
+          "node_id": "0012",
+          "title": "4.3 Electrical connection",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "The machine must be connected by a qualified electrician to a dedicated circuit protected by a 63 A slow blow fuse.",
+          "section_id": "installation/03-electrical-connection",
+          "section_file": "hx-500-manual/modules/installation/03-electrical-connection.md"
+        },
+        {
+          "node_id": "0013",
+          "title": "5. Operation",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "5. Operation",
+          "section_id": "operation/01-daily-start-up",
+          "section_file": "hx-500-manual/modules/operation/01-daily-start-up.md"
+        },
+        {
+          "node_id": "0014",
+          "title": "5.1 Daily start-up",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "1.",
+          "section_id": "operation/01-daily-start-up",
+          "section_file": "hx-500-manual/modules/operation/01-daily-start-up.md"
+        },
+        {
+          "node_id": "0015",
+          "title": "5.2 Spindle warm-up",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Run program O9000 (warm up) whenever the spindle has been stopped for more than 4 hours, and always at the start of each shift.",
+          "section_id": "operation/02-spindle-warm-up",
+          "section_file": "hx-500-manual/modules/operation/02-spindle-warm-up.md"
+        },
+        {
+          "node_id": "0016",
+          "title": "5.3 Loading tools",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Tools are loaded at the tool change station with the spindle stopped.",
+          "section_id": "operation/03-loading-tools",
+          "section_file": "hx-500-manual/modules/operation/03-loading-tools.md"
+        },
+        {
+          "node_id": "0017",
+          "title": "5.4 Running a program",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Select the program, run it first in DRY RUN mode with the feed override at 25 % and single block on, then run the first part with the rapid override at 25 %.",
+          "section_id": "operation/04-running-a-program",
+          "section_file": "hx-500-manual/modules/operation/04-running-a-program.md"
+        },
+        {
+          "node_id": "0018",
+          "title": "5.5 Shutdown",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "At the end of the last shift: remove chips from the table, park the axes with program O9010, switch the coolant pump off, and switch off the main isolator.",
+          "section_id": "operation/05-shutdown",
+          "section_file": "hx-500-manual/modules/operation/05-shutdown.md"
+        },
+        {
+          "node_id": "0019",
+          "title": "6. Alarms and error codes",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Code Meaning Operator action Escalate to A101 Air pressure low (below 6 bar) Check the compressor and the air filter; machine stops at the end of the current block Maintenance if not cleared in 15 min A102 Way lube oil l",
+          "section_id": "alarms-and-error-codes/01-alarms-and-error-codes",
+          "section_file": "hx-500-manual/modules/alarms-and-error-codes/01-alarms-and-error-codes.md"
+        },
+        {
+          "node_id": "0020",
+          "title": "6.1 Clearing a tool change timeout (A206)",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "1.",
+          "section_id": "alarms-and-error-codes/02-clearing-a-tool-change-timeout-a206",
+          "section_file": "hx-500-manual/modules/alarms-and-error-codes/02-clearing-a-tool-change-timeout-a206.md"
+        },
+        {
+          "node_id": "0021",
+          "title": "6.2 Spindle over-temperature (A302)",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Stop the cycle and let the spindle idle with the chiller running for 30 minutes.",
+          "section_id": "alarms-and-error-codes/03-spindle-over-temperature-a302",
+          "section_file": "hx-500-manual/modules/alarms-and-error-codes/03-spindle-over-temperature-a302.md"
+        },
+        {
+          "node_id": "0022",
+          "title": "7. Maintenance",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "7. Maintenance",
+          "section_id": "maintenance/01-maintenance-schedule",
+          "section_file": "hx-500-manual/modules/maintenance/01-maintenance-schedule.md"
+        },
+        {
+          "node_id": "0023",
+          "title": "7.1 Maintenance schedule",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Interval Task Done by Daily Clean chips from table and enclosure; check air, lube and coolant levels Operator Weekly Clean the coolant tank strainer; check the way covers for damage; drain the air filter water Operator M",
+          "section_id": "maintenance/01-maintenance-schedule",
+          "section_file": "hx-500-manual/modules/maintenance/01-maintenance-schedule.md"
+        },
+        {
+          "node_id": "0024",
+          "title": "7.2 Lubrication",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Point Lubricant Quantity Interval Way lube tank ISO VG 68 slideway oil 2 liters Refill when below half Hydraulic unit ISO VG 32 hydraulic oil 12 liters Replace every 2,000 hours Tool changer cam NLGI 2 lithium grease 10 ",
+          "section_id": "maintenance/02-lubrication",
+          "section_file": "hx-500-manual/modules/maintenance/02-lubrication.md"
+        },
+        {
+          "node_id": "0025",
+          "title": "7.3 Drawbar force check (L2)",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "The drawbar clamping force must be between 12 and 14 kN for BT40 tools.",
+          "section_id": "maintenance/03-drawbar-force-check-l2",
+          "section_file": "hx-500-manual/modules/maintenance/03-drawbar-force-check-l2.md"
+        },
+        {
+          "node_id": "0026",
+          "title": "7.4 Coolant",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Use water miscible coolant at 6 8 % concentration (refractometer reading x 1.0 for Helix Cool 300).",
+          "section_id": "maintenance/04-coolant",
+          "section_file": "hx-500-manual/modules/maintenance/04-coolant.md"
+        },
+        {
+          "node_id": "0027",
+          "title": "7.5 Ballscrew backlash (L2)",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Measure the backlash on each axis with a dial indicator.",
+          "section_id": "maintenance/05-ballscrew-backlash-l2",
+          "section_file": "hx-500-manual/modules/maintenance/05-ballscrew-backlash-l2.md"
+        },
+        {
+          "node_id": "0028",
+          "title": "8. Torque values",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Fastener Size Torque Leveling bolt lock nut M24 200 Nm Vise to table M16 120 Nm Fixture to table M12 70 Nm Tool holder pull stud M16 100 Nm (BT40) Way cover screws M6 10 Nm",
+          "section_id": "torque-values/01-torque-values",
+          "section_file": "hx-500-manual/modules/torque-values/01-torque-values.md"
+        },
+        {
+          "node_id": "0029",
+          "title": "9. Warranty",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "The machine is covered for 24 months from installation or 6,000 spindle hours, whichever comes first.",
+          "section_id": "warranty/01-warranty",
+          "section_file": "hx-500-manual/modules/warranty/01-warranty.md"
+        }
+      ],
+      "folder": "hx-500-manual/",
+      "topics": [
+        "spindle",
+        "tool",
+        "check",
+        "coolant",
+        "level",
+        "rev",
+        "technician",
+        "stop"
+      ],
+      "codes": [
+        "L2",
+        "A302",
+        "BT40",
+        "A206",
+        "A401",
+        "HX-500",
+        "M190",
+        "A303",
+        "M16",
+        "HX5-2201",
+        "HX5-2200",
+        "O9000",
+        "O9001",
+        "O9002",
+        "O9010"
+      ],
+      "related": [
+        {
+          "document": "plant-safety-standard",
+          "relation": "mentions"
+        }
+      ],
+      "modules": [
+        {
+          "id": "about-this-manual",
+          "title": "About this manual",
+          "pages": null
+        },
+        {
+          "id": "safety",
+          "title": "Safety",
+          "pages": null
+        },
+        {
+          "id": "specifications",
+          "title": "Specifications",
+          "pages": null
+        },
+        {
+          "id": "installation",
+          "title": "Installation",
+          "pages": null
+        },
+        {
+          "id": "operation",
+          "title": "Operation",
+          "pages": null
+        },
+        {
+          "id": "alarms-and-error-codes",
+          "title": "Alarms and error codes",
+          "pages": null
+        },
+        {
+          "id": "maintenance",
+          "title": "Maintenance",
+          "pages": null
+        },
+        {
+          "id": "torque-values",
+          "title": "Torque values",
+          "pages": null
+        },
+        {
+          "id": "warranty",
+          "title": "Warranty",
+          "pages": null
+        }
+      ]
+    },
+    {
+      "filename": "it_security_standard.docx",
+      "relative_path": "it_security_standard.docx",
+      "file_type": ".docx",
+      "file_size": 3023,
+      "parser_engine": "mcp_ocr",
+      "page_count": null,
+      "node_count": 10,
+      "has_images": false,
+      "image_count": 0,
+      "image_files": [],
+      "doc_summary": "Passwords must be at least 14 characters long and must not contain the user name.",
+      "sections": [
+        {
+          "node_id": "0001",
+          "title": "it_security_standard.docx",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Passwords must be at least 14 characters long and must not contain the user name."
+        },
+        {
+          "node_id": "0002",
+          "title": "Helix Precision - IT Security Standard (ITS-03, version 2.1)",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Helix Precision - IT Security Standard (ITS-03, version 2.1)"
+        },
+        {
+          "node_id": "0003",
+          "title": "1. Accounts and passwords",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Passwords must be at least 14 characters long and must not contain the user name.",
+          "section_id": "accounts-and-passwords/01-accounts-and-passwords",
+          "section_file": "it-security-standard/modules/accounts-and-passwords/01-accounts-and-passwords.md"
+        },
+        {
+          "node_id": "0004",
+          "title": "2. Multi-factor authentication (MFA)",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "MFA is required for email, VPN, the ERP system and every administrator account.",
+          "section_id": "multi-factor-authentication-mfa/01-multi-factor-authentication-mfa",
+          "section_file": "it-security-standard/modules/multi-factor-authentication-mfa/01-multi-factor-authentication-mfa.md"
+        },
+        {
+          "node_id": "0005",
+          "title": "3. Remote access",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Remote access is only through the company VPN from a company laptop.",
+          "section_id": "remote-access/01-remote-access",
+          "section_file": "it-security-standard/modules/remote-access/01-remote-access.md"
+        },
+        {
+          "node_id": "0006",
+          "title": "4. USB and removable media",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "USB storage devices are blocked on all office computers.",
+          "section_id": "usb-and-removable-media/01-usb-and-removable-media",
+          "section_file": "it-security-standard/modules/usb-and-removable-media/01-usb-and-removable-media.md"
+        },
+        {
+          "node_id": "0007",
+          "title": "5. Software",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Only software from the company software center may be installed.",
+          "section_id": "software/01-software",
+          "section_file": "it-security-standard/modules/software/01-software.md"
+        },
+        {
+          "node_id": "0008",
+          "title": "6. Data classification",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Class Examples Rules Public Product brochures No restrictions Internal Procedures, this standard Share only with employees and contractors under NDA Confidential Drawings, prices, supplier agreements Encrypt when sent ou",
+          "section_id": "data-classification/01-data-classification",
+          "section_file": "it-security-standard/modules/data-classification/01-data-classification.md"
+        },
+        {
+          "node_id": "0009",
+          "title": "7. Incidents",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Report suspected phishing with the \"Report phishing\" button in Outlook.",
+          "section_id": "incidents/01-incidents",
+          "section_file": "it-security-standard/modules/incidents/01-incidents.md"
+        },
+        {
+          "node_id": "0010",
+          "title": "8. Exceptions",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Exceptions to this standard need a written risk assessment and the approval of the chief information security officer (CISO).",
+          "section_id": "exceptions/01-exceptions",
+          "section_file": "it-security-standard/modules/exceptions/01-exceptions.md"
+        }
+      ],
+      "folder": "it-security-standard/",
+      "topics": [
+        "access",
+        "data",
+        "accounts",
+        "passwords",
+        "software",
+        "mfa",
+        "remote",
+        "usb"
+      ],
+      "codes": [],
+      "related": [],
+      "modules": [
+        {
+          "id": "accounts-and-passwords",
+          "title": "Accounts and passwords",
+          "pages": null
+        },
+        {
+          "id": "multi-factor-authentication-mfa",
+          "title": "Multi-factor authentication (MFA)",
+          "pages": null
+        },
+        {
+          "id": "remote-access",
+          "title": "Remote access",
+          "pages": null
+        },
+        {
+          "id": "usb-and-removable-media",
+          "title": "USB and removable media",
+          "pages": null
+        },
+        {
+          "id": "software",
+          "title": "Software",
+          "pages": null
+        },
+        {
+          "id": "data-classification",
+          "title": "Data classification",
+          "pages": null
+        },
+        {
+          "id": "incidents",
+          "title": "Incidents",
+          "pages": null
+        },
+        {
+          "id": "exceptions",
+          "title": "Exceptions",
+          "pages": null
+        }
+      ]
+    },
+    {
+      "filename": "plant_performance_h1_2026.xlsx",
+      "relative_path": "plant_performance_h1_2026.xlsx",
+      "file_type": ".xlsx",
+      "file_size": 2098,
+      "parser_engine": "mcp_ocr",
+      "page_count": null,
+      "node_count": 8,
+      "has_images": false,
+      "image_count": 0,
+      "image_files": [],
+      "doc_summary": "Pune produced 61,240 good parts in H1 2026 against a target of 60,000.",
+      "sections": [
+        {
+          "node_id": "0001",
+          "title": "plant_performance_h1_2026.xlsx",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Pune produced 61,240 good parts in H1 2026 against a target of 60,000."
+        },
+        {
+          "node_id": "0002",
+          "title": "Pune Plant - Performance Report H1 2026 (January to June)",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Pune Plant - Performance Report H1 2026 (January to June)"
+        },
+        {
+          "node_id": "0003",
+          "title": "Summary",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Pune produced 61,240 good parts in H1 2026 against a target of 60,000.",
+          "section_id": "summary/01-summary",
+          "section_file": "plant-performance-h1-2026/modules/summary/01-summary.md"
+        },
+        {
+          "node_id": "0004",
+          "title": "Sheet: Production by line",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Month Line A Line B Line C Total January 3,820 3,410 2,950 10,180 February 3,760 3,480 3,020 10,260 March 3,910 3,550 3,140 10,600 April 3,880 3,600 2,210 9,690 May 3,950 3,620 2,890 10,460 June 3,990 3,710 2,350 10,050 ",
+          "section_id": "sheet-production-by-line/01-sheet-production-by-line",
+          "section_file": "plant-performance-h1-2026/modules/sheet-production-by-line/01-sheet-production-by-line.md"
+        },
+        {
+          "node_id": "0005",
+          "title": "Sheet: Scrap rate (%)",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Month Line A Line B Line C January 1.8 2.4 3.1 February 1.6 2.2 2.9 March 1.5 2.5 2.7 April 1.7 2.1 4.8 May 1.4 2.0 3.3 June 1.3 1.9 3.6 Target scrap rate: below 2.0 % for every line.",
+          "section_id": "sheet-scrap-rate/01-sheet-scrap-rate",
+          "section_file": "plant-performance-h1-2026/modules/sheet-scrap-rate/01-sheet-scrap-rate.md"
+        },
+        {
+          "node_id": "0006",
+          "title": "Sheet: Downtime hours by cause",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Cause Line A Line B Line C Breakdowns 42 58 196 Tool changes and setup 88 104 97 Waiting for material 16 35 22 Planned maintenance 60 60 60 Quality holds 9 14 31",
+          "section_id": "sheet-downtime-hours-by-cause/01-sheet-downtime-hours-by-cause",
+          "section_file": "plant-performance-h1-2026/modules/sheet-downtime-hours-by-cause/01-sheet-downtime-hours-by-cause.md"
+        },
+        {
+          "node_id": "0007",
+          "title": "Sheet: OEE (%)",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Month Line A Line B Line C January 80.2 74.5 66.1 February 79.8 75.1 67.4 March 81.5 76.0 68.9 April 80.9 76.4 52.3 May 82.1 77.2 63.8 June 82.6 77.9 58.0 OEE target: 75 %.",
+          "section_id": "sheet-oee/01-sheet-oee",
+          "section_file": "plant-performance-h1-2026/modules/sheet-oee/01-sheet-oee.md"
+        },
+        {
+          "node_id": "0008",
+          "title": "Notes",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "April, Line C: HX 07 spindle bearing failure; the machine was down for 9 days.",
+          "section_id": "notes/01-notes",
+          "section_file": "plant-performance-h1-2026/modules/notes/01-notes.md"
+        }
+      ],
+      "folder": "plant-performance-h1-2026/",
+      "topics": [
+        "line",
+        "sheet",
+        "oee",
+        "downtime",
+        "june",
+        "scrap",
+        "rate",
+        "april"
+      ],
+      "codes": [
+        "HX-07"
+      ],
+      "related": [],
+      "modules": [
+        {
+          "id": "summary",
+          "title": "Summary",
+          "pages": null
+        },
+        {
+          "id": "sheet-production-by-line",
+          "title": "Sheet: Production by line",
+          "pages": null
+        },
+        {
+          "id": "sheet-scrap-rate",
+          "title": "Sheet: Scrap rate (%)",
+          "pages": null
+        },
+        {
+          "id": "sheet-downtime-hours-by-cause",
+          "title": "Sheet: Downtime hours by cause",
+          "pages": null
+        },
+        {
+          "id": "sheet-oee",
+          "title": "Sheet: OEE (%)",
+          "pages": null
+        },
+        {
+          "id": "notes",
+          "title": "Notes",
+          "pages": null
+        }
+      ]
+    },
+    {
+      "filename": "plant_safety_standard.pdf",
+      "relative_path": "plant_safety_standard.pdf",
+      "file_type": ".pdf",
+      "file_size": 5001,
+      "parser_engine": "mcp_ocr",
+      "page_count": null,
+      "node_count": 17,
+      "has_images": false,
+      "image_count": 0,
+      "image_files": [],
+      "doc_summary": "This standard applies to all employees, contractors and visitors at the Pune and Chennai plants.",
+      "sections": [
+        {
+          "node_id": "0001",
+          "title": "plant_safety_standard.pdf",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "This standard applies to all employees, contractors and visitors at the Pune and Chennai plants."
+        },
+        {
+          "node_id": "0002",
+          "title": "Helix Precision - Plant Safety Standard HPS-01 (Version 5, effective 1 March 2026)",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Helix Precision - Plant Safety Standard HPS-01 (Version 5, effective 1 March 2026)"
+        },
+        {
+          "node_id": "0003",
+          "title": "1. Scope",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "This standard applies to all employees, contractors and visitors at the Pune and Chennai plants.",
+          "section_id": "scope/01-scope",
+          "section_file": "plant-safety-standard/modules/scope/01-scope.md"
+        },
+        {
+          "node_id": "0004",
+          "title": "2. Personal protective equipment (PPE)",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "2. Personal protective equipment (PPE)",
+          "section_id": "personal-protective-equipment-ppe/01-ppe-by-area",
+          "section_file": "plant-safety-standard/modules/personal-protective-equipment-ppe/01-ppe-by-area.md"
+        },
+        {
+          "node_id": "0005",
+          "title": "2.1 PPE by area",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Area Safety shoes Safety glasses Hearing protection Gloves Other Machining hall Required Required Required above 85 dB(A) Not while spindles run Grinding bay Required Required + face shield Required Cut resistant (level ",
+          "section_id": "personal-protective-equipment-ppe/01-ppe-by-area",
+          "section_file": "plant-safety-standard/modules/personal-protective-equipment-ppe/01-ppe-by-area.md"
+        },
+        {
+          "node_id": "0006",
+          "title": "2.2 Visitors",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Visitors must be escorted at all times in production areas and wear safety shoes, safety glasses and a visitor vest.",
+          "section_id": "personal-protective-equipment-ppe/02-visitors",
+          "section_file": "plant-safety-standard/modules/personal-protective-equipment-ppe/02-visitors.md"
+        },
+        {
+          "node_id": "0007",
+          "title": "2.3 Contractors",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Contractors must complete the safety induction (45 minutes) before starting work and receive a contractor badge valid for 12 months.",
+          "section_id": "personal-protective-equipment-ppe/03-contractors",
+          "section_file": "plant-safety-standard/modules/personal-protective-equipment-ppe/03-contractors.md"
+        },
+        {
+          "node_id": "0008",
+          "title": "3. Incident reporting",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "3. Incident reporting",
+          "section_id": "incident-reporting/01-what-to-report",
+          "section_file": "plant-safety-standard/modules/incident-reporting/01-what-to-report.md"
+        },
+        {
+          "node_id": "0009",
+          "title": "3.1 What to report",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Report every injury, near miss, fire, spill of more than 5 liters of oil or chemicals, and any damage to a machine guard.",
+          "section_id": "incident-reporting/01-what-to-report",
+          "section_file": "plant-safety-standard/modules/incident-reporting/01-what-to-report.md"
+        },
+        {
+          "node_id": "0010",
+          "title": "3.2 Deadlines",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Event Report to Deadline Serious injury (hospital treatment, fracture, amputation) Plant manager and EHS head by phone Immediately, within 1 hour Lost time injury EHS head Within 4 hours First aid injury Shift supervisor",
+          "section_id": "incident-reporting/02-deadlines",
+          "section_file": "plant-safety-standard/modules/incident-reporting/02-deadlines.md"
+        },
+        {
+          "node_id": "0011",
+          "title": "3.3 Night shift",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "On the night shift (22:00 06:00) the shift supervisor acts for the plant manager for the first report.",
+          "section_id": "incident-reporting/03-night-shift",
+          "section_file": "plant-safety-standard/modules/incident-reporting/03-night-shift.md"
+        },
+        {
+          "node_id": "0012",
+          "title": "4. Lockout / tagout (LOTO)",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "1.",
+          "section_id": "lockout-tagout-loto/01-lockout-tagout-loto",
+          "section_file": "plant-safety-standard/modules/lockout-tagout-loto/01-lockout-tagout-loto.md"
+        },
+        {
+          "node_id": "0013",
+          "title": "5. Work permits",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "A work permit signed by the area supervisor and EHS is required for: hot work (welding, grinding, cutting outside the grinding bay), work at height above 1.8 meters, confined space entry, and electrical work on live equi",
+          "section_id": "work-permits/01-work-permits",
+          "section_file": "plant-safety-standard/modules/work-permits/01-work-permits.md"
+        },
+        {
+          "node_id": "0014",
+          "title": "6. Forklifts",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Only employees holding a valid Helix forklift license (renewed every 3 years) may drive forklifts.",
+          "section_id": "forklifts/01-forklifts",
+          "section_file": "plant-safety-standard/modules/forklifts/01-forklifts.md"
+        },
+        {
+          "node_id": "0015",
+          "title": "7. Working hours and fatigue",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "No one may work more than 12 hours in a shift or more than 60 hours in a week, including overtime.",
+          "section_id": "working-hours-and-fatigue/01-working-hours-and-fatigue",
+          "section_file": "plant-safety-standard/modules/working-hours-and-fatigue/01-working-hours-and-fatigue.md"
+        },
+        {
+          "node_id": "0016",
+          "title": "8. Training",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Training Who Refresh General safety induction Everyone Every 2 years Fire extinguisher use Everyone in production Every year First aid 1 person per 25 employees per shift Every 2 years LOTO Maintenance and Level 2 techni",
+          "section_id": "training/01-training",
+          "section_file": "plant-safety-standard/modules/training/01-training.md"
+        },
+        {
+          "node_id": "0017",
+          "title": "9. Changes from Version 4",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "The near miss deadline is now 24 hours (was 48 hours).",
+          "section_id": "changes-from-version-4/01-changes-from-version-4",
+          "section_file": "plant-safety-standard/modules/changes-from-version-4/01-changes-from-version-4.md"
+        }
+      ],
+      "folder": "plant-safety-standard/",
+      "topics": [
+        "work",
+        "required",
+        "shift",
+        "visitors",
+        "area",
+        "version",
+        "fire",
+        "ehs"
+      ],
+      "codes": [
+        "FFP2",
+        "A2P3"
+      ],
+      "related": [],
+      "modules": [
+        {
+          "id": "scope",
+          "title": "Scope",
+          "pages": null
+        },
+        {
+          "id": "personal-protective-equipment-ppe",
+          "title": "Personal protective equipment (PPE)",
+          "pages": null
+        },
+        {
+          "id": "incident-reporting",
+          "title": "Incident reporting",
+          "pages": null
+        },
+        {
+          "id": "lockout-tagout-loto",
+          "title": "Lockout / tagout (LOTO)",
+          "pages": null
+        },
+        {
+          "id": "work-permits",
+          "title": "Work permits",
+          "pages": null
+        },
+        {
+          "id": "forklifts",
+          "title": "Forklifts",
+          "pages": null
+        },
+        {
+          "id": "working-hours-and-fatigue",
+          "title": "Working hours and fatigue",
+          "pages": null
+        },
+        {
+          "id": "training",
+          "title": "Training",
+          "pages": null
+        },
+        {
+          "id": "changes-from-version-4",
+          "title": "Changes from Version 4",
+          "pages": null
+        }
+      ]
+    },
+    {
+      "filename": "supplier_agreement_arvind_metals.docx",
+      "relative_path": "supplier_agreement_arvind_metals.docx",
+      "file_type": ".docx",
+      "file_size": 2942,
+      "parser_engine": "mcp_ocr",
+      "page_count": null,
+      "node_count": 17,
+      "has_images": false,
+      "image_count": 0,
+      "image_files": [],
+      "doc_summary": "Arvind Metals supplies aluminium bar stock (grades 6061 T6 and 7075 T6) and steel bar (EN8, EN24) to the Helix Precision plants in Pune and Chennai.",
+      "sections": [
+        {
+          "node_id": "0001",
+          "title": "supplier_agreement_arvind_metals.docx",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Arvind Metals supplies aluminium bar stock (grades 6061 T6 and 7075 T6) and steel bar (EN8, EN24) to the Helix Precision plants in Pune and Chennai."
+        },
+        {
+          "node_id": "0002",
+          "title": "Supply Agreement - Arvind Metals Pvt. Ltd. (with Amendment 1)",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Supply Agreement - Arvind Metals Pvt. Ltd. (with Amendment 1)"
+        },
+        {
+          "node_id": "0003",
+          "title": "Part 1: Original agreement (signed 10 January 2025)",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Part 1: Original agreement (signed 10 January 2025)",
+          "section_id": "part-1-original-agreement-signed-10-january-2025/01-scope",
+          "section_file": "supplier-agreement-arvind-metals/modules/part-1-original-agreement-signed-10-january-2025/01-scope.md"
+        },
+        {
+          "node_id": "0004",
+          "title": "1.1 Scope",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Arvind Metals supplies aluminium bar stock (grades 6061 T6 and 7075 T6) and steel bar (EN8, EN24) to the Helix Precision plants in Pune and Chennai.",
+          "section_id": "part-1-original-agreement-signed-10-january-2025/01-scope",
+          "section_file": "supplier-agreement-arvind-metals/modules/part-1-original-agreement-signed-10-january-2025/01-scope.md"
+        },
+        {
+          "node_id": "0005",
+          "title": "1.2 Term",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "The agreement runs from 1 February 2025 to 31 January 2027 and renews automatically for one year unless either party gives 90 days' written notice.",
+          "section_id": "part-1-original-agreement-signed-10-january-2025/02-term",
+          "section_file": "supplier-agreement-arvind-metals/modules/part-1-original-agreement-signed-10-january-2025/02-term.md"
+        },
+        {
+          "node_id": "0006",
+          "title": "1.3 Prices",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Prices are fixed per quarter and linked to the LME aluminium price of the last month of the previous quarter.",
+          "section_id": "part-1-original-agreement-signed-10-january-2025/03-prices",
+          "section_file": "supplier-agreement-arvind-metals/modules/part-1-original-agreement-signed-10-january-2025/03-prices.md"
+        },
+        {
+          "node_id": "0007",
+          "title": "1.4 Delivery",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Delivery within 10 working days of the purchase order.",
+          "section_id": "part-1-original-agreement-signed-10-january-2025/04-delivery",
+          "section_file": "supplier-agreement-arvind-metals/modules/part-1-original-agreement-signed-10-january-2025/04-delivery.md"
+        },
+        {
+          "node_id": "0008",
+          "title": "1.5 Payment terms",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Payment within 60 days of the invoice date.",
+          "section_id": "part-1-original-agreement-signed-10-january-2025/05-payment-terms",
+          "section_file": "supplier-agreement-arvind-metals/modules/part-1-original-agreement-signed-10-january-2025/05-payment-terms.md"
+        },
+        {
+          "node_id": "0009",
+          "title": "1.6 Late delivery penalty",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "For each full week of delay the supplier pays a penalty of 1 % of the value of the delayed order, up to a maximum of 5 % of the order value.",
+          "section_id": "part-1-original-agreement-signed-10-january-2025/06-late-delivery-penalty",
+          "section_file": "supplier-agreement-arvind-metals/modules/part-1-original-agreement-signed-10-january-2025/06-late-delivery-penalty.md"
+        },
+        {
+          "node_id": "0010",
+          "title": "1.7 Quality",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Each delivery must come with a mill test certificate.",
+          "section_id": "part-1-original-agreement-signed-10-january-2025/07-quality",
+          "section_file": "supplier-agreement-arvind-metals/modules/part-1-original-agreement-signed-10-january-2025/07-quality.md"
+        },
+        {
+          "node_id": "0011",
+          "title": "1.8 Termination",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Helix may terminate the agreement with 30 days' notice if on time delivery is below 85 % for two consecutive quarters.",
+          "section_id": "part-1-original-agreement-signed-10-january-2025/08-termination",
+          "section_file": "supplier-agreement-arvind-metals/modules/part-1-original-agreement-signed-10-january-2025/08-termination.md"
+        },
+        {
+          "node_id": "0012",
+          "title": "Part 2: Amendment 1 (signed 15 March 2026, effective 1 April 2026)",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "The following clauses replace the corresponding clauses of the original agreement.",
+          "section_id": "part-2-amendment-1-signed-15-march-2026-effective-1-april-20/01-part-2-amendment-1-signed-15-march-2026-effective-1-april-20",
+          "section_file": "supplier-agreement-arvind-metals/modules/part-2-amendment-1-signed-15-march-2026-effective-1-april-20/01-part-2-amendment-1-signed-15-march-2026-effective-1-april-20.md"
+        },
+        {
+          "node_id": "0013",
+          "title": "2.1 Delivery (replaces 1.4)",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Delivery within 7 working days of the purchase order for 6061 T6 and within 10 working days for all other grades.",
+          "section_id": "part-2-amendment-1-signed-15-march-2026-effective-1-april-20/02-delivery-replaces-1-4",
+          "section_file": "supplier-agreement-arvind-metals/modules/part-2-amendment-1-signed-15-march-2026-effective-1-april-20/02-delivery-replaces-1-4.md"
+        },
+        {
+          "node_id": "0014",
+          "title": "2.2 Payment terms (replaces 1.5)",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Payment within 45 days of the invoice date.",
+          "section_id": "part-2-amendment-1-signed-15-march-2026-effective-1-april-20/03-payment-terms-replaces-1-5",
+          "section_file": "supplier-agreement-arvind-metals/modules/part-2-amendment-1-signed-15-march-2026-effective-1-april-20/03-payment-terms-replaces-1-5.md"
+        },
+        {
+          "node_id": "0015",
+          "title": "2.3 Late delivery penalty (replaces 1.6)",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "For each full week of delay the supplier pays a penalty of 1.5 % of the value of the delayed order, up to a maximum of 7.5 % of the order value.",
+          "section_id": "part-2-amendment-1-signed-15-march-2026-effective-1-april-20/04-late-delivery-penalty-replaces-1-6",
+          "section_file": "supplier-agreement-arvind-metals/modules/part-2-amendment-1-signed-15-march-2026-effective-1-april-20/04-late-delivery-penalty-replaces-1-6.md"
+        },
+        {
+          "node_id": "0016",
+          "title": "2.4 Safety stock (new clause)",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Arvind Metals keeps a safety stock of at least 4 tonnes of 6061 T6 bar at its Pune warehouse reserved for Helix.",
+          "section_id": "part-2-amendment-1-signed-15-march-2026-effective-1-april-20/05-safety-stock-new-clause",
+          "section_file": "supplier-agreement-arvind-metals/modules/part-2-amendment-1-signed-15-march-2026-effective-1-april-20/05-safety-stock-new-clause.md"
+        },
+        {
+          "node_id": "0017",
+          "title": "Part 3: Delivery record Q2 2026",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "PO number Grade Order value (INR) Due date Delivered Days late PO 26 0412 6061 T6 8,40,000 8 Apr 2026 8 Apr 2026 0 PO 26 0457 7075 T6 5,10,000 22 Apr 2026 21 Apr 2026 0 PO 26 0503 6061 T6 9,20,000 12 May 2026 26 May 2026",
+          "section_id": "part-3-delivery-record-q2-2026/01-part-3-delivery-record-q2-2026",
+          "section_file": "supplier-agreement-arvind-metals/modules/part-3-delivery-record-q2-2026/01-part-3-delivery-record-q2-2026.md"
+        }
+      ],
+      "folder": "supplier-agreement-arvind-metals/",
+      "topics": [
+        "delivery",
+        "penalty",
+        "payment",
+        "po-",
+        "replaces",
+        "terms",
+        "jun",
+        "order"
+      ],
+      "codes": [
+        "T6",
+        "EN8",
+        "EN24",
+        "PO-26-0412",
+        "PO-26-0457",
+        "PO-26-0503",
+        "PO-26-0538",
+        "PO-26-0561",
+        "PO-26-0590",
+        "PO-26-0602"
+      ],
+      "related": [],
+      "modules": [
+        {
+          "id": "part-1-original-agreement-signed-10-january-2025",
+          "title": "Part 1: Original agreement (signed 10 January 2025)",
+          "pages": null
+        },
+        {
+          "id": "part-2-amendment-1-signed-15-march-2026-effective-1-april-20",
+          "title": "Part 2: Amendment 1 (signed 15 March 2026, effective 1 April 2026)",
+          "pages": null
+        },
+        {
+          "id": "part-3-delivery-record-q2-2026",
+          "title": "Part 3: Delivery record Q2 2026",
+          "pages": null
+        }
+      ]
+    },
+    {
+      "filename": "travel_expense_policy.pdf",
+      "relative_path": "travel_expense_policy.pdf",
+      "file_type": ".pdf",
+      "file_size": 3927,
+      "parser_engine": "mcp_ocr",
+      "page_count": null,
+      "node_count": 12,
+      "has_images": false,
+      "image_count": 0,
+      "image_files": [],
+      "doc_summary": "This policy sets the rules for business travel, accommodation, daily allowances and the reimbursement of expenses.",
+      "sections": [
+        {
+          "node_id": "0001",
+          "title": "travel_expense_policy.pdf",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "This policy sets the rules for business travel, accommodation, daily allowances and the reimbursement of expenses."
+        },
+        {
+          "node_id": "0002",
+          "title": "Helix Precision - Travel and Expense Policy (FIN-07, 2026)",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Helix Precision - Travel and Expense Policy (FIN-07, 2026)"
+        },
+        {
+          "node_id": "0003",
+          "title": "1. Purpose",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "This policy sets the rules for business travel, accommodation, daily allowances and the reimbursement of expenses.",
+          "section_id": "purpose/01-purpose",
+          "section_file": "travel-expense-policy/modules/purpose/01-purpose.md"
+        },
+        {
+          "node_id": "0004",
+          "title": "2. Employee grades",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Grade Examples G1 Operators, technicians, clerks G2 Engineers, supervisors, specialists G3 Managers G4 Senior managers, plant managers G5 Directors and above",
+          "section_id": "employee-grades/01-employee-grades",
+          "section_file": "travel-expense-policy/modules/employee-grades/01-employee-grades.md"
+        },
+        {
+          "node_id": "0005",
+          "title": "3. Travel class",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Grade Air (domestic) Air (international, up to 6 hours) Air (international, over 6 hours) Train G1 Economy Economy Economy AC 3 tier G2 Economy Economy Premium economy AC 2 tier G3 Economy Premium economy Business AC 2 t",
+          "section_id": "travel-class/01-travel-class",
+          "section_file": "travel-expense-policy/modules/travel-class/01-travel-class.md"
+        },
+        {
+          "node_id": "0006",
+          "title": "4. Accommodation limits per night (INR)",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Grade Tier 1 city Tier 2 city Other G1 4,000 3,000 2,500 G2 6,000 4,500 3,500 G3 8,000 6,000 4,500 G4 12,000 8,000 6,000 G5 Actuals Actuals Actuals Tier 1 cities: Mumbai, Delhi NCR, Bengaluru, Chennai, Hyderabad, Pune, K",
+          "section_id": "accommodation-limits-per-night-inr/01-accommodation-limits-per-night-inr",
+          "section_file": "travel-expense-policy/modules/accommodation-limits-per-night-inr/01-accommodation-limits-per-night-inr.md"
+        },
+        {
+          "node_id": "0007",
+          "title": "5. Daily allowance (per diem)",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "The daily allowance covers meals, local conveyance within the city and incidentals.",
+          "section_id": "daily-allowance-per-diem/01-daily-allowance-per-diem",
+          "section_file": "travel-expense-policy/modules/daily-allowance-per-diem/01-daily-allowance-per-diem.md"
+        },
+        {
+          "node_id": "0008",
+          "title": "6. Approvals",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Expense Approval needed Domestic trip Manager International trip Manager and the department head (G4 or above) Single expense above INR 25,000 Department head Single expense above INR 1,00,000 Plant manager and finance c",
+          "section_id": "approvals/01-approvals",
+          "section_file": "travel-expense-policy/modules/approvals/01-approvals.md"
+        },
+        {
+          "node_id": "0009",
+          "title": "7. Receipts",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Original receipts or tax invoices are required for every expense above INR 500, except the daily allowance.",
+          "section_id": "receipts/01-receipts",
+          "section_file": "travel-expense-policy/modules/receipts/01-receipts.md"
+        },
+        {
+          "node_id": "0010",
+          "title": "8. Not reimbursed",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Alcohol, minibar, laundry for trips shorter than 4 nights, personal entertainment, traffic fines, upgrades bought by the employee, travel insurance bought separately (the company policy covers all business trips), and ex",
+          "section_id": "not-reimbursed/01-not-reimbursed",
+          "section_file": "travel-expense-policy/modules/not-reimbursed/01-not-reimbursed.md"
+        },
+        {
+          "node_id": "0011",
+          "title": "9. Advances",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "An advance of up to 80 % of the estimated trip cost may be requested for trips longer than 3 days or for international trips.",
+          "section_id": "advances/01-advances",
+          "section_file": "travel-expense-policy/modules/advances/01-advances.md"
+        },
+        {
+          "node_id": "0012",
+          "title": "10. Mileage",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Use of a personal car for business travel is reimbursed at INR 12 per km, and a personal two wheeler at INR 5 per km, for distances above 20 km per day.",
+          "section_id": "mileage/01-mileage",
+          "section_file": "travel-expense-policy/modules/mileage/01-mileage.md"
+        }
+      ],
+      "folder": "travel-expense-policy/",
+      "topics": [
+        "business",
+        "economy",
+        "allowance",
+        "inr",
+        "reimbursed",
+        "tier",
+        "receipts",
+        "expense"
+      ],
+      "codes": [
+        "G4",
+        "G1",
+        "G2",
+        "G3",
+        "G5"
+      ],
+      "related": [],
+      "modules": [
+        {
+          "id": "purpose",
+          "title": "Purpose",
+          "pages": null
+        },
+        {
+          "id": "employee-grades",
+          "title": "Employee grades",
+          "pages": null
+        },
+        {
+          "id": "travel-class",
+          "title": "Travel class",
+          "pages": null
+        },
+        {
+          "id": "accommodation-limits-per-night-inr",
+          "title": "Accommodation limits per night (INR)",
+          "pages": null
+        },
+        {
+          "id": "daily-allowance-per-diem",
+          "title": "Daily allowance (per diem)",
+          "pages": null
+        },
+        {
+          "id": "approvals",
+          "title": "Approvals",
+          "pages": null
+        },
+        {
+          "id": "receipts",
+          "title": "Receipts",
+          "pages": null
+        },
+        {
+          "id": "not-reimbursed",
+          "title": "Not reimbursed",
+          "pages": null
+        },
+        {
+          "id": "advances",
+          "title": "Advances",
+          "pages": null
+        },
+        {
+          "id": "mileage",
+          "title": "Mileage",
+          "pages": null
+        }
+      ]
+    }
+  ]
+}

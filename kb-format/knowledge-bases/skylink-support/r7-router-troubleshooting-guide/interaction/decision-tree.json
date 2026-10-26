@@ -1,0 +1,78 @@
+{
+  "_draft": true,
+  "start": "start",
+  "nodes": {
+    "start": {
+      "ask": "Which part of R7 router troubleshooting guide is your question about?",
+      "options": [
+        {
+          "label": "Introduction",
+          "next": "result:introduction"
+        },
+        {
+          "label": "LED Status Reference",
+          "next": "result:led-status-reference"
+        },
+        {
+          "label": "Diagnostic Flow",
+          "next": "result:diagnostic-flow"
+        },
+        {
+          "label": "Common Issues",
+          "next": "result:common-issues"
+        },
+        {
+          "label": "Escalation",
+          "next": "result:escalation"
+        },
+        {
+          "label": "Something else",
+          "next": "open"
+        }
+      ]
+    }
+  },
+  "resolve": {},
+  "results": {
+    "introduction": {
+      "modules": [
+        "introduction"
+      ],
+      "summary": "Introduction",
+      "start_hint": "introduction/01-introduction",
+      "ask_next": []
+    },
+    "led-status-reference": {
+      "modules": [
+        "led-status-reference"
+      ],
+      "summary": "LED Status Reference",
+      "start_hint": "led-status-reference/01-led-status-reference",
+      "ask_next": []
+    },
+    "diagnostic-flow": {
+      "modules": [
+        "diagnostic-flow"
+      ],
+      "summary": "Diagnostic Flow",
+      "start_hint": "diagnostic-flow/01-diagnostic-flow",
+      "ask_next": []
+    },
+    "common-issues": {
+      "modules": [
+        "common-issues"
+      ],
+      "summary": "Common Issues",
+      "start_hint": "common-issues/01-no-internet",
+      "ask_next": []
+    },
+    "escalation": {
+      "modules": [
+        "escalation"
+      ],
+      "summary": "Escalation",
+      "start_hint": "escalation/01-escalation",
+      "ask_next": []
+    }
+  }
+}

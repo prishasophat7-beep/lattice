@@ -1,0 +1,117 @@
+{
+  "format_version": 2,
+  "generator": "convert_kb.py",
+  "document": {
+    "id": "requirements",
+    "title": "Requirements",
+    "filename": "requirements.txt",
+    "type": "txt",
+    "pages": null,
+    "summary": "Pinned pip requirements for a small FastAPI web API using PostgreSQL via SQLAlchemy, Alembic and psycopg, with JWT auth through python-jose and passlib. It separates core runtime packages from development tooling (pytest, ruff, mypy) and pins httpx as the HTTP client."
+  },
+  "modules": [
+    {
+      "id": "web-api-dependencies",
+      "title": "Web API Dependencies",
+      "heading": "Web API Dependencies",
+      "pages": null,
+      "sections": [
+        "web-api-dependencies/01-web-api-dependencies"
+      ],
+      "summary": "Header comment identifying the file as the dependency list for a FastAPI-based web API."
+    },
+    {
+      "id": "install-pip-install-r-requirements-txt",
+      "title": "Install:  pip install -r requirements.txt",
+      "heading": "Install:  pip install -r requirements.txt",
+      "pages": null,
+      "sections": [
+        "install-pip-install-r-requirements-txt/01-install-pip-install-r-requirements-txt"
+      ],
+      "summary": "Install instruction comment: all packages are installed with pip install -r requirements.txt."
+    },
+    {
+      "id": "core-packages",
+      "title": "Core Packages",
+      "heading": "Core Packages",
+      "pages": null,
+      "sections": [
+        "core-packages/01-core-packages"
+      ],
+      "summary": "Runtime dependencies: FastAPI, Uvicorn, Pydantic and pydantic-settings, SQLAlchemy with Alembic and psycopg, python-jose, passlib and python-multipart."
+    },
+    {
+      "id": "development-packages",
+      "title": "Development Packages",
+      "heading": "Development Packages",
+      "pages": null,
+      "sections": [
+        "development-packages/01-development-packages"
+      ],
+      "summary": "Test and lint tooling: pytest, pytest-asyncio, pytest-cov, ruff and mypy."
+    },
+    {
+      "id": "http-client-httpx",
+      "title": "HTTP client (httpx)",
+      "heading": "HTTP client (httpx)",
+      "pages": null,
+      "sections": [
+        "http-client-httpx/01-http-client-httpx"
+      ],
+      "summary": "httpx 0.28.1, used for outbound HTTP calls and as the FastAPI TestClient transport."
+    }
+  ],
+  "sections": [
+    {
+      "id": "web-api-dependencies/01-web-api-dependencies",
+      "module": "web-api-dependencies",
+      "title": "Web API Dependencies",
+      "pages": null,
+      "file": "modules/web-api-dependencies/01-web-api-dependencies.md",
+      "images": [],
+      "summary": "Header comment identifying the file as the dependency list for a FastAPI-based web API.",
+      "text": "Pinned Python dependencies for a small FastAPI web API backed by PostgreSQL."
+    },
+    {
+      "id": "install-pip-install-r-requirements-txt/01-install-pip-install-r-requirements-txt",
+      "module": "install-pip-install-r-requirements-txt",
+      "title": "Install:  pip install -r requirements.txt",
+      "pages": null,
+      "file": "modules/install-pip-install-r-requirements-txt/01-install-pip-install-r-requirements-txt.md",
+      "images": [],
+      "summary": "Install instruction comment: all packages are installed with pip install -r requirements.txt.",
+      "text": "``bash pip install -r requirements.txt ``"
+    },
+    {
+      "id": "core-packages/01-core-packages",
+      "module": "core-packages",
+      "title": "Core Packages",
+      "pages": null,
+      "file": "modules/core-packages/01-core-packages.md",
+      "images": [],
+      "summary": "Runtime dependencies: FastAPI, Uvicorn, Pydantic and pydantic-settings, SQLAlchemy with Alembic and psycopg, python-jose, passlib and python-multipart.",
+      "text": "`` fastapi==0.115.6 uvicorn[standard]==0.32.1 pydantic==2.10.4 pydantic-settings==2.7.0 sqlalchemy==2.0.36 alembic==1.14.0 psycopg[binary]==3.2.3 python-jose[cryptography]==3.3.0 passlib[bcrypt]==1.7.4 python-multipart==0.0.20 ``"
+    },
+    {
+      "id": "development-packages/01-development-packages",
+      "module": "development-packages",
+      "title": "Development Packages",
+      "pages": null,
+      "file": "modules/development-packages/01-development-packages.md",
+      "images": [],
+      "summary": "Test and lint tooling: pytest, pytest-asyncio, pytest-cov, ruff and mypy.",
+      "text": "`` pytest==8.3.4 pytest-asyncio==0.25.0 pytest-cov==6.0.0 ruff==0.8.4 mypy==1.14.0 ``"
+    },
+    {
+      "id": "http-client-httpx/01-http-client-httpx",
+      "module": "http-client-httpx",
+      "title": "HTTP client (httpx)",
+      "pages": null,
+      "file": "modules/http-client-httpx/01-http-client-httpx.md",
+      "images": [],
+      "summary": "httpx 0.28.1, used for outbound HTTP calls and as the FastAPI TestClient transport.",
+      "text": "`` httpx==0.28.1 ``"
+    }
+  ],
+  "images": []
+}

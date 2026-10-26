@@ -1,0 +1,257 @@
+{
+  "format_version": 2,
+  "generator": "convert_kb.py",
+  "document": {
+    "id": "config",
+    "title": "Config",
+    "filename": "config.xml",
+    "type": "xml",
+    "pages": null,
+    "summary": "IntelliJ-style project code style configuration (scheme 'Project', version 173) stored as XML. It enables spaces inside empty HTML tags and enforced attribute quotes, and for JavaScript forces semicolons and disables the space before function parentheses."
+  },
+  "modules": [
+    {
+      "id": "component-name-projectcodestyleconfiguration",
+      "title": "<component name=\"ProjectCodeStyleConfiguration\">",
+      "heading": "<component name=\"ProjectCodeStyleConfiguration\">",
+      "pages": null,
+      "sections": [
+        "component-name-projectcodestyleconfiguration/01-component-name-projectcodestyleconfiguration"
+      ],
+      "summary": "Root IntelliJ component that stores the project-level code style configuration."
+    },
+    {
+      "id": "code-scheme-name-project-version-173",
+      "title": "<code_scheme name=\"Project\" version=\"173\">",
+      "heading": "<code_scheme name=\"Project\" version=\"173\">",
+      "pages": null,
+      "sections": [
+        "code-scheme-name-project-version-173/01-code-scheme-name-project-version-173"
+      ],
+      "summary": "Opens the shared 'Project' code scheme, format version 173, applied to all project files."
+    },
+    {
+      "id": "htmlcodestylesettings",
+      "title": "<HTMLCodeStyleSettings>",
+      "heading": "<HTMLCodeStyleSettings>",
+      "pages": null,
+      "sections": [
+        "htmlcodestylesettings/01-htmlcodestylesettings"
+      ],
+      "summary": "Begins the block of HTML formatter settings."
+    },
+    {
+      "id": "option-name-html-space-inside-empty-tag-value-true",
+      "title": "<option name=\"HTML_SPACE_INSIDE_EMPTY_TAG\" value=\"true\" />",
+      "heading": "<option name=\"HTML_SPACE_INSIDE_EMPTY_TAG\" value=\"true\" />",
+      "pages": null,
+      "sections": [
+        "option-name-html-space-inside-empty-tag-value-true/01-option-name-html-space-inside-empty-tag-value-true"
+      ],
+      "summary": "Inserts a space before the closing slash of empty tags, e.g. <br />."
+    },
+    {
+      "id": "option-name-html-enforce-quotes-value-true",
+      "title": "<option name=\"HTML_ENFORCE_QUOTES\" value=\"true\" />",
+      "heading": "<option name=\"HTML_ENFORCE_QUOTES\" value=\"true\" />",
+      "pages": null,
+      "sections": [
+        "option-name-html-enforce-quotes-value-true/01-option-name-html-enforce-quotes-value-true"
+      ],
+      "summary": "Forces attribute values to be wrapped in quotes."
+    },
+    {
+      "id": "htmlcodestylesettings-2",
+      "title": "</HTMLCodeStyleSettings>",
+      "heading": "</HTMLCodeStyleSettings>",
+      "pages": null,
+      "sections": [
+        "htmlcodestylesettings-2/01-htmlcodestylesettings"
+      ],
+      "summary": "Ends the HTML formatter settings block."
+    },
+    {
+      "id": "jscodestylesettings",
+      "title": "<JSCodeStyleSettings>",
+      "heading": "<JSCodeStyleSettings>",
+      "pages": null,
+      "sections": [
+        "jscodestylesettings/01-jscodestylesettings"
+      ],
+      "summary": "Begins the block of JavaScript formatter settings."
+    },
+    {
+      "id": "option-name-force-semicolon-style-value-true",
+      "title": "<option name=\"FORCE_SEMICOLON_STYLE\" value=\"true\" />",
+      "heading": "<option name=\"FORCE_SEMICOLON_STYLE\" value=\"true\" />",
+      "pages": null,
+      "sections": [
+        "option-name-force-semicolon-style-value-true/01-option-name-force-semicolon-style-value-true"
+      ],
+      "summary": "Enforces the configured semicolon style, adding statement-terminating semicolons on reformat."
+    },
+    {
+      "id": "option-name-space-before-function-left-parenth-value-false",
+      "title": "<option name=\"SPACE_BEFORE_FUNCTION_LEFT_PARENTH\" value=\"false\" />",
+      "heading": "<option name=\"SPACE_BEFORE_FUNCTION_LEFT_PARENTH\" value=\"false\" />",
+      "pages": null,
+      "sections": [
+        "option-name-space-before-function-left-parenth-value-false/01-option-name-space-before-function-left-parenth-value-false"
+      ],
+      "summary": "No space between a function name and its opening parenthesis: function foo() rather than function foo ()."
+    },
+    {
+      "id": "jscodestylesettings-2",
+      "title": "</JSCodeStyleSettings>",
+      "heading": "</JSCodeStyleSettings>",
+      "pages": null,
+      "sections": [
+        "jscodestylesettings-2/01-jscodestylesettings"
+      ],
+      "summary": "Ends the JavaScript formatter settings block."
+    },
+    {
+      "id": "code-scheme",
+      "title": "</code_scheme>",
+      "heading": "</code_scheme>",
+      "pages": null,
+      "sections": [
+        "code-scheme/01-code-scheme"
+      ],
+      "summary": "Closes the Project code scheme."
+    },
+    {
+      "id": "component",
+      "title": "</component>",
+      "heading": "</component>",
+      "pages": null,
+      "sections": [
+        "component/01-component"
+      ],
+      "summary": "Closes the ProjectCodeStyleConfiguration component."
+    }
+  ],
+  "sections": [
+    {
+      "id": "component-name-projectcodestyleconfiguration/01-component-name-projectcodestyleconfiguration",
+      "module": "component-name-projectcodestyleconfiguration",
+      "title": "<component name=\"ProjectCodeStyleConfiguration\">",
+      "pages": null,
+      "file": "modules/component-name-projectcodestyleconfiguration/01-component-name-projectcodestyleconfiguration.md",
+      "images": [],
+      "summary": "Root IntelliJ component that stores the project-level code style configuration.",
+      "text": "<component name=\"ProjectCodeStyleConfiguration\"> Root IntelliJ component that stores the project-level code style configuration."
+    },
+    {
+      "id": "code-scheme-name-project-version-173/01-code-scheme-name-project-version-173",
+      "module": "code-scheme-name-project-version-173",
+      "title": "<code_scheme name=\"Project\" version=\"173\">",
+      "pages": null,
+      "file": "modules/code-scheme-name-project-version-173/01-code-scheme-name-project-version-173.md",
+      "images": [],
+      "summary": "Opens the shared 'Project' code scheme, format version 173, applied to all project files.",
+      "text": "<code_scheme name=\"Project\" version=\"173\"> Opens the shared 'Project' code scheme, format version 173, applied to all project files."
+    },
+    {
+      "id": "htmlcodestylesettings/01-htmlcodestylesettings",
+      "module": "htmlcodestylesettings",
+      "title": "<HTMLCodeStyleSettings>",
+      "pages": null,
+      "file": "modules/htmlcodestylesettings/01-htmlcodestylesettings.md",
+      "images": [],
+      "summary": "Begins the block of HTML formatter settings.",
+      "text": "<HTMLCodeStyleSettings> Begins the block of HTML formatter settings."
+    },
+    {
+      "id": "option-name-html-space-inside-empty-tag-value-true/01-option-name-html-space-inside-empty-tag-value-true",
+      "module": "option-name-html-space-inside-empty-tag-value-true",
+      "title": "<option name=\"HTML_SPACE_INSIDE_EMPTY_TAG\" value=\"true\" />",
+      "pages": null,
+      "file": "modules/option-name-html-space-inside-empty-tag-value-true/01-option-name-html-space-inside-empty-tag-value-true.md",
+      "images": [],
+      "summary": "Inserts a space before the closing slash of empty tags, e.g. <br />.",
+      "text": "<option name=\"HTML_SPACE_INSIDE_EMPTY_TAG\" value=\"true\" /> Inserts a space before the closing slash of empty tags, e.g. <br />."
+    },
+    {
+      "id": "option-name-html-enforce-quotes-value-true/01-option-name-html-enforce-quotes-value-true",
+      "module": "option-name-html-enforce-quotes-value-true",
+      "title": "<option name=\"HTML_ENFORCE_QUOTES\" value=\"true\" />",
+      "pages": null,
+      "file": "modules/option-name-html-enforce-quotes-value-true/01-option-name-html-enforce-quotes-value-true.md",
+      "images": [],
+      "summary": "Forces attribute values to be wrapped in quotes.",
+      "text": "<option name=\"HTML_ENFORCE_QUOTES\" value=\"true\" /> Forces attribute values to be wrapped in quotes."
+    },
+    {
+      "id": "htmlcodestylesettings-2/01-htmlcodestylesettings",
+      "module": "htmlcodestylesettings-2",
+      "title": "</HTMLCodeStyleSettings>",
+      "pages": null,
+      "file": "modules/htmlcodestylesettings-2/01-htmlcodestylesettings.md",
+      "images": [],
+      "summary": "Ends the HTML formatter settings block.",
+      "text": "</HTMLCodeStyleSettings> Ends the HTML formatter settings block."
+    },
+    {
+      "id": "jscodestylesettings/01-jscodestylesettings",
+      "module": "jscodestylesettings",
+      "title": "<JSCodeStyleSettings>",
+      "pages": null,
+      "file": "modules/jscodestylesettings/01-jscodestylesettings.md",
+      "images": [],
+      "summary": "Begins the block of JavaScript formatter settings.",
+      "text": "<JSCodeStyleSettings> Begins the block of JavaScript formatter settings."
+    },
+    {
+      "id": "option-name-force-semicolon-style-value-true/01-option-name-force-semicolon-style-value-true",
+      "module": "option-name-force-semicolon-style-value-true",
+      "title": "<option name=\"FORCE_SEMICOLON_STYLE\" value=\"true\" />",
+      "pages": null,
+      "file": "modules/option-name-force-semicolon-style-value-true/01-option-name-force-semicolon-style-value-true.md",
+      "images": [],
+      "summary": "Enforces the configured semicolon style, adding statement-terminating semicolons on reformat.",
+      "text": "<option name=\"FORCE_SEMICOLON_STYLE\" value=\"true\" /> Enforces the configured semicolon style, adding statement-terminating semicolons on reformat."
+    },
+    {
+      "id": "option-name-space-before-function-left-parenth-value-false/01-option-name-space-before-function-left-parenth-value-false",
+      "module": "option-name-space-before-function-left-parenth-value-false",
+      "title": "<option name=\"SPACE_BEFORE_FUNCTION_LEFT_PARENTH\" value=\"false\" />",
+      "pages": null,
+      "file": "modules/option-name-space-before-function-left-parenth-value-false/01-option-name-space-before-function-left-parenth-value-false.md",
+      "images": [],
+      "summary": "No space between a function name and its opening parenthesis: function foo() rather than function foo ().",
+      "text": "<option name=\"SPACE_BEFORE_FUNCTION_LEFT_PARENTH\" value=\"false\" /> No space between a function name and its opening parenthesis: function foo() rather than function foo ()."
+    },
+    {
+      "id": "jscodestylesettings-2/01-jscodestylesettings",
+      "module": "jscodestylesettings-2",
+      "title": "</JSCodeStyleSettings>",
+      "pages": null,
+      "file": "modules/jscodestylesettings-2/01-jscodestylesettings.md",
+      "images": [],
+      "summary": "Ends the JavaScript formatter settings block.",
+      "text": "</JSCodeStyleSettings> Ends the JavaScript formatter settings block."
+    },
+    {
+      "id": "code-scheme/01-code-scheme",
+      "module": "code-scheme",
+      "title": "</code_scheme>",
+      "pages": null,
+      "file": "modules/code-scheme/01-code-scheme.md",
+      "images": [],
+      "summary": "Closes the Project code scheme.",
+      "text": "</code_scheme> Closes the Project code scheme."
+    },
+    {
+      "id": "component/01-component",
+      "module": "component",
+      "title": "</component>",
+      "pages": null,
+      "file": "modules/component/01-component.md",
+      "images": [],
+      "summary": "Closes the ProjectCodeStyleConfiguration component.",
+      "text": "</component> Closes the ProjectCodeStyleConfiguration component."
+    }
+  ],
+  "images": []
+}

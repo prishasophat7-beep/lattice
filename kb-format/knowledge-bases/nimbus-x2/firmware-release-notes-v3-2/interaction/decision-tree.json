@@ -1,0 +1,90 @@
+{
+  "_draft": true,
+  "start": "start",
+  "nodes": {
+    "start": {
+      "ask": "Which part of Firmware release notes v3 2 is your question about?",
+      "options": [
+        {
+          "label": "Highlights",
+          "next": "result:highlights"
+        },
+        {
+          "label": "New Features",
+          "next": "result:new-features"
+        },
+        {
+          "label": "Bug Fixes",
+          "next": "result:bug-fixes"
+        },
+        {
+          "label": "Known Issues",
+          "next": "result:known-issues"
+        },
+        {
+          "label": "Upgrade Procedure",
+          "next": "result:upgrade-procedure"
+        },
+        {
+          "label": "Compatibility",
+          "next": "result:compatibility"
+        },
+        {
+          "label": "Something else",
+          "next": "open"
+        }
+      ]
+    }
+  },
+  "resolve": {},
+  "results": {
+    "highlights": {
+      "modules": [
+        "highlights"
+      ],
+      "summary": "Highlights",
+      "start_hint": "highlights/01-highlights",
+      "ask_next": []
+    },
+    "new-features": {
+      "modules": [
+        "new-features"
+      ],
+      "summary": "New Features",
+      "start_hint": "new-features/01-adaptive-recovery",
+      "ask_next": []
+    },
+    "bug-fixes": {
+      "modules": [
+        "bug-fixes"
+      ],
+      "summary": "Bug Fixes",
+      "start_hint": "bug-fixes/01-bug-fixes",
+      "ask_next": []
+    },
+    "known-issues": {
+      "modules": [
+        "known-issues"
+      ],
+      "summary": "Known Issues",
+      "start_hint": "known-issues/01-known-issues",
+      "ask_next": []
+    },
+    "upgrade-procedure": {
+      "modules": [
+        "upgrade-procedure"
+      ],
+      "summary": "Upgrade Procedure",
+      "start_hint": "upgrade-procedure/01-upgrade-procedure",
+      "ask_next": []
+    },
+    "compatibility": {
+      "modules": [
+        "compatibility"
+      ],
+      "summary": "Compatibility",
+      "start_hint": "compatibility/01-compatibility",
+      "ask_next": []
+    }
+  }
+}

@@ -1,0 +1,241 @@
+{
+  "format_version": 2,
+  "generator": "convert_kb.py",
+  "document": {
+    "id": "plant-safety-standard",
+    "title": "Plant safety standard",
+    "filename": "plant_safety_standard.pdf",
+    "type": "pdf",
+    "pages": null,
+    "summary": "This standard applies to all employees, contractors and visitors at the Pune and Chennai plants."
+  },
+  "modules": [
+    {
+      "id": "scope",
+      "title": "Scope",
+      "heading": "1. Scope",
+      "pages": null,
+      "sections": [
+        "scope/01-scope"
+      ],
+      "summary": "This standard applies to all employees, contractors and visitors at the Pune and Chennai plants."
+    },
+    {
+      "id": "personal-protective-equipment-ppe",
+      "title": "Personal protective equipment (PPE)",
+      "heading": "2. Personal protective equipment (PPE)",
+      "pages": null,
+      "sections": [
+        "personal-protective-equipment-ppe/01-ppe-by-area",
+        "personal-protective-equipment-ppe/02-visitors",
+        "personal-protective-equipment-ppe/03-contractors"
+      ],
+      "summary": "Area Safety shoes Safety glasses Hearing protection Gloves Other Machining hall Required Required Required above 85 dB(A) Not while spindles run Grinding bay Required Required + face shield Required Cut resistant (level "
+    },
+    {
+      "id": "incident-reporting",
+      "title": "Incident reporting",
+      "heading": "3. Incident reporting",
+      "pages": null,
+      "sections": [
+        "incident-reporting/01-what-to-report",
+        "incident-reporting/02-deadlines",
+        "incident-reporting/03-night-shift"
+      ],
+      "summary": "Report every injury, near miss, fire, spill of more than 5 liters of oil or chemicals, and any damage to a machine guard."
+    },
+    {
+      "id": "lockout-tagout-loto",
+      "title": "Lockout / tagout (LOTO)",
+      "heading": "4. Lockout / tagout (LOTO)",
+      "pages": null,
+      "sections": [
+        "lockout-tagout-loto/01-lockout-tagout-loto"
+      ],
+      "summary": "1."
+    },
+    {
+      "id": "work-permits",
+      "title": "Work permits",
+      "heading": "5. Work permits",
+      "pages": null,
+      "sections": [
+        "work-permits/01-work-permits"
+      ],
+      "summary": "A work permit signed by the area supervisor and EHS is required for: hot work (welding, grinding, cutting outside the grinding bay), work at height above 1.8 meters, confined space entry, and electrical work on live equi"
+    },
+    {
+      "id": "forklifts",
+      "title": "Forklifts",
+      "heading": "6. Forklifts",
+      "pages": null,
+      "sections": [
+        "forklifts/01-forklifts"
+      ],
+      "summary": "Only employees holding a valid Helix forklift license (renewed every 3 years) may drive forklifts."
+    },
+    {
+      "id": "working-hours-and-fatigue",
+      "title": "Working hours and fatigue",
+      "heading": "7. Working hours and fatigue",
+      "pages": null,
+      "sections": [
+        "working-hours-and-fatigue/01-working-hours-and-fatigue"
+      ],
+      "summary": "No one may work more than 12 hours in a shift or more than 60 hours in a week, including overtime."
+    },
+    {
+      "id": "training",
+      "title": "Training",
+      "heading": "8. Training",
+      "pages": null,
+      "sections": [
+        "training/01-training"
+      ],
+      "summary": "Training Who Refresh General safety induction Everyone Every 2 years Fire extinguisher use Everyone in production Every year First aid 1 person per 25 employees per shift Every 2 years LOTO Maintenance and Level 2 techni"
+    },
+    {
+      "id": "changes-from-version-4",
+      "title": "Changes from Version 4",
+      "heading": "9. Changes from Version 4",
+      "pages": null,
+      "sections": [
+        "changes-from-version-4/01-changes-from-version-4"
+      ],
+      "summary": "The near miss deadline is now 24 hours (was 48 hours)."
+    }
+  ],
+  "sections": [
+    {
+      "id": "scope/01-scope",
+      "module": "scope",
+      "title": "1. Scope",
+      "pages": null,
+      "file": "modules/scope/01-scope.md",
+      "images": [],
+      "summary": "This standard applies to all employees, contractors and visitors at the Pune and Chennai plants.",
+      "text": "This standard applies to all employees, contractors and visitors at the Pune and Chennai plants. Where a local rule is stricter, the stricter rule applies. Version 5 replaces Version 4 (2024); the main changes are listed in section 9."
+    },
+    {
+      "id": "personal-protective-equipment-ppe/01-ppe-by-area",
+      "module": "personal-protective-equipment-ppe",
+      "title": "2.1 PPE by area",
+      "pages": null,
+      "file": "modules/personal-protective-equipment-ppe/01-ppe-by-area.md",
+      "images": [],
+      "summary": "Area Safety shoes Safety glasses Hearing protection Gloves Other Machining hall Required Required Required above 85 dB(A) Not while spindles run Grinding bay Required Required + face shield Required Cut resistant (level ",
+      "text": "Area Safety shoes Safety glasses Hearing protection Gloves Other Machining hall Required Required Required above 85 dB(A) Not while spindles run - Grinding bay Required Required + face shield Required Cut-resistant (level C) Dust mask FFP2 Heat treatment Required Required - Heat-resistant Aluminized apron above 400 °C Paint shop Required Goggles - Nitrile Respirator A2P3 Warehouse Required - - Work gloves High-visibility vest Offices - - - - - Quality lab Required Required - - Lab coat"
+    },
+    {
+      "id": "personal-protective-equipment-ppe/02-visitors",
+      "module": "personal-protective-equipment-ppe",
+      "title": "2.2 Visitors",
+      "pages": null,
+      "file": "modules/personal-protective-equipment-ppe/02-visitors.md",
+      "images": [],
+      "summary": "Visitors must be escorted at all times in production areas and wear safety shoes, safety glasses and a visitor vest.",
+      "text": "Visitors must be escorted at all times in production areas and wear safety shoes, safety glasses and a visitor vest. Visitors may not enter the heat treatment area or the paint shop. Visitors who are not wearing safety shoes may only use the marked visitor walkway."
+    },
+    {
+      "id": "personal-protective-equipment-ppe/03-contractors",
+      "module": "personal-protective-equipment-ppe",
+      "title": "2.3 Contractors",
+      "pages": null,
+      "file": "modules/personal-protective-equipment-ppe/03-contractors.md",
+      "images": [],
+      "summary": "Contractors must complete the safety induction (45 minutes) before starting work and receive a contractor badge valid for 12 months.",
+      "text": "Contractors must complete the safety induction (45 minutes) before starting work and receive a contractor badge valid for 12 months. Contractors working at height or on electrical equipment also need a work permit (section 5) for each job."
+    },
+    {
+      "id": "incident-reporting/01-what-to-report",
+      "module": "incident-reporting",
+      "title": "3.1 What to report",
+      "pages": null,
+      "file": "modules/incident-reporting/01-what-to-report.md",
+      "images": [],
+      "summary": "Report every injury, near miss, fire, spill of more than 5 liters of oil or chemicals, and any damage to a machine guard.",
+      "text": "Report every injury, near miss, fire, spill of more than 5 liters of oil or chemicals, and any damage to a machine guard."
+    },
+    {
+      "id": "incident-reporting/02-deadlines",
+      "module": "incident-reporting",
+      "title": "3.2 Deadlines",
+      "pages": null,
+      "file": "modules/incident-reporting/02-deadlines.md",
+      "images": [],
+      "summary": "Event Report to Deadline Serious injury (hospital treatment, fracture, amputation) Plant manager and EHS head by phone Immediately, within 1 hour Lost time injury EHS head Within 4 hours First aid injury Shift supervisor",
+      "text": "Event Report to Deadline Serious injury (hospital treatment, fracture, amputation) Plant manager and EHS head by phone Immediately, within 1 hour Lost-time injury EHS head Within 4 hours First-aid injury Shift supervisor Before the end of the shift Near miss Shift supervisor, through the HSE app Within 24 hours Fire (any size) Fire control room (extension 333) Immediately Chemical spill above 5 liters EHS head Within 2 hours A written investigation report must be completed within 7 calendar days for lost-time and serious injuries, and within 14 days for near misses with a high potential severity."
+    },
+    {
+      "id": "incident-reporting/03-night-shift",
+      "module": "incident-reporting",
+      "title": "3.3 Night shift",
+      "pages": null,
+      "file": "modules/incident-reporting/03-night-shift.md",
+      "images": [],
+      "summary": "On the night shift (22:00 06:00) the shift supervisor acts for the plant manager for the first report.",
+      "text": "On the night shift (22:00 - 06:00) the shift supervisor acts for the plant manager for the first report. The plant manager must still be informed by 08:00."
+    },
+    {
+      "id": "lockout-tagout-loto/01-lockout-tagout-loto",
+      "module": "lockout-tagout-loto",
+      "title": "4. Lockout / tagout (LOTO)",
+      "pages": null,
+      "file": "modules/lockout-tagout-loto/01-lockout-tagout-loto.md",
+      "images": [],
+      "summary": "1.",
+      "text": "1. Inform the area supervisor and the machine operators. 2. Switch off the equipment using the normal stop. 3. Isolate all energy sources: electrical, pneumatic, hydraulic, stored mechanical energy. 4. Apply your personal padlock and tag to every isolation point. Every person working on the equipment applies their own lock. 5. Release stored energy and wait the discharge time stated in the machine manual. 6. Verify zero energy: try to start the machine and measure voltage. 7. After the work, remove only your own lock. A lock left by someone who has left the site may only be removed by the area manager after a documented check, with the EHS head informed."
+    },
+    {
+      "id": "work-permits/01-work-permits",
+      "module": "work-permits",
+      "title": "5. Work permits",
+      "pages": null,
+      "file": "modules/work-permits/01-work-permits.md",
+      "images": [],
+      "summary": "A work permit signed by the area supervisor and EHS is required for: hot work (welding, grinding, cutting outside the grinding bay), work at height above 1.8 meters, confined space entry, and electrical work on live equi",
+      "text": "A work permit signed by the area supervisor and EHS is required for: hot work (welding, grinding, cutting outside the grinding bay), work at height above 1.8 meters, confined space entry, and electrical work on live equipment. Permits are valid for one shift. Hot work requires a fire watch for 30 minutes after the work ends. Electrical work on live equipment above 50 V additionally needs the approval of the plant electrical engineer."
+    },
+    {
+      "id": "forklifts/01-forklifts",
+      "module": "forklifts",
+      "title": "6. Forklifts",
+      "pages": null,
+      "file": "modules/forklifts/01-forklifts.md",
+      "images": [],
+      "summary": "Only employees holding a valid Helix forklift license (renewed every 3 years) may drive forklifts.",
+      "text": "Only employees holding a valid Helix forklift license (renewed every 3 years) may drive forklifts. Speed limit 10 km/h in the warehouse and 5 km/h in production halls. Pedestrians have priority on marked walkways. Contractors may not drive Helix forklifts."
+    },
+    {
+      "id": "working-hours-and-fatigue/01-working-hours-and-fatigue",
+      "module": "working-hours-and-fatigue",
+      "title": "7. Working hours and fatigue",
+      "pages": null,
+      "file": "modules/working-hours-and-fatigue/01-working-hours-and-fatigue.md",
+      "images": [],
+      "summary": "No one may work more than 12 hours in a shift or more than 60 hours in a week, including overtime.",
+      "text": "No one may work more than 12 hours in a shift or more than 60 hours in a week, including overtime. Between two shifts there must be a rest period of at least 11 hours. Exceptions need the written approval of the plant manager and may not be used for more than 2 consecutive weeks."
+    },
+    {
+      "id": "training/01-training",
+      "module": "training",
+      "title": "8. Training",
+      "pages": null,
+      "file": "modules/training/01-training.md",
+      "images": [],
+      "summary": "Training Who Refresh General safety induction Everyone Every 2 years Fire extinguisher use Everyone in production Every year First aid 1 person per 25 employees per shift Every 2 years LOTO Maintenance and Level 2 techni",
+      "text": "Training Who Refresh General safety induction Everyone Every 2 years Fire extinguisher use Everyone in production Every year First aid 1 person per 25 employees per shift Every 2 years LOTO Maintenance and Level 2 technicians Every year Forklift Forklift drivers Every 3 years"
+    },
+    {
+      "id": "changes-from-version-4/01-changes-from-version-4",
+      "module": "changes-from-version-4",
+      "title": "9. Changes from Version 4",
+      "pages": null,
+      "file": "modules/changes-from-version-4/01-changes-from-version-4.md",
+      "images": [],
+      "summary": "The near miss deadline is now 24 hours (was 48 hours).",
+      "text": "The near-miss deadline is now 24 hours (was 48 hours). Hearing protection is required in the machining hall above 85 dB(A) (was 90 dB(A)). Contractor badges are valid for 12 months (were 6 months). The maximum working week is 60 hours (was 64 hours)."
+    }
+  ],
+  "images": []
+}

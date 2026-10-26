@@ -81,44 +81,114 @@ def is_master_index(data: object) -> bool:
             and any(isinstance(d, dict) and isinstance(d.get("folder"), str) and d["folder"] for d in data["documents"]))
 
 
+def is_folder_index(data: object) -> bool:
+    """A document folder's kb.json: convert_kb.py's, or a one-manual sem-ai-kb kb.json (modules and
+    sections) as other tools write it for each document of a multi-document knowledge base."""
+    return is_document_index(data) or is_semkb_index(data)
+
+
+# folders inside a document folder, never documents themselves
+_NOT_DOCUMENTS = {"images", "modules", "interaction", "references", "pages"}
+
+
+def _slug(text: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "-", re.sub(r"\.[A-Za-z0-9]{2,5}$", "", text).lower()).strip("-")
+
+
 def read_master(root: Path) -> dict | None:
-    try:
-        data = json.loads((Path(root) / MASTER_INDEX).read_text(encoding="utf-8-sig"))
-    except (OSError, ValueError):
+    """A knowledge base of document folders ("multi doc test/<document>/kb.json", README.md and
+    page_index.json at the top): {"kb_name", "documents": [...], "folders": [names]}; None for a
+    one-folder knowledge base (kb.json at the top) or something else. page_index.json may name each
+    document's folder (convert_kb.py) or be the parser's own index; folders are found either way."""
+    root = Path(root)
+    if (root / KB_INDEX).is_file() or not root.is_dir():
         return None
-    return data if is_master_index(data) else None
+    folders = sorted(p.name for p in root.iterdir()
+                     if p.is_dir() and p.name not in _NOT_DOCUMENTS and not p.name.startswith(".") and (p / KB_INDEX).is_file())
+    if not folders:
+        return None
+    try:
+        data = json.loads((root / MASTER_INDEX).read_text(encoding="utf-8-sig"))
+    except (OSError, ValueError):
+        data = {}
+    data = data if isinstance(data, dict) else {}
+    entries = [d for d in data.get("documents") or [] if isinstance(d, dict)]
+    return {**data, "documents": entries, "folders": folders}
+
+
+def _entry_for(folder: str, entries: list[dict]) -> dict:
+    """The page_index.json entry of a document folder: by its "folder", else by its file name."""
+    for e in entries:
+        if str(e.get("folder") or "").strip("/") == folder:
+            return e
+    for e in entries:
+        if _slug(str(e.get("filename") or e.get("title") or "")) == folder:
+            return e
+    return {}
 
 
 def document_folders(root: Path, master: dict) -> list[tuple[Path, dict]]:
-    """(folder, its kb.json) of each document, in the master index's order."""
+    """(folder, its kb.json) of each document: in page_index.json's order where it names them, the
+    rest by name."""
+    entries = master.get("documents") or []
+    order = []
+    for e in entries:
+        named = str(e.get("folder") or "").strip("/") or _slug(str(e.get("filename") or ""))
+        if named in master["folders"] and named not in order:
+            order.append(named)
+    order += [f for f in master["folders"] if f not in order]
     out = []
-    for d in master["documents"]:
-        folder = str(d.get("folder") or "").strip("/")
-        if not folder or "/" in folder or folder.startswith("."):
-            continue
+    for folder in order:
         path = Path(root) / folder
         try:
             data = json.loads((path / KB_INDEX).read_text(encoding="utf-8-sig"))
         except (OSError, ValueError) as e:
-            raise KnowledgeBaseError(f"{folder}/{KB_INDEX} is missing or not valid JSON: {e}") from e
-        if not is_document_index(data):
-            raise KnowledgeBaseError(f"{folder}/{KB_INDEX} is not a document index from {GENERATOR}")
+            raise KnowledgeBaseError(f"{folder}/{KB_INDEX} is not valid JSON: {e}") from e
+        if not is_folder_index(data):
+            raise KnowledgeBaseError(f"{folder}/{KB_INDEX} has no modules and sections")
         out.append((path, data))
-    if not out:
-        raise KnowledgeBaseError(f"{MASTER_INDEX} lists no document folders")
     return out
 
 
-def _as_semkb(folder: Path, data: dict) -> dict:
-    """A document's kb.json in the shape of a one-manual kb.json, with its ids prefixed by its
+def _section_files(folder: Path) -> dict[str, str]:
+    """Section id (front matter "id:") -> file, for a kb.json whose sections do not name their file."""
+    out = {}
+    for md in sorted((folder / "modules").glob("*/*.md")):
+        try:
+            head = md.read_text(encoding="utf-8-sig")[:600]
+        except OSError:
+            continue
+        m = _FRONT.match(head)
+        sid = re.search(r"(?m)^id:\s*(.+?)\s*$", m.group(1)) if m else None
+        if sid:
+            out[sid.group(1).strip().strip('"')] = md.relative_to(folder).as_posix()
+    return out
+
+
+def _as_semkb(folder: Path, data: dict, entry: dict | None = None) -> dict:
+    """A document folder's kb.json in the shape of a one-manual kb.json, with its ids prefixed by its
     folder (ids are only unique within a document)."""
-    did = folder.name
-    src = str(data["document"].get("filename") or data["document"].get("title") or did)
+    did, entry = folder.name, entry or {}
+    doc = data.get("document") if isinstance(data.get("document"), dict) else {}
+    mods = [m for m in data["modules"] if isinstance(m, dict) and isinstance(m.get("id"), str)]
+    src = str(doc.get("filename") or entry.get("filename") or doc.get("title") or data.get("name")
+              or next((m.get("source") for m in mods if m.get("source")), None) or did)
+    files = None
+    sections = []
+    for s in data["sections"]:
+        if not isinstance(s, dict) or not isinstance(s.get("id"), str) or not isinstance(s.get("module"), str):
+            continue
+        file = s.get("file")
+        if not isinstance(file, str):
+            files = files if files is not None else _section_files(folder)
+            file = files.get(s["id"])
+            if not file:
+                continue
+        sections.append({**s, "id": f"{did}/{s['id']}", "module": f"{did}/{s['module']}", "file": file})
     modules = [{**m, "id": f"{did}/{m['id']}", "source": src, "title": m.get("heading") or m.get("title") or m["id"]}
-               for m in data["modules"] if isinstance(m, dict) and isinstance(m.get("id"), str)]
-    sections = [{**s, "id": f"{did}/{s['id']}", "module": f"{did}/{s['module']}"} for s in data["sections"]
-                if isinstance(s, dict) and all(isinstance(s.get(k), str) for k in ("id", "module", "file"))]
-    return {"name": src, "modules": modules, "sections": sections, "summary": data["document"].get("summary") or ""}
+               for m in mods]
+    summary = doc.get("summary") or entry.get("doc_summary") or data.get("description") or ""
+    return {"name": src, "modules": modules, "sections": sections, "summary": summary}
 
 
 def read_index(root: Path) -> dict:
@@ -195,17 +265,18 @@ def load_semkb(root: Path) -> list[Doc]:
     master = read_master(root) if not (root / KB_INDEX).is_file() else None
     if master is not None:  # several document folders (convert_kb.py)
         docs = []
-        entries = {str(e.get("folder") or "").strip("/"): e for e in master["documents"] if isinstance(e, dict)}
-        titles = {f.name: str(d["document"].get("title") or f.name) for f, d in document_folders(root, master)}
-        for folder, data in document_folders(root, master):
-            index = _as_semkb(folder, data)
-            if not index["modules"]:
-                raise KnowledgeBaseError(f"{folder.name}/{KB_INDEX} lists no modules")
+        folders = document_folders(root, master)
+        titles = {f.name: str((d.get("document") or {}).get("title") or _as_semkb(f, d, _entry_for(f.name, master["documents"]))["name"])
+                  for f, d in folders}
+        for folder, data in folders:
+            entry = _entry_for(folder.name, master["documents"])
+            index = _as_semkb(folder, data, entry)
+            if not index["modules"] or not index["sections"]:
+                raise KnowledgeBaseError(f"{folder.name}/{KB_INDEX} lists no modules or sections with text")
             doc = _load_source(folder, index, index["name"], index["modules"], several=False)
             doc.description = clean(str(index["summary"])) or doc.description
             doc.meta["folder"] = folder.name
             # what tells this document from the others, for finding the right one (see convert_kb.py)
-            entry = entries.get(folder.name) or {}
             if entry.get("codes"):
                 doc.meta["codes"] = ", ".join(map(str, entry["codes"][:12]))
             related = [f"{titles.get(r.get('document'), r.get('document'))} ({r.get('relation', 'related')}"
@@ -459,6 +530,17 @@ def merged_tree(trees: list[tuple[str, str, dict | None, list[str]]]) -> dict | 
     return {"start": start, "nodes": nodes, "results": results, "resolves": resolves}
 
 
+def _read_any_case(folder: Path, rel: str) -> str:
+    """A file of the folder by name in any case ("agents.md" for AGENTS.md: the same file on Windows)."""
+    path = folder / rel
+    if not path.is_file() and path.parent.is_dir():
+        path = next((p for p in path.parent.iterdir() if p.name.lower() == path.name.lower()), path)
+    try:
+        return path.read_text(encoding="utf-8-sig") if path.is_file() else ""
+    except OSError:
+        return ""
+
+
 def _set_extras(root: Path, master: dict) -> Extras:
     name = str(master.get("kb_name") or "")
     guide, notes, trees = "", [], []
@@ -466,8 +548,9 @@ def _set_extras(root: Path, master: dict) -> Extras:
     folders = document_folders(root, master)
     for folder, data in folders:
         did = folder.name
-        title = str(data["document"].get("title") or did)
-        read = lambda rel: (folder / rel).read_text(encoding="utf-8-sig") if (folder / rel).is_file() else ""  # noqa: E731
+        doc_meta = data.get("document") if isinstance(data.get("document"), dict) else {}
+        title = str(doc_meta.get("title") or _as_semkb(folder, data, _entry_for(did, master["documents"]))["name"])
+        read = lambda rel, folder=folder: _read_any_case(folder, rel)  # noqa: E731
         if not guide:
             text = read(AGENTS)
             guide = shared_guide(text, name) if len(folders) > 1 else guide_for_model(text)

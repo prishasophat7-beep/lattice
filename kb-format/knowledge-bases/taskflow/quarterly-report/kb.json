@@ -1,0 +1,36 @@
+{
+  "format_version": 2,
+  "generator": "convert_kb.py",
+  "document": {
+    "id": "quarterly-report",
+    "title": "Quarterly report",
+    "filename": "quarterly_report.xlsx",
+    "type": "xlsx",
+    "pages": null,
+    "summary": "Excel workbook with a single 'Q1 Summary' sheet reporting monthly Revenue, Expenses, Profit and Margin % for January-March 2026. Q1 revenue totals 803,800 against expenses of 566,250, giving a profit of 237,550 and a 29.6% margin, with margin improving each month."
+  },
+  "modules": [
+    {
+      "id": "quarterly-report",
+      "title": "Quarterly report",
+      "heading": "Quarterly report",
+      "pages": null,
+      "sections": [
+        "quarterly-report/01-sheet-q1-summary"
+      ],
+      "summary": "Excel workbook with a single 'Q1 Summary' sheet reporting monthly Revenue, Expenses, Profit and Margin % for January-March 2026. Q1 revenue totals 803,800 against expenses of 566,250, giving a profit of 237,550 and a 29.6% margin, with margin improving each month."
+    }
+  ],
+  "sections": [
+    {
+      "id": "quarterly-report/01-sheet-q1-summary",
+      "module": "quarterly-report",
+      "title": "Sheet: Q1 Summary",
+      "pages": null,
+      "file": "modules/quarterly-report/01-sheet-q1-summary.md",
+      "images": [],
+      "text": "Month Revenue Expenses Profit Margin % January 248,500 181,200 67,300 27.1 February 263,900 186,750 77,150 29.2 March 291,400 198,300 93,100 31.9 Q1 Total 803,800 566,250 237,550 29.6"
+    }
+  ],
+  "images": []
+}

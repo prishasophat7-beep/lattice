@@ -1,0 +1,177 @@
+{
+  "format_version": 2,
+  "generator": "convert_kb.py",
+  "document": {
+    "id": "it-security-standard",
+    "title": "It security standard",
+    "filename": "it_security_standard.docx",
+    "type": "docx",
+    "pages": null,
+    "summary": "Passwords must be at least 14 characters long and must not contain the user name."
+  },
+  "modules": [
+    {
+      "id": "accounts-and-passwords",
+      "title": "Accounts and passwords",
+      "heading": "1. Accounts and passwords",
+      "pages": null,
+      "sections": [
+        "accounts-and-passwords/01-accounts-and-passwords"
+      ],
+      "summary": "Passwords must be at least 14 characters long and must not contain the user name."
+    },
+    {
+      "id": "multi-factor-authentication-mfa",
+      "title": "Multi-factor authentication (MFA)",
+      "heading": "2. Multi-factor authentication (MFA)",
+      "pages": null,
+      "sections": [
+        "multi-factor-authentication-mfa/01-multi-factor-authentication-mfa"
+      ],
+      "summary": "MFA is required for email, VPN, the ERP system and every administrator account."
+    },
+    {
+      "id": "remote-access",
+      "title": "Remote access",
+      "heading": "3. Remote access",
+      "pages": null,
+      "sections": [
+        "remote-access/01-remote-access"
+      ],
+      "summary": "Remote access is only through the company VPN from a company laptop."
+    },
+    {
+      "id": "usb-and-removable-media",
+      "title": "USB and removable media",
+      "heading": "4. USB and removable media",
+      "pages": null,
+      "sections": [
+        "usb-and-removable-media/01-usb-and-removable-media"
+      ],
+      "summary": "USB storage devices are blocked on all office computers."
+    },
+    {
+      "id": "software",
+      "title": "Software",
+      "heading": "5. Software",
+      "pages": null,
+      "sections": [
+        "software/01-software"
+      ],
+      "summary": "Only software from the company software center may be installed."
+    },
+    {
+      "id": "data-classification",
+      "title": "Data classification",
+      "heading": "6. Data classification",
+      "pages": null,
+      "sections": [
+        "data-classification/01-data-classification"
+      ],
+      "summary": "Class Examples Rules Public Product brochures No restrictions Internal Procedures, this standard Share only with employees and contractors under NDA Confidential Drawings, prices, supplier agreements Encrypt when sent ou"
+    },
+    {
+      "id": "incidents",
+      "title": "Incidents",
+      "heading": "7. Incidents",
+      "pages": null,
+      "sections": [
+        "incidents/01-incidents"
+      ],
+      "summary": "Report suspected phishing with the \"Report phishing\" button in Outlook."
+    },
+    {
+      "id": "exceptions",
+      "title": "Exceptions",
+      "heading": "8. Exceptions",
+      "pages": null,
+      "sections": [
+        "exceptions/01-exceptions"
+      ],
+      "summary": "Exceptions to this standard need a written risk assessment and the approval of the chief information security officer (CISO)."
+    }
+  ],
+  "sections": [
+    {
+      "id": "accounts-and-passwords/01-accounts-and-passwords",
+      "module": "accounts-and-passwords",
+      "title": "1. Accounts and passwords",
+      "pages": null,
+      "file": "modules/accounts-and-passwords/01-accounts-and-passwords.md",
+      "images": [],
+      "summary": "Passwords must be at least 14 characters long and must not contain the user name.",
+      "text": "Passwords must be at least 14 characters long and must not contain the user name. Passwords for normal accounts expire every 180 days; passwords for administrator accounts every 90 days. The last 10 passwords cannot be reused. After 5 failed sign-in attempts the account is locked for 30 minutes. The IT service desk can unlock it earlier after verifying the user's identity by a call-back to the registered mobile number. Shared accounts are not allowed, except machine-controller accounts on the shop floor, which are managed by the controls team."
+    },
+    {
+      "id": "multi-factor-authentication-mfa/01-multi-factor-authentication-mfa",
+      "module": "multi-factor-authentication-mfa",
+      "title": "2. Multi-factor authentication (MFA)",
+      "pages": null,
+      "file": "modules/multi-factor-authentication-mfa/01-multi-factor-authentication-mfa.md",
+      "images": [],
+      "summary": "MFA is required for email, VPN, the ERP system and every administrator account.",
+      "text": "MFA is required for email, VPN, the ERP system and every administrator account. Authenticator app codes are preferred; SMS codes are allowed only for employees without a company smartphone. Hardware security keys are mandatory for domain administrators."
+    },
+    {
+      "id": "remote-access/01-remote-access",
+      "module": "remote-access",
+      "title": "3. Remote access",
+      "pages": null,
+      "file": "modules/remote-access/01-remote-access.md",
+      "images": [],
+      "summary": "Remote access is only through the company VPN from a company laptop.",
+      "text": "Remote access is only through the company VPN from a company laptop. Personal devices may access email and Teams through the mobile app with MFA, but may not connect to the VPN. Remote access to shop-floor machine controllers is not allowed, except for Helix service engineers through the vendor access gateway, with a work order and the approval of the plant controls engineer for each session."
+    },
+    {
+      "id": "usb-and-removable-media/01-usb-and-removable-media",
+      "module": "usb-and-removable-media",
+      "title": "4. USB and removable media",
+      "pages": null,
+      "file": "modules/usb-and-removable-media/01-usb-and-removable-media.md",
+      "images": [],
+      "summary": "USB storage devices are blocked on all office computers.",
+      "text": "USB storage devices are blocked on all office computers. On the shop floor, CNC programs are transferred through the DNC server; USB sticks may only be used on machines without a network connection (list kept by the controls team), and only sticks issued by IT, which are scanned at the kiosk before each use."
+    },
+    {
+      "id": "software/01-software",
+      "module": "software",
+      "title": "5. Software",
+      "pages": null,
+      "file": "modules/software/01-software.md",
+      "images": [],
+      "summary": "Only software from the company software center may be installed.",
+      "text": "Only software from the company software center may be installed. Requests for other software go through the IT service desk and need the approval of the information security officer (ISO). Freeware and browser extensions are treated the same way."
+    },
+    {
+      "id": "data-classification/01-data-classification",
+      "module": "data-classification",
+      "title": "6. Data classification",
+      "pages": null,
+      "file": "modules/data-classification/01-data-classification.md",
+      "images": [],
+      "summary": "Class Examples Rules Public Product brochures No restrictions Internal Procedures, this standard Share only with employees and contractors under NDA Confidential Drawings, prices, supplier agreements Encrypt when sent ou",
+      "text": "Class Examples Rules Public Product brochures No restrictions Internal Procedures, this standard Share only with employees and contractors under NDA Confidential Drawings, prices, supplier agreements Encrypt when sent outside the company; no personal cloud storage Restricted Salary data, personal data, customer IP Access on named-person basis; encrypt at rest and in transit; printing needs the data owner's approval"
+    },
+    {
+      "id": "incidents/01-incidents",
+      "module": "incidents",
+      "title": "7. Incidents",
+      "pages": null,
+      "file": "modules/incidents/01-incidents.md",
+      "images": [],
+      "summary": "Report suspected phishing with the \"Report phishing\" button in Outlook.",
+      "text": "Report suspected phishing with the \"Report phishing\" button in Outlook. Report a lost or stolen laptop or phone to the IT service desk within 2 hours, and to the police within 24 hours if stolen. Security incidents involving personal data must be escalated to the data protection officer within 24 hours."
+    },
+    {
+      "id": "exceptions/01-exceptions",
+      "module": "exceptions",
+      "title": "8. Exceptions",
+      "pages": null,
+      "file": "modules/exceptions/01-exceptions.md",
+      "images": [],
+      "summary": "Exceptions to this standard need a written risk assessment and the approval of the chief information security officer (CISO).",
+      "text": "Exceptions to this standard need a written risk assessment and the approval of the chief information security officer (CISO). Exceptions are valid for at most 6 months and must be reviewed before they are renewed."
+    }
+  ],
+  "images": []
+}

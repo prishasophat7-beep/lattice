@@ -1,0 +1,164 @@
+{
+  "_draft": true,
+  "start": "start",
+  "nodes": {
+    "group-1": {
+      "ask": "Which of these is it?",
+      "options": [
+        {
+          "label": "Purpose",
+          "next": "result:purpose"
+        },
+        {
+          "label": "Employee grades",
+          "next": "result:employee-grades"
+        },
+        {
+          "label": "Travel class",
+          "next": "result:travel-class"
+        },
+        {
+          "label": "Accommodation limits per night (INR)",
+          "next": "result:accommodation-limits-per-night-inr"
+        },
+        {
+          "label": "Daily allowance (per diem)",
+          "next": "result:daily-allowance-per-diem"
+        },
+        {
+          "label": "None of these",
+          "next": "start"
+        }
+      ]
+    },
+    "group-2": {
+      "ask": "Which of these is it?",
+      "options": [
+        {
+          "label": "Approvals",
+          "next": "result:approvals"
+        },
+        {
+          "label": "Receipts",
+          "next": "result:receipts"
+        },
+        {
+          "label": "Not reimbursed",
+          "next": "result:not-reimbursed"
+        },
+        {
+          "label": "Advances",
+          "next": "result:advances"
+        },
+        {
+          "label": "Mileage",
+          "next": "result:mileage"
+        },
+        {
+          "label": "None of these",
+          "next": "start"
+        }
+      ]
+    },
+    "start": {
+      "ask": "Which part of Travel expense policy is your question about?",
+      "options": [
+        {
+          "label": "Purpose … Daily allowance (per diem)",
+          "next": "group-1"
+        },
+        {
+          "label": "Approvals … Mileage",
+          "next": "group-2"
+        },
+        {
+          "label": "Something else",
+          "next": "open"
+        }
+      ]
+    }
+  },
+  "resolve": {},
+  "results": {
+    "purpose": {
+      "modules": [
+        "purpose"
+      ],
+      "summary": "Purpose",
+      "start_hint": "purpose/01-purpose",
+      "ask_next": []
+    },
+    "employee-grades": {
+      "modules": [
+        "employee-grades"
+      ],
+      "summary": "Employee grades",
+      "start_hint": "employee-grades/01-employee-grades",
+      "ask_next": []
+    },
+    "travel-class": {
+      "modules": [
+        "travel-class"
+      ],
+      "summary": "Travel class",
+      "start_hint": "travel-class/01-travel-class",
+      "ask_next": []
+    },
+    "accommodation-limits-per-night-inr": {
+      "modules": [
+        "accommodation-limits-per-night-inr"
+      ],
+      "summary": "Accommodation limits per night (INR)",
+      "start_hint": "accommodation-limits-per-night-inr/01-accommodation-limits-per-night-inr",
+      "ask_next": []
+    },
+    "daily-allowance-per-diem": {
+      "modules": [
+        "daily-allowance-per-diem"
+      ],
+      "summary": "Daily allowance (per diem)",
+      "start_hint": "daily-allowance-per-diem/01-daily-allowance-per-diem",
+      "ask_next": []
+    },
+    "approvals": {
+      "modules": [
+        "approvals"
+      ],
+      "summary": "Approvals",
+      "start_hint": "approvals/01-approvals",
+      "ask_next": []
+    },
+    "receipts": {
+      "modules": [
+        "receipts"
+      ],
+      "summary": "Receipts",
+      "start_hint": "receipts/01-receipts",
+      "ask_next": []
+    },
+    "not-reimbursed": {
+      "modules": [
+        "not-reimbursed"
+      ],
+      "summary": "Not reimbursed",
+      "start_hint": "not-reimbursed/01-not-reimbursed",
+      "ask_next": []
+    },
+    "advances": {
+      "modules": [
+        "advances"
+      ],
+      "summary": "Advances",
+      "start_hint": "advances/01-advances",
+      "ask_next": []
+    },
+    "mileage": {
+      "modules": [
+        "mileage"
+      ],
+      "summary": "Mileage",
+      "start_hint": "mileage/01-mileage",
+      "ask_next": []
+    }
+  }
+}

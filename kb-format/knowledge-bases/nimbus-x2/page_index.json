@@ -1,0 +1,767 @@
+{
+  "kb_id": "f57ceac7-cb9c-4cd5-87ac-4c39067ac649",
+  "kb_name": "Nimbus X2 Product Knowledge Base",
+  "kb_description": "Hardware specification, installation guide and firmware release notes for the Nimbus X2 smart thermostat.",
+  "generated_at": "2026-09-28T09:05:12.438817+00:00",
+  "total_files": 3,
+  "indexed_files": 3,
+  "documents": [
+    {
+      "file_id": "28feb857-5c69-41dc-9032-d2985ac0fa52",
+      "filename": "x2_hardware_design_spec.pdf",
+      "relative_path": "x2_hardware_design_spec.pdf",
+      "file_type": "pdf",
+      "file_size": 79574,
+      "parser_engine": "mcp_ocr",
+      "parsed_at": "2026-09-28T09:02:14.551902+00:00",
+      "page_count": 5,
+      "node_count": 15,
+      "has_images": true,
+      "image_count": 2,
+      "image_files": [
+        "images/figure_000.png",
+        "images/figure_001.png"
+      ],
+      "doc_summary": "Introduces the Nimbus X2 smart thermostat hardware, its target market and the scope and revision history of this specification. Describes the X2 architecture built around an STM32U585 MCU connected to the radio, sensors, display, relay board and power supply. Explains how X2 is powered from 24 VAC, including power stealing for installations without a C wire, rail specifications and measured current draw. Lists the temperature, humidity, CO2 and ambient light sensors used and their accuracy, then",
+      "sections": [
+        {
+          "node_id": "0001",
+          "title": "Overview",
+          "type": "section",
+          "level": 1,
+          "section_number": "1",
+          "start_page": 1,
+          "end_page": 1,
+          "summary": "Introduces the Nimbus X2 smart thermostat hardware, its target market and the scope and revision history of this specification.",
+          "section_id": "overview/01-overview",
+          "section_file": "x2-hardware-design-spec/modules/overview/01-overview.md"
+        },
+        {
+          "node_id": "0002",
+          "title": "Scope",
+          "type": "section",
+          "level": 2,
+          "section_number": "1.1",
+          "start_page": 1,
+          "end_page": 1,
+          "summary": "Defines what this specification covers (electrical, mechanical interfaces, sensors) and what is covered elsewhere (firmware, enclosure tooling).",
+          "section_id": "overview/02-scope",
+          "section_file": "x2-hardware-design-spec/modules/overview/02-scope.md"
+        },
+        {
+          "node_id": "0003",
+          "title": "Revision History",
+          "type": "section",
+          "level": 2,
+          "section_number": "1.2",
+          "start_page": 1,
+          "end_page": 1,
+          "summary": "Lists the three document revisions from March to September 2026 and what changed in each.",
+          "section_id": "overview/03-revision-history",
+          "section_file": "x2-hardware-design-spec/modules/overview/03-revision-history.md"
+        },
+        {
+          "node_id": "0004",
+          "title": "Table (3 rows x 4 cols)",
+          "type": "table",
+          "level": 3,
+          "section_number": null,
+          "start_page": 1,
+          "end_page": 1,
+          "summary": "Revision table showing releases A (EVT1), B (CO2 sensor, power budget) and C (relay rework, pinout fixes, compliance).",
+          "section_id": "overview/03-revision-history",
+          "section_file": "x2-hardware-design-spec/modules/overview/03-revision-history.md"
+        },
+        {
+          "node_id": "0005",
+          "title": "System Architecture",
+          "type": "section",
+          "level": 1,
+          "section_number": "2",
+          "start_page": 1,
+          "end_page": 2,
+          "summary": "Describes the X2 architecture built around an STM32U585 MCU connected to the radio, sensors, display, relay board and power supply.",
+          "section_id": "system-architecture/01-system-architecture",
+          "section_file": "x2-hardware-design-spec/modules/system-architecture/01-system-architecture.md"
+        },
+        {
+          "node_id": "0006",
+          "title": "Main Controller",
+          "type": "section",
+          "level": 2,
+          "section_number": "2.1",
+          "start_page": 2,
+          "end_page": 2,
+          "summary": "Details the STM32U585 MCU choice, clock, memory and its responsibilities.",
+          "section_id": "system-architecture/02-main-controller",
+          "section_file": "x2-hardware-design-spec/modules/system-architecture/02-main-controller.md"
+        },
+        {
+          "node_id": "0007",
+          "title": "Wireless Connectivity",
+          "type": "section",
+          "level": 2,
+          "section_number": "2.2",
+          "start_page": 2,
+          "end_page": 2,
+          "summary": "Covers the ESP32-C6 Wi-Fi 6 / BLE 5.3 module, antenna placement and RF certification approach.",
+          "section_id": "system-architecture/03-wireless-connectivity",
+          "section_file": "x2-hardware-design-spec/modules/system-architecture/03-wireless-connectivity.md"
+        },
+        {
+          "node_id": "0008",
+          "title": "Power Subsystem",
+          "type": "section",
+          "level": 1,
+          "section_number": "3",
+          "start_page": 3,
+          "end_page": 3,
+          "summary": "Explains how X2 is powered from 24 VAC, including power stealing for installations without a C wire, rail specifications and measured current draw.",
+          "section_id": "power-subsystem/01-power-subsystem",
+          "section_file": "x2-hardware-design-spec/modules/power-subsystem/01-power-subsystem.md"
+        },
+        {
+          "node_id": "0009",
+          "title": "Table (4 rows x 5 cols)",
+          "type": "table",
+          "level": 2,
+          "section_number": null,
+          "start_page": 3,
+          "end_page": 3,
+          "summary": "Power rail table listing input voltage range, 5 V, 3.3 V and 12 V backlight rails with their current limits and loads.",
+          "section_id": "power-subsystem/01-power-subsystem",
+          "section_file": "x2-hardware-design-spec/modules/power-subsystem/01-power-subsystem.md"
+        },
+        {
+          "node_id": "0010",
+          "title": "Sensors",
+          "type": "section",
+          "level": 1,
+          "section_number": "4",
+          "start_page": 4,
+          "end_page": 4,
+          "summary": "Lists the temperature, humidity, CO2 and ambient light sensors used and their accuracy, then describes the factory calibration procedure.",
+          "section_id": "sensors/01-sensors",
+          "section_file": "x2-hardware-design-spec/modules/sensors/01-sensors.md"
+        },
+        {
+          "node_id": "0011",
+          "title": "Table (4 rows x 5 cols)",
+          "type": "table",
+          "level": 2,
+          "section_number": null,
+          "start_page": 4,
+          "end_page": 4,
+          "summary": "Sensor table covering the SHT45 temperature/humidity, SCD41 CO2, VEML7700 light and PIR occupancy sensors with interface and accuracy.",
+          "section_id": "sensors/01-sensors",
+          "section_file": "x2-hardware-design-spec/modules/sensors/01-sensors.md"
+        },
+        {
+          "node_id": "0012",
+          "title": "Calibration",
+          "type": "section",
+          "level": 2,
+          "section_number": "4.1",
+          "start_page": 4,
+          "end_page": 4,
+          "summary": "Describes the two-point factory temperature calibration and how self-heating from the display and MCU is compensated.",
+          "section_id": "sensors/02-calibration",
+          "section_file": "x2-hardware-design-spec/modules/sensors/02-calibration.md"
+        },
+        {
+          "node_id": "0013",
+          "title": "Interfaces and Pinout",
+          "type": "section",
+          "level": 1,
+          "section_number": "5",
+          "start_page": 4,
+          "end_page": 4,
+          "summary": "Gives the pin assignments for the 10-pin main-to-relay-board connector.",
+          "section_id": "interfaces-and-pinout/01-interfaces-and-pinout",
+          "section_file": "x2-hardware-design-spec/modules/interfaces-and-pinout/01-interfaces-and-pinout.md"
+        },
+        {
+          "node_id": "0014",
+          "title": "Table (10 rows x 4 cols)",
+          "type": "table",
+          "level": 2,
+          "section_number": null,
+          "start_page": 4,
+          "end_page": 4,
+          "summary": "Pinout of connector J4 listing each of the 10 pins, signal name, direction and function; pins 7 and 8 were swapped in Rev C.",
+          "section_id": "interfaces-and-pinout/01-interfaces-and-pinout",
+          "section_file": "x2-hardware-design-spec/modules/interfaces-and-pinout/01-interfaces-and-pinout.md"
+        },
+        {
+          "node_id": "0015",
+          "title": "Environmental and Compliance",
+          "type": "section",
+          "level": 1,
+          "section_number": "6",
+          "start_page": 4,
+          "end_page": 4,
+          "summary": "Summarizes operating conditions and the regulatory certifications X2 must pass before launch.",
+          "section_id": "environmental-and-compliance/01-environmental-and-compliance",
+          "section_file": "x2-hardware-design-spec/modules/environmental-and-compliance/01-environmental-and-compliance.md"
+        }
+      ],
+      "folder": "x2-hardware-design-spec/",
+      "topics": [
+        "relay",
+        "out",
+        "board",
+        "mcu",
+        "connectivity",
+        "sensors",
+        "interfaces",
+        "rly"
+      ],
+      "codes": [
+        "CO2",
+        "I2C",
+        "X2",
+        "X1",
+        "V5",
+        "PCB-X2-MB",
+        "PCB-X2-RB",
+        "FW-X2-004",
+        "ME-X2-002",
+        "EVT1",
+        "ESP32-C6",
+        "M33",
+        "ESP32-C6-MINI",
+        "V3P3",
+        "SHT45"
+      ],
+      "related": [
+        {
+          "document": "x2-installation-and-user-guide",
+          "relation": "shares codes",
+          "codes": [
+            "X2"
+          ]
+        },
+        {
+          "document": "firmware-release-notes-v3-2",
+          "relation": "shares codes",
+          "codes": [
+            "EVT1",
+            "X2"
+          ]
+        }
+      ],
+      "modules": [
+        {
+          "id": "overview",
+          "title": "Overview",
+          "pages": [
+            1,
+            1
+          ]
+        },
+        {
+          "id": "system-architecture",
+          "title": "System Architecture",
+          "pages": [
+            1,
+            2
+          ]
+        },
+        {
+          "id": "power-subsystem",
+          "title": "Power Subsystem",
+          "pages": [
+            3,
+            3
+          ]
+        },
+        {
+          "id": "sensors",
+          "title": "Sensors",
+          "pages": [
+            4,
+            4
+          ]
+        },
+        {
+          "id": "interfaces-and-pinout",
+          "title": "Interfaces and Pinout",
+          "pages": [
+            4,
+            4
+          ]
+        },
+        {
+          "id": "environmental-and-compliance",
+          "title": "Environmental and Compliance",
+          "pages": [
+            4,
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "file_id": "9be60514-14b3-4497-aa4e-f72523412243",
+      "filename": "x2_installation_and_user_guide.pdf",
+      "relative_path": "x2_installation_and_user_guide.pdf",
+      "file_type": "pdf",
+      "file_size": 104777,
+      "parser_engine": "mcp_ocr",
+      "parsed_at": "2026-09-28T09:03:40.118276+00:00",
+      "page_count": 4,
+      "node_count": 12,
+      "has_images": true,
+      "image_count": 4,
+      "image_files": [
+        "images/figure_000.png",
+        "images/figure_001.png",
+        "images/figure_002.png",
+        "images/figure_003.png"
+      ],
+      "doc_summary": "Gives the key electrical safety warnings, including switching off power at the breaker and not using X2 with line-voltage systems. Lists the package contents: thermostat, backplate, trim plate, screws, labels and the optional C-wire adapter. Walks through wiring and mounting the thermostat, typically taking about 30 minutes. Describes the home screen, the available operating modes and how to set schedules. Shows an example error screen and a table of error codes E1-E6 with causes and fixes.",
+      "sections": [
+        {
+          "node_id": "0001",
+          "title": "Safety Information",
+          "type": "section",
+          "level": 1,
+          "section_number": "1",
+          "start_page": 1,
+          "end_page": 1,
+          "summary": "Gives the key electrical safety warnings, including switching off power at the breaker and not using X2 with line-voltage systems.",
+          "section_id": "safety-information/01-safety-information",
+          "section_file": "x2-installation-and-user-guide/modules/safety-information/01-safety-information.md"
+        },
+        {
+          "node_id": "0002",
+          "title": "What's in the Box",
+          "type": "section",
+          "level": 1,
+          "section_number": "2",
+          "start_page": 1,
+          "end_page": 1,
+          "summary": "Lists the package contents: thermostat, backplate, trim plate, screws, labels and the optional C-wire adapter.",
+          "section_id": "what-s-in-the-box/01-what-s-in-the-box",
+          "section_file": "x2-installation-and-user-guide/modules/what-s-in-the-box/01-what-s-in-the-box.md"
+        },
+        {
+          "node_id": "0003",
+          "title": "Installation",
+          "type": "section",
+          "level": 1,
+          "section_number": "3",
+          "start_page": 1,
+          "end_page": 2,
+          "summary": "Walks through wiring and mounting the thermostat, typically taking about 30 minutes.",
+          "section_id": "installation/01-installation",
+          "section_file": "x2-installation-and-user-guide/modules/installation/01-installation.md"
+        },
+        {
+          "node_id": "0004",
+          "title": "Wiring",
+          "type": "section",
+          "level": 2,
+          "section_number": "3.1",
+          "start_page": 2,
+          "end_page": 2,
+          "summary": "Explains how to label and connect the R, C, W, Y and G wires, with a wiring diagram and a table of standard wire colors.",
+          "section_id": "installation/02-wiring",
+          "section_file": "x2-installation-and-user-guide/modules/installation/02-wiring.md"
+        },
+        {
+          "node_id": "0005",
+          "title": "Table (6 rows x 4 cols)",
+          "type": "table",
+          "level": 3,
+          "section_number": null,
+          "start_page": 2,
+          "end_page": 2,
+          "summary": "Wire color reference table mapping each terminal (R, C, W, Y, G, O/B) to its usual color, function and whether it is required.",
+          "section_id": "installation/02-wiring",
+          "section_file": "x2-installation-and-user-guide/modules/installation/02-wiring.md"
+        },
+        {
+          "node_id": "0006",
+          "title": "Mounting",
+          "type": "section",
+          "level": 2,
+          "section_number": "3.2",
+          "start_page": 2,
+          "end_page": 2,
+          "summary": "Gives the six mounting steps from turning off power to attaching the display.",
+          "section_id": "installation/03-mounting",
+          "section_file": "x2-installation-and-user-guide/modules/installation/03-mounting.md"
+        },
+        {
+          "node_id": "0007",
+          "title": "Using Your Thermostat",
+          "type": "section",
+          "level": 1,
+          "section_number": "4",
+          "start_page": 3,
+          "end_page": 4,
+          "summary": "Describes the home screen, the available operating modes and how to set schedules.",
+          "section_id": "using-your-thermostat/01-using-your-thermostat",
+          "section_file": "x2-installation-and-user-guide/modules/using-your-thermostat/01-using-your-thermostat.md"
+        },
+        {
+          "node_id": "0008",
+          "title": "Modes",
+          "type": "section",
+          "level": 2,
+          "section_number": "4.1",
+          "start_page": 3,
+          "end_page": 3,
+          "summary": "Explains the Heat, Cool, Auto, Eco and Off modes and when to use each.",
+          "section_id": "using-your-thermostat/02-modes",
+          "section_file": "x2-installation-and-user-guide/modules/using-your-thermostat/02-modes.md"
+        },
+        {
+          "node_id": "0009",
+          "title": "Table (5 rows x 3 cols)",
+          "type": "table",
+          "level": 3,
+          "section_number": null,
+          "start_page": 3,
+          "end_page": 3,
+          "summary": "Table of the five thermostat modes (Heat, Cool, Auto, Eco, Off) describing what each does and when to use it.",
+          "section_id": "using-your-thermostat/02-modes",
+          "section_file": "x2-installation-and-user-guide/modules/using-your-thermostat/02-modes.md"
+        },
+        {
+          "node_id": "0010",
+          "title": "Schedules",
+          "type": "section",
+          "level": 2,
+          "section_number": "4.2",
+          "start_page": 4,
+          "end_page": 4,
+          "summary": "Describes creating weekly schedules and how Adaptive Recovery pre-heats or pre-cools before a scheduled change.",
+          "section_id": "using-your-thermostat/03-schedules",
+          "section_file": "x2-installation-and-user-guide/modules/using-your-thermostat/03-schedules.md"
+        },
+        {
+          "node_id": "0011",
+          "title": "Troubleshooting",
+          "type": "section",
+          "level": 1,
+          "section_number": "5",
+          "start_page": 4,
+          "end_page": 4,
+          "summary": "Shows an example error screen and a table of error codes E1-E6 with causes and fixes.",
+          "section_id": "troubleshooting/01-troubleshooting",
+          "section_file": "x2-installation-and-user-guide/modules/troubleshooting/01-troubleshooting.md"
+        },
+        {
+          "node_id": "0012",
+          "title": "Table (6 rows x 3 cols)",
+          "type": "table",
+          "level": 2,
+          "section_number": null,
+          "start_page": 4,
+          "end_page": 4,
+          "summary": "Error code table E1-E6 describing each fault (power, power stealing, Wi-Fi, sensor, relay, firmware) and the recommended fix.",
+          "section_id": "troubleshooting/01-troubleshooting",
+          "section_file": "x2-installation-and-user-guide/modules/troubleshooting/01-troubleshooting.md"
+        }
+      ],
+      "folder": "x2-installation-and-user-guide/",
+      "topics": [
+        "wiring",
+        "terminal",
+        "wire",
+        "screen",
+        "temperature",
+        "installation",
+        "label",
+        "heating"
+      ],
+      "codes": [
+        "X2",
+        "E4",
+        "PAK-2",
+        "W1",
+        "Y1",
+        "E1",
+        "E2",
+        "E3",
+        "E5",
+        "E6"
+      ],
+      "related": [
+        {
+          "document": "x2-hardware-design-spec",
+          "relation": "shares codes",
+          "codes": [
+            "X2"
+          ]
+        },
+        {
+          "document": "firmware-release-notes-v3-2",
+          "relation": "shares codes",
+          "codes": [
+            "E2",
+            "X2"
+          ]
+        }
+      ],
+      "modules": [
+        {
+          "id": "safety-information",
+          "title": "Safety Information",
+          "pages": [
+            1,
+            1
+          ]
+        },
+        {
+          "id": "what-s-in-the-box",
+          "title": "What's in the Box",
+          "pages": [
+            1,
+            1
+          ]
+        },
+        {
+          "id": "installation",
+          "title": "Installation",
+          "pages": [
+            1,
+            2
+          ]
+        },
+        {
+          "id": "using-your-thermostat",
+          "title": "Using Your Thermostat",
+          "pages": [
+            3,
+            4
+          ]
+        },
+        {
+          "id": "troubleshooting",
+          "title": "Troubleshooting",
+          "pages": [
+            4,
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "file_id": "1ca3ac4c-8d1b-4846-9278-3e68a60b4a5d",
+      "filename": "firmware_release_notes_v3_2.docx",
+      "relative_path": "firmware_release_notes_v3_2.docx",
+      "file_type": "docx",
+      "file_size": 118649,
+      "parser_engine": "mcp_ocr",
+      "parsed_at": "2026-09-28T09:04:05.772031+00:00",
+      "page_count": null,
+      "node_count": 10,
+      "has_images": true,
+      "image_count": 2,
+      "image_files": [
+        "images/figure_000.png",
+        "images/figure_001.png"
+      ],
+      "doc_summary": "Summarizes the headline changes in 3.2.0: Adaptive Recovery, monthly energy reports, faster boot and a power-stealing stability fix. Describes the two new features in detail. Lists six fixed issues with their ticket IDs, including E2 brown-outs and schedule drift across daylight saving changes. Lists open issues in 3.2.0 such as a missing display calibration table warning and slow reports for heat pump systems. Gives the steps for updating via the app or via the nimbus-cli tool for lab units, wi",
+      "sections": [
+        {
+          "node_id": "0001",
+          "title": "Highlights",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Summarizes the headline changes in 3.2.0: Adaptive Recovery, monthly energy reports, faster boot and a power-stealing stability fix.",
+          "section_id": "highlights/01-highlights",
+          "section_file": "firmware-release-notes-v3-2/modules/highlights/01-highlights.md"
+        },
+        {
+          "node_id": "0002",
+          "title": "New Features",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Describes the two new features in detail.",
+          "section_id": "new-features/01-adaptive-recovery",
+          "section_file": "firmware-release-notes-v3-2/modules/new-features/01-adaptive-recovery.md"
+        },
+        {
+          "node_id": "0003",
+          "title": "Adaptive Recovery",
+          "type": "section",
+          "level": 2,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Explains how Adaptive Recovery estimates heating/cooling rates over 7 days and caps early start at 2 hours.",
+          "section_id": "new-features/01-adaptive-recovery",
+          "section_file": "firmware-release-notes-v3-2/modules/new-features/01-adaptive-recovery.md"
+        },
+        {
+          "node_id": "0004",
+          "title": "Energy Reports",
+          "type": "section",
+          "level": 2,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Describes the monthly energy report screen showing runtime by mode and comparison with last year.",
+          "section_id": "new-features/02-energy-reports",
+          "section_file": "firmware-release-notes-v3-2/modules/new-features/02-energy-reports.md"
+        },
+        {
+          "node_id": "0005",
+          "title": "Bug Fixes",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Lists six fixed issues with their ticket IDs, including E2 brown-outs and schedule drift across daylight saving changes.",
+          "section_id": "bug-fixes/01-bug-fixes",
+          "section_file": "firmware-release-notes-v3-2/modules/bug-fixes/01-bug-fixes.md"
+        },
+        {
+          "node_id": "0006",
+          "title": "Table (6 rows x 3 cols)",
+          "type": "table",
+          "level": 2,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Bug fix table with six fixed issues (FW-1822 to FW-1902) and the firmware versions each affected.",
+          "section_id": "bug-fixes/01-bug-fixes",
+          "section_file": "firmware-release-notes-v3-2/modules/bug-fixes/01-bug-fixes.md"
+        },
+        {
+          "node_id": "0007",
+          "title": "Known Issues",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Lists open issues in 3.2.0 such as a missing display calibration table warning and slow reports for heat pump systems.",
+          "section_id": "known-issues/01-known-issues",
+          "section_file": "firmware-release-notes-v3-2/modules/known-issues/01-known-issues.md"
+        },
+        {
+          "node_id": "0008",
+          "title": "Upgrade Procedure",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Gives the steps for updating via the app or via the nimbus-cli tool for lab units, with example command output.",
+          "section_id": "upgrade-procedure/01-upgrade-procedure",
+          "section_file": "firmware-release-notes-v3-2/modules/upgrade-procedure/01-upgrade-procedure.md"
+        },
+        {
+          "node_id": "0009",
+          "title": "Compatibility",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "States which hardware revisions and app versions support firmware 3.2.0.",
+          "section_id": "compatibility/01-compatibility",
+          "section_file": "firmware-release-notes-v3-2/modules/compatibility/01-compatibility.md"
+        },
+        {
+          "node_id": "0010",
+          "title": "Table (4 rows x 3 cols)",
+          "type": "table",
+          "level": 2,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Compatibility table listing minimum hardware revision, app and CLI versions needed for firmware 3.2.0.",
+          "section_id": "compatibility/01-compatibility",
+          "section_file": "firmware-release-notes-v3-2/modules/compatibility/01-compatibility.md"
+        }
+      ],
+      "folder": "firmware-release-notes-v3-2/",
+      "topics": [
+        "fw-",
+        "reports",
+        "nimbus-cli",
+        "energy",
+        "fixes",
+        "update",
+        "app",
+        "adaptive"
+      ],
+      "codes": [
+        "E2",
+        "FW-1822",
+        "FW-1850",
+        "FW-1861",
+        "FW-1877",
+        "FW-1893",
+        "FW-1902",
+        "FW-1910",
+        "FW-1915",
+        "X2",
+        "EVT1"
+      ],
+      "related": [
+        {
+          "document": "x2-hardware-design-spec",
+          "relation": "shares codes",
+          "codes": [
+            "EVT1",
+            "X2"
+          ]
+        },
+        {
+          "document": "x2-installation-and-user-guide",
+          "relation": "shares codes",
+          "codes": [
+            "E2",
+            "X2"
+          ]
+        }
+      ],
+      "modules": [
+        {
+          "id": "highlights",
+          "title": "Highlights",
+          "pages": null
+        },
+        {
+          "id": "new-features",
+          "title": "New Features",
+          "pages": null
+        },
+        {
+          "id": "bug-fixes",
+          "title": "Bug Fixes",
+          "pages": null
+        },
+        {
+          "id": "known-issues",
+          "title": "Known Issues",
+          "pages": null
+        },
+        {
+          "id": "upgrade-procedure",
+          "title": "Upgrade Procedure",
+          "pages": null
+        },
+        {
+          "id": "compatibility",
+          "title": "Compatibility",
+          "pages": null
+        }
+      ]
+    }
+  ]
+}

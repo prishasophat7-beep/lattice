@@ -1,0 +1,158 @@
+{
+  "format_version": 2,
+  "generator": "convert_kb.py",
+  "document": {
+    "id": "security-awareness-training-module2",
+    "title": "Security awareness training module2",
+    "filename": "security_awareness_training_module2.docx",
+    "type": "docx",
+    "pages": null,
+    "summary": "Explains that phishing caused most security incidents at Acme in 2025 and why every employee is a target. Walks through an annotated fake payroll email and the four red flags it contains. Explains how to use the Report Phish button and what to do if you already clicked a link. Recommends passphrases, the password manager and never reusing work passwords. Includes a photo of the whiteboard from the August phishing workshop listing red flags and the next session date."
+  },
+  "modules": [
+    {
+      "id": "why-phishing-matters",
+      "title": "Why Phishing Matters",
+      "heading": "Why Phishing Matters",
+      "pages": null,
+      "sections": [
+        "why-phishing-matters/01-why-phishing-matters"
+      ],
+      "summary": "Explains that phishing caused most security incidents at Acme in 2025 and why every employee is a target."
+    },
+    {
+      "id": "anatomy-of-a-phishing-email",
+      "title": "Anatomy of a Phishing Email",
+      "heading": "Anatomy of a Phishing Email",
+      "pages": null,
+      "sections": [
+        "anatomy-of-a-phishing-email/01-anatomy-of-a-phishing-email"
+      ],
+      "summary": "Walks through an annotated fake payroll email and the four red flags it contains."
+    },
+    {
+      "id": "reporting-suspicious-messages",
+      "title": "Reporting Suspicious Messages",
+      "heading": "Reporting Suspicious Messages",
+      "pages": null,
+      "sections": [
+        "reporting-suspicious-messages/01-reporting-suspicious-messages"
+      ],
+      "summary": "Explains how to use the Report Phish button and what to do if you already clicked a link."
+    },
+    {
+      "id": "password-hygiene",
+      "title": "Password Hygiene",
+      "heading": "Password Hygiene",
+      "pages": null,
+      "sections": [
+        "password-hygiene/01-password-hygiene"
+      ],
+      "summary": "Recommends passphrases, the password manager and never reusing work passwords."
+    },
+    {
+      "id": "workshop-notes",
+      "title": "Workshop Notes",
+      "heading": "Workshop Notes",
+      "pages": null,
+      "sections": [
+        "workshop-notes/01-workshop-notes"
+      ],
+      "summary": "Includes a photo of the whiteboard from the August phishing workshop listing red flags and the next session date."
+    },
+    {
+      "id": "knowledge-check",
+      "title": "Knowledge Check",
+      "heading": "Knowledge Check",
+      "pages": null,
+      "sections": [
+        "knowledge-check/01-knowledge-check"
+      ],
+      "summary": "Lists four quiz questions employees must answer to complete the module."
+    }
+  ],
+  "sections": [
+    {
+      "id": "why-phishing-matters/01-why-phishing-matters",
+      "module": "why-phishing-matters",
+      "title": "Why Phishing Matters",
+      "pages": null,
+      "file": "modules/why-phishing-matters/01-why-phishing-matters.md",
+      "images": [],
+      "summary": "Explains that phishing caused most security incidents at Acme in 2025 and why every employee is a target.",
+      "text": "Phishing is the most common way attackers get into companies. In 2025, 71% of the security incidents investigated at Acme started with a phishing email or message. Attackers do not only target executives: anyone with access to email, Slack or customer data is a target."
+    },
+    {
+      "id": "anatomy-of-a-phishing-email/01-anatomy-of-a-phishing-email",
+      "module": "anatomy-of-a-phishing-email",
+      "title": "Anatomy of a Phishing Email",
+      "pages": null,
+      "file": "modules/anatomy-of-a-phishing-email/01-anatomy-of-a-phishing-email.md",
+      "images": [
+        "images/page_000_img1.png"
+      ],
+      "summary": "Walks through an annotated fake payroll email and the four red flags it contains.",
+      "text": "The example below was sent to 40 Acme employees in August 2026. Six people clicked the link; one entered their password before reporting it. The annotations point out the warning signs. Figure 1: Annotated phishing email impersonating the payroll team Figure 1: Annotated phishing email impersonating the payroll team Look-alike domain: acme-c0rp-hr.com uses a zero instead of the letter o. Urgency and threats: 'within 24 HOURS' and 'delayed payment' are designed to rush you. Suspicious link: the link goes to acme-payroll-verify.co, not an acme-corp.com address. Generic greeting and typos: 'Dear Employee' and 'Departmnet'."
+    },
+    {
+      "id": "reporting-suspicious-messages/01-reporting-suspicious-messages",
+      "module": "reporting-suspicious-messages",
+      "title": "Reporting Suspicious Messages",
+      "pages": null,
+      "file": "modules/reporting-suspicious-messages/01-reporting-suspicious-messages.md",
+      "images": [],
+      "summary": "Explains how to use the Report Phish button and what to do if you already clicked a link.",
+      "text": "1. Do not click links, open attachments or reply. 2. Click the Report Phish button in Gmail (or forward to phish@acme-corp.com). 3. If you already clicked or entered your password, call the IT help desk at ext. 4357 immediately. 4. Security will reply within 1 hour to let you know if the message was safe. You will never get in trouble for reporting a message, even if it turns out to be legitimate."
+    },
+    {
+      "id": "password-hygiene/01-password-hygiene",
+      "module": "password-hygiene",
+      "title": "Password Hygiene",
+      "pages": null,
+      "file": "modules/password-hygiene/01-password-hygiene.md",
+      "images": [],
+      "summary": "Recommends passphrases, the password manager and never reusing work passwords.",
+      "text": "Use a unique passphrase of at least 14 characters for your Acme account. Store all other passwords in 1Password. Never reuse your Acme password on another site. IT will never ask you for your password or an MFA code."
+    },
+    {
+      "id": "workshop-notes/01-workshop-notes",
+      "module": "workshop-notes",
+      "title": "Workshop Notes",
+      "pages": null,
+      "file": "modules/workshop-notes/01-workshop-notes.md",
+      "images": [
+        "images/page_000_img2.png"
+      ],
+      "summary": "Includes a photo of the whiteboard from the August phishing workshop listing red flags and the next session date.",
+      "text": "The whiteboard below was captured at the end of the in-person workshop in Austin on 26 August 2026. Figure 2: Whiteboard from the phishing workshop Figure 2: Whiteboard from the phishing workshop"
+    },
+    {
+      "id": "knowledge-check/01-knowledge-check",
+      "module": "knowledge-check",
+      "title": "Knowledge Check",
+      "pages": null,
+      "file": "modules/knowledge-check/01-knowledge-check.md",
+      "images": [],
+      "summary": "Lists four quiz questions employees must answer to complete the module.",
+      "text": "1. Name two red flags in the example payroll email. 2. What should you do first if you entered your password on a phishing page? 3. True or false: IT may ask for your MFA code to fix your account. 4. Where is the Report Phish button?"
+    }
+  ],
+  "images": [
+    {
+      "path": "images/page_000_img1.png",
+      "original": "figure_000.png",
+      "section": "anatomy-of-a-phishing-email/01-anatomy-of-a-phishing-email",
+      "page": null,
+      "description": "Figure 1: Annotated phishing email impersonating the payroll team",
+      "description_from": "caption"
+    },
+    {
+      "path": "images/page_000_img2.png",
+      "original": "figure_001.png",
+      "section": "workshop-notes/01-workshop-notes",
+      "page": null,
+      "description": "Figure 2: Whiteboard from the phishing workshop",
+      "description_from": "caption"
+    }
+  ]
+}

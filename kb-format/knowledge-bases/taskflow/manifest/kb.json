@@ -1,0 +1,36 @@
+{
+  "format_version": 2,
+  "generator": "convert_kb.py",
+  "document": {
+    "id": "manifest",
+    "title": "Manifest",
+    "filename": "manifest.json",
+    "type": "json",
+    "pages": null,
+    "summary": "JSON manifest describing the Sample Knowledge Base: name, description, version 1.0.0, creation date 2026-10-13 and a file count of 7. It groups the files into two sub-knowledge-bases, HR Policies and File Type Validation, and records the mcp_ocr parser engine."
+  },
+  "modules": [
+    {
+      "id": "manifest",
+      "title": "Manifest",
+      "heading": "Manifest",
+      "pages": null,
+      "sections": [
+        "manifest/01-manifest"
+      ],
+      "summary": "JSON manifest describing the Sample Knowledge Base: name, description, version 1.0.0, creation date 2026-10-13 and a file count of 7. It groups the files into two sub-knowledge-bases, HR Policies and File Type Validation, and records the mcp_ocr parser engine."
+    }
+  ],
+  "sections": [
+    {
+      "id": "manifest/01-manifest",
+      "module": "manifest",
+      "title": "Manifest",
+      "pages": null,
+      "file": "modules/manifest/01-manifest.md",
+      "images": [],
+      "text": "manifest.json ``json { \"kb_name\": \"Sample Knowledge Base\", \"kb_description\": \"A combined KB with HR policies and file type validation samples\", \"version\": \"1.0.0\", \"created_date\": \"2026-10-13\", \"file_count\": 7, \"sub_knowledge_bases\": [ { \"name\": \"HR Policies\", \"files\": [ \"user_manual.docx\", \"leave_policy.pdf\" ] }, { \"name\": \"File Type Validation\", \"files\": [ \"performance_metrics.csv\", \"quarterly_report.xlsx\", \"manifest.json\", \"config.xml\", \"requirements.txt\" ] } ], \"parser_engine\": \"mcp_ocr\", \"owner\": \"kb-admin\" } `` kb_name: Sample Knowledge Base kb_description: A combined KB with HR policies and file type validation samples version: 1.0.0 created_date: 2026-10-13 file_count: 7 sub_knowledge_bases: [{\"name\": \"HR Policies\", \"files\": [\"user_manual.docx\", \"leave_policy.pdf\"]}, {\"name\": \"File Type Validation\", \"files\": [\"performance_metrics.csv\", \"quarterly_report.xlsx\", \"manifest.json\", \"config.xml\", \"requirements.txt\"]}] parser_engine: mcp_ocr owner: kb-admin"
+    }
+  ],
+  "images": []
+}

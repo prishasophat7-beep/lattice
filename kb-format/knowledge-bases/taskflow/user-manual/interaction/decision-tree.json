@@ -1,0 +1,54 @@
+{
+  "_draft": true,
+  "start": "start",
+  "nodes": {
+    "start": {
+      "ask": "Which part of User manual is your question about?",
+      "options": [
+        {
+          "label": "Introduction",
+          "next": "result:introduction"
+        },
+        {
+          "label": "Features",
+          "next": "result:features"
+        },
+        {
+          "label": "Configuration",
+          "next": "result:configuration"
+        },
+        {
+          "label": "Something else",
+          "next": "open"
+        }
+      ]
+    }
+  },
+  "resolve": {},
+  "results": {
+    "introduction": {
+      "modules": [
+        "introduction"
+      ],
+      "summary": "Introduction",
+      "start_hint": "introduction/01-about",
+      "ask_next": []
+    },
+    "features": {
+      "modules": [
+        "features"
+      ],
+      "summary": "Features",
+      "start_hint": "features/01-dashboard",
+      "ask_next": []
+    },
+    "configuration": {
+      "modules": [
+        "configuration"
+      ],
+      "summary": "Configuration",
+      "start_hint": "configuration/01-user-preferences",
+      "ask_next": []
+    }
+  }
+}

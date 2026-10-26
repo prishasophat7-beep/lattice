@@ -251,3 +251,39 @@ def test_api_chat_lists_documents_with_codes_and_the_shared_guide(converted, tmp
     assert "codes: " in sent and "E-217" in sent and "related: " in sent
     assert "Instructions that come with this knowledge base" in sent and "Skylink Support" in sent
     assert "Tier 2 answers within 4 business hours" in sent  # the best section, whole
+
+
+def test_folders_made_by_another_tool_import_too(converted, tmp_path):
+    """"multi doc test/": the parser's own page_index.json (no "folder" entries), one folder from
+    convert_kb.py and one with a one-manual sem-ai-kb kb.json whose sections leave out "file",
+    lower-case agents.md, extra references/ and validate_kb.py. Before, this was taken for a KB
+    Manager export: "The export has no document with text"."""
+    out, _ = converted
+    kb = tmp_path / "multi doc test"
+    import shutil
+    shutil.copytree(out / "r7-guide", kb / "r7-guide")
+    other = kb / "warranty-terms"
+    (other / "modules" / "terms").mkdir(parents=True)
+    (other / "modules" / "terms" / "01-period.md").write_text(
+        '---\nid: terms/01-period\nmodule: terms\ntitle: "1 Period"\npages: [1, 1]\n---\n\n# 1 Period\n\n'
+        "The R7 is covered for 2 years.\n", encoding="utf-8")
+    (other / "kb.json").write_text(json.dumps({"name": "Warranty terms", "modules": [{"id": "terms", "title": "Terms"}],
+                                               "sections": [{"id": "terms/01-period", "module": "terms", "title": "1 Period"}]}),
+                                   encoding="utf-8")
+    (other / "agents.md").write_text("# Warranty assistant\n\n## Interview tone\n\n- Brief.\n", encoding="utf-8")
+    (kb / "page_index.json").write_text(json.dumps({"kb_name": "multi doc test", "documents": [
+        {"filename": "R7_guide.pdf", "sections": []}]}), encoding="utf-8")
+    (kb / "README.md").write_text("# multi doc test\n", encoding="utf-8")
+    zipped = tmp_path / "multi.zip"
+    with zipfile.ZipFile(zipped, "w") as z:
+        for f in kb.rglob("*"):
+            if f.is_file():
+                z.write(f, f.relative_to(tmp_path).as_posix())  # zipped with its top folder
+    data = tmp_path / "data"
+    manifest = bundle.import_bundle(zipped, data)
+    _, docs = bundle.load_version(bundle.version_dir(data, manifest.kb_version))
+    assert sorted(d.title for d in docs) == ["R7_guide.pdf", "Warranty terms"]
+    warranty = next(d for d in docs if d.title == "Warranty terms")
+    assert any("covered for 2 years" in s.own_text for s in warranty.sections.values())
+    extras = load_extras(bundle.version_dir(data, manifest.kb_version) / bundle.CONTENT)
+    assert extras.name == "multi doc test" and extras.tree["start"] == "kb::document"

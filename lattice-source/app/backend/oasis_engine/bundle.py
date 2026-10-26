@@ -40,7 +40,7 @@ from pydantic import BaseModel, Field, ValidationError
 
 from .loaders import EXPORT_INDEX, IMAGE_NAME, SKIPPED, KnowledgeBaseError, export_doc_id, export_title, load
 from .kbfolder import (KB_INDEX, KEPT as KB_KEPT, KEPT_SET as KB_SET_KEPT, MASTER_INDEX, doc_id_for as semkb_doc_id,
-                       is_document_index, is_master_index, is_semkb_index)
+                       is_folder_index, is_semkb_index)
 from .models import Doc
 
 MANIFEST = "kb.json"
@@ -326,26 +326,25 @@ def _semkb_root(zf: zipfile.ZipFile, names: set[str]) -> str | None:
 
 
 def _kbset_root(zf: zipfile.ZipFile, names: set[str]) -> str | None:
-    """The folder prefix of a zipped knowledge base of document folders (convert_kb.py): a
-    page_index.json whose documents name folders that hold a document kb.json."""
-    for candidate in sorted((n for n in names if n == MASTER_INDEX or (n.endswith("/" + MASTER_INDEX) and n.count("/") == 1)),
-                            key=len):
-        prefix = candidate[: -len(MASTER_INDEX)]
-        try:
-            master = json.loads(zf.read(candidate))
-        except (ValueError, KeyError):
-            continue
-        if not is_master_index(master):
-            continue
-        for d in master["documents"]:
-            folder = str(d.get("folder") or "").strip("/")
-            member = f"{prefix}{folder}/{KB_INDEX}"
-            if folder and member in names:
-                try:
-                    if is_document_index(json.loads(zf.read(member))):
-                        return prefix
-                except ValueError:
-                    continue
+    """The folder prefix ("" or "multi doc test/") of a zipped knowledge base of document folders:
+    page_index.json or README.md at the top, and one or more <document>/kb.json with modules and
+    sections (convert_kb.py's, or one-manual sem-ai-kb kb.json files). page_index.json may name the
+    folders or be the parser's own index."""
+    tops = sorted({n[: -len(MASTER_INDEX)] for n in names if n == MASTER_INDEX or (n.endswith("/" + MASTER_INDEX) and n.count("/") == 1)}
+                  | {n[: -len("README.md")] for n in names if n == "README.md" or (n.endswith("/README.md") and n.count("/") == 1)},
+                  key=len)
+    for prefix in tops:
+        for n in sorted(names):
+            rest = n[len(prefix):] if n.startswith(prefix) else None
+            if rest is None or rest.count("/") != 1 or not rest.endswith("/" + KB_INDEX):
+                continue
+            if rest.split("/", 1)[0] in ("images", "modules", "interaction", "references", "pages"):
+                continue
+            try:
+                if is_folder_index(json.loads(zf.read(n))):
+                    return prefix
+            except (ValueError, KeyError):
+                continue
     return None
 
 
@@ -354,9 +353,13 @@ def import_semkb(zf: zipfile.ZipFile, names: set[str], prefix: str, data_dir: Pa
     """Unpack a sem-ai-kb knowledge base under content/, keeping only the files it is made of.
     several: a knowledge base of document folders under page_index.json (convert_kb.py)."""
     if several:
-        master = json.loads(zf.read(prefix + MASTER_INDEX))
-        index = {"name": master.get("kb_name") or "kb", "source": {"generated_at": master.get("generated_at")},
-                 "modules": []}
+        try:
+            master = json.loads(zf.read(prefix + MASTER_INDEX)) if prefix + MASTER_INDEX in names else {}
+        except ValueError:
+            master = {}
+        master = master if isinstance(master, dict) else {}
+        name = master.get("kb_name") or prefix.strip("/") or "kb"
+        index = {"name": name, "source": {"generated_at": master.get("generated_at")}, "modules": []}
         keep = KB_SET_KEPT
     else:
         index = json.loads(zf.read(prefix + KB_INDEX))
@@ -387,16 +390,17 @@ def import_semkb(zf: zipfile.ZipFile, names: set[str], prefix: str, data_dir: Pa
             dest.parent.mkdir(parents=True, exist_ok=True)
             dest.write_bytes(data)
             files[rel] = hashlib.sha256(data).hexdigest()
-        if several:
+        if several:  # the documents as loaded (names, ids), from the unpacked folders
+            from .kbfolder import _as_semkb, _entry_for, document_folders, read_master
+            root = partial / CONTENT
+            found = read_master(root)
+            if found is None:
+                raise BundleError("No document folder with a kb.json was found in the knowledge base")
             documents = []
-            for d in master["documents"]:
-                folder = str(d.get("folder") or "").strip("/")
-                member = f"{prefix}{folder}/{KB_INDEX}"
-                if not folder or member not in names:
-                    continue
-                doc = json.loads(zf.read(member)).get("document") or {}
-                src = str(doc.get("filename") or doc.get("title") or folder)
-                documents.append(DocEntry(id=semkb_doc_id(src), title=src, description=doc.get("summary") or None))
+            for folder, data in document_folders(root, found):
+                index = _as_semkb(folder, data, _entry_for(folder.name, found["documents"]))
+                documents.append(DocEntry(id=semkb_doc_id(index["name"]), title=index["name"],
+                                          description=str(index["summary"]) or None))
         else:
             sources = list(dict.fromkeys(str(m.get("source") or index.get("name") or "manual")
                                          for m in index["modules"] if isinstance(m, dict)))
