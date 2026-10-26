@@ -8,6 +8,10 @@ Status key: **Confirmed** = reproduced with Lattice's own code on the sample bun
 
 Suggested order: 1, 3 (one-line changes), then 2, 4, 7 (largest effect on answers), then 5, 6, 8.
 
+**Applied on branch `kb-sem-ai-structure` (23 Oct):** 1, 2, 3, 4, 5, 7 and 11 (see "Applied, 23 Oct"
+at the end). 8 is covered by the knowledge base's decision tree for converted knowledge bases.
+Open: 6 (badge on derived figures), 9 (speed), 10 (data).
+
 ---
 
 ## 1. Picture descriptions are cut to their first sentence (Confirmed)
@@ -234,3 +238,22 @@ the prompts the test inspects). 386/386 pass with 2.40, 2.45 and 2.50. Pin an up
 Expected answers: Q2 4/7 = 57.1 %; Q3 PO-26-0503 ₹27,600 + PO-26-0561 ₹11,700 + PO-26-0590 ₹9,750
 = ₹49,050 (Amendment 1: 1.5 % per full week); Q1 bearings covered 12 months only if warm-up (O9000 at
 every shift start, after stops > 4 h) was followed.
+
+---
+
+## Applied, 23 Oct 2026
+
+| # | Change |
+|---|---|
+| 1 | `loaders.py` `BRIEF_DESCRIPTION_CHARS = 1000`; converted knowledge bases keep each picture's whole description (up to 1500) |
+| 2 | `chat.py` `Room`: the best matches come as text for every model; a large model (context ≥ 16k, or a server model whose window is unknown) gets the best 3 sections whole (8k characters each at 32k, scaled to the window), 12k-character pages and 16k outlines; table figures worked out in code for every tier |
+| 3 | `api.py` Chat gets at least 4000 output tokens (`CHAT_MAX_TOKENS`) |
+| 4 | `chat.py` `subject_of`: a later part that says "it/they/this" is searched with the codes of the first part's best section ("E-217 R7 2.9.0") |
+| 5 | `chat.py` `plain_math`: `$14 / 7 = 2$` loses its dollars; `$5 to $10` keeps them |
+| 7 | `chat.py`: an answer drawn from sections it read (half its words in them), with no general part and no markers, gets the "did not name its sources" note instead of the general-knowledge label |
+| 11 | `pyproject.toml` `pydantic-ai-slim[openai]>=2.40,<2.60` |
+
+Also: the context window comes from Manage (**Context window (tokens)** on a connection), or
+`OASIS_LLM_CONTEXT` for the built-in model (the desktop app passes it to llama-server's `-c`), or the
+server itself (llama-server `/props`, vLLM `max_model_len`). A built-in model of 14B or more is given
+what a server model is (`LARGE_MODEL_B`).

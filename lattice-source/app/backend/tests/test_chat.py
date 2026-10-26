@@ -52,7 +52,8 @@ def test_general_answer_has_no_sources(office):
 def test_unknown_references_are_dropped(office):
     client = office(ChatScript([{"text": "It is 12 Nm [S9]."}]))
     r = client.post("/api/ask", json={"question": "M6 torque?", "mode": "chat"}).json()
-    assert r["answer"] == "It is 12 Nm." and r["citations"] == []
+    # it was given the documents' sections and named none it had: flagged, not shown as general knowledge
+    assert r["answer"].startswith("It is 12 Nm.") and "[S9]" not in r["answer"] and r["citations"] == []
 
 
 def test_chat_uses_the_conversation(office):

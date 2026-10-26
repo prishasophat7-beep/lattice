@@ -770,15 +770,16 @@ def test_an_agent_that_never_settles_answers_from_what_it_gathered(tmp_path):
     """Before, reaching the step limit threw away everything read: multi-step questions are the
     ones that need the last steps. From the wrap-up step lookups reply "answer now"; at the limit
     one more call answers from what was gathered, without tools."""
-    from oasis_engine.chat import MAX_REQUESTS, TOO_MANY_STEPS_REPLY, WRAP_UP_REPLY
+    from oasis_engine.chat import TOO_MANY_STEPS_REPLY, WRAP_UP_REPLY, room_for
+    limit = room_for(0, "remote").max_requests
     docs = load_markdown(write_markdown_kb(tmp_path / "md"))
-    steps = [{"tool": "search_manuals", "args": {"query": "E17"}}] * MAX_REQUESTS["remote"]
+    steps = [{"tool": "search_manuals", "args": {"query": "E17"}}] * limit
     script = ChatScript(steps, final="E17 means torque not reached [S1].")
     r = asyncio.run(ChatAgent(script.model).ask("E17?", docs, SectionIndex(docs)))
     assert r.found and "torque not reached" in r.answer and r.citations
     assert any(WRAP_UP_REPLY in str(m) for m in script.seen[-1])  # lookups were told to stop
     # nothing gathered at all: the plain reply
-    script = ChatScript([{"tool": "calculate", "args": {"expression": "1+1"}}] * MAX_REQUESTS["remote"])
+    script = ChatScript([{"tool": "calculate", "args": {"expression": "1+1"}}] * limit)
     r = asyncio.run(ChatAgent(script.model).ask("xyzzy plugh?", docs, SectionIndex(docs)))
     assert not r.found and r.answer == TOO_MANY_STEPS_REPLY
 

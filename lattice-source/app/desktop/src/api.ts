@@ -269,6 +269,8 @@ export interface Connection {
   model: string;
   output_mode: "native" | "prompted" | "tool";
   reasoning: boolean;
+  /** the model's context window in tokens; 0 or absent: asked from the server */
+  context_tokens?: number;
 }
 
 /** Admin settings (Manage). The API key is never sent back, only whether one is stored. */

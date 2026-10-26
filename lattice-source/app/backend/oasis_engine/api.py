@@ -82,6 +82,8 @@ MAX_SEARCH_HITS = 20
 SECTION_VIEW_CHARS = 60_000
 CLOSEST = 3  # sections offered instead, when an answer is not in the documents
 SMALL_MODEL_B = 3.0  # a built-in model smaller than this (billions of parameters) answers from documents only
+CHAT_MAX_TOKENS = 4000
+LARGE_MODEL_B = 14.0  # a built-in model this large or larger is given what a server model is (chat_tier)
 LOCAL_EMBEDDER_RECHECK_S = 15  # how often to ask the local embedding server which model it serves
 
 
@@ -197,6 +199,7 @@ class Engine:
         self._local_embedder: tuple[float, str] = (-LOCAL_EMBEDDER_RECHECK_S, "")  # (when asked, model)
         self.loop: asyncio.AbstractEventLoop | None = None  # the server's, once it runs
         self._served: dict[str, tuple[float, str]] = {}  # base URL -> (when asked, served model file)
+        self._context: dict[str, tuple[float, int]] = {}  # base URL -> (when asked, context window)
         self.answering = 0  # answers being written now: a new knowledge base waits for them
         self.apply_config()
 
@@ -212,7 +215,9 @@ class Engine:
             chat_model = self.injected_model or make_model(self.chat_llm, self.budget)
         if self.injected_model is None:  # a busy endpoint mid-conversation: retry that one call
             chat_model = RetryingModel(chat_model, budget=self.budget)
-        self.chat = ChatAgent(chat_model, max_tokens=self.chat_llm.max_tokens,
+        # Chat answers (a worked-out penalty over three orders) need more room than Manuals answers:
+        # at the built-in model's 2,048 the 4B stopped before its total ("cut off", 22 Oct test)
+        self.chat = ChatAgent(chat_model, max_tokens=max(self.chat_llm.max_tokens, CHAT_MAX_TOKENS),
                               work_topics_only=self.config.work_topics_only, budget=self.budget)
         self._remote_status = (0.0, None, "")
         self.reload()
@@ -792,8 +797,28 @@ class Engine:
         result.focus = focus_of(self.docs[place[0]], place[1]) if place is not None else None
 
     def chat_tier(self) -> str:
-        """"local": the built-in model on this computer (fewer, larger steps); else "remote"."""
-        return "local" if self.injected_model is None and self.chat_llm.model in ("local", "demo") else "remote"
+        """"local": the built-in model on this computer (fewer, larger steps); else "remote". A large
+        built-in model (Qwen 3.5 27B on an office PC with a GPU) is given what a server model is."""
+        if self.injected_model is not None or self.chat_llm.model not in ("local", "demo"):
+            return "remote"
+        size = self.builtin_model_b_now(self.chat_llm)
+        return "remote" if size is not None and size >= LARGE_MODEL_B else "local"
+
+    def chat_context_now(self) -> int:
+        """The chat model's context window in tokens: as set in Manage (or OASIS_LLM_CONTEXT), else as
+        the server reports it, else 0 (not known: Room assumes one by tier). Blocking."""
+        cfg = self.chat_llm
+        if cfg.context_tokens:
+            return cfg.context_tokens
+        if self.injected_model is not None:
+            return 0
+        cached = self._context.get(cfg.base_url)
+        if cached is None or (not cached[1] and time.monotonic() - cached[0] > 60):
+            cached = self._context[cfg.base_url] = (time.monotonic(), _served_context(cfg))
+        return cached[1]
+
+    async def chat_context(self) -> int:
+        return await asyncio.to_thread(self.chat_context_now)
 
     def figures_shown(self, conversation_id: str | None, replacing: str | None = None) -> set[tuple]:
         """(doc id, page, image) of the pictures shown in a conversation's earlier answers."""
@@ -1000,6 +1025,30 @@ def _served_model(cfg: LLMConfig) -> str:
     except (httpx.HTTPError, ValueError, KeyError, IndexError, TypeError):
         return ""
     return re.sub(r"\.gguf$", "", re.split(r"[\\/]", str(name))[-1], flags=re.IGNORECASE)
+
+
+def _served_context(cfg: LLMConfig) -> int:
+    """The context window the model server reports, or 0: llama-server's /props (n_ctx), vLLM's
+    /v1/models (max_model_len), OpenRouter-style /models (context_length)."""
+    headers = {"Authorization": f"Bearer {cfg.api_key}"} if cfg.api_key else {}
+    base = cfg.base_url.rstrip("/")
+    root = base[:-3] if base.endswith("/v1") else base
+    try:
+        props = httpx.get(root + "/props", headers=headers, timeout=2.0).json()
+        n = (props.get("default_generation_settings") or {}).get("n_ctx") or props.get("n_ctx")
+        if isinstance(n, int) and n > 0:
+            return n
+    except (httpx.HTTPError, ValueError, AttributeError, TypeError):
+        pass
+    try:
+        rows = httpx.get(base + "/models", headers=headers, timeout=2.0).json().get("data") or []
+        row = next((r for r in rows if r.get("id") == cfg.model), rows[0] if len(rows) == 1 else None)
+        n = row and (row.get("max_model_len") or row.get("context_length"))
+        if isinstance(n, int) and n > 0:
+            return n
+    except (httpx.HTTPError, ValueError, AttributeError, TypeError):
+        pass
+    return 0
 
 
 def _as_asked(question: str, topic: list[str]) -> str:
@@ -1592,7 +1641,8 @@ def create_app(settings: Settings | None = None, model: Model | None = None) -> 
             kb_guide=engine.kb_extras.guide if engine.kb_extras else "",
             kb_notes=engine.kb_extras.notes if engine.kb_extras else "",
             documents_only=await engine.chat_is_small(engine.chat_llm),
-            tier=engine.chat_tier(), earlier=engine.earlier_sections(req.conversation_id, req.replaces), place=place,
+            tier=engine.chat_tier(), context_tokens=await engine.chat_context(),
+            earlier=engine.earlier_sections(req.conversation_id, req.replaces), place=place,
             picked=picked_section(req),
             attachment_text=(lambda aid: engine.attachments.text(conversation, aid)) if conversation else None)
         return await chat_with_pictures(_as_smalltalk(pending) if greeting else pending)

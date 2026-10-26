@@ -30,7 +30,7 @@ def _prepare(expression: str) -> str:
     if len(text) > MAX_EXPRESSION:
         raise CalcError("expression too long")
     text = text.replace("×", "*").replace("÷", "/").replace("−", "-").replace("^", "**")
-    text = re.sub(r"(?<=\d),(?=\d{3}\b)", "", text)          # thousands separators
+    text = re.sub(r"(?<=\d),(?=\d{3}\b|\d{2},\d)", "", text)  # thousands separators, Indian too (9,20,000)
     text = re.sub(r"(\d+(?:\.\d+)?)\s*%", r"(\1/100)", text)  # percentages
     return text
 

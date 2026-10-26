@@ -70,10 +70,13 @@ class Interview:
 
     # ── the tree ──
 
-    def _resolve(self, vars_: dict) -> str | None:
-        keys = self.tree.get("resolve_keys") or ["task", "framework"]
+    def _resolve(self, vars_: dict, did: str | None = None) -> str | None:
+        """The result the variables set lead to; `did`: a document's own table in a joined tree."""
+        own = (self.tree.get("resolves") or {}).get(did) if did else None
+        keys = (own or {}).get("keys") or self.tree.get("resolve_keys") or ["task", "framework"]
         parts = [str(vars_.get(k, "unknown")) for k in keys]
-        table = self.tree.get("resolve") or {}
+        table = (own or {}).get("table") if own else (self.tree.get("resolve") or {})
+        table = table or {}
         for key in (":".join(parts), ":".join(parts[:-1] + ["unknown"]), parts[0]):
             if key in table:
                 return table[key]
@@ -83,8 +86,8 @@ class Interview:
         """Result ids reachable through `next`."""
         if not nxt or nxt == "open":
             return set()
-        if nxt == "resolve":
-            rid = self._resolve(vars_)
+        if nxt == "resolve" or nxt.startswith("resolve:"):
+            rid = self._resolve(vars_, nxt[8:] or None)
             return {rid} if rid in self.results else set()
         if nxt.startswith("result:"):
             return {nxt[7:]} if nxt[7:] in self.results else set()
@@ -155,6 +158,14 @@ class Interview:
                     continue
                 title = self.extras.section_titles.get(sid, "")
                 variant = None
+                if r.get("start_section"):  # convert_kb.py: the result names its section, and the way by itself
+                    if r.get("way") and sid == r["start_section"]:
+                        hit = self._ways.get(sid)
+                        if hit and _way_key(hit) and _way_key(str(r["way"])) and _way_key(hit) != _way_key(str(r["way"])):
+                            continue
+                        variant = str(r["way"])
+                    out.add(Target(sid, variant))
+                    continue
                 # "4.2 Annotating Text, Method 1": the result names a way of doing this very section
                 head, _, rest = hint.partition(",")
                 if rest.strip() and title and (_norm(head) == _norm(title) or _norm(title) in _norm(head)):

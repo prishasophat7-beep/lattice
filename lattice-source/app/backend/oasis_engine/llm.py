@@ -75,6 +75,7 @@ class LLMConfig:
     # ask the server not to think first (Qwen 3.x and other thinking models on vLLM, SGLang or
     # llama.cpp think by default; the thinking would use up the short answer limits)
     thinking_off: bool = False
+    context_tokens: int = 0  # the context window, when known (see config.Connection.context_tokens)
 
 
 THINKING_OFF = {"enable_thinking": False}
