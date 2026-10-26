@@ -144,7 +144,7 @@ export interface KbDocument {
 
 export interface KbInfo {
   kb_version: string;
-  source_format: "pageindex" | "markdown";
+  source_format: "pageindex" | "markdown" | "export" | "semkb";
   created_at: string | null;
   /** Catalog entries in kb.json whose id names no document: the web team's bundle has a mistake. */
   catalog_unmatched?: string[];
@@ -269,6 +269,8 @@ export interface Connection {
   model: string;
   output_mode: "native" | "prompted" | "tool";
   reasoning: boolean;
+  /** the model's context window in tokens; 0 or absent: asked from the server */
+  context_tokens?: number;
 }
 
 /** Admin settings (Manage). The API key is never sent back, only whether one is stored. */

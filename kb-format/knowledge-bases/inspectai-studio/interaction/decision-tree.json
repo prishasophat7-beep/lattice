@@ -1,0 +1,134 @@
+{
+  "start": "goal",
+  "resolve_keys": ["task", "variant"],
+  "nodes": {
+    "goal": {
+      "ask": "What do you want to do in InspectAI Studio?",
+      "why": "Setup, model building and settings live in different modules; building a model then depends on the project type.",
+      "options": [
+        { "label": "Install the software or activate the licence", "next": "result:setup" },
+        { "label": "Build, train or deploy an inspection model", "next": "task" },
+        { "label": "Look up a setting (epochs, learning rate, GPU)", "next": "result:settings" },
+        { "label": "Something else", "next": "open" }
+      ]
+    },
+    "task": {
+      "ask": "What should the model do?",
+      "why": "The three project types have different steps: only classification needs labelled classes, anomaly detection trains on good parts only, text reading needs annotated lines.",
+      "options": [
+        { "label": "Sort parts into classes (e.g. OK, Scratch, Dent)", "set": { "task": "classification" }, "next": "source" },
+        { "label": "Find defects, learning from good parts only", "set": { "task": "anomaly" }, "next": "source" },
+        { "label": "Read printed or engraved text (batch codes, serial numbers)", "set": { "task": "ocr" }, "next": "annotation" },
+        { "label": "Not sure which project type I need", "next": "result:choose-task" }
+      ]
+    },
+    "source": {
+      "ask": "Where will the training images come from?",
+      "why": "Import has two options (2.2 / 3.2): a folder on disk or the line camera, with different steps.",
+      "options": [
+        { "label": "A folder on disk", "set": { "variant": "folder" }, "next": "resolve" },
+        { "label": "The line camera (GigE)", "set": { "variant": "camera" }, "next": "resolve" },
+        { "label": "Not decided yet / images already imported", "set": { "variant": "unknown" }, "next": "resolve" }
+      ]
+    },
+    "annotation": {
+      "ask": "How will you annotate the text?",
+      "why": "Section 4.2 has two methods: manual suits unusual fonts, assisted is about three times faster for standard fonts.",
+      "options": [
+        { "label": "By hand (the font is unusual)", "set": { "variant": "manual" }, "next": "resolve" },
+        { "label": "Assisted: the built-in reader proposes, I correct (standard font)", "set": { "variant": "assisted" }, "next": "resolve" },
+        { "label": "Not sure", "set": { "variant": "unknown" }, "next": "resolve" }
+      ]
+    }
+  },
+  "resolve": {
+    "classification:folder": "classification-folder",
+    "classification:camera": "classification-camera",
+    "classification:unknown": "classification",
+    "anomaly:folder": "anomaly-folder",
+    "anomaly:camera": "anomaly-camera",
+    "anomaly:unknown": "anomaly",
+    "ocr:manual": "ocr-manual",
+    "ocr:assisted": "ocr-assisted",
+    "ocr:unknown": "ocr"
+  },
+  "results": {
+    "setup": {
+      "modules": ["getting-started"],
+      "summary": "Installing InspectAI Studio 4 and activating the licence",
+      "start_hint": "1.1 System Requirements",
+      "ask_next": [
+        "Is the workstation online? (an offline workstation activates with a request code)",
+        "Does it have an NVIDIA GPU with at least 8 GB of video memory?"
+      ]
+    },
+    "settings": {
+      "modules": ["settings-reference"],
+      "summary": "Training settings: epochs, learning rate and GPU selection",
+      "ask_next": ["Which project type is this for? Recommended epochs differ (40 for classification, 60 for text reading)."]
+    },
+    "choose-task": {
+      "modules": ["overview", "image-classification", "anomaly-detection", "text-reading-ocr"],
+      "summary": "Choosing the project type",
+      "start_hint": "The first section of each module describes what that project type does",
+      "ask_next": [
+        "Do you have examples of each kind of defect, or mostly good parts?",
+        "Is the thing to check a defect, or printed characters?"
+      ]
+    },
+    "classification": {
+      "modules": ["image-classification"],
+      "summary": "Image Classification project",
+      "start_hint": "2.1 Project Setup",
+      "ask_next": ["Which classes will you use (at least two)?", "Will the model run on the line PC (ONNX) or the edge box (TensorRT)?"]
+    },
+    "classification-folder": {
+      "modules": ["image-classification"],
+      "summary": "Image Classification, importing from a folder (one subfolder per class)",
+      "start_hint": "2.2 Importing Images, Option A",
+      "ask_next": ["Are your images already sorted into one subfolder per class, named exactly like the classes?", "Will the model run on the line PC (ONNX) or the edge box (TensorRT)?"]
+    },
+    "classification-camera": {
+      "modules": ["image-classification"],
+      "summary": "Image Classification, capturing from the line camera",
+      "start_hint": "2.2 Importing Images, Option B",
+      "ask_next": ["How many classes? Number keys 1-9 assign them while capturing.", "Will the model run on the line PC (ONNX) or the edge box (TensorRT)?"]
+    },
+    "anomaly": {
+      "modules": ["anomaly-detection"],
+      "summary": "Anomaly Detection project",
+      "start_hint": "3.1 Project Setup",
+      "ask_next": ["Have you kept a few defective parts aside for validation?"]
+    },
+    "anomaly-folder": {
+      "modules": ["anomaly-detection"],
+      "summary": "Anomaly Detection, importing good parts from a folder",
+      "start_hint": "3.2 Importing Images, Option A",
+      "ask_next": ["Do you have at least 200 images of good parts?", "Have you kept a few defective parts aside for validation?"]
+    },
+    "anomaly-camera": {
+      "modules": ["anomaly-detection"],
+      "summary": "Anomaly Detection, capturing good parts from the line camera",
+      "start_hint": "3.2 Importing Images, Option B",
+      "ask_next": ["Can you capture during a normal production run? (capture pauses when the line stops)", "Have you kept a few defective parts aside for validation?"]
+    },
+    "ocr": {
+      "modules": ["text-reading-ocr"],
+      "summary": "Text Reading (OCR) project",
+      "start_hint": "4.1 Project Setup",
+      "ask_next": ["Which characters appear (e.g. A-Z and 0-9)?", "Is the font standard, or unusual?"]
+    },
+    "ocr-manual": {
+      "modules": ["text-reading-ocr"],
+      "summary": "Text Reading with manual annotation",
+      "start_hint": "4.2 Annotating Text, Method 1",
+      "ask_next": ["Which characters appear (e.g. A-Z and 0-9)?", "Do you have about 300 lines of text to annotate?"]
+    },
+    "ocr-assisted": {
+      "modules": ["text-reading-ocr"],
+      "summary": "Text Reading with assisted annotation (Propose, then correct)",
+      "start_hint": "4.2 Annotating Text, Method 2",
+      "ask_next": ["Which characters appear (e.g. A-Z and 0-9)?", "Do you have about 300 lines of text to annotate?"]
+    }
+  }
+}

@@ -183,7 +183,7 @@ export default function ManagePanel({
             <>
               <p>
                 Version <span className="mono">{kb.kb_version}</span> ·{" "}
-                {kb.source_format === "pageindex" ? "PageIndex" : "Markdown"}
+                {kb.source_format === "pageindex" ? "PageIndex" : kb.source_format === "semkb" ? "Knowledge-base folder" : "Markdown"}
                 {kb.created_at && ` · built ${new Date(kb.created_at).toLocaleDateString()}`}
               </p>
               <table className="table">

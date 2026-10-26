@@ -67,6 +67,9 @@ class Section:
     images: list[str] = field(default_factory=list)
     # what the export says about them: file name -> {"caption": ..., "description": ...}
     image_notes: dict[str, dict[str, str]] = field(default_factory=dict)
+    # sem-ai-kb knowledge bases (see kbfolder.py): the kb.json ids this node stands for, a section's
+    # "image-classification/03-importing-images" or a module's "module:image-classification"
+    kb_ids: list[str] = field(default_factory=list)
 
 
 @dataclass

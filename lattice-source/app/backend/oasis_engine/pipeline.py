@@ -62,6 +62,7 @@ CLARIFY_ALIKE = 0.5  # word overlap above which two sections are versions of the
 # rather than retried. Reasoning models count their thinking as output and need far larger caps.
 SELECT_MAX_TOKENS = 300
 ANSWER_MAX_TOKENS = 800
+KB_NOTES_CHARS = 1_500  # a small model reads the known gaps with every answer: kept short
 THINKING_MAX_TOKENS = 6000  # a step's cap once the model is seen thinking (config.REASONING_TOKENS)
 TOTAL_EXCERPT_CHARS = 16_000  # all excerpts together must fit the model's context (8k tokens)
 NOT_FOUND = "The documents don't cover this."
@@ -609,11 +610,20 @@ def _output(model_cls, mode: OutputMode):
 
 
 class Pipeline:
+    def _gaps(self) -> str:
+        """Known gaps of the knowledge base, for the answer prompt (empty for other bundles)."""
+        if not self.kb_notes:
+            return ""
+        return ("KNOWN GAPS (the documents do not give these; say so rather than guess):\n"
+                + self.kb_notes[:KB_NOTES_CHARS] + "\n\n")
+
     def __init__(self, docs: list[Doc], model: Model, *, output_mode: OutputMode = "native",
                  budget: RequestBudget | None = None, max_tokens: int = 2048,
                  select_max_tokens: int = SELECT_MAX_TOKENS, answer_max_tokens: int = ANSWER_MAX_TOKENS,
                  fast_path: bool = True, may_think: bool = False):
         self.docs = docs
+        # a sem-ai-kb knowledge base's known gaps (needs-review.md), given with every answer
+        self.kb_notes = ""
         # a model that thinks although asked not to: a step cut off at its cap is tried again with
         # room to think, and every step after it gets that room too
         self.may_think = may_think
@@ -1453,7 +1463,7 @@ class Pipeline:
         t = time.perf_counter()
         try:
             draft = await self._run(
-                self.answerer, f"DOCUMENTS:\n{descriptions}\n\nEXCERPTS:\n{excerpts}\n\nQUESTION: {asked}", shown,
+                self.answerer, f"DOCUMENTS:\n{descriptions}\n\nEXCERPTS:\n{excerpts}\n\n{self._gaps()}QUESTION: {asked}", shown,
                 on_partial=on_partial if progress else None)
         except Looping as loop:
             log.warning("answer stopped: the model kept repeating itself")
@@ -1473,7 +1483,7 @@ class Pipeline:
             asked = asked.replace(f"\n(Write the answer in {language}.)", "")
             try:
                 draft = await self._run(
-                    self.answerer, f"DOCUMENTS:\n{descriptions}\n\nEXCERPTS:\n{excerpts}\n\nQUESTION: {asked}", shown)
+                    self.answerer, f"DOCUMENTS:\n{descriptions}\n\nEXCERPTS:\n{excerpts}\n\n{self._gaps()}QUESTION: {asked}", shown)
             except (Looping, ProviderBusy):
                 pass
         seconds["answer"] = round(time.perf_counter() - t, 2)

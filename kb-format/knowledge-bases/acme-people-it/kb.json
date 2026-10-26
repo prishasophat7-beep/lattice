@@ -1,0 +1,299 @@
+{
+  "name": "Acme People & IT Knowledge Base",
+  "description": "Employee handbook, IT onboarding guide and security awareness training for Acme Corp employees.",
+  "source": {
+    "file": "sample_kb_acme_people_it.zip",
+    "generated_at": "2026-09-28T09:13:44.090215+00:00"
+  },
+  "modules": [
+    {
+      "id": "employee-handbook-2026",
+      "title": "Employee handbook 2026",
+      "pages": [
+        1,
+        3
+      ],
+      "source": "employee_handbook_2026.pdf",
+      "summary": "Welcomes new employees to Acme Corp and explains the purpose of the handbook. Shows the leadership team org chart and headcount by department. Covers core hours, paid time off by tenure, other leave types and remote work rules. Describes pay schedule, reviews and the main benefits including health, 401(k) match and learning budget. Summarizes expected behavior, anti-harassment rules, conflicts of interest and how to report concerns. Provides contacts for HR, IT, payroll, facilities and the emplo"
+    },
+    {
+      "id": "it-setup-guide",
+      "title": "It setup guide",
+      "pages": null,
+      "source": "it_setup_guide.docx",
+      "summary": "Explains that laptops ship a week before start and what new hires receive by personal email. Shows the Acme single sign-on page and the steps for first sign-in and setting a password. Describes mandatory MFA using Okta Verify push or a hardware security key, with setup steps. Explains when the SecureConnect VPN is needed and shows the correct connection settings. Lists the standard applications installed for everyone and how to request additional software. Gives IT support channels and expected "
+    },
+    {
+      "id": "security-awareness-training-module2",
+      "title": "Security awareness training module2",
+      "pages": null,
+      "source": "security_awareness_training_module2.docx",
+      "summary": "Explains that phishing caused most security incidents at Acme in 2025 and why every employee is a target. Walks through an annotated fake payroll email and the four red flags it contains. Explains how to use the Report Phish button and what to do if you already clicked a link. Recommends passphrases, the password manager and never reusing work passwords. Includes a photo of the whiteboard from the August phishing workshop listing red flags and the next session date. Lists four quiz questions emp"
+    }
+  ],
+  "sections": [
+    {
+      "id": "employee-handbook-2026/01-employee-handbook-2026",
+      "module": "employee-handbook-2026",
+      "title": "Employee handbook 2026",
+      "pages": null,
+      "images": [],
+      "file": "modules/employee-handbook-2026/01-employee-handbook-2026.md",
+      "text": "Acme Corp Employee Handbook 2026 Effective 1 January 2026. Applies to all US-based employees."
+    },
+    {
+      "id": "employee-handbook-2026/02-welcome",
+      "module": "employee-handbook-2026",
+      "title": "1 Welcome",
+      "pages": [
+        1,
+        1
+      ],
+      "images": [],
+      "file": "modules/employee-handbook-2026/02-welcome.md",
+      "text": "Welcome to Acme Corp! Whether you joined this week or ten years ago, this handbook explains how we work together, what you can expect from us and what we expect from you. It does not replace your employment agreement; where the two differ, your agreement applies. Acme builds workflow software used by more than 4,000 companies. We have about 300 employees across offices in Austin, Toronto and Lisbon, plus a growing remote team.",
+      "summary": "Welcomes new employees to Acme Corp and explains the purpose of the handbook."
+    },
+    {
+      "id": "employee-handbook-2026/03-our-values",
+      "module": "employee-handbook-2026",
+      "title": "1.1 Our Values",
+      "pages": [
+        1,
+        1
+      ],
+      "images": [],
+      "file": "modules/employee-handbook-2026/03-our-values.md",
+      "text": "Customers first - we start with the customer's problem, not our solution. Own it - if you see a problem, you own it until it is solved or handed off clearly. Be candid - give and ask for direct feedback, kindly. Sweat the craft - quality is everyone's job.",
+      "summary": "Lists Acme's four company values: customer obsession, ownership, candor and craft."
+    },
+    {
+      "id": "employee-handbook-2026/04-organization",
+      "module": "employee-handbook-2026",
+      "title": "2 Organization",
+      "pages": [
+        1,
+        1
+      ],
+      "images": [
+        "images/page_001_img1.png"
+      ],
+      "file": "modules/employee-handbook-2026/04-organization.md",
+      "text": "Acme is led by the CEO and four executives. Each department has a head who reports to one of these executives. The chart below shows the structure as of September 2026. Figure 1: Acme Corp leadership team and department headcount Up-to-date team information, including managers and office locations, is always available in the People directory in Workday.",
+      "summary": "Shows the leadership team org chart and headcount by department."
+    },
+    {
+      "id": "employee-handbook-2026/05-working-hours-and-leave",
+      "module": "employee-handbook-2026",
+      "title": "3 Working Hours and Leave",
+      "pages": [
+        2,
+        2
+      ],
+      "images": [
+        "images/page_002_img1.png"
+      ],
+      "file": "modules/employee-handbook-2026/05-working-hours-and-leave.md",
+      "text": "Our core collaboration hours are 10:00 to 15:00 in your local time zone. Outside of those hours, you are free to organize your day as works best for you and your team. Figure 2: Paid time off allowance increases with years of service Leave type Allowance Notes Paid time off (PTO) 18-27 days/year Based on tenure; up to 5 days carry over Company holidays 11 days/year Published each December Sick leave 10 days/year No doctor's note needed for up to 3 consecutive days Parental leave 16 weeks, fully paid For all parents, within 12 months of birth or adoption Bereavement Up to 10 days Depending on relationship Volunteer day 2 days/year For registered non-profits",
+      "summary": "Covers core hours, paid time off by tenure, other leave types and remote work rules."
+    },
+    {
+      "id": "employee-handbook-2026/06-remote-work",
+      "module": "employee-handbook-2026",
+      "title": "3.1 Remote Work",
+      "pages": [
+        2,
+        2
+      ],
+      "images": [],
+      "file": "modules/employee-handbook-2026/06-remote-work.md",
+      "text": "Employees who live within 50 km of an office work from the office at least two days per week (Tuesday and Thursday are team days). Fully remote roles are approved by the department head. All employees receive a one-time USD 750 home office stipend and USD 50 per month for internet costs.",
+      "summary": "Explains the hybrid policy of 2 office days per week, fully remote eligibility and the home office stipend."
+    },
+    {
+      "id": "employee-handbook-2026/07-compensation-and-benefits",
+      "module": "employee-handbook-2026",
+      "title": "4 Compensation and Benefits",
+      "pages": [
+        2,
+        3
+      ],
+      "images": [],
+      "file": "modules/employee-handbook-2026/07-compensation-and-benefits.md",
+      "text": "Employees are paid semi-monthly on the 15th and last business day of each month. Compensation is reviewed once a year in March, based on performance and market data. Benefit Details Health, dental, vision Acme pays 90% of premiums for employees and 75% for dependents 401(k) 100% match on the first 4% of salary, vesting immediately Learning budget USD 1,500 per year for courses, books and conferences Wellness USD 60 per month for gym, apps or classes Life and disability 2x salary life insurance; short and long-term disability Equity Stock options for all full-time employees, 4-year vesting with 1-year cliff",
+      "summary": "Describes pay schedule, reviews and the main benefits including health, 401(k) match and learning budget."
+    },
+    {
+      "id": "employee-handbook-2026/08-code-of-conduct",
+      "module": "employee-handbook-2026",
+      "title": "5 Code of Conduct",
+      "pages": [
+        3,
+        3
+      ],
+      "images": [],
+      "file": "modules/employee-handbook-2026/08-code-of-conduct.md",
+      "text": "We expect everyone to treat colleagues, customers and partners with respect. Harassment and discrimination of any kind are not tolerated. Disclose any potential conflict of interest to your manager and HR. Do not accept gifts worth more than USD 100 from customers or vendors. Protect confidential information, including customer data and unreleased product plans. Report concerns to your manager, HR, or anonymously via the EthicsLine (ethics.acme-corp.com).",
+      "summary": "Summarizes expected behavior, anti-harassment rules, conflicts of interest and how to report concerns."
+    },
+    {
+      "id": "employee-handbook-2026/09-getting-help",
+      "module": "employee-handbook-2026",
+      "title": "6 Getting Help",
+      "pages": [
+        3,
+        3
+      ],
+      "images": [],
+      "file": "modules/employee-handbook-2026/09-getting-help.md",
+      "text": "Topic Contact Hours HR questions people@acme-corp.com / #ask-people Mon-Fri 9:00-17:00 IT help desk ext. 4357 (HELP) / #it-help 24/7 for urgent issues Payroll payroll@acme-corp.com Mon-Fri 9:00-17:00 Facilities #facilities Office hours Employee Assistance Program 1-800-555-0199 24/7, confidential",
+      "summary": "Provides contacts for HR, IT, payroll, facilities and the employee assistance program."
+    },
+    {
+      "id": "it-setup-guide/01-it-setup-guide",
+      "module": "it-setup-guide",
+      "title": "It setup guide",
+      "pages": null,
+      "images": [],
+      "file": "modules/it-setup-guide/01-it-setup-guide.md",
+      "text": "IT Setup Guide for New Employees Owner: Acme IT & Security. Last updated 15 September 2026."
+    },
+    {
+      "id": "it-setup-guide/02-before-your-first-day",
+      "module": "it-setup-guide",
+      "title": "Before Your First Day",
+      "pages": null,
+      "images": [],
+      "file": "modules/it-setup-guide/02-before-your-first-day.md",
+      "text": "Your laptop (MacBook Pro 14\" or Dell XPS 15, depending on your role) ships to your home address 5 business days before your start date. You will receive an email at your personal address with your Acme username and a one-time activation link, valid for 72 hours.",
+      "summary": "Explains that laptops ship a week before start and what new hires receive by personal email."
+    },
+    {
+      "id": "it-setup-guide/03-signing-in",
+      "module": "it-setup-guide",
+      "title": "Signing In",
+      "pages": null,
+      "images": [
+        "images/page_000_img1.png"
+      ],
+      "file": "modules/it-setup-guide/03-signing-in.md",
+      "text": "All Acme applications use single sign-on (SSO). The sign-in page looks like the screenshot below. Always check that the address bar shows login.acme-corp.com before entering your password. Figure 1: Acme single sign-on page 1. Open the activation link from your welcome email. 2. Create a password of at least 14 characters. Passphrases are encouraged. 3. Sign in at login.acme-corp.com with firstname.lastname@acme-corp.com. 4. Continue to set up multi-factor authentication (next section).",
+      "summary": "Shows the Acme single sign-on page and the steps for first sign-in and setting a password."
+    },
+    {
+      "id": "it-setup-guide/04-multi-factor-authentication",
+      "module": "it-setup-guide",
+      "title": "Multi-Factor Authentication",
+      "pages": null,
+      "images": [],
+      "file": "modules/it-setup-guide/04-multi-factor-authentication.md",
+      "text": "Multi-factor authentication (MFA) is mandatory. You can use Okta Verify on your phone, or a YubiKey that IT provides on request. SMS codes are not allowed. 1. Install Okta Verify from the App Store or Google Play. 2. On the MFA setup screen, choose Okta Verify and scan the QR code. 3. Approve the test push notification. 4. Optional: register a YubiKey as a backup factor.",
+      "summary": "Describes mandatory MFA using Okta Verify push or a hardware security key, with setup steps."
+    },
+    {
+      "id": "it-setup-guide/05-connecting-to-vpn",
+      "module": "it-setup-guide",
+      "title": "Connecting to VPN",
+      "pages": null,
+      "images": [
+        "images/page_000_img2.png"
+      ],
+      "file": "modules/it-setup-guide/05-connecting-to-vpn.md",
+      "text": "Most tools are available directly over the internet through SSO. You need the Acme SecureConnect VPN only for internal tools such as the build servers, the finance data warehouse and staging environments. SecureConnect is pre-installed on your laptop; the correct settings are shown below. Figure 2: SecureConnect connection settings Setting Value Server address vpn.acme-corp.com Protocol IKEv2 / IPsec Port 4500 Authentication SAML SSO + Okta Verify Split tunneling Enabled (corporate subnets only)",
+      "summary": "Explains when the SecureConnect VPN is needed and shows the correct connection settings."
+    },
+    {
+      "id": "it-setup-guide/06-software-catalog",
+      "module": "it-setup-guide",
+      "title": "Software Catalog",
+      "pages": null,
+      "images": [],
+      "file": "modules/it-setup-guide/06-software-catalog.md",
+      "text": "Application Used for How to get it Slack Chat and announcements Pre-installed Google Workspace Email, calendar, docs Web, via SSO Zoom Video meetings Pre-installed 1Password Password manager Pre-installed; team vaults assigned by manager Jira and Confluence Tickets and documentation Web, via SSO GitHub Enterprise Source code (engineering) Request in #it-help Figma Design Request in #it-help To request other software, open a ticket in the IT portal. Requests are reviewed by Security within 2 business days.",
+      "summary": "Lists the standard applications installed for everyone and how to request additional software."
+    },
+    {
+      "id": "it-setup-guide/07-getting-support",
+      "module": "it-setup-guide",
+      "title": "Getting Support",
+      "pages": null,
+      "images": [],
+      "file": "modules/it-setup-guide/07-getting-support.md",
+      "text": "Post in #it-help on Slack or call extension 4357 (HELP). The help desk responds within 30 minutes during business hours. For a lost or stolen laptop, call immediately at any time so the device can be locked remotely.",
+      "summary": "Gives IT support channels and expected response times."
+    },
+    {
+      "id": "security-awareness-training-module2/01-security-awareness-training-module2",
+      "module": "security-awareness-training-module2",
+      "title": "Security awareness training module2",
+      "pages": null,
+      "images": [],
+      "file": "modules/security-awareness-training-module2/01-security-awareness-training-module2.md",
+      "text": "Security Awareness Training - Module 2: Phishing Required for all employees. Estimated time: 20 minutes."
+    },
+    {
+      "id": "security-awareness-training-module2/02-why-phishing-matters",
+      "module": "security-awareness-training-module2",
+      "title": "Why Phishing Matters",
+      "pages": null,
+      "images": [],
+      "file": "modules/security-awareness-training-module2/02-why-phishing-matters.md",
+      "text": "Phishing is the most common way attackers get into companies. In 2025, 71% of the security incidents investigated at Acme started with a phishing email or message. Attackers do not only target executives: anyone with access to email, Slack or customer data is a target.",
+      "summary": "Explains that phishing caused most security incidents at Acme in 2025 and why every employee is a target."
+    },
+    {
+      "id": "security-awareness-training-module2/03-anatomy-of-a-phishing-email",
+      "module": "security-awareness-training-module2",
+      "title": "Anatomy of a Phishing Email",
+      "pages": null,
+      "images": [
+        "images/page_000_img3.png"
+      ],
+      "file": "modules/security-awareness-training-module2/03-anatomy-of-a-phishing-email.md",
+      "text": "The example below was sent to 40 Acme employees in August 2026. Six people clicked the link; one entered their password before reporting it. The annotations point out the warning signs. Figure 1: Annotated phishing email impersonating the payroll team Look-alike domain: acme-c0rp-hr.com uses a zero instead of the letter o. Urgency and threats: 'within 24 HOURS' and 'delayed payment' are designed to rush you. Suspicious link: the link goes to acme-payroll-verify.co, not an acme-corp.com address. Generic greeting and typos: 'Dear Employee' and 'Departmnet'.",
+      "summary": "Walks through an annotated fake payroll email and the four red flags it contains."
+    },
+    {
+      "id": "security-awareness-training-module2/04-reporting-suspicious-messages",
+      "module": "security-awareness-training-module2",
+      "title": "Reporting Suspicious Messages",
+      "pages": null,
+      "images": [],
+      "file": "modules/security-awareness-training-module2/04-reporting-suspicious-messages.md",
+      "text": "1. Do not click links, open attachments or reply. 2. Click the Report Phish button in Gmail (or forward to phish@acme-corp.com). 3. If you already clicked or entered your password, call the IT help desk at ext. 4357 immediately. 4. Security will reply within 1 hour to let you know if the message was safe. You will never get in trouble for reporting a message, even if it turns out to be legitimate.",
+      "summary": "Explains how to use the Report Phish button and what to do if you already clicked a link."
+    },
+    {
+      "id": "security-awareness-training-module2/05-password-hygiene",
+      "module": "security-awareness-training-module2",
+      "title": "Password Hygiene",
+      "pages": null,
+      "images": [],
+      "file": "modules/security-awareness-training-module2/05-password-hygiene.md",
+      "text": "Use a unique passphrase of at least 14 characters for your Acme account. Store all other passwords in 1Password. Never reuse your Acme password on another site. IT will never ask you for your password or an MFA code.",
+      "summary": "Recommends passphrases, the password manager and never reusing work passwords."
+    },
+    {
+      "id": "security-awareness-training-module2/06-workshop-notes",
+      "module": "security-awareness-training-module2",
+      "title": "Workshop Notes",
+      "pages": null,
+      "images": [
+        "images/page_000_img4.png"
+      ],
+      "file": "modules/security-awareness-training-module2/06-workshop-notes.md",
+      "text": "The whiteboard below was captured at the end of the in-person workshop in Austin on 26 August 2026. Figure 2: Whiteboard from the phishing workshop",
+      "summary": "Includes a photo of the whiteboard from the August phishing workshop listing red flags and the next session date."
+    },
+    {
+      "id": "security-awareness-training-module2/07-knowledge-check",
+      "module": "security-awareness-training-module2",
+      "title": "Knowledge Check",
+      "pages": null,
+      "images": [],
+      "file": "modules/security-awareness-training-module2/07-knowledge-check.md",
+      "text": "1. Name two red flags in the example payroll email. 2. What should you do first if you entered your password on a phishing page? 3. True or false: IT may ask for your MFA code to fix your account. 4. Where is the Report Phish button?",
+      "summary": "Lists four quiz questions employees must answer to complete the module."
+    }
+  ]
+}

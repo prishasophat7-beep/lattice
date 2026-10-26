@@ -328,7 +328,7 @@ _DESCRIPTION_PART = re.compile(rf"\**\b({_LABEL_NAMES})\**\s*:\s*\**")
 # read in full where the picture is up to this length; a longer one (a screenshot described element by
 # element, 2,000 characters each) by its scene and the words on it: a 478-picture manual's steps were
 # lost among descriptions of toolbars (Frontier manual, 19 Oct 2026)
-BRIEF_DESCRIPTION_CHARS = 400
+BRIEF_DESCRIPTION_CHARS = 1000  # TaskFlow descriptions are 447-579 characters; at 400 "Overdue 3" was cut
 
 
 def _plain_description(text: str) -> str:
@@ -470,4 +470,7 @@ def load(root: Path, source_format: str) -> list[Doc]:
         return load_markdown(root)
     if source_format == "export":
         return load_export(root)
+    if source_format == "semkb":  # a sem-ai-kb folder (kb.json, modules/, ...): see kbfolder.py
+        from .kbfolder import load_semkb
+        return load_semkb(root)
     raise KnowledgeBaseError(f"Unknown knowledge-base format {source_format!r}")

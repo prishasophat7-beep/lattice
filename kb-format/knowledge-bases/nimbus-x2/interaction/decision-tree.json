@@ -1,0 +1,50 @@
+{
+  "start": "document",
+  "nodes": {
+    "document": {
+      "ask": "Which document is your question about?",
+      "options": [
+        {
+          "label": "X2 hardware design spec",
+          "next": "result:x2-hardware-design-spec"
+        },
+        {
+          "label": "X2 installation and user guide",
+          "next": "result:x2-installation-and-user-guide"
+        },
+        {
+          "label": "Firmware release notes v3 2",
+          "next": "result:firmware-release-notes-v3-2"
+        },
+        {
+          "label": "Something else",
+          "next": "open"
+        }
+      ]
+    }
+  },
+  "resolve": {},
+  "results": {
+    "x2-hardware-design-spec": {
+      "modules": [
+        "x2-hardware-design-spec"
+      ],
+      "summary": "X2 hardware design spec",
+      "ask_next": []
+    },
+    "x2-installation-and-user-guide": {
+      "modules": [
+        "x2-installation-and-user-guide"
+      ],
+      "summary": "X2 installation and user guide",
+      "ask_next": []
+    },
+    "firmware-release-notes-v3-2": {
+      "modules": [
+        "firmware-release-notes-v3-2"
+      ],
+      "summary": "Firmware release notes v3 2",
+      "ask_next": []
+    }
+  }
+}

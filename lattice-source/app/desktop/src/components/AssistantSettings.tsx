@@ -300,6 +300,17 @@ function RemoteFields({
         Reasoning model (thinks before answering; gets more room for it)
       </label>
       <label className="field">
+        <span>Context window (tokens)</span>
+        <input
+          type="number"
+          min={0}
+          step={1024}
+          value={conn.context_tokens || ""}
+          placeholder="ask the server (e.g. 32768)"
+          onChange={(e) => change({ context_tokens: Math.max(0, parseInt(e.target.value, 10) || 0) })}
+        />
+      </label>
+      <label className="field">
         <span>Structured replies</span>
         <select
           value={conn.output_mode}

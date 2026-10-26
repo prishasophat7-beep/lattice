@@ -5,7 +5,7 @@ description = "Offline vectorless-RAG engine for the Oasis assembly-line assista
 requires-python = ">=3.11"
 dependencies = [
     "pydantic>=2.10",
-    "pydantic-ai-slim[openai]>=2.40",
+    "pydantic-ai-slim[openai]>=2.40,<2.60",  # 2.60 changes validation retries (FIXES-TODO #11)
     "fastapi>=0.115",
     "uvicorn[standard]>=0.30",
     "httpx>=0.27",

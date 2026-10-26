@@ -16,7 +16,8 @@ from __future__ import annotations
 
 import re
 
-_NUM = r"\d{1,3}(?:,\d{3})+(?:\.\d+)?|\d*\.\d+|\d+"
+# "9,20,000" (Indian grouping: lakh, crore) before "1,016.50"
+_NUM = r"\d{1,2}(?:,\d{2})+,\d{3}(?:\.\d+)?|\d{1,3}(?:,\d{3})+(?:\.\d+)?|\d*\.\d+|\d+"
 # Scales and units whose meaning changes the figure; synonyms map to one canonical form.
 _UNITS = {
     "%": "%", "percent": "%", "per cent": "%", "percentage points": "pp", "percentage point": "pp",
@@ -147,18 +148,23 @@ def unverified_numbers(answer: str, sources: str, question: str = "", computed: 
                 or _computed(number, results)):
             checked += _values(number, unit)
         else:
-            open_.append((number, m.group(0).strip()))
+            open_.append((number, m.group(0).strip(), unit))
     # one step of arithmetic on the answer's own checked figures: "an increase of 73" between 697
     # and 770, "10% of 38 is 3.8"; the answer has few figures, so a made-up one rarely matches
+    # ... and the answer's own written calculations whose every figure is checked: "9,20,000 x 3% =
+    # 27,600", then "27,600 + 11,700 + 9,750 = 49,050" (a penalty worked out over three orders was
+    # flagged as not in the document: DeepSeek, 26 Oct)
+    shown_sums = _equations(body)
     while open_:
-        found = [(n, s) for n, s in open_ if _computed(n, _one_step(checked))]
+        derived = _one_step(checked) + _checked_equations(shown_sums, checked)
+        found = [x for x in open_ if _computed(x[0], derived)]
         if not found:
             break
-        for n, _ in found:
-            checked.append(float(n))
+        for n, _, u in found:
+            checked += _values(n, u)
         open_ = [x for x in open_ if x not in found]
     out: list[str] = []
-    for _, shown in open_:
+    for _, shown, _ in open_:
         if shown not in out:
             out.append(shown)
     # codes are checked whole: "E18" when the manual only has E17 is wrong, "R7" in "the R7 guide" is not
@@ -179,6 +185,37 @@ def _codes(text: str) -> list[tuple[str, str]]:
 
 def codes_in(text: str) -> set[str]:
     return {code for code, _ in _codes(text or "")}
+
+
+_EQUATION = re.compile(r"((?:[(\s]*(?:" + _NUM + r")\s*%?[)\s]*[-+*/×x÷]\s*)+[(\s]*(?:" + _NUM + r")\s*%?[)\s]*)=\s*(?:INR|Rs\.?|₹|\$|€)?\s*(" + _NUM + r")")
+
+
+def _equations(text: str) -> list[tuple[str, float]]:
+    """(left side, value) of each calculation the text writes out ("7,80,000 × 1.5% = 11,700")."""
+    from .calc import CalcError, calculate
+    out = []
+    for m in _EQUATION.finditer(text):
+        left = m.group(1).replace("x", "*").strip()
+        try:
+            value = float(calculate(left))
+        except (CalcError, ValueError):
+            continue
+        out.append((left, value))
+    return out
+
+
+def _checked_equations(equations: list[tuple[str, float]], checked: list[float]) -> list[float]:
+    """The values of the written calculations whose every figure is already checked."""
+    known = {round(v, 6) for v in checked}
+    out = []
+    for left, value in equations:
+        figures = []
+        for f in re.finditer(r"(" + _NUM + r")\s*(%?)", left):
+            v = float(_normalize(f.group(1)))
+            figures.append(v / 100 if f.group(2) else v)
+        if figures and all(round(v, 6) in known or round(v * 100, 6) in known for v in figures):
+            out.append(value)
+    return out
 
 
 MAX_DERIVED_FROM = 24  # figures combined pairwise: beyond this, too much would match by chance

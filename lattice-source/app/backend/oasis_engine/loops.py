@@ -52,12 +52,21 @@ _FILLER = frozenset("a an the that this it is are was also too as well additiona
 _SENTENCE_END = re.compile(r"(?<=[.!?])\s+")
 
 
+_HEADING = re.compile(r"^\s*(?:#{1,6}\s+\S.*|[*_]{2}[^*_\n]{1,120}[*_]{2}:?|[^.!?\n]{1,80}:)\s*$")
+
+
 def without_repeated_sentences(text: str) -> str:
     """The text with each sentence said only once: a 0.8B wrote "Requests longer than 5 working days
     also require HOD approval." four times in a row (seen in the final test). Short sentences, and
     numbered steps whose words differ only in the number, are kept."""
     seen, said, lines = set(), [], []
     for line in text.split("\n"):
+        if _HEADING.match(line):
+            # a heading or label ("**For Firmware Update Failure (Error E-217):**", "### Part 2") names
+            # what follows; it repeats words said before by design. Dropped, part 2 of a two-part answer
+            # lost its label (4B test, 24 Oct)
+            lines.append(line)
+            continue
         kept, dropped = [], False
         for sentence in _SENTENCE_END.split(line):
             # the same words, whatever the punctuation or bold marks ("**HOD** approval." / "HOD approval")

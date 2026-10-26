@@ -48,7 +48,8 @@ def units(doc: Doc, nid: str, whole: bool = False) -> list[str]:
 
 # ── read ──
 
-def read_view(doc: Doc, nid: str, part: int = 1, around: str = "", whole: bool = False, ref_for=None) -> str:
+def read_view(doc: Doc, nid: str, part: int = 1, around: str = "", whole: bool = False, ref_for=None,
+              page_chars: int = READ_CHARS) -> str:
     """A section to read: its own text (a page of it), then its subsections by title and summary.
     around: the passages of the section and its subsections around these words instead.
     whole: the section with all its subsections (the old read). ref_for: node id -> the reference
@@ -59,12 +60,12 @@ def read_view(doc: Doc, nid: str, part: int = 1, around: str = "", whole: bool =
     if around.strip():
         return head + "\n" + passages(doc, nid, around)
     if whole or doc.kind == "pages":
-        text = doc.section_text(nid, 60_000)
+        text = doc.section_text(nid, max(60_000, page_chars * 4))
     else:
         text = s.own_text.strip()
-    pages = max(1, -(-len(text) // READ_CHARS))
+    pages = max(1, -(-len(text) // page_chars))
     part = min(max(1, part), pages)
-    piece = text[(part - 1) * READ_CHARS: part * READ_CHARS]
+    piece = text[(part - 1) * page_chars: part * page_chars]
     out = [head, piece or "(no text of its own: see its subsections)"]
     if part < pages:
         out.append(f"[part {part} of {pages}: continue with part={part + 1}]")

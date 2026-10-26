@@ -46,6 +46,25 @@ What the desktop app does on import:
   `images/` are not used.
 - Only the index, the Markdown and the images are stored; `*.structured.json` is not used.
 
+## sem-ai-kb knowledge bases
+
+A knowledge-base folder built by `kb-format/tools/build-kb.mjs` (layout: `kb-format/STRUCTURE.md`) can
+be imported as it is: zip the folder (`kb.json` at the top of the zip, or inside one folder) and use
+**Import bundle...**. Lattice recognises its `kb.json` by its `modules` and `sections` lists (Lattice's
+own manifest of that name has `format_version`), keeps only the knowledge base's files (`kb.json`,
+`*.md`, `interaction/decision-tree.json`, `images/`, `pages/`), and installs it as source format
+`semkb`. The version name is the knowledge base's name plus a hash of its files, so the same folder
+imported again is the same version and any change makes a new one.
+
+- Each `source` file named in `kb.json` becomes one document; its modules are its top headings and
+  their sections the next level (`backend/oasis_engine/kbfolder.py`).
+- Pages, summaries and pictures come from `kb.json` and the section files; a picture's description
+  (`Image description:`) is read in full where the picture is.
+- `interaction/decision-tree.json` drives the question back on a first question
+  (`backend/oasis_engine/interview.py`); `vague.py` still applies when the tree has nothing to ask.
+- `AGENTS.md` (without its "How to use the KB" and "Maintenance" sections) and `needs-review.md` are
+  given to the chat model; the known gaps also go with every Manuals-mode answer.
+
 ## Layout
 
 ```

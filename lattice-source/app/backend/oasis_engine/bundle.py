@@ -9,6 +9,10 @@ On the desktop, bundles are unpacked side by side and one is active:
     <data_dir>/versions/<kb_version>/   kb.json, content/, originals/
     <data_dir>/active.json              {"kb_version": "..."}
 
+A sem-ai-kb knowledge base (kb.json with "modules" and "sections", modules/, AGENTS.md, ...; see
+kbfolder.py), zipped with kb.json at its top or inside one folder, is imported too: import_semkb()
+keeps its files under content/ with a manifest written here (source_format "semkb").
+
 The web platform's own export (page_index.json + one bundle zip per document with its Markdown and
 images: "bundle_zip": "files/<name>.bundle.zip", or in earlier exports "files": {"markdown": ...,
 "bundle": ...}) is imported too: import_export() unpacks it into the same layout with a kb.json
@@ -35,6 +39,8 @@ from typing import Literal
 from pydantic import BaseModel, Field, ValidationError
 
 from .loaders import EXPORT_INDEX, IMAGE_NAME, SKIPPED, KnowledgeBaseError, export_doc_id, export_title, load
+from .kbfolder import (KB_INDEX, KEPT as KB_KEPT, KEPT_SET as KB_SET_KEPT, MASTER_INDEX, doc_id_for as semkb_doc_id,
+                       is_document_index, is_master_index, is_semkb_index)
 from .models import Doc
 
 MANIFEST = "kb.json"
@@ -58,7 +64,7 @@ class DocEntry(BaseModel):
 class Manifest(BaseModel):
     format_version: Literal[1]
     kb_version: str = Field(pattern=r"^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$")
-    source_format: Literal["pageindex", "markdown", "export"]
+    source_format: Literal["pageindex", "markdown", "export", "semkb"]
     created_at: str | None = None
     pageindex_version: str | None = None
     files: dict[str, str]  # bundle-relative path -> lowercase sha256 hex
@@ -307,6 +313,114 @@ def import_export(zf: zipfile.ZipFile, names: set[str], data_dir: Path, make_act
     return manifest
 
 
+def _semkb_root(zf: zipfile.ZipFile, names: set[str]) -> str | None:
+    """The folder prefix ("" or "inspectai-studio/") of a zipped sem-ai-kb knowledge base, if this is one."""
+    for candidate in sorted((n for n in names if n == KB_INDEX or (n.endswith("/" + KB_INDEX) and n.count("/") == 1)),
+                            key=len):
+        try:
+            if is_semkb_index(json.loads(zf.read(candidate))):
+                return candidate[: -len(KB_INDEX)]
+        except (ValueError, KeyError):
+            continue
+    return None
+
+
+def _kbset_root(zf: zipfile.ZipFile, names: set[str]) -> str | None:
+    """The folder prefix of a zipped knowledge base of document folders (convert_kb.py): a
+    page_index.json whose documents name folders that hold a document kb.json."""
+    for candidate in sorted((n for n in names if n == MASTER_INDEX or (n.endswith("/" + MASTER_INDEX) and n.count("/") == 1)),
+                            key=len):
+        prefix = candidate[: -len(MASTER_INDEX)]
+        try:
+            master = json.loads(zf.read(candidate))
+        except (ValueError, KeyError):
+            continue
+        if not is_master_index(master):
+            continue
+        for d in master["documents"]:
+            folder = str(d.get("folder") or "").strip("/")
+            member = f"{prefix}{folder}/{KB_INDEX}"
+            if folder and member in names:
+                try:
+                    if is_document_index(json.loads(zf.read(member))):
+                        return prefix
+                except ValueError:
+                    continue
+    return None
+
+
+def import_semkb(zf: zipfile.ZipFile, names: set[str], prefix: str, data_dir: Path, make_active: bool,
+                 *, several: bool = False) -> Manifest:
+    """Unpack a sem-ai-kb knowledge base under content/, keeping only the files it is made of.
+    several: a knowledge base of document folders under page_index.json (convert_kb.py)."""
+    if several:
+        master = json.loads(zf.read(prefix + MASTER_INDEX))
+        index = {"name": master.get("kb_name") or "kb", "source": {"generated_at": master.get("generated_at")},
+                 "modules": []}
+        keep = KB_SET_KEPT
+    else:
+        index = json.loads(zf.read(prefix + KB_INDEX))
+        keep = KB_KEPT
+    name = re.sub(r"[^a-z0-9]+", "-", str(index.get("name") or "kb").lower()).strip("-")[:40] or "kb"
+    # the same knowledge base imported again is the same version; any change to it makes a new one
+    content_hash = hashlib.sha256()
+    kept = sorted(n for n in names if n.startswith(prefix) and keep.fullmatch(n[len(prefix):]))
+    for n in kept:
+        content_hash.update(n[len(prefix):].encode() + b"\0" + hashlib.sha256(zf.read(n)).digest())
+    kb_version = f"{name}-{content_hash.hexdigest()[:10]}"
+    final = _versions(data_dir) / kb_version
+    if final.exists():
+        if make_active:
+            activate(data_dir, kb_version)
+        return read_manifest(final)
+    partial = final.with_name(final.name + ".partial")
+    shutil.rmtree(partial, ignore_errors=True)
+    files: dict[str, str] = {}
+    try:
+        for n in kept:
+            info = zf.getinfo(n)
+            if info.file_size > MAX_NESTED_BYTES:
+                raise BundleError(f"{n} is too large")
+            rel = f"{CONTENT}/{n[len(prefix):]}"
+            data = zf.read(n)
+            dest = partial.joinpath(*PurePosixPath(rel).parts)
+            dest.parent.mkdir(parents=True, exist_ok=True)
+            dest.write_bytes(data)
+            files[rel] = hashlib.sha256(data).hexdigest()
+        if several:
+            documents = []
+            for d in master["documents"]:
+                folder = str(d.get("folder") or "").strip("/")
+                member = f"{prefix}{folder}/{KB_INDEX}"
+                if not folder or member not in names:
+                    continue
+                doc = json.loads(zf.read(member)).get("document") or {}
+                src = str(doc.get("filename") or doc.get("title") or folder)
+                documents.append(DocEntry(id=semkb_doc_id(src), title=src, description=doc.get("summary") or None))
+        else:
+            sources = list(dict.fromkeys(str(m.get("source") or index.get("name") or "manual")
+                                         for m in index["modules"] if isinstance(m, dict)))
+            documents = [DocEntry(id=semkb_doc_id(src), title=src,
+                                  description=next((str(m["summary"]) for m in index["modules"]
+                                                    if isinstance(m, dict) and m.get("source") == src and m.get("summary")), None))
+                         for src in sources]
+        manifest = Manifest(format_version=1, kb_version=kb_version, source_format="semkb",
+                            created_at=(index.get("source") or {}).get("generated_at") if isinstance(index.get("source"), dict) else None,
+                            files=files, documents=documents)
+        (partial / MANIFEST).write_text(manifest.model_dump_json(indent=1), encoding="utf-8")
+        try:
+            load_version(partial)
+        except KnowledgeBaseError as e:
+            raise BundleError(f"The knowledge base does not load: {e}") from e
+        _replace(partial, final)
+    except BaseException:
+        shutil.rmtree(partial, ignore_errors=True)
+        raise
+    if make_active:
+        activate(data_dir, kb_version)
+    return manifest
+
+
 def import_bundle(zip_path: Path, data_dir: Path, *, make_active: bool = True) -> Manifest:
     zip_path, data_dir = Path(zip_path), Path(data_dir)
     if not zip_path.is_file():
@@ -325,8 +439,14 @@ def import_bundle(zip_path: Path, data_dir: Path, *, make_active: bool = True) -
         names = {_safe_member(i.filename) for i in infos}
         if len(names) != len(infos):
             raise BundleError("Bundle contains duplicate file names")
+        kbset = _kbset_root(zf, names) if MANIFEST not in names else None
+        if kbset is not None:  # document folders under page_index.json (convert_kb.py)
+            return import_semkb(zf, names, kbset, data_dir, make_active, several=True)
         if MANIFEST not in names and EXPORT_INDEX in names:  # the web platform's own export format
             return import_export(zf, names, data_dir, make_active)
+        semkb = _semkb_root(zf, names)
+        if semkb is not None:  # a sem-ai-kb folder, zipped
+            return import_semkb(zf, names, semkb, data_dir, make_active)
         if MANIFEST not in names:
             raise BundleError(f"Bundle has no {MANIFEST} (and no {EXPORT_INDEX})")
         try:

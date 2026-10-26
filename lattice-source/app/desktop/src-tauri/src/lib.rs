@@ -35,7 +35,17 @@ use std::time::Duration;
 use serde::Serialize;
 use tauri::{AppHandle, Manager, RunEvent};
 
+/// The built-in model's context window: enough for an 8 GB laptop. A PC with a GPU and a large
+/// model (Qwen 3.5 27B) sets OASIS_LLM_CONTEXT (e.g. 32768); the engine reads the size from the
+/// server's /props and gives Chat mode whole sections when there is room.
 const LLM_CONTEXT: &str = "8192";
+
+fn llm_context() -> String {
+    std::env::var("OASIS_LLM_CONTEXT")
+        .ok()
+        .filter(|v| v.parse::<u32>().map_or(false, |n| (2048..=1_048_576).contains(&n)))
+        .unwrap_or_else(|| LLM_CONTEXT.to_string())
+}
 const LLM_CACHE_RAM_MIB: &str = "512";
 /// Embedding models read at most 2048 tokens; a section is embedded in one batch.
 const EMBED_CONTEXT: &str = "2048";
@@ -486,7 +496,7 @@ fn spawn_server(app: &AppHandle, s: &Services, kind: Kind, append_log: bool) {
             .args(["-np", "1", "--no-webui"]);
         match kind {
             Kind::Language => {
-                cmd.args(["-c", LLM_CONTEXT, "--cache-ram", LLM_CACHE_RAM_MIB])
+                cmd.args(["-c", &llm_context(), "--cache-ram", LLM_CACHE_RAM_MIB])
                     // No chain-of-thought: on a CPU it multiplies answer time, and it breaks the engine's
                     // JSON replies. Qwen3.5 and Granite 4.2 both think by default in llama.cpp.
                     .args(["--reasoning", "off"]);

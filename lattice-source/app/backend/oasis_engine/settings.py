@@ -49,6 +49,8 @@ class Settings:
                 # raise both for reasoning models, whose thinking counts as output
                 select_max_tokens=int(env("OASIS_SELECT_MAX_TOKENS", "300")),
                 answer_max_tokens=int(env("OASIS_ANSWER_MAX_TOKENS", "800")),
+                # the built-in llama-server's -c (the desktop app passes it); 0: asked from the server
+                context_tokens=int(env("OASIS_LLM_CONTEXT", "0")),
             ),
             api_token=env("OASIS_API_TOKEN") or None,
             daily_budget=int(budget) if budget else None,

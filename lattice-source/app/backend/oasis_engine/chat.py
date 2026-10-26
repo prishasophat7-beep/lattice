@@ -67,7 +67,51 @@ WRAP_UP_TOTAL = 16_000
 RETRY_DELAY_S = 2.0
 DOCUMENTS_LISTED = 40     # in the instructions; list_documents shows the rest
 LIST_RESULTS = 50
-ATTACHMENT_PREVIEW_CHARS = 4_000  # of a file the question is about, given with the question
+ATTACHMENT_PREVIEW_CHARS = 4_000
+KB_GUIDE_CHARS = 6_000  # a knowledge base's AGENTS.md, given with the instructions
+KB_NOTES_CHARS = 3_000  # its needs-review.md  # of a file the question is about, given with the question
+LARGE_CONTEXT = 16_000  # tokens: a model with at least this much room reads whole sections
+REFERENCE_CONTEXT = 32_768  # the room the large-model sizes below are set for; they scale with it
+MAX_SCALED_CONTEXT = 131_072
+
+
+@dataclass(frozen=True)
+class Room:
+    """How much the chat model is given at once, from its context window. A small model on this
+    computer (8,192 tokens) gets passages and one page of a section at a time; a large model (Qwen
+    3.5 27B on an office server, 32k+) gets the best sections whole, long pages and long outlines, so
+    that it answers from the documents' own full text (cut-off excerpts made models guess: a delivery
+    table read 2 of its 7 rows, 22 Oct test)."""
+    large: bool = False
+    search_results: int = SEARCH_RESULTS
+    read_chars: int = 4_000          # one page of read_section
+    whole_chars: int = WHOLE_CHARS   # a section this short is read with its subsections
+    presearch_hits: int = 3
+    passage_hits: int = 2            # best matches given with the question as text, not a snippet
+    passage_chars: int = 900
+    outline_chars: int = 8_000
+    history_answer_chars: int = HISTORY_ANSWER_CHARS
+    guide_chars: int = KB_GUIDE_CHARS
+    notes_chars: int = KB_NOTES_CHARS
+    wrap_chars: int = WRAP_UP_CHARS
+    wrap_total: int = WRAP_UP_TOTAL
+    attachment_preview: int = ATTACHMENT_PREVIEW_CHARS
+    max_requests: int = 12
+    wrap_up_at: int = 9
+
+
+def room_for(context_tokens: int, tier: str) -> Room:
+    """The Room for a model with this context window (0: not known) on this tier."""
+    if tier == "local":
+        return Room(max_requests=MAX_REQUESTS["local"], wrap_up_at=WRAP_UP_AT["local"])
+    if context_tokens and context_tokens < LARGE_CONTEXT:
+        return Room()  # a small server model: passages, as on this computer
+    scale = min(max(context_tokens or REFERENCE_CONTEXT, LARGE_CONTEXT), MAX_SCALED_CONTEXT) / REFERENCE_CONTEXT
+    return Room(large=True, search_results=8, read_chars=min(int(12_000 * scale), 40_000), whole_chars=6_000,
+                presearch_hits=4, passage_hits=3, passage_chars=min(int(8_000 * scale), 24_000),
+                outline_chars=min(int(16_000 * scale), 40_000), history_answer_chars=4_000,
+                guide_chars=10_000, notes_chars=6_000, wrap_chars=8_000, wrap_total=min(int(40_000 * scale), 100_000),
+                attachment_preview=min(int(12_000 * scale), 40_000), max_requests=16, wrap_up_at=13)
 
 CHAT_INSTRUCTIONS = """\
 You are Lattice, an assistant for the staff of a manufacturing company.
@@ -100,6 +144,14 @@ documents have no pictures when such lines are there. When a request fits severa
 it is unclear which one is meant, call ask_which_manual; when a first question fits several \
 different things within the documents ("what is the limit?"), call ask_user with the meanings - \
 otherwise answer the likeliest meaning and say what you assumed.
+
+To find your way: pick the document from the list below (its description, codes and related \
+documents), then its section (manual_outline maps a document), then read the section itself. A \
+question that spans documents (a cause in a report, the fix in a guide) needs each part looked up in \
+the document that covers it, each cited.
+
+When asked how to fix, handle or do something, give the documents' own procedure first: its steps, \
+the exact button and menu names, codes and article numbers, in order; plans or background come after.
 
 In a follow-up, look up what the new request needs (a reason, a date, a figure) instead of relying \
 only on earlier answers.
@@ -361,8 +413,13 @@ def without_quoted_tail(answer: str, read: str) -> str:
         answer = answer.rstrip()[:m.start(1)].rstrip()
 
 
+_DOLLAR_MATH = re.compile(r"\$(?!\s)([^$\n]{1,160}?[=×*/÷\\^][^$\n]{0,160}?)(?<!\s)\$")
+
+
 def plain_math(answer: str) -> str:
-    """LaTeX the chat window cannot show ("\\[ \\frac{1,560}{13} = 120 \\text{ tickets} \\]") as plain text."""
+    """LaTeX the chat window cannot show ("\\[ \\frac{1,560}{13} = 120 \\text{ tickets} \\]") as plain text.
+    "$14 / 7 = 2$" (single dollars around a calculation) loses its dollars; "$5 to $10" keeps them."""
+    answer = _DOLLAR_MATH.sub(lambda m: m.group(1), answer)
     if "\\" not in answer:
         return answer
     text = re.sub(r"\\d?frac\{([^{}]*)\}\{([^{}]*)\}", r"\1 / \2", answer)
@@ -427,6 +484,8 @@ def normalize_refs(answer: str) -> str:
                     lambda m: " ".join(f"[{r}]" for r in re.findall(r"S\d+", m.group(1))), answer)
     answer = re.sub(r"[【［]\s*(S\d+)[^】］\n]{0,40}[】］]", r"[\1]", answer)
     answer = re.sub(r"\[\s*(S\d+)\s*†[^\]\n]{0,40}\]", r"[\1]", answer)
+    # "[S3, Part 2, Clause 2.1]", "[S2: Delivery record]": a reference with where in it, as [S3]
+    answer = re.sub(r"\[\s*(S\d+)\s*[,;:](?!\s*S\d)[^\]\n]{1,60}\]", r"[\1]", answer)
     answer = re.sub(r"\b[Ss]ections?\s+(S\d+(?:\s*(?:,|and|&)\s*S\d+)*)\b",
                     lambda m: " ".join(f"[{r}]" for r in re.findall(r"S\d+", m.group(1))), answer)
     return re.sub(r"[\[(]\s*(S\d+(?:\s*(?:,|;|/|and|&)\s*S\d+)*)\s*[\])]",
@@ -449,6 +508,65 @@ def _transient(e: Exception) -> bool:
     if isinstance(e, ModelHTTPError):
         return e.status_code == 429 or e.status_code >= 500
     return isinstance(e, (ModelAPIError, openai.APIError))
+
+
+_CODE = re.compile(r"\b(?=[A-Z0-9-]*\d)[A-Z][A-Z0-9]*(?:[-.][A-Z0-9]+)+\b|\b[A-Z]{1,3}\d{1,4}[A-Z]?\b")
+SUBJECT_CODES = 4
+SUBJECT_SECTIONS = 3
+SUBJECT_CHARS = 4_000
+
+
+def subject_of(docs: list[Doc], hits, part: str) -> str:
+    """What a question's first part is about, for a later part that says "it": the codes its best
+    sections name most ("E-217 R7"), else the part's own words. The spike's summary names only R7;
+    its ticket-volume section names E-217 too, which finds 4.3 Firmware Update Failure."""
+    asked = set(_CODE.findall(part))
+    counts: dict[str, int] = {}
+    for h in hits[:SUBJECT_SECTIONS]:
+        for code in _CODE.findall(docs[h.doc_index].section_text(h.node_id, SUBJECT_CHARS)):
+            if code not in asked and not re.fullmatch(r"Q[1-4]|H[12]", code):
+                counts[code] = counts.get(code, 0) + 1
+    codes = sorted(counts, key=lambda c: -counts[c])
+    return " ".join(codes[:SUBJECT_CODES]) or part
+
+
+MAX_REFERENCED = 2
+_REFERS_TO = re.compile(r"\b(?:sections?|chapters?|clauses?|see|in|under|per|of|from)\s+(\d{1,2}(?:\.\d{1,2}){0,2})(?![\d.]*\d)(?!\s*(?:%|days?|weeks?|months?|years?|hours?|h\b|mm|bar|kg|°))",
+                        re.IGNORECASE)
+
+
+def referenced_sections(doc: Doc, nid: str) -> list[str]:
+    """The sections of the same document that this section names by number ("the rules in 5.2",
+    "according to chapter 7"), in the order named."""
+    text = doc.section_text(nid, 20_000)
+    by_number = {}
+    for other, sec in doc.sections.items():
+        m = re.match(r"^\s*(?:chapter\s+)?(\d{1,2}(?:\.\d{1,2}){0,2})\.?\s", sec.title, re.IGNORECASE)
+        if m:
+            by_number.setdefault(m.group(1), other)
+    own = re.match(r"^\s*(\d{1,2}(?:\.\d{1,2}){0,2})", doc.sections[nid].title)
+    out = []
+    for m in _REFERS_TO.finditer(text):
+        target = by_number.get(m.group(1))
+        if target and target != nid and target not in out and not (own and m.group(1) == own.group(1)):
+            out.append(target)
+    return out
+
+
+DRAWN_SHARE = 0.5  # of an answer's words found in what was read, for it to be drawn from it
+
+
+def drawn_from(answer: str, read: str) -> bool:
+    """Most of the answer's own words are in what was read: written from it ("Click Propose, then
+    correct the mistakes"), not from general knowledge ("Torque is a turning force")."""
+    words = {w for w in tokenize(re.sub(r"\[\d+\]", " ", answer)) if len(w) > 3 and w not in _ASKING}
+    return bool(words) and len(words & set(tokenize(read))) >= DRAWN_SHARE * len(words)
+
+
+def whole_section(doc: Doc, nid: str, chars: int) -> str:
+    """A section with its subsections, up to `chars` (a large model's own reading)."""
+    text = doc.section_text(nid, chars + 1)
+    return text if len(text) <= chars else text[:chars].rsplit(" ", 1)[0] + " [... continues: read_section part=2]"
 
 
 @dataclass
@@ -478,6 +596,10 @@ class ChatDeps:
     tier: str = "remote"
     notes: list[dict] = field(default_factory=list)  # the evidence ledger: {claim, ref, quote, ok}
     first_turn: bool = True  # the conversation's first question (only then may it ask back)
+    # a sem-ai-kb knowledge base: its AGENTS.md (how to behave) and needs-review.md (known gaps)
+    kb_guide: str = ""
+    kb_notes: str = ""
+    room: Room = field(default_factory=Room)
 
     def in_scope(self) -> list[int]:
         return [i for i in range(len(self.docs)) if self.allowed is None or i in self.allowed]
@@ -553,11 +675,11 @@ def _citation(docs: list[Doc], di: int, nid: str) -> Citation:
                     locator=doc.locator(nid), pages=pages)
 
 
-def history_messages(turns: list[tuple[str, str]]) -> list[ModelMessage]:
+def history_messages(turns: list[tuple[str, str]], answer_chars: int = HISTORY_ANSWER_CHARS) -> list[ModelMessage]:
     """Earlier (question, answer) turns as chat messages, oldest first."""
     out: list[ModelMessage] = []
     for q, a in turns[-HISTORY_TURNS:]:
-        a = a if len(a) <= HISTORY_ANSWER_CHARS else a[:HISTORY_ANSWER_CHARS] + " ..."
+        a = a if len(a) <= answer_chars else a[:answer_chars] + " ..."
         out += [ModelRequest(parts=[UserPromptPart(content=q)]), ModelResponse(parts=[TextPart(content=a)])]
     return out
 
@@ -577,7 +699,7 @@ class _WrapUp(WrapperToolset[ChatDeps]):
     listed, since a model that calls one anyway must not fail."""
 
     async def call_tool(self, name, tool_args, ctx: RunContext[ChatDeps], tool):
-        if ctx.run_step >= WRAP_UP_AT.get(ctx.deps.tier, WRAP_UP_AT["remote"]) and name not in _ALWAYS:
+        if ctx.run_step >= ctx.deps.room.wrap_up_at and name not in _ALWAYS:
             return WRAP_UP_REPLY
         return await super().call_tool(name, tool_args, ctx, tool)
 
@@ -612,11 +734,19 @@ class ChatAgent:
             if not docs:
                 return base + _about_yourself(d.model_label, d.documents_only) + "\n\nNo documents are available for the selected station."
             lines = [f"- {doc.display_title}" + (f": {doc.description}" if doc.description else "")
+                     + (f" [codes: {doc.meta['codes']}]" if doc.meta.get("codes") else "")
+                     + (f" [related: {doc.meta['related']}]" if doc.meta.get("related") else "")
                      for doc in docs[:DOCUMENTS_LISTED]]
             more = (f"\n(and {len(docs) - DOCUMENTS_LISTED} more; list_documents lists them)"
                     if len(docs) > DOCUMENTS_LISTED else "")
             text = (base + (LEDGER if d.tier == "remote" else "") + _about_yourself(d.model_label, d.documents_only) +
                     "\n\nDocuments installed on this machine:\n" + "\n".join(lines) + more)
+            if d.kb_guide:  # the knowledge base's own instructions; the rules above still come first
+                text += ("\n\nInstructions that come with this knowledge base (follow them where they do not "
+                         "conflict with the rules above):\n" + d.kb_guide[:d.room.guide_chars])
+            if d.kb_notes:
+                text += ("\n\nKnown gaps in the documents (do not guess these; say the documents do not cover "
+                         "them):\n" + d.kb_notes[:d.room.notes_chars])
             if d.attachments:
                 text += "\n\nFiles the user attached to this conversation (read them with read_attachment):\n" + \
                         "\n".join(f"- {a.id}: {a.name} ({a.chars:,} characters)" for a in d.attachments)
@@ -634,7 +764,7 @@ class ChatAgent:
             Returns the best-matching sections, each with a reference to read or cite."""
             d = ctx.deps
             hits = [h for h in d.index.search(query) if d.allowed is None or h.doc_index in d.allowed]
-            return d.hit_rows(hits[:SEARCH_RESULTS], query) or [
+            return d.hit_rows(hits[:d.room.search_results], query) or [
                 {"result": "No matching sections. Try other words" +
                            (", or semantic_search" if d.semantic is not None and d.semantic.ready else "") +
                            ", or answer without the documents."}]
@@ -644,7 +774,7 @@ class ChatAgent:
             """Search the company documents by meaning: finds sections worded differently from the
             query (synonyms, descriptions, other languages). Returns sections with references."""
             d = ctx.deps
-            hits = await d.semantic.search(query, d.allowed, SEARCH_RESULTS)
+            hits = await d.semantic.search(query, d.allowed, d.room.search_results)
             return d.hit_rows(hits, query) or [{"result": "Nothing close in meaning. Try search_manuals."}]
 
         async def when_remote(ctx: RunContext[ChatDeps], tool: ToolDefinition) -> ToolDefinition | None:
@@ -665,9 +795,10 @@ class ChatAgent:
             doc = d.docs[di]
             # a short section is read with its subsections at once: one step fewer, which matters
             # most on a model on this computer
-            whole = whole or (not around and part == 1 and len(doc.section_text(nid, WHOLE_CHARS + 1)) <= WHOLE_CHARS)
+            limit = d.room.whole_chars
+            whole = whole or (not around and part == 1 and len(doc.section_text(nid, limit + 1)) <= limit)
             view = read_view(doc, nid, part=part, around=around, whole=whole,
-                             ref_for=lambda child: d.ref_for(di, child))
+                             ref_for=lambda child: d.ref_for(di, child), page_chars=d.room.read_chars)
             d.read[ref] = view
             return f"[{ref}] {view}{_replaced_note(d, di, nid)}"
 
@@ -816,7 +947,7 @@ class ChatAgent:
                 # figures quoted from a summary are not "unverified"
                 d.shown.setdefault(ref, " ".join(doc.sections[nid].summary.split()))
                 return ref
-            return doc_map(doc, ref_for, chars=OUTLINE_CHARS)
+            return doc_map(doc, ref_for, chars=d.room.outline_chars)
 
         @self.tools.tool
         def find_pictures(ctx: RunContext[ChatDeps], topic: str = "") -> str:
@@ -893,10 +1024,10 @@ class ChatAgent:
         written = ""  # the current reply's text so far, checked for a repeating block
         run = None
         try:
-            async with self.agent.iter(prompt, deps=deps, message_history=history_messages(context),
+            async with self.agent.iter(prompt, deps=deps,
+                                       message_history=history_messages(context, deps.room.history_answer_chars),
                                        model_settings=run_settings(),
-                                       usage_limits=UsageLimits(request_limit=MAX_REQUESTS.get(
-                                           deps.tier, MAX_REQUESTS["remote"]))) as run:
+                                       usage_limits=UsageLimits(request_limit=deps.room.max_requests)) as run:
                 async for node in run:
                     if Agent.is_model_request_node(node):
                         if self.budget:  # every model call counts, not only the first
@@ -936,12 +1067,12 @@ class ChatAgent:
     async def _wrap_up(self, question: str, deps: ChatDeps) -> tuple[str, int, bool]:
         """The answer from what was read and noted, without tools: (answer, requests, cut off).
         Empty when nothing was gathered."""
-        gathered = [f"[{ref}] {text[:WRAP_UP_CHARS]}" for ref, text in deps.read.items()]
+        gathered = [f"[{ref}] {text[:deps.room.wrap_chars]}" for ref, text in deps.read.items()]
         gathered += [f"[{ref}] {text}" for ref, text in deps.shown.items() if ref not in deps.read]
         notes = [f"- {n['claim']} [{n['ref']}]: \"{n['quote']}\"" for n in deps.notes if n["ok"]]
         if not gathered and not notes:
             return "", 0, False
-        prompt = (f"QUESTION: {question}\n\nWhat was found in the documents:\n" + "\n\n".join(gathered)[:WRAP_UP_TOTAL]
+        prompt = (f"QUESTION: {question}\n\nWhat was found in the documents:\n" + "\n\n".join(gathered)[:deps.room.wrap_total]
                   + ("\n\nChecked facts:\n" + "\n".join(notes) if notes else "") +
                   "\n\nAnswer the question from this only, citing each fact with its reference in square "
                   "brackets ([S2]). For any part it does not answer, say in one sentence that the "
@@ -958,10 +1089,12 @@ class ChatAgent:
                   attachment_text: AttachmentReader | None = None, about: list[str] = (),
                   model_label: str = "", documents_only: bool = False, tier: str = "remote",
                   earlier: list[tuple[int, str]] = (), place: tuple[int, str] | None = None,
-                  picked: tuple[int, str] | None = None) -> AskResult:
+                  picked: tuple[int, str] | None = None, kb_guide: str = "", kb_notes: str = "",
+                  context_tokens: int = 0) -> AskResult:
         """about: ids of attached files this question is about; their text comes with the question.
         documents_only: no general-knowledge answers (a model too small to get them right).
         tier: "remote" (a large model on a server) or "local" (on this computer: fewer, larger steps).
+        context_tokens: the model's context window (0: not known), for how much it is given (Room).
         earlier: (doc index, node id) of the sections earlier answers in the conversation cited.
         place: (doc index, node id) of where the conversation is (see focus.py).
         picked: (doc index, node id) of the section the user picked after a question back."""
@@ -976,7 +1109,8 @@ class ChatAgent:
             deps = ChatDeps(docs=docs, index=index, allowed=allowed, find_pictures=find_pictures,
                             semantic=semantic, attachments=list(attachments or []), attachment_text=attachment_text,
                             about=set(about), model_label=model_label, documents_only=documents_only,
-                            tier=tier, first_turn=not context)
+                            tier=tier, first_turn=not context, kb_guide=kb_guide, kb_notes=kb_notes,
+                            room=room_for(context_tokens, tier))
             prompt = await self._with_presearch(question, deps, context or [], earlier, place, picked)
             # weather, news, prices today: no model here knows them, and any answer would be invented
             if LIVE_QUESTION.search(question) and not deps.attachments and not about_documents(deps):
@@ -1134,9 +1268,17 @@ class ChatAgent:
             note = next((n for n in map(partial_table_note, [*deps.read.values(), *deps.shown.values()]) if n), None)
             if note and not numbers_in(answer) <= numbers_in(note):
                 answer += f"\n\n*Note: the document includes only part of this table. It says: {note}*"
+        unsourced = (not documents_only and not general_part and not citations and not deps.files_used
+                     and not about_self and bool(deps.read) and about_documents(deps)
+                     and drawn_from(answer, "\n".join(deps.read.values())))
+        if unsourced:
+            # it read the documents and wrote no general-knowledge part, but named no source: an answer
+            # from the documents that forgot its markers, not a general answer (InspectAI "How do I
+            # annotate text?", Nimbus E2 were labelled general; 22 Oct test)
+            answer += "\n\n" + UNSOURCED_NOTE
         if cut_off:
             answer += "\n\n*(The answer was cut off.)*"
-        general = not documents_only and (general_part or not (citations or deps.files_used or about_self))
+        general = not documents_only and (general_part or not (citations or deps.files_used or about_self or unsourced))
         return AskResult(
             question=question, found=True, answer=answer, citations=citations, mode="chat",
             considered=[_citation(docs, *deps.refs[r]) for r in deps.read],
@@ -1170,14 +1312,15 @@ class ChatAgent:
         meant = follow_up([q for q, _ in context], question) if context else None
         question_as_asked, question = question, meant or question
         keyword = keyword_search(question)
-        hits = keyword[:PRESEARCH_HITS]
+        room = deps.room
+        hits = keyword[:room.presearch_hits]
         deps.keyword_top = keyword[0].score if keyword else 0.0
         if deps.semantic is not None and deps.semantic.ready:
-            meaning = await deps.semantic.search(question, deps.allowed, PRESEARCH_HITS)
+            meaning = await deps.semantic.search(question, deps.allowed, room.presearch_hits)
             # a failed search (the embedding server stopped) is no search: judged by keywords then
             deps.meaning_top = (meaning[0].score if meaning else 0.0) if deps.semantic.status == "ready" else None
             if meaning:
-                hits = union(keyword, meaning, limit=PRESEARCH_HITS)
+                hits = union(keyword, meaning, limit=room.presearch_hits)
         if context and _REFERS_BACK.search(question):
             # "Is it paid?" is about the documents when the question it follows was
             joined = f"{context[-1][0]} {question}"
@@ -1188,9 +1331,16 @@ class ChatAgent:
                 joined_meaning = await deps.semantic.search(joined, deps.allowed, 1)
                 deps.meaning_top = max(deps.meaning_top, joined_meaning[0].score if joined_meaning else 0.0)
         parts = question_parts(question)
-        for part in parts:  # "which packages ... and which leave ...": each part's own best sections
+        subject = ""
+        for k, part in enumerate(parts):  # "which packages ... and which leave ...": each part's own best sections
             seen = {(h.doc_index, h.node_id) for h in hits}
-            found = keyword_search(part)
+            # "... and how should agents fix it?": "it" is what the first part found ("the ticket spike
+            # in Q3" -> the R7 2.9.0 rollout, error E-217), so the codes of that part's best section go
+            # with the search (searched alone, it found Customer Feedback, not 4.3 Firmware Update Failure)
+            query = f"{part} {subject}" if k and subject and _REFERS_BACK.search(part) else part
+            found = keyword_search(query)
+            if k == 0 and found:
+                subject = subject_of(deps.docs, found, part)
             if deps.semantic is not None and deps.semantic.ready:
                 found = union(found, await deps.semantic.search(part, deps.allowed, PART_HITS), limit=PART_HITS)
             hits += [h for h in found if (h.doc_index, h.node_id) not in seen][:PART_HITS]
@@ -1200,13 +1350,17 @@ class ChatAgent:
             seen = {(h.doc_index, h.node_id) for h in hits}
             hits += [h for h in followed if (h.doc_index, h.node_id) not in seen][:CONTEXT_HITS]
         lines = []
-        # a model on this computer gets the passages themselves for the best matches, not a snippet
-        # to read in full first: often it can answer in one call (each call takes minutes)
-        passage_for = PASSAGE_HITS if deps.tier == "local" else 0
+        # the best matches come as text, not a snippet to read in full first: a model on this computer
+        # gets their passages (often it can answer in one call, and each call takes minutes); a large
+        # model the sections whole. Given only snippets, a server model guessed rather than read on
+        # (DeepSeek: 2 of 7 delivery rows, invented orders; 22 Oct test)
         for i, h in enumerate(hits):
             doc = deps.docs[h.doc_index]
             ref = deps.ref_for(h.doc_index, h.node_id)
-            if i < passage_for:
+            if i < room.passage_hits and room.large:
+                text = whole_section(doc, h.node_id, room.passage_chars)
+                deps.read[ref] = text
+            elif i < room.passage_hits:
                 text = passages(doc, h.node_id, question, chars=PASSAGE_CHARS, most=2)
                 deps.read[ref] = text
             else:
@@ -1214,14 +1368,30 @@ class ChatAgent:
                 deps.shown[ref] = text
             lines.append(f"[{ref}] {doc.display_title} > {' > '.join(doc.short_path(h.node_id))} "
                          f"({doc.locator(h.node_id)}): {text}{_replaced_note(deps, h.doc_index, h.node_id)}")
-        # a model on this computer ranks and subtracts table rows unreliably: what the question ranks,
-        # adds up or compares, worked out in code from the best matches' tables (as in Manuals mode)
+        # a section given whole that points elsewhere ("covered only if the warm-up rules in 5.2 have been
+        # followed"): the section it names comes too, so the answer has its steps (DeepSeek answered
+        # "follow the warm-up program" without O9000, which only 5.2 states; 26 Oct)
+        if room.large:
+            given = {(h.doc_index, h.node_id) for h in hits}
+            for i, h in enumerate(hits[:room.passage_hits]):
+                for nid in referenced_sections(deps.docs[h.doc_index], h.node_id)[:MAX_REFERENCED]:
+                    if (h.doc_index, nid) in given:
+                        continue
+                    given.add((h.doc_index, nid))
+                    doc = deps.docs[h.doc_index]
+                    ref = deps.ref_for(h.doc_index, nid)
+                    text = whole_section(doc, nid, room.passage_chars)
+                    deps.read[ref] = text
+                    lines.append(f"[{ref}] {doc.display_title} > {' > '.join(doc.short_path(nid))} "
+                                 f"({doc.locator(nid)}), which [{deps.ref_for(h.doc_index, h.node_id)}] refers to: {text}")
+        # models rank and subtract table rows unreliably (a small one often, a server model too: DeepSeek
+        # read 2 of 7 delivery rows): what the question ranks, adds up or compares, worked out in code
+        # from the best matches' tables (as in Manuals mode)
         table_lines = []
-        if deps.tier == "local":
-            for h in hits[:PASSAGE_HITS + 1]:
-                found_lines, values = table_highlights(deps.docs[h.doc_index], h.node_id, question)
-                table_lines += [f"[{deps.ref_for(h.doc_index, h.node_id)}] {line}" for line in found_lines]
-                deps.computed += values
+        for h in hits[:room.passage_hits + 1]:
+            found_lines, values = table_highlights(deps.docs[h.doc_index], h.node_id, question)
+            table_lines += [f"[{deps.ref_for(h.doc_index, h.node_id)}] {line}" for line in found_lines]
+            deps.computed += values
         earlier_lines = []
         for di, nid in earlier:  # the sections earlier answers came from: the same refs as then
             if deps.allowed is not None and di not in deps.allowed:
@@ -1240,7 +1410,7 @@ class ChatAgent:
             if att.id not in deps.about or deps.attachment_text is None:
                 continue
             text = deps.attachment_text(att.id) or ""
-            piece = text[:ATTACHMENT_PREVIEW_CHARS]
+            piece = text[:room.attachment_preview]
             deps.worked.append(piece)
             deps.files_used.append(att.name)
             more = (f"\n[... {len(text) - len(piece):,} more characters: read_attachment {att.id} "
@@ -1270,8 +1440,9 @@ class ChatAgent:
         if earlier_lines:
             prompt += "\n\n---\nSections the earlier answers in this conversation came from:\n" + "\n".join(earlier_lines)
         if lines:
-            prompt += (f"\n\n---\nPossibly relevant document sections (read a section in full before "
-                       f"relying on it):\n" + "\n".join(lines))
+            prompt += ("\n\n---\nPossibly relevant document sections" +
+                       (f" (the first {min(room.passage_hits, len(lines))} in full; read the others before relying on them)"
+                        if room.large else " (read a section in full before relying on it)") + ":\n" + "\n".join(lines))
         if table_lines:
             prompt += "\n\n---\nWorked out from the tables (exact):\n" + "\n".join(table_lines)
         return prompt

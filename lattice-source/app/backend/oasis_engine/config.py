@@ -35,6 +35,9 @@ class Connection(BaseModel):
     api_key: str = Field(default="", max_length=500)
     output_mode: Literal["native", "prompted", "tool"] = "native"
     reasoning: bool = False  # the model thinks before answering (larger token caps)
+    # the model's context window in tokens (the server's --max-model-len / -c); 0: asked from the
+    # server when it says, else assumed (8,192 on this computer, 32,768 on a server)
+    context_tokens: int = Field(default=0, ge=0, le=2_000_000)
 
 
 class EmbeddingConnection(BaseModel):
@@ -76,7 +79,8 @@ def effective_llm(local: LLMConfig, connection: Connection) -> LLMConfig:
     if connection.kind != "remote":
         return local
     cfg = LLMConfig(base_url=connection.base_url.rstrip("/"), model=connection.model,
-                    api_key=connection.api_key, output_mode=connection.output_mode)
+                    api_key=connection.api_key, output_mode=connection.output_mode,
+                    context_tokens=connection.context_tokens)
     if connection.reasoning:
         for key, value in REASONING_TOKENS.items():
             setattr(cfg, key, value)
