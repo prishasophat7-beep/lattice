@@ -359,6 +359,12 @@ def import_semkb(zf: zipfile.ZipFile, names: set[str], prefix: str, data_dir: Pa
             master = {}
         master = master if isinstance(master, dict) else {}
         name = master.get("kb_name") or prefix.strip("/") or "kb"
+        # the parser names a knowledge base of several files after its first one ("DataVault_Pro_UserManual"
+        # for three manuals): the folder's name says more
+        stems = {re.sub(r"\.[A-Za-z0-9]{2,5}$", "", str(d.get("filename") or "")) for d in master.get("documents") or []
+                 if isinstance(d, dict)}
+        if prefix.strip("/") and len(stems) > 1 and name in stems:
+            name = prefix.strip("/")
         index = {"name": name, "source": {"generated_at": master.get("generated_at")}, "modules": []}
         keep = KB_SET_KEPT
     else:

@@ -121,8 +121,13 @@ def _entry_for(folder: str, entries: list[dict]) -> dict:
     for e in entries:
         if str(e.get("folder") or "").strip("/") == folder:
             return e
+    # by file name, whatever the folder naming: "b-acd-e1sem-ai-frontier70-usermanual-1" for
+    # "[B-ACD-E1]SEM_AI_Frontier7.0_UserManual (1).docx", "datavault-pro-usermanual" for
+    # "DataVault_Pro_UserManual.docx" (another tool's folders, 26 Oct)
+    bare = lambda t: re.sub(r"[^a-z0-9]", "", re.sub(r"\.[A-Za-z0-9]{2,5}$", "", t).lower())  # noqa: E731
     for e in entries:
-        if _slug(str(e.get("filename") or e.get("title") or "")) == folder:
+        name = str(e.get("filename") or e.get("relative_path") or e.get("title") or "")
+        if name and (_slug(name) == folder or bare(name) == bare(folder)):
             return e
     return {}
 
@@ -133,8 +138,10 @@ def document_folders(root: Path, master: dict) -> list[tuple[Path, dict]]:
     entries = master.get("documents") or []
     order = []
     for e in entries:
-        named = str(e.get("folder") or "").strip("/") or _slug(str(e.get("filename") or ""))
-        if named in master["folders"] and named not in order:
+        named = str(e.get("folder") or "").strip("/")
+        if named not in master["folders"]:
+            named = next((f for f in master["folders"] if _entry_for(f, [e])), "")
+        if named and named not in order:
             order.append(named)
     order += [f for f in master["folders"] if f not in order]
     out = []
