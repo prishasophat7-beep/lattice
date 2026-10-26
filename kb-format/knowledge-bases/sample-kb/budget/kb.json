@@ -1,0 +1,82 @@
+{
+  "format_version": 2,
+  "generator": "convert_kb.py",
+  "document": {
+    "id": "budget",
+    "title": "Budget",
+    "filename": "budget.xlsx",
+    "type": "xlsx",
+    "pages": null,
+    "summary": "FY2027 camera team budget workbook with summary, equipment detail and notes sheets."
+  },
+  "modules": [
+    {
+      "id": "sheet-summary",
+      "title": "Sheet: Summary",
+      "heading": "Sheet: Summary",
+      "pages": null,
+      "sections": [
+        "sheet-summary/01-sheet-summary"
+      ]
+    },
+    {
+      "id": "sheet-equipment-detail",
+      "title": "Sheet: Equipment Detail",
+      "heading": "Sheet: Equipment Detail",
+      "pages": null,
+      "sections": [
+        "sheet-equipment-detail/01-sheet-equipment-detail"
+      ]
+    },
+    {
+      "id": "sheet-notes",
+      "title": "Sheet: Notes",
+      "heading": "Sheet: Notes",
+      "pages": null,
+      "sections": [
+        "sheet-notes/01-sheet-notes"
+      ]
+    }
+  ],
+  "sections": [
+    {
+      "id": "sheet-summary/01-sheet-summary",
+      "module": "sheet-summary",
+      "title": "Sheet: Summary",
+      "pages": null,
+      "file": "modules/sheet-summary/01-sheet-summary.md",
+      "images": [
+        "images/page_000_img1.png"
+      ],
+      "text": "Category FY2026 Actual ($K) FY2027 Budget ($K) Change Personnel 389 412 +5.9% Equipment 142 186 +31.0% Software 71 74 +4.2% Travel 45 38 -15.6% Contingency 50 60 +20.0% Total 697 770 +10.5%"
+    },
+    {
+      "id": "sheet-equipment-detail/01-sheet-equipment-detail",
+      "module": "sheet-equipment-detail",
+      "title": "Sheet: Equipment Detail",
+      "pages": null,
+      "file": "modules/sheet-equipment-detail/01-sheet-equipment-detail.md",
+      "images": [],
+      "text": "Item Qty Unit Cost ($K) Total ($K) Optical test bench 1 92 92 ISO 12233 chart set 4 3.5 14 Light booth (D65/A/TL84) 2 28 56 Thermal chamber rental 6 4 24"
+    },
+    {
+      "id": "sheet-notes/01-sheet-notes",
+      "module": "sheet-notes",
+      "title": "Sheet: Notes",
+      "pages": null,
+      "file": "modules/sheet-notes/01-sheet-notes.md",
+      "images": [],
+      "text": "Equipment increase is driven by the new optical bench required for EVT2 validation. Travel is reduced because supplier audits will be held remotely."
+    }
+  ],
+  "images": [
+    {
+      "path": "images/page_000_img1.png",
+      "original": "figure_000.png",
+      "section": "sheet-summary/01-sheet-summary",
+      "page": null,
+      "description": null,
+      "description_from": null
+    }
+  ]
+}

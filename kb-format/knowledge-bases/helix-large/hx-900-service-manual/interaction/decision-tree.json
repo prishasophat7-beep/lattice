@@ -1,0 +1,588 @@
+{
+  "_draft": true,
+  "start": "start",
+  "nodes": {
+    "group-1": {
+      "ask": "Which of these is it?",
+      "options": [
+        {
+          "label": "Overview",
+          "next": "result:overview"
+        },
+        {
+          "label": "Axis Drive maintenance",
+          "next": "result:axis-drive-maintenance"
+        },
+        {
+          "label": "Spindle Cartridge service",
+          "next": "result:spindle-cartridge-service"
+        },
+        {
+          "label": "Coolant Pump maintenance",
+          "next": "result:coolant-pump-maintenance"
+        },
+        {
+          "label": "Tool Changer service",
+          "next": "result:tool-changer-service"
+        },
+        {
+          "label": "Way Covers maintenance",
+          "next": "result:way-covers-maintenance"
+        },
+        {
+          "label": "Lubrication Unit service",
+          "next": "result:lubrication-unit-service"
+        },
+        {
+          "label": "None of these",
+          "next": "start"
+        }
+      ]
+    },
+    "group-2": {
+      "ask": "Which of these is it?",
+      "options": [
+        {
+          "label": "Hydraulic Clamp maintenance",
+          "next": "result:hydraulic-clamp-maintenance"
+        },
+        {
+          "label": "Chip Conveyor service",
+          "next": "result:chip-conveyor-service"
+        },
+        {
+          "label": "Probe System maintenance",
+          "next": "result:probe-system-maintenance"
+        },
+        {
+          "label": "Electrical Cabinet service",
+          "next": "result:electrical-cabinet-service"
+        },
+        {
+          "label": "Control Panel maintenance",
+          "next": "result:control-panel-maintenance"
+        },
+        {
+          "label": "Pneumatic Unit service",
+          "next": "result:pneumatic-unit-service"
+        },
+        {
+          "label": "Door Interlock maintenance",
+          "next": "result:door-interlock-maintenance"
+        },
+        {
+          "label": "None of these",
+          "next": "start"
+        }
+      ]
+    },
+    "group-3": {
+      "ask": "Which of these is it?",
+      "options": [
+        {
+          "label": "Rotary Table service",
+          "next": "result:rotary-table-service"
+        },
+        {
+          "label": "Ballscrew maintenance",
+          "next": "result:ballscrew-maintenance"
+        },
+        {
+          "label": "Linear Guide service",
+          "next": "result:linear-guide-service"
+        },
+        {
+          "label": "Encoder maintenance",
+          "next": "result:encoder-maintenance"
+        },
+        {
+          "label": "Servo Amplifier service",
+          "next": "result:servo-amplifier-service"
+        },
+        {
+          "label": "Chiller maintenance",
+          "next": "result:chiller-maintenance"
+        },
+        {
+          "label": "Mist Collector service",
+          "next": "result:mist-collector-service"
+        },
+        {
+          "label": "None of these",
+          "next": "start"
+        }
+      ]
+    },
+    "group-4": {
+      "ask": "Which of these is it?",
+      "options": [
+        {
+          "label": "Axis Drive maintenance",
+          "next": "result:axis-drive-maintenance-2"
+        },
+        {
+          "label": "Spindle Cartridge service",
+          "next": "result:spindle-cartridge-service-2"
+        },
+        {
+          "label": "Coolant Pump maintenance",
+          "next": "result:coolant-pump-maintenance-2"
+        },
+        {
+          "label": "Tool Changer service",
+          "next": "result:tool-changer-service-2"
+        },
+        {
+          "label": "Way Covers maintenance",
+          "next": "result:way-covers-maintenance-2"
+        },
+        {
+          "label": "Lubrication Unit service",
+          "next": "result:lubrication-unit-service-2"
+        },
+        {
+          "label": "Hydraulic Clamp maintenance",
+          "next": "result:hydraulic-clamp-maintenance-2"
+        },
+        {
+          "label": "None of these",
+          "next": "start"
+        }
+      ]
+    },
+    "group-5": {
+      "ask": "Which of these is it?",
+      "options": [
+        {
+          "label": "Chip Conveyor service",
+          "next": "result:chip-conveyor-service-2"
+        },
+        {
+          "label": "Probe System maintenance",
+          "next": "result:probe-system-maintenance-2"
+        },
+        {
+          "label": "Electrical Cabinet service",
+          "next": "result:electrical-cabinet-service-2"
+        },
+        {
+          "label": "Control Panel maintenance",
+          "next": "result:control-panel-maintenance-2"
+        },
+        {
+          "label": "Pneumatic Unit service",
+          "next": "result:pneumatic-unit-service-2"
+        },
+        {
+          "label": "Door Interlock maintenance",
+          "next": "result:door-interlock-maintenance-2"
+        },
+        {
+          "label": "Rotary Table service",
+          "next": "result:rotary-table-service-2"
+        },
+        {
+          "label": "None of these",
+          "next": "start"
+        }
+      ]
+    },
+    "group-6": {
+      "ask": "Which of these is it?",
+      "options": [
+        {
+          "label": "Ballscrew maintenance",
+          "next": "result:ballscrew-maintenance-2"
+        },
+        {
+          "label": "Linear Guide service",
+          "next": "result:linear-guide-service-2"
+        },
+        {
+          "label": "Encoder maintenance",
+          "next": "result:encoder-maintenance-2"
+        },
+        {
+          "label": "Servo Amplifier service",
+          "next": "result:servo-amplifier-service-2"
+        },
+        {
+          "label": "Chiller maintenance",
+          "next": "result:chiller-maintenance-2"
+        },
+        {
+          "label": "Mist Collector service",
+          "next": "result:mist-collector-service-2"
+        },
+        {
+          "label": "None of these",
+          "next": "start"
+        }
+      ]
+    },
+    "start": {
+      "ask": "Which part of HX-900 service manual is your question about?",
+      "options": [
+        {
+          "label": "Overview … Lubrication Unit service",
+          "next": "group-1"
+        },
+        {
+          "label": "Hydraulic Clamp maintenance … Door Interlock maintenance",
+          "next": "group-2"
+        },
+        {
+          "label": "Rotary Table service … Mist Collector service",
+          "next": "group-3"
+        },
+        {
+          "label": "Axis Drive maintenance … Hydraulic Clamp maintenance",
+          "next": "group-4"
+        },
+        {
+          "label": "Chip Conveyor service … Rotary Table service",
+          "next": "group-5"
+        },
+        {
+          "label": "Ballscrew maintenance … Mist Collector service",
+          "next": "group-6"
+        },
+        {
+          "label": "Something else",
+          "next": "open"
+        }
+      ]
+    }
+  },
+  "resolve": {},
+  "results": {
+    "overview": {
+      "modules": [
+        "overview"
+      ],
+      "summary": "Overview",
+      "start_hint": "overview/01-hx-900-horizontal-machining-center-service-manual",
+      "ask_next": []
+    },
+    "axis-drive-maintenance": {
+      "modules": [
+        "axis-drive-maintenance"
+      ],
+      "summary": "Axis Drive maintenance",
+      "start_hint": "axis-drive-maintenance/01-axis-drive-maintenance",
+      "ask_next": []
+    },
+    "spindle-cartridge-service": {
+      "modules": [
+        "spindle-cartridge-service"
+      ],
+      "summary": "Spindle Cartridge service",
+      "start_hint": "spindle-cartridge-service/01-spindle-cartridge-service",
+      "ask_next": []
+    },
+    "coolant-pump-maintenance": {
+      "modules": [
+        "coolant-pump-maintenance"
+      ],
+      "summary": "Coolant Pump maintenance",
+      "start_hint": "coolant-pump-maintenance/01-coolant-pump-maintenance",
+      "ask_next": []
+    },
+    "tool-changer-service": {
+      "modules": [
+        "tool-changer-service"
+      ],
+      "summary": "Tool Changer service",
+      "start_hint": "tool-changer-service/01-tool-changer-service",
+      "ask_next": []
+    },
+    "way-covers-maintenance": {
+      "modules": [
+        "way-covers-maintenance"
+      ],
+      "summary": "Way Covers maintenance",
+      "start_hint": "way-covers-maintenance/01-way-covers-maintenance",
+      "ask_next": []
+    },
+    "lubrication-unit-service": {
+      "modules": [
+        "lubrication-unit-service"
+      ],
+      "summary": "Lubrication Unit service",
+      "start_hint": "lubrication-unit-service/01-lubrication-unit-service",
+      "ask_next": []
+    },
+    "hydraulic-clamp-maintenance": {
+      "modules": [
+        "hydraulic-clamp-maintenance"
+      ],
+      "summary": "Hydraulic Clamp maintenance",
+      "start_hint": "hydraulic-clamp-maintenance/01-hydraulic-clamp-maintenance",
+      "ask_next": []
+    },
+    "chip-conveyor-service": {
+      "modules": [
+        "chip-conveyor-service"
+      ],
+      "summary": "Chip Conveyor service",
+      "start_hint": "chip-conveyor-service/01-chip-conveyor-service",
+      "ask_next": []
+    },
+    "probe-system-maintenance": {
+      "modules": [
+        "probe-system-maintenance"
+      ],
+      "summary": "Probe System maintenance",
+      "start_hint": "probe-system-maintenance/01-probe-system-maintenance",
+      "ask_next": []
+    },
+    "electrical-cabinet-service": {
+      "modules": [
+        "electrical-cabinet-service"
+      ],
+      "summary": "Electrical Cabinet service",
+      "start_hint": "electrical-cabinet-service/01-electrical-cabinet-service",
+      "ask_next": []
+    },
+    "control-panel-maintenance": {
+      "modules": [
+        "control-panel-maintenance"
+      ],
+      "summary": "Control Panel maintenance",
+      "start_hint": "control-panel-maintenance/01-control-panel-maintenance",
+      "ask_next": []
+    },
+    "pneumatic-unit-service": {
+      "modules": [
+        "pneumatic-unit-service"
+      ],
+      "summary": "Pneumatic Unit service",
+      "start_hint": "pneumatic-unit-service/01-pneumatic-unit-service",
+      "ask_next": []
+    },
+    "door-interlock-maintenance": {
+      "modules": [
+        "door-interlock-maintenance"
+      ],
+      "summary": "Door Interlock maintenance",
+      "start_hint": "door-interlock-maintenance/01-door-interlock-maintenance",
+      "ask_next": []
+    },
+    "rotary-table-service": {
+      "modules": [
+        "rotary-table-service"
+      ],
+      "summary": "Rotary Table service",
+      "start_hint": "rotary-table-service/01-rotary-table-service",
+      "ask_next": []
+    },
+    "ballscrew-maintenance": {
+      "modules": [
+        "ballscrew-maintenance"
+      ],
+      "summary": "Ballscrew maintenance",
+      "start_hint": "ballscrew-maintenance/01-ballscrew-maintenance",
+      "ask_next": []
+    },
+    "linear-guide-service": {
+      "modules": [
+        "linear-guide-service"
+      ],
+      "summary": "Linear Guide service",
+      "start_hint": "linear-guide-service/01-linear-guide-service",
+      "ask_next": []
+    },
+    "encoder-maintenance": {
+      "modules": [
+        "encoder-maintenance"
+      ],
+      "summary": "Encoder maintenance",
+      "start_hint": "encoder-maintenance/01-encoder-maintenance",
+      "ask_next": []
+    },
+    "servo-amplifier-service": {
+      "modules": [
+        "servo-amplifier-service"
+      ],
+      "summary": "Servo Amplifier service",
+      "start_hint": "servo-amplifier-service/01-servo-amplifier-service",
+      "ask_next": []
+    },
+    "chiller-maintenance": {
+      "modules": [
+        "chiller-maintenance"
+      ],
+      "summary": "Chiller maintenance",
+      "start_hint": "chiller-maintenance/01-chiller-maintenance",
+      "ask_next": []
+    },
+    "mist-collector-service": {
+      "modules": [
+        "mist-collector-service"
+      ],
+      "summary": "Mist Collector service",
+      "start_hint": "mist-collector-service/01-mist-collector-service",
+      "ask_next": []
+    },
+    "axis-drive-maintenance-2": {
+      "modules": [
+        "axis-drive-maintenance-2"
+      ],
+      "summary": "Axis Drive maintenance",
+      "start_hint": "axis-drive-maintenance-2/01-axis-drive-maintenance",
+      "ask_next": []
+    },
+    "spindle-cartridge-service-2": {
+      "modules": [
+        "spindle-cartridge-service-2"
+      ],
+      "summary": "Spindle Cartridge service",
+      "start_hint": "spindle-cartridge-service-2/01-spindle-cartridge-service",
+      "ask_next": []
+    },
+    "coolant-pump-maintenance-2": {
+      "modules": [
+        "coolant-pump-maintenance-2"
+      ],
+      "summary": "Coolant Pump maintenance",
+      "start_hint": "coolant-pump-maintenance-2/01-coolant-pump-maintenance",
+      "ask_next": []
+    },
+    "tool-changer-service-2": {
+      "modules": [
+        "tool-changer-service-2"
+      ],
+      "summary": "Tool Changer service",
+      "start_hint": "tool-changer-service-2/01-tool-changer-service",
+      "ask_next": []
+    },
+    "way-covers-maintenance-2": {
+      "modules": [
+        "way-covers-maintenance-2"
+      ],
+      "summary": "Way Covers maintenance",
+      "start_hint": "way-covers-maintenance-2/01-way-covers-maintenance",
+      "ask_next": []
+    },
+    "lubrication-unit-service-2": {
+      "modules": [
+        "lubrication-unit-service-2"
+      ],
+      "summary": "Lubrication Unit service",
+      "start_hint": "lubrication-unit-service-2/01-lubrication-unit-service",
+      "ask_next": []
+    },
+    "hydraulic-clamp-maintenance-2": {
+      "modules": [
+        "hydraulic-clamp-maintenance-2"
+      ],
+      "summary": "Hydraulic Clamp maintenance",
+      "start_hint": "hydraulic-clamp-maintenance-2/01-hydraulic-clamp-maintenance",
+      "ask_next": []
+    },
+    "chip-conveyor-service-2": {
+      "modules": [
+        "chip-conveyor-service-2"
+      ],
+      "summary": "Chip Conveyor service",
+      "start_hint": "chip-conveyor-service-2/01-chip-conveyor-service",
+      "ask_next": []
+    },
+    "probe-system-maintenance-2": {
+      "modules": [
+        "probe-system-maintenance-2"
+      ],
+      "summary": "Probe System maintenance",
+      "start_hint": "probe-system-maintenance-2/01-probe-system-maintenance",
+      "ask_next": []
+    },
+    "electrical-cabinet-service-2": {
+      "modules": [
+        "electrical-cabinet-service-2"
+      ],
+      "summary": "Electrical Cabinet service",
+      "start_hint": "electrical-cabinet-service-2/01-electrical-cabinet-service",
+      "ask_next": []
+    },
+    "control-panel-maintenance-2": {
+      "modules": [
+        "control-panel-maintenance-2"
+      ],
+      "summary": "Control Panel maintenance",
+      "start_hint": "control-panel-maintenance-2/01-control-panel-maintenance",
+      "ask_next": []
+    },
+    "pneumatic-unit-service-2": {
+      "modules": [
+        "pneumatic-unit-service-2"
+      ],
+      "summary": "Pneumatic Unit service",
+      "start_hint": "pneumatic-unit-service-2/01-pneumatic-unit-service",
+      "ask_next": []
+    },
+    "door-interlock-maintenance-2": {
+      "modules": [
+        "door-interlock-maintenance-2"
+      ],
+      "summary": "Door Interlock maintenance",
+      "start_hint": "door-interlock-maintenance-2/01-door-interlock-maintenance",
+      "ask_next": []
+    },
+    "rotary-table-service-2": {
+      "modules": [
+        "rotary-table-service-2"
+      ],
+      "summary": "Rotary Table service",
+      "start_hint": "rotary-table-service-2/01-rotary-table-service",
+      "ask_next": []
+    },
+    "ballscrew-maintenance-2": {
+      "modules": [
+        "ballscrew-maintenance-2"
+      ],
+      "summary": "Ballscrew maintenance",
+      "start_hint": "ballscrew-maintenance-2/01-ballscrew-maintenance",
+      "ask_next": []
+    },
+    "linear-guide-service-2": {
+      "modules": [
+        "linear-guide-service-2"
+      ],
+      "summary": "Linear Guide service",
+      "start_hint": "linear-guide-service-2/01-linear-guide-service",
+      "ask_next": []
+    },
+    "encoder-maintenance-2": {
+      "modules": [
+        "encoder-maintenance-2"
+      ],
+      "summary": "Encoder maintenance",
+      "start_hint": "encoder-maintenance-2/01-encoder-maintenance",
+      "ask_next": []
+    },
+    "servo-amplifier-service-2": {
+      "modules": [
+        "servo-amplifier-service-2"
+      ],
+      "summary": "Servo Amplifier service",
+      "start_hint": "servo-amplifier-service-2/01-servo-amplifier-service",
+      "ask_next": []
+    },
+    "chiller-maintenance-2": {
+      "modules": [
+        "chiller-maintenance-2"
+      ],
+      "summary": "Chiller maintenance",
+      "start_hint": "chiller-maintenance-2/01-chiller-maintenance",
+      "ask_next": []
+    },
+    "mist-collector-service-2": {
+      "modules": [
+        "mist-collector-service-2"
+      ],
+      "summary": "Mist Collector service",
+      "start_hint": "mist-collector-service-2/01-mist-collector-service",
+      "ask_next": []
+    }
+  }
+}

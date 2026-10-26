@@ -1,0 +1,30 @@
+{
+  "_draft": true,
+  "start": "start",
+  "nodes": {
+    "start": {
+      "ask": "Which part of Performance metrics is your question about?",
+      "options": [
+        {
+          "label": "Performance metrics",
+          "next": "result:performance-metrics"
+        },
+        {
+          "label": "Something else",
+          "next": "open"
+        }
+      ]
+    }
+  },
+  "resolve": {},
+  "results": {
+    "performance-metrics": {
+      "modules": [
+        "performance-metrics"
+      ],
+      "summary": "Performance metrics",
+      "start_hint": "performance-metrics/01-performance-metrics",
+      "ask_next": []
+    }
+  }
+}

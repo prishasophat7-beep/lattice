@@ -1,0 +1,158 @@
+{
+  "format_version": 2,
+  "generator": "convert_kb.py",
+  "document": {
+    "id": "q3-2026-support-review",
+    "title": "Q3 2026 support review",
+    "filename": "q3_2026_support_review.docx",
+    "type": "docx",
+    "pages": null,
+    "summary": "Summarizes Q3: 12,480 tickets resolved, CSAT up to 91.3%, faster first response, but a growing backlog after the R7 2.9.0 rollout. Shows the KPI dashboard and a table comparing Q2 and Q3 values against targets. Describes weekly ticket volume through Q3, with a peak of 1,260 tickets in week 34 due to the R7 2.9.0 rollout. Ranks the five largest contact reasons, led by no-internet issues and firmware update failures."
+  },
+  "modules": [
+    {
+      "id": "executive-summary",
+      "title": "Executive Summary",
+      "heading": "Executive Summary",
+      "pages": null,
+      "sections": [
+        "executive-summary/01-executive-summary"
+      ],
+      "summary": "Summarizes Q3: 12,480 tickets resolved, CSAT up to 91.3%, faster first response, but a growing backlog after the R7 2.9.0 rollout."
+    },
+    {
+      "id": "key-metrics",
+      "title": "Key Metrics",
+      "heading": "Key Metrics",
+      "pages": null,
+      "sections": [
+        "key-metrics/01-key-metrics"
+      ],
+      "summary": "Shows the KPI dashboard and a table comparing Q2 and Q3 values against targets."
+    },
+    {
+      "id": "ticket-volume",
+      "title": "Ticket Volume",
+      "heading": "Ticket Volume",
+      "pages": null,
+      "sections": [
+        "ticket-volume/01-ticket-volume"
+      ],
+      "summary": "Describes weekly ticket volume through Q3, with a peak of 1,260 tickets in week 34 due to the R7 2.9.0 rollout."
+    },
+    {
+      "id": "top-contact-drivers",
+      "title": "Top Contact Drivers",
+      "heading": "Top Contact Drivers",
+      "pages": null,
+      "sections": [
+        "top-contact-drivers/01-top-contact-drivers"
+      ],
+      "summary": "Ranks the five largest contact reasons, led by no-internet issues and firmware update failures."
+    },
+    {
+      "id": "customer-feedback",
+      "title": "Customer Feedback",
+      "heading": "Customer Feedback",
+      "pages": null,
+      "sections": [
+        "customer-feedback/01-customer-feedback"
+      ],
+      "summary": "Highlights themes from CSAT comments: praise for fast agents, frustration with firmware issues and repeated contacts."
+    },
+    {
+      "id": "q4-priorities",
+      "title": "Q4 Priorities",
+      "heading": "Q4 Priorities",
+      "pages": null,
+      "sections": [
+        "q4-priorities/01-q4-priorities"
+      ],
+      "summary": "Lists four Q4 priorities: backlog reduction, warm handoffs to Tier 2, update-failure deflection and holiday staffing."
+    }
+  ],
+  "sections": [
+    {
+      "id": "executive-summary/01-executive-summary",
+      "module": "executive-summary",
+      "title": "Executive Summary",
+      "pages": null,
+      "file": "modules/executive-summary/01-executive-summary.md",
+      "images": [],
+      "summary": "Summarizes Q3: 12,480 tickets resolved, CSAT up to 91.3%, faster first response, but a growing backlog after the R7 2.9.0 rollout.",
+      "text": "Q3 was a strong quarter for customer satisfaction and speed of response, but the R7 firmware 2.9.0 rollout in weeks 33 and 34 created a spike in contacts that we have not fully recovered from. Backlog older than 7 days grew 19% and is the main risk heading into Q4."
+    },
+    {
+      "id": "key-metrics/01-key-metrics",
+      "module": "key-metrics",
+      "title": "Key Metrics",
+      "pages": null,
+      "file": "modules/key-metrics/01-key-metrics.md",
+      "images": [
+        "images/page_000_img1.png"
+      ],
+      "summary": "Shows the KPI dashboard and a table comparing Q2 and Q3 values against targets.",
+      "text": "Figure 1: Support KPI dashboard for Q3 2026 Figure 1: Support KPI dashboard for Q3 2026 Metric Q2 2026 Q3 2026 Target Status Tickets resolved 11,556 12,480 - - CSAT 89.2% 91.3% 90% On track First response time (median) 2h 51m 2h 14m 2h 30m On track First contact resolution 58% 61% 65% Behind Backlog > 7 days 180 214 < 150 At risk"
+    },
+    {
+      "id": "ticket-volume/01-ticket-volume",
+      "module": "ticket-volume",
+      "title": "Ticket Volume",
+      "pages": null,
+      "file": "modules/ticket-volume/01-ticket-volume.md",
+      "images": [
+        "images/page_000_img2.png"
+      ],
+      "summary": "Describes weekly ticket volume through Q3, with a peak of 1,260 tickets in week 34 due to the R7 2.9.0 rollout.",
+      "text": "Weekly volume rose from 870 tickets at the start of the quarter to a peak of 1,260 in week 34, when R7 firmware 2.9.0 was rolled out to all customers. Most of the extra contacts were about failed updates (error E-217) and a 5 GHz speed regression, both fixed in 2.9.1. Figure 2: Weekly new tickets in Q3 2026 Figure 2: Weekly new tickets in Q3 2026"
+    },
+    {
+      "id": "top-contact-drivers/01-top-contact-drivers",
+      "module": "top-contact-drivers",
+      "title": "Top Contact Drivers",
+      "pages": null,
+      "file": "modules/top-contact-drivers/01-top-contact-drivers.md",
+      "images": [],
+      "summary": "Ranks the five largest contact reasons, led by no-internet issues and firmware update failures.",
+      "text": "Rank Contact reason Tickets Share Change vs Q2 1 No internet 3,120 25% -3% 2 Firmware update failure (E-217) 1,870 15% +212% 3 Slow Wi-Fi 1,560 12.5% +18% 4 Account and billing 1,310 10.5% -6% 5 Setup and installation 1,190 9.5% +2%"
+    },
+    {
+      "id": "customer-feedback/01-customer-feedback",
+      "module": "customer-feedback",
+      "title": "Customer Feedback",
+      "pages": null,
+      "file": "modules/customer-feedback/01-customer-feedback.md",
+      "images": [],
+      "summary": "Highlights themes from CSAT comments: praise for fast agents, frustration with firmware issues and repeated contacts.",
+      "text": "We analyzed 3,904 CSAT survey comments. Positive comments most often mention agent friendliness and quick fixes. Negative comments cluster around the firmware update issue and having to explain the problem again after escalation. \"Agent fixed my internet in five minutes and explained what went wrong.\" \"Third time contacting you about the same update error.\" \"I had to repeat everything when I was transferred to Tier 2.\""
+    },
+    {
+      "id": "q4-priorities/01-q4-priorities",
+      "module": "q4-priorities",
+      "title": "Q4 Priorities",
+      "pages": null,
+      "file": "modules/q4-priorities/01-q4-priorities.md",
+      "images": [],
+      "summary": "Lists four Q4 priorities: backlog reduction, warm handoffs to Tier 2, update-failure deflection and holiday staffing.",
+      "text": "1. Reduce backlog older than 7 days to under 150 by 15 November with a dedicated backlog squad. 2. Introduce warm handoffs to Tier 2 so customers do not have to repeat themselves. 3. Publish an in-app guide for E-217 to deflect an estimated 40% of update-failure contacts. 4. Hire 6 seasonal agents for the holiday peak starting 1 December."
+    }
+  ],
+  "images": [
+    {
+      "path": "images/page_000_img1.png",
+      "original": "figure_000.png",
+      "section": "key-metrics/01-key-metrics",
+      "page": null,
+      "description": "Figure 1: Support KPI dashboard for Q3 2026",
+      "description_from": "caption"
+    },
+    {
+      "path": "images/page_000_img2.png",
+      "original": "figure_001.png",
+      "section": "ticket-volume/01-ticket-volume",
+      "page": null,
+      "description": "Figure 2: Weekly new tickets in Q3 2026",
+      "description_from": "caption"
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "_draft": true,
+  "start": "start",
+  "nodes": {
+    "start": {
+      "ask": "Which part of X2 hardware design spec is your question about?",
+      "options": [
+        {
+          "label": "Overview",
+          "next": "result:overview"
+        },
+        {
+          "label": "System Architecture",
+          "next": "result:system-architecture"
+        },
+        {
+          "label": "Power Subsystem",
+          "next": "result:power-subsystem"
+        },
+        {
+          "label": "Sensors",
+          "next": "result:sensors"
+        },
+        {
+          "label": "Interfaces and Pinout",
+          "next": "result:interfaces-and-pinout"
+        },
+        {
+          "label": "Environmental and Compliance",
+          "next": "result:environmental-and-compliance"
+        },
+        {
+          "label": "Something else",
+          "next": "open"
+        }
+      ]
+    }
+  },
+  "resolve": {},
+  "results": {
+    "overview": {
+      "modules": [
+        "overview"
+      ],
+      "summary": "Overview",
+      "start_hint": "overview/01-overview",
+      "ask_next": []
+    },
+    "system-architecture": {
+      "modules": [
+        "system-architecture"
+      ],
+      "summary": "System Architecture",
+      "start_hint": "system-architecture/01-system-architecture",
+      "ask_next": []
+    },
+    "power-subsystem": {
+      "modules": [
+        "power-subsystem"
+      ],
+      "summary": "Power Subsystem",
+      "start_hint": "power-subsystem/01-power-subsystem",
+      "ask_next": []
+    },
+    "sensors": {
+      "modules": [
+        "sensors"
+      ],
+      "summary": "Sensors",
+      "start_hint": "sensors/01-sensors",
+      "ask_next": []
+    },
+    "interfaces-and-pinout": {
+      "modules": [
+        "interfaces-and-pinout"
+      ],
+      "summary": "Interfaces and Pinout",
+      "start_hint": "interfaces-and-pinout/01-interfaces-and-pinout",
+      "ask_next": []
+    },
+    "environmental-and-compliance": {
+      "modules": [
+        "environmental-and-compliance"
+      ],
+      "summary": "Environmental and Compliance",
+      "start_hint": "environmental-and-compliance/01-environmental-and-compliance",
+      "ask_next": []
+    }
+  }
+}

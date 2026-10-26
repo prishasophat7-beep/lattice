@@ -834,11 +834,18 @@ def check_tree(kb):
             nxt = o.get("next", "")
             if nxt == "open" or nxt in nodes or nxt.startswith("file:"):
                 continue
+            if nxt == "resolve":  # the result comes from the variables the answers set (tree "resolve")
+                if not tree.get("resolve"):
+                    err(f"node {nid}, option {o.get('label')!r}: next is resolve but the tree has no resolve table")
+                continue
             if nxt.startswith("result:"):
                 if nxt[7:] not in results:
                     err(f"node {nid}, option {o.get('label')!r}: unknown result {nxt[7:]}")
             else:
                 err(f"node {nid}, option {o.get('label')!r}: unknown next {nxt!r}")
+    for key, rid in (tree.get("resolve") or {}).items():
+        if rid not in results:
+            err(f"resolve {key!r}: unknown result {rid}")
     for rid, r in results.items():
         for m in r.get("modules", []):
             if kb and m not in modules:
@@ -868,6 +875,9 @@ def simulate(tree, show):
                     paths.append((step, f"(back to {nxt})"))
                 else:
                     walk(nxt, step, on_path | {nxt})
+            elif nxt == "resolve":
+                reached.update(v for v in (tree.get("resolve") or {}).values())
+                paths.append((step, "result chosen by the answers (resolve table)"))
             elif nxt.startswith("result:"):
                 reached.add(nxt[7:])
                 r = results.get(nxt[7:], {})

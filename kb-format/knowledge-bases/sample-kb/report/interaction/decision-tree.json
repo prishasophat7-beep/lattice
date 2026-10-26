@@ -1,0 +1,54 @@
+{
+  "_draft": true,
+  "start": "start",
+  "nodes": {
+    "start": {
+      "ask": "Which part of Report is your question about?",
+      "options": [
+        {
+          "label": "Introduction",
+          "next": "result:introduction"
+        },
+        {
+          "label": "Results",
+          "next": "result:results"
+        },
+        {
+          "label": "Conclusion",
+          "next": "result:conclusion"
+        },
+        {
+          "label": "Something else",
+          "next": "open"
+        }
+      ]
+    }
+  },
+  "resolve": {},
+  "results": {
+    "introduction": {
+      "modules": [
+        "introduction"
+      ],
+      "summary": "Introduction",
+      "start_hint": "introduction/01-introduction",
+      "ask_next": []
+    },
+    "results": {
+      "modules": [
+        "results"
+      ],
+      "summary": "Results",
+      "start_hint": "results/01-image-quality-metrics",
+      "ask_next": []
+    },
+    "conclusion": {
+      "modules": [
+        "conclusion"
+      ],
+      "summary": "Conclusion",
+      "start_hint": "conclusion/01-conclusion",
+      "ask_next": []
+    }
+  }
+}

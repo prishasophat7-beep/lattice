@@ -1,0 +1,248 @@
+{
+  "format_version": 2,
+  "generator": "convert_kb.py",
+  "document": {
+    "id": "leave-policy",
+    "title": "Leave policy",
+    "filename": "leave_policy.pdf",
+    "type": "pdf",
+    "pages": null,
+    "summary": "Acme Technologies' HR leave policy (HR-POL-007 v3.1) defining entitlements for privilege, casual/sick, maternity/paternity, marriage, compassionate, award and medical checkup leave. It also sets out the HRMS-based approval workflow, the annual holiday list and an annexure of abbreviations."
+  },
+  "modules": [
+    {
+      "id": "leave-policy",
+      "title": "LEAVE POLICY",
+      "heading": "LEAVE POLICY",
+      "pages": null,
+      "sections": [
+        "leave-policy/01-leave-policy"
+      ],
+      "summary": "Title block of Acme Technologies' leave policy, document HR-POL-007 version 3.1, effective 1 April 2026."
+    },
+    {
+      "id": "purpose-and-scope",
+      "title": "Purpose and Scope:",
+      "heading": "Purpose and Scope:",
+      "pages": null,
+      "sections": [
+        "purpose-and-scope/01-purpose-and-scope"
+      ],
+      "summary": "Defines the purpose of providing employees with structured time off and states the policy applies to all permanent and probationary employees in India."
+    },
+    {
+      "id": "policy",
+      "title": "Policy:",
+      "heading": "Policy:",
+      "pages": null,
+      "sections": [
+        "policy/01-policy"
+      ],
+      "summary": "States that the leave year runs January-December, leave accrues monthly, and all leave must be applied for through the HRMS portal."
+    },
+    {
+      "id": "a-privilege-leave-and-casual-sick-leave",
+      "title": "A. Privilege Leave & Casual / Sick Leave",
+      "heading": "A. Privilege Leave & Casual / Sick Leave",
+      "pages": null,
+      "sections": [
+        "a-privilege-leave-and-casual-sick-leave/01-a-privilege-leave-and-casual-sick-leave"
+      ],
+      "summary": "Employees receive 18 days privilege leave (max 45 carried forward) and 12 days casual/sick leave (not carried forward); sick leave over 2 days needs a medical certificate."
+    },
+    {
+      "id": "b-maternity-paternity-leave",
+      "title": "B. Maternity / Paternity Leave",
+      "heading": "B. Maternity / Paternity Leave",
+      "pages": null,
+      "sections": [
+        "b-maternity-paternity-leave/01-b-maternity-paternity-leave"
+      ],
+      "summary": "Female employees receive 26 weeks paid maternity leave for the first two children (12 weeks thereafter); fathers get 10 working days paternity leave within 3 months of birth."
+    },
+    {
+      "id": "c-marriage-and-compassionate-leave",
+      "title": "C. Marriage And Compassionate Leave",
+      "heading": "C. Marriage And Compassionate Leave",
+      "pages": null,
+      "sections": [
+        "c-marriage-and-compassionate-leave/01-c-marriage-and-compassionate-leave"
+      ],
+      "summary": "Grants 5 working days marriage leave once during employment and 5 days compassionate leave on the death of an immediate family member."
+    },
+    {
+      "id": "d-award-leave",
+      "title": "D. Award Leave",
+      "heading": "D. Award Leave",
+      "pages": null,
+      "sections": [
+        "d-award-leave/01-d-award-leave"
+      ],
+      "summary": "Employees recognised in the annual awards or completing 5/10 years of service receive 2-5 additional days of award leave to be used within 6 months."
+    },
+    {
+      "id": "e-official-medical-checkup-leave",
+      "title": "E. Official Medical Checkup Leave",
+      "heading": "E. Official Medical Checkup Leave",
+      "pages": null,
+      "sections": [
+        "e-official-medical-checkup-leave/01-e-official-medical-checkup-leave"
+      ],
+      "summary": "Employees aged 35 and above get one day of paid leave per year for the company-sponsored annual health checkup."
+    },
+    {
+      "id": "leave-approval-procedure",
+      "title": "Leave Approval Procedure",
+      "heading": "Leave Approval Procedure",
+      "pages": null,
+      "sections": [
+        "leave-approval-procedure/01-leave-approval-procedure"
+      ],
+      "summary": "Leave is applied on HRMS, reviewed by the reporting manager within 2 working days, escalated to the HOD if over 5 days, then recorded by HR (see figure_000.png)."
+    },
+    {
+      "id": "holidays",
+      "title": "HOLIDAYS",
+      "heading": "HOLIDAYS",
+      "pages": null,
+      "sections": [
+        "holidays/01-holidays"
+      ],
+      "summary": "The company observes 10 paid public holidays per year (8 fixed national/festival holidays plus 2 optional holidays chosen by the employee); the list is published each December."
+    },
+    {
+      "id": "annexure",
+      "title": "ANNEXURE",
+      "heading": "ANNEXURE",
+      "pages": null,
+      "sections": [
+        "annexure/01-annexure"
+      ],
+      "summary": "Contains the leave summary table and abbreviations (PL, CL/SL, LWP, HOD, HRMS) used throughout the policy."
+    }
+  ],
+  "sections": [
+    {
+      "id": "leave-policy/01-leave-policy",
+      "module": "leave-policy",
+      "title": "LEAVE POLICY",
+      "pages": null,
+      "file": "modules/leave-policy/01-leave-policy.md",
+      "images": [],
+      "summary": "Title block of Acme Technologies' leave policy, document HR-POL-007 version 3.1, effective 1 April 2026.",
+      "text": "Acme Technologies Pvt. Ltd. Document No. HR-POL-007 Version 3.1 Effective: 1 April 2026 Owner: Human Resources"
+    },
+    {
+      "id": "purpose-and-scope/01-purpose-and-scope",
+      "module": "purpose-and-scope",
+      "title": "Purpose and Scope:",
+      "pages": null,
+      "file": "modules/purpose-and-scope/01-purpose-and-scope.md",
+      "images": [],
+      "summary": "Defines the purpose of providing employees with structured time off and states the policy applies to all permanent and probationary employees in India.",
+      "text": "The purpose of this policy is to give employees adequate time off for rest, personal matters, health and family events while ensuring business continuity. This policy applies to all permanent and probationary employees on the company's payroll in India. Consultants, interns and contract staff are governed by their respective agreements."
+    },
+    {
+      "id": "policy/01-policy",
+      "module": "policy",
+      "title": "Policy:",
+      "pages": null,
+      "file": "modules/policy/01-policy.md",
+      "images": [],
+      "summary": "States that the leave year runs January-December, leave accrues monthly, and all leave must be applied for through the HRMS portal.",
+      "text": "The leave year runs from 1 January to 31 December. Leave entitlements accrue monthly and are pro-rated for employees joining mid-year. All leave must be applied for and approved through the HRMS portal; leave taken without approval is treated as Leave Without Pay (LWP)."
+    },
+    {
+      "id": "a-privilege-leave-and-casual-sick-leave/01-a-privilege-leave-and-casual-sick-leave",
+      "module": "a-privilege-leave-and-casual-sick-leave",
+      "title": "A. Privilege Leave & Casual / Sick Leave",
+      "pages": null,
+      "file": "modules/a-privilege-leave-and-casual-sick-leave/01-a-privilege-leave-and-casual-sick-leave.md",
+      "images": [],
+      "summary": "Employees receive 18 days privilege leave (max 45 carried forward) and 12 days casual/sick leave (not carried forward); sick leave over 2 days needs a medical certificate.",
+      "text": "Leave Type Annual Entitlement Accrual Carry Forward Encashment Privilege Leave (PL) 18 days 1.5 days/month Up to 45 days Up to 15 days at year-end Casual / Sick Leave (CL/SL) 12 days 1 day/month Not permitted Not permitted PL must be applied for at least 7 days in advance for absences longer than 3 days. PL can be availed only after completing the probation period. CL/SL of more than 2 consecutive days requires a medical certificate from a registered practitioner. CL cannot be combined with PL."
+    },
+    {
+      "id": "b-maternity-paternity-leave/01-b-maternity-paternity-leave",
+      "module": "b-maternity-paternity-leave",
+      "title": "B. Maternity / Paternity Leave",
+      "pages": null,
+      "file": "modules/b-maternity-paternity-leave/01-b-maternity-paternity-leave.md",
+      "images": [],
+      "summary": "Female employees receive 26 weeks paid maternity leave for the first two children (12 weeks thereafter); fathers get 10 working days paternity leave within 3 months of birth.",
+      "text": "Maternity leave: 26 weeks of paid leave for the first two children, and 12 weeks for subsequent children, in line with the Maternity Benefit Act, 1961. Up to 8 weeks may be taken before the expected delivery date. Adoption: 12 weeks for a mother adopting a child below 3 months of age. Miscarriage: 6 weeks of paid leave. Paternity leave: 10 working days, to be availed within 3 months of the child's birth or adoption. Employees must have completed 80 days of service in the preceding 12 months to be eligible."
+    },
+    {
+      "id": "c-marriage-and-compassionate-leave/01-c-marriage-and-compassionate-leave",
+      "module": "c-marriage-and-compassionate-leave",
+      "title": "C. Marriage And Compassionate Leave",
+      "pages": null,
+      "file": "modules/c-marriage-and-compassionate-leave/01-c-marriage-and-compassionate-leave.md",
+      "images": [],
+      "summary": "Grants 5 working days marriage leave once during employment and 5 days compassionate leave on the death of an immediate family member.",
+      "text": "Marriage leave: 5 working days, available once during employment, to be taken within 1 month of the wedding date. Proof (invitation or certificate) is required. Compassionate leave: 5 working days on the death of an immediate family member (spouse, child, parent, sibling, parent-in-law). Can be applied for retrospectively."
+    },
+    {
+      "id": "d-award-leave/01-d-award-leave",
+      "module": "d-award-leave",
+      "title": "D. Award Leave",
+      "pages": null,
+      "file": "modules/d-award-leave/01-d-award-leave.md",
+      "images": [],
+      "summary": "Employees recognised in the annual awards or completing 5/10 years of service receive 2-5 additional days of award leave to be used within 6 months.",
+      "text": "Occasion Award Leave Employee of the Year 5 days Quarterly Star Performer 2 days 5 years of service 3 days 10 years of service 5 days Award leave must be used within 6 months of being granted and cannot be encashed or carried forward."
+    },
+    {
+      "id": "e-official-medical-checkup-leave/01-e-official-medical-checkup-leave",
+      "module": "e-official-medical-checkup-leave",
+      "title": "E. Official Medical Checkup Leave",
+      "pages": null,
+      "file": "modules/e-official-medical-checkup-leave/01-e-official-medical-checkup-leave.md",
+      "images": [],
+      "summary": "Employees aged 35 and above get one day of paid leave per year for the company-sponsored annual health checkup.",
+      "text": "Employees aged 35 years and above are entitled to one day of paid leave per calendar year to undergo the company-sponsored annual health checkup at an empanelled hospital. The checkup report receipt must be uploaded to the HRMS portal within 7 days."
+    },
+    {
+      "id": "leave-approval-procedure/01-leave-approval-procedure",
+      "module": "leave-approval-procedure",
+      "title": "Leave Approval Procedure",
+      "pages": null,
+      "file": "modules/leave-approval-procedure/01-leave-approval-procedure.md",
+      "images": [
+        "images/page_000_img1.png"
+      ],
+      "summary": "Leave is applied on HRMS, reviewed by the reporting manager within 2 working days, escalated to the HOD if over 5 days, then recorded by HR (see figure_000.png).",
+      "text": "1. The employee submits a leave request on the HRMS portal with dates, leave type and reason. 2. The reporting manager approves or rejects within 2 working days; unactioned requests auto-escalate to the HOD. 3. Requests longer than 5 working days also require HOD approval. 4. HR verifies leave balance and updates attendance records. 5. The employee receives an email confirmation. Emergency leave taken without prior approval must be regularised within 3 working days of returning to work. GLOBAL SCENE: A horizontal flowchart titled 'Leave Approval Workflow' on a white background showing five rounded blue boxes connected left-to-right by arrows. KEY OBJECTS: Steps read 'Employee applies on HRMS portal', 'Reporting Manager reviews (2 days)', 'HOD approval (> 5 days leave)', 'HR verifies balance & records', and 'Confirmation emailed to employee'; a red box below the manager step labelled 'Rejected: reason recorded' is connected by a downward 'No' arrow. TEXT & LABELS: Footer note reads 'Leave of 5 days or fewer skips HOD approval. Emergency leave may be regularised within 3 working days.'"
+    },
+    {
+      "id": "holidays/01-holidays",
+      "module": "holidays",
+      "title": "HOLIDAYS",
+      "pages": null,
+      "file": "modules/holidays/01-holidays.md",
+      "images": [],
+      "summary": "The company observes 10 paid public holidays per year (8 fixed national/festival holidays plus 2 optional holidays chosen by the employee); the list is published each December.",
+      "text": "The company observes 10 paid holidays per calendar year: 8 fixed holidays and 2 optional (restricted) holidays chosen by the employee from a published list. Fixed holidays for 2026 include Republic Day (26 Jan), Holi (4 Mar), Good Friday (3 Apr), May Day (1 May), Independence Day (15 Aug), Gandhi Jayanti (2 Oct), Diwali (8 Nov) and Christmas (25 Dec). Holidays falling within a period of PL are not counted as leave."
+    },
+    {
+      "id": "annexure/01-annexure",
+      "module": "annexure",
+      "title": "ANNEXURE",
+      "pages": null,
+      "file": "modules/annexure/01-annexure.md",
+      "images": [],
+      "summary": "Contains the leave summary table and abbreviations (PL, CL/SL, LWP, HOD, HRMS) used throughout the policy.",
+      "text": "Abbreviation Meaning PL Privilege Leave CL/SL Casual / Sick Leave LWP Leave Without Pay HOD Head of Department HRMS Human Resource Management System Queries regarding this policy may be addressed to hr.helpdesk@acmetech.example."
+    }
+  ],
+  "images": [
+    {
+      "path": "images/page_000_img1.png",
+      "original": "figure_000.png",
+      "section": "leave-approval-procedure/01-leave-approval-procedure",
+      "page": null,
+      "description": "GLOBAL SCENE: A horizontal flowchart titled 'Leave Approval Workflow' on a white background showing five rounded blue boxes connected left-to-right by arrows. KEY OBJECTS: Steps read 'Employee applies on HRMS portal', 'Reporting Manager reviews (2 days)', 'HOD approval (> 5 days leave)', 'HR verifies balance & records', and 'Confirmation emailed to employee'; a red box below the manager step labelled 'Rejected: reason recorded' is connected by a downward 'No' arrow. TEXT & LABELS: Footer note reads 'Leave of 5 days or fewer skips HOD approval. Emergency leave may be regularised within 3 working days.'",
+      "description_from": "description"
+    }
+  ]
+}

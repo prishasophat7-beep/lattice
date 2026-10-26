@@ -1,0 +1,176 @@
+{
+  "_draft": true,
+  "start": "start",
+  "nodes": {
+    "group-1": {
+      "ask": "Which of these is it?",
+      "options": [
+        {
+          "label": "LEAVE POLICY",
+          "next": "result:leave-policy"
+        },
+        {
+          "label": "Purpose and Scope:",
+          "next": "result:purpose-and-scope"
+        },
+        {
+          "label": "Policy:",
+          "next": "result:policy"
+        },
+        {
+          "label": "A. Privilege Leave & Casual / Sick Leave",
+          "next": "result:a-privilege-leave-and-casual-sick-leave"
+        },
+        {
+          "label": "B. Maternity / Paternity Leave",
+          "next": "result:b-maternity-paternity-leave"
+        },
+        {
+          "label": "C. Marriage And Compassionate Leave",
+          "next": "result:c-marriage-and-compassionate-leave"
+        },
+        {
+          "label": "None of these",
+          "next": "start"
+        }
+      ]
+    },
+    "group-2": {
+      "ask": "Which of these is it?",
+      "options": [
+        {
+          "label": "D. Award Leave",
+          "next": "result:d-award-leave"
+        },
+        {
+          "label": "E. Official Medical Checkup Leave",
+          "next": "result:e-official-medical-checkup-leave"
+        },
+        {
+          "label": "Leave Approval Procedure",
+          "next": "result:leave-approval-procedure"
+        },
+        {
+          "label": "HOLIDAYS",
+          "next": "result:holidays"
+        },
+        {
+          "label": "ANNEXURE",
+          "next": "result:annexure"
+        },
+        {
+          "label": "None of these",
+          "next": "start"
+        }
+      ]
+    },
+    "start": {
+      "ask": "Which part of Leave policy is your question about?",
+      "options": [
+        {
+          "label": "LEAVE POLICY … C. Marriage And Compassionate Leave",
+          "next": "group-1"
+        },
+        {
+          "label": "D. Award Leave … ANNEXURE",
+          "next": "group-2"
+        },
+        {
+          "label": "Something else",
+          "next": "open"
+        }
+      ]
+    }
+  },
+  "resolve": {},
+  "results": {
+    "leave-policy": {
+      "modules": [
+        "leave-policy"
+      ],
+      "summary": "LEAVE POLICY",
+      "start_hint": "leave-policy/01-leave-policy",
+      "ask_next": []
+    },
+    "purpose-and-scope": {
+      "modules": [
+        "purpose-and-scope"
+      ],
+      "summary": "Purpose and Scope:",
+      "start_hint": "purpose-and-scope/01-purpose-and-scope",
+      "ask_next": []
+    },
+    "policy": {
+      "modules": [
+        "policy"
+      ],
+      "summary": "Policy:",
+      "start_hint": "policy/01-policy",
+      "ask_next": []
+    },
+    "a-privilege-leave-and-casual-sick-leave": {
+      "modules": [
+        "a-privilege-leave-and-casual-sick-leave"
+      ],
+      "summary": "A. Privilege Leave & Casual / Sick Leave",
+      "start_hint": "a-privilege-leave-and-casual-sick-leave/01-a-privilege-leave-and-casual-sick-leave",
+      "ask_next": []
+    },
+    "b-maternity-paternity-leave": {
+      "modules": [
+        "b-maternity-paternity-leave"
+      ],
+      "summary": "B. Maternity / Paternity Leave",
+      "start_hint": "b-maternity-paternity-leave/01-b-maternity-paternity-leave",
+      "ask_next": []
+    },
+    "c-marriage-and-compassionate-leave": {
+      "modules": [
+        "c-marriage-and-compassionate-leave"
+      ],
+      "summary": "C. Marriage And Compassionate Leave",
+      "start_hint": "c-marriage-and-compassionate-leave/01-c-marriage-and-compassionate-leave",
+      "ask_next": []
+    },
+    "d-award-leave": {
+      "modules": [
+        "d-award-leave"
+      ],
+      "summary": "D. Award Leave",
+      "start_hint": "d-award-leave/01-d-award-leave",
+      "ask_next": []
+    },
+    "e-official-medical-checkup-leave": {
+      "modules": [
+        "e-official-medical-checkup-leave"
+      ],
+      "summary": "E. Official Medical Checkup Leave",
+      "start_hint": "e-official-medical-checkup-leave/01-e-official-medical-checkup-leave",
+      "ask_next": []
+    },
+    "leave-approval-procedure": {
+      "modules": [
+        "leave-approval-procedure"
+      ],
+      "summary": "Leave Approval Procedure",
+      "start_hint": "leave-approval-procedure/01-leave-approval-procedure",
+      "ask_next": []
+    },
+    "holidays": {
+      "modules": [
+        "holidays"
+      ],
+      "summary": "HOLIDAYS",
+      "start_hint": "holidays/01-holidays",
+      "ask_next": []
+    },
+    "annexure": {
+      "modules": [
+        "annexure"
+      ],
+      "summary": "ANNEXURE",
+      "start_hint": "annexure/01-annexure",
+      "ask_next": []
+    }
+  }
+}

@@ -1,0 +1,24 @@
+Sample knowledge bases (per-document layout) - import each zip in Lattice: Manage -> Import bundle.
+Use the 26c installer (or newer). Chat mode; start a new conversation for every question.
+
+skylink-support.zip          3 documents (router guide, Q3 review, warranty)
+  - What caused the ticket spike in Q3 and how should agents fix it?      (2.9.0 / E-217; Retry download, KA-0388)
+  - Is an R7 bought 4 years ago with Care+ still under warranty?          (yes, Care+ = 5 years)
+  - Apart from the documents, what is a checksum?                         (general knowledge, labelled)
+nimbus-x2.zip                3 documents (install guide, hardware spec, release notes)
+  - What does error E2 mean, why does it happen, and was it fixed?        (power stealing; fixed in 3.2, FW-1822)
+  - What is a C wire in a thermostat, and why does the X2 show E2 without one?
+helix-large.zip              9 documents (manuals, supplier agreement, reports, policies)
+  - How much late-delivery penalty does Arvind Metals owe for Q2?         (Rs 49,050)
+  - Why was the HX-07 bearing replacement not covered by warranty, and what should operators have done?  (5.2 warm-up, O9000)
+helix-precision.zip          6 documents (smaller Helix set)
+  - Did Arvind Metals meet its on-time delivery target in Q2 2026?        (no: 4/7 = 57.1 % vs 97 %)
+taskflow.zip                 7 documents with screenshots
+  - How many tasks are overdue on the dashboard?                          (3, from the picture)
+  - Whose name is shown on the dashboard?                                 (Priya)
+inspectai-studio.zip         1 manual with a hand-written interview
+  - How do I annotate text?                                               (asks Method 1 or 2 first)
+  - How do I train?                                                       (asks which project type)
+acme-people-it.zip           3 documents (handbook, IT setup, security training)
+  - I entered my password on a phishing page. What should I do?           (call IT ext. 4357)
+sample-kb.zip                3 small documents (budget, meeting notes, report)

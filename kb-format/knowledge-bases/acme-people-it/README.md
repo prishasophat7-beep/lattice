@@ -1,28 +1,46 @@
-# acme-people-it
+# Acme People & IT Knowledge Base
 
-Interactive knowledge base for **Acme People & IT Knowledge Base**, built from the user manual.
+Employee handbook, IT onboarding guide and security awareness training for Acme Corp employees.
 
-## Use it in Lattice
+3 documents. Each folder is a self-contained interactive knowledge base with the same layout;
+`page_index.json` is the master index of all of them (the parser's outline of every document, each
+heading pointing at the section file that holds it).
 
-Zip the contents of this folder (`kb.json` at the top of the zip) and import it in Lattice:
-**Manage → Import bundle...**. Lattice reads the sections, asks the clarifying questions from
-`interaction/decision-tree.json` and gives the model `AGENTS.md` and `needs-review.md`.
+| Document | Folder | Modules | Sections | Images | Decision tree | Status |
+| --- | --- | --- | --- | --- | --- | --- |
+| [Employee handbook 2026](employee-handbook-2026/index.md) | `employee-handbook-2026/` | 6 | 8 | 2 | 1 node → 6 results | Draft |
+| [It setup guide](it-setup-guide/index.md) | `it-setup-guide/` | 6 | 6 | 2 | 1 node → 6 results | Draft |
+| [Security awareness training module2](security-awareness-training-module2/index.md) | `security-awareness-training-module2/` | 6 | 6 | 2 | 1 node → 6 results | Draft |
+| **Total** | | 18 | 20 | 6 | | |
 
-## Use it with another agent
+## Finding things
 
-Point the agent at this folder and make `AGENTS.md` its instructions; it reads the files directly.
+1. Pick the document: the table above, or `page_index.json` (each document's summary, codes and
+   related documents).
+2. In its folder, `AGENTS.md` says how to answer, `index.md` lists the modules, `kb.json` has the
+   sections, and `interaction/decision-tree.json` the clarifying questions.
 
-## Layout
+## Per-document folder
+
+| File / folder | Purpose |
+| --- | --- |
+| `AGENTS.md` | Agent behaviour: interview first, then step-by-step walkthrough |
+| `README.md` | Setup and use for that document |
+| `index.md` | Modules with page ranges and one-line summaries |
+| `kb.json` | Modules, sections (text, pictures, pages, summaries), picture descriptions |
+| `needs-review.md` | Auto-detected gaps (figure-only sections, TBD values, missing descriptions) plus hand-written notes |
+| `validate_kb.py` | Validation: structure, decision tree, interview simulation |
+| `interaction/decision-tree.json` | Clarifying-question tree; options lead to results |
+| `references/decision-tree-guide.md` | How to refine the auto-generated draft tree |
+| `modules/<module>/NN-<slug>.md` | Section files with front matter (id, module, title, pages) |
+| `images/` | Pictures referenced by the sections |
+
+## Regenerating
 
 ```
-AGENTS.md                      agent instructions (hand-maintained)
-README.md                      this file
-index.md                       module list (generated)
-needs-review.md                known gaps (hand-maintained; auto-detected block rewritten by builds)
-interaction/decision-tree.json clarifying interview (hand-maintained)
-modules/<module>/README.md     module overview (generated)
-modules/<module>/NN-<slug>.md  one section of the manual (generated)
-kb.json                        machine-readable index for search (generated)
-images/                        pictures, page_NNN_imgK.png (generated)
-pages/                         page screenshots, page_NNN.jpg (not produced yet)
+python convert_kb.py sample_kb_acme_people_it.zip <this-folder>
 ```
+
+Regenerating rewrites `modules/`, `images/`, `kb.json`, `index.md`, `page_index.json` and this README;
+it keeps `AGENTS.md`, each document's `README.md`, the decision trees, the decision-tree guide and
+the hand-written part of each `needs-review.md`.

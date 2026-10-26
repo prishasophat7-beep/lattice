@@ -1,0 +1,54 @@
+{
+  "_draft": true,
+  "start": "start",
+  "nodes": {
+    "start": {
+      "ask": "Which part of Supplier agreement arvind metals is your question about?",
+      "options": [
+        {
+          "label": "Part 1: Original agreement (signed 10 January 2025)",
+          "next": "result:part-1-original-agreement-signed-10-january-2025"
+        },
+        {
+          "label": "Part 2: Amendment 1 (signed 15 March 2026, effective 1 April 2026)",
+          "next": "result:part-2-amendment-1-signed-15-march-2026-effective-1-april-20"
+        },
+        {
+          "label": "Part 3: Delivery record Q2 2026",
+          "next": "result:part-3-delivery-record-q2-2026"
+        },
+        {
+          "label": "Something else",
+          "next": "open"
+        }
+      ]
+    }
+  },
+  "resolve": {},
+  "results": {
+    "part-1-original-agreement-signed-10-january-2025": {
+      "modules": [
+        "part-1-original-agreement-signed-10-january-2025"
+      ],
+      "summary": "Part 1: Original agreement (signed 10 January 2025)",
+      "start_hint": "part-1-original-agreement-signed-10-january-2025/01-scope",
+      "ask_next": []
+    },
+    "part-2-amendment-1-signed-15-march-2026-effective-1-april-20": {
+      "modules": [
+        "part-2-amendment-1-signed-15-march-2026-effective-1-april-20"
+      ],
+      "summary": "Part 2: Amendment 1 (signed 15 March 2026, effective 1 April 2026)",
+      "start_hint": "part-2-amendment-1-signed-15-march-2026-effective-1-april-20/01-part-2-amendment-1-signed-15-march-2026-effective-1-april-20",
+      "ask_next": []
+    },
+    "part-3-delivery-record-q2-2026": {
+      "modules": [
+        "part-3-delivery-record-q2-2026"
+      ],
+      "summary": "Part 3: Delivery record Q2 2026",
+      "start_hint": "part-3-delivery-record-q2-2026/01-part-3-delivery-record-q2-2026",
+      "ask_next": []
+    }
+  }
+}

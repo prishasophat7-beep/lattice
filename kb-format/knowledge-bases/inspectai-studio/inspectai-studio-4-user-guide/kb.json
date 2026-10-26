@@ -1,0 +1,346 @@
+{
+  "format_version": 2,
+  "generator": "convert_kb.py",
+  "document": {
+    "id": "inspectai-studio-4-user-guide",
+    "title": "InspectAI Studio 4 User Guide",
+    "filename": "InspectAI_Studio_4_User_Guide.pdf",
+    "type": "pdf",
+    "pages": null,
+    "summary": "InspectAI Studio builds visual inspection models for production lines: it classifies parts, finds anomalies and reads printed text."
+  },
+  "modules": [
+    {
+      "id": "overview",
+      "title": "Overview",
+      "heading": "Overview",
+      "pages": null,
+      "sections": [
+        "overview/01-inspectai-studio-4-user-guide"
+      ],
+      "summary": "InspectAI Studio builds visual inspection models for production lines: it classifies parts, finds anomalies and reads printed text."
+    },
+    {
+      "id": "getting-started",
+      "title": "Getting Started",
+      "heading": "1 Getting Started",
+      "pages": null,
+      "sections": [
+        "getting-started/01-system-requirements",
+        "getting-started/02-installation",
+        "getting-started/03-activating-the-licence"
+      ],
+      "summary": "A workstation with Windows 11, 32 GB of memory and an NVIDIA GPU with at least 8 GB of video memory."
+    },
+    {
+      "id": "image-classification",
+      "title": "Image Classification",
+      "heading": "2 Image Classification",
+      "pages": null,
+      "sections": [
+        "image-classification/01-image-classification",
+        "image-classification/02-project-setup",
+        "image-classification/03-importing-images",
+        "image-classification/04-labelling",
+        "image-classification/05-training",
+        "image-classification/06-validation",
+        "image-classification/07-deployment"
+      ],
+      "summary": "Image Classification sorts each image of a part into one of the classes you define, for example OK, Scratch and Dent."
+    },
+    {
+      "id": "anomaly-detection",
+      "title": "Anomaly Detection",
+      "heading": "3 Anomaly Detection",
+      "pages": null,
+      "sections": [
+        "anomaly-detection/01-anomaly-detection",
+        "anomaly-detection/02-project-setup",
+        "anomaly-detection/03-importing-images",
+        "anomaly-detection/04-training",
+        "anomaly-detection/05-validation",
+        "anomaly-detection/06-deployment"
+      ],
+      "summary": "Anomaly Detection learns from good parts only and marks anything that differs from them, without classes."
+    },
+    {
+      "id": "text-reading-ocr",
+      "title": "Text Reading (OCR)",
+      "heading": "4 Text Reading (OCR)",
+      "pages": null,
+      "sections": [
+        "text-reading-ocr/01-text-reading-ocr",
+        "text-reading-ocr/02-project-setup",
+        "text-reading-ocr/03-annotating-text",
+        "text-reading-ocr/04-training",
+        "text-reading-ocr/05-validation"
+      ],
+      "summary": "Text Reading reads printed or engraved characters such as batch codes and serial numbers."
+    },
+    {
+      "id": "settings-reference",
+      "title": "Settings Reference",
+      "heading": "5 Settings Reference",
+      "pages": null,
+      "sections": [
+        "settings-reference/01-epochs",
+        "settings-reference/02-learning-rate",
+        "settings-reference/03-gpu-selection"
+      ],
+      "summary": "The number of passes over the training images."
+    }
+  ],
+  "sections": [
+    {
+      "id": "overview/01-inspectai-studio-4-user-guide",
+      "module": "overview",
+      "title": "InspectAI Studio 4 - User Guide",
+      "pages": null,
+      "file": "modules/overview/01-inspectai-studio-4-user-guide.md",
+      "images": [],
+      "summary": "InspectAI Studio builds visual inspection models for production lines: it classifies parts, finds anomalies and reads printed text.",
+      "text": "InspectAI Studio builds visual inspection models for production lines: it classifies parts, finds anomalies and reads printed text."
+    },
+    {
+      "id": "getting-started/01-system-requirements",
+      "module": "getting-started",
+      "title": "1.1 System Requirements",
+      "pages": null,
+      "file": "modules/getting-started/01-system-requirements.md",
+      "images": [],
+      "summary": "A workstation with Windows 11, 32 GB of memory and an NVIDIA GPU with at least 8 GB of video memory.",
+      "text": "A workstation with Windows 11, 32 GB of memory and an NVIDIA GPU with at least 8 GB of video memory. Training on the CPU is possible but about twenty times slower."
+    },
+    {
+      "id": "getting-started/02-installation",
+      "module": "getting-started",
+      "title": "1.2 Installation",
+      "pages": null,
+      "file": "modules/getting-started/02-installation.md",
+      "images": [],
+      "summary": "Run InspectAI_Studio_4_Setup.exe as an administrator and accept the licence.",
+      "text": "Run InspectAI_Studio_4_Setup.exe as an administrator and accept the licence. The installer adds the CUDA runtime it needs; no separate driver package is required."
+    },
+    {
+      "id": "getting-started/03-activating-the-licence",
+      "module": "getting-started",
+      "title": "1.3 Activating the Licence",
+      "pages": null,
+      "file": "modules/getting-started/03-activating-the-licence.md",
+      "images": [],
+      "summary": "Open Help > Licence, paste the 25 character licence key and click Activate.",
+      "text": "Open Help > Licence, paste the 25-character licence key and click Activate. An offline workstation shows a request code instead; send it to support and paste the reply file."
+    },
+    {
+      "id": "image-classification/01-image-classification",
+      "module": "image-classification",
+      "title": "2 Image Classification",
+      "pages": null,
+      "file": "modules/image-classification/01-image-classification.md",
+      "images": [],
+      "summary": "Image Classification sorts each image of a part into one of the classes you define, for example OK, Scratch and Dent.",
+      "text": "Image Classification sorts each image of a part into one of the classes you define, for example OK, Scratch and Dent."
+    },
+    {
+      "id": "image-classification/02-project-setup",
+      "module": "image-classification",
+      "title": "2.1 Project Setup",
+      "pages": null,
+      "file": "modules/image-classification/02-project-setup.md",
+      "images": [],
+      "summary": "Click New Project, choose Image Classification, name the project and pick the folder where it is stored.",
+      "text": "Click New Project, choose Image Classification, name the project and pick the folder where it is stored. Add the class names in the Classes panel; at least two classes are needed."
+    },
+    {
+      "id": "image-classification/03-importing-images",
+      "module": "image-classification",
+      "title": "2.2 Importing Images",
+      "pages": null,
+      "file": "modules/image-classification/03-importing-images.md",
+      "images": [],
+      "summary": "Images can come from a folder on disk or straight from a line camera.",
+      "text": "Images can come from a folder on disk or straight from a line camera. 2.2.1 Option A: From a folder Click Import > Folder and select a parent folder with one subfolder per class; each subfolder name must match a class name. Images in other subfolders are skipped. 2.2.2 Option B: From a camera Click Import > Camera, select the GigE camera in the list and press Capture for each part. Assign the class with the number keys 1 to 9 while capturing."
+    },
+    {
+      "id": "image-classification/04-labelling",
+      "module": "image-classification",
+      "title": "2.3 Labelling",
+      "pages": null,
+      "file": "modules/image-classification/04-labelling.md",
+      "images": [],
+      "summary": "Open the Gallery, select the images of one class and press L to label them.",
+      "text": "Open the Gallery, select the images of one class and press L to label them. Unlabelled images are shown with a grey border and are left out of training."
+    },
+    {
+      "id": "image-classification/05-training",
+      "module": "image-classification",
+      "title": "2.4 Training",
+      "pages": null,
+      "file": "modules/image-classification/05-training.md",
+      "images": [],
+      "summary": "Click Train, keep the default backbone ResNet 34 and set Epochs to 40.",
+      "text": "Click Train, keep the default backbone ResNet-34 and set Epochs to 40. Training stops early when the validation accuracy has not improved for 8 epochs."
+    },
+    {
+      "id": "image-classification/06-validation",
+      "module": "image-classification",
+      "title": "2.5 Validation",
+      "pages": null,
+      "file": "modules/image-classification/06-validation.md",
+      "images": [],
+      "summary": "Open the Validation tab after training: the confusion matrix shows which classes are mixed up.",
+      "text": "Open the Validation tab after training: the confusion matrix shows which classes are mixed up. Aim for at least 98 percent accuracy on the hold-out images before deployment."
+    },
+    {
+      "id": "image-classification/07-deployment",
+      "module": "image-classification",
+      "title": "2.6 Deployment",
+      "pages": null,
+      "file": "modules/image-classification/07-deployment.md",
+      "images": [],
+      "summary": "Click Export and choose ONNX for the line PC or TensorRT for the edge box.",
+      "text": "Click Export and choose ONNX for the line PC or TensorRT for the edge box. The exported model keeps the class names and the input size of 224 x 224 pixels."
+    },
+    {
+      "id": "anomaly-detection/01-anomaly-detection",
+      "module": "anomaly-detection",
+      "title": "3 Anomaly Detection",
+      "pages": null,
+      "file": "modules/anomaly-detection/01-anomaly-detection.md",
+      "images": [],
+      "summary": "Anomaly Detection learns from good parts only and marks anything that differs from them, without classes.",
+      "text": "Anomaly Detection learns from good parts only and marks anything that differs from them, without classes."
+    },
+    {
+      "id": "anomaly-detection/02-project-setup",
+      "module": "anomaly-detection",
+      "title": "3.1 Project Setup",
+      "pages": null,
+      "file": "modules/anomaly-detection/02-project-setup.md",
+      "images": [],
+      "summary": "Click New Project and choose Anomaly Detection.",
+      "text": "Click New Project and choose Anomaly Detection. Only good parts are needed for training; keep a few defective parts aside for validation."
+    },
+    {
+      "id": "anomaly-detection/03-importing-images",
+      "module": "anomaly-detection",
+      "title": "3.2 Importing Images",
+      "pages": null,
+      "file": "modules/anomaly-detection/03-importing-images.md",
+      "images": [],
+      "summary": "Good part images can come from a folder or from the line camera.",
+      "text": "Good-part images can come from a folder or from the line camera. 3.2.1 Option A: From a folder Click Import > Folder and select a folder with good parts only. At least 200 images are recommended. 3.2.2 Option B: From a camera Click Import > Camera and capture good parts during a normal production run; the capture pauses automatically when the line stops."
+    },
+    {
+      "id": "anomaly-detection/04-training",
+      "module": "anomaly-detection",
+      "title": "3.3 Training",
+      "pages": null,
+      "file": "modules/anomaly-detection/04-training.md",
+      "images": [],
+      "summary": "Click Train and set the Patch Size to 32.",
+      "text": "Click Train and set the Patch Size to 32. Anomaly training takes about ten minutes for 500 images on an 8 GB GPU."
+    },
+    {
+      "id": "anomaly-detection/05-validation",
+      "module": "anomaly-detection",
+      "title": "3.4 Validation",
+      "pages": null,
+      "file": "modules/anomaly-detection/05-validation.md",
+      "images": [],
+      "summary": "Load the defective parts kept aside and adjust the Threshold slider until every defective part is flagged.",
+      "text": "Load the defective parts kept aside and adjust the Threshold slider until every defective part is flagged. A threshold between 0.4 and 0.6 suits most parts."
+    },
+    {
+      "id": "anomaly-detection/06-deployment",
+      "module": "anomaly-detection",
+      "title": "3.5 Deployment",
+      "pages": null,
+      "file": "modules/anomaly-detection/06-deployment.md",
+      "images": [],
+      "summary": "Click Export and choose ONNX.",
+      "text": "Click Export and choose ONNX. The threshold set during validation is stored in the exported model."
+    },
+    {
+      "id": "text-reading-ocr/01-text-reading-ocr",
+      "module": "text-reading-ocr",
+      "title": "4 Text Reading (OCR)",
+      "pages": null,
+      "file": "modules/text-reading-ocr/01-text-reading-ocr.md",
+      "images": [],
+      "summary": "Text Reading reads printed or engraved characters such as batch codes and serial numbers.",
+      "text": "Text Reading reads printed or engraved characters such as batch codes and serial numbers."
+    },
+    {
+      "id": "text-reading-ocr/02-project-setup",
+      "module": "text-reading-ocr",
+      "title": "4.1 Project Setup",
+      "pages": null,
+      "file": "modules/text-reading-ocr/02-project-setup.md",
+      "images": [],
+      "summary": "Click New Project, choose Text Reading and enter the character set, for example A Z and 0 9.",
+      "text": "Click New Project, choose Text Reading and enter the character set, for example A-Z and 0-9."
+    },
+    {
+      "id": "text-reading-ocr/03-annotating-text",
+      "module": "text-reading-ocr",
+      "title": "4.2 Annotating Text",
+      "pages": null,
+      "file": "modules/text-reading-ocr/03-annotating-text.md",
+      "images": [],
+      "summary": "Characters can be annotated by hand or proposed by the built in reader and then corrected.",
+      "text": "Characters can be annotated by hand or proposed by the built-in reader and then corrected. 4.2.1 Method 1: Manual annotation Draw a box around each line of text and type its characters. This suits fonts the built-in reader does not know. 4.2.2 Method 2: Assisted annotation Click Propose: the built-in reader fills in each line and you correct the mistakes. This is about three times faster for standard fonts."
+    },
+    {
+      "id": "text-reading-ocr/04-training",
+      "module": "text-reading-ocr",
+      "title": "4.3 Training",
+      "pages": null,
+      "file": "modules/text-reading-ocr/04-training.md",
+      "images": [],
+      "summary": "Click Train and set Epochs to 60.",
+      "text": "Click Train and set Epochs to 60. A text model needs about 300 annotated lines to read reliably."
+    },
+    {
+      "id": "text-reading-ocr/05-validation",
+      "module": "text-reading-ocr",
+      "title": "4.4 Validation",
+      "pages": null,
+      "file": "modules/text-reading-ocr/05-validation.md",
+      "images": [],
+      "summary": "The Validation tab shows the character error rate; aim for less than 1 percent before deployment.",
+      "text": "The Validation tab shows the character error rate; aim for less than 1 percent before deployment."
+    },
+    {
+      "id": "settings-reference/01-epochs",
+      "module": "settings-reference",
+      "title": "5.1 Epochs",
+      "pages": null,
+      "file": "modules/settings-reference/01-epochs.md",
+      "images": [],
+      "summary": "The number of passes over the training images.",
+      "text": "The number of passes over the training images. More epochs can help small data sets but take longer."
+    },
+    {
+      "id": "settings-reference/02-learning-rate",
+      "module": "settings-reference",
+      "title": "5.2 Learning Rate",
+      "pages": null,
+      "file": "modules/settings-reference/02-learning-rate.md",
+      "images": [],
+      "summary": "How large each training step is.",
+      "text": "How large each training step is. The default of 0.001 suits almost every project."
+    },
+    {
+      "id": "settings-reference/03-gpu-selection",
+      "module": "settings-reference",
+      "title": "5.3 GPU Selection",
+      "pages": null,
+      "file": "modules/settings-reference/03-gpu-selection.md",
+      "images": [],
+      "summary": "Choose the GPU in Settings > Hardware when the workstation has more than one.",
+      "text": "Choose the GPU in Settings > Hardware when the workstation has more than one."
+    }
+  ],
+  "images": []
+}

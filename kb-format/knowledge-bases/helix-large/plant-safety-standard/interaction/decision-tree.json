@@ -1,0 +1,152 @@
+{
+  "_draft": true,
+  "start": "start",
+  "nodes": {
+    "group-1": {
+      "ask": "Which of these is it?",
+      "options": [
+        {
+          "label": "Scope",
+          "next": "result:scope"
+        },
+        {
+          "label": "Personal protective equipment (PPE)",
+          "next": "result:personal-protective-equipment-ppe"
+        },
+        {
+          "label": "Incident reporting",
+          "next": "result:incident-reporting"
+        },
+        {
+          "label": "Lockout / tagout (LOTO)",
+          "next": "result:lockout-tagout-loto"
+        },
+        {
+          "label": "Work permits",
+          "next": "result:work-permits"
+        },
+        {
+          "label": "None of these",
+          "next": "start"
+        }
+      ]
+    },
+    "group-2": {
+      "ask": "Which of these is it?",
+      "options": [
+        {
+          "label": "Forklifts",
+          "next": "result:forklifts"
+        },
+        {
+          "label": "Working hours and fatigue",
+          "next": "result:working-hours-and-fatigue"
+        },
+        {
+          "label": "Training",
+          "next": "result:training"
+        },
+        {
+          "label": "Changes from Version 4",
+          "next": "result:changes-from-version-4"
+        },
+        {
+          "label": "None of these",
+          "next": "start"
+        }
+      ]
+    },
+    "start": {
+      "ask": "Which part of Plant safety standard is your question about?",
+      "options": [
+        {
+          "label": "Scope … Work permits",
+          "next": "group-1"
+        },
+        {
+          "label": "Forklifts … Changes from Version 4",
+          "next": "group-2"
+        },
+        {
+          "label": "Something else",
+          "next": "open"
+        }
+      ]
+    }
+  },
+  "resolve": {},
+  "results": {
+    "scope": {
+      "modules": [
+        "scope"
+      ],
+      "summary": "Scope",
+      "start_hint": "scope/01-scope",
+      "ask_next": []
+    },
+    "personal-protective-equipment-ppe": {
+      "modules": [
+        "personal-protective-equipment-ppe"
+      ],
+      "summary": "Personal protective equipment (PPE)",
+      "start_hint": "personal-protective-equipment-ppe/01-ppe-by-area",
+      "ask_next": []
+    },
+    "incident-reporting": {
+      "modules": [
+        "incident-reporting"
+      ],
+      "summary": "Incident reporting",
+      "start_hint": "incident-reporting/01-what-to-report",
+      "ask_next": []
+    },
+    "lockout-tagout-loto": {
+      "modules": [
+        "lockout-tagout-loto"
+      ],
+      "summary": "Lockout / tagout (LOTO)",
+      "start_hint": "lockout-tagout-loto/01-lockout-tagout-loto",
+      "ask_next": []
+    },
+    "work-permits": {
+      "modules": [
+        "work-permits"
+      ],
+      "summary": "Work permits",
+      "start_hint": "work-permits/01-work-permits",
+      "ask_next": []
+    },
+    "forklifts": {
+      "modules": [
+        "forklifts"
+      ],
+      "summary": "Forklifts",
+      "start_hint": "forklifts/01-forklifts",
+      "ask_next": []
+    },
+    "working-hours-and-fatigue": {
+      "modules": [
+        "working-hours-and-fatigue"
+      ],
+      "summary": "Working hours and fatigue",
+      "start_hint": "working-hours-and-fatigue/01-working-hours-and-fatigue",
+      "ask_next": []
+    },
+    "training": {
+      "modules": [
+        "training"
+      ],
+      "summary": "Training",
+      "start_hint": "training/01-training",
+      "ask_next": []
+    },
+    "changes-from-version-4": {
+      "modules": [
+        "changes-from-version-4"
+      ],
+      "summary": "Changes from Version 4",
+      "start_hint": "changes-from-version-4/01-changes-from-version-4",
+      "ask_next": []
+    }
+  }
+}

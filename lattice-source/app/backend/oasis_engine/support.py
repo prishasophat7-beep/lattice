@@ -43,11 +43,16 @@ def _words(text: str, shortest: int = 4) -> set[str]:
     return {t for t in tokenize(text) if len(t) >= shortest and t.isalpha()}
 
 
+# words about how to answer, not what about ("apart from the documents", "in general")
+_ABOUT_ASKING = frozenset("apart aside besides outside beyond general generally documents document docs manual "
+                          "manuals knowledge simple terms speaking concept layman".split())
+
+
 def _topic(question: str, index: SectionIndex) -> set[str]:
     """The question's topic words ("bit" counts: "change the bit"), as typed: spelling them the
     documents' way would make "reset" their "rest". A typo ("sik leave") counts as missing, but an
     answer about sick leave is in the documents' words, so it is not taken for a made-up one."""
-    return {w for w in _words(question, 3) if w not in _ASKING}
+    return {w for w in _words(question, 3) if w not in _ASKING and w not in _ABOUT_ASKING}
 
 
 def missing_topic(question: str, index: SectionIndex) -> list[str]:

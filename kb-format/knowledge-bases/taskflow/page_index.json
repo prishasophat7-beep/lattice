@@ -1,0 +1,1106 @@
+{
+  "kb_id": 99,
+  "kb_name": "Sample Knowledge Base",
+  "kb_description": "A combined KB with HR policies and file type validation samples",
+  "generated_at": "2026-10-13T09:06:55Z",
+  "total_files": 7,
+  "indexed_files": 7,
+  "documents": [
+    {
+      "filename": "user_manual.docx",
+      "relative_path": "user_manual.docx",
+      "file_type": ".docx",
+      "file_size": 138773,
+      "parser_engine": "mcp_ocr",
+      "page_count": null,
+      "node_count": 22,
+      "has_images": true,
+      "image_count": 3,
+      "image_files": [
+        "images/figure_000.png",
+        "images/figure_001.png",
+        "images/figure_002.png"
+      ],
+      "doc_summary": "User manual for TaskFlow Pro 4.2, a team project management tool, covering system requirements, installation, the dashboard, project creation, member roles, task assignment, reporting and settings. It closes with configuration of user preferences and third-party integrations such as Slack, GitHub and Google Calendar.",
+      "sections": [
+        {
+          "node_id": "0001",
+          "title": "user_manual.docx",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "User manual for TaskFlow Pro 4.2, a team project management tool, covering system requirements, installation, the dashboard, project creation, member roles, task assignment, reporting and settings. It closes with configuration of user preferences and third-party integrations such as Slack, GitHub and Google Calendar."
+        },
+        {
+          "node_id": "0002",
+          "title": "Introduction",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Introduces TaskFlow Pro 4.2, describing what the product does, the system requirements, and how to install it.",
+          "section_id": "introduction/01-about",
+          "section_file": "user-manual/modules/introduction/01-about.md"
+        },
+        {
+          "node_id": "0003",
+          "title": "About",
+          "type": "section",
+          "level": 2,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "TaskFlow Pro is a web and desktop project management tool for teams of 5-500 that combines Kanban boards, Gantt timelines, time tracking and reporting.",
+          "section_id": "introduction/01-about",
+          "section_file": "user-manual/modules/introduction/01-about.md"
+        },
+        {
+          "node_id": "0004",
+          "title": "Requirements",
+          "type": "section",
+          "level": 2,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Lists supported browsers, desktop OS versions, minimum hardware (4 GB RAM, dual-core CPU) and network requirements for TaskFlow Pro.",
+          "section_id": "introduction/02-requirements",
+          "section_file": "user-manual/modules/introduction/02-requirements.md"
+        },
+        {
+          "node_id": "0005",
+          "title": "Installation",
+          "type": "section",
+          "level": 2,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Explains how to access the web version, install the desktop client via the installer, and sign in for the first time using SSO or email.",
+          "section_id": "introduction/03-installation",
+          "section_file": "user-manual/modules/introduction/03-installation.md"
+        },
+        {
+          "node_id": "0006",
+          "title": "Features",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Describes the core features of TaskFlow Pro: the dashboard, project management workflows, reports and settings.",
+          "section_id": "features/01-dashboard",
+          "section_file": "user-manual/modules/features/01-dashboard.md"
+        },
+        {
+          "node_id": "0007",
+          "title": "Dashboard",
+          "type": "section",
+          "level": 2,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "The dashboard is the landing page that summarises a user's projects, tasks and team activity.",
+          "section_id": "features/01-dashboard",
+          "section_file": "user-manual/modules/features/01-dashboard.md"
+        },
+        {
+          "node_id": "0008",
+          "title": "Overview",
+          "type": "section",
+          "level": 3,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "The dashboard shows four KPI cards (active projects, open tasks, due this week, overdue), a weekly completion chart and a recent activity feed (see figure_000.png).",
+          "section_id": "features/01-dashboard",
+          "section_file": "user-manual/modules/features/01-dashboard.md"
+        },
+        {
+          "node_id": "0009",
+          "title": "Navigation",
+          "type": "section",
+          "level": 3,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Covers the left sidebar menu, the global search box, and keyboard shortcuts such as Ctrl+K for search and G then P for projects.",
+          "section_id": "features/01-dashboard",
+          "section_file": "user-manual/modules/features/01-dashboard.md"
+        },
+        {
+          "node_id": "0010",
+          "title": "Project Management",
+          "type": "section",
+          "level": 2,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Explains how to create projects, add team members with roles, and assign tasks.",
+          "section_id": "features/02-project-management",
+          "section_file": "user-manual/modules/features/02-project-management.md"
+        },
+        {
+          "node_id": "0011",
+          "title": "Creating a Project",
+          "type": "section",
+          "level": 3,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Projects are created from Projects > New Project by entering a name, unique key, template, dates and visibility (see figure_001.png).",
+          "section_id": "features/02-project-management",
+          "section_file": "user-manual/modules/features/02-project-management.md"
+        },
+        {
+          "node_id": "0012",
+          "title": "Adding Team Members",
+          "type": "section",
+          "level": 3,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Members are invited from Project > Members by email and assigned one of four roles: Owner, Manager, Contributor or Viewer.",
+          "section_id": "features/02-project-management",
+          "section_file": "user-manual/modules/features/02-project-management.md"
+        },
+        {
+          "node_id": "0013",
+          "title": "Task Assignment",
+          "type": "section",
+          "level": 3,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Tasks are assigned via the Assignee field or by dragging onto a member's avatar; workload view warns when a member exceeds 40 hours per week.",
+          "section_id": "features/02-project-management",
+          "section_file": "user-manual/modules/features/02-project-management.md"
+        },
+        {
+          "node_id": "0014",
+          "title": "Reports",
+          "type": "section",
+          "level": 2,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Describes built-in reports - burndown, velocity, time tracking and overdue tasks - and export to PDF/CSV (see figure_002.png).",
+          "section_id": "features/03-reports",
+          "section_file": "user-manual/modules/features/03-reports.md"
+        },
+        {
+          "node_id": "0015",
+          "title": "Settings",
+          "type": "section",
+          "level": 2,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Settings covers profile details, notification channels, security options such as two-factor authentication, and workspace administration for admins.",
+          "section_id": "features/04-settings",
+          "section_file": "user-manual/modules/features/04-settings.md"
+        },
+        {
+          "node_id": "0016",
+          "title": "Configuration",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Covers configuring personal preferences and connecting third-party integrations.",
+          "section_id": "configuration/01-user-preferences",
+          "section_file": "user-manual/modules/configuration/01-user-preferences.md"
+        },
+        {
+          "node_id": "0017",
+          "title": "User Preferences",
+          "type": "section",
+          "level": 2,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Users can set theme, language, time zone, start of week, date format and default board view from Settings > Profile.",
+          "section_id": "configuration/01-user-preferences",
+          "section_file": "user-manual/modules/configuration/01-user-preferences.md"
+        },
+        {
+          "node_id": "0018",
+          "title": "Integrations",
+          "type": "section",
+          "level": 2,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Lists supported integrations (Slack, Microsoft Teams, GitHub, GitLab, Google Calendar, Jira import) and how admins connect them with OAuth.",
+          "section_id": "configuration/02-integrations",
+          "section_file": "user-manual/modules/configuration/02-integrations.md"
+        },
+        {
+          "node_id": "0019",
+          "title": "Image Descriptions",
+          "type": "section",
+          "level": 2,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "VLM-generated descriptions of the 3 image(s) extracted from user_manual.docx.",
+          "section_id": "configuration/02-integrations",
+          "section_file": "user-manual/modules/configuration/02-integrations.md"
+        },
+        {
+          "node_id": "0020",
+          "title": "figure_000.png",
+          "type": "section",
+          "level": 3,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "GLOBAL SCENE: A desktop web application screenshot of the TaskFlow Pro dashboard with a dark navy left sidebar and a light grey main canvas. KEY OBJECTS: Four white KPI cards across the top read Active Projects 12, Open Tasks 87, Due This Week 14 and Overdue 3 (the last in red); below them a blue bar chart titled 'Tasks Completed per Week' rises from W1 to W8, and a 'Recent Activity' feed lists five team actions with green status dots. TEXT & LABELS: Sidebar items Dashboard (highlighted blue), Projects, Tasks, Team, Reports, Settings; header reads 'Welcome back, Priya' with a 'Search projects...' box at top right.",
+          "section_id": "configuration/02-integrations",
+          "section_file": "user-manual/modules/configuration/02-integrations.md"
+        },
+        {
+          "node_id": "0021",
+          "title": "figure_001.png",
+          "type": "section",
+          "level": 3,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "GLOBAL SCENE: A modal dialog titled 'Create New Project' overlaid on a dimmed grey background. KEY OBJECTS: Six stacked labelled input fields and two buttons at the bottom right — an outlined 'Cancel' and a solid blue 'Create'; a close 'X' sits in the top-right corner. TEXT & LABELS: Project Name * 'Website Redesign 2026', Project Key * 'WEB', Template 'Kanban (To Do / In Progress / Review / Done)', Start Date '2026-11-02', Target End Date '2027-02-26', Visibility 'Team members only'.",
+          "section_id": "configuration/02-integrations",
+          "section_file": "user-manual/modules/configuration/02-integrations.md"
+        },
+        {
+          "node_id": "0022",
+          "title": "figure_002.png",
+          "type": "section",
+          "level": 3,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "GLOBAL SCENE: A line chart report titled 'Sprint Burndown - WEB Sprint 14 (Nov 2 - Nov 13)' on a white background. KEY OBJECTS: A grey diagonal 'Ideal' line falls from 60 to 0 story points across days D1-D10, while a blue 'Actual' line with circular markers stays above ideal mid-sprint (plateau around D3-D4 at 52-50 points) before dropping steeply to 4 points on D10. TEXT & LABELS: Y-axis 'Story points' with ticks 0-60 in steps of 10; X-axis D1 through D10; legend at bottom right reads Ideal and Actual.",
+          "section_id": "configuration/02-integrations",
+          "section_file": "user-manual/modules/configuration/02-integrations.md"
+        }
+      ],
+      "folder": "user-manual/",
+      "topics": [
+        "project",
+        "projects",
+        "tasks",
+        "task",
+        "team",
+        "dashboard",
+        "members",
+        "week"
+      ],
+      "codes": [
+        "WEB-142",
+        "D10",
+        "W1",
+        "W8",
+        "D1-D10",
+        "D3-D4",
+        "D1"
+      ],
+      "related": [],
+      "modules": [
+        {
+          "id": "introduction",
+          "title": "Introduction",
+          "pages": null
+        },
+        {
+          "id": "features",
+          "title": "Features",
+          "pages": null
+        },
+        {
+          "id": "configuration",
+          "title": "Configuration",
+          "pages": null
+        }
+      ]
+    },
+    {
+      "filename": "leave_policy.pdf",
+      "relative_path": "leave_policy.pdf",
+      "file_type": ".pdf",
+      "file_size": 38688,
+      "parser_engine": "mcp_ocr",
+      "page_count": null,
+      "node_count": 14,
+      "has_images": true,
+      "image_count": 1,
+      "image_files": [
+        "images/figure_000.png"
+      ],
+      "doc_summary": "Acme Technologies' HR leave policy (HR-POL-007 v3.1) defining entitlements for privilege, casual/sick, maternity/paternity, marriage, compassionate, award and medical checkup leave. It also sets out the HRMS-based approval workflow, the annual holiday list and an annexure of abbreviations.",
+      "sections": [
+        {
+          "node_id": "0001",
+          "title": "leave_policy.pdf",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Acme Technologies' HR leave policy (HR-POL-007 v3.1) defining entitlements for privilege, casual/sick, maternity/paternity, marriage, compassionate, award and medical checkup leave. It also sets out the HRMS-based approval workflow, the annual holiday list and an annexure of abbreviations."
+        },
+        {
+          "node_id": "0002",
+          "title": "LEAVE POLICY",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Title block of Acme Technologies' leave policy, document HR-POL-007 version 3.1, effective 1 April 2026.",
+          "section_id": "leave-policy/01-leave-policy",
+          "section_file": "leave-policy/modules/leave-policy/01-leave-policy.md"
+        },
+        {
+          "node_id": "0003",
+          "title": "Purpose and Scope:",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Defines the purpose of providing employees with structured time off and states the policy applies to all permanent and probationary employees in India.",
+          "section_id": "purpose-and-scope/01-purpose-and-scope",
+          "section_file": "leave-policy/modules/purpose-and-scope/01-purpose-and-scope.md"
+        },
+        {
+          "node_id": "0004",
+          "title": "Policy:",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "States that the leave year runs January-December, leave accrues monthly, and all leave must be applied for through the HRMS portal.",
+          "section_id": "policy/01-policy",
+          "section_file": "leave-policy/modules/policy/01-policy.md"
+        },
+        {
+          "node_id": "0005",
+          "title": "A. Privilege Leave & Casual / Sick Leave",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Employees receive 18 days privilege leave (max 45 carried forward) and 12 days casual/sick leave (not carried forward); sick leave over 2 days needs a medical certificate.",
+          "section_id": "a-privilege-leave-and-casual-sick-leave/01-a-privilege-leave-and-casual-sick-leave",
+          "section_file": "leave-policy/modules/a-privilege-leave-and-casual-sick-leave/01-a-privilege-leave-and-casual-sick-leave.md"
+        },
+        {
+          "node_id": "0006",
+          "title": "B. Maternity / Paternity Leave",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Female employees receive 26 weeks paid maternity leave for the first two children (12 weeks thereafter); fathers get 10 working days paternity leave within 3 months of birth.",
+          "section_id": "b-maternity-paternity-leave/01-b-maternity-paternity-leave",
+          "section_file": "leave-policy/modules/b-maternity-paternity-leave/01-b-maternity-paternity-leave.md"
+        },
+        {
+          "node_id": "0007",
+          "title": "C. Marriage And Compassionate Leave",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Grants 5 working days marriage leave once during employment and 5 days compassionate leave on the death of an immediate family member.",
+          "section_id": "c-marriage-and-compassionate-leave/01-c-marriage-and-compassionate-leave",
+          "section_file": "leave-policy/modules/c-marriage-and-compassionate-leave/01-c-marriage-and-compassionate-leave.md"
+        },
+        {
+          "node_id": "0008",
+          "title": "D. Award Leave",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Employees recognised in the annual awards or completing 5/10 years of service receive 2-5 additional days of award leave to be used within 6 months.",
+          "section_id": "d-award-leave/01-d-award-leave",
+          "section_file": "leave-policy/modules/d-award-leave/01-d-award-leave.md"
+        },
+        {
+          "node_id": "0009",
+          "title": "E. Official Medical Checkup Leave",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Employees aged 35 and above get one day of paid leave per year for the company-sponsored annual health checkup.",
+          "section_id": "e-official-medical-checkup-leave/01-e-official-medical-checkup-leave",
+          "section_file": "leave-policy/modules/e-official-medical-checkup-leave/01-e-official-medical-checkup-leave.md"
+        },
+        {
+          "node_id": "0010",
+          "title": "Leave Approval Procedure",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Leave is applied on HRMS, reviewed by the reporting manager within 2 working days, escalated to the HOD if over 5 days, then recorded by HR (see figure_000.png).",
+          "section_id": "leave-approval-procedure/01-leave-approval-procedure",
+          "section_file": "leave-policy/modules/leave-approval-procedure/01-leave-approval-procedure.md"
+        },
+        {
+          "node_id": "0011",
+          "title": "HOLIDAYS",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "The company observes 10 paid public holidays per year (8 fixed national/festival holidays plus 2 optional holidays chosen by the employee); the list is published each December.",
+          "section_id": "holidays/01-holidays",
+          "section_file": "leave-policy/modules/holidays/01-holidays.md"
+        },
+        {
+          "node_id": "0012",
+          "title": "ANNEXURE",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Contains the leave summary table and abbreviations (PL, CL/SL, LWP, HOD, HRMS) used throughout the policy.",
+          "section_id": "annexure/01-annexure",
+          "section_file": "leave-policy/modules/annexure/01-annexure.md"
+        },
+        {
+          "node_id": "0013",
+          "title": "Image Descriptions",
+          "type": "section",
+          "level": 2,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "VLM-generated descriptions of the 1 image(s) extracted from leave_policy.pdf.",
+          "section_id": "annexure/01-annexure",
+          "section_file": "leave-policy/modules/annexure/01-annexure.md"
+        },
+        {
+          "node_id": "0014",
+          "title": "figure_000.png",
+          "type": "section",
+          "level": 3,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "GLOBAL SCENE: A horizontal flowchart titled 'Leave Approval Workflow' on a white background showing five rounded blue boxes connected left-to-right by arrows. KEY OBJECTS: Steps read 'Employee applies on HRMS portal', 'Reporting Manager reviews (2 days)', 'HOD approval (> 5 days leave)', 'HR verifies balance & records', and 'Confirmation emailed to employee'; a red box below the manager step labelled 'Rejected: reason recorded' is connected by a downward 'No' arrow. TEXT & LABELS: Footer note reads 'Leave of 5 days or fewer skips HOD approval. Emergency leave may be regularised within 3 working days.'",
+          "section_id": "annexure/01-annexure",
+          "section_file": "leave-policy/modules/annexure/01-annexure.md"
+        }
+      ],
+      "folder": "leave-policy/",
+      "topics": [
+        "leave",
+        "days",
+        "approval",
+        "holidays",
+        "working",
+        "employee",
+        "employees",
+        "hrms"
+      ],
+      "codes": [
+        "HR-POL-007"
+      ],
+      "related": [],
+      "modules": [
+        {
+          "id": "leave-policy",
+          "title": "LEAVE POLICY",
+          "pages": null
+        },
+        {
+          "id": "purpose-and-scope",
+          "title": "Purpose and Scope:",
+          "pages": null
+        },
+        {
+          "id": "policy",
+          "title": "Policy:",
+          "pages": null
+        },
+        {
+          "id": "a-privilege-leave-and-casual-sick-leave",
+          "title": "A. Privilege Leave & Casual / Sick Leave",
+          "pages": null
+        },
+        {
+          "id": "b-maternity-paternity-leave",
+          "title": "B. Maternity / Paternity Leave",
+          "pages": null
+        },
+        {
+          "id": "c-marriage-and-compassionate-leave",
+          "title": "C. Marriage And Compassionate Leave",
+          "pages": null
+        },
+        {
+          "id": "d-award-leave",
+          "title": "D. Award Leave",
+          "pages": null
+        },
+        {
+          "id": "e-official-medical-checkup-leave",
+          "title": "E. Official Medical Checkup Leave",
+          "pages": null
+        },
+        {
+          "id": "leave-approval-procedure",
+          "title": "Leave Approval Procedure",
+          "pages": null
+        },
+        {
+          "id": "holidays",
+          "title": "HOLIDAYS",
+          "pages": null
+        },
+        {
+          "id": "annexure",
+          "title": "ANNEXURE",
+          "pages": null
+        }
+      ]
+    },
+    {
+      "filename": "performance_metrics.csv",
+      "relative_path": "performance_metrics.csv",
+      "file_type": ".csv",
+      "file_size": 4950,
+      "parser_engine": "mcp_ocr",
+      "page_count": null,
+      "node_count": 1,
+      "has_images": false,
+      "image_count": 0,
+      "image_files": [],
+      "doc_summary": "CSV of API performance metrics sampled every 15 minutes over 24 hours on 2026-10-12 (96 rows) with timestamp, endpoint, request_count, response_time_ms and status_code columns. Traffic peaks in the afternoon UTC, mean latency is 170 ms, and a 503 latency spike occurs at 13:30Z.",
+      "sections": [
+        {
+          "node_id": "0001",
+          "title": "performance_metrics.csv",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "CSV of API performance metrics sampled every 15 minutes over 24 hours on 2026-10-12 (96 rows) with timestamp, endpoint, request_count, response_time_ms and status_code columns. Traffic peaks in the afternoon UTC, mean latency is 170 ms, and a 503 latency spike occurs at 13:30Z."
+        }
+      ],
+      "folder": "performance-metrics/",
+      "topics": [
+        "api",
+        "orders",
+        "products",
+        "performance",
+        "metrics",
+        "response",
+        "time"
+      ],
+      "codes": [],
+      "related": [],
+      "modules": [
+        {
+          "id": "performance-metrics",
+          "title": "Performance metrics",
+          "pages": null
+        }
+      ]
+    },
+    {
+      "filename": "quarterly_report.xlsx",
+      "relative_path": "quarterly_report.xlsx",
+      "file_type": ".xlsx",
+      "file_size": 1790,
+      "parser_engine": "mcp_ocr",
+      "page_count": null,
+      "node_count": 1,
+      "has_images": false,
+      "image_count": 0,
+      "image_files": [],
+      "doc_summary": "Excel workbook with a single 'Q1 Summary' sheet reporting monthly Revenue, Expenses, Profit and Margin % for January-March 2026. Q1 revenue totals 803,800 against expenses of 566,250, giving a profit of 237,550 and a 29.6% margin, with margin improving each month.",
+      "sections": [
+        {
+          "node_id": "0001",
+          "title": "quarterly_report.xlsx",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Excel workbook with a single 'Q1 Summary' sheet reporting monthly Revenue, Expenses, Profit and Margin % for January-March 2026. Q1 revenue totals 803,800 against expenses of 566,250, giving a profit of 237,550 and a 29.6% margin, with margin improving each month."
+        }
+      ],
+      "folder": "quarterly-report/",
+      "topics": [
+        "sheet",
+        "summary"
+      ],
+      "codes": [],
+      "related": [],
+      "modules": [
+        {
+          "id": "quarterly-report",
+          "title": "Quarterly report",
+          "pages": null
+        }
+      ]
+    },
+    {
+      "filename": "manifest.json",
+      "relative_path": "manifest.json",
+      "file_type": ".json",
+      "file_size": 625,
+      "parser_engine": "mcp_ocr",
+      "page_count": null,
+      "node_count": 1,
+      "has_images": false,
+      "image_count": 0,
+      "image_files": [],
+      "doc_summary": "JSON manifest describing the Sample Knowledge Base: name, description, version 1.0.0, creation date 2026-10-13 and a file count of 7. It groups the files into two sub-knowledge-bases, HR Policies and File Type Validation, and records the mcp_ocr parser engine.",
+      "sections": [
+        {
+          "node_id": "0001",
+          "title": "manifest.json",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "JSON manifest describing the Sample Knowledge Base: name, description, version 1.0.0, creation date 2026-10-13 and a file count of 7. It groups the files into two sub-knowledge-bases, HR Policies and File Type Validation, and records the mcp_ocr parser engine."
+        }
+      ],
+      "folder": "manifest/",
+      "topics": [
+        "manifest",
+        "file",
+        "json",
+        "knowledge",
+        "validation",
+        "name",
+        "policies",
+        "type"
+      ],
+      "codes": [],
+      "related": [
+        {
+          "document": "user-manual",
+          "relation": "mentions"
+        },
+        {
+          "document": "leave-policy",
+          "relation": "mentions"
+        },
+        {
+          "document": "performance-metrics",
+          "relation": "mentions"
+        },
+        {
+          "document": "quarterly-report",
+          "relation": "mentions"
+        },
+        {
+          "document": "config",
+          "relation": "mentions"
+        },
+        {
+          "document": "requirements",
+          "relation": "mentions"
+        }
+      ],
+      "modules": [
+        {
+          "id": "manifest",
+          "title": "Manifest",
+          "pages": null
+        }
+      ]
+    },
+    {
+      "filename": "config.xml",
+      "relative_path": "config.xml",
+      "file_type": ".xml",
+      "file_size": 488,
+      "parser_engine": "mcp_ocr",
+      "page_count": null,
+      "node_count": 13,
+      "has_images": false,
+      "image_count": 0,
+      "image_files": [],
+      "doc_summary": "IntelliJ-style project code style configuration (scheme 'Project', version 173) stored as XML. It enables spaces inside empty HTML tags and enforced attribute quotes, and for JavaScript forces semicolons and disables the space before function parentheses.",
+      "sections": [
+        {
+          "node_id": "0001",
+          "title": "config.xml",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "IntelliJ-style project code style configuration (scheme 'Project', version 173) stored as XML. It enables spaces inside empty HTML tags and enforced attribute quotes, and for JavaScript forces semicolons and disables the space before function parentheses."
+        },
+        {
+          "node_id": "0002",
+          "title": "<component name=\"ProjectCodeStyleConfiguration\">",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Root IntelliJ component that stores the project-level code style configuration.",
+          "section_id": "component-name-projectcodestyleconfiguration/01-component-name-projectcodestyleconfiguration",
+          "section_file": "config/modules/component-name-projectcodestyleconfiguration/01-component-name-projectcodestyleconfiguration.md"
+        },
+        {
+          "node_id": "0003",
+          "title": "<code_scheme name=\"Project\" version=\"173\">",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Opens the shared 'Project' code scheme, format version 173, applied to all project files.",
+          "section_id": "code-scheme-name-project-version-173/01-code-scheme-name-project-version-173",
+          "section_file": "config/modules/code-scheme-name-project-version-173/01-code-scheme-name-project-version-173.md"
+        },
+        {
+          "node_id": "0004",
+          "title": "<HTMLCodeStyleSettings>",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Begins the block of HTML formatter settings.",
+          "section_id": "htmlcodestylesettings/01-htmlcodestylesettings",
+          "section_file": "config/modules/htmlcodestylesettings/01-htmlcodestylesettings.md"
+        },
+        {
+          "node_id": "0005",
+          "title": "<option name=\"HTML_SPACE_INSIDE_EMPTY_TAG\" value=\"true\" />",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Inserts a space before the closing slash of empty tags, e.g. <br />.",
+          "section_id": "option-name-html-space-inside-empty-tag-value-true/01-option-name-html-space-inside-empty-tag-value-true",
+          "section_file": "config/modules/option-name-html-space-inside-empty-tag-value-true/01-option-name-html-space-inside-empty-tag-value-true.md"
+        },
+        {
+          "node_id": "0006",
+          "title": "<option name=\"HTML_ENFORCE_QUOTES\" value=\"true\" />",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Forces attribute values to be wrapped in quotes.",
+          "section_id": "option-name-html-enforce-quotes-value-true/01-option-name-html-enforce-quotes-value-true",
+          "section_file": "config/modules/option-name-html-enforce-quotes-value-true/01-option-name-html-enforce-quotes-value-true.md"
+        },
+        {
+          "node_id": "0007",
+          "title": "</HTMLCodeStyleSettings>",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Ends the HTML formatter settings block.",
+          "section_id": "htmlcodestylesettings-2/01-htmlcodestylesettings",
+          "section_file": "config/modules/htmlcodestylesettings-2/01-htmlcodestylesettings.md"
+        },
+        {
+          "node_id": "0008",
+          "title": "<JSCodeStyleSettings>",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Begins the block of JavaScript formatter settings.",
+          "section_id": "jscodestylesettings/01-jscodestylesettings",
+          "section_file": "config/modules/jscodestylesettings/01-jscodestylesettings.md"
+        },
+        {
+          "node_id": "0009",
+          "title": "<option name=\"FORCE_SEMICOLON_STYLE\" value=\"true\" />",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Enforces the configured semicolon style, adding statement-terminating semicolons on reformat.",
+          "section_id": "option-name-force-semicolon-style-value-true/01-option-name-force-semicolon-style-value-true",
+          "section_file": "config/modules/option-name-force-semicolon-style-value-true/01-option-name-force-semicolon-style-value-true.md"
+        },
+        {
+          "node_id": "0010",
+          "title": "<option name=\"SPACE_BEFORE_FUNCTION_LEFT_PARENTH\" value=\"false\" />",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "No space between a function name and its opening parenthesis: function foo() rather than function foo ().",
+          "section_id": "option-name-space-before-function-left-parenth-value-false/01-option-name-space-before-function-left-parenth-value-false",
+          "section_file": "config/modules/option-name-space-before-function-left-parenth-value-false/01-option-name-space-before-function-left-parenth-value-false.md"
+        },
+        {
+          "node_id": "0011",
+          "title": "</JSCodeStyleSettings>",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Ends the JavaScript formatter settings block.",
+          "section_id": "jscodestylesettings-2/01-jscodestylesettings",
+          "section_file": "config/modules/jscodestylesettings-2/01-jscodestylesettings.md"
+        },
+        {
+          "node_id": "0012",
+          "title": "</code_scheme>",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Closes the Project code scheme.",
+          "section_id": "code-scheme/01-code-scheme",
+          "section_file": "config/modules/code-scheme/01-code-scheme.md"
+        },
+        {
+          "node_id": "0013",
+          "title": "</component>",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Closes the ProjectCodeStyleConfiguration component.",
+          "section_id": "component/01-component",
+          "section_file": "config/modules/component/01-component.md"
+        }
+      ],
+      "folder": "config/",
+      "topics": [
+        "option",
+        "value",
+        "name",
+        "true",
+        "scheme",
+        "html",
+        "space",
+        "htmlcodestylesettings"
+      ],
+      "codes": [],
+      "related": [],
+      "modules": [
+        {
+          "id": "component-name-projectcodestyleconfiguration",
+          "title": "<component name=\"ProjectCodeStyleConfiguration\">",
+          "pages": null
+        },
+        {
+          "id": "code-scheme-name-project-version-173",
+          "title": "<code_scheme name=\"Project\" version=\"173\">",
+          "pages": null
+        },
+        {
+          "id": "htmlcodestylesettings",
+          "title": "<HTMLCodeStyleSettings>",
+          "pages": null
+        },
+        {
+          "id": "option-name-html-space-inside-empty-tag-value-true",
+          "title": "<option name=\"HTML_SPACE_INSIDE_EMPTY_TAG\" value=\"true\" />",
+          "pages": null
+        },
+        {
+          "id": "option-name-html-enforce-quotes-value-true",
+          "title": "<option name=\"HTML_ENFORCE_QUOTES\" value=\"true\" />",
+          "pages": null
+        },
+        {
+          "id": "htmlcodestylesettings-2",
+          "title": "</HTMLCodeStyleSettings>",
+          "pages": null
+        },
+        {
+          "id": "jscodestylesettings",
+          "title": "<JSCodeStyleSettings>",
+          "pages": null
+        },
+        {
+          "id": "option-name-force-semicolon-style-value-true",
+          "title": "<option name=\"FORCE_SEMICOLON_STYLE\" value=\"true\" />",
+          "pages": null
+        },
+        {
+          "id": "option-name-space-before-function-left-parenth-value-false",
+          "title": "<option name=\"SPACE_BEFORE_FUNCTION_LEFT_PARENTH\" value=\"false\" />",
+          "pages": null
+        },
+        {
+          "id": "jscodestylesettings-2",
+          "title": "</JSCodeStyleSettings>",
+          "pages": null
+        },
+        {
+          "id": "code-scheme",
+          "title": "</code_scheme>",
+          "pages": null
+        },
+        {
+          "id": "component",
+          "title": "</component>",
+          "pages": null
+        }
+      ]
+    },
+    {
+      "filename": "requirements.txt",
+      "relative_path": "requirements.txt",
+      "file_type": ".txt",
+      "file_size": 449,
+      "parser_engine": "mcp_ocr",
+      "page_count": null,
+      "node_count": 6,
+      "has_images": false,
+      "image_count": 0,
+      "image_files": [],
+      "doc_summary": "Pinned pip requirements for a small FastAPI web API using PostgreSQL via SQLAlchemy, Alembic and psycopg, with JWT auth through python-jose and passlib. It separates core runtime packages from development tooling (pytest, ruff, mypy) and pins httpx as the HTTP client.",
+      "sections": [
+        {
+          "node_id": "0001",
+          "title": "requirements.txt",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Pinned pip requirements for a small FastAPI web API using PostgreSQL via SQLAlchemy, Alembic and psycopg, with JWT auth through python-jose and passlib. It separates core runtime packages from development tooling (pytest, ruff, mypy) and pins httpx as the HTTP client."
+        },
+        {
+          "node_id": "0002",
+          "title": "Web API Dependencies",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Header comment identifying the file as the dependency list for a FastAPI-based web API.",
+          "section_id": "web-api-dependencies/01-web-api-dependencies",
+          "section_file": "requirements/modules/web-api-dependencies/01-web-api-dependencies.md"
+        },
+        {
+          "node_id": "0003",
+          "title": "Install:  pip install -r requirements.txt",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Install instruction comment: all packages are installed with pip install -r requirements.txt.",
+          "section_id": "install-pip-install-r-requirements-txt/01-install-pip-install-r-requirements-txt",
+          "section_file": "requirements/modules/install-pip-install-r-requirements-txt/01-install-pip-install-r-requirements-txt.md"
+        },
+        {
+          "node_id": "0004",
+          "title": "Core Packages",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Runtime dependencies: FastAPI, Uvicorn, Pydantic and pydantic-settings, SQLAlchemy with Alembic and psycopg, python-jose, passlib and python-multipart.",
+          "section_id": "core-packages/01-core-packages",
+          "section_file": "requirements/modules/core-packages/01-core-packages.md"
+        },
+        {
+          "node_id": "0005",
+          "title": "Development Packages",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Test and lint tooling: pytest, pytest-asyncio, pytest-cov, ruff and mypy.",
+          "section_id": "development-packages/01-development-packages",
+          "section_file": "requirements/modules/development-packages/01-development-packages.md"
+        },
+        {
+          "node_id": "0006",
+          "title": "HTTP client (httpx)",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "httpx 0.28.1, used for outbound HTTP calls and as the FastAPI TestClient transport.",
+          "section_id": "http-client-httpx/01-http-client-httpx",
+          "section_file": "requirements/modules/http-client-httpx/01-http-client-httpx.md"
+        }
+      ],
+      "folder": "requirements/",
+      "topics": [
+        "packages",
+        "install",
+        "dependencies",
+        "pip",
+        "httpx",
+        "core",
+        "development",
+        "http"
+      ],
+      "codes": [],
+      "related": [],
+      "modules": [
+        {
+          "id": "web-api-dependencies",
+          "title": "Web API Dependencies",
+          "pages": null
+        },
+        {
+          "id": "install-pip-install-r-requirements-txt",
+          "title": "Install:  pip install -r requirements.txt",
+          "pages": null
+        },
+        {
+          "id": "core-packages",
+          "title": "Core Packages",
+          "pages": null
+        },
+        {
+          "id": "development-packages",
+          "title": "Development Packages",
+          "pages": null
+        },
+        {
+          "id": "http-client-httpx",
+          "title": "HTTP client (httpx)",
+          "pages": null
+        }
+      ]
+    }
+  ]
+}

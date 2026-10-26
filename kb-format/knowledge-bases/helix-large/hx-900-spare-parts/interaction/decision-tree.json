@@ -1,0 +1,30 @@
+{
+  "_draft": true,
+  "start": "start",
+  "nodes": {
+    "start": {
+      "ask": "Which part of HX-900 spare parts is your question about?",
+      "options": [
+        {
+          "label": "Parts list",
+          "next": "result:parts-list"
+        },
+        {
+          "label": "Something else",
+          "next": "open"
+        }
+      ]
+    }
+  },
+  "resolve": {},
+  "results": {
+    "parts-list": {
+      "modules": [
+        "parts-list"
+      ],
+      "summary": "Parts list",
+      "start_hint": "parts-list/01-parts-list",
+      "ask_next": []
+    }
+  }
+}

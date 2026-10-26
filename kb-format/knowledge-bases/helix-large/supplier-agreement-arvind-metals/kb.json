@@ -1,0 +1,198 @@
+{
+  "format_version": 2,
+  "generator": "convert_kb.py",
+  "document": {
+    "id": "supplier-agreement-arvind-metals",
+    "title": "Supplier agreement arvind metals",
+    "filename": "supplier_agreement_arvind_metals.docx",
+    "type": "docx",
+    "pages": null,
+    "summary": "Arvind Metals supplies aluminium bar stock (grades 6061 T6 and 7075 T6) and steel bar (EN8, EN24) to the Helix Precision plants in Pune and Chennai."
+  },
+  "modules": [
+    {
+      "id": "part-1-original-agreement-signed-10-january-2025",
+      "title": "Part 1: Original agreement (signed 10 January 2025)",
+      "heading": "Part 1: Original agreement (signed 10 January 2025)",
+      "pages": null,
+      "sections": [
+        "part-1-original-agreement-signed-10-january-2025/01-scope",
+        "part-1-original-agreement-signed-10-january-2025/02-term",
+        "part-1-original-agreement-signed-10-january-2025/03-prices",
+        "part-1-original-agreement-signed-10-january-2025/04-delivery",
+        "part-1-original-agreement-signed-10-january-2025/05-payment-terms",
+        "part-1-original-agreement-signed-10-january-2025/06-late-delivery-penalty",
+        "part-1-original-agreement-signed-10-january-2025/07-quality",
+        "part-1-original-agreement-signed-10-january-2025/08-termination"
+      ],
+      "summary": "Arvind Metals supplies aluminium bar stock (grades 6061 T6 and 7075 T6) and steel bar (EN8, EN24) to the Helix Precision plants in Pune and Chennai."
+    },
+    {
+      "id": "part-2-amendment-1-signed-15-march-2026-effective-1-april-20",
+      "title": "Part 2: Amendment 1 (signed 15 March 2026, effective 1 April 2026)",
+      "heading": "Part 2: Amendment 1 (signed 15 March 2026, effective 1 April 2026)",
+      "pages": null,
+      "sections": [
+        "part-2-amendment-1-signed-15-march-2026-effective-1-april-20/01-part-2-amendment-1-signed-15-march-2026-effective-1-april-20",
+        "part-2-amendment-1-signed-15-march-2026-effective-1-april-20/02-delivery-replaces-1-4",
+        "part-2-amendment-1-signed-15-march-2026-effective-1-april-20/03-payment-terms-replaces-1-5",
+        "part-2-amendment-1-signed-15-march-2026-effective-1-april-20/04-late-delivery-penalty-replaces-1-6",
+        "part-2-amendment-1-signed-15-march-2026-effective-1-april-20/05-safety-stock-new-clause"
+      ],
+      "summary": "The following clauses replace the corresponding clauses of the original agreement."
+    },
+    {
+      "id": "part-3-delivery-record-q2-2026",
+      "title": "Part 3: Delivery record Q2 2026",
+      "heading": "Part 3: Delivery record Q2 2026",
+      "pages": null,
+      "sections": [
+        "part-3-delivery-record-q2-2026/01-part-3-delivery-record-q2-2026"
+      ],
+      "summary": "PO number Grade Order value (INR) Due date Delivered Days late PO 26 0412 6061 T6 8,40,000 8 Apr 2026 8 Apr 2026 0 PO 26 0457 7075 T6 5,10,000 22 Apr 2026 21 Apr 2026 0 PO 26 0503 6061 T6 9,20,000 12 May 2026 26 May 2026"
+    }
+  ],
+  "sections": [
+    {
+      "id": "part-1-original-agreement-signed-10-january-2025/01-scope",
+      "module": "part-1-original-agreement-signed-10-january-2025",
+      "title": "1.1 Scope",
+      "pages": null,
+      "file": "modules/part-1-original-agreement-signed-10-january-2025/01-scope.md",
+      "images": [],
+      "summary": "Arvind Metals supplies aluminium bar stock (grades 6061 T6 and 7075 T6) and steel bar (EN8, EN24) to the Helix Precision plants in Pune and Chennai.",
+      "text": "Arvind Metals supplies aluminium bar stock (grades 6061-T6 and 7075-T6) and steel bar (EN8, EN24) to the Helix Precision plants in Pune and Chennai."
+    },
+    {
+      "id": "part-1-original-agreement-signed-10-january-2025/02-term",
+      "module": "part-1-original-agreement-signed-10-january-2025",
+      "title": "1.2 Term",
+      "pages": null,
+      "file": "modules/part-1-original-agreement-signed-10-january-2025/02-term.md",
+      "images": [],
+      "summary": "The agreement runs from 1 February 2025 to 31 January 2027 and renews automatically for one year unless either party gives 90 days' written notice.",
+      "text": "The agreement runs from 1 February 2025 to 31 January 2027 and renews automatically for one year unless either party gives 90 days' written notice."
+    },
+    {
+      "id": "part-1-original-agreement-signed-10-january-2025/03-prices",
+      "module": "part-1-original-agreement-signed-10-january-2025",
+      "title": "1.3 Prices",
+      "pages": null,
+      "file": "modules/part-1-original-agreement-signed-10-january-2025/03-prices.md",
+      "images": [],
+      "summary": "Prices are fixed per quarter and linked to the LME aluminium price of the last month of the previous quarter.",
+      "text": "Prices are fixed per quarter and linked to the LME aluminium price of the last month of the previous quarter. A change of more than 5 % in the LME price allows either party to request a price review."
+    },
+    {
+      "id": "part-1-original-agreement-signed-10-january-2025/04-delivery",
+      "module": "part-1-original-agreement-signed-10-january-2025",
+      "title": "1.4 Delivery",
+      "pages": null,
+      "file": "modules/part-1-original-agreement-signed-10-january-2025/04-delivery.md",
+      "images": [],
+      "summary": "Delivery within 10 working days of the purchase order.",
+      "text": "Delivery within 10 working days of the purchase order. On-time delivery target: 95 % of orders per quarter."
+    },
+    {
+      "id": "part-1-original-agreement-signed-10-january-2025/05-payment-terms",
+      "module": "part-1-original-agreement-signed-10-january-2025",
+      "title": "1.5 Payment terms",
+      "pages": null,
+      "file": "modules/part-1-original-agreement-signed-10-january-2025/05-payment-terms.md",
+      "images": [],
+      "summary": "Payment within 60 days of the invoice date.",
+      "text": "Payment within 60 days of the invoice date."
+    },
+    {
+      "id": "part-1-original-agreement-signed-10-january-2025/06-late-delivery-penalty",
+      "module": "part-1-original-agreement-signed-10-january-2025",
+      "title": "1.6 Late delivery penalty",
+      "pages": null,
+      "file": "modules/part-1-original-agreement-signed-10-january-2025/06-late-delivery-penalty.md",
+      "images": [],
+      "summary": "For each full week of delay the supplier pays a penalty of 1 % of the value of the delayed order, up to a maximum of 5 % of the order value.",
+      "text": "For each full week of delay the supplier pays a penalty of 1 % of the value of the delayed order, up to a maximum of 5 % of the order value."
+    },
+    {
+      "id": "part-1-original-agreement-signed-10-january-2025/07-quality",
+      "module": "part-1-original-agreement-signed-10-january-2025",
+      "title": "1.7 Quality",
+      "pages": null,
+      "file": "modules/part-1-original-agreement-signed-10-january-2025/07-quality.md",
+      "images": [],
+      "summary": "Each delivery must come with a mill test certificate.",
+      "text": "Each delivery must come with a mill test certificate. Material that fails incoming inspection is returned at the supplier's cost and must be replaced within 5 working days."
+    },
+    {
+      "id": "part-1-original-agreement-signed-10-january-2025/08-termination",
+      "module": "part-1-original-agreement-signed-10-january-2025",
+      "title": "1.8 Termination",
+      "pages": null,
+      "file": "modules/part-1-original-agreement-signed-10-january-2025/08-termination.md",
+      "images": [],
+      "summary": "Helix may terminate the agreement with 30 days' notice if on time delivery is below 85 % for two consecutive quarters.",
+      "text": "Helix may terminate the agreement with 30 days' notice if on-time delivery is below 85 % for two consecutive quarters."
+    },
+    {
+      "id": "part-2-amendment-1-signed-15-march-2026-effective-1-april-20/01-part-2-amendment-1-signed-15-march-2026-effective-1-april-20",
+      "module": "part-2-amendment-1-signed-15-march-2026-effective-1-april-20",
+      "title": "Part 2: Amendment 1 (signed 15 March 2026, effective 1 April 2026)",
+      "pages": null,
+      "file": "modules/part-2-amendment-1-signed-15-march-2026-effective-1-april-20/01-part-2-amendment-1-signed-15-march-2026-effective-1-april-20.md",
+      "images": [],
+      "summary": "The following clauses replace the corresponding clauses of the original agreement.",
+      "text": "The following clauses replace the corresponding clauses of the original agreement. All other clauses remain unchanged."
+    },
+    {
+      "id": "part-2-amendment-1-signed-15-march-2026-effective-1-april-20/02-delivery-replaces-1-4",
+      "module": "part-2-amendment-1-signed-15-march-2026-effective-1-april-20",
+      "title": "2.1 Delivery (replaces 1.4)",
+      "pages": null,
+      "file": "modules/part-2-amendment-1-signed-15-march-2026-effective-1-april-20/02-delivery-replaces-1-4.md",
+      "images": [],
+      "summary": "Delivery within 7 working days of the purchase order for 6061 T6 and within 10 working days for all other grades.",
+      "text": "Delivery within 7 working days of the purchase order for 6061-T6 and within 10 working days for all other grades. On-time delivery target: 97 % of orders per quarter."
+    },
+    {
+      "id": "part-2-amendment-1-signed-15-march-2026-effective-1-april-20/03-payment-terms-replaces-1-5",
+      "module": "part-2-amendment-1-signed-15-march-2026-effective-1-april-20",
+      "title": "2.2 Payment terms (replaces 1.5)",
+      "pages": null,
+      "file": "modules/part-2-amendment-1-signed-15-march-2026-effective-1-april-20/03-payment-terms-replaces-1-5.md",
+      "images": [],
+      "summary": "Payment within 45 days of the invoice date.",
+      "text": "Payment within 45 days of the invoice date. An early-payment discount of 1.5 % applies to invoices paid within 15 days."
+    },
+    {
+      "id": "part-2-amendment-1-signed-15-march-2026-effective-1-april-20/04-late-delivery-penalty-replaces-1-6",
+      "module": "part-2-amendment-1-signed-15-march-2026-effective-1-april-20",
+      "title": "2.3 Late delivery penalty (replaces 1.6)",
+      "pages": null,
+      "file": "modules/part-2-amendment-1-signed-15-march-2026-effective-1-april-20/04-late-delivery-penalty-replaces-1-6.md",
+      "images": [],
+      "summary": "For each full week of delay the supplier pays a penalty of 1.5 % of the value of the delayed order, up to a maximum of 7.5 % of the order value.",
+      "text": "For each full week of delay the supplier pays a penalty of 1.5 % of the value of the delayed order, up to a maximum of 7.5 % of the order value. No penalty applies to delays caused by force majeure notified in writing within 48 hours."
+    },
+    {
+      "id": "part-2-amendment-1-signed-15-march-2026-effective-1-april-20/05-safety-stock-new-clause",
+      "module": "part-2-amendment-1-signed-15-march-2026-effective-1-april-20",
+      "title": "2.4 Safety stock (new clause)",
+      "pages": null,
+      "file": "modules/part-2-amendment-1-signed-15-march-2026-effective-1-april-20/05-safety-stock-new-clause.md",
+      "images": [],
+      "summary": "Arvind Metals keeps a safety stock of at least 4 tonnes of 6061 T6 bar at its Pune warehouse reserved for Helix.",
+      "text": "Arvind Metals keeps a safety stock of at least 4 tonnes of 6061-T6 bar at its Pune warehouse reserved for Helix."
+    },
+    {
+      "id": "part-3-delivery-record-q2-2026/01-part-3-delivery-record-q2-2026",
+      "module": "part-3-delivery-record-q2-2026",
+      "title": "Part 3: Delivery record Q2 2026",
+      "pages": null,
+      "file": "modules/part-3-delivery-record-q2-2026/01-part-3-delivery-record-q2-2026.md",
+      "images": [],
+      "summary": "PO number Grade Order value (INR) Due date Delivered Days late PO 26 0412 6061 T6 8,40,000 8 Apr 2026 8 Apr 2026 0 PO 26 0457 7075 T6 5,10,000 22 Apr 2026 21 Apr 2026 0 PO 26 0503 6061 T6 9,20,000 12 May 2026 26 May 2026",
+      "text": "PO number Grade Order value (INR) Due date Delivered Days late PO-26-0412 6061-T6 8,40,000 8 Apr 2026 8 Apr 2026 0 PO-26-0457 7075-T6 5,10,000 22 Apr 2026 21 Apr 2026 0 PO-26-0503 6061-T6 9,20,000 12 May 2026 26 May 2026 14 PO-26-0538 EN24 3,60,000 27 May 2026 27 May 2026 0 PO-26-0561 6061-T6 7,80,000 3 Jun 2026 13 Jun 2026 10 PO-26-0590 6061-T6 6,50,000 17 Jun 2026 25 Jun 2026 8 PO-26-0602 EN8 2,90,000 24 Jun 2026 24 Jun 2026 0"
+    }
+  ],
+  "images": []
+}

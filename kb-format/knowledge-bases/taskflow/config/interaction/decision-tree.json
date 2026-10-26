@@ -1,0 +1,188 @@
+{
+  "_draft": true,
+  "start": "start",
+  "nodes": {
+    "group-1": {
+      "ask": "Which of these is it?",
+      "options": [
+        {
+          "label": "<component name=\"ProjectCodeStyleConfiguration\">",
+          "next": "result:component-name-projectcodestyleconfiguration"
+        },
+        {
+          "label": "<code_scheme name=\"Project\" version=\"173\">",
+          "next": "result:code-scheme-name-project-version-173"
+        },
+        {
+          "label": "<HTMLCodeStyleSettings>",
+          "next": "result:htmlcodestylesettings"
+        },
+        {
+          "label": "<option name=\"HTML_SPACE_INSIDE_EMPTY_TAG\" value=\"true\" />",
+          "next": "result:option-name-html-space-inside-empty-tag-value-true"
+        },
+        {
+          "label": "<option name=\"HTML_ENFORCE_QUOTES\" value=\"true\" />",
+          "next": "result:option-name-html-enforce-quotes-value-true"
+        },
+        {
+          "label": "</HTMLCodeStyleSettings>",
+          "next": "result:htmlcodestylesettings-2"
+        },
+        {
+          "label": "None of these",
+          "next": "start"
+        }
+      ]
+    },
+    "group-2": {
+      "ask": "Which of these is it?",
+      "options": [
+        {
+          "label": "<JSCodeStyleSettings>",
+          "next": "result:jscodestylesettings"
+        },
+        {
+          "label": "<option name=\"FORCE_SEMICOLON_STYLE\" value=\"true\" />",
+          "next": "result:option-name-force-semicolon-style-value-true"
+        },
+        {
+          "label": "<option name=\"SPACE_BEFORE_FUNCTION_LEFT_PARENTH\" value=\"false\" />",
+          "next": "result:option-name-space-before-function-left-parenth-value-false"
+        },
+        {
+          "label": "</JSCodeStyleSettings>",
+          "next": "result:jscodestylesettings-2"
+        },
+        {
+          "label": "</code_scheme>",
+          "next": "result:code-scheme"
+        },
+        {
+          "label": "</component>",
+          "next": "result:component"
+        },
+        {
+          "label": "None of these",
+          "next": "start"
+        }
+      ]
+    },
+    "start": {
+      "ask": "Which part of Config is your question about?",
+      "options": [
+        {
+          "label": "<component name=\"ProjectCodeStyleConfiguration\"> … </HTMLCodeStyleSettings>",
+          "next": "group-1"
+        },
+        {
+          "label": "<JSCodeStyleSettings> … </component>",
+          "next": "group-2"
+        },
+        {
+          "label": "Something else",
+          "next": "open"
+        }
+      ]
+    }
+  },
+  "resolve": {},
+  "results": {
+    "component-name-projectcodestyleconfiguration": {
+      "modules": [
+        "component-name-projectcodestyleconfiguration"
+      ],
+      "summary": "<component name=\"ProjectCodeStyleConfiguration\">",
+      "start_hint": "component-name-projectcodestyleconfiguration/01-component-name-projectcodestyleconfiguration",
+      "ask_next": []
+    },
+    "code-scheme-name-project-version-173": {
+      "modules": [
+        "code-scheme-name-project-version-173"
+      ],
+      "summary": "<code_scheme name=\"Project\" version=\"173\">",
+      "start_hint": "code-scheme-name-project-version-173/01-code-scheme-name-project-version-173",
+      "ask_next": []
+    },
+    "htmlcodestylesettings": {
+      "modules": [
+        "htmlcodestylesettings"
+      ],
+      "summary": "<HTMLCodeStyleSettings>",
+      "start_hint": "htmlcodestylesettings/01-htmlcodestylesettings",
+      "ask_next": []
+    },
+    "option-name-html-space-inside-empty-tag-value-true": {
+      "modules": [
+        "option-name-html-space-inside-empty-tag-value-true"
+      ],
+      "summary": "<option name=\"HTML_SPACE_INSIDE_EMPTY_TAG\" value=\"true\" />",
+      "start_hint": "option-name-html-space-inside-empty-tag-value-true/01-option-name-html-space-inside-empty-tag-value-true",
+      "ask_next": []
+    },
+    "option-name-html-enforce-quotes-value-true": {
+      "modules": [
+        "option-name-html-enforce-quotes-value-true"
+      ],
+      "summary": "<option name=\"HTML_ENFORCE_QUOTES\" value=\"true\" />",
+      "start_hint": "option-name-html-enforce-quotes-value-true/01-option-name-html-enforce-quotes-value-true",
+      "ask_next": []
+    },
+    "htmlcodestylesettings-2": {
+      "modules": [
+        "htmlcodestylesettings-2"
+      ],
+      "summary": "</HTMLCodeStyleSettings>",
+      "start_hint": "htmlcodestylesettings-2/01-htmlcodestylesettings",
+      "ask_next": []
+    },
+    "jscodestylesettings": {
+      "modules": [
+        "jscodestylesettings"
+      ],
+      "summary": "<JSCodeStyleSettings>",
+      "start_hint": "jscodestylesettings/01-jscodestylesettings",
+      "ask_next": []
+    },
+    "option-name-force-semicolon-style-value-true": {
+      "modules": [
+        "option-name-force-semicolon-style-value-true"
+      ],
+      "summary": "<option name=\"FORCE_SEMICOLON_STYLE\" value=\"true\" />",
+      "start_hint": "option-name-force-semicolon-style-value-true/01-option-name-force-semicolon-style-value-true",
+      "ask_next": []
+    },
+    "option-name-space-before-function-left-parenth-value-false": {
+      "modules": [
+        "option-name-space-before-function-left-parenth-value-false"
+      ],
+      "summary": "<option name=\"SPACE_BEFORE_FUNCTION_LEFT_PARENTH\" value=\"false\" />",
+      "start_hint": "option-name-space-before-function-left-parenth-value-false/01-option-name-space-before-function-left-parenth-value-false",
+      "ask_next": []
+    },
+    "jscodestylesettings-2": {
+      "modules": [
+        "jscodestylesettings-2"
+      ],
+      "summary": "</JSCodeStyleSettings>",
+      "start_hint": "jscodestylesettings-2/01-jscodestylesettings",
+      "ask_next": []
+    },
+    "code-scheme": {
+      "modules": [
+        "code-scheme"
+      ],
+      "summary": "</code_scheme>",
+      "start_hint": "code-scheme/01-code-scheme",
+      "ask_next": []
+    },
+    "component": {
+      "modules": [
+        "component"
+      ],
+      "summary": "</component>",
+      "start_hint": "component/01-component",
+      "ask_next": []
+    }
+  }
+}

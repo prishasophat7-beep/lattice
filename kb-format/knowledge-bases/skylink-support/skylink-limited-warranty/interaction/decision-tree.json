@@ -1,0 +1,78 @@
+{
+  "_draft": true,
+  "start": "start",
+  "nodes": {
+    "start": {
+      "ask": "Which part of Skylink limited warranty is your question about?",
+      "options": [
+        {
+          "label": "What This Warranty Covers",
+          "next": "result:what-this-warranty-covers"
+        },
+        {
+          "label": "Warranty Period",
+          "next": "result:warranty-period"
+        },
+        {
+          "label": "What Is Not Covered",
+          "next": "result:what-is-not-covered"
+        },
+        {
+          "label": "How to Make a Claim",
+          "next": "result:how-to-make-a-claim"
+        },
+        {
+          "label": "Limitation of Liability",
+          "next": "result:limitation-of-liability"
+        },
+        {
+          "label": "Something else",
+          "next": "open"
+        }
+      ]
+    }
+  },
+  "resolve": {},
+  "results": {
+    "what-this-warranty-covers": {
+      "modules": [
+        "what-this-warranty-covers"
+      ],
+      "summary": "What This Warranty Covers",
+      "start_hint": "what-this-warranty-covers/01-what-this-warranty-covers",
+      "ask_next": []
+    },
+    "warranty-period": {
+      "modules": [
+        "warranty-period"
+      ],
+      "summary": "Warranty Period",
+      "start_hint": "warranty-period/01-warranty-period",
+      "ask_next": []
+    },
+    "what-is-not-covered": {
+      "modules": [
+        "what-is-not-covered"
+      ],
+      "summary": "What Is Not Covered",
+      "start_hint": "what-is-not-covered/01-what-is-not-covered",
+      "ask_next": []
+    },
+    "how-to-make-a-claim": {
+      "modules": [
+        "how-to-make-a-claim"
+      ],
+      "summary": "How to Make a Claim",
+      "start_hint": "how-to-make-a-claim/01-how-to-make-a-claim",
+      "ask_next": []
+    },
+    "limitation-of-liability": {
+      "modules": [
+        "limitation-of-liability"
+      ],
+      "summary": "Limitation of Liability",
+      "start_hint": "limitation-of-liability/01-limitation-of-liability",
+      "ask_next": []
+    }
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "_draft": true,
+  "start": "start",
+  "nodes": {
+    "start": {
+      "ask": "Which part of Q3 2026 support review is your question about?",
+      "options": [
+        {
+          "label": "Executive Summary",
+          "next": "result:executive-summary"
+        },
+        {
+          "label": "Key Metrics",
+          "next": "result:key-metrics"
+        },
+        {
+          "label": "Ticket Volume",
+          "next": "result:ticket-volume"
+        },
+        {
+          "label": "Top Contact Drivers",
+          "next": "result:top-contact-drivers"
+        },
+        {
+          "label": "Customer Feedback",
+          "next": "result:customer-feedback"
+        },
+        {
+          "label": "Q4 Priorities",
+          "next": "result:q4-priorities"
+        },
+        {
+          "label": "Something else",
+          "next": "open"
+        }
+      ]
+    }
+  },
+  "resolve": {},
+  "results": {
+    "executive-summary": {
+      "modules": [
+        "executive-summary"
+      ],
+      "summary": "Executive Summary",
+      "start_hint": "executive-summary/01-executive-summary",
+      "ask_next": []
+    },
+    "key-metrics": {
+      "modules": [
+        "key-metrics"
+      ],
+      "summary": "Key Metrics",
+      "start_hint": "key-metrics/01-key-metrics",
+      "ask_next": []
+    },
+    "ticket-volume": {
+      "modules": [
+        "ticket-volume"
+      ],
+      "summary": "Ticket Volume",
+      "start_hint": "ticket-volume/01-ticket-volume",
+      "ask_next": []
+    },
+    "top-contact-drivers": {
+      "modules": [
+        "top-contact-drivers"
+      ],
+      "summary": "Top Contact Drivers",
+      "start_hint": "top-contact-drivers/01-top-contact-drivers",
+      "ask_next": []
+    },
+    "customer-feedback": {
+      "modules": [
+        "customer-feedback"
+      ],
+      "summary": "Customer Feedback",
+      "start_hint": "customer-feedback/01-customer-feedback",
+      "ask_next": []
+    },
+    "q4-priorities": {
+      "modules": [
+        "q4-priorities"
+      ],
+      "summary": "Q4 Priorities",
+      "start_hint": "q4-priorities/01-q4-priorities",
+      "ask_next": []
+    }
+  }
+}

@@ -1,0 +1,114 @@
+{
+  "_draft": true,
+  "start": "start",
+  "nodes": {
+    "start": {
+      "ask": "Which part of It security standard is your question about?",
+      "options": [
+        {
+          "label": "Accounts and passwords",
+          "next": "result:accounts-and-passwords"
+        },
+        {
+          "label": "Multi-factor authentication (MFA)",
+          "next": "result:multi-factor-authentication-mfa"
+        },
+        {
+          "label": "Remote access",
+          "next": "result:remote-access"
+        },
+        {
+          "label": "USB and removable media",
+          "next": "result:usb-and-removable-media"
+        },
+        {
+          "label": "Software",
+          "next": "result:software"
+        },
+        {
+          "label": "Data classification",
+          "next": "result:data-classification"
+        },
+        {
+          "label": "Incidents",
+          "next": "result:incidents"
+        },
+        {
+          "label": "Exceptions",
+          "next": "result:exceptions"
+        },
+        {
+          "label": "Something else",
+          "next": "open"
+        }
+      ]
+    }
+  },
+  "resolve": {},
+  "results": {
+    "accounts-and-passwords": {
+      "modules": [
+        "accounts-and-passwords"
+      ],
+      "summary": "Accounts and passwords",
+      "start_hint": "accounts-and-passwords/01-accounts-and-passwords",
+      "ask_next": []
+    },
+    "multi-factor-authentication-mfa": {
+      "modules": [
+        "multi-factor-authentication-mfa"
+      ],
+      "summary": "Multi-factor authentication (MFA)",
+      "start_hint": "multi-factor-authentication-mfa/01-multi-factor-authentication-mfa",
+      "ask_next": []
+    },
+    "remote-access": {
+      "modules": [
+        "remote-access"
+      ],
+      "summary": "Remote access",
+      "start_hint": "remote-access/01-remote-access",
+      "ask_next": []
+    },
+    "usb-and-removable-media": {
+      "modules": [
+        "usb-and-removable-media"
+      ],
+      "summary": "USB and removable media",
+      "start_hint": "usb-and-removable-media/01-usb-and-removable-media",
+      "ask_next": []
+    },
+    "software": {
+      "modules": [
+        "software"
+      ],
+      "summary": "Software",
+      "start_hint": "software/01-software",
+      "ask_next": []
+    },
+    "data-classification": {
+      "modules": [
+        "data-classification"
+      ],
+      "summary": "Data classification",
+      "start_hint": "data-classification/01-data-classification",
+      "ask_next": []
+    },
+    "incidents": {
+      "modules": [
+        "incidents"
+      ],
+      "summary": "Incidents",
+      "start_hint": "incidents/01-incidents",
+      "ask_next": []
+    },
+    "exceptions": {
+      "modules": [
+        "exceptions"
+      ],
+      "summary": "Exceptions",
+      "start_hint": "exceptions/01-exceptions",
+      "ask_next": []
+    }
+  }
+}

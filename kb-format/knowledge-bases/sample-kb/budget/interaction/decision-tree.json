@@ -1,0 +1,54 @@
+{
+  "_draft": true,
+  "start": "start",
+  "nodes": {
+    "start": {
+      "ask": "Which part of Budget is your question about?",
+      "options": [
+        {
+          "label": "Sheet: Summary",
+          "next": "result:sheet-summary"
+        },
+        {
+          "label": "Sheet: Equipment Detail",
+          "next": "result:sheet-equipment-detail"
+        },
+        {
+          "label": "Sheet: Notes",
+          "next": "result:sheet-notes"
+        },
+        {
+          "label": "Something else",
+          "next": "open"
+        }
+      ]
+    }
+  },
+  "resolve": {},
+  "results": {
+    "sheet-summary": {
+      "modules": [
+        "sheet-summary"
+      ],
+      "summary": "Sheet: Summary",
+      "start_hint": "sheet-summary/01-sheet-summary",
+      "ask_next": []
+    },
+    "sheet-equipment-detail": {
+      "modules": [
+        "sheet-equipment-detail"
+      ],
+      "summary": "Sheet: Equipment Detail",
+      "start_hint": "sheet-equipment-detail/01-sheet-equipment-detail",
+      "ask_next": []
+    },
+    "sheet-notes": {
+      "modules": [
+        "sheet-notes"
+      ],
+      "summary": "Sheet: Notes",
+      "start_hint": "sheet-notes/01-sheet-notes",
+      "ask_next": []
+    }
+  }
+}

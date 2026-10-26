@@ -1,0 +1,147 @@
+{
+  "format_version": 2,
+  "generator": "convert_kb.py",
+  "document": {
+    "id": "skylink-limited-warranty",
+    "title": "Skylink limited warranty",
+    "filename": "skylink_limited_warranty.pdf",
+    "type": "pdf",
+    "pages": 2,
+    "summary": "States that Skylink warrants hardware against defects in materials and workmanship under normal use. Gives the warranty period by product line, from 1 year for accessories to 3 years for routers. Lists exclusions such as accidental damage, unauthorized modification, normal wear and third-party firmware. Explains the steps to file a warranty claim through the support portal and ship the product for RMA."
+  },
+  "modules": [
+    {
+      "id": "what-this-warranty-covers",
+      "title": "What This Warranty Covers",
+      "heading": "1 What This Warranty Covers",
+      "pages": [
+        1,
+        1
+      ],
+      "sections": [
+        "what-this-warranty-covers/01-what-this-warranty-covers"
+      ],
+      "summary": "States that Skylink warrants hardware against defects in materials and workmanship under normal use."
+    },
+    {
+      "id": "warranty-period",
+      "title": "Warranty Period",
+      "heading": "2 Warranty Period",
+      "pages": [
+        1,
+        1
+      ],
+      "sections": [
+        "warranty-period/01-warranty-period"
+      ],
+      "summary": "Gives the warranty period by product line, from 1 year for accessories to 3 years for routers."
+    },
+    {
+      "id": "what-is-not-covered",
+      "title": "What Is Not Covered",
+      "heading": "3 What Is Not Covered",
+      "pages": [
+        1,
+        1
+      ],
+      "sections": [
+        "what-is-not-covered/01-what-is-not-covered"
+      ],
+      "summary": "Lists exclusions such as accidental damage, unauthorized modification, normal wear and third-party firmware."
+    },
+    {
+      "id": "how-to-make-a-claim",
+      "title": "How to Make a Claim",
+      "heading": "4 How to Make a Claim",
+      "pages": [
+        1,
+        1
+      ],
+      "sections": [
+        "how-to-make-a-claim/01-how-to-make-a-claim"
+      ],
+      "summary": "Explains the steps to file a warranty claim through the support portal and ship the product for RMA."
+    },
+    {
+      "id": "limitation-of-liability",
+      "title": "Limitation of Liability",
+      "heading": "5 Limitation of Liability",
+      "pages": [
+        2,
+        2
+      ],
+      "sections": [
+        "limitation-of-liability/01-limitation-of-liability"
+      ],
+      "summary": "Limits Skylink's liability to the purchase price and excludes indirect damages where permitted by law."
+    }
+  ],
+  "sections": [
+    {
+      "id": "what-this-warranty-covers/01-what-this-warranty-covers",
+      "module": "what-this-warranty-covers",
+      "title": "1 What This Warranty Covers",
+      "pages": [
+        1,
+        1
+      ],
+      "file": "modules/what-this-warranty-covers/01-what-this-warranty-covers.md",
+      "images": [],
+      "summary": "States that Skylink warrants hardware against defects in materials and workmanship under normal use.",
+      "text": "Skylink Networks Inc. (\"Skylink\") warrants that its hardware products will be free from defects in materials and workmanship under normal use during the warranty period. If a defect arises, Skylink will, at its option, repair the product, replace it with a new or refurbished product of equal or better functionality, or refund the purchase price. This warranty applies only to the original purchaser and only to products purchased from Skylink or an authorized reseller. Proof of purchase is required."
+    },
+    {
+      "id": "warranty-period/01-warranty-period",
+      "module": "warranty-period",
+      "title": "2 Warranty Period",
+      "pages": [
+        1,
+        1
+      ],
+      "file": "modules/warranty-period/01-warranty-period.md",
+      "images": [],
+      "summary": "Gives the warranty period by product line, from 1 year for accessories to 3 years for routers.",
+      "text": "Product Warranty period Extended option R7 and R9 routers 3 years Skylink Care+ extends to 5 years M3 mesh nodes 2 years Skylink Care+ extends to 4 years Power adapters and cables 1 year Not available Refurbished products 1 year Not available"
+    },
+    {
+      "id": "what-is-not-covered/01-what-is-not-covered",
+      "module": "what-is-not-covered",
+      "title": "3 What Is Not Covered",
+      "pages": [
+        1,
+        1
+      ],
+      "file": "modules/what-is-not-covered/01-what-is-not-covered.md",
+      "images": [],
+      "summary": "Lists exclusions such as accidental damage, unauthorized modification, normal wear and third-party firmware.",
+      "text": "Damage caused by accidents, liquid, fire, lightning or power surges. Products that have been opened, modified or repaired by anyone other than Skylink. Use of third-party or custom firmware. Cosmetic damage and normal wear and tear. Products with a removed or altered serial number. Loss of data or configuration settings."
+    },
+    {
+      "id": "how-to-make-a-claim/01-how-to-make-a-claim",
+      "module": "how-to-make-a-claim",
+      "title": "4 How to Make a Claim",
+      "pages": [
+        1,
+        1
+      ],
+      "file": "modules/how-to-make-a-claim/01-how-to-make-a-claim.md",
+      "images": [],
+      "summary": "Explains the steps to file a warranty claim through the support portal and ship the product for RMA.",
+      "text": "1. Contact Skylink Support at support.skylink.example or 1-800-555-0142. 2. Complete troubleshooting with an agent to confirm a hardware defect. 3. Receive a Return Merchandise Authorization (RMA) number by email. 4. Ship the product with the RMA number to the address provided. Skylink pays return shipping for valid claims. 5. Replacement products ship within 5 business days of receipt. Customers with Skylink Care+ receive advance replacement: a replacement ships before the defective unit is returned."
+    },
+    {
+      "id": "limitation-of-liability/01-limitation-of-liability",
+      "module": "limitation-of-liability",
+      "title": "5 Limitation of Liability",
+      "pages": [
+        2,
+        2
+      ],
+      "file": "modules/limitation-of-liability/01-limitation-of-liability.md",
+      "images": [],
+      "summary": "Limits Skylink's liability to the purchase price and excludes indirect damages where permitted by law.",
+      "text": "To the maximum extent permitted by law, Skylink is not liable for any indirect, incidental, special or consequential damages, including loss of data, revenue or profits, arising from the use of or inability to use the product. Skylink's total liability is limited to the amount paid for the product. Some jurisdictions do not allow these limitations, so they may not apply to you. This warranty gives you specific legal rights, and you may have other rights that vary by state or province."
+    }
+  ],
+  "images": []
+}

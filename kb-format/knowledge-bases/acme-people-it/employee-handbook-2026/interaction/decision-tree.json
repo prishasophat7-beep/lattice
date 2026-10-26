@@ -1,0 +1,90 @@
+{
+  "_draft": true,
+  "start": "start",
+  "nodes": {
+    "start": {
+      "ask": "Which part of Employee handbook 2026 is your question about?",
+      "options": [
+        {
+          "label": "Welcome",
+          "next": "result:welcome"
+        },
+        {
+          "label": "Organization",
+          "next": "result:organization"
+        },
+        {
+          "label": "Working Hours and Leave",
+          "next": "result:working-hours-and-leave"
+        },
+        {
+          "label": "Compensation and Benefits",
+          "next": "result:compensation-and-benefits"
+        },
+        {
+          "label": "Code of Conduct",
+          "next": "result:code-of-conduct"
+        },
+        {
+          "label": "Getting Help",
+          "next": "result:getting-help"
+        },
+        {
+          "label": "Something else",
+          "next": "open"
+        }
+      ]
+    }
+  },
+  "resolve": {},
+  "results": {
+    "welcome": {
+      "modules": [
+        "welcome"
+      ],
+      "summary": "Welcome",
+      "start_hint": "welcome/01-welcome",
+      "ask_next": []
+    },
+    "organization": {
+      "modules": [
+        "organization"
+      ],
+      "summary": "Organization",
+      "start_hint": "organization/01-organization",
+      "ask_next": []
+    },
+    "working-hours-and-leave": {
+      "modules": [
+        "working-hours-and-leave"
+      ],
+      "summary": "Working Hours and Leave",
+      "start_hint": "working-hours-and-leave/01-working-hours-and-leave",
+      "ask_next": []
+    },
+    "compensation-and-benefits": {
+      "modules": [
+        "compensation-and-benefits"
+      ],
+      "summary": "Compensation and Benefits",
+      "start_hint": "compensation-and-benefits/01-compensation-and-benefits",
+      "ask_next": []
+    },
+    "code-of-conduct": {
+      "modules": [
+        "code-of-conduct"
+      ],
+      "summary": "Code of Conduct",
+      "start_hint": "code-of-conduct/01-code-of-conduct",
+      "ask_next": []
+    },
+    "getting-help": {
+      "modules": [
+        "getting-help"
+      ],
+      "summary": "Getting Help",
+      "start_hint": "getting-help/01-getting-help",
+      "ask_next": []
+    }
+  }
+}

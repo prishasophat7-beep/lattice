@@ -1,0 +1,158 @@
+{
+  "format_version": 2,
+  "generator": "convert_kb.py",
+  "document": {
+    "id": "it-setup-guide",
+    "title": "It setup guide",
+    "filename": "it_setup_guide.docx",
+    "type": "docx",
+    "pages": null,
+    "summary": "Explains that laptops ship a week before start and what new hires receive by personal email. Shows the Acme single sign-on page and the steps for first sign-in and setting a password. Describes mandatory MFA using Okta Verify push or a hardware security key, with setup steps. Explains when the SecureConnect VPN is needed and shows the correct connection settings. Lists the standard applications installed for everyone and how to request additional software."
+  },
+  "modules": [
+    {
+      "id": "before-your-first-day",
+      "title": "Before Your First Day",
+      "heading": "Before Your First Day",
+      "pages": null,
+      "sections": [
+        "before-your-first-day/01-before-your-first-day"
+      ],
+      "summary": "Explains that laptops ship a week before start and what new hires receive by personal email."
+    },
+    {
+      "id": "signing-in",
+      "title": "Signing In",
+      "heading": "Signing In",
+      "pages": null,
+      "sections": [
+        "signing-in/01-signing-in"
+      ],
+      "summary": "Shows the Acme single sign-on page and the steps for first sign-in and setting a password."
+    },
+    {
+      "id": "multi-factor-authentication",
+      "title": "Multi-Factor Authentication",
+      "heading": "Multi-Factor Authentication",
+      "pages": null,
+      "sections": [
+        "multi-factor-authentication/01-multi-factor-authentication"
+      ],
+      "summary": "Describes mandatory MFA using Okta Verify push or a hardware security key, with setup steps."
+    },
+    {
+      "id": "connecting-to-vpn",
+      "title": "Connecting to VPN",
+      "heading": "Connecting to VPN",
+      "pages": null,
+      "sections": [
+        "connecting-to-vpn/01-connecting-to-vpn"
+      ],
+      "summary": "Explains when the SecureConnect VPN is needed and shows the correct connection settings."
+    },
+    {
+      "id": "software-catalog",
+      "title": "Software Catalog",
+      "heading": "Software Catalog",
+      "pages": null,
+      "sections": [
+        "software-catalog/01-software-catalog"
+      ],
+      "summary": "Lists the standard applications installed for everyone and how to request additional software."
+    },
+    {
+      "id": "getting-support",
+      "title": "Getting Support",
+      "heading": "Getting Support",
+      "pages": null,
+      "sections": [
+        "getting-support/01-getting-support"
+      ],
+      "summary": "Gives IT support channels and expected response times."
+    }
+  ],
+  "sections": [
+    {
+      "id": "before-your-first-day/01-before-your-first-day",
+      "module": "before-your-first-day",
+      "title": "Before Your First Day",
+      "pages": null,
+      "file": "modules/before-your-first-day/01-before-your-first-day.md",
+      "images": [],
+      "summary": "Explains that laptops ship a week before start and what new hires receive by personal email.",
+      "text": "Your laptop (MacBook Pro 14\" or Dell XPS 15, depending on your role) ships to your home address 5 business days before your start date. You will receive an email at your personal address with your Acme username and a one-time activation link, valid for 72 hours."
+    },
+    {
+      "id": "signing-in/01-signing-in",
+      "module": "signing-in",
+      "title": "Signing In",
+      "pages": null,
+      "file": "modules/signing-in/01-signing-in.md",
+      "images": [
+        "images/page_000_img1.png"
+      ],
+      "summary": "Shows the Acme single sign-on page and the steps for first sign-in and setting a password.",
+      "text": "All Acme applications use single sign-on (SSO). The sign-in page looks like the screenshot below. Always check that the address bar shows login.acme-corp.com before entering your password. Figure 1: Acme single sign-on page Figure 1: Acme single sign-on page 1. Open the activation link from your welcome email. 2. Create a password of at least 14 characters. Passphrases are encouraged. 3. Sign in at login.acme-corp.com with firstname.lastname@acme-corp.com. 4. Continue to set up multi-factor authentication (next section)."
+    },
+    {
+      "id": "multi-factor-authentication/01-multi-factor-authentication",
+      "module": "multi-factor-authentication",
+      "title": "Multi-Factor Authentication",
+      "pages": null,
+      "file": "modules/multi-factor-authentication/01-multi-factor-authentication.md",
+      "images": [],
+      "summary": "Describes mandatory MFA using Okta Verify push or a hardware security key, with setup steps.",
+      "text": "Multi-factor authentication (MFA) is mandatory. You can use Okta Verify on your phone, or a YubiKey that IT provides on request. SMS codes are not allowed. 1. Install Okta Verify from the App Store or Google Play. 2. On the MFA setup screen, choose Okta Verify and scan the QR code. 3. Approve the test push notification. 4. Optional: register a YubiKey as a backup factor."
+    },
+    {
+      "id": "connecting-to-vpn/01-connecting-to-vpn",
+      "module": "connecting-to-vpn",
+      "title": "Connecting to VPN",
+      "pages": null,
+      "file": "modules/connecting-to-vpn/01-connecting-to-vpn.md",
+      "images": [
+        "images/page_000_img2.png"
+      ],
+      "summary": "Explains when the SecureConnect VPN is needed and shows the correct connection settings.",
+      "text": "Most tools are available directly over the internet through SSO. You need the Acme SecureConnect VPN only for internal tools such as the build servers, the finance data warehouse and staging environments. SecureConnect is pre-installed on your laptop; the correct settings are shown below. Figure 2: SecureConnect connection settings Figure 2: SecureConnect connection settings Setting Value Server address vpn.acme-corp.com Protocol IKEv2 / IPsec Port 4500 Authentication SAML SSO + Okta Verify Split tunneling Enabled (corporate subnets only)"
+    },
+    {
+      "id": "software-catalog/01-software-catalog",
+      "module": "software-catalog",
+      "title": "Software Catalog",
+      "pages": null,
+      "file": "modules/software-catalog/01-software-catalog.md",
+      "images": [],
+      "summary": "Lists the standard applications installed for everyone and how to request additional software.",
+      "text": "Application Used for How to get it Slack Chat and announcements Pre-installed Google Workspace Email, calendar, docs Web, via SSO Zoom Video meetings Pre-installed 1Password Password manager Pre-installed; team vaults assigned by manager Jira and Confluence Tickets and documentation Web, via SSO GitHub Enterprise Source code (engineering) Request in #it-help Figma Design Request in #it-help To request other software, open a ticket in the IT portal. Requests are reviewed by Security within 2 business days."
+    },
+    {
+      "id": "getting-support/01-getting-support",
+      "module": "getting-support",
+      "title": "Getting Support",
+      "pages": null,
+      "file": "modules/getting-support/01-getting-support.md",
+      "images": [],
+      "summary": "Gives IT support channels and expected response times.",
+      "text": "Post in #it-help on Slack or call extension 4357 (HELP). The help desk responds within 30 minutes during business hours. For a lost or stolen laptop, call immediately at any time so the device can be locked remotely."
+    }
+  ],
+  "images": [
+    {
+      "path": "images/page_000_img1.png",
+      "original": "figure_000.png",
+      "section": "signing-in/01-signing-in",
+      "page": null,
+      "description": "Figure 1: Acme single sign-on page",
+      "description_from": "caption"
+    },
+    {
+      "path": "images/page_000_img2.png",
+      "original": "figure_001.png",
+      "section": "connecting-to-vpn/01-connecting-to-vpn",
+      "page": null,
+      "description": "Figure 2: SecureConnect connection settings",
+      "description_from": "caption"
+    }
+  ]
+}

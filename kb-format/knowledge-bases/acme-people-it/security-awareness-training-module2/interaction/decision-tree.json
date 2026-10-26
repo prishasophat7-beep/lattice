@@ -1,0 +1,90 @@
+{
+  "_draft": true,
+  "start": "start",
+  "nodes": {
+    "start": {
+      "ask": "Which part of Security awareness training module2 is your question about?",
+      "options": [
+        {
+          "label": "Why Phishing Matters",
+          "next": "result:why-phishing-matters"
+        },
+        {
+          "label": "Anatomy of a Phishing Email",
+          "next": "result:anatomy-of-a-phishing-email"
+        },
+        {
+          "label": "Reporting Suspicious Messages",
+          "next": "result:reporting-suspicious-messages"
+        },
+        {
+          "label": "Password Hygiene",
+          "next": "result:password-hygiene"
+        },
+        {
+          "label": "Workshop Notes",
+          "next": "result:workshop-notes"
+        },
+        {
+          "label": "Knowledge Check",
+          "next": "result:knowledge-check"
+        },
+        {
+          "label": "Something else",
+          "next": "open"
+        }
+      ]
+    }
+  },
+  "resolve": {},
+  "results": {
+    "why-phishing-matters": {
+      "modules": [
+        "why-phishing-matters"
+      ],
+      "summary": "Why Phishing Matters",
+      "start_hint": "why-phishing-matters/01-why-phishing-matters",
+      "ask_next": []
+    },
+    "anatomy-of-a-phishing-email": {
+      "modules": [
+        "anatomy-of-a-phishing-email"
+      ],
+      "summary": "Anatomy of a Phishing Email",
+      "start_hint": "anatomy-of-a-phishing-email/01-anatomy-of-a-phishing-email",
+      "ask_next": []
+    },
+    "reporting-suspicious-messages": {
+      "modules": [
+        "reporting-suspicious-messages"
+      ],
+      "summary": "Reporting Suspicious Messages",
+      "start_hint": "reporting-suspicious-messages/01-reporting-suspicious-messages",
+      "ask_next": []
+    },
+    "password-hygiene": {
+      "modules": [
+        "password-hygiene"
+      ],
+      "summary": "Password Hygiene",
+      "start_hint": "password-hygiene/01-password-hygiene",
+      "ask_next": []
+    },
+    "workshop-notes": {
+      "modules": [
+        "workshop-notes"
+      ],
+      "summary": "Workshop Notes",
+      "start_hint": "workshop-notes/01-workshop-notes",
+      "ask_next": []
+    },
+    "knowledge-check": {
+      "modules": [
+        "knowledge-check"
+      ],
+      "summary": "Knowledge Check",
+      "start_hint": "knowledge-check/01-knowledge-check",
+      "ask_next": []
+    }
+  }
+}

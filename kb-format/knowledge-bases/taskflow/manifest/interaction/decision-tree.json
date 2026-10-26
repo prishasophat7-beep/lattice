@@ -1,0 +1,30 @@
+{
+  "_draft": true,
+  "start": "start",
+  "nodes": {
+    "start": {
+      "ask": "Which part of Manifest is your question about?",
+      "options": [
+        {
+          "label": "Manifest",
+          "next": "result:manifest"
+        },
+        {
+          "label": "Something else",
+          "next": "open"
+        }
+      ]
+    }
+  },
+  "resolve": {},
+  "results": {
+    "manifest": {
+      "modules": [
+        "manifest"
+      ],
+      "summary": "Manifest",
+      "start_hint": "manifest/01-manifest",
+      "ask_next": []
+    }
+  }
+}

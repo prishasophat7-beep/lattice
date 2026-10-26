@@ -251,3 +251,68 @@ def test_api_chat_lists_documents_with_codes_and_the_shared_guide(converted, tmp
     assert "codes: " in sent and "E-217" in sent and "related: " in sent
     assert "Instructions that come with this knowledge base" in sent and "Skylink Support" in sent
     assert "Tier 2 answers within 4 business hours" in sent  # the best section, whole
+
+
+def test_folders_made_by_another_tool_import_too(converted, tmp_path):
+    """"multi doc test/": the parser's own page_index.json (no "folder" entries), one folder from
+    convert_kb.py and one with a one-manual sem-ai-kb kb.json whose sections leave out "file",
+    lower-case agents.md, extra references/ and validate_kb.py. Before, this was taken for a KB
+    Manager export: "The export has no document with text"."""
+    out, _ = converted
+    kb = tmp_path / "multi doc test"
+    import shutil
+    shutil.copytree(out / "r7-guide", kb / "r7-guide")
+    other = kb / "warranty-terms"
+    (other / "modules" / "terms").mkdir(parents=True)
+    (other / "modules" / "terms" / "01-period.md").write_text(
+        '---\nid: terms/01-period\nmodule: terms\ntitle: "1 Period"\npages: [1, 1]\n---\n\n# 1 Period\n\n'
+        "The R7 is covered for 2 years.\n", encoding="utf-8")
+    (other / "kb.json").write_text(json.dumps({"name": "Warranty terms", "modules": [{"id": "terms", "title": "Terms"}],
+                                               "sections": [{"id": "terms/01-period", "module": "terms", "title": "1 Period"}]}),
+                                   encoding="utf-8")
+    (other / "agents.md").write_text("# Warranty assistant\n\n## Interview tone\n\n- Brief.\n", encoding="utf-8")
+    (kb / "page_index.json").write_text(json.dumps({"kb_name": "multi doc test", "documents": [
+        {"filename": "R7_guide.pdf", "sections": []}]}), encoding="utf-8")
+    (kb / "README.md").write_text("# multi doc test\n", encoding="utf-8")
+    zipped = tmp_path / "multi.zip"
+    with zipfile.ZipFile(zipped, "w") as z:
+        for f in kb.rglob("*"):
+            if f.is_file():
+                z.write(f, f.relative_to(tmp_path).as_posix())  # zipped with its top folder
+    data = tmp_path / "data"
+    manifest = bundle.import_bundle(zipped, data)
+    _, docs = bundle.load_version(bundle.version_dir(data, manifest.kb_version))
+    assert sorted(d.title for d in docs) == ["R7_guide.pdf", "Warranty terms"]
+    warranty = next(d for d in docs if d.title == "Warranty terms")
+    assert any("covered for 2 years" in s.own_text for s in warranty.sections.values())
+    extras = load_extras(bundle.version_dir(data, manifest.kb_version) / bundle.CONTENT)
+    assert extras.name == "multi doc test" and extras.tree["start"] == "kb::document"
+
+
+def test_the_parsers_page_index_at_the_top_is_not_taken_for_an_export(converted, tmp_path):
+    """The internal bundle (26 Oct): page_index.json is the parser's own (file_id, bundle_zip
+    "files/....bundle.zip", no "folder"), the folders are named "datavault-pro-usermanual" and
+    "b-acd-e1sem-ai-frontier70-usermanual-1", and the zip has no top folder. Before: "The export has
+    no document with text", as page_index.json at the top made it look like a KB Manager export."""
+    out, _ = converted
+    import shutil
+    kb = tmp_path / "kb"
+    names = {"b-acd-e1sem-ai-frontier70-usermanual-1": "[B-ACD-E1]SEM_AI_Frontier7.0_UserManual (1).docx",
+             "datavault-pro-usermanual": "DataVault_Pro_UserManual.docx"}
+    for folder in names:
+        shutil.copytree(out / "r7-guide", kb / folder)
+        data = json.loads((kb / folder / "kb.json").read_text(encoding="utf-8"))
+        (kb / folder / "kb.json").write_text(json.dumps({"name": folder, "modules": data["modules"],
+                                                         "sections": data["sections"]}), encoding="utf-8")
+    (kb / "page_index.json").write_text(json.dumps({"kb_id": 21, "kb_name": "DataVault_Pro_UserManual", "documents": [
+        {"file_id": 357 + i, "filename": fn, "bundle_zip": f"files/{fn}.bundle.zip", "doc_summary": f"About {fn}.",
+         "sections": []} for i, fn in enumerate(names.values())]}), encoding="utf-8")
+    (kb / "README.md").write_text("# multi-doc-test\n", encoding="utf-8")
+    zipped = tmp_path / "kb.zip"
+    with zipfile.ZipFile(zipped, "w") as z:
+        for f in kb.rglob("*"):
+            if f.is_file():
+                z.write(f, f.relative_to(kb).as_posix())
+    manifest = bundle.import_bundle(zipped, tmp_path / "data")
+    assert [d.title for d in manifest.documents] == list(names.values())  # page_index.json's order and names
+    assert manifest.documents[0].description == f"About {list(names.values())[0]}."

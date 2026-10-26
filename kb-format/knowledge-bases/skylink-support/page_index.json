@@ -1,0 +1,569 @@
+{
+  "kb_id": "2d56a173-d77d-4a53-a54a-f8fa63da0eec",
+  "kb_name": "Skylink Customer Support Knowledge Base",
+  "kb_description": "Troubleshooting guide, quarterly support review and warranty policy for the Skylink support team.",
+  "generated_at": "2026-09-28T09:22:31.715460+00:00",
+  "total_files": 4,
+  "indexed_files": 3,
+  "documents": [
+    {
+      "file_id": "3ecc62ae-29da-4820-830b-59860b9aa6e0",
+      "filename": "r7_router_troubleshooting_guide.pdf",
+      "relative_path": "r7_router_troubleshooting_guide.pdf",
+      "file_type": "pdf",
+      "file_size": 97372,
+      "parser_engine": "mcp_ocr",
+      "parsed_at": "2026-09-28T09:20:15.227718+00:00",
+      "page_count": 3,
+      "node_count": 10,
+      "has_images": true,
+      "image_count": 3,
+      "image_files": [
+        "images/figure_000.png",
+        "images/figure_001.png",
+        "images/figure_002.png"
+      ],
+      "doc_summary": "Explains that this guide is for Tier 1 agents handling Skylink R7 router tickets and lists what to collect before troubleshooting. Shows the front panel LEDs and explains what each color and blink pattern means. Presents the no-internet decision flowchart that routes agents from power checks to reboot to Tier 2 escalation. Covers the three most frequent issue types: no internet, slow Wi-Fi and failed firmware updates. Defines when and how to escalate to Tier 2 or Engineering, with response-time ",
+      "sections": [
+        {
+          "node_id": "0001",
+          "title": "Introduction",
+          "type": "section",
+          "level": 1,
+          "section_number": "1",
+          "start_page": 1,
+          "end_page": 1,
+          "summary": "Explains that this guide is for Tier 1 agents handling Skylink R7 router tickets and lists what to collect before troubleshooting.",
+          "section_id": "introduction/01-introduction",
+          "section_file": "r7-router-troubleshooting-guide/modules/introduction/01-introduction.md"
+        },
+        {
+          "node_id": "0002",
+          "title": "LED Status Reference",
+          "type": "section",
+          "level": 1,
+          "section_number": "2",
+          "start_page": 1,
+          "end_page": 1,
+          "summary": "Shows the front panel LEDs and explains what each color and blink pattern means.",
+          "section_id": "led-status-reference/01-led-status-reference",
+          "section_file": "r7-router-troubleshooting-guide/modules/led-status-reference/01-led-status-reference.md"
+        },
+        {
+          "node_id": "0003",
+          "title": "Table (5 rows x 5 cols)",
+          "type": "table",
+          "level": 2,
+          "section_number": null,
+          "start_page": 1,
+          "end_page": 1,
+          "summary": "LED reference table explaining the meaning of solid green, blinking, amber and off for the POWER, INTERNET, Wi-Fi, LAN and WPS lights.",
+          "section_id": "led-status-reference/01-led-status-reference",
+          "section_file": "r7-router-troubleshooting-guide/modules/led-status-reference/01-led-status-reference.md"
+        },
+        {
+          "node_id": "0004",
+          "title": "Diagnostic Flow",
+          "type": "section",
+          "level": 1,
+          "section_number": "3",
+          "start_page": 1,
+          "end_page": 2,
+          "summary": "Presents the no-internet decision flowchart that routes agents from power checks to reboot to Tier 2 escalation.",
+          "section_id": "diagnostic-flow/01-diagnostic-flow",
+          "section_file": "r7-router-troubleshooting-guide/modules/diagnostic-flow/01-diagnostic-flow.md"
+        },
+        {
+          "node_id": "0005",
+          "title": "Common Issues",
+          "type": "section",
+          "level": 1,
+          "section_number": "4",
+          "start_page": 2,
+          "end_page": 3,
+          "summary": "Covers the three most frequent issue types: no internet, slow Wi-Fi and failed firmware updates.",
+          "section_id": "common-issues/01-no-internet",
+          "section_file": "r7-router-troubleshooting-guide/modules/common-issues/01-no-internet.md"
+        },
+        {
+          "node_id": "0006",
+          "title": "No Internet",
+          "type": "section",
+          "level": 2,
+          "section_number": "4.1",
+          "start_page": 2,
+          "end_page": 2,
+          "summary": "Gives step-by-step checks for a customer with no internet connection, including power cycling and verifying the WAN cable.",
+          "section_id": "common-issues/01-no-internet",
+          "section_file": "r7-router-troubleshooting-guide/modules/common-issues/01-no-internet.md"
+        },
+        {
+          "node_id": "0007",
+          "title": "Slow Wi-Fi",
+          "type": "section",
+          "level": 2,
+          "section_number": "4.2",
+          "start_page": 2,
+          "end_page": 2,
+          "summary": "Lists causes of slow Wi-Fi such as band choice, placement, channel congestion and outdated firmware.",
+          "section_id": "common-issues/02-slow-wi-fi",
+          "section_file": "r7-router-troubleshooting-guide/modules/common-issues/02-slow-wi-fi.md"
+        },
+        {
+          "node_id": "0008",
+          "title": "Firmware Update Failure",
+          "type": "section",
+          "level": 2,
+          "section_number": "4.3",
+          "start_page": 3,
+          "end_page": 3,
+          "summary": "Explains error E-217 (checksum mismatch after download) and how to retry or upload the firmware manually.",
+          "section_id": "common-issues/03-firmware-update-failure",
+          "section_file": "r7-router-troubleshooting-guide/modules/common-issues/03-firmware-update-failure.md"
+        },
+        {
+          "node_id": "0009",
+          "title": "Escalation",
+          "type": "section",
+          "level": 1,
+          "section_number": "5",
+          "start_page": 3,
+          "end_page": 3,
+          "summary": "Defines when and how to escalate to Tier 2 or Engineering, with response-time targets.",
+          "section_id": "escalation/01-escalation",
+          "section_file": "r7-router-troubleshooting-guide/modules/escalation/01-escalation.md"
+        },
+        {
+          "node_id": "0010",
+          "title": "Table (5 rows x 3 cols)",
+          "type": "table",
+          "level": 2,
+          "section_number": null,
+          "start_page": 3,
+          "end_page": 3,
+          "summary": "Escalation matrix mapping conditions (unresolved no-internet, hardware fault, E-217, security, mass incident) to the team and target response time.",
+          "section_id": "escalation/01-escalation",
+          "section_file": "r7-router-troubleshooting-guide/modules/escalation/01-escalation.md"
+        }
+      ],
+      "folder": "r7-router-troubleshooting-guide/",
+      "topics": [
+        "router",
+        "led",
+        "internet",
+        "diagnostic",
+        "firmware",
+        "admin",
+        "amber",
+        "flow"
+      ],
+      "codes": [
+        "E-217",
+        "R7",
+        "KA-0388"
+      ],
+      "related": [
+        {
+          "document": "q3-2026-support-review",
+          "relation": "shares codes",
+          "codes": [
+            "E-217",
+            "R7"
+          ]
+        },
+        {
+          "document": "skylink-limited-warranty",
+          "relation": "shares codes",
+          "codes": [
+            "R7"
+          ]
+        }
+      ],
+      "modules": [
+        {
+          "id": "introduction",
+          "title": "Introduction",
+          "pages": [
+            1,
+            1
+          ]
+        },
+        {
+          "id": "led-status-reference",
+          "title": "LED Status Reference",
+          "pages": [
+            1,
+            1
+          ]
+        },
+        {
+          "id": "diagnostic-flow",
+          "title": "Diagnostic Flow",
+          "pages": [
+            1,
+            2
+          ]
+        },
+        {
+          "id": "common-issues",
+          "title": "Common Issues",
+          "pages": [
+            2,
+            3
+          ]
+        },
+        {
+          "id": "escalation",
+          "title": "Escalation",
+          "pages": [
+            3,
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "file_id": "98bd3437-43b4-4905-924a-fdb7581a00f6",
+      "filename": "q3_2026_support_review.docx",
+      "relative_path": "q3_2026_support_review.docx",
+      "file_type": "docx",
+      "file_size": 95373,
+      "parser_engine": "mcp_ocr",
+      "parsed_at": "2026-09-28T09:21:02.338490+00:00",
+      "page_count": null,
+      "node_count": 8,
+      "has_images": true,
+      "image_count": 2,
+      "image_files": [
+        "images/figure_000.png",
+        "images/figure_001.png"
+      ],
+      "doc_summary": "Summarizes Q3: 12,480 tickets resolved, CSAT up to 91.3%, faster first response, but a growing backlog after the R7 2.9.0 rollout. Shows the KPI dashboard and a table comparing Q2 and Q3 values against targets. Describes weekly ticket volume through Q3, with a peak of 1,260 tickets in week 34 due to the R7 2.9.0 rollout. Ranks the five largest contact reasons, led by no-internet issues and firmware update failures. Highlights themes from CSAT comments: praise for fast agents, frustration with fi",
+      "sections": [
+        {
+          "node_id": "0001",
+          "title": "Executive Summary",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Summarizes Q3: 12,480 tickets resolved, CSAT up to 91.3%, faster first response, but a growing backlog after the R7 2.9.0 rollout.",
+          "section_id": "executive-summary/01-executive-summary",
+          "section_file": "q3-2026-support-review/modules/executive-summary/01-executive-summary.md"
+        },
+        {
+          "node_id": "0002",
+          "title": "Key Metrics",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Shows the KPI dashboard and a table comparing Q2 and Q3 values against targets.",
+          "section_id": "key-metrics/01-key-metrics",
+          "section_file": "q3-2026-support-review/modules/key-metrics/01-key-metrics.md"
+        },
+        {
+          "node_id": "0003",
+          "title": "Table (5 rows x 5 cols)",
+          "type": "table",
+          "level": 2,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Quarter-over-quarter metrics table: CSAT and response time beat targets, first contact resolution is behind and backlog is at risk.",
+          "section_id": "key-metrics/01-key-metrics",
+          "section_file": "q3-2026-support-review/modules/key-metrics/01-key-metrics.md"
+        },
+        {
+          "node_id": "0004",
+          "title": "Ticket Volume",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Describes weekly ticket volume through Q3, with a peak of 1,260 tickets in week 34 due to the R7 2.9.0 rollout.",
+          "section_id": "ticket-volume/01-ticket-volume",
+          "section_file": "q3-2026-support-review/modules/ticket-volume/01-ticket-volume.md"
+        },
+        {
+          "node_id": "0005",
+          "title": "Top Contact Drivers",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Ranks the five largest contact reasons, led by no-internet issues and firmware update failures.",
+          "section_id": "top-contact-drivers/01-top-contact-drivers",
+          "section_file": "q3-2026-support-review/modules/top-contact-drivers/01-top-contact-drivers.md"
+        },
+        {
+          "node_id": "0006",
+          "title": "Table (5 rows x 5 cols)",
+          "type": "table",
+          "level": 2,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Top five contact drivers with ticket counts, share and change versus Q2; firmware update failures grew 212%.",
+          "section_id": "top-contact-drivers/01-top-contact-drivers",
+          "section_file": "q3-2026-support-review/modules/top-contact-drivers/01-top-contact-drivers.md"
+        },
+        {
+          "node_id": "0007",
+          "title": "Customer Feedback",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Highlights themes from CSAT comments: praise for fast agents, frustration with firmware issues and repeated contacts.",
+          "section_id": "customer-feedback/01-customer-feedback",
+          "section_file": "q3-2026-support-review/modules/customer-feedback/01-customer-feedback.md"
+        },
+        {
+          "node_id": "0008",
+          "title": "Q4 Priorities",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Lists four Q4 priorities: backlog reduction, warm handoffs to Tier 2, update-failure deflection and holiday staffing.",
+          "section_id": "q4-priorities/01-q4-priorities",
+          "section_file": "q3-2026-support-review/modules/q4-priorities/01-q4-priorities.md"
+        }
+      ],
+      "folder": "q3-2026-support-review/",
+      "topics": [
+        "backlog",
+        "volume",
+        "tickets",
+        "executive",
+        "summary",
+        "contacts",
+        "key",
+        "metrics"
+      ],
+      "codes": [
+        "E-217",
+        "R7"
+      ],
+      "related": [
+        {
+          "document": "r7-router-troubleshooting-guide",
+          "relation": "shares codes",
+          "codes": [
+            "E-217",
+            "R7"
+          ]
+        },
+        {
+          "document": "skylink-limited-warranty",
+          "relation": "shares codes",
+          "codes": [
+            "R7"
+          ]
+        }
+      ],
+      "modules": [
+        {
+          "id": "executive-summary",
+          "title": "Executive Summary",
+          "pages": null
+        },
+        {
+          "id": "key-metrics",
+          "title": "Key Metrics",
+          "pages": null
+        },
+        {
+          "id": "ticket-volume",
+          "title": "Ticket Volume",
+          "pages": null
+        },
+        {
+          "id": "top-contact-drivers",
+          "title": "Top Contact Drivers",
+          "pages": null
+        },
+        {
+          "id": "customer-feedback",
+          "title": "Customer Feedback",
+          "pages": null
+        },
+        {
+          "id": "q4-priorities",
+          "title": "Q4 Priorities",
+          "pages": null
+        }
+      ]
+    },
+    {
+      "file_id": "01f59021-f692-424a-99e3-62667fcfa365",
+      "filename": "skylink_limited_warranty.pdf",
+      "relative_path": "skylink_limited_warranty.pdf",
+      "file_type": "pdf",
+      "file_size": 4607,
+      "parser_engine": "mcp_ocr",
+      "parsed_at": "2026-09-28T09:21:40.884302+00:00",
+      "page_count": 2,
+      "node_count": 6,
+      "has_images": false,
+      "image_count": 0,
+      "image_files": [],
+      "doc_summary": "States that Skylink warrants hardware against defects in materials and workmanship under normal use. Gives the warranty period by product line, from 1 year for accessories to 3 years for routers. Lists exclusions such as accidental damage, unauthorized modification, normal wear and third-party firmware. Explains the steps to file a warranty claim through the support portal and ship the product for RMA. Limits Skylink's liability to the purchase price and excludes indirect damages where permitted",
+      "sections": [
+        {
+          "node_id": "0001",
+          "title": "What This Warranty Covers",
+          "type": "section",
+          "level": 1,
+          "section_number": "1",
+          "start_page": 1,
+          "end_page": 1,
+          "summary": "States that Skylink warrants hardware against defects in materials and workmanship under normal use.",
+          "section_id": "what-this-warranty-covers/01-what-this-warranty-covers",
+          "section_file": "skylink-limited-warranty/modules/what-this-warranty-covers/01-what-this-warranty-covers.md"
+        },
+        {
+          "node_id": "0002",
+          "title": "Warranty Period",
+          "type": "section",
+          "level": 1,
+          "section_number": "2",
+          "start_page": 1,
+          "end_page": 1,
+          "summary": "Gives the warranty period by product line, from 1 year for accessories to 3 years for routers.",
+          "section_id": "warranty-period/01-warranty-period",
+          "section_file": "skylink-limited-warranty/modules/warranty-period/01-warranty-period.md"
+        },
+        {
+          "node_id": "0003",
+          "title": "Table (4 rows x 3 cols)",
+          "type": "table",
+          "level": 2,
+          "section_number": null,
+          "start_page": 1,
+          "end_page": 1,
+          "summary": "Warranty periods: 3 years for routers, 2 for mesh nodes, 1 for accessories and refurbished units, with Care+ extensions.",
+          "section_id": "warranty-period/01-warranty-period",
+          "section_file": "skylink-limited-warranty/modules/warranty-period/01-warranty-period.md"
+        },
+        {
+          "node_id": "0004",
+          "title": "What Is Not Covered",
+          "type": "section",
+          "level": 1,
+          "section_number": "3",
+          "start_page": 1,
+          "end_page": 1,
+          "summary": "Lists exclusions such as accidental damage, unauthorized modification, normal wear and third-party firmware.",
+          "section_id": "what-is-not-covered/01-what-is-not-covered",
+          "section_file": "skylink-limited-warranty/modules/what-is-not-covered/01-what-is-not-covered.md"
+        },
+        {
+          "node_id": "0005",
+          "title": "How to Make a Claim",
+          "type": "section",
+          "level": 1,
+          "section_number": "4",
+          "start_page": 1,
+          "end_page": 1,
+          "summary": "Explains the steps to file a warranty claim through the support portal and ship the product for RMA.",
+          "section_id": "how-to-make-a-claim/01-how-to-make-a-claim",
+          "section_file": "skylink-limited-warranty/modules/how-to-make-a-claim/01-how-to-make-a-claim.md"
+        },
+        {
+          "node_id": "0006",
+          "title": "Limitation of Liability",
+          "type": "section",
+          "level": 1,
+          "section_number": "5",
+          "start_page": 2,
+          "end_page": 2,
+          "summary": "Limits Skylink's liability to the purchase price and excludes indirect damages where permitted by law.",
+          "section_id": "limitation-of-liability/01-limitation-of-liability",
+          "section_file": "skylink-limited-warranty/modules/limitation-of-liability/01-limitation-of-liability.md"
+        }
+      ],
+      "folder": "skylink-limited-warranty/",
+      "topics": [
+        "warranty",
+        "skylink",
+        "products",
+        "product",
+        "period",
+        "years",
+        "liability",
+        "covers"
+      ],
+      "codes": [
+        "R7",
+        "R9",
+        "M3"
+      ],
+      "related": [
+        {
+          "document": "r7-router-troubleshooting-guide",
+          "relation": "shares codes",
+          "codes": [
+            "R7"
+          ]
+        },
+        {
+          "document": "q3-2026-support-review",
+          "relation": "shares codes",
+          "codes": [
+            "R7"
+          ]
+        }
+      ],
+      "modules": [
+        {
+          "id": "what-this-warranty-covers",
+          "title": "What This Warranty Covers",
+          "pages": [
+            1,
+            1
+          ]
+        },
+        {
+          "id": "warranty-period",
+          "title": "Warranty Period",
+          "pages": [
+            1,
+            1
+          ]
+        },
+        {
+          "id": "what-is-not-covered",
+          "title": "What Is Not Covered",
+          "pages": [
+            1,
+            1
+          ]
+        },
+        {
+          "id": "how-to-make-a-claim",
+          "title": "How to Make a Claim",
+          "pages": [
+            1,
+            1
+          ]
+        },
+        {
+          "id": "limitation-of-liability",
+          "title": "Limitation of Liability",
+          "pages": [
+            2,
+            2
+          ]
+        }
+      ]
+    }
+  ]
+}

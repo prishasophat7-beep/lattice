@@ -1,0 +1,217 @@
+{
+  "format_version": 2,
+  "generator": "convert_kb.py",
+  "document": {
+    "id": "travel-expense-policy",
+    "title": "Travel expense policy",
+    "filename": "travel_expense_policy.pdf",
+    "type": "pdf",
+    "pages": null,
+    "summary": "This policy sets the rules for business travel, accommodation, daily allowances and the reimbursement of expenses."
+  },
+  "modules": [
+    {
+      "id": "purpose",
+      "title": "Purpose",
+      "heading": "1. Purpose",
+      "pages": null,
+      "sections": [
+        "purpose/01-purpose"
+      ],
+      "summary": "This policy sets the rules for business travel, accommodation, daily allowances and the reimbursement of expenses."
+    },
+    {
+      "id": "employee-grades",
+      "title": "Employee grades",
+      "heading": "2. Employee grades",
+      "pages": null,
+      "sections": [
+        "employee-grades/01-employee-grades"
+      ],
+      "summary": "Grade Examples G1 Operators, technicians, clerks G2 Engineers, supervisors, specialists G3 Managers G4 Senior managers, plant managers G5 Directors and above"
+    },
+    {
+      "id": "travel-class",
+      "title": "Travel class",
+      "heading": "3. Travel class",
+      "pages": null,
+      "sections": [
+        "travel-class/01-travel-class"
+      ],
+      "summary": "Grade Air (domestic) Air (international, up to 6 hours) Air (international, over 6 hours) Train G1 Economy Economy Economy AC 3 tier G2 Economy Economy Premium economy AC 2 tier G3 Economy Premium economy Business AC 2 t"
+    },
+    {
+      "id": "accommodation-limits-per-night-inr",
+      "title": "Accommodation limits per night (INR)",
+      "heading": "4. Accommodation limits per night (INR)",
+      "pages": null,
+      "sections": [
+        "accommodation-limits-per-night-inr/01-accommodation-limits-per-night-inr"
+      ],
+      "summary": "Grade Tier 1 city Tier 2 city Other G1 4,000 3,000 2,500 G2 6,000 4,500 3,500 G3 8,000 6,000 4,500 G4 12,000 8,000 6,000 G5 Actuals Actuals Actuals Tier 1 cities: Mumbai, Delhi NCR, Bengaluru, Chennai, Hyderabad, Pune, K"
+    },
+    {
+      "id": "daily-allowance-per-diem",
+      "title": "Daily allowance (per diem)",
+      "heading": "5. Daily allowance (per diem)",
+      "pages": null,
+      "sections": [
+        "daily-allowance-per-diem/01-daily-allowance-per-diem"
+      ],
+      "summary": "The daily allowance covers meals, local conveyance within the city and incidentals."
+    },
+    {
+      "id": "approvals",
+      "title": "Approvals",
+      "heading": "6. Approvals",
+      "pages": null,
+      "sections": [
+        "approvals/01-approvals"
+      ],
+      "summary": "Expense Approval needed Domestic trip Manager International trip Manager and the department head (G4 or above) Single expense above INR 25,000 Department head Single expense above INR 1,00,000 Plant manager and finance c"
+    },
+    {
+      "id": "receipts",
+      "title": "Receipts",
+      "heading": "7. Receipts",
+      "pages": null,
+      "sections": [
+        "receipts/01-receipts"
+      ],
+      "summary": "Original receipts or tax invoices are required for every expense above INR 500, except the daily allowance."
+    },
+    {
+      "id": "not-reimbursed",
+      "title": "Not reimbursed",
+      "heading": "8. Not reimbursed",
+      "pages": null,
+      "sections": [
+        "not-reimbursed/01-not-reimbursed"
+      ],
+      "summary": "Alcohol, minibar, laundry for trips shorter than 4 nights, personal entertainment, traffic fines, upgrades bought by the employee, travel insurance bought separately (the company policy covers all business trips), and ex"
+    },
+    {
+      "id": "advances",
+      "title": "Advances",
+      "heading": "9. Advances",
+      "pages": null,
+      "sections": [
+        "advances/01-advances"
+      ],
+      "summary": "An advance of up to 80 % of the estimated trip cost may be requested for trips longer than 3 days or for international trips."
+    },
+    {
+      "id": "mileage",
+      "title": "Mileage",
+      "heading": "10. Mileage",
+      "pages": null,
+      "sections": [
+        "mileage/01-mileage"
+      ],
+      "summary": "Use of a personal car for business travel is reimbursed at INR 12 per km, and a personal two wheeler at INR 5 per km, for distances above 20 km per day."
+    }
+  ],
+  "sections": [
+    {
+      "id": "purpose/01-purpose",
+      "module": "purpose",
+      "title": "1. Purpose",
+      "pages": null,
+      "file": "modules/purpose/01-purpose.md",
+      "images": [],
+      "summary": "This policy sets the rules for business travel, accommodation, daily allowances and the reimbursement of expenses.",
+      "text": "This policy sets the rules for business travel, accommodation, daily allowances and the reimbursement of expenses. It applies to all employees. Expenses must be submitted in the Expense portal within 30 days of the end of the trip; claims submitted after 60 days are not reimbursed."
+    },
+    {
+      "id": "employee-grades/01-employee-grades",
+      "module": "employee-grades",
+      "title": "2. Employee grades",
+      "pages": null,
+      "file": "modules/employee-grades/01-employee-grades.md",
+      "images": [],
+      "summary": "Grade Examples G1 Operators, technicians, clerks G2 Engineers, supervisors, specialists G3 Managers G4 Senior managers, plant managers G5 Directors and above",
+      "text": "Grade Examples G1 Operators, technicians, clerks G2 Engineers, supervisors, specialists G3 Managers G4 Senior managers, plant managers G5 Directors and above"
+    },
+    {
+      "id": "travel-class/01-travel-class",
+      "module": "travel-class",
+      "title": "3. Travel class",
+      "pages": null,
+      "file": "modules/travel-class/01-travel-class.md",
+      "images": [],
+      "summary": "Grade Air (domestic) Air (international, up to 6 hours) Air (international, over 6 hours) Train G1 Economy Economy Economy AC 3 tier G2 Economy Economy Premium economy AC 2 tier G3 Economy Premium economy Business AC 2 t",
+      "text": "Grade Air (domestic) Air (international, up to 6 hours) Air (international, over 6 hours) Train G1 Economy Economy Economy AC 3-tier G2 Economy Economy Premium economy AC 2-tier G3 Economy Premium economy Business AC 2-tier G4 Economy Business Business AC 1st class G5 Business Business Business AC 1st class Flights must be booked through the travel desk at least 7 days before travel. Bookings made less than 7 days ahead need the approval of the employee's manager with a reason. The lowest logical fare within 2 hours of the preferred departure time must be chosen."
+    },
+    {
+      "id": "accommodation-limits-per-night-inr/01-accommodation-limits-per-night-inr",
+      "module": "accommodation-limits-per-night-inr",
+      "title": "4. Accommodation limits per night (INR)",
+      "pages": null,
+      "file": "modules/accommodation-limits-per-night-inr/01-accommodation-limits-per-night-inr.md",
+      "images": [],
+      "summary": "Grade Tier 1 city Tier 2 city Other G1 4,000 3,000 2,500 G2 6,000 4,500 3,500 G3 8,000 6,000 4,500 G4 12,000 8,000 6,000 G5 Actuals Actuals Actuals Tier 1 cities: Mumbai, Delhi NCR, Bengaluru, Chennai, Hyderabad, Pune, K",
+      "text": "Grade Tier 1 city Tier 2 city Other G1 4,000 3,000 2,500 G2 6,000 4,500 3,500 G3 8,000 6,000 4,500 G4 12,000 8,000 6,000 G5 Actuals Actuals Actuals Tier 1 cities: Mumbai, Delhi NCR, Bengaluru, Chennai, Hyderabad, Pune, Kolkata. Tier 2 cities: Ahmedabad, Jaipur, Coimbatore, Nagpur, Kochi, Indore and other state capitals. Staying with friends or relatives instead of a hotel is allowed and is compensated with a flat INR 1,000 per night."
+    },
+    {
+      "id": "daily-allowance-per-diem/01-daily-allowance-per-diem",
+      "module": "daily-allowance-per-diem",
+      "title": "5. Daily allowance (per diem)",
+      "pages": null,
+      "file": "modules/daily-allowance-per-diem/01-daily-allowance-per-diem.md",
+      "images": [],
+      "summary": "The daily allowance covers meals, local conveyance within the city and incidentals.",
+      "text": "The daily allowance covers meals, local conveyance within the city and incidentals. Grade Domestic (INR per day) International (USD per day) G1 800 50 G2 1,200 70 G3 1,600 90 G4 2,000 110 G5 2,500 130 Trips shorter than 8 hours get half the daily allowance. If meals are provided by the host or included in a conference fee, the allowance is reduced by 25 % for each main meal provided (breakfast, lunch, dinner). The allowance is not paid for days of personal leave taken during a trip."
+    },
+    {
+      "id": "approvals/01-approvals",
+      "module": "approvals",
+      "title": "6. Approvals",
+      "pages": null,
+      "file": "modules/approvals/01-approvals.md",
+      "images": [],
+      "summary": "Expense Approval needed Domestic trip Manager International trip Manager and the department head (G4 or above) Single expense above INR 25,000 Department head Single expense above INR 1,00,000 Plant manager and finance c",
+      "text": "Expense Approval needed Domestic trip Manager International trip Manager and the department head (G4 or above) Single expense above INR 25,000 Department head Single expense above INR 1,00,000 Plant manager and finance controller Accommodation above the grade limit Department head, before the booking Business-class air for a grade not entitled to it Managing director"
+    },
+    {
+      "id": "receipts/01-receipts",
+      "module": "receipts",
+      "title": "7. Receipts",
+      "pages": null,
+      "file": "modules/receipts/01-receipts.md",
+      "images": [],
+      "summary": "Original receipts or tax invoices are required for every expense above INR 500, except the daily allowance.",
+      "text": "Original receipts or tax invoices are required for every expense above INR 500, except the daily allowance. Lost receipts: a self-declaration is accepted up to INR 2,000 per trip; above that the expense is not reimbursed. Receipts must show the GST number of the supplier where applicable."
+    },
+    {
+      "id": "not-reimbursed/01-not-reimbursed",
+      "module": "not-reimbursed",
+      "title": "8. Not reimbursed",
+      "pages": null,
+      "file": "modules/not-reimbursed/01-not-reimbursed.md",
+      "images": [],
+      "summary": "Alcohol, minibar, laundry for trips shorter than 4 nights, personal entertainment, traffic fines, upgrades bought by the employee, travel insurance bought separately (the company policy covers all business trips), and ex",
+      "text": "Alcohol, minibar, laundry for trips shorter than 4 nights, personal entertainment, traffic fines, upgrades bought by the employee, travel insurance bought separately (the company policy covers all business trips), and expenses for accompanying family members."
+    },
+    {
+      "id": "advances/01-advances",
+      "module": "advances",
+      "title": "9. Advances",
+      "pages": null,
+      "file": "modules/advances/01-advances.md",
+      "images": [],
+      "summary": "An advance of up to 80 % of the estimated trip cost may be requested for trips longer than 3 days or for international trips.",
+      "text": "An advance of up to 80 % of the estimated trip cost may be requested for trips longer than 3 days or for international trips. The advance must be settled within 15 days of return; unsettled advances are recovered from the next salary."
+    },
+    {
+      "id": "mileage/01-mileage",
+      "module": "mileage",
+      "title": "10. Mileage",
+      "pages": null,
+      "file": "modules/mileage/01-mileage.md",
+      "images": [],
+      "summary": "Use of a personal car for business travel is reimbursed at INR 12 per km, and a personal two wheeler at INR 5 per km, for distances above 20 km per day.",
+      "text": "Use of a personal car for business travel is reimbursed at INR 12 per km, and a personal two-wheeler at INR 5 per km, for distances above 20 km per day. Tolls and parking are reimbursed at actuals with receipts."
+    }
+  ],
+  "images": []
+}

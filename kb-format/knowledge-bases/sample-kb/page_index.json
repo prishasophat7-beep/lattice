@@ -1,0 +1,478 @@
+{
+  "kb_id": "9cb0a33a-0797-4d79-9a74-3f199bd10e97",
+  "kb_name": "Sample Knowledge Base",
+  "kb_description": "A sample knowledge base for demonstration",
+  "generated_at": "2026-09-25T08:21:53.118662+00:00",
+  "total_files": 3,
+  "indexed_files": 3,
+  "documents": [
+    {
+      "file_id": "1e642f4a-e025-4486-8e56-73ca00a950bd",
+      "filename": "report.pdf",
+      "relative_path": "report.pdf",
+      "file_type": "pdf",
+      "file_size": 1284736,
+      "parser_engine": "mcp_ocr",
+      "parsed_at": "2026-09-25T08:14:02.441209+00:00",
+      "page_count": 5,
+      "node_count": 7,
+      "has_images": true,
+      "image_count": 2,
+      "image_files": [
+        "images/figure_000.png",
+        "images/figure_001.png"
+      ],
+      "doc_summary": "Introduces the Q3 2026 test campaign for the MCN5 image sensor, including test dates and location. Presents image quality results for sharpness, noise, distortion and color accuracy against targets. Concludes that only distortion failed and recommends recalibrating the ISP distortion profile before EVT2.",
+      "sections": [
+        {
+          "node_id": "0001",
+          "title": "Introduction",
+          "type": "section",
+          "level": 1,
+          "section_number": "1",
+          "start_page": 1,
+          "end_page": 2,
+          "summary": "Introduces the Q3 2026 test campaign for the MCN5 image sensor, including test dates and location.",
+          "section_id": "introduction/01-introduction",
+          "section_file": "report/modules/introduction/01-introduction.md"
+        },
+        {
+          "node_id": "0002",
+          "title": "Background",
+          "type": "section",
+          "level": 2,
+          "section_number": "1.1",
+          "start_page": 1,
+          "end_page": 2,
+          "summary": "Describes the MCN5 50 MP stacked CMOS sensor and the 10-1,000 lux lighting range used, with an SNR-vs-illuminance figure.",
+          "section_id": "introduction/02-background",
+          "section_file": "report/modules/introduction/02-background.md"
+        },
+        {
+          "node_id": "0003",
+          "title": "Test Methodology",
+          "type": "section",
+          "level": 2,
+          "section_number": "1.2",
+          "start_page": 2,
+          "end_page": 2,
+          "summary": "Explains the optical bench setup, ISO 12233/15739 charts, and the 20-module sample size.",
+          "section_id": "introduction/03-test-methodology",
+          "section_file": "report/modules/introduction/03-test-methodology.md"
+        },
+        {
+          "node_id": "0004",
+          "title": "Results",
+          "type": "section",
+          "level": 1,
+          "section_number": "2",
+          "start_page": 3,
+          "end_page": 4,
+          "summary": "Presents image quality results for sharpness, noise, distortion and color accuracy against targets.",
+          "section_id": "results/01-image-quality-metrics",
+          "section_file": "report/modules/results/01-image-quality-metrics.md"
+        },
+        {
+          "node_id": "0005",
+          "title": "Image Quality Metrics",
+          "type": "section",
+          "level": 2,
+          "section_number": "2.1",
+          "start_page": 3,
+          "end_page": 4,
+          "summary": "Summarizes measured metrics; all pass except distortion at 1.2%. Includes an MTF curve figure.",
+          "section_id": "results/01-image-quality-metrics",
+          "section_file": "report/modules/results/01-image-quality-metrics.md"
+        },
+        {
+          "node_id": "0006",
+          "title": "Table (5 rows x 4 cols)",
+          "type": "table",
+          "level": 3,
+          "section_number": null,
+          "start_page": 3,
+          "end_page": 3,
+          "summary": "Table of MTF50, SNR, distortion and color accuracy results with targets and pass/fail status.",
+          "section_id": "results/01-image-quality-metrics",
+          "section_file": "report/modules/results/01-image-quality-metrics.md"
+        },
+        {
+          "node_id": "0007",
+          "title": "Conclusion",
+          "type": "section",
+          "level": 1,
+          "section_number": "3",
+          "start_page": 5,
+          "end_page": 5,
+          "summary": "Concludes that only distortion failed and recommends recalibrating the ISP distortion profile before EVT2.",
+          "section_id": "conclusion/01-conclusion",
+          "section_file": "report/modules/conclusion/01-conclusion.md"
+        }
+      ],
+      "folder": "report/",
+      "topics": [
+        "lux",
+        "pass",
+        "introduction",
+        "sensor",
+        "background",
+        "methodology",
+        "quality",
+        "mtf"
+      ],
+      "codes": [
+        "MCN5",
+        "MTF50",
+        "EVT2"
+      ],
+      "related": [
+        {
+          "document": "meeting-notes",
+          "relation": "shares codes",
+          "codes": [
+            "EVT2",
+            "MCN5"
+          ]
+        },
+        {
+          "document": "budget",
+          "relation": "shares codes",
+          "codes": [
+            "EVT2"
+          ]
+        }
+      ],
+      "modules": [
+        {
+          "id": "introduction",
+          "title": "Introduction",
+          "pages": [
+            1,
+            2
+          ]
+        },
+        {
+          "id": "results",
+          "title": "Results",
+          "pages": [
+            3,
+            4
+          ]
+        },
+        {
+          "id": "conclusion",
+          "title": "Conclusion",
+          "pages": [
+            5,
+            5
+          ]
+        }
+      ]
+    },
+    {
+      "file_id": "f7003fdf-547d-49c3-a461-c98f4b005a82",
+      "filename": "meeting_notes.docx",
+      "relative_path": "meeting_notes.docx",
+      "file_type": "docx",
+      "file_size": 38912,
+      "parser_engine": "mcp_ocr",
+      "parsed_at": "2026-09-25T08:15:37.902113+00:00",
+      "page_count": null,
+      "node_count": 9,
+      "has_images": false,
+      "image_count": 0,
+      "image_files": [],
+      "doc_summary": "Weekly camera team meeting notes with attendees and location.",
+      "sections": [
+        {
+          "node_id": "0001",
+          "title": "Camera Team Weekly Sync - September 22, 2026",
+          "type": "section",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Weekly camera team meeting notes with attendees and location.",
+          "section_id": "overview/01-camera-team-weekly-sync-september-22-2026",
+          "section_file": "meeting-notes/modules/overview/01-camera-team-weekly-sync-september-22-2026.md"
+        },
+        {
+          "node_id": "0002",
+          "title": "Agenda",
+          "type": "section",
+          "level": 2,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Lists three agenda items: MCN5 test review, EVT2 schedule, and lens supplier update.",
+          "section_id": "agenda/01-agenda",
+          "section_file": "meeting-notes/modules/agenda/01-agenda.md"
+        },
+        {
+          "node_id": "0003",
+          "title": "Discussion",
+          "type": "section",
+          "level": 2,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Covers discussion of test results, build timing and supplier quality.",
+          "section_id": "discussion/01-mcn5-test-results",
+          "section_file": "meeting-notes/modules/discussion/01-mcn5-test-results.md"
+        },
+        {
+          "node_id": "0004",
+          "title": "MCN5 Test Results",
+          "type": "section",
+          "level": 3,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Team reviewed Q3 results and agreed the distortion failure can be fixed in the ISP without lens redesign.",
+          "section_id": "discussion/01-mcn5-test-results",
+          "section_file": "meeting-notes/modules/discussion/01-mcn5-test-results.md"
+        },
+        {
+          "node_id": "0005",
+          "title": "EVT2 Build Schedule",
+          "type": "section",
+          "level": 3,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "EVT2 stays on October 20; the distortion profile is due October 10 for firmware inclusion.",
+          "section_id": "discussion/02-evt2-build-schedule",
+          "section_file": "meeting-notes/modules/discussion/02-evt2-build-schedule.md"
+        },
+        {
+          "node_id": "0006",
+          "title": "Supplier Update",
+          "type": "section",
+          "level": 3,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Lens supplier fixed the August coating defect; yield improved from 91.8% to 97.4%.",
+          "section_id": "discussion/03-supplier-update",
+          "section_file": "meeting-notes/modules/discussion/03-supplier-update.md"
+        },
+        {
+          "node_id": "0007",
+          "title": "Decisions",
+          "type": "section",
+          "level": 2,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Decided on ISP-based distortion correction and keeping the EVT2 date.",
+          "section_id": "decisions/01-decisions",
+          "section_file": "meeting-notes/modules/decisions/01-decisions.md"
+        },
+        {
+          "node_id": "0008",
+          "title": "Action Items",
+          "type": "section",
+          "level": 2,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Four action items with owners and due dates between Sept 30 and Oct 15.",
+          "section_id": "action-items/01-action-items",
+          "section_file": "meeting-notes/modules/action-items/01-action-items.md"
+        },
+        {
+          "node_id": "0009",
+          "title": "Table (4 rows x 3 cols)",
+          "type": "table",
+          "level": 3,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Table of action items listing owner, action and due date.",
+          "section_id": "action-items/01-action-items",
+          "section_file": "meeting-notes/modules/action-items/01-action-items.md"
+        }
+      ],
+      "folder": "meeting-notes/",
+      "topics": [
+        "update",
+        "team",
+        "evt",
+        "schedule",
+        "action",
+        "build",
+        "supplier",
+        "weekly"
+      ],
+      "codes": [
+        "EVT2",
+        "MCN5"
+      ],
+      "related": [
+        {
+          "document": "report",
+          "relation": "mentions"
+        },
+        {
+          "document": "budget",
+          "relation": "mentions"
+        }
+      ],
+      "modules": [
+        {
+          "id": "overview",
+          "title": "Overview",
+          "pages": null
+        },
+        {
+          "id": "agenda",
+          "title": "Agenda",
+          "pages": null
+        },
+        {
+          "id": "discussion",
+          "title": "Discussion",
+          "pages": null
+        },
+        {
+          "id": "decisions",
+          "title": "Decisions",
+          "pages": null
+        },
+        {
+          "id": "action-items",
+          "title": "Action Items",
+          "pages": null
+        }
+      ]
+    },
+    {
+      "file_id": "aea89354-8675-4372-81fa-6ee52f5ba061",
+      "filename": "budget.xlsx",
+      "relative_path": "budget.xlsx",
+      "file_type": "xlsx",
+      "file_size": 24587,
+      "parser_engine": "mcp_ocr",
+      "parsed_at": "2026-09-25T08:16:11.358840+00:00",
+      "page_count": null,
+      "node_count": 6,
+      "has_images": true,
+      "image_count": 1,
+      "image_files": [
+        "images/figure_000.png"
+      ],
+      "doc_summary": "FY2027 camera team budget workbook with summary, equipment detail and notes sheets.",
+      "sections": [
+        {
+          "node_id": "0001",
+          "title": "budget.xlsx",
+          "type": "xlsx",
+          "level": 1,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "FY2027 camera team budget workbook with summary, equipment detail and notes sheets."
+        },
+        {
+          "node_id": "0002",
+          "title": "Summary",
+          "type": "sheet",
+          "level": 2,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Compares FY2026 actuals to FY2027 budget by category; total rises 10.5% to $770K. Includes a category bar chart."
+        },
+        {
+          "node_id": "0003",
+          "title": "Table (6 rows x 4 cols)",
+          "type": "table",
+          "level": 3,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Budget table for personnel, equipment, software, travel and contingency with year-over-year change."
+        },
+        {
+          "node_id": "0004",
+          "title": "Equipment Detail",
+          "type": "sheet",
+          "level": 2,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Itemizes $186K of equipment, led by a $92K optical test bench."
+        },
+        {
+          "node_id": "0005",
+          "title": "Table (4 rows x 4 cols)",
+          "type": "table",
+          "level": 3,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Equipment line items with quantity, unit cost and total."
+        },
+        {
+          "node_id": "0006",
+          "title": "Notes",
+          "type": "sheet",
+          "level": 2,
+          "section_number": null,
+          "start_page": null,
+          "end_page": null,
+          "summary": "Explains the equipment increase for EVT2 validation and reduced travel from remote supplier audits."
+        }
+      ],
+      "folder": "budget/",
+      "topics": [
+        "sheet",
+        "equipment",
+        "summary",
+        "detail",
+        "travel",
+        "total",
+        "notes",
+        "optical"
+      ],
+      "codes": [
+        "D65",
+        "TL84",
+        "EVT2"
+      ],
+      "related": [
+        {
+          "document": "report",
+          "relation": "shares codes",
+          "codes": [
+            "EVT2"
+          ]
+        },
+        {
+          "document": "meeting-notes",
+          "relation": "shares codes",
+          "codes": [
+            "EVT2"
+          ]
+        }
+      ],
+      "modules": [
+        {
+          "id": "sheet-summary",
+          "title": "Sheet: Summary",
+          "pages": null
+        },
+        {
+          "id": "sheet-equipment-detail",
+          "title": "Sheet: Equipment Detail",
+          "pages": null
+        },
+        {
+          "id": "sheet-notes",
+          "title": "Sheet: Notes",
+          "pages": null
+        }
+      ]
+    }
+  ]
+}

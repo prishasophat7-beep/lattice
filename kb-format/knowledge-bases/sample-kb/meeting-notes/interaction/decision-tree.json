@@ -1,0 +1,78 @@
+{
+  "_draft": true,
+  "start": "start",
+  "nodes": {
+    "start": {
+      "ask": "Which part of Meeting notes is your question about?",
+      "options": [
+        {
+          "label": "Overview",
+          "next": "result:overview"
+        },
+        {
+          "label": "Agenda",
+          "next": "result:agenda"
+        },
+        {
+          "label": "Discussion",
+          "next": "result:discussion"
+        },
+        {
+          "label": "Decisions",
+          "next": "result:decisions"
+        },
+        {
+          "label": "Action Items",
+          "next": "result:action-items"
+        },
+        {
+          "label": "Something else",
+          "next": "open"
+        }
+      ]
+    }
+  },
+  "resolve": {},
+  "results": {
+    "overview": {
+      "modules": [
+        "overview"
+      ],
+      "summary": "Overview",
+      "start_hint": "overview/01-camera-team-weekly-sync-september-22-2026",
+      "ask_next": []
+    },
+    "agenda": {
+      "modules": [
+        "agenda"
+      ],
+      "summary": "Agenda",
+      "start_hint": "agenda/01-agenda",
+      "ask_next": []
+    },
+    "discussion": {
+      "modules": [
+        "discussion"
+      ],
+      "summary": "Discussion",
+      "start_hint": "discussion/01-mcn5-test-results",
+      "ask_next": []
+    },
+    "decisions": {
+      "modules": [
+        "decisions"
+      ],
+      "summary": "Decisions",
+      "start_hint": "decisions/01-decisions",
+      "ask_next": []
+    },
+    "action-items": {
+      "modules": [
+        "action-items"
+      ],
+      "summary": "Action Items",
+      "start_hint": "action-items/01-action-items",
+      "ask_next": []
+    }
+  }
+}

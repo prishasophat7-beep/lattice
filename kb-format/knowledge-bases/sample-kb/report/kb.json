@@ -1,0 +1,144 @@
+{
+  "format_version": 2,
+  "generator": "convert_kb.py",
+  "document": {
+    "id": "report",
+    "title": "Report",
+    "filename": "report.pdf",
+    "type": "pdf",
+    "pages": 5,
+    "summary": "Introduces the Q3 2026 test campaign for the MCN5 image sensor, including test dates and location. Presents image quality results for sharpness, noise, distortion and color accuracy against targets. Concludes that only distortion failed and recommends recalibrating the ISP distortion profile before EVT2."
+  },
+  "modules": [
+    {
+      "id": "introduction",
+      "title": "Introduction",
+      "heading": "Introduction",
+      "pages": [
+        1,
+        2
+      ],
+      "sections": [
+        "introduction/01-introduction",
+        "introduction/02-background",
+        "introduction/03-test-methodology"
+      ],
+      "summary": "Introduces the Q3 2026 test campaign for the MCN5 image sensor, including test dates and location."
+    },
+    {
+      "id": "results",
+      "title": "Results",
+      "heading": "Results",
+      "pages": [
+        3,
+        4
+      ],
+      "sections": [
+        "results/01-image-quality-metrics"
+      ],
+      "summary": "Presents image quality results for sharpness, noise, distortion and color accuracy against targets."
+    },
+    {
+      "id": "conclusion",
+      "title": "Conclusion",
+      "heading": "Conclusion",
+      "pages": [
+        5,
+        5
+      ],
+      "sections": [
+        "conclusion/01-conclusion"
+      ],
+      "summary": "Concludes that only distortion failed and recommends recalibrating the ISP distortion profile before EVT2."
+    }
+  ],
+  "sections": [
+    {
+      "id": "introduction/01-introduction",
+      "module": "introduction",
+      "title": "Introduction",
+      "pages": [
+        1,
+        2
+      ],
+      "file": "modules/introduction/01-introduction.md",
+      "images": [],
+      "summary": "Introduces the Q3 2026 test campaign for the MCN5 image sensor, including test dates and location.",
+      "text": "This report covers the Q3 2026 camera module testing results for the MCN5 image sensor. Testing was carried out at the Suwon optics lab between July 7 and September 12, 2026."
+    },
+    {
+      "id": "introduction/02-background",
+      "module": "introduction",
+      "title": "Background",
+      "pages": [
+        1,
+        2
+      ],
+      "file": "modules/introduction/02-background.md",
+      "images": [
+        "images/page_001_img1.png"
+      ],
+      "summary": "Describes the MCN5 50 MP stacked CMOS sensor and the 10-1,000 lux lighting range used, with an SNR-vs-illuminance figure.",
+      "text": "The MCN5 sensor is a 50 MP, 1/1.56-inch stacked CMOS sensor intended for mid-range smartphones. It was tested under various lighting conditions ranging from 10 lux (dim indoor) to 1,000 lux (overcast daylight). Signal-to-noise ratio improves steadily with illuminance and plateaus above 500 lux."
+    },
+    {
+      "id": "introduction/03-test-methodology",
+      "module": "introduction",
+      "title": "Test Methodology",
+      "pages": [
+        2,
+        2
+      ],
+      "file": "modules/introduction/03-test-methodology.md",
+      "images": [],
+      "summary": "Explains the optical bench setup, ISO 12233/15739 charts, and the 20-module sample size.",
+      "text": "Each module was mounted on a calibrated optical bench and evaluated against ISO 12233 and ISO 15739 charts. Twenty production-sample modules were tested; values below are medians."
+    },
+    {
+      "id": "results/01-image-quality-metrics",
+      "module": "results",
+      "title": "Image Quality Metrics",
+      "pages": [
+        3,
+        4
+      ],
+      "file": "modules/results/01-image-quality-metrics.md",
+      "images": [
+        "images/page_003_img1.png"
+      ],
+      "summary": "Summarizes measured metrics; all pass except distortion at 1.2%. Includes an MTF curve figure.",
+      "text": "Test Result Target Notes MTF50 (center) 0.42 cycles/pixel >= 0.38 Pass MTF50 (corner) 0.31 cycles/pixel >= 0.28 Pass SNR @ 1000 lux 38.1 dB >= 36 dB Pass Distortion 1.2% <= 1.0% Fail Color accuracy (dE2000) 3.4 <= 4.0 Pass The MTF curve shows a corner fall-off consistent with the lens design, remaining above target."
+    },
+    {
+      "id": "conclusion/01-conclusion",
+      "module": "conclusion",
+      "title": "Conclusion",
+      "pages": [
+        5,
+        5
+      ],
+      "file": "modules/conclusion/01-conclusion.md",
+      "images": [],
+      "summary": "Concludes that only distortion failed and recommends recalibrating the ISP distortion profile before EVT2.",
+      "text": "All tests passed except distortion, which exceeded the 1.0% limit by 0.2 percentage points. We recommend recalibrating the lens distortion correction profile in the ISP before the EVT2 build."
+    }
+  ],
+  "images": [
+    {
+      "path": "images/page_001_img1.png",
+      "original": "figure_000.png",
+      "section": "introduction/02-background",
+      "page": 1,
+      "description": null,
+      "description_from": null
+    },
+    {
+      "path": "images/page_003_img1.png",
+      "original": "figure_001.png",
+      "section": "results/01-image-quality-metrics",
+      "page": 3,
+      "description": null,
+      "description_from": null
+    }
+  ]
+}
