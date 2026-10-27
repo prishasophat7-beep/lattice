@@ -213,12 +213,14 @@ class Engine:
         if self.injected_model is None:  # a busy endpoint mid-answer: retry that one call, in both modes
             self.model = RetryingModel(self.model, budget=self.budget)
         chat_conn = self.config.chat_connection
+        self.chat_model: Model | None = None  # Chat mode's own model, when it has one (see chat_pipeline)
         if chat_conn is None:  # Chat mode uses the same model as Manuals mode
             self.chat_llm, chat_model = self.llm, self.model
         else:
             self.chat_llm = effective_llm(self.settings.llm, chat_conn)
             chat_model = self.injected_model or RetryingModel(make_model(self.chat_llm, self.budget),
                                                               budget=self.budget)
+            self.chat_model = chat_model
         # Chat answers (a worked-out penalty over three orders) need more room than Manuals answers:
         # at the built-in model's 2,048 the 4B stopped before its total ("cut off", 22 Oct test)
         self.chat = ChatAgent(chat_model, max_tokens=max(self.chat_llm.max_tokens, CHAT_MAX_TOKENS),
@@ -315,9 +317,25 @@ class Engine:
                 log.warning("knowledge base extras not loaded: %s", e)
         self.start_semantic()
 
+    @property
+    def chat_pipeline(self) -> Pipeline | None:
+        """The pipeline Chat mode's own steps use (sorting a request, a summary, the section picked
+        after a question back, "next"): on Chat mode's model, which may be a server model while
+        Manuals mode runs on this computer."""
+        if self.pipeline is None or self.chat_model is None:
+            return self.pipeline
+        made = getattr(self, "_chat_pipeline", None)  # (manuals pipeline, chat model, chat pipeline)
+        if made is None or made[0] is not self.pipeline or made[1] is not self.chat_model:
+            cfg = self.chat_llm
+            made = self._chat_pipeline = (self.pipeline, self.chat_model, self.pipeline.with_model(
+                self.chat_model, output_mode=cfg.output_mode, max_tokens=cfg.max_tokens,
+                select_max_tokens=cfg.select_max_tokens, answer_max_tokens=cfg.answer_max_tokens,
+                may_think=cfg.thinking_off or cfg.reasoning, temperature=cfg.temperature))
+        return made[2]
+
     def interview_question(self, question: str, pipeline: Pipeline, scope: set[int] | None) -> Clarification | None:
         """A first question's question back from the knowledge base's decision tree (see interview.py)."""
-        if self.interview is None or pipeline is not self.pipeline:
+        if self.interview is None or self.pipeline is None or pipeline.index is not self.pipeline.index:
             return None
         return self.interview.clarification(question, pipeline.index, scope)
 
@@ -1406,8 +1424,8 @@ def create_app(settings: Settings | None = None, model: Model | None = None) -> 
         if _DRAW.search(req.question) and not req.attachments:
             return _done(chart_answer(req))
         place = engine.place_for(req)
-        if req.mode == "chat":
-            return placed(chat_answer(req, pipeline, on_event, place), place, req)
+        if req.mode == "chat":  # Chat mode's own model, also for its summaries and picked sections
+            return placed(chat_answer(req, engine.chat_pipeline or pipeline, on_event, place), place, req)
         return placed(manuals_answer(req, pipeline, on_event, place=place), place, req)
 
     async def placed(pending, place: tuple[int, str] | None, req: AskRequest | None = None) -> AskResult:

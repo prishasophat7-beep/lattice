@@ -106,6 +106,25 @@ def parse_followup(text: str, cls):
     return cls(standalone_question=question, section_ids=[] if _NONE.match(rest) else ids_in(rest))
 
 
+_SOURCE_LABEL = re.compile(_LABEL.format(r"(sources?|sections?|ids?|excerpts?(?: used)?|cited)"),
+                           re.IGNORECASE | re.MULTILINE)
+
+
+def _sources_line(text: str) -> re.Match | None:
+    """The last line that lists the answer's sources. "SOURCES:" counts with any ids after it; the
+    other labels only before ids alone: "Sections: Setup, Run and Maintenance are covered ..." is a
+    line of the answer, and everything after it was cut off as its sources."""
+    for m in reversed(list(_SOURCE_LABEL.finditer(text))):
+        rest = text[m.end():]
+        if _NONE.match(rest.split("\n", 1)[0]):
+            return m
+        if not ids_in(rest):
+            continue
+        if m.group(1).lower().startswith("source") or len(re.findall(r"[A-Za-z]{3,}", _ID.sub(" ", rest))) <= 3:
+            return m
+    return None
+
+
 def parse_answer(text: str, cls):
     """DraftAnswer: the answer, its SOURCES line, and NOT FOUND / WORKED OUT if it says so. Also used
     on a partial reply while it streams: a half-written last line that may become "SOURCES:" is held back."""
@@ -114,9 +133,7 @@ def parse_answer(text: str, cls):
     if found is not None:
         return found
     ids: list[str] = []
-    m = None
-    for m in _SOURCES.finditer(text):
-        pass
+    m = _sources_line(text)
     if m is not None:
         ids = ids_in(text[m.end():])
         text = text[:m.start()].rstrip()

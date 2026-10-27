@@ -97,6 +97,8 @@ class ScriptedModel:
         reply = queue.pop(0)
         if isinstance(reply, str):  # a plain-text reply, as the "text" reply format reads it
             return ModelResponse(parts=[TextPart(reply)])
+        if "_text" in reply:  # ... with how it ended ({"_text": "...", "_finish": "length"})
+            return ModelResponse(parts=[TextPart(reply["_text"])], finish_reason=reply.get("_finish"))
         reply = dict(reply)
         finish = reply.pop("_finish", None)
         return ModelResponse(parts=[TextPart(json.dumps(reply))], finish_reason=finish)

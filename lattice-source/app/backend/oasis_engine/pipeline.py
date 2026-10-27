@@ -12,6 +12,7 @@ is capped, so a small model cannot loop.
 """
 from __future__ import annotations
 
+import copy
 import logging
 import json
 import re
@@ -396,6 +397,7 @@ STUCK_NOTE = ("The person is stuck. Answer in three parts: one sentence on what 
               "then its steps as a numbered list, then one short question on a line of its own asking which "
               "step they are at.")
 CUT_OFF_NOTE = "*(The answer was cut off. Ask about a narrower part for the rest.)*"
+CUT_OFF_MIN_WORDS = 25  # an answer cut off at its cap with this many different words is a long answer, not a loop
 
 
 @dataclass
@@ -673,9 +675,25 @@ def _output(model_cls, mode: OutputMode):
     return {"native": NativeOutput, "tool": ToolOutput, "prompted": PromptedOutput}[mode](model_cls)
 
 
+# the instructions name the structured reply's fields ("set found to false", "in section_ids"); in a
+# plain-text reply there are none, and the model was told both to set them and to write NOT FOUND /
+# SOURCES lines: those phrases, as the plain-text layout says them
+_TEXT_WORDING = {
+    "SectionChoice": [("return an empty list", "write NONE")],
+    "FollowupChoice": [("in standalone_question", "on the QUESTION line"), ("return an empty list", "write NONE")],
+    "DraftAnswer": [("set found to false and say briefly", "write NOT FOUND: and say briefly"),
+                    (" List the ids of the excerpts you used in section_ids.", ""),
+                    (", and set found and worked_out to true.", ", starting with WORKED OUT:.")],
+}
+
+
 def _instructions(text: str, model_cls, mode: OutputMode) -> str:
     """A step's instructions, with how to lay out the reply when it is plain text."""
-    return text + _TEXT_REPLIES[model_cls.__name__][0] if mode == "text" else text
+    if mode != "text":
+        return text
+    for old, new in _TEXT_WORDING.get(model_cls.__name__, []):
+        text = text.replace(old, new)
+    return text + _TEXT_REPLIES[model_cls.__name__][0]
 
 
 class Pipeline:
@@ -693,14 +711,28 @@ class Pipeline:
         self.docs = docs
         # a sem-ai-kb knowledge base's known gaps (needs-review.md), given with every answer
         self.kb_notes = ""
+        self.index = SectionIndex(docs)
+        self.fast_path = fast_path  # answer a clear keyword match in one model call
+        self.budget = budget
+        self._make_agents(model, output_mode=output_mode, max_tokens=max_tokens, select_max_tokens=select_max_tokens,
+                          answer_max_tokens=answer_max_tokens, may_think=may_think, temperature=temperature)
+
+    def with_model(self, model: Model, **settings) -> "Pipeline":
+        """The same documents, search index and notes, answered by another model: Chat mode's on a
+        server while Manuals mode runs on this computer (Chat's summaries, the option picked after a
+        question back, "next" were written by the local 4B, for minutes, with the server model idle)."""
+        other = copy.copy(self)
+        other._make_agents(model, **settings)
+        return other
+
+    def _make_agents(self, model: Model, *, output_mode: OutputMode, max_tokens: int, select_max_tokens: int,
+                     answer_max_tokens: int, may_think: bool, temperature: float) -> None:
+        self.output_mode = output_mode
         # a model that thinks although asked not to: a step cut off at its cap is tried again with
         # room to think, and every step after it gets that room too
         self.may_think = may_think
         self.thinking_tokens = REASONING_RETRY_TOKENS if temperature else THINKING_MAX_TOKENS
         self.thinking = False
-        self.index = SectionIndex(docs)
-        self.fast_path = fast_path  # answer a clear keyword match in one model call
-        self.budget = budget
         select_settings = {"temperature": temperature, "max_tokens": min(max_tokens, select_max_tokens)}
         answer_settings = {"temperature": temperature, "max_tokens": min(max_tokens, answer_max_tokens)}
         self.selector = Agent(model, output_type=_output(SectionChoice, output_mode), deps_type=PromptIds,
@@ -885,6 +917,10 @@ class Pipeline:
                                 await on_partial(partial)
                     # a reply cut off at its token cap: retrying would only loop again
                     elif Agent.is_call_tools_node(node) and node.model_response.finish_reason == "length":
+                        kept = self._cut_off_answer(agent, node.model_response, last, deps)
+                        if kept is not None:
+                            log.warning("answer cut off at its token cap: shown as written, marked cut off")
+                            return _Salvaged(kept)
                         raise ModelRanAway("The language model got stuck writing this answer")
             assert run.result is not None
             return run.result
@@ -920,6 +956,23 @@ class Pipeline:
                 raise ProviderBusy("The language model service had an error; try again") from e
             # an empty or malformed reply, or unusable output twice
             raise ProviderBusy("The language model gave an unusable reply; try again") from e
+
+    def _cut_off_answer(self, agent: Agent, response: ModelResponse, last: Any, deps: PromptIds) -> DraftAnswer | None:
+        """A long answer that reached the step's token cap, as written so far and marked cut off; None
+        for a model stuck repeating itself, or one that thinks and gets the step again with room. In
+        the plain-text reply format nothing fails to parse, and a long "I'm stuck" answer with every
+        step (the 4B's 800 tokens) ended in "got stuck writing this answer" instead of the steps."""
+        if agent is not self.answerer or (self.may_think and not self.thinking):
+            return None
+        draft = last if isinstance(last, DraftAnswer) else None
+        if draft is None and self.output_mode == "text":
+            draft = replies.parse_answer("".join(p.content for p in response.parts if isinstance(p, TextPart)),
+                                         DraftAnswer)
+        text = (draft.answer if draft is not None and draft.found else "").strip()
+        if len(set(tokenize(text))) < CUT_OFF_MIN_WORDS or repeating_from(text) is not None:
+            return None
+        return DraftAnswer(found=True, answer=text + " ...\n\n" + CUT_OFF_NOTE, worked_out=draft.worked_out,
+                           section_ids=list(draft.section_ids) or list(deps.picked) or list(deps.by_id))
 
     async def _select(self, agent: Agent, prompt: str, ids: PromptIds, fallback: BaseModel):
         """The selection step. An unusable choice (the 0.8B filled the ids with "DOCUMENT A:

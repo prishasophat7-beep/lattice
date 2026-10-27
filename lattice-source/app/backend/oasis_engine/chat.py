@@ -291,7 +291,10 @@ TOOL_NAMES = ("find_pictures", "search_manuals", "read_section", "manual_outline
               "semantic_search", "list_documents", "read_table", "calculate", "read_attachment")
 # a line about the assistant's own tools ("To show pictures, call find_pictures: ..."): small models
 # sometimes copy a paragraph of their instructions into the answer
-_TOOL_TALK = re.compile(r"^[^\n]*\b(" + "|".join(TOOL_NAMES) + r")\b[^\n]*$", re.MULTILINE)
+# ("calculate" is also an English word: "To calculate it, multiply ..." is part of the answer; it counts
+# only written as a tool, "calculate(...)", "`calculate`", "the calculate tool")
+_TOOL_TALK = re.compile(r"^[^\n]*(?:\b(?:" + "|".join(n for n in TOOL_NAMES if "_" in n) + r")\b|"
+                        r"\bcalculate\s*\(|`calculate`|\bcalculate tool\b)[^\n]*$", re.MULTILINE)
 # "Based on the documents ... there is no information regarding the weather." A small model says
 # this at length, restating it and inventing what the documents are about instead
 _NOT_COVERED = re.compile(
@@ -1232,7 +1235,15 @@ class ChatAgent:
                 break
             except UsageLimitExceeded:  # searched and read without settling on an answer
                 log.warning("chat agent hit its step limit: %s", question[:200])
-                answer, requests, cut_off = await self._wrap_up(question, deps)
+                try:
+                    answer, requests, cut_off = await self._wrap_up(question, deps)
+                except (ModelHTTPError, ModelAPIError, UnexpectedModelBehavior, openai.APIError) as e:
+                    # raised here, inside this handler, it escaped the handlers below and showed as an
+                    # unexpected error: the limit's own reply instead (or the quota message)
+                    log.warning("chat wrap-up failed: %s", describe_error(e))
+                    if quota_exhausted(e):
+                        raise BudgetExceeded(QUOTA_MESSAGE) from e
+                    answer, cut_off = "", False
                 if not answer:
                     return AskResult(question=question, found=False, answer=TOO_MANY_STEPS_REPLY, mode="chat",
                                      seconds={"total": round(time.perf_counter() - t0, 2)})

@@ -49,7 +49,7 @@ def _reply(messages, info: AgentInfo) -> ModelResponse:
                 if score > best_score:
                     best, best_score = m.group(1), score
         choice: dict = {"section_ids": [best] if best else []}
-        if "standalone_question" in (info.instructions or "") + prompt:  # a follow-up: asked as it stands
+        if "CONVERSATION SO FAR:" in prompt:  # a follow-up: asked as it stands
             choice["standalone_question"] = " ".join(question.split())
         return ModelResponse(parts=[TextPart(json.dumps(choice))])
     excerpt = re.search(r"=== \[([^\]]+)\][^\n]*===\n(.*?)(?=\n=== \[|\n+QUESTION:|\Z)", prompt, re.S)
