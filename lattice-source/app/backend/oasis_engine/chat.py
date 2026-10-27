@@ -154,7 +154,8 @@ When asked how to fix, handle or do something, give the documents' own procedure
 the exact button and menu names, codes and article numbers, in order; plans or background come after.
 
 In a follow-up, look up what the new request needs (a reason, a date, a figure) instead of relying \
-only on earlier answers.
+only on earlier answers. Answer only the latest message: the earlier questions of the conversation \
+have been answered already; do not answer them again or summarise them unless asked.
 
 When the documents do not state the answer in so many words but it follows clearly from what they \
 state (a stated rule or limit applied to the case asked about, or stated figures compared), start \
@@ -351,7 +352,24 @@ def without_trailing_decline(answer: str) -> str:
 
 
 # a paragraph of general knowledge, as the instructions ask for it: shown set apart as a quote
-_GENERAL = re.compile(r"^(?:\*\*|__|\*|_)?general knowledge:?(?:\*\*|__|\*|_)?:?\s*", re.IGNORECASE)
+# (also "**General knowledge (brief):**", "General knowledge (if you need it) –": the label's own marks
+# were shown as "(brief)**"; Nemotron, 27 Oct 2026)
+_GENERAL = re.compile(r"^(?:\*\*|__|\*|_)?general knowledge(?:\s*\([^)\n]{0,40}\))?\s*:?(?:\*\*|__|\*|_)?\s*"
+                      r"(?:\([^)\n]{0,40}\)\s*(?:\*\*|__)?)?(?:[:–—-]\s+)?", re.IGNORECASE)
+
+
+def without_other_quote_boxes(answer: str) -> str:
+    """A quote the model made of anything but general knowledge ("> **What the UI shows** - the toolbar has an
+    Add Folder icon") as plain text: the app draws every quote as the general-knowledge box, and the
+    manual's own words in it read as not from the documents (27 Oct 2026)."""
+    out = []
+    for para in re.split(r"\n\s*\n", answer):
+        lines = para.split("\n")
+        if lines and all(ln.lstrip().startswith(">") for ln in lines if ln.strip()) and \
+                not _GENERAL.match(lines[0].lstrip().lstrip(">").strip()):
+            para = "\n".join(re.sub(r"^\s*>\s?", "", ln) for ln in lines)
+        out.append(para)
+    return "\n\n".join(out)
 
 
 def _about_yourself(model_label: str, documents_only: bool = False) -> str:
@@ -595,6 +613,41 @@ def subject_of(docs: list[Doc], hits, part: str) -> str:
     return " ".join(codes[:SUBJECT_CODES]) or part
 
 
+# a text to write for the user: "write a reply to a customer", "draft an email to my manager"
+_DRAFT_REQUEST = re.compile(r"\b(write|draft|compose|prepare)\b.{0,30}\b(reply|response|e-?mail|mail|message|letter|"
+                            r"note|notice|announcement|memo)\b", re.IGNORECASE)
+LINKED_CODES = 2        # part or alarm codes, named in the best sections, whose lines elsewhere come too
+LINKED_LINES = 4        # ... lines each
+LINKED_LINE_CHARS = 300
+# a part, alarm or document code with a hyphen and digits: "HX9-4471", "C-2087", "KA-0388"
+_LINK_CODE = re.compile(r"(?<![\w-])([A-Za-z]{1,6}\d{0,3}-\d[\w-]*)(?![\w-])")
+
+
+def linked_code_lines(deps: "ChatDeps", question: str, hits) -> list[tuple[str, str, list[str]]]:
+    """(ref, code, lines) for codes the given sections name that the question does not: the lines of
+    another section stating that code (its row in a parts list), found by search."""
+    asked = {c.lower() for c in _LINK_CODE.findall(question)}
+    given = {(h.doc_index, h.node_id) for h in hits}
+    out, seen = [], set()
+    for h in hits:
+        for code in _LINK_CODE.findall(deps.docs[h.doc_index].section_text(h.node_id, 20_000)):
+            key = code.lower()
+            if key in asked or key in seen or key in deps.index.title_words or len(out) == LINKED_CODES:
+                continue
+            seen.add(key)
+            for other in deps.index.search(code)[:5]:
+                if (other.doc_index, other.node_id) in given or \
+                        (deps.allowed is not None and other.doc_index not in deps.allowed):
+                    continue
+                text = deps.docs[other.doc_index].section_text(other.node_id, 400_000)
+                found = [ln.strip()[:LINKED_LINE_CHARS] for ln in text.splitlines()
+                         if re.search(rf"(?<![\w-]){re.escape(code)}(?![\w-])", ln, re.IGNORECASE)][:LINKED_LINES]
+                if found:
+                    out.append((deps.ref_for(other.doc_index, other.node_id), code, found))
+                    break
+    return out
+
+
 MAX_REFERENCED = 2
 _REFERS_TO = re.compile(r"\b(?:sections?|chapters?|clauses?|see|in|under|per|of|from)\s+(\d{1,2}(?:\.\d{1,2}){0,2})(?![\d.]*\d)(?!\s*(?:%|days?|weeks?|months?|years?|hours?|h\b|mm|bar|kg|°))",
                         re.IGNORECASE)
@@ -749,6 +802,31 @@ class ChatDeps:
 
 _WHOLE_TABLE = re.compile(r"\b(highest|lowest|maximum|minimum|max|min|peak|total|sum|average|mean)\b", re.IGNORECASE)
 REPEAT_SIMILARITY = 0.8  # an answer this close to the last one, to a different question, is a repeat
+
+
+def without_last_answer_lines(answer: str, question: str, last: tuple[str, str]) -> str:
+    """The answer without lines that restate the previous answer on its topic, not this question's: "What
+    is ResNet and does Frontier support it?" ended with "Employees get 12 days of Casual / Sick Leave" from
+    the question before it (Nemotron, 27 Oct 2026)."""
+    last_q, last_a = last
+    norm = lambda t: " ".join(re.sub(r"\[\d+\]|[*_`#>]", " ", t).split()).casefold()  # noqa: E731
+    topic = lambda t: {w for w in tokenize(t) if len(w) > 3 and w.isalpha() and w not in _ASKING}  # noqa: E731
+    before = [norm(s) for s in re.split(r"(?<=[.!?])\s+|\n", last_a or "") if len(s.strip()) > 25]
+    asked = topic(question)
+    if not before or asked & topic(last_q) == asked:
+        return answer  # the same topic again: restating is fine
+    kept = []
+    for line in answer.split("\n"):
+        plain = norm(line)
+        if len(plain) > 25 and not topic(line) & asked and (
+                any(SequenceMatcher(None, plain, b).ratio() >= REPEAT_SIMILARITY for b in before)
+                # ... or reworded: on the last question's topic, with the last answer's figures
+                or (len(topic(line) & topic(last_q)) >= 2 and numbers_in(line) & numbers_in(last_a))):
+            continue
+        kept.append(line)
+    out = re.sub(r"\n{3,}", "\n\n", "\n".join(kept)).strip()
+    # a heading left with nothing under it ("**Answer**" at the end)
+    return re.sub(r"\n+\s*(?:\*\*[^*\n]{1,30}\*\*|#+ [^\n]{1,30})\s*$", "", out).strip() or answer
 
 
 def repeats_last(question: str, answer: str, last: tuple[str, str]) -> bool:
@@ -1300,9 +1378,9 @@ class ChatAgent:
         answer = without_repeated_sentences(
             without_stray_signature(plain_math(without_sources_block(sources_line_to_markers(
                 without_echoed_excerpts(answer))))))
-        answer = without_trailing_decline(answer)
+        answer = without_other_quote_boxes(without_trailing_decline(answer))
         if context:
-            answer = without_other_questions(answer, question)
+            answer = without_last_answer_lines(without_other_questions(answer, question), question, context[-1])
         worked_out = bool(_WORKED_OUT.search(answer))
         answer = _WORKED_OUT.sub("", answer).strip()
         # a note cited by its number ([N2]) is cited by its section
@@ -1544,6 +1622,15 @@ class ChatAgent:
                     deps.read[ref] = text
                     lines.append(f"[{ref}] {doc.display_title} > {' > '.join(doc.short_path(nid))} "
                                  f"({doc.locator(nid)}), which [{deps.ref_for(h.doc_index, h.node_id)}] refers to: {text}")
+        # ... and the lines elsewhere that state a code those sections name ("replace the cover wiper strip,
+        # part HX9-4471": its row in a 500-row parts list, with the price). Told only the alarm, the model
+        # never opened the parts list and said it could not find the price (Nemotron, 27 Oct 2026)
+        code_lines = linked_code_lines(deps, question, hits[:room.passage_hits])
+        for ref, code, found_lines in code_lines:
+            deps.read[ref] = "\n".join(found_lines)
+            di, nid = deps.refs[ref]
+            lines.append(f"[{ref}] {deps.docs[di].display_title} > {' > '.join(deps.docs[di].short_path(nid))}, its lines "
+                         f"naming {code}: " + " | ".join(found_lines))
         # models rank and subtract table rows unreliably (a small one often, a server model too: DeepSeek
         # read 2 of 7 delivery rows): what the question ranks, adds up or compares, worked out in code
         # from the best matches' tables (as in Manuals mode)
@@ -1566,6 +1653,11 @@ class ChatAgent:
             # am a language model developed by NVIDIA" instead of searching (Nemotron 3.5 Lightning, 27 Oct 2026)
             prompt += (f"\n\n(The question is in {language}. The documents are in English: search them with "
                        f"English words, then answer in {language}.)")
+        if _DRAFT_REQUEST.search(question_as_asked):
+            # "Write a reply to a customer whose R7 shows E-217": the model summarised the fix and asked "Would
+            # you like me to draft the actual email?" (Nemotron, 27 Oct 2026)
+            prompt += ("\n\n(Write the text itself now, ready to send, with the facts from the documents; do not "
+                       "describe it or ask whether to write it.)")
         if meant:
             prompt += f"\n\n(This follow-up asks: {meant})"
         if parts:
@@ -1778,6 +1870,19 @@ def unlabel_document_paragraphs(answer: str, deps: ChatDeps) -> str:
             # draws ... through the call wire" lost it, and read as if from the documents; 26 Oct)
             if (numbers_in(body) or codes_in(body)) and implied_sources(body, deps):
                 p = body
+            else:
+                # ... and sentence by sentence: "In manufacturing, total downtime is the sum of ... Line C's row
+                # totals are 196 + 97 + 22 + 60 + 31 = 406 hours, higher than Line A (215)" kept the documents'
+                # figures under the label (Nemotron, 27 Oct 2026): those sentences come out of it
+                read = "\n".join([*deps.read.values(), *deps.shown.values(), *deps.worked])
+                sentences = re.split(r"(?<=[.!?])\s+", body)
+                stated = [s for s in sentences if len(numbers_in(s)) >= 2
+                          and not unverified_numbers(s, read, "", deps.computed)]
+                if stated and len(stated) < len(sentences):
+                    general = " ".join(s for s in sentences if s not in stated)
+                    p = f"{' '.join(stated)}\n\n> **General knowledge:** {general}"
+                elif stated:
+                    p = body
         out.append(p)
     return "\n\n".join(out)
 

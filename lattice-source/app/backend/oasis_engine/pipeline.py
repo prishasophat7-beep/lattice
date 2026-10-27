@@ -421,8 +421,8 @@ _STUCK = re.compile(r"\b(stuck|how (?:do i|to|should i|can i) (?:proceed|continu
                     r"what (?:do i|should i) do next|what next|can'?t (?:proceed|continue|get past)|not working)\b",
                     re.IGNORECASE)
 STUCK_NOTE = ("The person is stuck. Answer in three parts: one sentence on what the manual says about the task, "
-              "then its steps as a numbered list, then one short question on a line of its own asking which "
-              "step they are at.")
+              "then its steps, numbered 1., 2., 3. one per line, then one short question on a line of its own "
+              "asking which step they are at. Do not repeat these instructions in the answer.")
 CUT_OFF_NOTE = "*(The answer was cut off. Ask about a narrower part for the rest.)*"
 CUT_OFF_MIN_WORDS = 25  # an answer cut off at its cap with this many different words is a long answer, not a loop
 

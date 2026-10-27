@@ -191,7 +191,17 @@ def which_part(question: str, words: list[str], index: SectionIndex, in_scope: l
     # a title whose parts the question's other words narrow down, then the one the search finds
     # most, then the most specific ("model training" before "training")
     groups.sort(key=lambda g: g[:3], reverse=True)
-    parts = groups[0][4]
+    parts = dict(groups[0][4])
+    if not groups[0][0]:
+        # the same step under two titles ("Adding Data" in Single X and Multi X, "Adding data to dataset" in
+        # Object Detection ...): "How do I add data?" offered only the second (office format, 27 Oct 2026).
+        # Titles the question matches as well are one step: their parts together, in the manual's order
+        for g in groups[1:]:
+            if not g[0] and g[2] == groups[0][2]:
+                for key, value in g[4].items():
+                    parts.setdefault(key, value)
+        order = {(di, nid): k for di, doc in enumerate(index.docs) for k, nid in enumerate(doc.sections)}
+        parts = dict(sorted(parts.items(), key=lambda kv: (kv[1][0], order.get((kv[1][0], kv[1][1]), 0))))
     if len(parts) < 2:
         return None  # one part named: the question is clear (its search finds that part)
     picked = list(parts.values())[:MAX_PARTS]

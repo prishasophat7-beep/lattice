@@ -4,6 +4,28 @@ The version is set in `VERSION` (`set-version.ps1 <version>`). Every release bui
 `Lattice-share\builds\Lattice-<version>-setup.exe`, listed in `Lattice-share\builds\BUILDS.md`.
 Numbering: the last number for fixes (0.2.0 -> 0.2.1), the middle one for new features (0.3.0).
 
+## 0.2.3 - 27 Oct 2026
+
+Found by testing the app's own screens with real NVIDIA Nemotron answers (new knowledge-base format)
+- Chat: an answer to a new question repeated the previous answer ("What is ResNet?" ended with the sick-leave
+  days asked before); lines restating the last answer on its topic are removed, and the model is told to
+  answer only the latest message.
+- Chat: every quote box was drawn as the general-knowledge box, so the manual's own words in one ("What the UI
+  shows ...") read as not from the documents; only general knowledge is boxed now. Labels such as "General
+  knowledge (brief):" are recognised (they showed "(brief)**").
+- Chat: a paragraph labelled general knowledge that holds the documents' figures (a downtime total) keeps the
+  label only for its general sentences.
+- Chat: a code an answer depends on (part HX9-4471 named by alarm C-2087) brings its lines from another section,
+  so the price is read, not guessed.
+- Chat: "Write a reply to a customer ..." is written, not summarised with "shall I draft it?".
+- A fact read straight from a table was labelled "Worked out ... not stated in these words".
+- "How do I add data?" offered only the parts that title the step "Adding data to dataset"; parts with either
+  title are offered, in the manual's order (Single X and Multi X first).
+- Screens: pictures of a step line up with the step's text; a source or picture whose section is named after
+  its document no longer shows the name twice ("leave_policy.pdf › leave_policy.pdf"); a picture that cannot be
+  drawn is hidden instead of an empty box.
+- "I'm stuck" answers no longer repeat the instruction ("Steps (as a numbered list)").
+
 ## 0.2.2 - 27 Oct 2026
 
 - Search: the parts of a hyphenated word were not reduced to their stem like other words, so "late-delivery"

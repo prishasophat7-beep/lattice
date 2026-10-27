@@ -11,7 +11,7 @@ export type FigureText = {
   description?: string | null;
 };
 
-const LIST_ITEM = /^ {0,3}(?:[-*+]|\d{1,3}[.)])\s/;
+export const LIST_ITEM = /^ {0,3}(?:[-*+]|\d{1,3}[.)])\s/;
 const FENCE = /^ {0,3}(```|~~~)/;
 const HEADING = /^ {0,3}#{1,6}\s/;
 const TABLE_ROW = /^ {0,3}\|/;

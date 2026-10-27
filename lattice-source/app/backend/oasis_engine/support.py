@@ -116,6 +116,9 @@ def only_unchecked_figures(answer: str, flagged: list[str], question: str = "") 
 
 _VERDICT = re.compile(r"\W*(yes|no)\b", re.IGNORECASE)
 STATED_SHARE = 0.95  # of an answer's words found in what it cites, to count as stated there
+# words an answer uses about where a fact is, or to read a table row out ("per year" for "Annual")
+_ABOUT_THE_DOCUMENT = frozenset(tokenize("table tables policy policies guide rate year years yearly annual month "
+                                         "months monthly week weeks entitlement column row rows"))
 
 
 def stated_as_is(answer: str, sources: str, question: str = "") -> bool:
@@ -124,7 +127,9 @@ def stated_as_is(answer: str, sources: str, question: str = "") -> bool:
     A yes or no, or a case with its own figures ("Can I start at 200 bar?"), applies a rule: worked out."""
     if _VERDICT.match(answer) or numbers_in(question) - numbers_in(sources):
         return False
-    words = _words(answer) - _FILLER
+    # (the question's own words, and words about the document, are no inference: "Employees get 12 days ...
+    # The entitlement table in the leave policy lists ..." was labelled worked out; 27 Oct 2026)
+    words = _words(answer) - _FILLER - _ABOUT_THE_DOCUMENT - set(tokenize(question))
     if len(words & set(tokenize(sources))) < STATED_SHARE * len(words):
         return False
     return numbers_in(answer) <= numbers_in(sources)

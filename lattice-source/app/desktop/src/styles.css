@@ -789,6 +789,13 @@ button {
 .figures .side-label {
   margin-bottom: 0;
 }
+/* pictures of a step line up with the step's text (the list's indent), not the card's edge, and sit
+   close under it: the list reads on past them */
+.answer-piece .figure-row-step {
+  padding-left: 1.4rem;
+  margin-top: -0.35rem;
+  margin-bottom: 0.25rem;
+}
 .figure-row {
   display: flex;
   flex-wrap: wrap;

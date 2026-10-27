@@ -19,7 +19,7 @@ import {
   IconX,
 } from "@tabler/icons-react";
 import { api, ApiError, AskResult, Citation, Figure, Given } from "../api";
-import { blocksOf, placeFigures } from "../figurePlace";
+import { LIST_ITEM, blocksOf, placeFigures } from "../figurePlace";
 import { MARKUP, stepsOnLines } from "../markup";
 import { figuresIn, highlightTermsIn } from "../types";
 import Highlight from "./Highlight";
@@ -213,12 +213,13 @@ export default function AnswerCard({
   const figures = result.figures ?? [];
   const blocks = blocksOf(body.text);
   const at = result.pictures_only || general ? figures.map(() => -1) : placeFigures(blocks, figures);
-  const pieces: { text: string; figures: Figure[] }[] = [];
+  // inStep: the pictures belong to a step of a list, and line up with its text, not the card's edge
+  const pieces: { text: string; figures: Figure[]; inStep?: boolean }[] = [];
   let from = 0;
   blocks.forEach((b, bi) => {
     const here = figures.filter((_, fi) => at[fi] === bi);
     if (here.length) {
-      pieces.push({ text: body.text.slice(from, b.end).trim(), figures: here });
+      pieces.push({ text: body.text.slice(from, b.end).trim(), figures: here, inStep: LIST_ITEM.test(b.text) });
       from = b.end;
     }
   });
@@ -287,7 +288,8 @@ export default function AnswerCard({
             </div>
           )}
           {p.figures.length > 0 && (
-            <div className="figure-row figure-row-inline" aria-label="Figures from the document">
+            <div className={`figure-row figure-row-inline${p.inStep ? " figure-row-step" : ""}`}
+              aria-label="Figures from the document">
               {p.figures.map(thumb)}
             </div>
           )}
@@ -377,17 +379,21 @@ export default function AnswerCard({
 
 /** "Manual › Section · page 10" for PDF manuals; "Manual › Chapter › Section" for Markdown ones. */
 export function SourceLabel({ c }: { c: Citation }) {
-  const parents = c.pages ? [] : c.locator.split(" > ").slice(0, -1);
+  // a document's opening section is often titled with the document's own name: "leave_policy.pdf ›
+  // leave_policy.pdf" said it twice
+  const same = (t: string) => t.trim().toLowerCase() === c.doc_name.trim().toLowerCase();
+  const parents = c.pages ? [] : c.locator.split(" > ").slice(0, -1).filter((p) => !same(p));
+  const titled = !same(c.title);
   return (
     <span className="source-text">
-      <span className="src-doc">{c.doc_name}</span>
+      <span className={titled ? "src-doc" : "src-title"}>{c.doc_name}</span>
       {parents.map((p, i) => (
         <span key={i} className="src-parent">
           <span className="src-sep" aria-hidden="true">›</span> {p}
         </span>
       ))}
-      <span className="src-sep" aria-hidden="true">›</span>
-      <span className="src-title">{c.title}</span>
+      {titled && <span className="src-sep" aria-hidden="true">›</span>}
+      {titled && <span className="src-title">{c.title}</span>}
       {c.pages && <span className="src-loc">{c.locator}</span>}
     </span>
   );
@@ -454,6 +460,8 @@ export function FigureThumb({
   const [open, setOpen] = useState(false);
   const [whole, setWhole] = useState(false);
   const pageImage = usePageImage(docId, page, false, open && whole && !image);
+  // a picture the browser cannot draw (a damaged file in the knowledge base) left an empty white box
+  const [broken, setBroken] = useState(false);
 
   useEffect(() => {
     if (!open) return;
@@ -462,7 +470,7 @@ export function FigureThumb({
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
 
-  if (figure === "failed") return null;
+  if (figure === "failed" || broken) return null;
   const where = page ? ` · page ${page}` : "";
   const label = `${caption ? `${caption} · ` : ""}${doc} › ${section}${where}`;
   const shown = whole ? pageImage : figure;
@@ -474,12 +482,12 @@ export function FigureThumb({
         aria-label={`Show larger: ${caption || section}, ${doc}${where}`}
         title={description ? `${description}\n\nSelect to show larger` : "Show larger"}>
         <span className="figure-frame">
-          {figure ? <img src={figure} alt={alt} /> : <span className="spinner" aria-hidden="true" />}
+          {figure ? <img src={figure} alt={alt} onError={() => setBroken(true)} /> : <span className="spinner" aria-hidden="true" />}
         </span>
         <span className="figure-caption">
           <span className="figure-section">{caption || section}</span>
           <span className="meta figure-doc">
-            {caption ? `${section} · ${doc}` : doc}
+            {caption ? `${section} · ${doc}` : section.trim() === doc.trim() ? "" : doc}
             {where}
           </span>
         </span>

@@ -247,3 +247,91 @@ def test_a_figure_that_does_not_check_out_is_not_called_missing_from_the_documen
     r = asyncio.run(Pipeline(docs, script.model, output_mode="text", fast_path=False).ask(
         "How much does a user licence cost per month?"))
     assert not r.found and r.answer == p.NOT_FOUND
+
+
+def test_a_code_named_by_a_section_brings_its_lines_from_another_section(tmp_path):
+    # "What does alarm C-2087 mean and what does the replacement part cost?": the alarm names part
+    # HX9-4471, whose price is a row of the parts list (Nemotron never opened it, 27 Oct 2026)
+    from oasis_engine.chat import ChatAgent, ChatDeps, room_for
+    from oasis_engine.search import SectionIndex
+    (tmp_path / "manual.md").write_text("# HX-900 manual\n\n## Alarms\n\nAlarm C-2087 (way cover jam): replace the "
+                                        "cover wiper strip, part HX9-4471, if it is torn.\n", encoding="utf-8")
+    (tmp_path / "parts.md").write_text("# Spare parts\n\n## Parts list\n\n| Part | Name | Price |\n|---|---|---|\n"
+                                       "| HX9-4470 | way cover | 9,800 |\n| HX9-4471 | way cover wiper strip | 2,350 |\n",
+                                       encoding="utf-8")
+    docs = load_markdown(tmp_path)
+    deps = ChatDeps(docs=docs, index=SectionIndex(docs), allowed=None, room=room_for(32768, "remote"))
+    prompt = asyncio.run(ChatAgent._with_presearch("What does alarm C-2087 mean?", deps))
+    assert "naming HX9-4471" in prompt and "2,350" in prompt and "9,800" not in prompt.split("naming HX9-4471")[1]
+
+
+def test_drafting_requests_are_told_to_write_the_text():
+    from oasis_engine.chat import _DRAFT_REQUEST
+    assert _DRAFT_REQUEST.search("Write a reply to a customer whose R7 shows error E-217")
+    assert _DRAFT_REQUEST.search("draft an email to my manager asking for leave")
+    assert not _DRAFT_REQUEST.search("How do I write a test case?")
+
+
+def test_the_same_step_under_two_titles_is_offered_in_all_its_parts(tmp_path):
+    from oasis_engine.search import SectionIndex
+    from oasis_engine.vague import vague_clarification
+    body = "\n\n".join(f"## {part}\n\n### Creating a {part} solution\n\n#### {title}\n\nClick Add Folder and pick the "
+                       f"images for {part}.\n" for part, title in [
+                           ("Single X Classification", "Adding Data"), ("Multi X Classification", "Adding Data"),
+                           ("Object Detection", "Adding data to dataset"), ("Segmentation", "Adding data to dataset")])
+    (tmp_path / "frontier.md").write_text("# Frontier manual\n\n" + body, encoding="utf-8")
+    docs = load_markdown(tmp_path)
+    c = vague_clarification("How do I add data?", SectionIndex(docs), None)
+    assert c is not None and [o.label for o in c.options][:2] == ["Single X Classification", "Multi X Classification"]
+    assert {"Object Detection", "Segmentation"} <= {o.label for o in c.options}
+
+
+def test_only_general_knowledge_is_shown_in_the_general_knowledge_box():
+    from oasis_engine.chat import mark_general, without_other_quote_boxes
+    answer = ("Steps 1-4 [1].\n\n> **What the UI shows** - The toolbar has an **Add Folder** icon.\n\n"
+              "**General knowledge:** (brief)**\nResNet is a network with skip connections.")
+    text, general = mark_general(without_other_quote_boxes(answer))
+    assert "\n\n**What the UI shows** - The toolbar" in text and general
+    assert "> **General knowledge:** ResNet is a network" in text and "(brief)" not in text
+
+
+def test_a_line_repeating_the_last_answer_on_another_topic_goes():
+    from oasis_engine.chat import without_last_answer_lines
+    last = ("How many days of sick leave do employees get?",
+            "Employees get **12 days of Casual / Sick Leave (CL/SL)** per year. [1]")
+    answer = ("Frontier lists ResNet 14 and ResNet 18. [1]\n\n**Answer**\n"
+              "Employees get **12 days of Casual / Sick Leave (CL/SL)** per year. [3]")
+    assert without_last_answer_lines(answer, "What is ResNet and does Frontier support it?", last) == \
+        "Frontier lists ResNet 14 and ResNet 18. [1]"
+    same = "Employees get 12 days of Casual / Sick Leave (CL/SL) per year, accrued monthly."
+    assert without_last_answer_lines(same, "And how is sick leave accrued?", last) == same
+
+
+def test_a_fact_read_out_of_a_table_is_stated_not_worked_out():
+    from oasis_engine.support import stated_as_is
+    source = "Leave Type | Annual Entitlement | Carry Forward\nCasual / Sick Leave (CL/SL) | 12 days | Not permitted"
+    assert stated_as_is("Employees get 12 days of Casual / Sick Leave (CL/SL) per year, as the entitlement table "
+                        "in the leave policy lists.", source, "How many days of sick leave do employees get?")
+    assert not stated_as_is("No: up to 12 days, so 15 days is not allowed.", source, "Can I take 15 days of sick leave?")
+
+
+def test_a_reworded_line_of_the_last_answer_on_its_topic_goes():
+    from oasis_engine.chat import without_last_answer_lines
+    last = ("How many days of sick leave do employees get?",
+            "Employees get **12 days of Casual / Sick Leave (CL/SL)** per year, accruing 1 day per month. [1]")
+    answer = ("ResNet is listed under Models Supported. [1]\n\nEmployees get **12 days of casual/sick leave per year** "
+              "(accruing 1 day per month) – as stated in [4].")
+    assert without_last_answer_lines(answer, "What is ResNet and does Frontier support it?", last) == \
+        "ResNet is listed under Models Supported. [1]"
+
+
+def test_a_general_paragraph_with_the_documents_figures_keeps_the_label_for_its_general_part():
+    from oasis_engine.chat import ChatDeps, mark_general, unlabel_document_paragraphs
+    from oasis_engine.search import SectionIndex
+    deps = ChatDeps(docs=[], index=SectionIndex([]), allowed=None)
+    deps.worked.append("Downtime hours by cause: Line C | 196 | 97 | 22 | 60 | 31 | Line A total 215 | Line B total 271")
+    deps.computed += ["406"]
+    answer = ("> **General knowledge:** Total downtime is the sum of all time a line is not running. Line C's row "
+              "totals are 196 + 97 + 22 + 60 + 31 = 406 hours, higher than Line A (215) and Line B (271).")
+    text, _ = mark_general(unlabel_document_paragraphs(answer, deps))
+    assert text.startswith("Line C's row totals are 196") and "> **General knowledge:** Total downtime is the sum" in text
