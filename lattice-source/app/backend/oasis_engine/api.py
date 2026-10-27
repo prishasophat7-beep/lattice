@@ -1731,7 +1731,8 @@ def create_app(settings: Settings | None = None, model: Model | None = None) -> 
             documents_only=await engine.chat_is_small(engine.chat_llm),
             tier=engine.chat_tier(), context_tokens=await engine.chat_context(),
             earlier=engine.earlier_sections(req.conversation_id, req.replaces), place=place,
-            picked=picked_section(req) or about_section_asked(req, pipeline, scope),
+            picked=picked_section(req),
+            introduction=None if req.section else about_section_asked(req, pipeline, scope),
             attachment_text=(lambda aid: engine.attachments.text(conversation, aid)) if conversation else None)
         return await chat_with_pictures(_as_smalltalk(pending) if greeting else pending)
 

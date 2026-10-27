@@ -330,7 +330,10 @@ NOT_COVERED_REPLY = "The documents on this computer don't cover that."
 NOT_COVERED_MAX = 700  # longer answers with such a sentence usually answer part of the question
 
 
-# "Sorry, I can only help with work topics ...": a decline, not an answer
+# "Sorry, I can only help with work topics ...": a decline, not an answer. With what it can do instead
+# (as CANNOT_DO asks) it runs to several hundred characters: at 400 a decline from the 4B was shown as
+# general knowledge (27 Oct 2026)
+DECLINE_MAX_CHARS = 1500
 _DECLINE = re.compile(r"^\W*(sorry|i'?m sorry|i am sorry)\b[^.]{0,60}\bcan only (help|assist)\b[^.]{0,70}\bwork",
                       re.IGNORECASE)
 # ... added after an answer ("... is not reimbursed.\n\nSorry, I can only help with work topics."; the
@@ -1189,14 +1192,15 @@ class ChatAgent:
                   model_label: str = "", documents_only: bool = False, tier: str = "remote",
                   earlier: list[tuple[int, str]] = (), place: tuple[int, str] | None = None,
                   picked: tuple[int, str] | None = None, kb_guide: str = "", kb_notes: str = "",
-                  context_tokens: int = 0) -> AskResult:
+                  context_tokens: int = 0, introduction: tuple[int, str] | None = None) -> AskResult:
         """about: ids of attached files this question is about; their text comes with the question.
         documents_only: no general-knowledge answers (a model too small to get them right).
         tier: "remote" (a large model on a server) or "local" (on this computer: fewer, larger steps).
         context_tokens: the model's context window (0: not known), for how much it is given (Room).
         earlier: (doc index, node id) of the sections earlier answers in the conversation cited.
         place: (doc index, node id) of where the conversation is (see focus.py).
-        picked: (doc index, node id) of the section the user picked after a question back."""
+        picked: (doc index, node id) of the section the user picked after a question back.
+        introduction: (doc index, node id) of the document's About section, for "What is <product>?"."""
         async def emit(event: dict) -> None:
             if on_event is not None:
                 await on_event(event)
@@ -1210,7 +1214,7 @@ class ChatAgent:
                             about=set(about), model_label=model_label, documents_only=documents_only,
                             tier=tier, first_turn=not context, kb_guide=kb_guide, kb_notes=kb_notes,
                             room=room_for(context_tokens, tier))
-            prompt = await self._with_presearch(question, deps, context or [], earlier, place, picked)
+            prompt = await self._with_presearch(question, deps, context or [], earlier, place, picked, introduction)
             if _STUCK.search(question):  # "I'm stuck labelling images": the manual's steps, then which step
                 prompt += "\n\n(" + STUCK_NOTE + ")"
             # weather, news, prices today: no model here knows them, and any answer would be invented
@@ -1292,7 +1296,7 @@ class ChatAgent:
             log.warning("chat answer repeated the previous one: %s", question[:200])
             return AskResult(question=question, found=False, answer=NOT_COVERED_REPLY, mode="chat",
                              model_requests=requests, seconds=seconds)
-        if _DECLINE.match(answer) and len(answer) < 400:  # off-topic: a fixed-style reply, not an answer
+        if _DECLINE.match(answer) and len(answer) < DECLINE_MAX_CHARS:  # off-topic: a fixed-style reply, not an answer
             return AskResult(question=question, found=False, answer=answer.strip(), mode="chat",
                              smalltalk=True, model_requests=requests, seconds=seconds)
         # "as stated in S1 and S2": references written bare, without brackets, to sections it was shown
@@ -1432,7 +1436,8 @@ class ChatAgent:
     async def _with_presearch(question: str, deps: ChatDeps, context: list[tuple[str, str]] = (),
                               earlier: list[tuple[int, str]] = (),
                               place: tuple[int, str] | None = None,
-                              picked: tuple[int, str] | None = None) -> str:
+                              picked: tuple[int, str] | None = None,
+                              introduction: tuple[int, str] | None = None) -> str:
         """The question plus the best matches (keyword search, fused with search by meaning when it
         is set up), so that a model that does not search on its own still sees the relevant sections.
         In a conversation, a few matches for the previous turn too: "Why did it go up?" names no topic."""
@@ -1553,6 +1558,14 @@ class ChatAgent:
             doc = deps.docs[di]
             prompt += (f"\n\n---\nThe user picked [{deps.ref_for(di, nid)}] {doc.display_title} > "
                        f"{' > '.join(doc.short_path(nid))}: answer from that section (read it first).")
+            deps.shown.setdefault(deps.ref_for(di, nid), doc.sections[nid].summary)
+        elif introduction is not None:
+            # "What is Frontier application?": the manual's own About section. Given as "the user picked",
+            # the 4B answered "Based on the section you selected ..." (Chat on the 4B, 27 Oct 2026)
+            di, nid = introduction
+            doc = deps.docs[di]
+            prompt += (f"\n\n---\n[{deps.ref_for(di, nid)}] {doc.display_title} > {' > '.join(doc.short_path(nid))} "
+                       "is the document's own introduction of what it is about: read it first and answer from it.")
             deps.shown.setdefault(deps.ref_for(di, nid), doc.sections[nid].summary)
         elif place is not None and context and (deps.allowed is None or place[0] in deps.allowed):
             # where the conversation is: "How do I test it?" in Multi X is Multi X's testing, though

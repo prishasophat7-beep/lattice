@@ -6,6 +6,18 @@ $ErrorActionPreference = "Continue"
 $app = $PSScriptRoot
 $env:PATH = "$env:USERPROFILE\.cargo\bin;$env:PATH"
 
+# Every installer is kept, by version, in Lattice-share\builds (see set-version.ps1): a version already
+# built there is refused, so each build that leaves this machine has a number of its own
+$version = (Get-Content "$app\VERSION" -Raw).Trim()
+$builds = Join-Path (Split-Path (Split-Path $app)) "Lattice-share\builds"
+$kept = Join-Path $builds "Lattice-$version-setup.exe"
+if (Test-Path $kept) {
+    Write-Host "Version $version was already built ($kept). Set the next one first, for example:"
+    Write-Host "  powershell -ExecutionPolicy Bypass -File $app\set-version.ps1 <next version>"
+    exit 1
+}
+powershell -NoProfile -ExecutionPolicy Bypass -File "$app\set-version.ps1" | Out-Host
+
 function Step($name, [scriptblock]$run) {
     $t0 = Get-Date
     Write-Host "==> $name"
@@ -63,3 +75,18 @@ Write-Host ""
 Write-Host ("Installer: {0} ({1:N1} MB, {2:HH:mm})" -f $setup.FullName, ($setup.Length / 1MB), $setup.LastWriteTime)
 Write-Host ("Engine packaged at {0:HH:mm}; newest engine source change at {1:HH:mm}" -f $engine.LastWriteTime,
     (Get-ChildItem "$app\backend\oasis_engine\*.py" | Sort-Object LastWriteTime | Select-Object -Last 1).LastWriteTime)
+
+# keep it: Lattice-share\builds\Lattice-<version>-setup.exe, and a line in BUILDS.md
+$setup = Get-ChildItem "$app\desktop\src-tauri\target\release\bundle\nsis\Lattice_$($version)_x64-setup.exe"
+New-Item -ItemType Directory -Force $builds | Out-Null
+Copy-Item $setup.FullName $kept
+$log = Join-Path $builds "BUILDS.md"
+if (-not (Test-Path $log)) {
+    Set-Content $log -Encoding utf8 -Value ("# Lattice builds`n`nEach installer is kept here as Lattice-<version>-setup.exe. " +
+        "What changed in each version: CHANGELOG.md in the source.`n`n| Version | Built | Source commit (Desktop\lattice) | Tests |`n|---|---|---|---|")
+}
+$repo = Join-Path (Split-Path (Split-Path $app)) "lattice"
+$commit = if (Test-Path "$repo\.git") { (git -C $repo log -1 --format="%h %s" 2>$null) -replace '\|', '/' } else { "-" }
+if ($commit.Length -gt 90) { $commit = $commit.Substring(0, 87) + "..." }
+Add-Content $log -Encoding utf8 -Value ("| {0} | {1:yyyy-MM-dd HH:mm} | {2} | engine and UI tests passed |" -f $version, $setup.LastWriteTime, $commit)
+Write-Host "Kept as $kept"

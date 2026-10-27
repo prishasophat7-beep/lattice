@@ -4,4 +4,4 @@ import os
 # PydanticAI prints a promotional banner to stdout on first use; the packaged backend has no console.
 os.environ.setdefault("PYDANTIC_AI_NO_BANNER", "1")
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"

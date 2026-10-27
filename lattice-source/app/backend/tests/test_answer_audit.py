@@ -90,3 +90,38 @@ def test_chat_mode_summaries_use_the_chat_model_not_the_manuals_one(tmp_path):
     assert r["summary"] and "DT-450 torque tool manual" in r["answer"]
     assert local.prompts == [] and [s for s, _ in server.prompts] == ["route", "summary"]
     assert engine.chat_pipeline.index is engine.pipeline.index  # the same documents, searched once
+
+
+def test_the_about_section_of_what_is_a_product_is_not_called_the_users_pick():
+    # given as "The user picked [S1] ...", the 4B answered "Based on the section you selected ..."
+    from oasis_engine.chat import ChatAgent, ChatDeps
+    from oasis_engine.search import SectionIndex
+    from test_what_is_product import _library
+    docs = _library()
+    deps = ChatDeps(docs=docs, index=SectionIndex(docs), allowed=None)
+    prompt = asyncio.run(ChatAgent._with_presearch("What is Frontier application", deps, introduction=(1, "0001")))
+    assert "user picked" not in prompt and "own introduction" in prompt
+
+
+def test_a_long_decline_with_offers_is_a_decline_not_general_knowledge(tmp_path):
+    from conftest import ChatScript
+    from fastapi.testclient import TestClient
+    from conftest import write_markdown_kb
+    from oasis_engine import bundle
+    from oasis_engine.api import create_app
+    from oasis_engine.config import AppConfig, save_config
+    from oasis_engine.llm import LLMConfig
+    from oasis_engine.settings import Settings
+    data = tmp_path / "data"
+    bundle.build_bundle(write_markdown_kb(tmp_path / "md"), "markdown", "v1", tmp_path / "kb.zip")
+    save_config(data, AppConfig(profile="office"))
+    decline = ("Sorry, I can only help with questions about your documents and work topics. The documents here "
+               "cover the DT-450 torque tool, its error codes and calibration, but not writing Python scripts.\n\n"
+               "I can help you with:\n- Error codes such as E17 and what to do about them.\n- Calibration "
+               "intervals and the steps the manual gives.\n- Anything else the installed manuals describe.\n\n"
+               "Would you like me to look up one of these?")
+    client = TestClient(create_app(Settings(data_dir=data, llm=LLMConfig(output_mode="prompted")),
+                                   model=ChatScript([{"text": decline}]).model))
+    assert client.post("/api/kb/import", json={"path": str(tmp_path / "kb.zip")}).status_code == 200
+    r = client.post("/api/ask", json={"question": "Write a python script to rename files", "mode": "chat"}).json()
+    assert len(decline) > 400 and r["answer"].startswith("Sorry") and not r["general"] and not r["found"]
