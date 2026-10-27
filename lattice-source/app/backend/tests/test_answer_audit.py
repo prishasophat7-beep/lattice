@@ -335,3 +335,69 @@ def test_a_general_paragraph_with_the_documents_figures_keeps_the_label_for_its_
               "totals are 196 + 97 + 22 + 60 + 31 = 406 hours, higher than Line A (215) and Line B (271).")
     text, _ = mark_general(unlabel_document_paragraphs(answer, deps))
     assert text.startswith("Line C's row totals are 196") and "> **General knowledge:** Total downtime is the sum" in text
+
+
+THERMOSTAT = """# X2 guide
+
+## 4 Using Your Thermostat
+Turn the outer ring to change the target temperature. Press the display to open the menu; the three buttons
+at the bottom open the mode, fan and schedule settings.
+
+## 4.2 Schedules
+With Adaptive Recovery turned on, X2 learns how long your home takes to heat and starts early so that the
+target temperature is reached at the scheduled time, not after it.
+
+## 5 Operation
+Run the spindle warm-up program before the first job of the day.
+"""
+
+
+def _ask_docs(docs, q, answer, sections):
+    order = list(dict.fromkeys(di for di, _ in sections))  # excerpt letters go by the order documents are shown
+    ids = [f"{chr(65 + order.index(di))}{int(next(n for n, s in docs[di].sections.items() if s.title == t))}"
+           for di, t in sections]
+    script = ScriptedModel(select=[{"standalone_question": q, "section_ids": ids}],
+                           answer=[{"found": True, "answer": answer, "section_ids": []}])
+    return asyncio.run(Pipeline(docs, script.model, output_mode="prompted", fast_path=False).ask(q))
+
+
+def test_a_right_yes_is_not_replaced_by_a_rule_sharing_one_word_and_a_name():
+    from oasis_engine.loaders import parse_markdown
+    docs = [parse_markdown(THERMOSTAT, "x2", "x2_guide.md")]
+    q = "Can I change the temperature and access settings using the X2's ring and display?"
+    r = _ask_docs(docs, q, "Yes. Turn the outer ring to change the target temperature and press the display to "
+                           "open the menu.", [(0, "4 Using Your Thermostat"), (0, "4.2 Schedules")])
+    assert r.answer.startswith("Yes. Turn the outer ring") and "Adaptive Recovery" not in r.answer
+
+
+def test_a_rule_on_part_of_the_question_does_not_stand_for_a_not_found():
+    from oasis_engine.loaders import parse_markdown
+    docs = [parse_markdown(THERMOSTAT, "x2", "x2_guide.md")]
+    q = "Do I need training to run programs on the machine?"
+    r = _ask_docs(docs, q, "The manual does not state whether training is required.", [(0, "5 Operation")])
+    assert "warm-up" not in r.answer
+
+
+WARRANTY = """# Warranty
+
+## 2 Warranty Period
+| Product | Warranty period |
+| --- | --- |
+| R7 and R9 routers | 3 years |
+| M3 mesh nodes | 2 years |
+"""
+R7_GUIDE = """# R7 router troubleshooting guide
+
+## 1 Before you start
+Collect the router serial number and firmware version.
+"""
+
+
+def test_an_answer_about_a_product_from_another_document_naming_it_is_kept():
+    from oasis_engine.loaders import parse_markdown
+    docs = [parse_markdown(R7_GUIDE, "r7", "r7_router_troubleshooting_guide.md"),
+            parse_markdown(WARRANTY, "w", "skylink_limited_warranty.md")]
+    q = "How does the warranty period for R7 routers compare to that of M3 mesh nodes?"
+    r = _ask_docs(docs, q, "R7 routers have a 3-year warranty, while M3 mesh nodes have a 2-year warranty: "
+                           "1 year longer.", [(1, "2 Warranty Period")])
+    assert r.found and r.answer.startswith("R7 routers have a 3-year warranty")

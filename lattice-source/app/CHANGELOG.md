@@ -4,6 +4,20 @@ The version is set in `VERSION` (`set-version.ps1 <version>`). Every release bui
 `Lattice-share\builds\Lattice-<version>-setup.exe`, listed in `Lattice-share\builds\BUILDS.md`.
 Numbering: the last number for fixes (0.2.0 -> 0.2.1), the middle one for new features (0.3.0).
 
+## 0.2.4 - 27 Oct 2026
+
+Found by 176 generated questions over all 9 new-format knowledge bases (Nemotron 3.5 Lightning answering,
+GPT-OSS 20B grading; Chat 81/88 and Manuals 74/88 graded correct before these fixes)
+- Manuals: a right "Yes. Turn the outer ring to change the target temperature ..." was replaced by an
+  unrelated sentence ("The documents state: With Adaptive Recovery turned on ... not after it"); a rule now
+  replaces a yes only when it shares two real words with the question (a name such as "X2" does not count).
+- Manuals: when the model found nothing, a sentence sharing two words with the question was shown as the
+  answer ("Do I need training to run programs?" -> "The documents state: Run the spindle warm-up program");
+  it must now hold more than half of the question's words.
+- Manuals: "How does the R7 warranty compare to the M3's?" was answered right (3 years vs 2) and then shown
+  as "The documents don't cover this", because the R7 has its own troubleshooting guide and the answer came
+  from the warranty document. A section that names the product is about it, whichever document it is in.
+
 ## 0.2.3 - 27 Oct 2026
 
 Found by testing the app's own screens with real NVIDIA Nemotron answers (new knowledge-base format)

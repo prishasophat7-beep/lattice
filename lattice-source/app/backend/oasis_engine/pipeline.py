@@ -634,6 +634,22 @@ def _stem(word: str) -> str:
     return word
 
 
+RULE_SHARE = 0.5  # a rule answering where the model found nothing holds more than this share of the question's words
+
+
+def _rule_about(rule: str, question: str, share: float = 0.0) -> bool:
+    """The rule is about what the question asks: two or more of its words (words, not names such as
+    "X2": "... is reached at the scheduled time, not after it" replaced the right "Yes. Turn the outer
+    ring to change the target temperature"), and `share` of them. Where the model found nothing, a rule
+    is the answer only with half: "Run the spindle warm-up program" shares "run" and "program" with
+    "Do I need training to run programs on the HX-500?" but not the training it asks about (Nemotron
+    3.5 Lightning, 27 Oct 2026)."""
+    # (amounts count: "INR 2,000 ... not reimbursed" for a lost INR 3,000 receipt)
+    asked = {_stem(t) for t in tokenize(question) if t not in _ASKING and len(t) > 2 and (t.isalpha() or t.isdigit())}
+    shared = {_stem(t) for t in tokenize(rule)} & asked
+    return len(shared) >= 2 and (not share or len(shared) > share * len(asked))
+
+
 def _plain_reply(run) -> str:
     """The text the model last wrote outside the structured reply, if it wrote any."""
     try:
@@ -1708,8 +1724,7 @@ class Pipeline:
                 and _YES_NO_QUESTION.match(standalone):
             # a bare "No" says nothing of why: the rule it rests on goes with it
             rule = self._rule_for(standalone, shown, cited, no=out.answer.strip().lower().startswith("no"))
-            asked_stems = {_stem(t) for t in tokenize(standalone) if t not in _ASKING}
-            if rule is not None and len({_stem(t) for t in tokenize(rule[1][2])} & asked_stems) < 2:
+            if rule is not None and not _rule_about(rule[1][2], standalone):
                 # "Does the R7 support Wi-Fi 7?" -> "No. The documents state: Recommend the 5 GHz
                 # network ..." (samples eval): a rule about something else is no reason. A bare "no"
                 # with nothing on the topic is the model's not-found
@@ -1735,8 +1750,7 @@ class Pipeline:
             # The rule is shown instead of the yes
             rule = self._rule_for(standalone, shown, cited, no=True, forbidding=True)
             # one that shares the question's words (two or more), not any "not" in the section
-            if rule is not None and len({_stem(t) for t in tokenize(rule[1][2])}
-                                        & {_stem(t) for t in tokenize(standalone) if t not in _ASKING}) >= 2:
+            if rule is not None and _rule_about(rule[1][2], standalone):
                 out.answer, cited, out.worked_out = f"The documents state: {rule[1][2]}", [rule[0]], False
         # Small models tend to cite everything they read. When the answer quotes figures, keep the
         # sources that contain them (if any do).
@@ -1791,8 +1805,11 @@ class Pipeline:
                 shown.by_id[i][1], FULL_SECTION_CHARS))) for i in ids if i in shown.by_id))
             docs_cited = {shown.by_id[i][0] for i in ids if i in shown.by_id}
             named = set().union(*(doc_words[di] for di in docs_cited))
+            # (another document that names it in the cited section is about it too: "R7 and R9 routers
+            # | 3 years" in the warranty, beside the R7 troubleshooting guide; Nemotron's right answer
+            # was shown as not covered, 27 Oct 2026)
             return bool(codes and not codes & words) or (with_names and bool(names - named)) \
-                or bool(carriers and not docs_cited & carriers)
+                or bool(carriers and not docs_cited & carriers and not named_docs & words)
         if found and foreign(cited or list(texts), with_names=bool(cited) and not parts):
             # "Alarm A302 indicates a 'No Machine' condition", cited from a section that never says A302,
             # or the HX-500's spindle speed for "the HX-700", which no excerpt names (final test): an
@@ -1812,9 +1829,7 @@ class Pipeline:
             # shorter than 4 nights" is in a list of what is not reimbursed (final test): the rule
             # about it, as stated, without a yes or no the code cannot judge
             rule = self._rule_for(standalone, shown)
-            if rule is not None and not foreign([rule[0]]) \
-                    and len({_stem(t) for t in tokenize(rule[1][2])} & {
-                    _stem(t) for t in tokenize(standalone) if t not in _ASKING and t.isalpha()}) >= 2:
+            if rule is not None and not foreign([rule[0]]) and _rule_about(rule[1][2], standalone, RULE_SHARE):
                 found, cited, flagged, out.worked_out = True, [rule[0]], [], False
                 out.answer = f"The documents state: {rule[1][2]}"
         if not found and not _YES_NO_QUESTION.match(standalone):
