@@ -98,7 +98,12 @@ def picture_request(question: str) -> PictureRequest | None:
     topic = list(dict.fromkeys(t for t in tokens if not is_visual(t) and t not in _FILLER and t not in parts))
     first = question.strip().split(maxsplit=1)[0].lower() if question.strip() else ""
     asks_about_content = first in _WH and bool(topic)
-    return PictureRequest(only_pictures=not asks_about_content, topic=topic)
+    # "I am stuck while labelling images in SingleX, how to proceed?" names pictures as the thing being
+    # worked on, it asks for none: a request has a word like "show" or "any", or is a short phrase
+    # without a question word ("diagrams for station 4")
+    words = re.findall(r"[a-z']+", question.lower())
+    asks_for = bool(_REQUEST & set(words)) or (len(words) <= 6 and not _WH & set(words))
+    return PictureRequest(only_pictures=asks_for and not asks_about_content, topic=topic)
 
 
 def fix_typos(text: str) -> str:

@@ -34,14 +34,14 @@ from pydantic_ai.toolsets import FunctionToolset, WrapperToolset
 
 from .attachments import READ_CHARS as ATTACHMENT_READ_CHARS, Attachment
 from .calc import CalcError, calculate as evaluate
-from .embeddings import SemanticIndex, union
+from .embeddings import SemanticIndex, fuse
 from .llm import QUOTA_MESSAGE, BudgetExceeded, RequestBudget, describe_error, quota_exhausted, run_settings
 from .models import Doc
 from .numbers import codes_in, numbers_in, unverified_numbers, without_step_numbers
 from .loops import Looping as _Looping, repeating_from, without_repeated_sentences
 from .support import _ASKING, made_up, only_unchecked_figures, stated_as_is, wrong_kind_of_figure
-from .pipeline import (AskResult, Citation, Clarification, ClarifyOption, Evidence, ProviderBusy, plain_typography,
-                       refusal)
+from .pipeline import (_STUCK, STUCK_NOTE, AskResult, Citation, Clarification, ClarifyOption, Evidence, ProviderBusy,
+                       plain_typography, refusal)
 from .search import SectionIndex, tokenize
 from .tables import markdown_tables
 from .focus import near as near_place
@@ -121,7 +121,7 @@ more); the installed documents are listed below. For any question the documents 
 the sections provided with the question or search the documents, read the most relevant sections, \
 and answer from them. After each fact taken from a section, put that section's reference in square \
 brackets exactly as given, for example [S2]. References are internal: never mention them otherwise, \
-and never ask the user for one.
+and never ask the user for one. A line "[Figure: ...]" describes a picture and was written by a machine, not by the documents' authors: use it only for what the picture shows, never as what the documents say something is or does.
 
 {general}
 
@@ -245,10 +245,26 @@ SMALL_MODEL_REPLY = ("I can only answer questions about the documents with the l
                      "General questions, and longer work such as essays or charts, need a model server on the "
                      "network; your IT team can connect one in Manage.")
 WORK_TOPICS_ONLY = (
-    "\n\nOnly help with work topics: the company's documents, manufacturing, machines and tools, "
-    "maintenance, quality, safety, IT and office work. Decline anything else with one sentence that "
-    "starts with \"Sorry, I can only help with work topics\"."
+    "\n\nScope: help with work only: the company's documents, and work topics (manufacturing, machines "
+    "and tools, maintenance, quality, safety, using the company's software and IT systems, office work). "
+    "Decline anything else (entertainment, sports, personal life, politics, trivia unrelated to work) "
+    "with one or two sentences that start with \"" + "Sorry, I can only help with questions about your "
+    "documents and work topics" + "\" and say what you can help with."
 )
+# what the assistant does not do, whatever the topic setting: users asked it for a Python script and to
+# book train tickets (27 Oct 2026); it writes text here and reads the documents, nothing else
+CANNOT_DO = (
+    "What you do not do, whatever the topic: you do not write, fix or review program code or scripts "
+    "(explaining a setting or a script mode the documents describe is fine); you cannot act outside this "
+    "app - you cannot book travel or tickets, buy anything, send emails or messages, schedule meetings, or "
+    "change settings or systems: you only read the documents and write text here; you do not give "
+    "personal medical, legal or investment advice. For such a request, answer in one or two sentences "
+    "that start with \"Sorry, I can only help with questions about your documents and work topics\", say "
+    "plainly what you cannot do, and offer what you can instead (the steps the documents give for it, "
+    "or a draft for the user to send themselves). "
+    "Say plainly what you do not know: when the user asks about the company and the documents do not "
+    "cover it, say so (\"The documents here don't cover ...\") and, where it helps, what they do cover; "
+    "never guess company facts.")
 
 # a follow-up that leans on the previous question ("Is it paid?", "and with Care+?")
 _REFERS_BACK = re.compile(r"\b(it|its|that|this|these|those|they|them|their|there|same|also)\b"
@@ -296,12 +312,14 @@ def _quote_text(quote: str) -> str:
     """A noted quote as shown: Markdown fences and headings out, one line, not too long."""
     text = " ".join(re.sub(r"```\w*|^#+\s*", " ", quote, flags=re.MULTILINE).split())
     return text if len(text) <= QUOTE_CHARS else text[:QUOTE_CHARS].rsplit(" ", 1)[0] + " ..."
-# "Worked out from the documents: ..." (see CHAT_INSTRUCTIONS): shown as a label, not as text
-# at the start, or as a line or lead-in of its own further down ("...in March.\n\nWorked out from
-# the documents:\n* January ...")
+
 # an option of a question back that is no question: "Something else", "Other (please specify)", "None of these"
 _NO_OPTION = re.compile(r"^\W*(?:something\s+else|some\s*thing\s+other|other\b|others\b|none\s+of\b|neither\b|"
                         r"not\s+listed|anything\s+else|else\b)", re.IGNORECASE)
+
+# "Worked out from the documents: ..." (see CHAT_INSTRUCTIONS): shown as a label, not as text
+# at the start, or as a line or lead-in of its own further down ("...in March.\n\nWorked out from
+# the documents:\n* January ...")
 _WORKED_OUT = re.compile(r"(?:^|(?<=\n))[^\w\n]*worked out from the documents[^\w\n]*", re.IGNORECASE)
 # an inference goes on from what the documents lack: "... does not say this directly, but ..."
 _INFERENCE_TURN = re.compile(r"\b(but|however|although|so|therefore|which means|this means|since)\b", re.IGNORECASE)
@@ -310,7 +328,7 @@ NOT_COVERED_MAX = 700  # longer answers with such a sentence usually answer part
 
 
 # "Sorry, I can only help with work topics ...": a decline, not an answer
-_DECLINE = re.compile(r"^\W*(sorry|i'?m sorry|i am sorry)\b[^.]{0,60}\bcan only (help|assist)\b[^.]{0,40}\bwork",
+_DECLINE = re.compile(r"^\W*(sorry|i'?m sorry|i am sorry)\b[^.]{0,60}\bcan only (help|assist)\b[^.]{0,70}\bwork",
                       re.IGNORECASE)
 # ... added after an answer ("... is not reimbursed.\n\nSorry, I can only help with work topics."; the
 # 0.8B in the complex eval): the answer stands, the decline goes
@@ -344,11 +362,34 @@ def _about_yourself(model_label: str, documents_only: bool = False) -> str:
             "for exactly the item it belongs to. "
             f"Today is {datetime.date.today():%A, %B %d, %Y}. You cannot look anything up online: for live "
             "values (exchange rates, prices, news, weather) say that you have no live data and where to check, "
-            "and do not give a current value.")
+            "and do not give a current value. " + CANNOT_DO)
 
 
 def _without_tool_talk(answer: str) -> str:
     return re.sub(r"\n{3,}", "\n\n", _TOOL_TALK.sub("", answer)).strip()
+
+
+# a model's thinking left in its reply: Qwen 3.x on a server started without a reasoning parser writes
+# "<think>...</think>" before the answer; an unclosed one is thinking that was cut off
+_THINKING = re.compile(r"<(think|thinking|reasoning)>.*?(?:</\1>|\Z)", re.IGNORECASE | re.DOTALL)
+_OPENING = ("<think>", "<thinking>", "<reasoning>")
+# a tool call written as text, by a server that does not turn the model's tool calls into calls:
+# Qwen's "<tool_call>{...}</tool_call>", or a bare {"name": ..., "arguments": ...}
+_TEXT_TOOL_CALL = re.compile(r'<tool_call>|^\s*\{\s*"name"\s*:\s*"[a-z_]+"\s*,\s*"(?:arguments|parameters)"',
+                             re.IGNORECASE)
+
+
+def without_thinking(text: str) -> str:
+    return _THINKING.sub("", text or "").strip()
+
+
+def visible_so_far(written: str) -> str:
+    """What may be shown of a reply while it streams: no thinking, nor a tag that may be opening one."""
+    shown = _THINKING.sub("", written)
+    tail = shown[shown.rfind("<"):] if "<" in shown[-12:] else ""
+    if tail and any(o.startswith(tail.lower()) for o in _OPENING):
+        shown = shown[: len(shown) - len(tail)]
+    return shown.lstrip()
 
 
 # "[Source: S4 – Top Contact Drivers table]", "Sources: S2, S5" on a line of its own
@@ -623,6 +664,9 @@ class ChatDeps:
     keyword_top: float = 0.0
     meaning_top: float | None = None  # None: no search by meaning
     read: dict[str, str] = field(default_factory=dict)  # ref -> text the model read
+    # (ref, part, around, whole) of every read: the same read again gets a pointer, not the text again
+    # (Nemotron read S1 four times in a row for "stuck labelling images", 10 calls and 64 s; 26 Oct 2026)
+    reads: set = field(default_factory=set)
     shown: dict[str, str] = field(default_factory=dict)  # ref -> snippet given with the question
     find_pictures: PictureFinder | None = None
     pictures: list[tuple] = field(default_factory=list)  # pictures to show with the reply
@@ -755,7 +799,7 @@ _ALWAYS = {"note", "calculate", "ask_user", "ask_which_manual"}  # not lookups: 
 
 class ChatAgent:
     def __init__(self, model: Model, *, max_tokens: int = 4000, work_topics_only: bool = True,
-                 budget: RequestBudget | None = None):
+                 budget: RequestBudget | None = None, temperature: float = 0.2):
         self.budget = budget
         topics = WORK_TOPICS_ONLY if work_topics_only else ""
         self.tools: FunctionToolset[ChatDeps] = FunctionToolset()
@@ -763,10 +807,10 @@ class ChatAgent:
         # parallel tool calls: several searches or reads in one model call (a two-part question looks
         # up both parts at once) - each call re-reads the whole conversation, so fewer calls is faster
         self.agent = Agent(model, deps_type=ChatDeps, toolsets=[_WrapUp(self.tools)],
-                           model_settings={"temperature": 0.2, "max_tokens": max_tokens,
+                           model_settings={"temperature": temperature, "max_tokens": max_tokens,
                                            "parallel_tool_calls": True})
         # the answer from what was gathered, when the step limit is reached anyway
-        self.writer = Agent(model, model_settings={"temperature": 0.2, "max_tokens": max_tokens})
+        self.writer = Agent(model, model_settings={"temperature": temperature, "max_tokens": max_tokens})
 
         # All instructions come from this one function: separate instruction blocks become separate
         # system messages, and some chat templates (Qwen's in llama.cpp) reject a second one.
@@ -835,6 +879,11 @@ class ChatAgent:
             ref = ref.strip().strip("[]【】").upper()
             if ref not in d.refs:
                 return f"Unknown reference {ref!r}. Use a ref returned by a search."
+            key = (ref, part, " ".join(around.lower().split()), whole)
+            if key in d.reads:
+                return (f"[{ref}] You have already read this; its text is above. Answer from it now, or read "
+                        "another part (part=2), a subsection, or another section.")
+            d.reads.add(key)
             di, nid = d.refs[ref]
             doc = d.docs[di]
             # a short section is read with its subsections at once: one step fewer, which matters
@@ -1077,7 +1126,7 @@ class ChatAgent:
                         if self.budget:  # every model call counts, not only the first
                             self.budget.ensure(1)
                         await emit({"stage": "writing"})  # a new reply starts: drop any earlier draft text
-                        written = ""
+                        written, sent = "", ""
                         async with node.stream(run.ctx) as stream:
                             async for event in stream:
                                 piece = ""
@@ -1086,11 +1135,14 @@ class ChatAgent:
                                 elif isinstance(event, PartDeltaEvent) and isinstance(event.delta, TextPartDelta):
                                     piece = event.delta.content_delta or ""
                                 if piece:
-                                    await emit({"stage": "delta", "text": piece})
                                     written += piece
-                                    cut = repeating_from(written)
+                                    shown = visible_so_far(written)  # thinking is not shown
+                                    if shown.startswith(sent) and len(shown) > len(sent):
+                                        await emit({"stage": "delta", "text": shown[len(sent):]})
+                                        sent = shown
+                                    cut = repeating_from(shown)
                                     if cut is not None:
-                                        raise _Looping(written[:cut])
+                                        raise _Looping(shown[:cut])
                     elif Agent.is_call_tools_node(node):
                         cut_off = node.model_response.finish_reason == "length"
                         async with node.stream(run.ctx) as stream:
@@ -1156,6 +1208,8 @@ class ChatAgent:
                             tier=tier, first_turn=not context, kb_guide=kb_guide, kb_notes=kb_notes,
                             room=room_for(context_tokens, tier))
             prompt = await self._with_presearch(question, deps, context or [], earlier, place, picked)
+            if _STUCK.search(question):  # "I'm stuck labelling images": the manual's steps, then which step
+                prompt += "\n\n(" + STUCK_NOTE + ")"
             # weather, news, prices today: no model here knows them, and any answer would be invented
             if LIVE_QUESTION.search(question) and not deps.attachments and not about_documents(deps):
                 return AskResult(question=question, found=False, answer=LIVE_REPLY, mode="chat",
@@ -1168,6 +1222,13 @@ class ChatAgent:
                                  seconds={"total": round(time.perf_counter() - t0, 2)})
             try:
                 answer, requests, cut_off = await self._run(prompt, deps, context or [], emit)
+                answer = without_thinking(answer)
+                if _TEXT_TOOL_CALL.search(answer):
+                    # the server passed the model's tool call on as text: answered from what was found
+                    log.warning("chat reply was a tool call written as text; answering from what was found")
+                    await emit({"stage": "writing"})
+                    wrapped, more, cut_off = await self._wrap_up(question, deps)
+                    answer, requests = without_thinking(wrapped) or TOO_MANY_STEPS_REPLY, requests + more
                 break
             except UsageLimitExceeded:  # searched and read without settling on an answer
                 log.warning("chat agent hit its step limit: %s", question[:200])
@@ -1379,7 +1440,7 @@ class ChatAgent:
             # a failed search (the embedding server stopped) is no search: judged by keywords then
             deps.meaning_top = (meaning[0].score if meaning else 0.0) if deps.semantic.status == "ready" else None
             if meaning:
-                hits = union(keyword, meaning, limit=room.presearch_hits)
+                hits = fuse(question, deps.index, keyword, meaning, limit=room.presearch_hits)
         if context and _REFERS_BACK.search(question):
             # "Is it paid?" is about the documents when the question it follows was
             joined = f"{context[-1][0]} {question}"
@@ -1401,7 +1462,7 @@ class ChatAgent:
             if k == 0 and found:
                 subject = subject_of(deps.docs, found, part)
             if deps.semantic is not None and deps.semantic.ready:
-                found = union(found, await deps.semantic.search(part, deps.allowed, PART_HITS), limit=PART_HITS)
+                found = fuse(part, deps.index, found, await deps.semantic.search(part, deps.allowed, PART_HITS), limit=PART_HITS)
             hits += [h for h in found if (h.doc_index, h.node_id) not in seen][:PART_HITS]
         if context:
             last_question, last_answer = context[-1]

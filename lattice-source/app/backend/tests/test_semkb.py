@@ -268,6 +268,14 @@ def test_a_clear_question_is_not_asked_back(tmp_path):
     assert iv.clarification("How do I annotate text with assisted annotation?", index) is None
 
 
+def test_a_what_is_question_is_answered_not_asked_what_to_do(tmp_path):
+    # office machine, 26 Oct 2026: "What is frontier application" was answered "What would you like to do?"
+    iv, index, _ = interview(tmp_path)
+    assert iv.clarification("How do I train?", index) is not None
+    for question in ("What is training?", "Explain training", "Tell me about training", "what are the training steps"):
+        assert iv.clarification(question, index) is None, question
+
+
 def test_no_tree_no_question(tmp_path):
     root = write_semkb(tmp_path / "kb")
     (root / "interaction" / "decision-tree.json").write_text("{not json", encoding="utf-8")
@@ -321,3 +329,19 @@ def test_api_chat_asks_back_from_the_tree_on_a_first_question(tmp_path):
     r = c.post("/api/ask", json={"question": "How do I annotate text?", "mode": "chat", "conversation_id": "c3"}).json()
     assert r["clarify"]["prompt"] == "How will you annotate the text?"
     assert [o["label"] for o in r["clarify"]["options"]] == ["By hand", "Assisted"]
+
+
+def test_a_word_written_as_one_names_the_option_written_as_two():
+    # "stuck labelling images in SingleX" was asked "Single X or Multi X?" (office format, 27 Oct 2026)
+    from oasis_engine.interview import _with_joins
+    from oasis_engine.search import tokenize
+    assert "singlex" in _with_joins(tokenize("Single X Classification"))
+    assert {"single", "x"} <= _with_joins(tokenize("single x")) and "singlex" in _with_joins(tokenize("SingleX"))
+
+
+def test_a_stuck_question_is_not_asked_which_way_first(tmp_path):
+    iv, index, _ = interview(tmp_path)
+    assert iv.clarification("How do I annotate text?", index) is not None  # "By hand or Assisted?"
+    assert iv.clarification("I am stuck annotating text, how to proceed?", index) is None
+    # a choice between different parts is still asked
+    assert iv.clarification("I am stuck, how do I train?", index) is not None

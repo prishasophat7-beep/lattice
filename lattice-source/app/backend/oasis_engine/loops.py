@@ -55,6 +55,9 @@ _SENTENCE_END = re.compile(r"(?<=[.!?])\s+")
 _HEADING = re.compile(r"^\s*(?:#{1,6}\s+\S.*|[*_]{2}[^*_\n]{1,120}[*_]{2}:?|[^.!?\n]{1,80}:)\s*$")
 
 
+_LIST_ITEM = re.compile(r"^\s*(?:\d{1,2}[.)]|[-*•])\s+")
+
+
 def without_repeated_sentences(text: str) -> str:
     """The text with each sentence said only once: a 0.8B wrote "Requests longer than 5 working days
     also require HOD approval." four times in a row (seen in the final test). Short sentences, and
@@ -68,6 +71,10 @@ def without_repeated_sentences(text: str) -> str:
             lines.append(line)
             continue
         kept, dropped = [], False
+        # a step or point of a list restates what a summary before it said, by design: only an exact
+        # repeat of it goes (steps 1 and 4 of the MLOps setup were dropped as "said before" by the
+        # opening sentence, leaving 2, 3, 5, 6; 4B final check, 27 Oct 2026)
+        item = bool(_LIST_ITEM.match(line))
         for sentence in _SENTENCE_END.split(line):
             # the same words, whatever the punctuation or bold marks ("**HOD** approval." / "HOD approval")
             key = " ".join(re.sub(r"[^\w\s]", " ", sentence).split()).casefold()
@@ -76,7 +83,7 @@ def without_repeated_sentences(text: str) -> str:
             # days require HOD approval." (final computer-use check)
             content = set(key.split()) - _FILLER
             if len(key) >= REPEAT_MIN_CHARS and (key in seen or (
-                    len(content) >= REPEAT_MIN_WORDS and any(content <= before for before in said))):
+                    not item and len(content) >= REPEAT_MIN_WORDS and any(content <= before for before in said))):
                 dropped = True
                 continue
             seen.add(key)

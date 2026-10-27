@@ -13,6 +13,7 @@ is capped, so a small model cannot loop.
 from __future__ import annotations
 
 import logging
+import json
 import re
 import time
 from difflib import get_close_matches
@@ -23,8 +24,9 @@ from typing import Annotated, Any, Literal
 
 import openai
 from pydantic import BaseModel, BeforeValidator, Field
-from pydantic_ai import (Agent, ModelAPIError, ModelHTTPError, ModelRetry, NativeOutput, PromptedOutput,
+from pydantic_ai import (Agent, ModelAPIError, ModelHTTPError, ModelRetry, NativeOutput, PromptedOutput, TextOutput,
                          RunContext, ToolOutput, UnexpectedModelBehavior, UsageLimits)
+from pydantic_ai.messages import ModelResponse, TextPart
 from pydantic_ai.models import Model
 
 from .evidence import quotes
@@ -36,7 +38,8 @@ from .doctools import excerpt, find_facts, partial_table_note, ranking_words, sc
 from .loops import Looping, repeating_from, without_repeated_sentences
 from .plan import follow_up, language_of, parts_note, question_parts, starts_fresh
 from .support import _ASKING, made_up, only_unchecked_figures, stated_as_is, wrong_kind_of_figure
-from .embeddings import SemanticIndex, union
+from .embeddings import SemanticIndex, fuse
+from . import replies
 from .search import Hit, SectionIndex, is_code, tokenize
 
 log = logging.getLogger("oasis_engine.pipeline")
@@ -46,6 +49,7 @@ MAX_DOCS = 3
 OUTLINE_BUDGET_CHARS = 14_000
 SUMMARY_CHARS = 350
 PRUNED_HITS_PER_DOC = 30
+FALLBACK_SECTIONS = 3        # sections read when the model's choice is unusable
 MEANING_HITS = 5             # sections found by meaning that steer which documents are shown
 NO_MATCH_MEANING = 0.35      # below this (and no keyword match) a question is about none of the documents
 EXCERPT_CHARS = 9_000
@@ -64,6 +68,7 @@ SELECT_MAX_TOKENS = 300
 ANSWER_MAX_TOKENS = 800
 KB_NOTES_CHARS = 1_500  # a small model reads the known gaps with every answer: kept short
 THINKING_MAX_TOKENS = 6000  # a step's cap once the model is seen thinking (config.REASONING_TOKENS)
+REASONING_RETRY_TOKENS = 16000  # ... for a model set up as a reasoning model, whose first cap was already large
 TOTAL_EXCERPT_CHARS = 16_000  # all excerpts together must fit the model's context (8k tokens)
 NOT_FOUND = "The documents don't cover this."
 PART_SECTIONS = 2  # sections read for each part of a question answered part by part
@@ -368,7 +373,11 @@ ANSWER_INSTRUCTIONS = (
     "thousands of dollars, written with K); do not convert units. Give a value only for the item the "
     "excerpt states it for; never repeat it for other items. You cannot draw charts: if asked for one, "
     "say so and give only the values the excerpts state. "
-    "For an error code or fault, give its meaning and what to do. Write for the operator: "
+    "A line \"[Figure: ...]\" describes a picture and was written by a machine, not by the manual's "
+    "authors: use it only for what the picture shows (a button, a screen, a value on it), never as what "
+    "the manual says something is or does. "
+    "For an error code or fault, give its meaning and what to do. Write steps as a numbered list, one per "
+    "line. Write for the operator: "
     "do not mention excerpts, ids or the documents you were given, just answer. Answer in the language "
     "of the question, keeping figures, codes and part numbers exactly as written. List the ids of "
     "the excerpts you used in section_ids. If the answer is not stated in so many words but follows "
@@ -378,6 +387,14 @@ ANSWER_INSTRUCTIONS = (
 )
 
 
+# "I am stuck while labelling images, how to proceed?": what the manual says about the task, its steps,
+# then which step they are at (the shape of a colleague's answer the user liked, 22 Oct 2026)
+_STUCK = re.compile(r"\b(stuck|how (?:do i|to|should i|can i) (?:proceed|continue|go on|move on|get past)|"
+                    r"what (?:do i|should i) do next|what next|can'?t (?:proceed|continue|get past)|not working)\b",
+                    re.IGNORECASE)
+STUCK_NOTE = ("The person is stuck. Answer in three parts: one sentence on what the manual says about the task, "
+              "then its steps as a numbered list, then one short question on a line of its own asking which "
+              "step they are at.")
 CUT_OFF_NOTE = "*(The answer was cut off. Ask about a narrower part for the rest.)*"
 
 
@@ -588,6 +605,39 @@ def _stem(word: str) -> str:
     return word
 
 
+def _plain_reply(run) -> str:
+    """The text the model last wrote outside the structured reply, if it wrote any."""
+    try:
+        messages = run.all_messages() if run is not None else []
+    except Exception:
+        return ""
+    for message in reversed(messages):
+        if isinstance(message, ModelResponse):
+            return "\n\n".join(p.content.strip() for p in message.parts if isinstance(p, TextPart) and p.content.strip())
+    return ""
+
+
+def _plain_draft(text: str, section_ids: list[str]) -> DraftAnswer | None:
+    """The model's words as an answer. Some models write the structured reply as text, a tool call
+    in JSON ('[{"name": "final_result", "parameters": {...}}]'): its fields are used."""
+    text = text.strip()
+    if not text:
+        return None
+    body = re.sub(r"^```\w*|```$", "", text).strip()
+    if body[:1] in "[{":
+        try:
+            data = json.loads(body)
+        except ValueError:
+            return None
+        call = data[0] if isinstance(data, list) and data else data
+        fields = call.get("parameters") or call.get("arguments") or call if isinstance(call, dict) else None
+        if isinstance(fields, dict) and isinstance(fields.get("answer"), str):
+            return DraftAnswer(found=bool(fields.get("found", True)), answer=fields["answer"].strip(),
+                               section_ids=section_ids, worked_out=bool(fields.get("worked_out", False)))
+        return None  # JSON that is no answer: not shown as one
+    return DraftAnswer(found=True, answer=text, section_ids=section_ids)
+
+
 def _pages_note(doc: Doc, nid: str) -> str:
     """' (pages 3-4)' after an excerpt's heading path, when its pages are known."""
     s = doc.sections[nid]
@@ -605,8 +655,27 @@ def _short_id(letter: str, node_id: str) -> str:
     return f"{letter}{int(node_id)}" if node_id.isdigit() else f"{letter}-{node_id}".upper()
 
 
+# the plain-text reply format (see replies.py): each step's layout, and the parser that reads it
+_TEXT_REPLIES = {"SectionChoice": (replies.SELECT_FORMAT, replies.parse_choice),
+                 "FollowupChoice": (replies.FOLLOWUP_FORMAT, replies.parse_followup),
+                 "DraftAnswer": (replies.ANSWER_FORMAT, replies.parse_answer),
+                 "Route": (replies.ROUTE_FORMAT, replies.parse_route),
+                 "SummaryDraft": (replies.SUMMARY_FORMAT, replies.parse_summary)}
+
+
 def _output(model_cls, mode: OutputMode):
+    if mode == "text":
+        parse = _TEXT_REPLIES[model_cls.__name__][1]
+
+        def read(text: str):  # TextOutput needs a function of one str argument
+            return parse(text, model_cls)
+        return TextOutput(read)
     return {"native": NativeOutput, "tool": ToolOutput, "prompted": PromptedOutput}[mode](model_cls)
+
+
+def _instructions(text: str, model_cls, mode: OutputMode) -> str:
+    """A step's instructions, with how to lay out the reply when it is plain text."""
+    return text + _TEXT_REPLIES[model_cls.__name__][0] if mode == "text" else text
 
 
 class Pipeline:
@@ -620,31 +689,32 @@ class Pipeline:
     def __init__(self, docs: list[Doc], model: Model, *, output_mode: OutputMode = "native",
                  budget: RequestBudget | None = None, max_tokens: int = 2048,
                  select_max_tokens: int = SELECT_MAX_TOKENS, answer_max_tokens: int = ANSWER_MAX_TOKENS,
-                 fast_path: bool = True, may_think: bool = False):
+                 fast_path: bool = True, may_think: bool = False, temperature: float = 0.0):
         self.docs = docs
         # a sem-ai-kb knowledge base's known gaps (needs-review.md), given with every answer
         self.kb_notes = ""
         # a model that thinks although asked not to: a step cut off at its cap is tried again with
         # room to think, and every step after it gets that room too
         self.may_think = may_think
+        self.thinking_tokens = REASONING_RETRY_TOKENS if temperature else THINKING_MAX_TOKENS
         self.thinking = False
         self.index = SectionIndex(docs)
         self.fast_path = fast_path  # answer a clear keyword match in one model call
         self.budget = budget
-        select_settings = {"temperature": 0.0, "max_tokens": min(max_tokens, select_max_tokens)}
-        answer_settings = {"temperature": 0.0, "max_tokens": min(max_tokens, answer_max_tokens)}
+        select_settings = {"temperature": temperature, "max_tokens": min(max_tokens, select_max_tokens)}
+        answer_settings = {"temperature": temperature, "max_tokens": min(max_tokens, answer_max_tokens)}
         self.selector = Agent(model, output_type=_output(SectionChoice, output_mode), deps_type=PromptIds,
-                              instructions=SELECT_INSTRUCTIONS, retries=1, model_settings=select_settings)
+                              instructions=_instructions(SELECT_INSTRUCTIONS, SectionChoice, output_mode), retries=1, model_settings=select_settings)
         self.followup_selector = Agent(model, output_type=_output(FollowupChoice, output_mode), deps_type=PromptIds,
-                                       instructions=FOLLOWUP_SELECT_INSTRUCTIONS, retries=1,
+                                       instructions=_instructions(FOLLOWUP_SELECT_INSTRUCTIONS, FollowupChoice, output_mode), retries=1,
                                        model_settings=select_settings)
         self.answerer = Agent(model, output_type=_output(DraftAnswer, output_mode), deps_type=PromptIds,
-                              instructions=ANSWER_INSTRUCTIONS, retries=1, model_settings=answer_settings)
-        self.router = Agent(model, output_type=_output(Route, output_mode), instructions=ROUTE_INSTRUCTIONS,
-                            retries=1, model_settings={"temperature": 0.0,
+                              instructions=_instructions(ANSWER_INSTRUCTIONS, DraftAnswer, output_mode), retries=1, model_settings=answer_settings)
+        self.router = Agent(model, output_type=_output(Route, output_mode), instructions=_instructions(ROUTE_INSTRUCTIONS, Route, output_mode),
+                            retries=1, model_settings={"temperature": temperature,
                                                        "max_tokens": min(max_tokens, ROUTE_MAX_TOKENS)})
         self.summarizer = Agent(model, output_type=_output(SummaryDraft, output_mode), deps_type=PromptIds,
-                                instructions=SUMMARY_INSTRUCTIONS, retries=1, model_settings=answer_settings)
+                                instructions=_instructions(SUMMARY_INSTRUCTIONS, SummaryDraft, output_mode), retries=1, model_settings=answer_settings)
 
         @self.selector.output_validator
         def _check_choice(ctx: RunContext[PromptIds], out: SectionChoice) -> SectionChoice:
@@ -684,7 +754,7 @@ class Pipeline:
         order = [*by_keyword[:1], *(h.doc_index for h in meaning), *by_keyword[1:]] if hits else \
             [*(h.doc_index for h in meaning), *by_keyword]
         ranked = [di for di in dict.fromkeys(order) if allowed is None or di in allowed]
-        found = union(hits, list(meaning), limit=len(hits) + len(meaning))
+        found = fuse(question, self.index, hits, list(meaning), limit=len(hits) + len(meaning))
         for rank, di in enumerate(ranked[:MAX_DOCS]):
             doc, letter = self.docs[di], chr(ord("A") + rank)
             lines = self._doc_lines(doc, letter, None)
@@ -790,7 +860,7 @@ class Pipeline:
             if not (self.may_think and not self.thinking and cut_off):
                 raise
             log.warning("model step cut off at its cap: the model thinks; trying again with %d tokens",
-                        THINKING_MAX_TOKENS)
+                        self.thinking_tokens)
             self.thinking = True
             return await self._run_once(agent, prompt, deps, on_partial)
 
@@ -799,9 +869,11 @@ class Pipeline:
         if self.budget:
             self.budget.ensure(1)
         last = None  # the latest partial output of a streamed step
-        settings = run_settings()
+        # a different answer is asked for on Regenerate: only the step that writes it is sampled; routing
+        # and choosing sections stay exact (sampled, they gave unusable replies: Object Detection case)
+        settings = run_settings() if agent in (self.answerer, self.summarizer) else None
         if self.thinking:
-            settings = {**(settings or {}), "max_tokens": THINKING_MAX_TOKENS}
+            settings = {**(settings or {}), "max_tokens": self.thinking_tokens}
         try:
             async with agent.iter(prompt, deps=deps, model_settings=settings,
                                   usage_limits=UsageLimits(request_limit=2)) as run:
@@ -825,6 +897,13 @@ class Pipeline:
                 return _Salvaged(DraftAnswer(
                     found=True, answer=last.answer.rstrip() + " ...\n\n" + CUT_OFF_NOTE,
                     section_ids=list(last.section_ids) or list(deps.picked) or list(deps.by_id)))
+            # a model that answered in plain words instead of the structured reply (typically to ask
+            # what the user meant, "Which step are you on?"): its words are the answer
+            if isinstance(e, UnexpectedModelBehavior) and agent is self.answerer:
+                draft = _plain_draft(_plain_reply(locals().get("run")), list(deps.picked) or list(deps.by_id))
+                if draft is not None:
+                    log.warning("answer step: structured reply missing; using the model's own words")
+                    return _Salvaged(draft)
             if quota_exhausted(e):
                 raise BudgetExceeded(QUOTA_MESSAGE) from e
             if isinstance(e, ModelHTTPError):
@@ -1009,7 +1088,9 @@ class Pipeline:
                 (named_one(question, doc_w, variants(doc_w, parent)) if parent is not None else None)
             if named is not None:  # "How do I add data with Type 1?": read Type 1 alone
                 winner = _short_id(ids.letters[di_w], named)
-            which = self.which_way(question, *ids.by_id[winner])
+            # a stuck question is answered with every way and then asked which step (STUCK_NOTE), not
+            # asked "Type 1 or Type 2?" first (office knowledge base, 27 Oct 2026)
+            which = None if _STUCK.search(question) else self.which_way(question, *ids.by_id[winner])
             if which is not None:  # "How do I add data?": Type 1 or Type 2?
                 seconds["total"] = round(time.perf_counter() - t0, 2)
                 return AskResult(question=question, found=False, answer=which.prompt, clarify=which, seconds=seconds)
@@ -1026,11 +1107,18 @@ class Pipeline:
 
         await progress({"stage": "selecting"})
         t = time.perf_counter()
+        # if the model's choice is unusable, the searches' best sections stand in for it
+        guess = []
+        for h in fuse(route_query, self.index, [h for h in self.index.search(route_query) if h.doc_index in ids.letters],
+                      list(meaning), limit=FALLBACK_SECTIONS):
+            short = _short_id(ids.letters[h.doc_index], h.node_id) if h.doc_index in ids.letters else None
+            if short in ids.by_id:
+                guess.append(short)
         if context:
             talk = "\n".join(f"Q: {q}\nA: {_short(a, CONTEXT_ANSWER_CHARS)}" for q, a in context)
             choice = await self._select(self.followup_selector, f"CONVERSATION SO FAR:\n{talk}\n\n"
                                         f"TABLE OF CONTENTS:\n{outline}\n\nQUESTION: {question}", ids,
-                                        FollowupChoice(standalone_question=question, section_ids=[]))
+                                        FollowupChoice(standalone_question=question, section_ids=guess))
             rewritten = choice.output.standalone_question
             standalone = rewritten if 3 <= len(rewritten) <= 500 else question
             earlier = {q.casefold().strip(" ?") for q, _ in context}
@@ -1044,7 +1132,7 @@ class Pipeline:
                 standalone = swapped
         else:
             choice = await self._select(self.selector, f"TABLE OF CONTENTS:\n{outline}\n\nQUESTION: {question}",
-                                        ids, SectionChoice(section_ids=[]))
+                                        ids, SectionChoice(section_ids=guess))
             standalone = question
         seconds["select"] = round(time.perf_counter() - t, 2)
         requests = choice.usage.requests
@@ -1460,7 +1548,12 @@ class Pipeline:
             asked += f"\n(Write the answer in {language}.)"
         if parts:
             asked += "\n(" + parts_note(parts) + ")"
+        if _STUCK.search(question):
+            # said with this question only: in the instructions, the 4B asked "which step are you at?"
+            # after every answer (final check, 27 Oct 2026)
+            asked += "\n(" + STUCK_NOTE + ")"
         t = time.perf_counter()
+        unusable = False  # no usable reply from the model: "not covered" would be untrue
         try:
             draft = await self._run(
                 self.answerer, f"DOCUMENTS:\n{descriptions}\n\nEXCERPTS:\n{excerpts}\n\n{self._gaps()}QUESTION: {asked}", shown,
@@ -1476,6 +1569,7 @@ class Pipeline:
             # below may still find it in the excerpts (better than "try again" for the same result)
             log.warning("answer step unusable: %s", describe_error(e.__cause__))
             draft = _Salvaged(DraftAnswer(found=False, answer="", section_ids=[]))
+            unusable = True
         if language and _echoed_question(draft.output.answer or "", standalone):
             # "EVT2 बिल्ड कब निर्धारित है? (Write the answer in Hindi.)": the 0.8B wrote the question back
             # (samples eval); asked again as before the language line, it answered "October 20, 2026"
@@ -1728,6 +1822,8 @@ class Pipeline:
                 # "the name of Acme's CEO?" answered "Acme CEO": no section has what was asked, and a
                 # passage about something else would read as the answer
                 found, cited_sections = False, []
+        if unusable and not found:
+            raise ProviderBusy("The assistant could not write a reply this time. Please try again.")
         evidence = [Evidence(text=q.text, citation=q.citation) for q in quotes(
             out.answer, standalone, [(self.docs[di], nid) for di, nid in cited_sections])] if found else []
         return AskResult(

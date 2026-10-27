@@ -17,7 +17,7 @@ from .models import Doc
 
 _PAGE_LABEL = re.compile(r"\[page \d+\]")
 # a picture in a section's text, with its caption and description (see loaders._figure)
-_FIGURE_MARK = re.compile(r"\[Figure(?::[^\]]*)?\]")
+_FIGURE_MARK = re.compile(r"\[Figure(?::[^\]]*)?(?:\]|$)")
 _TOKEN = re.compile(r"[a-z0-9]+(?:[-./][a-z0-9]+)*")
 _STOP = frozenset(
     "a about an and are as at be by did do does for from how i in is it its of on or the this that to "
@@ -41,18 +41,28 @@ def without_contents(text: str) -> str:
 _MD_MARKUP = re.compile(r"(?m)^\s{0,3}(#{1,6}\s+|[-*+]\s+|>\s?)|\|?\s*:?-{3,}:?\s*(?=\||$)|[|*_`]+")
 
 
+_DERIVED = (("tenance", "tain"), ("ance", ""), ("ence", ""), ("ery", "er"), ("ment", ""), ("ness", ""))
+
+
 def _stem(word: str) -> str:
-    """Plural to singular for plain words ("bolts" -> "bolt", "assemblies" -> "assembly"), and
-    "delivered" / "delivering" -> "deliver"; codes and numbers are left alone."""
+    """The word's base for matching: plural to singular ("bolts" -> "bolt", "assemblies" -> "assembly"),
+    "delivered" / "delivering" / "delivery" -> "deliver", "maintenance" -> "maintain", "leveling" ->
+    "level"; codes and numbers are left alone."""
     if len(word) <= 3 or not word.isalpha():
         return word
     if word.endswith("ies"):
-        return word[:-3] + "y"
-    if word.endswith("s") and not word.endswith(("ss", "us", "is")):
-        return word[:-1]
+        word = word[:-3] + "y"
+    elif word.endswith("s") and not word.endswith(("ss", "us", "is")):
+        word = word[:-1]
     for suffix in ("ed", "ing"):  # a stem of at least four letters: "used", "bring" stay
         if word.endswith(suffix) and len(word) - len(suffix) >= 4:
-            return word[:-len(suffix)]
+            word = word[:-len(suffix)]
+            if len(word) >= 4 and word[-1] == word[-2] and word[-1] not in "lsz":
+                word = word[:-1]  # "planning" -> "plan"
+            break
+    for suffix, base in _DERIVED:  # "delivery" -> "deliver", "maintenance" -> "maintain"
+        if word.endswith(suffix) and len(word) - len(suffix) >= 4:
+            return word[:-len(suffix)] + base
     return word
 
 
@@ -157,6 +167,7 @@ def is_code(token: str) -> bool:
     return bool(_CODE.fullmatch(token))
 
 
+PICTURE_WEIGHT = 0.5  # a section matched only by what its pictures show, against one matched by its text
 CODE_SECTIONS = 3  # a code in this many sections or fewer is specific: its sections come first
 DOC_NAME_SHARE = 0.5  # of the best score, added to the sections of the manual a question names
 CHUNK_CHARS = 2000  # a long section is also searched in pieces of this size ...
@@ -172,29 +183,41 @@ class SectionIndex:
     def __init__(self, docs: list[Doc]):
         self.docs = docs
         self.keys: list[tuple[int, str]] = []
-        corpus, texts = [], []
+        corpus, texts, weights = [], [], []
         # a title many sections share ("Training", "Configuration" under each module) says nothing about
         # which one is meant: such a section also gets the headings above it ("Multi X Classification
         # Creating a MultiX solution")
         repeated = Counter(s.title.strip().lower() for doc in docs for s in doc.sections.values())
         for di, doc in enumerate(docs):
             for nid, s in doc.sections.items():
-                body = _PAGE_LABEL.sub(" ", without_contents(doc.section_text(nid, max_chars=self.TEXT_CHARS)))
+                body = _FIGURE_MARK.sub(" ", _PAGE_LABEL.sub(" ", without_contents(doc.section_text(nid, max_chars=self.TEXT_CHARS))))
                 context = (" ".join(doc.path(nid)[:-1][-SHARED_TITLE_CONTEXT:])
                            if repeated[s.title.strip().lower()] > 1 else "")
                 texts.append(f"{s.title} {s.title} {context} {s.summary} {body}")
                 corpus.append(tokenize(texts[-1]))
                 self.keys.append((di, nid))
+                weights.append(1.0)
+                # what its pictures show, as described by a machine ("GLOBAL SCENE: A screenshot of the
+                # SEM-AI FRONTIER window ..."): searched apart and counted for less than the text. In the
+                # text, every screenshot of the app's title bar matched "What is the Frontier application?"
+                # over the manual's own introduction (office machine, 26 Oct 2026)
+                pictures = " ".join(_FIGURE_MARK.findall(s.own_text))
+                if len(pictures) > len("[Figure]"):
+                    texts.append(f"{s.title} {context} {pictures}")
+                    corpus.append(tokenize(texts[-1]))
+                    self.keys.append((di, nid))
+                    weights.append(PICTURE_WEIGHT)
                 # the rest of a long section, in pieces that each point back to it: only its start was
                 # searched, so "the 72-hour dry run" 28,000 characters into a section, or part HX9-4471
                 # in row 157 of a 500-row table, could never be found (large-document test, 16 Oct 2026)
-                rest = _PAGE_LABEL.sub(" ", without_contents(s.own_text)[self.TEXT_CHARS - CHUNK_OVERLAP:])
+                rest = _FIGURE_MARK.sub(" ", _PAGE_LABEL.sub(" ", without_contents(s.own_text)[self.TEXT_CHARS - CHUNK_OVERLAP:]))
                 for start in range(0, len(rest), CHUNK_CHARS - CHUNK_OVERLAP):
                     piece = rest[start:start + CHUNK_CHARS]
                     if len(piece) > CHUNK_OVERLAP:
                         texts.append(f"{s.title} {s.title} {context} {piece}")
                         corpus.append(tokenize(texts[-1]))
                         self.keys.append((di, nid))
+                        weights.append(1.0)
         # words the documents write both apart and together ("Multi X" here, "MultiX" there): a question
         # in one spelling also searches the other. Only at question time: added to the documents too,
         # a section saying "TaskFlow Pro" counted the name three times and its introduction beat the
@@ -207,6 +230,7 @@ class SectionIndex:
                 self._together.setdefault(joined, (a, b))
                 self._apart.setdefault((a, b), joined)
         self.bm25 = BM25(corpus) if corpus else None
+        self._weights = weights
         self._tokens = [set(c) for c in corpus]
         # each section's words, all its pieces together
         self._section_tokens: dict[tuple[int, str], set[str]] = {}
@@ -298,6 +322,12 @@ class SectionIndex:
         """Every search word of the query, in either spelling."""
         return list(dict.fromkeys(t for spelling in self.query_spellings(query) for t in spelling))
 
+    def names_code(self, question: str) -> bool:
+        """Does the question name a code few sections have ("E-217", "HX9-4471")? Then keyword
+        search is the better guide to its section; otherwise search by meaning is."""
+        return any(is_code(t) and 0 < self._sections_with[t] <= CODE_SECTIONS and t not in self.title_words
+                   for t in set(tokenize(question)))
+
     def search(self, query: str) -> list[Hit]:
         """All sections with a positive score, best first."""
         if self.bm25 is None:
@@ -311,6 +341,7 @@ class SectionIndex:
         topical = [t for t in terms if t not in self.title_words]
         scores = [max(per) for per in zip(*(
             self.bm25.get_scores([t for t in sp if t not in self.title_words] or sp) for sp in spellings))]
+        scores = [sc * w for sc, w in zip(scores, self._weights)]
         named = set(terms) - set(topical)
         if topical and named:
             # ... but they still say which manual: its sections go ahead of the other manuals' (the

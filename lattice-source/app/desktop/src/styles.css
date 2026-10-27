@@ -485,6 +485,10 @@ mark {
   background: var(--bad-soft);
   color: var(--bad);
 }
+.notice-warn {
+  background: var(--caution-soft);
+  color: var(--caution);
+}
 .banner {
   margin: 0.75rem 1.5rem 0;
 }

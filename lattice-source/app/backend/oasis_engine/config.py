@@ -25,6 +25,7 @@ from .llm import LLMConfig
 
 CONFIG_FILE = "config.json"
 # a model that reasons before answering counts its thinking as output: it needs room
+REASONING_TEMPERATURE = 0.6
 REASONING_TOKENS = {"max_tokens": 8000, "select_max_tokens": 4000, "answer_max_tokens": 6000}
 
 
@@ -33,7 +34,8 @@ class Connection(BaseModel):
     base_url: str = Field(default="", max_length=500)  # e.g. http://vllm.office.lan:8000/v1
     model: str = Field(default="", max_length=200)
     api_key: str = Field(default="", max_length=500)
-    output_mode: Literal["native", "prompted", "tool"] = "native"
+    # kept so that older config files load; replies are plain text with every model (see replies.py)
+    output_mode: Literal["text", "native", "prompted", "tool"] = "text"
     reasoning: bool = False  # the model thinks before answering (larger token caps)
     # the model's context window in tokens (the server's --max-model-len / -c); 0: asked from the
     # server when it says, else assumed (8,192 on this computer, 32,768 on a server)
@@ -79,11 +81,14 @@ def effective_llm(local: LLMConfig, connection: Connection) -> LLMConfig:
     if connection.kind != "remote":
         return local
     cfg = LLMConfig(base_url=connection.base_url.rstrip("/"), model=connection.model,
-                    api_key=connection.api_key, output_mode=connection.output_mode,
+                    api_key=connection.api_key, output_mode="text",
                     context_tokens=connection.context_tokens)
     if connection.reasoning:
         for key, value in REASONING_TOKENS.items():
             setattr(cfg, key, value)
+        # greedy decoding (temperature 0) sends a thinking model into endless loops ("got stuck
+        # writing", Qwen 3.5 27B at the office); Qwen's own advice for thinking is 0.6
+        cfg.reasoning, cfg.temperature = True, REASONING_TEMPERATURE
     else:
         cfg.max_tokens = max(cfg.max_tokens, 4000)  # chat answers can be longer than manual answers
         cfg.thinking_off = True  # a thinking model (Qwen 3.x) would spend the short limits thinking

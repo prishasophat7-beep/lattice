@@ -331,6 +331,23 @@ _DESCRIPTION_PART = re.compile(rf"\**\b({_LABEL_NAMES})\**\s*:\s*\**")
 BRIEF_DESCRIPTION_CHARS = 1000  # TaskFlow descriptions are 447-579 characters; at 400 "Overdue 3" was cut
 
 
+# a picture's description left in a document as plain text ("GLOBAL SCENE: A screenshot of ...", or after
+# "Image description:"), which no loader marked as a picture: the evidence box quoted one as the manual's
+# own words for "What is the Frontier application?" (office machine, 26 Oct 2026)
+_LOOSE_DESCRIPTION = re.compile(r"(?m)^[ \t]*(?:>[ \t]*)?(?:[-*][ \t]+)?(?:Image description:[ \t]*)?\**GLOBAL SCENE\**[ \t]*:.*(?:\n(?![ \t]*\n)(?![ \t]*#).*)*")
+
+
+def mark_loose_descriptions(docs: list[Doc]) -> None:
+    """Picture descriptions written into the text as plain paragraphs, marked as pictures ("[Figure: ...]"),
+    whichever format the knowledge base came in."""
+    for doc in docs:
+        for sec in doc.sections.values():
+            if "GLOBAL SCENE" in sec.own_text:
+                sec.own_text = _LOOSE_DESCRIPTION.sub(
+                    lambda m: _figure("", _brief_description(re.sub(r"(?m)^[ \t]*>[ \t]?", "", m.group(0)).replace("Image description:", "", 1))),
+                    sec.own_text)
+
+
 def _plain_description(text: str) -> str:
     """A picture description as one plain paragraph, without the platform's section labels."""
     text = _DESCRIPTION_LABEL.sub("", text)

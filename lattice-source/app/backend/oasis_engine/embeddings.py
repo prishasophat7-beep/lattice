@@ -208,3 +208,11 @@ def union(keyword: list[Hit], meaning: list[Hit], limit: int = 8, keyword_first:
         if len(out) == limit:
             break
     return out
+
+
+def fuse(question: str, index, keyword: list[Hit], meaning: list[Hit], limit: int = 8) -> list[Hit]:
+    """Keyword and meaning results together. Meaning first, unless the question names a code that
+    few sections have ("E-217"): the keyword hit comes first then. Measured on 24 reworded questions
+    about a plant's manuals: the right section first for keywords alone 16, keyword hit first 16,
+    meaning first 23."""
+    return union(keyword, meaning, limit=limit, keyword_first=1 if index.names_code(question) else 0)

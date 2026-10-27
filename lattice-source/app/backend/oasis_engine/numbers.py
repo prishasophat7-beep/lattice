@@ -115,6 +115,15 @@ def _computed(number: str, results: list[float]) -> bool:
     return any(abs(round(r, decimals) - value) < 1e-9 or abs(r - value) < 1e-9 for r in results)
 
 
+def _unit_named(unit: str, source_words: str) -> bool:
+    """Does the source name the unit in words, as a table's title or column does ("Downtime hours")?
+    Scales and percentages have their own checks."""
+    if unit in _SCALE_HEADERS or unit == "%":
+        return False
+    return any(len(raw) > 2 and raw.isalpha() and _UNITS[raw] == unit and re.search(rf"\b{raw}\b", source_words)
+               for raw in _UNITS)
+
+
 def unverified_numbers(answer: str, sources: str, question: str = "", computed: list[str] = ()) -> list[str]:
     """Figures in `answer` found neither in `sources` nor in `question`, in answer order.
     computed: results of exact calculations (the calculate tool); they match with any unit and
@@ -142,6 +151,8 @@ def unverified_numbers(answer: str, sources: str, question: str = "", computed: 
                 or (number in unitless and any(h in source_words for h in headers))
                 # "31.9%" against a "Margin %" column of bare 31.9
                 or (unit == "%" and number in unitless and "%" in source_words)
+                # "196 hours" against a bare 196 in a table titled "Downtime hours by cause"
+                or (unit and number in unitless and _unit_named(unit, source_words))
                 # "$92,000" against 92 under "Cost ($K)"
                 or (not unit and _written_out(number, unitless, source_words))
                 # "53.5%" from calculate("412 / 770 * 100") = 53.506494

@@ -38,7 +38,7 @@ from typing import Literal
 
 from pydantic import BaseModel, Field, ValidationError
 
-from .loaders import EXPORT_INDEX, IMAGE_NAME, SKIPPED, KnowledgeBaseError, export_doc_id, export_title, load
+from .loaders import EXPORT_INDEX, IMAGE_NAME, SKIPPED, KnowledgeBaseError, export_doc_id, export_title, load, mark_loose_descriptions
 from .kbfolder import (KB_INDEX, KEPT as KB_KEPT, KEPT_SET as KB_SET_KEPT, MASTER_INDEX, doc_id_for as semkb_doc_id,
                        is_folder_index, is_semkb_index)
 from .models import Doc
@@ -148,6 +148,7 @@ def read_manifest(version_dir: Path) -> Manifest:
 def load_version(version_dir: Path) -> tuple[Manifest, list[Doc]]:
     manifest = read_manifest(version_dir)
     docs = load(_long_path(Path(version_dir) / CONTENT), manifest.source_format)
+    mark_loose_descriptions(docs)
     return manifest, docs
 
 

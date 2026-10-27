@@ -1,0 +1,48 @@
+Lattice 0.1.0 - launch checklist (27 Oct 2026)
+=============================================
+
+1. The model server for Chat mode (Qwen 3.5 / 3.x on vLLM)
+   Start vLLM so that it turns the model's tool calls into calls, and keeps its thinking out of the reply:
+       --enable-auto-tool-choice --tool-call-parser hermes --reasoning-parser qwen3
+   Without the tool-call parser, Chat mode cannot search the manuals itself: it answers only from the
+   sections it finds first. Lattice copes with both (it removes <think> text and falls back when a
+   tool call comes back as text), but answers are better with the parsers on.
+
+2. Manage -> Assistant (on each office PC)
+   - Where this machine is used: Office (Chat mode on).
+   - Chat mode model: "Model server on the network", the vLLM address (http://<server>:8000/v1) and
+     the model name exactly as the server lists it.
+   - Tick "Reasoning model" for Qwen 3.5 / 3.x (thinking models).
+   - Context size: the server's --max-model-len (e.g. 32768). Leave empty to let Lattice ask the server.
+   - Press "Test connection". It must say "Connected". If an amber note appears below it, it says
+     what to change on the server (for example the tool-call parser above).
+   - Manuals mode stays on the built-in model (Qwen 3.5 4B) on this computer.
+
+3. Import the knowledge base (Manage -> Knowledge base)
+   - After the import, Manage lists the documents. Amber or red notes under the table mean Lattice
+     did not understand part of the bundle (for example a new field the converter added). Send the
+     note's text to the Lattice developers; answers from the rest still work.
+   - Search by meaning (an embedding model) makes Manuals mode find the right section far more often
+     when the question uses other words than the manual ("labelling" vs "add images to a class").
+     Set it up in Manage -> Search by meaning (a model on this computer) or "Search by meaning:
+     embedding server" (an office server), if it is cleared for use.
+
+4. First questions to try
+   - "What is <product> application" (answered from the manual's About section)
+   - "How to train a model" (asks which solution type)
+   - "I am stuck while labelling images in SingleX solution, how to proceed?"
+     (what the manual says, the steps, then which step you are at)
+   - A question the manuals do not cover (Chat mode marks a general-knowledge answer as such)
+
+5. If something goes wrong
+   - Send the last 50 lines of backend.log (in %LOCALAPPDATA%\com.oasis.lineassistant). It holds no
+     manual text and no keys.
+   - For a report on how the knowledge base was read and searched, with titles only (no text), run in a
+     command prompt:
+       "C:\Program Files\Lattice\runtime\backend\lattice-backend.exe" --diagnose "your question" "another question"
+     It saves lattice-diagnose.txt on the Desktop. Read it before sending.
+
+Speed
+   Manuals mode with the 4B runs on the PC's processor: on a laptop like the test machine an answer
+   takes several minutes. Chat mode on the vLLM server answers in seconds to a minute, depending on
+   how many sections it reads.

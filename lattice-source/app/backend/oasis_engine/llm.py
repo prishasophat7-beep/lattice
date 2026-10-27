@@ -30,7 +30,7 @@ from pydantic_ai.providers.openai import OpenAIProvider
 
 log = logging.getLogger("oasis_engine.llm")
 
-OutputMode = Literal["native", "prompted", "tool"]
+OutputMode = Literal["text", "native", "prompted", "tool"]  # "text": plain replies any model can write (replies.py)
 
 
 class BudgetExceeded(RuntimeError):
@@ -66,7 +66,7 @@ class LLMConfig:
     base_url: str = "http://127.0.0.1:8080/v1"
     model: str = "local"
     api_key: str = ""
-    output_mode: OutputMode = "native"
+    output_mode: OutputMode = "text"
     temperature: float = 0.0
     max_tokens: int = 2048
     select_max_tokens: int = 300   # see pipeline.SELECT_MAX_TOKENS
@@ -75,6 +75,7 @@ class LLMConfig:
     # ask the server not to think first (Qwen 3.x and other thinking models on vLLM, SGLang or
     # llama.cpp think by default; the thinking would use up the short answer limits)
     thinking_off: bool = False
+    reasoning: bool = False   # a thinking model: sampled (Qwen: 0.6; greedy decoding loops) with room to think
     context_tokens: int = 0  # the context window, when known (see config.Connection.context_tokens)
 
 

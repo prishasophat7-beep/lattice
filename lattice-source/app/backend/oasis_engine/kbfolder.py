@@ -233,6 +233,23 @@ def _demote(text: str, by: int = 1) -> str:
     return "\n".join(out)
 
 
+# kb_converter_tool writes a picture's description as a blockquote under it (office machine, 26 Oct
+# 2026): "![Figure](../../images/figure_029.png)" then "> GLOBAL SCENE: A screenshot of ...". Left in the
+# text it was searched, read and quoted as the manual's own words
+_QUOTED_DESCRIPTION = re.compile(r"(!\[[^\]]*\]\(images/([^)\s]+)\))[ \t]*\n(?:[ \t]*\n)?((?:[ \t]*>[^\n]*(?:\n|$))+)")
+# an all-caps label opens a machine description ("GLOBAL SCENE:", "KEY OBJECTS:"); a quoted note under a
+# picture ("> Note: save first") is the manual's text and stays
+_DESCRIBED = re.compile(r"^\W*[A-Z][A-Z0-9]+(?:[ /&-]+[A-Z][A-Z0-9]*){0,4}\W*:")
+
+
+def _quoted(m: re.Match, described: dict[str, str]) -> str:
+    quoted = re.sub(r"(?m)^[ \t]*>[ \t]?", "", m.group(3)).strip()
+    if not _DESCRIBED.match(quoted) and quoted[:60] != described.get(m.group(2), "")[:60]:
+        return m.group(0)
+    described[m.group(2)] = " ".join(quoted.split())
+    return m.group(1) + "\n\n"
+
+
 def section_body(root: Path, entry: dict, described: dict[str, str], depth: int = 1) -> str:
     """The section file's text without its front matter, title and page line; pictures as
     ![caption](images/<file>) with their description noted in `described`."""
@@ -254,6 +271,7 @@ def section_body(root: Path, entry: dict, described: dict[str, str], depth: int 
         return f"![{m.group(1)}](images/{name})"
 
     text = _PICTURE_BLOCK.sub(picture, text)
+    text = _QUOTED_DESCRIPTION.sub(lambda m: _quoted(m, described), text)
     text = _DESCRIPTION_LINE.sub("", _PATH_LINE.sub("", text))
     return _demote(re.sub(r"\n{3,}", "\n\n", text).strip(), depth)
 
@@ -307,7 +325,11 @@ def _load_source(root: Path, index: dict, source: str, mods: list[dict], *, seve
     by_module: dict[str, list[dict]] = {}
     for s in index["sections"]:
         by_module.setdefault(s["module"], []).append(s)
-    described: dict[str, str] = {}
+    # the converter's own list of picture descriptions (kb_converter_tool: "image_descriptions"); a
+    # description next to the picture in a section file, when there is one, is used instead
+    described: dict[str, str] = {name: text for key in ("image_descriptions", "images")
+                                 if isinstance(index.get(key), dict)
+                                 for name, text in index[key].items() if isinstance(text, str) and text.strip()}
     lines: list[str] = []
     expected: list[_Expected] = []
     # several modules: under one title heading, as in the parser's own Markdown ("# HX-500_manual.pdf",

@@ -30,10 +30,31 @@ _SHAPE = re.compile(
 _PARTICULAR = re.compile(r"\b(how|when|where|why|who|whom|which|can|could|should|may|must|is|are|do|does|did|"
                          r"will|would|if|for|per|than)\b|\d", re.IGNORECASE)
 _FILE_WORDS = frozenset("pdf docx doc xlsx xls csv txt md json xml pptx".split())
+# words that say what kind of thing a product is, not which: "What is Frontier application?" names Frontier
+_KIND_WORDS = frozenset(tokenize("application app software tool product system platform program"))
+# a document's opening section about itself
+_ABOUT = re.compile(r"^\W*(?:\d+(?:\.\d+)*\.?\s+)?(?:about\b|introduction\b|overview\b|what is\b)", re.IGNORECASE)
+ABOUT_MIN_CHARS = 120  # an opening section with less text than this is only a heading
 
 
 def _stems(text: str) -> set[str]:
     return {_stem(t) for t in tokenize(text) if t not in _FILE_WORDS and not t.isdigit()}
+
+
+def _title_stems(doc: Doc) -> set[str]:
+    """The words of a document's title as a person reads them: "[B-ACD-E1]SEM_AI_Frontier7.0_UserManual
+    (1).docx" is "SEM AI Frontier 7.0 User Manual" (office machine, 26 Oct 2026)."""
+    out = set()
+    for text in (doc.display_title, doc.name):
+        out |= _stems(text)
+        out |= _stems(re.sub(r"(?<=[a-z])(?=[A-Z])|(?<=[A-Za-z])(?=\d)|(?<=\d)(?=[A-Za-z])|[_\[\]()]", " ", text))
+    return out
+
+
+def about_section(doc: Doc) -> str | None:
+    """The document's first section about itself ("About", "Introduction", "Overview") with text."""
+    return next((nid for nid, s in doc.sections.items()
+                 if _ABOUT.match(s.title) and len(s.own_text.strip()) >= ABOUT_MIN_CHARS), None)
 
 
 def topic_of(question: str) -> list[str] | None:
@@ -41,8 +62,10 @@ def topic_of(question: str) -> list[str] | None:
     m = _SHAPE.match(question.strip())
     if not m or _PARTICULAR.search(m.group("topic")):
         return None
-    words = [t for t in tokenize(m.group("topic")) if t not in _ASKING and len(t) > 1]
-    if not 1 <= len(words) <= MAX_TOPIC_WORDS or any(is_code(t) or t in _ATTRIBUTES for t in words):
+    tokens = tokenize(m.group("topic"))
+    parts = {p for t in tokens if "-" in t for p in t.split("-")}  # "SEM-AI" is one word, not three
+    words = [t for t in tokens if t not in _ASKING and len(t) > 1 and t not in parts]
+    if not 1 <= len([t for t in words if t not in _KIND_WORDS]) <= MAX_TOPIC_WORDS or any(is_code(t) or t in _ATTRIBUTES for t in words):
         return None
     return words
 
@@ -58,10 +81,16 @@ def overview(question: str, index: SectionIndex, allowed: set[int] | None = None
     asked = {_stem(t) for t in words}
     docs = index.docs
     in_scope = [i for i in range(len(docs)) if allowed is None or i in allowed]
-    # a document named by its title ("the leave policy": leave_policy.pdf)
-    named = [i for i in in_scope if asked <= _stems(docs[i].display_title)]
+    # a document named by its title ("the leave policy": leave_policy.pdf; "Frontier application":
+    # SEM_AI_Frontier7.0_UserManual.docx): what it says about itself, else its summary and chapters
+    product = {_stem(p) for w in asked if w not in _KIND_WORDS for p in (w.split("-") if "-" in w else [w])} or asked
+    named = [i for i in in_scope if product <= _title_stems(docs[i])]
     if len(named) == 1:
         di = named[0]
+        about = about_section(docs[di])
+        text = _section(docs[di], about) if about is not None else None
+        if text:
+            return text, di, about
         root = next((nid for nid, s in docs[di].sections.items() if s.depth == 0), None)
         if root is not None:
             return _document(docs[di]), di, root
@@ -80,7 +109,9 @@ def overview(question: str, index: SectionIndex, allowed: set[int] | None = None
 
 def _section(doc: Doc, nid: str) -> str | None:
     s = doc.sections[nid]
-    points = [p for p in statements(doc, nid) if len(p) > 20 and p.strip() != s.title][:MAX_POINTS]
+    # not what a picture shows: a machine's description of a screenshot is not the manual's statement
+    points = [p for p in statements(doc, nid) if len(p) > 20 and p.strip() != s.title
+              and not p.startswith("Picture: ")][:MAX_POINTS]
     summary = s.summary if s.summary and not s.summary_is_fallback and _plain(s.summary) != _plain(s.title) else ""
     if not points and not summary:
         return None

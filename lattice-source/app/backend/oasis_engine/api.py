@@ -65,10 +65,12 @@ from .figures import (MAX_FIGURES, MAX_LISTED, PictureRef, PictureRequest, figur
                       fix_typos, is_visual, render_page, topic_tokens)
 from .pipeline import (CLOSING_REPLIES, MAX_CLARIFY_OPTIONS, MAX_CONTEXT_TURNS, AskResult, Clarification, ClarifyOption,
                        Figure, ModelRanAway, ModelRefused, Pipeline, ProviderBusy, _ELLIPTICAL, fixed_reply, smalltalk_reply,
-                       summary_request)
+                       _STUCK, summary_request)
 from .calc import CalcError, calculate
 from .search import tokenize
 from .vague import vague_clarification
+from .overview import overview
+from .health import Health, check as check_health
 from .interview import Interview
 from .kbfolder import Extras, load_extras
 from .focus import (focus_of, heading, mixed_parts, navigation, near, part_label, short_text, step_to, steps,
@@ -124,7 +126,7 @@ class ConnectionUpdate(BaseModel):
     base_url: str = Field(default="", max_length=500)
     model: str = Field(default="", max_length=200)
     api_key: str | None = Field(default=None, max_length=500)  # None: keep the stored key
-    output_mode: Literal["native", "prompted", "tool"] = "native"
+    output_mode: Literal["text", "native", "prompted", "tool"] = "text"  # older apps send it; not used
     reasoning: bool = False
 
 
@@ -185,6 +187,7 @@ class Engine:
         self.pipeline: Pipeline | None = None
         self.catalog: dict[str, bundle.DocEntry] = {}
         self.catalog_unmatched: list[str] = []  # catalog ids that name no document (a bundle mistake)
+        self.health: Health | None = None  # what was understood of the knowledge base (see health.py)
         self.load_error: str | None = None
         # a sem-ai-kb knowledge base (see kbfolder.py): its AGENTS.md, needs-review.md and decision tree
         self.kb_extras: Extras | None = None
@@ -207,17 +210,19 @@ class Engine:
         """(Re)build the model, the manuals pipeline and the chat agent from the current settings."""
         self.llm = effective_llm(self.settings.llm, self.config.connection)
         self.model = self.injected_model or make_model(self.llm, self.budget)
+        if self.injected_model is None:  # a busy endpoint mid-answer: retry that one call, in both modes
+            self.model = RetryingModel(self.model, budget=self.budget)
         chat_conn = self.config.chat_connection
         if chat_conn is None:  # Chat mode uses the same model as Manuals mode
             self.chat_llm, chat_model = self.llm, self.model
         else:
             self.chat_llm = effective_llm(self.settings.llm, chat_conn)
-            chat_model = self.injected_model or make_model(self.chat_llm, self.budget)
-        if self.injected_model is None:  # a busy endpoint mid-conversation: retry that one call
-            chat_model = RetryingModel(chat_model, budget=self.budget)
+            chat_model = self.injected_model or RetryingModel(make_model(self.chat_llm, self.budget),
+                                                              budget=self.budget)
         # Chat answers (a worked-out penalty over three orders) need more room than Manuals answers:
         # at the built-in model's 2,048 the 4B stopped before its total ("cut off", 22 Oct test)
         self.chat = ChatAgent(chat_model, max_tokens=max(self.chat_llm.max_tokens, CHAT_MAX_TOKENS),
+                              temperature=self.chat_llm.temperature or 0.2,
                               work_topics_only=self.config.work_topics_only, budget=self.budget)
         self._remote_status = (0.0, None, "")
         self.reload()
@@ -260,6 +265,12 @@ class Engine:
             self.manifest, self.pipeline, self.catalog = None, None, {}
             return
         self.manifest, docs = loaded
+        try:
+            self.health = check_health(docs, bundle.version_dir(self.settings.data_dir, self.manifest.kb_version)
+                                       / bundle.CONTENT)
+        except Exception as e:  # noqa: BLE001 - a report about the knowledge base must never stop it loading
+            log.warning("knowledge-base checks failed: %s", e)
+            self.health = None
         markdown = self.manifest.source_format == "markdown"
         self.catalog = {(markdown_doc_id(e.id) if markdown else e.id): e for e in self.manifest.documents}
         for d in docs:  # the catalog's title and description win over what the files say
@@ -293,7 +304,8 @@ class Engine:
                                  answer_max_tokens=self.llm.answer_max_tokens,
                                  # a server model asked not to think may think anyway (Qwen 3.5 27B
                                  # at the office: "got stuck writing" on every question)
-                                 may_think=self.llm.thinking_off)
+                                 may_think=self.llm.thinking_off or self.llm.reasoning,
+                                 temperature=self.llm.temperature)
         if self.manifest.source_format == "semkb":
             try:
                 self.kb_extras = load_extras(bundle.version_dir(self.settings.data_dir, self.manifest.kb_version) / bundle.CONTENT)
@@ -487,6 +499,8 @@ class Engine:
                 return "all_manuals", ""
             return "question", ""
         kind = route.kind
+        if kind == "pictures" and pictures is not None and not pictures.only_pictures:
+            kind = "question"  # a question that mentions pictures ("stuck labelling images"): answered in words
         if kind == "summary" and summary == "all":  # "summarize all the documents"
             kind = "all_manuals"
         # small models copy example topics from their instructions: keep only words of the request
@@ -959,8 +973,8 @@ ENGINE_BUILT = _built()
 UNEXPECTED_ERROR = ("Something went wrong while answering. Try again; if it keeps happening, "
                     "send backend.log from the app's data folder to IT.")
 UNANSWERED = "No answer: the question was stopped, or the app closed before it was answered."
-RAN_AWAY = ("The assistant got stuck writing this answer and was stopped. "
-            "Try again, or ask in different words.")
+RAN_AWAY = ("The assistant got stuck writing this answer and was stopped. Try again, or ask in different words. "
+            "If it keeps happening with a thinking model, send backend.log from the app's data folder to IT.")
 HISTORY_SCAN = 2000  # history entries searched for one conversation's turns
 
 
@@ -997,6 +1011,47 @@ def probe_endpoint(cfg: LLMConfig, timeout: float = 5.0) -> tuple[bool, str, lis
     if cfg.model and ids and cfg.model not in ids:
         return False, f"Model {cfg.model!r} is not served by this endpoint", ids
     return True, "ready", ids
+
+
+TOOLS_TEXT = ("The server returns the model's tool calls as text, so Chat mode cannot search the documents "
+              "itself and answers only from the sections found first. On vLLM, start the model with "
+              "--enable-auto-tool-choice --tool-call-parser hermes (Qwen) or the parser for its family.")
+TOOLS_REFUSED = ("The server does not accept tool calls, so Chat mode cannot search the documents itself. On vLLM, "
+                 "start the model with --enable-auto-tool-choice and a --tool-call-parser for its family.")
+
+
+def probe_tools(cfg: LLMConfig, timeout: float = 90.0) -> str:
+    """Does the server turn the model's tool calls into calls (Chat mode needs them)? "" when it does,
+    else what is wrong in plain words. One short request; a thinking model is asked not to think."""
+    headers = {"Authorization": f"Bearer {cfg.api_key}"} if cfg.api_key else {}
+    tool = {"type": "function", "function": {
+        "name": "search_manuals", "description": "Search the company's manuals",
+        "parameters": {"type": "object", "properties": {"query": {"type": "string"}}, "required": ["query"]}}}
+    body = {"model": cfg.model, "max_tokens": 600, "tools": [tool], "temperature": 0,
+            "messages": [{"role": "user", "content": "Search the manuals for: install the pump. Use the tool."}],
+            "chat_template_kwargs": {"enable_thinking": False}}
+    url = cfg.base_url.rstrip("/") + "/chat/completions"
+    try:
+        r = httpx.post(url, headers=headers, json=body, timeout=timeout)
+        if r.status_code in (400, 422) and "chat_template_kwargs" in r.text:
+            body.pop("chat_template_kwargs")
+            r = httpx.post(url, headers=headers, json=body, timeout=timeout)
+    except httpx.HTTPError as e:
+        return f"The tool-call check did not finish ({type(e).__name__}); Chat mode may still work."
+    if r.status_code in (400, 422) and re.search(r"tool|auto", r.text, re.IGNORECASE):
+        return TOOLS_REFUSED
+    if r.status_code != 200:
+        return f"The tool-call check got HTTP {r.status_code}; Chat mode may still work."
+    try:
+        message = r.json()["choices"][0]["message"]
+    except (ValueError, KeyError, IndexError, TypeError):
+        return "The tool-call check got a reply it could not read; Chat mode may still work."
+    if message.get("tool_calls"):
+        return ""
+    text = str(message.get("content") or "")
+    if "<tool_call>" in text or re.search(r'"name"\s*:\s*"search_manuals"', text):
+        return TOOLS_TEXT
+    return "The model answered without using the search tool; Chat mode may search less well with it."
 
 
 async def _done(result: AskResult) -> AskResult:
@@ -1270,6 +1325,7 @@ def create_app(settings: Settings | None = None, model: Model | None = None) -> 
             "created_at": engine.manifest.created_at,
             "catalog_unmatched": engine.catalog_unmatched,
             "skipped": engine.manifest.skipped,
+            "health": engine.health.to_dict() if engine.health else None,
             "documents": [{"doc_id": d.doc_id, "name": d.name, "title": d.display_title,
                            "description": d.description,
                            "kind": d.kind, "sections": len(d.sections),
@@ -1303,7 +1359,8 @@ def create_app(settings: Settings | None = None, model: Model | None = None) -> 
                                      f"({type(e).__name__})") from e
         engine.reload()
         return {"imported": manifest.kb_version, "documents": len(manifest.documents) or None,
-                "skipped": manifest.skipped}
+                "skipped": manifest.skipped,
+                "checks": [c.__dict__ for c in engine.health.checks] if engine.health else []}
 
     @app.post("/api/kb/activate", dependencies=guarded)
     def activate(req: ActivateRequest):
@@ -1439,6 +1496,17 @@ def create_app(settings: Settings | None = None, model: Model | None = None) -> 
             target = (place[0], found) if found else None
         return pipeline.which_way(req.question, *target) if target is not None else None
 
+    def about_section_asked(req: AskRequest, pipeline: Pipeline, scope: set[int] | None) -> tuple[int, str] | None:
+        """Chat mode, "What is Frontier application?": the manual's own About section, read first. Left
+        to search, the assistant read Configuration screens and cited them (office format, 27 Oct 2026)."""
+        if engine.context_for(req.conversation_id, replacing=req.replaces):
+            return None
+        found = overview(req.question, pipeline.index, scope)
+        if found is None:
+            return None
+        di, nid = found[1], found[2]
+        return (di, nid) if pipeline.docs[di].sections[nid].depth > 0 else None
+
     def picked_section(req: AskRequest) -> tuple[int, str] | None:
         """(doc index, node id) of the section an option picked after a question back stands for."""
         return engine.section_by_id(req.doc_ids[0], req.section) if req.section and req.doc_ids else None
@@ -1514,7 +1582,7 @@ def create_app(settings: Settings | None = None, model: Model | None = None) -> 
             return AskResult(question=req.question, found=False, answer=reply, smalltalk=True)
         # a first question: the knowledge base's own decision tree asks back first, then vague.py
         vague = None if context or req.doc_ids or req.section else engine.interview_question(req.question, pipeline, scope)
-        if vague is None and not (context or req.doc_ids):
+        if vague is None and not (context or req.doc_ids or _STUCK.search(req.question)):
             vague = vague_clarification(req.question, pipeline.index, scope)
         if vague is not None:  # "what is the limit?": which one (see vague.py)
             return AskResult(question=req.question, found=False, answer=vague.prompt, clarify=vague)
@@ -1589,15 +1657,16 @@ def create_app(settings: Settings | None = None, model: Model | None = None) -> 
                                      mode="chat")
                 # "How long?" with no topic: a larger model's assistant asks what is meant; a small one
                 # (documents only) declined it as a general question (final check), so it is asked here
-                vague = vague_clarification(req.question, pipeline.index, scope,
-                                            topicless=not _ABOUT_SELF_OR_CHAT.search(req.question)
-                                            and await engine.chat_is_small(engine.chat_llm))
+                vague = None if _STUCK.search(req.question) else vague_clarification(
+                    req.question, pipeline.index, scope,
+                    topicless=not _ABOUT_SELF_OR_CHAT.search(req.question) and await engine.chat_is_small(engine.chat_llm))
                 if vague is not None:
                     return AskResult(question=req.question, found=False, answer=vague.prompt, clarify=vague,
                                      mode="chat")
             # "How do I add data?" where the manual gives a Type 1 and a Type 2: asked back here, as in
             # Manuals mode, rather than left to the assistant (which asks only on a first question)
-            if not _ABOUT_CHAT.search(req.question) and not GENERAL_ASK.search(req.question):
+            if not _ABOUT_CHAT.search(req.question) and not GENERAL_ASK.search(req.question) \
+                    and not _STUCK.search(req.question):  # stuck: every way, then which step
                 which = which_way_for(req, pipeline, place)
                 if which is not None:
                     return AskResult(question=req.question, found=False, answer=which.prompt, clarify=which,
@@ -1644,7 +1713,7 @@ def create_app(settings: Settings | None = None, model: Model | None = None) -> 
             documents_only=await engine.chat_is_small(engine.chat_llm),
             tier=engine.chat_tier(), context_tokens=await engine.chat_context(),
             earlier=engine.earlier_sections(req.conversation_id, req.replaces), place=place,
-            picked=picked_section(req),
+            picked=picked_section(req) or about_section_asked(req, pipeline, scope),
             attachment_text=(lambda aid: engine.attachments.text(conversation, aid)) if conversation else None)
         return await chat_with_pictures(_as_smalltalk(pending) if greeting else pending)
 
@@ -1948,9 +2017,12 @@ def create_app(settings: Settings | None = None, model: Model | None = None) -> 
     def test_connection(conn: ConnectionUpdate, target: Literal["main", "chat"] = "main"):
         previous = engine.config.chat_connection if target == "chat" else engine.config.connection
         key = (previous.api_key if previous else "") if conn.api_key is None else conn.api_key.strip()
-        ok, detail, models = probe_endpoint(LLMConfig(base_url=conn.base_url.strip(), model=conn.model.strip(),
-                                                      api_key=key))
-        return {"ok": ok, "detail": detail, "models": models[:200]}
+        cfg = LLMConfig(base_url=conn.base_url.strip(), model=conn.model.strip(), api_key=key)
+        ok, detail, models = probe_endpoint(cfg)
+        # Chat mode searches by tool calls: a server that does not turn them into calls is said so now,
+        # not found out from the first answers (office Qwen on vLLM needs a tool-call parser)
+        warning = probe_tools(cfg) if ok and cfg.model and (target == "chat" or conn.kind == "remote") else ""
+        return {"ok": ok, "detail": detail, "models": models[:200], "warning": warning}
 
     @app.post("/api/config/test-embeddings", dependencies=guarded)
     async def test_embeddings(emb: EmbeddingUpdate):

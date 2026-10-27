@@ -105,7 +105,9 @@ export default function ManagePanel({
       const r = await api.importKb(p);
       setPath("");
       const left = r.skipped?.length ? ` Not imported (no text in the export): ${r.skipped.join(", ")}.` : "";
-      return `Imported and switched to version ${r.imported}.${left}`;
+      const found = (r.checks ?? []).filter((c) => c.level !== "info").length;
+      const checks = found ? ` ${found} ${found === 1 ? "thing needs" : "things need"} attention: see below.` : "";
+      return `Imported and switched to version ${r.imported}.${left}${checks}`;
     });
 
   const chooseBundle = async () => {
@@ -220,6 +222,11 @@ export default function ManagePanel({
                   <span className="mono">{kb.skipped.join(", ")}</span>. Report this to the web team.
                 </p>
               )}
+              {kb.health?.checks.map((c, i) => (
+                <p key={i} className={`notice ${c.level === "bad" ? "notice-bad" : c.level === "warn" ? "notice-warn" : ""}`}>
+                  {c.message}
+                </p>
+              ))}
               {kb.catalog_unmatched && kb.catalog_unmatched.length > 0 && (
                 <p className="notice notice-bad">
                   The bundle's catalog (kb.json) lists {kb.catalog_unmatched.length === 1 ? "an id" : "ids"} that{" "}

@@ -142,6 +142,18 @@ export interface KbDocument {
   fallback_summaries: number;
 }
 
+/** A finding of the checks run on every load: what Lattice did not understand of the knowledge base. */
+export interface KbCheck {
+  level: "bad" | "warn" | "info";
+  message: string;
+}
+
+export interface KbHealth {
+  documents: { title: string; sections: number; empty_sections: number; pictures: number; described: number;
+    loose_descriptions: number }[];
+  checks: KbCheck[];
+}
+
 export interface KbInfo {
   kb_version: string;
   source_format: "pageindex" | "markdown" | "export" | "semkb";
@@ -150,6 +162,8 @@ export interface KbInfo {
   catalog_unmatched?: string[];
   /** web-platform exports: documents left out because the export had no text for them */
   skipped?: string[];
+  /** null when the checks could not run */
+  health?: KbHealth | null;
   documents: KbDocument[];
 }
 
@@ -267,7 +281,8 @@ export interface Connection {
   kind: "local" | "remote";
   base_url: string;
   model: string;
-  output_mode: "native" | "prompted" | "tool";
+  /** kept for older config files; every model now replies in plain text */
+  output_mode: "text" | "native" | "prompted" | "tool";
   reasoning: boolean;
   /** the model's context window in tokens; 0 or absent: asked from the server */
   context_tokens?: number;
@@ -397,7 +412,8 @@ export const api = {
   health: () => request<Health>("/api/health"),
   kb: () => request<KbInfo>("/api/kb"),
   versions: () => request<Versions>("/api/kb/versions"),
-  importKb: (path: string) => post<{ imported: string; skipped?: string[] }>("/api/kb/import", { path }),
+  importKb: (path: string) =>
+    post<{ imported: string; skipped?: string[]; checks?: KbCheck[] }>("/api/kb/import", { path }),
   activate: (kb_version: string) => post<{ active: string }>("/api/kb/activate", { kb_version }),
   /** Delete an installed version that is not the active one. */
   removeVersion: (kb_version: string) =>
@@ -426,7 +442,7 @@ export const api = {
   saveConfig: (c: ConfigUpdate) => request<AppConfig>("/api/config", { method: "PUT", body: JSON.stringify(c) }),
   /** target "chat": use the stored Chat-mode key when none is given */
   testConnection: (c: ConnectionUpdate, target: "main" | "chat" = "main") =>
-    post<{ ok: boolean; detail: string; models: string[] }>(`/api/config/test${query({ target })}`, c),
+    post<{ ok: boolean; detail: string; models: string[]; warning?: string }>(`/api/config/test${query({ target })}`, c),
   testEmbeddings: (e: EmbeddingUpdate) => post<{ ok: boolean; detail: string }>("/api/config/test-embeddings", e),
 
   /** Upload a file for Chat mode; the engine converts it to text and keeps it with the conversation. */

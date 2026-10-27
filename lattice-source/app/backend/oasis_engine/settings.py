@@ -44,7 +44,7 @@ class Settings:
                 base_url=env("OASIS_LLM_BASE_URL", "http://127.0.0.1:8080/v1"),
                 model=env("OASIS_LLM_MODEL", "local"),
                 api_key=env("OASIS_LLM_API_KEY", ""),
-                output_mode=env("OASIS_OUTPUT_MODE", "native"),  # type: ignore[arg-type]
+                output_mode=env("OASIS_OUTPUT_MODE", "text"),  # type: ignore[arg-type]
                 max_tokens=int(env("OASIS_MAX_TOKENS", "2048")),
                 # raise both for reasoning models, whose thinking counts as output
                 select_max_tokens=int(env("OASIS_SELECT_MAX_TOKENS", "300")),

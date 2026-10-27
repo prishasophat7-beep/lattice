@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import { IconPlugConnected } from "@tabler/icons-react";
 import { api, ApiError, AppConfig, Connection, ConfigUpdate, EmbeddingConnection, model } from "../api";
 
-type TestResult = { ok: boolean; detail: string; models: string[] };
+type TestResult = { ok: boolean; detail: string; models: string[]; warning?: string };
 
-const NEW_REMOTE: Connection = { kind: "remote", base_url: "", model: "", output_mode: "native", reasoning: false };
+const NEW_REMOTE: Connection = { kind: "remote", base_url: "", model: "", output_mode: "text", reasoning: false };
 
 function strip(c: Connection & { api_key_set: boolean }): Connection {
   const { api_key_set: _set, ...rest } = c;
@@ -310,17 +310,6 @@ function RemoteFields({
           onChange={(e) => change({ context_tokens: Math.max(0, parseInt(e.target.value, 10) || 0) })}
         />
       </label>
-      <label className="field">
-        <span>Structured replies</span>
-        <select
-          value={conn.output_mode}
-          onChange={(e) => change({ output_mode: e.target.value as Connection["output_mode"] })}
-        >
-          <option value="native">JSON schema (vLLM, llama.cpp)</option>
-          <option value="tool">Tool call</option>
-          <option value="prompted">Prompt only (any model)</option>
-        </select>
-      </label>
       <div className="inline-actions">
         <button type="button" className="btn btn-small" disabled={testing || !conn.base_url} onClick={runTest}>
           <IconPlugConnected size="1.1em" aria-hidden />
@@ -332,6 +321,7 @@ function RemoteFields({
           </span>
         )}
       </div>
+      {result?.ok && result.warning && <p className="notice notice-warn">{result.warning}</p>}
     </div>
   );
 }

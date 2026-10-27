@@ -22,8 +22,13 @@ from dataclasses import dataclass
 
 from .kbfolder import Extras
 from .models import Doc
-from .pipeline import MAX_CLARIFY_OPTIONS, Clarification, ClarifyOption
+from .pipeline import _STUCK, MAX_CLARIFY_OPTIONS, Clarification, ClarifyOption
 from .search import SectionIndex, tokenize
+
+# "What is the Frontier application?", "Explain training": the person wants to know, not to do something,
+# and the tree asks what they want to do ("What would you like to do?"): answered, not asked back
+_DEFINITION = re.compile(r"^\W*(?:what|who)\s+(?:is|are|was|were)\b|^\W*(?:tell me about|explain|describe|define|"
+                         r"give me an? (?:overview|introduction)|overview of|introduction to)\b", re.IGNORECASE)
 
 # sections scoring at least this share of the best one count as what the question found
 KEEP_SHARE = 1 / 1.6
@@ -40,10 +45,18 @@ def _way_key(text: str) -> str | None:
 
 
 # options that are no choice: the app adds its own "Something else..." to every question back
-_NO_CHOICE = re.compile(r"^\s*(not sure|not decided|something else|other|none of these|i don'?t know)\b", re.IGNORECASE)
+_NO_CHOICE = re.compile(r"^\s*(?:i'?m\s+|i am\s+)?(not sure|not decided|something else|other|none of these|"
+                        r"i don'?t know|unsure)\b", re.IGNORECASE)  # "I'm not sure yet" (kb_converter_tool)
 # words that say nothing about which option is meant ("Something else", "Not sure", "I", ...)
 _NEUTRAL = frozenset(tokenize("something else not sure decided yet other the a an my i we you it this that "
                               "with from for and or of to in on by do does how what which"))
+
+
+def _with_joins(tokens: list[str]) -> set[str]:
+    """The words, and each two neighbouring words written as one: "SingleX" in a question names the
+    option "Single X Classification" (office knowledge base, 27 Oct 2026: asked "Single X or Multi X?"
+    after "stuck labelling images in SingleX")."""
+    return set(tokens) | {a + b for a, b in zip(tokens, tokens[1:])}
 
 
 @dataclass(frozen=True)
@@ -179,12 +192,12 @@ class Interview:
     # ── asking ──
 
     def clarification(self, question: str, index: SectionIndex, allowed: set[int] | None = None) -> Clarification | None:
-        if not self.nodes or self.tree.get("start") not in self.nodes:
+        if not self.nodes or self.tree.get("start") not in self.nodes or _DEFINITION.match(question):
             return None
         found = self._found(question, index, allowed)
         if not found:
             return None
-        asked = set(tokenize(question))
+        asked = _with_joins(tokenize(question))
         node_id, vars_ = self.tree["start"], {}
         for _ in range(len(self.nodes) + 1):  # a tree with a loop ends too
             node = self.nodes[node_id]
@@ -208,14 +221,40 @@ class Interview:
                     node_id = nxt
                     continue
                 return None  # one place the question leads to: nothing to ask
+            # stuck, and the options are ways of doing one section ("Type 1 or Type 2?"): answered with
+            # every way, then asked which step (pipeline.STUCK_NOTE), not asked which way first
+            one_section = {t.section for _, _, ts in options for t in ts}
+            if len(one_section) == 1 and (_STUCK.search(question)
+                                          or not self._about_the_ways(question, next(iter(one_section)), index)):
+                return None
             return self._ask(node, options, question, found)
         return None
+
+    def _about_the_ways(self, question: str, sid: str, index: SectionIndex) -> bool:
+        """Is the question about the part of section `sid` that is done in several ways ("Adding Data":
+        "Type 1", "Type 2")? A draft tree asks "Type 1 or Type 2?" for the whole section, so "How do I
+        split the dataset for Single X?" was asked it (Qwen 3.5 27B, office format, 27 Oct 2026). The
+        best match inside the section must be one of the ways or the heading above them."""
+        where = self.where.get(sid)
+        if where is None:
+            return True
+        di, root = where
+        doc = self.docs[di]
+        inside = {s.node_id for s in doc.subtree(root)}
+        ways = {nid for nid in inside if _WAY.match(doc.sections[nid].title)}
+        if not ways:
+            return True  # the ways are named only in the tree: nothing to tell them apart by
+        about = ways | {doc.sections[nid].parent for nid in ways} | {
+            s.node_id for nid in ways for s in doc.subtree(nid)}
+        best = next((h for h in index.search(question) if h.doc_index == di and h.node_id in inside), None)
+        return best is None or best.node_id in about
 
     def _named(self, options: list, asked: set[str]) -> list:
         """The options the question already names, by words only they have."""
         words = []
         for opt, v, _ in options:
-            words.append(set(tokenize(f"{opt.get('label', '')} {' '.join(map(str, (opt.get('set') or {}).values()))}")) - _NEUTRAL)
+            words.append(_with_joins(tokenize(f"{opt.get('label', '')} {' '.join(map(str, (opt.get('set') or {}).values()))}"))
+                         - _NEUTRAL)
         picked = []
         for k, item in enumerate(options):
             own = words[k] - set().union(*(w for j, w in enumerate(words) if j != k))
