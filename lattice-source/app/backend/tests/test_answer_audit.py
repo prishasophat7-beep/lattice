@@ -161,7 +161,10 @@ def test_the_introduction_comes_with_its_text():
     ("Write a python script to rename all files in a folder", True), ("Book me a train ticket to Pune", True),
     ("generate a SQL query to list employees", True), ("How do I switch Frontier to Script mode?", False),
     ("What is the travel policy for booking flights?", False), ("How do I export the model as Python code?", False),
-    ("Who approves hotel bookings over INR 30,000?", False)])
+    ("Who approves hotel bookings over INR 30,000?", False),
+    ("Can I book a flight less than 7 days before travel without manager approval?", False),
+    ("Do I need approval to book a hotel room?", False), ("Can you book a cab to the airport for me?", True),
+    ("Please reserve a hotel room in Pune", True), ("book a flight to Delhi tomorrow", True)])
 def test_code_and_bookings_are_declined_whatever_the_model(question, declined):
     from oasis_engine.pipeline import fixed_reply
     reply = fixed_reply(question)
@@ -483,3 +486,70 @@ def test_an_answer_does_not_repeat_the_question_or_the_label_of_worked_out_table
 def test_a_shouted_yes_or_no_reads_as_a_sentence(said, shown):
     from oasis_engine.wording import tidy_verdict
     assert tidy_verdict(said) == shown
+
+
+SUPPLY = """# Supply agreement
+
+## Part 3: Delivery record Q2 2026
+Orders delivered by Arvind Metals in Q2 2026: PO-1 on time, PO-2 late, PO-3 on time, PO-4 late.
+"""
+TARGETS = """# Quality targets
+
+## 2.1 Delivery
+The quarterly on-time delivery target for every supplier is 97%.
+"""
+
+
+def test_narrowing_sources_to_the_answers_figures_does_not_drop_the_one_naming_its_subject():
+    from oasis_engine.loaders import parse_markdown
+    docs = [parse_markdown(SUPPLY, "s", "supply_agreement.md"), parse_markdown(TARGETS, "t", "quality_targets.md")]
+    r = _ask_docs(docs, "Did Arvind Metals meet its on-time delivery target in Q2 2026?",
+                  "No. Arvind Metals delivered 2 of 4 orders on time, below the 97% target.",
+                  [(0, "Part 3: Delivery record Q2 2026"), (1, "2.1 Delivery")])
+    assert r.found and r.answer.startswith("No. Arvind Metals")
+    assert {c.title for c in r.citations} == {"Part 3: Delivery record Q2 2026", "2.1 Delivery"}
+
+
+def test_a_rate_limit_is_waited_out_longer_than_other_failures(monkeypatch):
+    from pydantic_ai import ModelHTTPError
+    from oasis_engine import llm
+    waits = []
+
+    async def sleep(s):
+        waits.append(s)
+    monkeypatch.setattr(llm.asyncio, "sleep", sleep)
+    model = llm.RetryingModel(ScriptedModel(select=[], answer=[]).model, delay_s=2.0)
+    asyncio.run(model._pause(1, ModelHTTPError(429, "m", {"title": "Too Many Requests"})))
+    asyncio.run(model._pause(1, ModelHTTPError(502, "m", {"title": "Bad Gateway"})))
+    assert waits == [5.0, 2.0]
+
+
+def test_an_acronym_question_is_about_the_acronym_not_the_word_stand():
+    from oasis_engine.loaders import parse_markdown
+    from oasis_engine.search import SectionIndex
+    from oasis_engine.support import made_up
+    docs = [parse_markdown("# Leave policy\n\n## Annexure\n| Abbreviation | Meaning |\n|---|---|\n| PL | Privilege Leave |\n"
+                           "| HOD | Head of Department |\n", "l", "leave_policy.md")]
+    index = SectionIndex(docs)
+    annex = docs[0].section_text(next(n for n, s in docs[0].sections.items() if s.title == "Annexure"), 2000)
+    assert not made_up("What does PL stand for?", "PL stands for **Privilege Leave**.", annex, index, annex)
+    assert not made_up("What is the full form of HOD?", "HOD is Head of Department.", annex, index, annex)
+    assert made_up("How do I reset my password?", "Open Settings and click Reset password.", annex, index)
+
+
+def test_most_in_a_phrase_that_ranks_nothing_does_not_rank_a_table():
+    from oasis_engine.loaders import parse_markdown
+    doc = parse_markdown("# Handbook\n\n## Benefits\n| Benefit | Details |\n|---|---|\n| Learning budget | 1,500 |\n"
+                         "| Wellness | 300 |\n\n## Organization\nUp-to-date team information, including managers and office "
+                         "locations, is always in the People directory in Workday.\n", "h", "handbook.md")
+    q = "What is the most up-to-date way to find manager and office location details?"
+    r = _ask_docs([doc], q, "The People directory in Workday has up-to-date managers and office locations.",
+                  [(0, "Organization"), (0, "Benefits")])
+    assert "Learning budget" not in r.answer and "Workday" in r.answer
+
+
+def test_a_number_the_document_writes_as_a_word_checks_out():
+    from oasis_engine.numbers import unverified_numbers
+    src = "40 employees received the email. Six people clicked the link; one entered their password."
+    assert unverified_numbers("6 people clicked and 1 entered it.", src) == []
+    assert unverified_numbers("7 people clicked.", src) == ["7"]

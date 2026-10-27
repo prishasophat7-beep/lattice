@@ -35,7 +35,7 @@ from pydantic_ai.toolsets import FunctionToolset, WrapperToolset
 from .attachments import READ_CHARS as ATTACHMENT_READ_CHARS, Attachment
 from .calc import CalcError, calculate as evaluate
 from .embeddings import SemanticIndex, fuse
-from .llm import QUOTA_MESSAGE, BudgetExceeded, RequestBudget, describe_error, quota_exhausted, run_settings
+from .llm import QUOTA_MESSAGE, RATE_LIMIT_WAIT, BudgetExceeded, RequestBudget, describe_error, quota_exhausted, run_settings
 from .models import Doc
 from .numbers import codes_in, numbers_in, unverified_numbers, without_step_numbers
 from .loops import Looping as _Looping, repeating_from, without_repeated_sentences
@@ -1387,10 +1387,15 @@ class ChatAgent:
                 if quota_exhausted(e):
                     raise BudgetExceeded(QUOTA_MESSAGE) from e
                 if attempt == 1 and _transient(e):
-                    await asyncio.sleep(RETRY_DELAY_S)
+                    # (a rate limit is waited out longer: see llm.RATE_LIMIT_WAIT)
+                    rate_limited = isinstance(e, ModelHTTPError) and e.status_code == 429
+                    await asyncio.sleep(RETRY_DELAY_S * (RATE_LIMIT_WAIT * 2 if rate_limited else 1))
                     await emit({"stage": "retrying"})
                     continue
-                if isinstance(e, ModelHTTPError) and e.status_code in (429, 503):
+                # (said as in Manuals mode: a rate limit is not a model still loading)
+                if isinstance(e, ModelHTTPError) and e.status_code == 429:
+                    raise ProviderBusy("The model endpoint is rate-limited; try again shortly") from e
+                if isinstance(e, ModelHTTPError) and e.status_code == 503:
                     raise ProviderBusy("The language model is busy or still loading; try again shortly") from e
                 if isinstance(e, ModelHTTPError) and 400 <= e.status_code < 500:
                     raise refusal(e) from e

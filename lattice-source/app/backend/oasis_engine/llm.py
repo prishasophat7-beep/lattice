@@ -179,6 +179,9 @@ def _worth_retrying(e: Exception) -> bool:
     return isinstance(e, ModelAPIError)
 
 
+RATE_LIMIT_WAIT = 2.5  # times the usual wait between tries, after a 429
+
+
 class RetryingModel(WrapperModel):
     """Retries one model call that fails before its reply starts (an overloaded provider, a
     dropped connection), so that a chat run keeps the tool results it already has instead of
@@ -193,7 +196,10 @@ class RetryingModel(WrapperModel):
         log.warning("model call failed (attempt %d of %d), retrying: %s", attempt, self.attempts, describe_error(e))
         if self.budget:
             self.budget.ensure(1)
-        await asyncio.sleep(self.delay_s * attempt)
+        # a rate limit counts requests per minute: waiting 2 s, then 4 s gave up in 6 s (half the answers of an
+        # overnight test on a rate-limited endpoint failed, 28 Oct 2026); it is waited out longer (5 s, then 10 s)
+        rate_limited = getattr(e, "status_code", None) == 429
+        await asyncio.sleep(self.delay_s * attempt * (RATE_LIMIT_WAIT if rate_limited else 1))
 
     async def request(self, messages, model_settings, model_request_parameters) -> ModelResponse:
         for attempt in range(1, self.attempts + 1):

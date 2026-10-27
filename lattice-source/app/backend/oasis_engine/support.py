@@ -30,6 +30,7 @@ _ASKING = frozenset(
     "about into over more most other some any every each your mine their them they then than "
     "just only very really often long needed required happen work works used summarize summarise "
     "describe compare mean means meaning difference "
+    "stand stands abbreviation abbreviations acronym acronyms abbreviated full form expand expansion short "
     "you get set use put see new all our has had not way look looks "
     "say says said state states stated mention mentions mentioned according regarding "
     "document documents manual manuals guide file files section sections page pages".split())
@@ -52,7 +53,10 @@ def _topic(question: str, index: SectionIndex) -> set[str]:
     """The question's topic words ("bit" counts: "change the bit"), as typed: spelling them the
     documents' way would make "reset" their "rest". A typo ("sik leave") counts as missing, but an
     answer about sick leave is in the documents' words, so it is not taken for a made-up one."""
-    return {w for w in _words(question, 3) if w not in _ASKING and w not in _ABOUT_ASKING}
+    # (with an acronym of two capitals: "What does PL stand for?" had the topic "stand", in no document, and
+    # "PL stands for Privilege Leave [S2]" was taken for made up; Nemotron, 28 Oct 2026)
+    acronyms = {w.lower() for w in re.findall(r"\b[A-Z]{2}\b", question)}
+    return {w for w in _words(question, 3) | acronyms if w not in _ASKING and w not in _ABOUT_ASKING}
 
 
 def missing_topic(question: str, index: SectionIndex) -> list[str]:

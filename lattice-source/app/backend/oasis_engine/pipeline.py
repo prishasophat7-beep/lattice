@@ -77,6 +77,7 @@ NOT_FOUND = "The documents don't cover this."
 NOT_CHECKED = ("The sections listed below cover this, but the answer worked out from them did not check out, so "
                "it is not shown. Ask about one part at a time, or read the sections themselves.")
 COVERED_SHARE = 0.7  # of the question's words in the excerpts read, for them to cover it
+RANKED_WITHIN = 4  # words after "highest", "most" ... that name what is ranked
 PART_SECTIONS = 2  # sections read for each part of a question answered part by part
 _TYPO_EXAMPLE = "wat dose the amber led meen"  # in ANSWER_INSTRUCTIONS
 _EXAMPLE_WORDS = frozenset(tokenize(_TYPO_EXAMPLE)) - {"the"}
@@ -219,8 +220,13 @@ _WRITE_CODE = re.compile(
     r"\b(write|create|generate|make|give me|code|build|develop)\b.{0,40}\b(python|java|javascript|typescript|"
     r"c\+\+|c#|bash|shell|powershell|sql|vba|golang|rust|ruby|php|perl|matlab|kotlin|swift)\b.{0,25}"
     r"\b(script|code|program|function|class|snippet|macro|query|app)\b", re.IGNORECASE)
-_BOOKING = re.compile(r"\b(book|reserve|buy)\b.{0,25}\b(train|flight|bus|hotel|cab|taxi|tickets?|movie|"
-                      r"air ?tickets?|room)\b", re.IGNORECASE)
+# (asked of the assistant: "Book me a train ticket", "can you book a hotel"; not "Can I book a flight less than
+# 7 days before travel without manager approval?", a question about the travel policy that was declined in both
+# modes, overnight test 28 Oct 2026)
+_BOOKING = re.compile(r"(?:^\s*(?:please\s+)?|\b(?:can|could|would|will) you\s+(?:please\s+)?|\bplease\s+|"
+                      r"\b(?:help me|i want you to|i need you to)\s+)(book|reserve|buy)\b.{0,25}\b(train|flight|bus|"
+                      r"hotel|cab|taxi|tickets?|movie|air ?tickets?|room)\b|"
+                      r"\b(book|reserve|buy) (me|us)\b", re.IGNORECASE)
 CODE_REPLY = ("Sorry, I can only help with questions about your documents and work topics. I can't write "
               "program code or scripts. I can explain what the documents say, for example a tool's settings or "
               "its script mode.")
@@ -1767,6 +1773,7 @@ class Pipeline:
                 out.answer, cited, out.worked_out = as_sentence(rule[1][2]), [rule[0]], False
         # Small models tend to cite everything they read. When the answer quotes figures, keep the
         # sources that contain them (if any do).
+        as_cited = list(cited)  # the model's own sources, before they are narrowed to the answer's figures
         figures = numbers_in(out.answer) - numbers_in(standalone)
         if figures and len(cited) > 1:
             cited = [i for i in cited if figures & numbers_in(texts[i])] or cited
@@ -1827,7 +1834,13 @@ class Pipeline:
             # "Alarm A302 indicates a 'No Machine' condition", cited from a section that never says A302,
             # or the HX-500's spindle speed for "the HX-700", which no excerpt names (final test): an
             # answer about a code from sections without it is not from the documents
-            found = False
+            if cited != as_cited and as_cited and not foreign(as_cited):
+                # ... unless narrowing to the sections with its figures dropped the one that names what it
+                # is about: "No. 4 of 7 orders were on time (57.1%), below the 97% target" kept only the
+                # KPI targets (97%), not the delivery record naming Arvind Metals (MiniMax, 28 Oct 2026)
+                cited = as_cited
+            else:
+                found = False
         if not found and cell_at is not None and not wrong_kind_of_figure(standalone, cell_at[1][1]) \
                 and not foreign([cell_at[0]]) and not _YES_NO_QUESTION.match(standalone):
             # (not for "Can I load an 8 kg tool?": "Tool magazine · 24 tools" is no answer to it; the
@@ -1875,6 +1888,11 @@ class Pipeline:
             # "the most expensive part": the price column, which the question does not name
             words = set(re.findall(r"\w+", standalone.lower())) | ranking_words(standalone)
             total = "total" in words
+            # what is ranked is named right after the rank word ("the highest total downtime", "the most
+            # expensive part"): "the most up-to-date way to find manager and office location details" ranks
+            # nothing, and was answered "Learning budget has the highest details (1,500)" (overnight test)
+            following = re.findall(r"\w+", standalone[rank.end():].lower())[:RANKED_WITHIN]
+            near_rank = set(following) | ranking_words(" ".join([rank.group(1), *following]))  # "cheapest": price
 
             def ranked(lines: list[str]) -> str | None:
                 for ln in lines:
@@ -1882,8 +1900,9 @@ class Pipeline:
                     if total and head == f"{want} column total" and \
                             set(tokenize(rest)) & set(tokenize(standalone)):  # "Line C" for "which line"
                         return ln
+                    column = set(re.findall(r"\w+", re.sub(r"\([^)]*\)", " ", head[len(want):]).lower()))
                     if not total and head.startswith(f"{want} ") and head != f"{want} column total" and \
-                            set(re.findall(r"\w+", re.sub(r"\([^)]*\)", " ", head[len(want):]).lower())) <= words:
+                            column <= words and column & near_rank:
                         # (a column's unit in brackets is not asked for: "Lead time (days)")
                         return ln
                 return None

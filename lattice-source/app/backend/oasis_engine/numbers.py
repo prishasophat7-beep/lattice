@@ -124,6 +124,20 @@ def _unit_named(unit: str, source_words: str) -> bool:
                for raw in _UNITS)
 
 
+_NUMBER_WORDS = {w: i for i, w in enumerate(
+    "zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen "
+    "seventeen eighteen nineteen twenty".split())} | {"thirty": 30, "forty": 40, "fifty": 50, "sixty": 60,
+                                                    "seventy": 70, "eighty": 80, "ninety": 90, "hundred": 100}
+_NUMBER_WORD = re.compile(r"\b(" + "|".join(_NUMBER_WORDS) + r")\b", re.IGNORECASE)
+
+
+def _spelled(text: str) -> set[tuple[str, str]]:
+    """Numbers the text writes as words, as figures: "Six people clicked the link; one entered their
+    password" has 6 and 1 (an answer saying "1 employee" was held back as not checking out; Nemotron
+    Bolt, 28 Oct 2026)."""
+    return {(str(_NUMBER_WORDS[m.group(1).lower()]), "") for m in _NUMBER_WORD.finditer(text or "")}
+
+
 def unverified_numbers(answer: str, sources: str, question: str = "", computed: list[str] = ()) -> list[str]:
     """Figures in `answer` found neither in `sources` nor in `question`, in answer order.
     computed: results of exact calculations (the calculate tool); they match with any unit and
@@ -134,7 +148,7 @@ def unverified_numbers(answer: str, sources: str, question: str = "", computed: 
             results.append(float(c))
         except ValueError:
             pass
-    known = figures_in(sources) | figures_in(question)
+    known = figures_in(sources) | figures_in(question) | _spelled(sources)
     any_unit = {n for n, _ in known}           # a bare "12" in the answer matches "12 Nm"
     unitless = {n for n, u in known if not u}  # table cells: "24,690", not "2 %"
     source_words = _clean(sources).lower()

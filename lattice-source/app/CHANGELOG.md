@@ -4,6 +4,31 @@ The version is set in `VERSION` (`set-version.ps1 <version>`). Every release bui
 `Lattice-share\builds\Lattice-<version>-setup.exe`, listed in `Lattice-share\builds\BUILDS.md`.
 Numbering: the last number for fixes (0.2.0 -> 0.2.1), the middle one for new features (0.3.0).
 
+## 0.2.6 - 28 Oct 2026
+
+Found by the overnight tests (a second set of generated questions, two-turn conversations, MiniMax M3.1 Flash
+as a second model, Nemotron Bolt E4B as a stand-in for the 4B in Manuals mode)
+- Chat: a rate-limited model server was reported as "busy or still loading" (Manuals said "rate-limited").
+- A rate-limited model server (HTTP 429) is waited out longer before Lattice gives up (5 s, then 10 s; it was
+  2 s, then 4 s): on a rate-limited endpoint half the answers of an overnight test failed with "try again".
+- Chat: "What does PL stand for?" was answered right ("PL stands for Privilege Leave", from the leave policy's
+  annexure) and shown as "The documents on this computer don't cover that" 3 times in 4: the question's
+  subject was taken to be "stand", which no document has. "Stand for", "full form", "abbreviation" are asking
+  words, and an acronym of two capitals (PL, HR, QA) is the subject.
+- Manuals: "What about the most up-to-date way to find manager and office location details?" was answered
+  "Learning budget has the highest details (1,500)": "most" was read as a ranking of a table's "Details"
+  column. A ranking needs what it ranks named right after "highest", "most" ... ("the highest total downtime",
+  "the most expensive part").
+- A number the document writes as a word ("Six people clicked the link; one entered their password") checks out
+  as a figure: an answer saying "1 employee entered their password" was held back as not checking out.
+- "Can I book a flight less than 7 days before travel without manager approval?" was refused as a booking
+  request ("I can't book tickets") in both modes. Only requests to the assistant ("Book me a train ticket",
+  "can you book a cab") are refused; questions about the travel policy are answered.
+- Manuals: "Did Arvind Metals meet its on-time delivery target in Q2 2026?" answered right by MiniMax ("No. 4 of
+  7 orders were on time (57.1%), below the 97% target") was shown as "The documents don't cover this": its
+  sources were narrowed to the one with the 97% target, which does not name Arvind Metals. The sources the
+  answer came from are kept.
+
 ## 0.2.5 - 27 Oct 2026
 
 Answers that read like a person wrote them, and notes as badges (screens reviewed with real Nemotron answers:
