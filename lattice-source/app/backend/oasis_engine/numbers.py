@@ -165,7 +165,9 @@ def unverified_numbers(answer: str, sources: str, question: str = "", computed: 
     # ... and the answer's own written calculations whose every figure is checked: "9,20,000 x 3% =
     # 27,600", then "27,600 + 11,700 + 9,750 = 49,050" (a penalty worked out over three orders was
     # flagged as not in the document: DeepSeek, 26 Oct)
-    shown_sums = _equations(body)
+    # (without bold marks: "27,600 + 11,700 + 9,750 = **49,050 INR**" was no calculation, and the right
+    # total was flagged; Nemotron 3.5 Lightning, 27 Oct 2026)
+    shown_sums = _equations(re.sub(r"\*{1,3}|(?<!\w)_{1,3}|_{1,3}(?!\w)", "", body))
     while open_:
         derived = _one_step(checked) + _checked_equations(shown_sums, checked)
         found = [x for x in open_ if _computed(x[0], derived)]
@@ -224,12 +226,17 @@ def _checked_equations(equations: list[tuple[str, float]], checked: list[float])
         for f in re.finditer(r"(" + _NUM + r")\s*(%?)", left):
             v = float(_normalize(f.group(1)))
             figures.append(v / 100 if f.group(2) else v)
-        if figures and all(round(v, 6) in known or round(v * 100, 6) in known for v in figures):
+        # a count the answer works out itself ("1.5 % × 2 = 3.0 %": 14 days late is 2 full weeks) is no
+        # figure of the documents; the chain to the total broke on it (Nemotron 3.5 Lightning, 27 Oct 2026)
+        if figures and all(round(v, 6) in known or round(v * 100, 6) in known
+                           or (v == int(v) and 0 < v <= SMALL_COUNT) for v in figures) \
+                and any(not (v == int(v) and v <= SMALL_COUNT) for v in figures):
             out.append(value)
     return out
 
 
 MAX_DERIVED_FROM = 24  # figures combined pairwise: beyond this, too much would match by chance
+SMALL_COUNT = 12  # a whole number up to this, in a written calculation, may be a count the answer works out
 
 
 def _values(number: str, unit: str) -> list[float]:

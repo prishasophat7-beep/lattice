@@ -125,3 +125,125 @@ def test_a_long_decline_with_offers_is_a_decline_not_general_knowledge(tmp_path)
     assert client.post("/api/kb/import", json={"path": str(tmp_path / "kb.zip")}).status_code == 200
     r = client.post("/api/ask", json={"question": "Write a python script to rename files", "mode": "chat"}).json()
     assert len(decline) > 400 and r["answer"].startswith("Sorry") and not r["general"] and not r["found"]
+
+
+def test_a_table_row_restating_the_sentence_above_is_kept():
+    # "| Casual / Sick Leave (CL/SL) | 12 days |" under "employees get 12 days of Casual / Sick Leave":
+    # the table was left with its header only (Nemotron 3.5 Lightning, 27 Oct 2026)
+    from oasis_engine.loops import without_repeated_sentences
+    answer = ("Employees get **12 days of Casual / Sick Leave (CL/SL)** per year.\n\n"
+              "| Leave Type | Annual Entitlement |\n|---|---|\n| Casual / Sick Leave (CL/SL) | 12 days |")
+    assert without_repeated_sentences(answer) == answer
+
+
+def test_a_total_written_out_in_bold_is_checked_against_its_parts():
+    from oasis_engine.numbers import unverified_numbers
+    source = "PO-26-0503 9,20,000 14 days late. PO-26-0561 7,80,000. PO-26-0590 6,50,000. 1.5% per full week."
+    answer = ("| PO-26-0503 | 2 × 1.5 % = **3.0 %** | 9,20,000 × 0.03 = **27,600** |\n"
+              "| PO-26-0561 | 1 × 1.5 % = **1.5 %** | 7,80,000 × 0.015 = **11,700** |\n"
+              "| PO-26-0590 | 1 × 1.5 % = **1.5 %** | 6,50,000 × 0.015 = **9,750** |\n"
+              "- Sum of penalties: 27,600 + 11,700 + 9,750 = **49,050 INR**")
+    assert unverified_numbers(answer, source) == []
+    assert "99,999" in unverified_numbers("27,600 + 11,700 = **99,999**", source)
+
+
+def test_the_introduction_comes_with_its_text():
+    from oasis_engine.chat import ChatDeps, ChatAgent
+    from oasis_engine.search import SectionIndex
+    from test_what_is_product import _library
+    docs = _library()
+    deps = ChatDeps(docs=docs, index=SectionIndex(docs), allowed=None)
+    prompt = asyncio.run(ChatAgent._with_presearch("What is Frontier application", deps, introduction=(1, "0001")))
+    assert "UI based application designed to tackle CNN" in prompt
+
+
+@pytest.mark.parametrize("question, declined", [
+    ("Write a python script to rename all files in a folder", True), ("Book me a train ticket to Pune", True),
+    ("generate a SQL query to list employees", True), ("How do I switch Frontier to Script mode?", False),
+    ("What is the travel policy for booking flights?", False), ("How do I export the model as Python code?", False),
+    ("Who approves hotel bookings over INR 30,000?", False)])
+def test_code_and_bookings_are_declined_whatever_the_model(question, declined):
+    from oasis_engine.pipeline import fixed_reply
+    reply = fixed_reply(question)
+    assert bool(reply) == declined and (not reply or reply.startswith("Sorry, I can only help"))
+
+
+def test_sources_at_the_end_of_the_last_line_are_read_as_sources():
+    out = parse_answer("(1) Caused by the 2.9.0 rollout. (2) Agents should collect WAN logs. SOURCES: A0, A3, B5", DraftAnswer)
+    assert out.answer == "(1) Caused by the 2.9.0 rollout. (2) Agents should collect WAN logs." and out.section_ids == ["A0", "A3", "B5"]
+    assert parse_answer("Check the sources: then press START.", DraftAnswer).answer == "Check the sources: then press START."
+
+
+def test_a_how_or_why_question_is_not_answered_with_a_table_cell():
+    assert p._ASKS_HOW_OR_WHY.search("What caused the ticket spike in Q3 and how should agents fix it?")
+    assert not p._ASKS_HOW_OR_WHY.search("How many tickets were resolved in Q3?")
+    assert not p._ASKS_HOW_OR_WHY.search("What is the price of part HX9-4471?")
+
+
+def test_a_question_in_another_script_is_searched_in_english():
+    from oasis_engine.chat import ChatAgent, ChatDeps
+    from oasis_engine.search import SectionIndex
+    from test_what_is_product import _library
+    docs = _library()
+    deps = ChatDeps(docs=docs, index=SectionIndex(docs), allowed=None)
+    prompt = asyncio.run(ChatAgent._with_presearch("मुझे कितनी बीमारी की छुट्टी मिलती है?", deps))
+    assert "The question is in Hindi" in prompt and "search them with English words" in prompt
+
+
+def test_a_bare_figure_from_what_was_read_is_drawn_from_it():
+    from oasis_engine.chat import drawn_from
+    read = "Casual / Sick Leave (CL/SL) | 12 days | 1 day/month"
+    assert drawn_from("12 days", read) and not drawn_from("42 days", read)
+
+
+def test_a_count_worked_out_in_a_written_calculation_does_not_break_the_check():
+    from oasis_engine.numbers import unverified_numbers
+    source = "PO-26-0503 9,20,000 14 days late. 1.5% per full week."
+    answer = "1.5 % × 2 = 3.0 % → 9,20,000 × 3.0 % = **27,600**"
+    assert unverified_numbers(answer, source) == []
+    assert unverified_numbers("3 × 4 = 12", source) == ["3", "4", "12"]
+
+
+def test_references_written_with_a_dash_become_sources():
+    from oasis_engine.chat import normalize_refs
+    assert normalize_refs("tool [S5 – About].") == "tool [S5]."
+    assert normalize_refs("wires (S4 - Wiring)") == "wires [S4]"
+    assert normalize_refs("(see the 5 – 10 range)") == "(see the 5 – 10 range)"
+
+
+def test_what_the_documents_lack_is_not_general_knowledge_and_a_closing_decline_goes():
+    from oasis_engine.chat import _NOT_COVERED, without_trailing_decline
+    answer = ("The files are a user manual and an HR policy, none of which list executive leadership.\n\n"
+              "Sorry, I can only help with questions about your documents and work topics. I can assist with leave "
+              "policies, project management tools, or the SEM AI software if those are relevant to your needs.")
+    assert _NOT_COVERED.search(answer)
+    assert without_trailing_decline(answer) == "The files are a user manual and an HR policy, none of which list executive leadership."
+
+
+def test_a_draft_signed_twice_keeps_one_signature():
+    from oasis_engine.chat import without_stray_signature
+    assert without_stray_signature("Hi,\n\nPlease approve.\n\nThanks,\n\n[Your Name]\n\n*[Your Name]*") == \
+        "Hi,\n\nPlease approve.\n\nThanks,\n\n[Your Name]"
+
+
+def test_the_parts_of_a_hyphenated_word_are_stemmed_like_words():
+    from oasis_engine.search import tokenize
+    assert "deliver" in tokenize("late-delivery penalty") and "deliver" in tokenize("Late delivery penalty")
+    assert {"e-217", "e", "217"} <= set(tokenize("E-217"))
+
+
+def test_a_figure_that_does_not_check_out_is_not_called_missing_from_the_documents(tmp_path):
+    (tmp_path / "agreement.md").write_text(
+        "# Supplier agreement\n\n## Late delivery penalty\n\nArvind Metals pays 1.5% of the order value for each "
+        "full week of late delivery.\n\n## Delivery record\n\n| PO | Order value | Days late |\n|---|---|---|\n"
+        "| PO-1 | 9,20,000 | 14 |\n", encoding="utf-8")
+    docs = load_markdown(tmp_path)
+    ids = [f"A{int(n)}" for n, s in docs[0].sections.items() if s.depth > 0]
+    script = ScriptedModel(select=[", ".join(ids)], answer=["13500 INR\nSOURCES: " + ids[0]])
+    r = asyncio.run(Pipeline(docs, script.model, output_mode="text", fast_path=False).ask(
+        "How much late-delivery penalty does Arvind Metals owe?"))
+    assert not r.found and r.answer == p.NOT_CHECKED
+    script = ScriptedModel(select=[ids[0]], answer=["$12 per user per month\nSOURCES: " + ids[0]])
+    r = asyncio.run(Pipeline(docs, script.model, output_mode="text", fast_path=False).ask(
+        "How much does a user licence cost per month?"))
+    assert not r.found and r.answer == p.NOT_FOUND

@@ -110,10 +110,18 @@ _SOURCE_LABEL = re.compile(_LABEL.format(r"(sources?|sections?|ids?|excerpts?(?:
                            re.IGNORECASE | re.MULTILINE)
 
 
+# "... and escalate. SOURCES: A0, A3, A4, B5": the list at the end of the answer's last line, not on a line
+# of its own (Nemotron 3.5 Lightning, 27 Oct 2026: it was shown as part of the answer)
+_TRAILING_SOURCES = re.compile(r"[ \t]+\W*sources?\W*:\s*(?:\[?" + _ID.pattern + r"\]?[\s,;]*)+\W*\Z", re.IGNORECASE)
+
+
 def _sources_line(text: str) -> re.Match | None:
     """The last line that lists the answer's sources. "SOURCES:" counts with any ids after it; the
     other labels only before ids alone: "Sections: Setup, Run and Maintenance are covered ..." is a
     line of the answer, and everything after it was cut off as its sources."""
+    trailing = _TRAILING_SOURCES.search(text)
+    if trailing is not None:
+        return trailing
     for m in reversed(list(_SOURCE_LABEL.finditer(text))):
         rest = text[m.end():]
         if _NONE.match(rest.split("\n", 1)[0]):
@@ -135,7 +143,7 @@ def parse_answer(text: str, cls):
     ids: list[str] = []
     m = _sources_line(text)
     if m is not None:
-        ids = ids_in(text[m.end():])
+        ids = ids_in(text[m.start():])  # (the label is no id; a trailing list's match holds its ids)
         text = text[:m.start()].rstrip()
     else:
         last = text.rsplit("\n", 1)[-1].strip().lower()

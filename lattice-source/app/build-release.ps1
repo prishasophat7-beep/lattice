@@ -16,6 +16,14 @@ if (Test-Path $kept) {
     Write-Host "  powershell -ExecutionPolicy Bypass -File $app\set-version.ps1 <next version>"
     exit 1
 }
+# ... and says what changed: the version's section of CHANGELOG.md goes into BUILDS.md with it
+$changelog = Get-Content "$app\CHANGELOG.md" -Raw -Encoding UTF8  # (without it, "·" became "Â·" in BUILDS.md)
+$section = [regex]::Match($changelog, "(?ms)^## $([regex]::Escape($version))\b[^\n]*\n(.*?)(?=^## |\z)")
+if (-not $section.Success -or -not $section.Groups[1].Value.Trim()) {
+    Write-Host "CHANGELOG.md has no section for $version. Add '## $version - <date>' with what changed, then build."
+    exit 1
+}
+$changes = $section.Groups[1].Value.Trim()
 powershell -NoProfile -ExecutionPolicy Bypass -File "$app\set-version.ps1" | Out-Host
 
 function Step($name, [scriptblock]$run) {
@@ -82,11 +90,12 @@ New-Item -ItemType Directory -Force $builds | Out-Null
 Copy-Item $setup.FullName $kept
 $log = Join-Path $builds "BUILDS.md"
 if (-not (Test-Path $log)) {
-    Set-Content $log -Encoding utf8 -Value ("# Lattice builds`n`nEach installer is kept here as Lattice-<version>-setup.exe. " +
-        "What changed in each version: CHANGELOG.md in the source.`n`n| Version | Built | Source commit (Desktop\lattice) | Tests |`n|---|---|---|---|")
+    Set-Content $log -Encoding utf8 -Value ("# Lattice builds`n`nEach installer is kept here as Lattice-<version>-setup.exe, newest " +
+        "last. Each entry says what changed (from CHANGELOG.md in the source).")
 }
 $repo = Join-Path (Split-Path (Split-Path $app)) "lattice"
-$commit = if (Test-Path "$repo\.git") { (git -C $repo log -1 --format="%h %s" 2>$null) -replace '\|', '/' } else { "-" }
-if ($commit.Length -gt 90) { $commit = $commit.Substring(0, 87) + "..." }
-Add-Content $log -Encoding utf8 -Value ("| {0} | {1:yyyy-MM-dd HH:mm} | {2} | engine and UI tests passed |" -f $version, $setup.LastWriteTime, $commit)
+$commit = if (Test-Path "$repo\.git") { (git -C $repo log -1 --format="%h %s" 2>$null) } else { "-" }
+$entry = "`n## {0} - built {1:yyyy-MM-dd HH:mm}`n`nInstaller: Lattice-{0}-setup.exe ({2:N1} MB)  `n" +
+    "Source commit: {3}  `nTests: engine and UI tests passed`n`n{4}"
+Add-Content $log -Encoding utf8 -Value ($entry -f $version, $setup.LastWriteTime, ($setup.Length / 1MB), $commit, $changes)
 Write-Host "Kept as $kept"

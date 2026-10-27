@@ -72,6 +72,10 @@ THINKING_MAX_TOKENS = 6000  # a step's cap once the model is seen thinking (conf
 REASONING_RETRY_TOKENS = 16000  # ... for a model set up as a reasoning model, whose first cap was already large
 TOTAL_EXCERPT_CHARS = 16_000  # all excerpts together must fit the model's context (8k tokens)
 NOT_FOUND = "The documents don't cover this."
+# the sections cover the question, but the figure the model gave could not be checked against them
+NOT_CHECKED = ("The sections listed below cover this, but the answer worked out from them did not check out, so "
+               "it is not shown. Ask about one part at a time, or read the sections themselves.")
+COVERED_SHARE = 0.7  # of the question's words in the excerpts read, for them to cover it
 PART_SECTIONS = 2  # sections read for each part of a question answered part by part
 _TYPO_EXAMPLE = "wat dose the amber led meen"  # in ANSWER_INSTRUCTIONS
 _EXAMPLE_WORDS = frozenset(tokenize(_TYPO_EXAMPLE)) - {"the"}
@@ -146,6 +150,9 @@ _MORE = re.compile(r"\b(more|most|higher|highest|best|greater|greatest|larger|la
                    re.IGNORECASE)
 _LESS = re.compile(r"\b(less|least|fewer|fewest|lower|lowest|worst|smaller|smallest|shorter|shortest)\b", re.IGNORECASE)
 _CHANGE = re.compile(r"\b(increase\w*|decrease\w*|grow\w*|growth|rise|rose|fall|fell|drop\w*|chang\w*)\b", re.IGNORECASE)
+# a question about a cause or a way of doing something, not a value a table cell holds
+_ASKS_HOW_OR_WHY = re.compile(r"\b(why|how (?:do|does|did|should|can|could|would|to|is|are)|what (?:caused|causes|"
+                              r"happened|should|do i do|to do))\b", re.IGNORECASE)
 FULL_SECTION_CHARS = 400_000  # a section read whole for checks made in code
 NAME_DOC_SHARE = 0.5  # a name in at most this share of the documents names one thing: answers about it must cite one
 CODE_HOLDERS = 2  # sections holding a code the question names, read besides the model's choice ...
@@ -203,6 +210,22 @@ UNSAFE_REPLY = ("I can't help with getting into devices, accounts or systems wit
                 "is locked out, or you suspect unauthorized access, follow the documented procedure, for example "
                 "the escalation for a suspected security issue.")
 INJECTION_REPLY = "I can't change or share my instructions. Ask me a question about the documents."
+# what the assistant does not do, whatever the model: told so in its instructions (chat.CANNOT_DO),
+# Nemotron 3.5 Lightning still offered to write "a Python script to rename all files" (27 Oct 2026).
+# Only plain cases: a programming language named with code to write ("the Script mode" of a manual is
+# not one), and booking travel or tickets
+_WRITE_CODE = re.compile(
+    r"\b(write|create|generate|make|give me|code|build|develop)\b.{0,40}\b(python|java|javascript|typescript|"
+    r"c\+\+|c#|bash|shell|powershell|sql|vba|golang|rust|ruby|php|perl|matlab|kotlin|swift)\b.{0,25}"
+    r"\b(script|code|program|function|class|snippet|macro|query|app)\b", re.IGNORECASE)
+_BOOKING = re.compile(r"\b(book|reserve|buy)\b.{0,25}\b(train|flight|bus|hotel|cab|taxi|tickets?|movie|"
+                      r"air ?tickets?|room)\b", re.IGNORECASE)
+CODE_REPLY = ("Sorry, I can only help with questions about your documents and work topics. I can't write "
+              "program code or scripts. I can explain what the documents say, for example a tool's settings or "
+              "its script mode.")
+BOOKING_REPLY = ("Sorry, I can only help with questions about your documents and work topics. I can't book "
+                 "tickets, travel or anything else: I only read the documents and answer here. If a travel "
+                 "policy is installed, I can tell you what it says.")
 
 
 def fixed_reply(question: str) -> str | None:
@@ -211,6 +234,10 @@ def fixed_reply(question: str) -> str | None:
         return INJECTION_REPLY
     if _UNSAFE.search(question):
         return UNSAFE_REPLY
+    if _WRITE_CODE.search(question):
+        return CODE_REPLY
+    if _BOOKING.search(question):
+        return BOOKING_REPLY
     return None
 
 
@@ -1574,8 +1601,12 @@ class Pipeline:
         weak_cell = next(iter(cells.items())) if len(cells) == 1 else None
         # named by its row alone (one word) is too weak: "G4 in Goa" is not "G4 · Examples: Senior managers"
         cells = {i: c[1:] for i, c in cells.items() if c[0] == top and top >= CELL_MIN_SCORE}
+        # ... for a question asking for a value: "What caused the ticket spike in Q3 and how should agents fix
+        # it?" got "Tickets resolved · Q3 2026: 12,480" in place of the model's right answer (Nemotron 3.5
+        # Lightning, Manuals mode, 27 Oct 2026)
         cell_at = next(iter(cells.items())) if len(cells) == 1 and not _COMPARING.search(standalone) \
-            and not _CHANGE.search(standalone) else None
+            and not _CHANGE.search(standalone) and not _ASKS_HOW_OR_WHY.search(standalone) \
+            and not question_parts(standalone) else None
         if cell_at is not None:
             worked.append(f"[{cell_at[0]}] {cell_at[1][0]}")
         if worked:
@@ -1722,11 +1753,21 @@ class Pipeline:
         flagged = unverified_numbers(out.answer, source_text, standalone, computed) if found else []
         own = _LIST_NUMBERS.sub(" ", out.answer)
         cited_text = "\n".join(texts[i] for i in cited if i in texts)
+        unchecked = False  # the answer's figure could not be checked against excerpts that cover the question
         if found and (made_up(standalone, own, source_text, self.index, cited_text)
                       or only_unchecked_figures(own, flagged, standalone) or wrong_kind_of_figure(standalone, own)):
             # steps for a topic the documents lack ("reset my password"), or a figure they do not have
             # ("$1,200 per user"): not an answer from the documents (see support.py)
             found = False
+            # ... or a wrong sum over what they do state: "13500 INR" for the late-delivery penalty
+            # was shown as "The documents don't cover this" (Nemotron 3.5 Lightning, 27 Oct 2026)
+            asked = {t for t in tokenize(standalone) if len(t) > 2 and t.isalpha() and t not in _ASKING
+                     and t not in STATED_GENERIC}
+            covering = set(tokenize(source_text + "\n" + "\n".join(
+                " ".join(self.docs[di].path(nid)) + "\n" + self.docs[di].section_text(nid, FULL_SECTION_CHARS)
+                for di, nid in shown.by_id.values())))  # (titles too: "2.3 Late delivery penalty")
+            unchecked = bool(asked) and len(asked & covering) >= COVERED_SHARE * len(asked) \
+                and not made_up(standalone, own, source_text, self.index, cited_text)
         codes = {t for t in tokenize(standalone) if is_code(t) and t not in self.index.title_words}
         # names the documents use elsewhere, rarely: "the OEE of the Chennai plant" answered with the
         # Pune plant's figure (final test); Chennai is only in the travel policy's city list
@@ -1880,7 +1921,7 @@ class Pipeline:
         evidence = [Evidence(text=q.text, citation=q.citation) for q in quotes(
             out.answer, standalone, [(self.docs[di], nid) for di, nid in cited_sections])] if found else []
         return AskResult(
-            question=question, found=found, answer=out.answer if found else NOT_FOUND,
+            question=question, found=found, answer=out.answer if found else (NOT_CHECKED if unchecked else NOT_FOUND),
             citations=[self._citation(di, nid) for di, nid in cited_sections],
             considered=considered, seconds=seconds, model_requests=requests + draft.usage.requests,
             unverified_numbers=flagged if found else [],

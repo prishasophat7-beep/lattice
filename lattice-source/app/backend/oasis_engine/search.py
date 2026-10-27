@@ -87,7 +87,9 @@ def tokenize(text: str) -> list[str]:
         tokens.append(tok)
         parts = re.split(r"[-./]", tok)
         if len(parts) > 1:  # "dt-450" also matches "dt" and "450"
-            tokens.extend(p for p in parts if p and p not in _STOP)
+            # ... stemmed like any word: "late-delivery" gave "delivery", the documents' "delivery" is
+            # "deliver", and the two never matched (27 Oct 2026)
+            tokens.extend(_stem(p) for p in parts if p and p not in _STOP)
     return tokens
 
 

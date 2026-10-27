@@ -211,7 +211,7 @@ class Interview:
                     options.append((opt, v, targets))
             if not options:
                 return None
-            named = self._named(options, asked)
+            named = self._named(options, asked) or self._way_named(options, question)
             if named:
                 options = named
             if len(options) == 1 or len({t for _, _, t in options}) == 1:
@@ -248,6 +248,17 @@ class Interview:
             s.node_id for nid in ways for s in doc.subtree(nid)}
         best = next((h for h in index.search(question) if h.doc_index == di and h.node_id in inside), None)
         return best is None or best.node_id in about
+
+    def _way_named(self, options: list, question: str) -> list:
+        """The options leading to the way the question names by its number ("... with method 2"): the
+        tree's labels say "Assisted: the built-in reader proposes", the manual "Method 2: Assisted
+        annotation", and "How do I annotate text with method 2?" was asked which method (27 Oct 2026)."""
+        m = re.search(r"\b(option|method|type|mode|way|variant|approach|alternative)\s+([A-Z0-9]{1,3})\b", question,
+                      re.IGNORECASE)
+        if m is None:
+            return []
+        key = f"{m.group(1).lower()} {m.group(2).lower()}"
+        return [item for item in options if any(t.variant and _way_key(t.variant) == key for t in item[2])]
 
     def _named(self, options: list, asked: set[str]) -> list:
         """The options the question already names, by words only they have."""

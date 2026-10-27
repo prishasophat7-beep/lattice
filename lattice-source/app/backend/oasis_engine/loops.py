@@ -74,7 +74,9 @@ def without_repeated_sentences(text: str) -> str:
         # a step or point of a list restates what a summary before it said, by design: only an exact
         # repeat of it goes (steps 1 and 4 of the MLOps setup were dropped as "said before" by the
         # opening sentence, leaving 2, 3, 5, 6; 4B final check, 27 Oct 2026)
-        item = bool(_LIST_ITEM.match(line))
+        # ... and so does a table row ("| Casual / Sick Leave (CL/SL) | 12 days |" under "employees get 12
+        # days of Casual / Sick Leave": the table was left with its header only; Nemotron, 27 Oct 2026)
+        item = bool(_LIST_ITEM.match(line)) or line.lstrip().startswith("|")
         for sentence in _SENTENCE_END.split(line):
             # the same words, whatever the punctuation or bold marks ("**HOD** approval." / "HOD approval")
             key = " ".join(re.sub(r"[^\w\s]", " ", sentence).split()).casefold()

@@ -48,7 +48,7 @@ from .focus import near as near_place
 from .doctools import (doc_map, find_facts as facts_about, find_text as text_hits, passages,
                        partial_table_note, query_table as table_query, read_view, table_highlights,
                        verify_quote)
-from .plan import follow_up, parts_note, question_parts
+from .plan import follow_up, language_of, parts_note, question_parts
 
 log = logging.getLogger("oasis_engine.chat")
 
@@ -275,6 +275,7 @@ MAX_EVIDENCE = 4  # checked quotes shown under a Chat answer
 PART_HITS = 2  # per part of a question that asks several things (see plan.py)
 PASSAGE_HITS = 2  # a model on this computer gets the passages of the best matches themselves
 PASSAGE_CHARS = 900
+INTRODUCTION_CHARS = 3_000  # of a document's About section, given with "What is <product>?"
 CONTEXT_SEARCH_CHARS = 400  # of the previous answer, searched with the follow-up
 _REF_MARKS = re.compile(r"\[\d+\]|\[S\d+\]")
 OUTLINE_CHARS = 8_000     # a document's table of contents given to the model
@@ -300,7 +301,9 @@ _TOOL_TALK = re.compile(r"^[^\n]*(?:\b(?:" + "|".join(n for n in TOOL_NAMES if "
 _NOT_COVERED = re.compile(
     r"\b(there is|there's|i found|they contain|contains?) no (information|data|details|mention)\b|"
     r"\b(documents?|manuals?|files?)\b[^.]{0,80}\b(do|does|did)\s*(not|n't)\s+"
-    r"(contain|cover|mention|include|provide|say|discuss|address)", re.IGNORECASE)
+    r"(contain|cover|mention|include|provide|say|discuss|address)|"
+    r"\bnone of (these|them|which|the (documents?|manuals?|files?))\b[^.]{0,20}\b(mentions?|covers?|contains?|includes?|lists?|"
+    r"discuss(es)?)\b", re.IGNORECASE)
 # the model declining in its own words: a reply, not an answer to cite
 _MODEL_DECLINE = re.compile(
     r"^\W*(i can only (answer|help)|i (don'?t|do not) have (any )?(live|real-time|current|access)|"
@@ -339,7 +342,7 @@ _DECLINE = re.compile(r"^\W*(sorry|i'?m sorry|i am sorry)\b[^.]{0,60}\bcan only 
 # ... added after an answer ("... is not reimbursed.\n\nSorry, I can only help with work topics."; the
 # 0.8B in the complex eval): the answer stands, the decline goes
 _TRAILING_DECLINE = re.compile(r"\n\s*\W*(?:sorry|i'?m sorry|i am sorry)\b[^.\n]{0,60}\bcan only (?:help|assist)\b"
-                               r"[^\n]{0,80}$", re.IGNORECASE)
+                               r"[^\n]{0,300}$", re.IGNORECASE)  # (with what it can help with instead)
 
 
 def without_trailing_decline(answer: str) -> str:
@@ -504,9 +507,18 @@ def without_echoed_excerpts(answer: str) -> str:
     return re.sub(r"(?:\n[ \t]*-{3,}[ \t]*)+\s*$", "", text.rstrip()).rstrip()
 
 
+_NAME_LINE = re.compile(r"^[\s*_]*\[your name\][\s*_]*$", re.IGNORECASE)
+
+
 def without_stray_signature(answer: str) -> str:
     if answer.rstrip().endswith("[Your name]") and not _MESSAGE.search(answer):
         return answer.rstrip()[:-len("[Your name]")].rstrip()
+    # a draft signed twice ("[Your Name]" and then "*[Your Name]*": the instructions ask for the
+    # signature, the model had written one; Nemotron, 27 Oct 2026)
+    lines = answer.rstrip().split("\n")
+    names = [i for i, line in enumerate(lines) if line.strip()]
+    if len(names) >= 2 and all(_NAME_LINE.match(lines[i]) for i in names[-2:]):
+        return "\n".join(lines[:names[-1]]).rstrip()
     return answer
 
 
@@ -535,8 +547,10 @@ def normalize_refs(answer: str) -> str:
                     lambda m: " ".join(f"[{r}]" for r in re.findall(r"S\d+", m.group(1))), answer)
     answer = re.sub(r"[【［]\s*(S\d+)[^】］\n]{0,40}[】］]", r"[\1]", answer)
     answer = re.sub(r"\[\s*(S\d+)\s*†[^\]\n]{0,40}\]", r"[\1]", answer)
-    # "[S3, Part 2, Clause 2.1]", "[S2: Delivery record]": a reference with where in it, as [S3]
-    answer = re.sub(r"\[\s*(S\d+)\s*[,;:](?!\s*S\d)[^\]\n]{1,60}\]", r"[\1]", answer)
+    # "[S3, Part 2, Clause 2.1]", "[S2: Delivery record]", "[S5 – About]", "(S4 - Wiring)": a reference with
+    # where in it, as [S3] (the dashed ones stayed in the answer as text and lost their source; Nemotron, 27 Oct)
+    answer = re.sub(r"\[\s*(S\d+)\s*(?:[,;:]|\s[-–—])(?!\s*S\d)[^\]\[\n]{1,60}\]", r"[\1]", answer)
+    answer = re.sub(r"\(\s*(S\d+)\s+[-–—]\s[^)(\n]{1,60}\)", r"[\1]", answer)
     answer = re.sub(r"\b[Ss]ections?\s+(S\d+(?:\s*(?:,|and|&)\s*S\d+)*)\b",
                     lambda m: " ".join(f"[{r}]" for r in re.findall(r"S\d+", m.group(1))), answer)
     return re.sub(r"[\[(]\s*(S\d+(?:\s*(?:,|;|/|and|&)\s*S\d+)*)\s*[\])]",
@@ -650,8 +664,14 @@ DRAWN_SHARE = 0.5  # of an answer's words found in what was read, for it to be d
 def drawn_from(answer: str, read: str) -> bool:
     """Most of the answer's own words are in what was read: written from it ("Click Propose, then
     correct the mistakes"), not from general knowledge ("Torque is a turning force")."""
-    words = {w for w in tokenize(re.sub(r"\[\d+\]", " ", answer)) if len(w) > 3 and w not in _ASKING}
-    return bool(words) and len(words & set(tokenize(read))) >= DRAWN_SHARE * len(words)
+    text = re.sub(r"\[\d+\]", " ", answer)
+    words = {w for w in tokenize(text) if len(w) > 3 and w not in _ASKING}
+    if not words:
+        # a bare "12 days" has no long word ("days" is "day"): it is drawn from what was read when every
+        # word and figure of it is there (it was shown as general knowledge; Nemotron, 27 Oct 2026)
+        short = set(tokenize(text)) - _ASKING
+        return bool(short) and short <= set(tokenize(read))
+    return len(words & set(tokenize(read))) >= DRAWN_SHARE * len(words)
 
 
 def whole_section(doc: Doc, nid: str, chars: int) -> str:
@@ -1413,7 +1433,11 @@ class ChatAgent:
             answer += "\n\n" + UNSOURCED_NOTE
         if cut_off:
             answer += "\n\n*(The answer was cut off.)*"
-        general = not documents_only and (general_part or not (citations or deps.files_used or about_self or unsourced))
+        # "None of these mention executive leadership": what the documents lack, said about them, is not
+        # general knowledge (it was labelled so; Nemotron, 27 Oct 2026)
+        about_lack = not citations and not general_part and bool(_NOT_COVERED.search(answer))
+        general = not documents_only and not about_lack and (
+            general_part or not (citations or deps.files_used or about_self or unsourced))
         return AskResult(
             question=question, found=True, answer=answer, citations=citations, mode="chat",
             considered=[_citation(docs, *deps.refs[r]) for r in deps.read],
@@ -1536,6 +1560,12 @@ class ChatAgent:
             deps.shown.setdefault(ref, deps.docs[di].sections[nid].summary)
             earlier_lines.append(f"[{ref}] {deps.docs[di].display_title} > {' > '.join(deps.docs[di].short_path(nid))}")
         prompt = question_as_asked
+        language = language_of(question_as_asked)
+        if language:
+            # the search finds English words: a Hindi question found nothing, and the model answered "No, I
+            # am a language model developed by NVIDIA" instead of searching (Nemotron 3.5 Lightning, 27 Oct 2026)
+            prompt += (f"\n\n(The question is in {language}. The documents are in English: search them with "
+                       f"English words, then answer in {language}.)")
         if meant:
             prompt += f"\n\n(This follow-up asks: {meant})"
         if parts:
@@ -1562,11 +1592,15 @@ class ChatAgent:
         elif introduction is not None:
             # "What is Frontier application?": the manual's own About section. Given as "the user picked",
             # the 4B answered "Based on the section you selected ..." (Chat on the 4B, 27 Oct 2026)
+            # Its text comes with the question: told only where it was, Nemotron 3.5 Lightning answered
+            # from the Configuration screens it had been given instead (27 Oct 2026)
             di, nid = introduction
             doc = deps.docs[di]
-            prompt += (f"\n\n---\n[{deps.ref_for(di, nid)}] {doc.display_title} > {' > '.join(doc.short_path(nid))} "
-                       "is the document's own introduction of what it is about: read it first and answer from it.")
-            deps.shown.setdefault(deps.ref_for(di, nid), doc.sections[nid].summary)
+            ref = deps.ref_for(di, nid)
+            text = whole_section(doc, nid, INTRODUCTION_CHARS)
+            deps.read[ref] = text
+            prompt += (f"\n\n---\nThe document's own introduction of what it is about: answer from it first.\n"
+                       f"[{ref}] {doc.display_title} > {' > '.join(doc.short_path(nid))}: {text}")
         elif place is not None and context and (deps.allowed is None or place[0] in deps.allowed):
             # where the conversation is: "How do I test it?" in Multi X is Multi X's testing, though
             # the search ranks Single X's first (see focus.py)
