@@ -561,6 +561,10 @@ def mark_general(answer: str) -> tuple[str, bool]:
 def normalize_refs(answer: str) -> str:
     """Every way models write a reference, as [S1]: 【S1】, 【S1†L1-L3】, [S1†L1-L3], ［S1］,
     "Section S1", "sections S1 and S2", "(S2)", "[S2, S3]", "[S6/S7]", "**S2** and **S4**"."""
+    # "[S5, [4], Notes]": a reference with others nested in it, as its sections (S5 was checked as a
+    # figure and shown in the answer; Nemotron, a plant-performance table, 27 Oct 2026)
+    answer = re.sub(r"\[([^\[\]\n]*\bS\d+\b[^\[\]\n]*(?:\[[^\[\]\n]*\][^\[\]\n]*)+)\]",
+                    lambda m: " ".join(f"[{r}]" for r in re.findall(r"\bS\d+\b", m.group(1))), answer)
     answer = re.sub(r"\*\*\s*\[?(S\d+(?:\]?\s*(?:,|;|/|and|&)\s*\[?S\d+)*)\]?\s*\*\*",
                     lambda m: " ".join(f"[{r}]" for r in re.findall(r"S\d+", m.group(1))), answer)
     answer = re.sub(r"[【［]\s*(S\d+)[^】］\n]{0,40}[】］]", r"[\1]", answer)
@@ -573,6 +577,32 @@ def normalize_refs(answer: str) -> str:
                     lambda m: " ".join(f"[{r}]" for r in re.findall(r"S\d+", m.group(1))), answer)
     return re.sub(r"[\[(]\s*(S\d+(?:\s*(?:,|;|/|and|&)\s*S\d+)*)\s*[\])]",
                   lambda m: " ".join(f"[{r}]" for r in re.findall(r"S\d+", m.group(1))), answer)
+
+
+_PROMPT_LABEL_LINE = re.compile(r"(?im)^[ \t>*_]*worked out from the tables \(exact\)[^\n]*\n?")
+
+
+def without_echoes(answer: str, question: str) -> str:
+    """Without the question repeated as the answer's first line ("**Which line improved the most over the
+    quarter?**") and lines echoing the label the worked-out tables come under ("*Worked out from the tables
+    (exact):* [1] OEE change per line"); both seen in Nemotron answers, 27 Oct 2026."""
+    answer = _PROMPT_LABEL_LINE.sub("", answer)
+    first, _, rest = answer.lstrip().partition("\n")
+    said = re.sub(r"^[#>*_\s]+|[*_\s:]+$", "", first).casefold()
+    if rest.strip() and said and said == question.strip().casefold():
+        answer = rest
+    return answer.strip()
+
+
+def without_figures(text: str, figures: set[str]) -> str:
+    """An earlier answer without the figures that were flagged in it: the next answer repeating one is
+    not checked by it ("≈ 378 h" made up in a table answer showed "Numbers match the document" when the
+    follow-up repeated it; Nemotron, 27 Oct 2026)."""
+    for f in figures:
+        number = re.match(r"[\d.,]*\d", f)
+        if number:
+            text = re.sub(rf"(?<![\d.,]){re.escape(number.group(0))}(?![\d]|[.,]\d)", " ", text)
+    return text
 
 
 def name_attachments(answer: str, attachments: list[Attachment]) -> str:
@@ -1290,7 +1320,8 @@ class ChatAgent:
                   model_label: str = "", documents_only: bool = False, tier: str = "remote",
                   earlier: list[tuple[int, str]] = (), place: tuple[int, str] | None = None,
                   picked: tuple[int, str] | None = None, kb_guide: str = "", kb_notes: str = "",
-                  context_tokens: int = 0, introduction: tuple[int, str] | None = None) -> AskResult:
+                  context_tokens: int = 0, introduction: tuple[int, str] | None = None,
+                  unchecked: set[str] = frozenset()) -> AskResult:
         """about: ids of attached files this question is about; their text comes with the question.
         documents_only: no general-knowledge answers (a model too small to get them right).
         tier: "remote" (a large model on a server) or "local" (on this computer: fewer, larger steps).
@@ -1298,7 +1329,8 @@ class ChatAgent:
         earlier: (doc index, node id) of the sections earlier answers in the conversation cited.
         place: (doc index, node id) of where the conversation is (see focus.py).
         picked: (doc index, node id) of the section the user picked after a question back.
-        introduction: (doc index, node id) of the document's About section, for "What is <product>?"."""
+        introduction: (doc index, node id) of the document's About section, for "What is <product>?".
+        unchecked: figures earlier answers gave that the documents do not have (see without_figures)."""
         async def emit(event: dict) -> None:
             if on_event is not None:
                 await on_event(event)
@@ -1411,7 +1443,7 @@ class ChatAgent:
             answer = unlabel_document_paragraphs(answer, deps)
         if not documents_only:
             answer = without_hedge_before_general(label_general_leads(answer))
-        answer = without_section_numbers(answer)
+        answer = without_echoes(without_section_numbers(answer), question)
         answer = without_contradicted_not_covered(answer, "\n".join([*deps.read.values(), *deps.shown.values()]))
         implied = False
         if not citations and not deps.files_used and not asks_general:  # small models often forget the markers
@@ -1422,7 +1454,7 @@ class ChatAgent:
         # and the names of the documents read ("the R7 guide": R7 is in the title, not the text)
         titles = {f"{docs[di].display_title} {docs[di].description}" for di, _ in (deps.refs[r] for r in {*deps.read, *deps.shown})}
         sources = "\n".join([*deps.read.values(), *deps.shown.values(), *deps.worked, *titles,
-                             *(a for _, a in context or [])])
+                             *(without_figures(a, unchecked) for _, a in context or [])])
         answer = without_quoted_tail(answer, "\n".join([*deps.read.values(), *deps.shown.values()]))
 
         def not_covered(reply: str) -> AskResult:  # no sources, pictures or figure check
@@ -1730,7 +1762,7 @@ class ChatAgent:
             return f"[{order.index(ref) + 1}]" if ref in order else ""
 
         answer = re.sub(r"\s*\[(S\d+)\]", lambda m: (" " if m.group(1) in order else "") + renumber(m), answer)
-        answer = re.sub(r"(\[\d+\])(\s*\1)+", r"\1", answer)  # "[1] [1]" -> "[1]"
+        answer = re.sub(r"(\[\d+\])([.,;:]?)(\s*\1)+", r"\1\2", answer)  # "[1] [1]", "[2]. [2]" -> "[1]", "[2]."
         answer = re.sub(r"\(\s*((?:\[\d+\]\s*)+?)\s*\)", r"\1", answer)  # "( [1])" -> "[1]"
         return answer.strip(), [_citation(deps.docs, *deps.refs[r]) for r in order]
 

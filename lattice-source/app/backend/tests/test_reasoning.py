@@ -219,7 +219,7 @@ def test_a_bare_no_gets_the_rule_it_rests_on():
     script = ScriptedModel(select=[{"standalone_question": "Can I carry 50 days forward?", "section_ids": ["A2"]}],
                            answer=[{"found": False, "answer": "No", "section_ids": []}])
     r = asyncio.run(Pipeline(ds, script.model, output_mode="prompted").ask("Can I carry 50 days forward?"))
-    assert r.found and r.answer.startswith("No. The documents state:") and "45 days" in r.answer
+    assert r.found and r.answer.startswith("No. ") and "45 days" in r.answer
 
 
 def test_a_multi_part_question_the_model_gives_up_on_is_answered_part_by_part():
@@ -533,7 +533,7 @@ def test_the_highest_total_is_the_column_total_not_a_row():
     script = ScriptedModel(select=[{"standalone_question": q, "section_ids": [f"A{node(t, 'Sheet: Downtime hours by cause')}"]}],
                            answer=[{"found": True, "answer": "Highest Line C: Breakdowns (196)", "section_ids": []}])
     r = asyncio.run(Pipeline([t], script.model, output_mode="prompted", fast_path=False).ask(q))
-    assert "Line C (324)" in r.answer
+    assert "Line C has the highest total (324)" in r.answer
 
 
 def test_a_city_names_its_tier_column_through_the_sections_list():
@@ -562,7 +562,7 @@ def test_a_ranking_question_takes_what_was_worked_out_from_the_table_it_names():
         script = ScriptedModel(select=[{"standalone_question": q, "section_ids": ids}],
                                answer=[{"found": True, "answer": answer, "section_ids": []}])
         return asyncio.run(Pipeline([t], script.model, output_mode="prompted", fast_path=False).ask(q))
-    assert "Line C (293)" in ask("Which line had the highest total downtime, and how many hours?", "Line A").answer
+    assert "Line C has the highest total (293)" in ask("Which line had the highest total downtime, and how many hours?", "Line A").answer
     assert "April" in ask("Which month had the lowest production on Line C?", "March").answer
 
 

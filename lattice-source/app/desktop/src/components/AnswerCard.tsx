@@ -16,9 +16,12 @@ import {
   IconPaperclip,
   IconWorld,
   IconBulb,
+  IconCut,
+  IconRoute,
+  IconTable,
   IconX,
 } from "@tabler/icons-react";
-import { api, ApiError, AskResult, Citation, Figure, Given } from "../api";
+import { api, ApiError, AskResult, Citation, Figure, Given, Note } from "../api";
 import { LIST_ITEM, blocksOf, placeFigures } from "../figurePlace";
 import { MARKUP, stepsOnLines } from "../markup";
 import { figuresIn, highlightTermsIn } from "../types";
@@ -26,6 +29,26 @@ import Highlight from "./Highlight";
 import Markdown from "./Markdown";
 
 type Vote = "helpful" | "wrong";
+
+const FLAGGED_SHOWN = 6; // figures named in "Check against the source"
+
+const NOTE_ICONS: Record<Note["kind"], typeof IconCut> = {
+  unsourced: IconAlertTriangle,
+  cut_off: IconCut,
+  partial_table: IconTable,
+  mixed_parts: IconRoute,
+};
+
+/** A note on the answer, set apart from its text: the answer was cut off, named no sources, ... */
+function NoteBadge({ note }: { note: Note }) {
+  const Icon = NOTE_ICONS[note.kind] ?? IconInfoCircle;
+  return (
+    <span className={`note-badge note-${note.kind}`}>
+      <Icon size="1.05em" aria-hidden />
+      <span>{note.text}</span>
+    </span>
+  );
+}
 
 /** A heading as a button label: "2 Dashboard:" -> "2 Dashboard" */
 function headingOf(title: string): string {
@@ -266,7 +289,9 @@ export default function AnswerCard({
         <div className="answer-status status-caution" role="note">
           <IconAlertTriangle size="1.15em" aria-hidden />
           <span>
-            Check against the source: <strong>{flagged.join(", ")}</strong>{" "}
+            {/* a long list (17 figures of a made-up column) named the first few, then how many more */}
+            Check against the source: <strong>{flagged.slice(0, FLAGGED_SHOWN).join(", ")}</strong>
+            {flagged.length > FLAGGED_SHOWN && ` and ${flagged.length - FLAGGED_SHOWN} more`}{" "}
             {flagged.length === 1 ? "does" : "do"} not appear in the document text
           </span>
         </div>
@@ -295,6 +320,14 @@ export default function AnswerCard({
           )}
         </div>
       ))}
+
+      {(result.notes?.length ?? 0) > 0 && (
+        <div className="note-badges" role="note" aria-label="Notes on this answer">
+          {result.notes!.map((n, i) => (
+            <NoteBadge key={i} note={n} />
+          ))}
+        </div>
+      )}
 
       {/* Manuals: the manual's own sentences; Chat: the quotes the assistant noted, checked */}
       {(result.evidence?.length ?? 0) > 0 && (

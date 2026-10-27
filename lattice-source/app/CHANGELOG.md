@@ -4,6 +4,32 @@ The version is set in `VERSION` (`set-version.ps1 <version>`). Every release bui
 `Lattice-share\builds\Lattice-<version>-setup.exe`, listed in `Lattice-share\builds\BUILDS.md`.
 Numbering: the last number for fixes (0.2.0 -> 0.2.1), the middle one for new features (0.3.0).
 
+## 0.2.5 - 27 Oct 2026
+
+Answers that read like a person wrote them, and notes as badges (screens reviewed with real Nemotron answers:
+long tables, conversations of 3 to 5 turns, both modes)
+- Answers Lattice reads out itself are sentences: "The warranty period for R7 and R9 routers is 1 year longer
+  than for M3 mesh nodes (50% longer)" instead of "Worked out from the table: R7 and R9 routers minus M3 mesh
+  nodes in Warranty period: 1 (50% of M3 mesh nodes)"; "For Privilege Leave (PL), the carry forward is up to
+  45 days" instead of "From the documents: Leave Type: ... · Carry Forward: Up to 45 days"; "No. Contractors
+  may not drive Helix forklifts." instead of "No. The documents state: ...". A difference keeps its unit.
+- Notes on an answer (cut off, sources not named, only part of a table in the document, steps from different
+  parts of the manual) are badges on the card, not italic lines inside the answer. Old answers in History
+  show them as badges too.
+- Formulas written in LaTeX ("\frac{Output × Target cycle time}{Available time}") are shown as plain text.
+- "Check against the source" names the first 6 figures and how many more (one answer listed 17).
+- A summary point starting in bold lost its first "**" and showed "12,480 tickets resolved** with ...".
+- A summary's "Q3 2026" was flagged although the document's name says it.
+- A figure flagged in one answer showed "Numbers match the document" when the next answer repeated it.
+- References written "[S5, [4], Notes]" were shown as text (and "S5" flagged as a figure); "[2]. [2]" shows once.
+- A busy model server says which: "rate-limited", "still loading" or "not responding" (all were "busy or still
+  loading").
+- Chat: an answer no longer repeats the question as its first line, nor ends with "Worked out from the tables
+  (exact): ...", the label its worked-out tables come under.
+- A shouted "NO: The policy states ..." reads "No. The policy states ...".
+- "Working in: skylink_limited_warranty.pdf › skylink_limited_warranty.pdf" names the document once.
+- The options of a question back are one list of equal width (each was as wide as its own text).
+
 ## 0.2.4 - 27 Oct 2026
 
 Found by 176 generated questions over all 9 new-format knowledge bases (Nemotron 3.5 Lightning answering,

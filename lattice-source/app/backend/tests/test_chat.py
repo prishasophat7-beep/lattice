@@ -181,7 +181,7 @@ def test_a_reply_that_keeps_repeating_is_cut_off(office):
     unit = "**Regarding the tool head:** see section [S1], page 2. The diagram shows the tool head assembly.\n"
     client = office(ChatScript([{"text": "Here is what I found.\n" + unit * 15}]))
     r = client.post("/api/ask", json={"question": "What about the tool head?", "mode": "chat"}).json()
-    assert r["answer"].count("Regarding the tool head") <= 2 and r["answer"].endswith("*(The answer was cut off.)*")
+    assert r["answer"].count("Regarding the tool head") <= 2 and [n["kind"] for n in r["notes"]] == ["cut_off"]
 
 
 def test_bare_reference_lists_are_removed(office):

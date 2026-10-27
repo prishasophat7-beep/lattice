@@ -30,6 +30,9 @@ const PLACEHOLDER: Record<Mode, string> = {
 /** The "Working in" line: the manual, then the last three headings ("Multi X Classification ›
  * Creating a MultiX solution › Training"); the whole path is in its tooltip. */
 function placeLine(path: string[]): string[] {
+  // a heading named after its document is not said twice ("skylink_limited_warranty.pdf ›
+  // skylink_limited_warranty.pdf"), as in the source labels
+  path = path.filter((p, i) => i === 0 || p.trim() !== path[0].trim());
   return path.length <= 4 ? path : [path[0], "…", ...path.slice(-3)];
 }
 

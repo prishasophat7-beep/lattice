@@ -64,6 +64,7 @@ function turnFromHistory(h: HistoryEntry): Turn {
       figures: h.figures ?? [],
       general: h.general,
       worked_out: h.worked_out ?? false,
+      notes: h.notes ?? [],
       focus: h.focus,
       files: h.files ?? [],
       summary: h.summary ?? false,
@@ -105,9 +106,16 @@ function modelStatus(health: Health, info: ModelInfo | null): ModelStatus {
   return "ready";
 }
 
+/** "The model endpoint is rate-limited; try again shortly" -> "... rate-limited. Try again shortly." */
+function sentence(message: string): string {
+  const m = message.trim().replace(/;\s*(\w)/, (_, c: string) => `. ${c.toUpperCase()}`);
+  return m && !/[.!?]$/.test(m) ? `${m}.` : m;
+}
+
 function friendlyError(status: number, message: string): string {
   if (status === 0) return "The assistant's engine is not responding. Wait a moment and try again.";
-  if (status === 503) return "The language model is busy or still loading. Try again in a moment.";
+  // the engine says which: rate-limited, still loading, not responding (all were "busy or still loading")
+  if (status === 503) return sentence(message) || "The language model is busy or still loading. Try again in a moment.";
   // the engine says which limit: a model service's allowance used up, or this setup's daily budget
   if (status === 429) return message || "The model service's usage limit is used up. Try again after it resets.";
   return message || "Something went wrong while answering.";

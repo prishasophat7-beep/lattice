@@ -64,8 +64,9 @@ from .models import Doc
 from .figures import (MAX_FIGURES, MAX_LISTED, PictureRef, PictureRequest, figure_pages, picture_request,
                       fix_typos, is_visual, render_page, topic_tokens)
 from .pipeline import (CLOSING_REPLIES, MAX_CLARIFY_OPTIONS, MAX_CONTEXT_TURNS, AskResult, Clarification, ClarifyOption,
-                       Figure, ModelRanAway, ModelRefused, Pipeline, ProviderBusy, _ELLIPTICAL, fixed_reply, smalltalk_reply,
+                       Figure, ModelRanAway, ModelRefused, Note, Pipeline, ProviderBusy, _ELLIPTICAL, fixed_reply, smalltalk_reply,
                        _STUCK, summary_request)
+from .wording import lift_notes, plain_math, tidy_verdict
 from .calc import CalcError, calculate
 from .search import tokenize
 from .vague import vague_clarification
@@ -495,6 +496,11 @@ class Engine:
         return [(h.get("standalone_question") or h["question"], _with_pictures(h))
                 for h in reversed(entries[:turns])]
 
+    def unchecked_figures(self, conversation_id: str | None, replacing: str | None = None) -> set[str]:
+        """The figures earlier answers of the conversation gave that the documents do not have."""
+        return {f for h in self.conversation(conversation_id or "") if h.get("id") != replacing
+                for f in h.get("unverified_numbers") or []} if conversation_id else set()
+
     async def classify(self, question: str, pipeline: Pipeline) -> tuple[str, str]:
         """(kind, topic) of a request: "question", "pictures", "summary" or "all_manuals".
 
@@ -888,6 +894,9 @@ class Engine:
             })
             result.history_id = entry["id"]
             return result
+        # notes written under the answer go on its card as badges; formulas in plain text
+        result.answer, notes = lift_notes(plain_math(tidy_verdict(result.answer)))
+        result.notes = [Note(**n) for n in notes]
         # a follow-up citing the same table again does not repeat its chart under every answer
         self.add_figures(result, self.figures_shown(conversation_id, replaces))
         entry = self.history.append({
@@ -903,7 +912,7 @@ class Engine:
             "summary": result.summary,
             # Chat mode: so a reopened conversation shows the same banner and file note
             "general": result.general, "files": result.files,
-            "worked_out": result.worked_out,
+            "worked_out": result.worked_out, "notes": [n.model_dump() for n in result.notes],
             "focus": result.focus.model_dump() if result.focus else None,
             "unverified_numbers": result.unverified_numbers, "seconds": result.seconds.get("total"),
             "kb_version": self.manifest.kb_version if self.manifest else None,
@@ -1731,7 +1740,7 @@ def create_app(settings: Settings | None = None, model: Model | None = None) -> 
             documents_only=await engine.chat_is_small(engine.chat_llm),
             tier=engine.chat_tier(), context_tokens=await engine.chat_context(),
             earlier=engine.earlier_sections(req.conversation_id, req.replaces), place=place,
-            picked=picked_section(req),
+            unchecked=engine.unchecked_figures(req.conversation_id, req.replaces), picked=picked_section(req),
             introduction=None if req.section else about_section_asked(req, pipeline, scope),
             attachment_text=(lambda aid: engine.attachments.text(conversation, aid)) if conversation else None)
         return await chat_with_pictures(_as_smalltalk(pending) if greeting else pending)
@@ -2100,6 +2109,9 @@ def create_app(settings: Settings | None = None, model: Model | None = None) -> 
         else:
             entries = live_entries(engine.history.read(limit))
         votes = {v.get("history_id"): v for v in latest_votes()}
+        # answers saved before notes were badges carry them as their last lines
+        entries = [e if "notes" in e or not e.get("answer") else
+                   {**e, **dict(zip(("answer", "notes"), lift_notes(e["answer"])))} for e in entries]
         # sources under the document's name as shown now (a name made readable later, a renamed file)
         names = {d.doc_id: engine.title_of(d) for d in engine.docs}
         entries = [{**e, "citations": [{**c, "doc_name": names.get(c.get("doc_id"), c.get("doc_name"))}

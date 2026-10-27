@@ -35,6 +35,7 @@ from .focus import _VARIANT as _VARIANT_WORD, Focus, heading, named_one, near as
 from .llm import QUOTA_MESSAGE, BudgetExceeded, OutputMode, RequestBudget, describe_error, quota_exhausted, run_settings
 from .models import Doc
 from .numbers import numbers_in, unverified_numbers
+from .wording import as_sentence, with_verdict
 from .doctools import excerpt, find_facts, partial_table_note, ranking_words, scored_table_cell, statements, table_cell, table_highlights
 from .loops import Looping, repeating_from, without_repeated_sentences
 from .plan import follow_up, language_of, parts_note, question_parts, starts_fresh
@@ -503,7 +504,9 @@ class SummaryDraft(BaseModel):
                               description="3 to 6 short points: main topics, procedures, settings, error codes")
 
     def text(self) -> str:
-        points = [p.strip().lstrip("-*• ").strip() for p in self.points if p and p.strip()]
+        # the point's own bullet, not the bold that opens it: "**12,480 tickets resolved** ..." lost its
+        # "**" and showed "12,480 tickets resolved** with ..." (Nemotron summary, 27 Oct 2026)
+        points = [re.sub(r"^(?:[-•]|\*(?!\*))\s*", "", p.strip()).strip() for p in self.points if p and p.strip()]
         unique: dict[str, str] = {}  # small models sometimes repeat a point
         for p in points:
             unique.setdefault(" ".join(p.casefold().split()), p)
@@ -533,6 +536,12 @@ class Citation(BaseModel):
 class Evidence(BaseModel):
     text: str
     citation: int  # index into AskResult.citations
+
+
+class Note(BaseModel):
+    """A note on the answer, shown as a badge on its card (see wording.lift_notes)."""
+    kind: Literal["unsourced", "cut_off", "partial_table", "mixed_parts"]
+    text: str
 
 
 class Figure(BaseModel):
@@ -597,6 +606,8 @@ class AskResult(BaseModel):
     # not stated in the documents in so many words, but worked out from what they state ("the limit
     # is 45 days, so 50 is not allowed"): shown as such, with the sections it follows from
     worked_out: bool = False
+    # notes on the answer (cut off, sources not named, ...): badges, not lines of the answer
+    notes: list[Note] = []
     # where the conversation is in the documents after this answer (see focus.py)
     focus: Focus | None = None
 
@@ -1074,7 +1085,9 @@ class Pipeline:
         text = draft.output.text()
         return AskResult(question=question, found=bool(text), mode=mode, summary=True,
                          answer=text or NOT_FOUND, citations=chapters,
-                         unverified_numbers=unverified_numbers(text, doc.description + "\n" + outline, question),
+                         # (with the title it was given: "Q3 2026" from q3_2026_support_review.docx was flagged)
+                         unverified_numbers=unverified_numbers(
+                             text, f"{re.sub(r'[_-]', ' ', doc.display_title)}\n{doc.description}\n{outline}", question),
                          model_requests=draft.usage.requests,
                          seconds={"total": round(time.perf_counter() - t0, 2)})
 
@@ -1736,9 +1749,9 @@ class Pipeline:
                 if said.lower().startswith("yes") and _NEGATED.search(rule[1][2]):
                     # "Yes. The documents state: Tools heavier than 7 kg ... must not be loaded" (8 kg
                     # asked, final test): a yes with a rule that says no is the rule alone
-                    out.answer, out.worked_out = f"The documents state: {rule[1][2]}", False
+                    out.answer, out.worked_out = as_sentence(rule[1][2]), False
                 else:
-                    out.answer = f"{said}. The documents state: {rule[1][2]}"
+                    out.answer = with_verdict(said, rule[1][2])
                 cited = cited or [rule[0]]
         elif found and _YES.match(out.answer) and (_YES_NO_QUESTION.match(standalone) or _ASKS_YES_NO.search(standalone)) \
                 and not _NEGATED.search(re.split(r"(?<=[.!?;…])\s|,?\s+(?:but|however|though|provided|unless|except|"
@@ -1751,7 +1764,7 @@ class Pipeline:
             rule = self._rule_for(standalone, shown, cited, no=True, forbidding=True)
             # one that shares the question's words (two or more), not any "not" in the section
             if rule is not None and _rule_about(rule[1][2], standalone):
-                out.answer, cited, out.worked_out = f"The documents state: {rule[1][2]}", [rule[0]], False
+                out.answer, cited, out.worked_out = as_sentence(rule[1][2]), [rule[0]], False
         # Small models tend to cite everything they read. When the answer quotes figures, keep the
         # sources that contain them (if any do).
         figures = numbers_in(out.answer) - numbers_in(standalone)
@@ -1823,7 +1836,7 @@ class Pipeline:
             # "not found" (final test): the one cell the question names, read in code
             i, (line, _value) = cell_at
             found, cited, flagged, out.worked_out = True, [i], [], False
-            out.answer = f"From the documents: {line}"
+            out.answer = as_sentence(line)
         if not found and (_YES_NO_QUESTION.match(standalone) or _ASKS_YES_NO.search(standalone)):
             # "Is laundry reimbursed on a 3-night trip?" answered "not found" while "laundry for trips
             # shorter than 4 nights" is in a list of what is not reimbursed (final test): the rule
@@ -1831,7 +1844,7 @@ class Pipeline:
             rule = self._rule_for(standalone, shown)
             if rule is not None and not foreign([rule[0]]) and _rule_about(rule[1][2], standalone, RULE_SHARE):
                 found, cited, flagged, out.worked_out = True, [rule[0]], [], False
-                out.answer = f"The documents state: {rule[1][2]}"
+                out.answer = as_sentence(rule[1][2])
         if not found and not _YES_NO_QUESTION.match(standalone):
             # "the minimum RAM?" answered "not found" (or with something else) while "Memory · Minimum:
             # 4 GB RAM" was in front of it: the one statement or table result holding the question's words
@@ -1839,7 +1852,7 @@ class Pipeline:
             if stated is not None and not foreign([stated[0]]):
                 i, line, is_worked = stated
                 found, cited, flagged = True, [i], []
-                out.answer = f"{'Worked out from the table' if is_worked else 'From the documents'}: {line}"
+                out.answer = as_sentence(line)
                 out.worked_out = is_worked
         value = cell_at[1][1] if cell_at is not None else ""
         if found and cell_at is not None and not foreign([cell_at[0]]) and not _YES_NO_QUESTION.match(standalone) \
@@ -1848,7 +1861,7 @@ class Pipeline:
             # a figure from another cell of the table, or another cell's words ("Premium economy" for
             # a 9-hour flight, the 0.8B in the large-document test): the cell the question names instead
             i, (line, _value) = cell_at
-            out.answer, cited, flagged, out.worked_out = f"From the documents: {line}", [i], [], False
+            out.answer, cited, flagged, out.worked_out = as_sentence(line), [i], [], False
         rank = re.search(r"\b(highest|lowest|most|least|largest|smallest|longest|shortest|biggest|greatest|"
                          r"fewest|cheapest|costliest|priciest|slowest|fastest|quickest|heaviest|lightest|"
                          r"hottest|coldest)\b", standalone, re.IGNORECASE)
@@ -1884,7 +1897,7 @@ class Pipeline:
                     continue
                 if not numbers_in(line) <= numbers_in(out.answer if found else "") and not foreign([i]):
                     found, cited, flagged, out.worked_out = True, [i], [], True
-                    out.answer = f"Worked out from the table: {line}"
+                    out.answer = as_sentence(line)
                 break
         if found and _RANKS.search(standalone):
             # "the highest response time" from a table given only in part: the 0.8B ranked the 10 rows
@@ -1926,7 +1939,8 @@ class Pipeline:
             # from the cited section that contains most of the question's words (not just the first)
             di, nid = max(cited_sections, key=lambda s: len(self.index.matched_terms(s[0], s[1], standalone)))
             if set(tokenize(self.index.spell(standalone))) <= self.index.matched_terms(di, nid, standalone):
-                out.answer = "From the documents: " + self.index.snippet(di, nid, standalone, width=ECHO_SNIPPET_CHARS)
+                out.answer = (f'The "{self.docs[di].sections[nid].title}" section says: '
+                              + self.index.snippet(di, nid, standalone, width=ECHO_SNIPPET_CHARS))
             else:
                 # "the name of Acme's CEO?" answered "Acme CEO": no section has what was asked, and a
                 # passage about something else would read as the answer

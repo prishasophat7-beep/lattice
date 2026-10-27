@@ -365,7 +365,7 @@ def test_an_answer_that_only_repeats_the_question_shows_the_passage(pageindex_kb
     script = ScriptedModel(select=[{"section_ids": ["A2"]}],
                            answer=[{"found": True, "answer": "Start-up pressure", "section_ids": ["A2"]}])
     r = ask(docs, script, "start-up pressure?")
-    assert r.found and r.answer.startswith("From the documents: ") and "180 bar" in r.answer
+    assert r.found and r.answer.startswith('The "') and '" section says: ' in r.answer and "180 bar" in r.answer
 
 
 def test_the_passage_comes_from_the_cited_section_that_matches_the_question(pageindex_kb):
@@ -373,7 +373,7 @@ def test_the_passage_comes_from_the_cited_section_that_matches_the_question(page
     script = ScriptedModel(select=[{"section_ids": ["A0", "A2"]}],
                            answer=[{"found": True, "answer": "Start-up pressure", "section_ids": ["A0", "A2"]}])
     r = ask(docs, script, "start-up pressure?")
-    assert r.answer.startswith("From the documents: ") and "180 bar" in r.answer and "lockout" not in r.answer
+    assert r.answer.startswith('The "') and '" section says: ' in r.answer and "180 bar" in r.answer and "lockout" not in r.answer
 
 
 def test_a_misspelt_question_reaches_the_model_with_the_documents_spelling(pageindex_kb):

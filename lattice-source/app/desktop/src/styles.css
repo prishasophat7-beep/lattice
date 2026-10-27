@@ -1031,6 +1031,36 @@ button {
 .status-ok {
   color: var(--good);
 }
+/* notes on the answer (cut off, sources not named, ...): badges under it, not lines of its text */
+.note-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.15rem;
+}
+.note-badge {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 0.35rem;
+  max-width: 100%;
+  padding: 0.25rem 0.6rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface-2);
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+.note-badge svg {
+  flex: none;
+  margin-top: 0.1em;
+}
+.note-unsourced,
+.note-cut_off {
+  border-color: transparent;
+  background: var(--caution-soft);
+  color: var(--caution);
+}
 .status-caution {
   color: var(--caution);
 }
@@ -1051,6 +1081,11 @@ button {
 }
 .clarify-option > span {
   display: grid;
+}
+/* options with a line of detail stack as one list of equal width (each was as wide as its own text) */
+.clarify-option:has(.meta) {
+  flex: 1 1 100%;
+  max-width: 36rem;
 }
 .clarify-label {
   font-weight: 600;

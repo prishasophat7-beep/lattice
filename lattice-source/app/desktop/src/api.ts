@@ -47,6 +47,8 @@ export interface AskResult {
   files?: string[];
   /** Not stated in the documents in so many words, but worked out from what they state */
   worked_out?: boolean;
+  /** Notes on the answer, shown as badges (cut off, sources not named, ...). Older engines omit it. */
+  notes?: Note[];
   /** Where the conversation is after this answer (the "Working in" line). Older engines omit it. */
   focus?: Focus | null;
 }
@@ -262,7 +264,14 @@ export interface HistoryEntry {
   /** saved when asked: the answer never came (stopped, or the app closed) */
   pending?: boolean;
   worked_out?: boolean;
+  notes?: Note[];
   focus?: Focus | null;
+}
+
+/** A note on an answer, shown as a badge on its card. */
+export interface Note {
+  kind: "unsourced" | "cut_off" | "partial_table" | "mixed_parts";
+  text: string;
 }
 
 /** A vote given on an answer. */

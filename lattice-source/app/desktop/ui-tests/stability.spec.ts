@@ -455,3 +455,27 @@ test.describe("asking back and searching", () => {
     await expect(page.getByText("STALE RESULT")).toHaveCount(0);
   });
 });
+
+// Notes on an answer are badges on its card, not lines of its text; a long figure check names a few (27 Oct 2026)
+test.describe("answer card", () => {
+  test.use({ viewport: { width: 1200, height: 820 } });
+  const sse = (...events: object[]) => events.map((e) => `data: ${JSON.stringify(e)}\n\n`).join("");
+
+  test("notes show as badges and a long list of unchecked figures is shortened", async ({ page }) => {
+    await open(page);
+    const flagged = ["206", "203", "314", "209", "315", "204", "208", "316"];
+    await page.route("**/api/ask/stream", (route) =>
+      route.fulfill({ contentType: "text/event-stream", body: sse({ stage: "done", result: {
+        question: "Downtime by month?", found: true, mode: "manuals", answer: "| Month | Hours |\n| --- | --- |\n| Jan | 206 |",
+        citations: [], considered: [], seconds: { total: 1 }, model_requests: 1, unverified_numbers: flagged,
+        notes: [{ kind: "cut_off", text: "The answer was cut off. Ask about a narrower part for the rest." },
+                { kind: "unsourced", text: "The assistant did not name its sources for this answer: check it in the documents." }],
+      } }) }));
+    await ask(page, "Downtime by month?");
+    const card = page.locator(".answer:not(.answer-draft)").last();
+    await expect(card.locator(".note-badge")).toHaveCount(2);
+    await expect(card.locator(".note-cut_off")).toContainText("The answer was cut off.");
+    await expect(card.locator(".answer-piece")).not.toContainText("cut off");
+    await expect(card.getByText(/and 2 more/)).toBeVisible();
+  });
+});

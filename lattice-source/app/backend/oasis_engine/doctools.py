@@ -278,6 +278,18 @@ def _shown(x: float) -> str:
     return f"{round(x, 2):,.12g}"
 
 
+_CELL_UNIT = re.compile(r"^[^\d]*[\d.,]+\s*([A-Za-z]{1,12}s?)\.?$")
+
+
+def _shared_unit(cells: list[str], value: float) -> str:
+    """The unit the cells give their numbers in, for a value worked out from them: " years" for "3
+    years" and "2 years" (a difference of 1: " year"); "" when they differ or give none."""
+    units = {m.group(1).lower() if (m := _CELL_UNIT.match(c.strip())) else "" for c in cells}
+    if len(units) != 1 or not (unit := units.pop()):
+        return ""
+    return " " + (unit[:-1] if abs(value) == 1 and unit.endswith("s") and len(unit) > 2 else unit)
+
+
 def table_highlights(doc: Doc, nid: str, question: str) -> tuple[list[str], list[str]]:
     """For a question that ranks, compares or adds up ("which month had the best margin?", "March
     vs January"), the answer worked out in code from the section's tables: highest and lowest row
@@ -329,7 +341,7 @@ def table_highlights(doc: Doc, nid: str, question: str) -> tuple[list[str], list
                 a, b = picked_rows
                 va, vb = number(a[ci]), number(b[ci])
                 if va is not None and vb is not None:
-                    line = f"{a[label]} minus {b[label]} in {col}: {_shown(va - vb)}"
+                    line = f"{a[label]} minus {b[label]} in {col}: {_shown(va - vb)}{_shared_unit([a[ci], b[ci]], va - vb)}"
                     computed.append(_plain(va - vb))
                     if vb:
                         line += f" ({_shown((va - vb) / abs(vb) * 100)}% of {b[label]})"

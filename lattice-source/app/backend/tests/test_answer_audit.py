@@ -401,3 +401,85 @@ def test_an_answer_about_a_product_from_another_document_naming_it_is_kept():
     r = _ask_docs(docs, q, "R7 routers have a 3-year warranty, while M3 mesh nodes have a 2-year warranty: "
                            "1 year longer.", [(1, "2 Warranty Period")])
     assert r.found and r.answer.startswith("R7 routers have a 3-year warranty")
+
+
+@pytest.mark.parametrize("line, sentence", [
+    ("R7 and R9 routers minus M3 mesh nodes in Warranty period: 1 year (50% of M3 mesh nodes)",
+     "The warranty period for R7 and R9 routers is 1 year longer than for M3 mesh nodes (50% longer)."),
+    ("March minus January in Revenue: -3,000 (-2.5% of January)",
+     "The revenue for March is 3,000 lower than for January (2.5% lower)."),
+    ("Highest Revenue: March (291,400)", "March has the highest revenue (291,400)."),
+    ("Total Downtime hours over the 5 rows: 406", "The total downtime hours over the 5 rows is 406."),
+    ("Increase from January to March in Revenue: 12,400 (4.4%)", "The revenue rose by 12,400 from January to March (4.4%)."),
+    ("Highest column total: Line B (271)", "Line B has the highest total (271)."),
+    ("Leave Type: Privilege Leave (PL) · Carry Forward: Up to 45 days",
+     "For Privilege Leave (PL), the carry forward is up to 45 days."),
+    ("Part: HX9-4194 · Supplier: Bosch Rexroth", "For HX9-4194, the supplier is Bosch Rexroth."),
+    ("Contractors may not drive Helix forklifts.", "Contractors may not drive Helix forklifts."),
+])
+def test_facts_read_out_in_code_are_shown_as_sentences(line, sentence):
+    from oasis_engine.wording import as_sentence
+    assert as_sentence(line) == sentence
+
+
+def test_a_compared_difference_keeps_the_cells_unit():
+    from oasis_engine.doctools import _shared_unit
+    assert _shared_unit(["3 years", "2 years"], 1) == " year"
+    assert _shared_unit(["12 days", "45 days"], -33) == " days"
+    assert _shared_unit(["291,400", "120,000"], 171_400) == ""
+
+
+def test_notes_under_an_answer_become_badges_and_other_italics_stay():
+    from oasis_engine.chat import UNSOURCED_NOTE
+    from oasis_engine.wording import lift_notes
+    text, notes = lift_notes("Open the menu.\n\n" + UNSOURCED_NOTE + "\n\n*(The answer was cut off.)*")
+    assert text == "Open the menu." and [n["kind"] for n in notes] == ["unsourced", "cut_off"]
+    assert notes[1]["text"] == "The answer was cut off."
+    text, notes = lift_notes("A.\n\n*Note: the document includes only part of this table. It says: mean 169.6 ms.*")
+    assert notes == [{"kind": "partial_table", "text": "The document includes only part of this table. It says: mean 169.6 ms."}]
+    assert lift_notes("Answer.\n\n*Hope this helps!*") == ("Answer.\n\n*Hope this helps!*", [])
+
+
+def test_formulas_written_in_latex_are_shown_as_plain_text():
+    from oasis_engine.wording import plain_math
+    assert plain_math(r"OEE = \frac{Output × Target cycle time}{Available time}") == \
+        "OEE = (Output × Target cycle time) / (Available time)"
+    assert plain_math(r"Downtime = $288 \times (1 - 0.802) \approx 57$ h") == "Downtime = 288 × (1 - 0.802) ≈ 57 h"
+    assert plain_math(r"**Total:** \(27{,}600 + 11{,}700 = 39{,}300\)") == "**Total:** 27,600 + 11,700 = 39,300"
+    for kept in ("It costs $5 and $10.", r"Use `a\times b` in code", r"Path C:\new\folder stays"):
+        assert plain_math(kept) == kept
+
+
+def test_a_summary_point_keeps_the_bold_it_starts_with():
+    draft = p.SummaryDraft(overview="The Q3 review.", points=["**12,480 tickets resolved**, CSAT **91.3%**",
+                                                               "- **Backlog** grew 19%", "* Top reasons: no internet"])
+    assert draft.text() == ("The Q3 review.\n\n- **12,480 tickets resolved**, CSAT **91.3%**\n- **Backlog** grew 19%\n"
+                            "- Top reasons: no internet")
+
+
+def test_a_figure_flagged_in_an_earlier_answer_does_not_check_out_a_later_one():
+    from oasis_engine.chat import without_figures
+    earlier = "| April | C | 52.3 | 378 |\nDowntime ≈ 378 h; OEE 52.3 %."
+    assert "378" not in without_figures(earlier, {"378", "S5"}) and "52.3" in without_figures(earlier, {"378"})
+    assert without_figures("3,780 parts", {"378"}) == "3,780 parts"
+
+
+def test_an_answer_does_not_repeat_the_question_or_the_label_of_worked_out_tables():
+    from oasis_engine.chat import without_echoes
+    q = "Which line improved the most over the quarter?"
+    answer = (f"**{q}**\n\nLine B improved the most [1].\n\n*Worked out from the tables (exact):* [1] OEE change "
+              "per line, Jan → Jun.")
+    assert without_echoes(answer, q) == "Line B improved the most [1]."
+    assert without_echoes("Line B.", "Line B.") == "Line B."  # an answer that is only that line stays
+
+
+@pytest.mark.parametrize("said, shown", [
+    ("NO: The policy states a maximum of 45 days.", "No. The policy states a maximum of 45 days."),
+    ("**YES:** you can.", "Yes. You can."),
+    ("No - only 45 days.", "No. Only 45 days."),
+    ("Nothing is said about it.", "Nothing is said about it."),
+    ("No. Contractors may not drive.", "No. Contractors may not drive."),
+])
+def test_a_shouted_yes_or_no_reads_as_a_sentence(said, shown):
+    from oasis_engine.wording import tidy_verdict
+    assert tidy_verdict(said) == shown
