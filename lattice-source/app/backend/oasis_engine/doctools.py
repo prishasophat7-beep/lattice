@@ -37,7 +37,9 @@ WHOLE_TABLE_CHARS = 2_000_000  # a section read whole when code works out from i
 MAP_CHARS = 6_000
 
 _PAGE_LABEL = re.compile(r"\[page \d+\]")
-_NUMBER = re.compile(r"-?\d{1,3}(?:,\d{3})+(?:\.\d+)?|-?\d*\.\d+|-?\d+")
+# (Indian grouping first: "8,40,000" is 840000; it was read as 8, so an order-value column ranked and added up
+# wrong; found 28 Oct 2026. numbers.py reads figures the same way)
+_NUMBER = re.compile(r"-?\d{1,2}(?:,\d{2})+,\d{3}(?:\.\d+)?|-?\d{1,3}(?:,\d{3})+(?:\.\d+)?|-?\d*\.\d+|-?\d+")
 
 
 def units(doc: Doc, nid: str, whole: bool = False) -> list[str]:
@@ -107,13 +109,19 @@ _CODE_CELL = re.compile(r"(?!(?:inr|rs|usd|eur|gbp|aed|sgd|cad|aud)\.?\s?\d)[A-Z
                         re.IGNORECASE)
 
 _CURRENCY_LEAD = re.compile(r"^(?:inr|rs|usd|eur|gbp|aed|sgd|cad|aud)\.?\s*(?=[\d(])", re.IGNORECASE)
+_MONTH = r"(?:jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[a-z]*\.?"
+# a date is no amount: "27 May 2026" was ranked as 27 ("PO-26-0538 has the highest due date (27)" for the
+# order with the biggest delay; overnight test, 28 Oct 2026)
+_DATE_CELL = re.compile(rf"\d{{1,2}}[ -]{_MONTH}(?:[ -,]+\d{{2,4}})?|{_MONTH} \d{{1,2}}(?:,? \d{{4}})?|"
+                        r"\d{4}-\d{1,2}-\d{1,2}|\d{1,2}[/.]\d{1,2}[/.]\d{2,4}", re.IGNORECASE)
+
 
 def number(cell: str) -> float | None:
     """The value of a table cell: "1,870" 1870, "+31.0%" 31.0, "(2)" -2, "18-27 days" 18 (a range:
     its lower end), "$4.5K" 4.5. None for text."""
     text = cell.strip().replace("−", "-")
-    if _CODE_CELL.fullmatch(text):
-        return None  # a part or order number ("HX9-4002", "PO-26-0503", "A302"), not the value 9
+    if _CODE_CELL.fullmatch(text) or _DATE_CELL.fullmatch(text):
+        return None  # a part or order number ("HX9-4002", "PO-26-0503", "A302"), not the value 9; a date
     text = _CURRENCY_LEAD.sub("", text)  # "Rs.500" is 500, not .500
     negative = text.startswith("(") and text.endswith(")")
     m = _NUMBER.search(text)

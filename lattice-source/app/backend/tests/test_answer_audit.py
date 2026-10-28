@@ -553,3 +553,13 @@ def test_a_number_the_document_writes_as_a_word_checks_out():
     src = "40 employees received the email. Six people clicked the link; one entered their password."
     assert unverified_numbers("6 people clicked and 1 entered it.", src) == []
     assert unverified_numbers("7 people clicked.", src) == ["7"]
+
+
+def test_table_cells_with_dates_and_indian_grouping_are_read_right():
+    from oasis_engine.doctools import number
+    from oasis_engine.wording import as_sentence
+    assert number("27 May 2026") is None and number("2026-05-27") is None and number("May 12, 2026") is None
+    assert number("8,40,000") == 840000 and number("Rs. 3,60,000") == 360000 and number("1,870") == 1870
+    assert as_sentence("Highest Order value (INR): PO-26-0503 (920,000)") == \
+        "PO-26-0503 has the highest order value (920,000 INR)."
+    assert as_sentence("Lowest OEE (%): Line C (58)") == "Line C has the lowest OEE (58%)."

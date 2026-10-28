@@ -52,7 +52,10 @@ def as_sentence(line: str) -> str:
     if m := _COLUMN_TOTAL.match(line):
         return f"{m.group(2)} has the {m.group(1).lower()} total ({m.group(3)})."
     if m := _RANKED.match(line):
-        return f"{m.group(3)} has the {m.group(1).lower()} {_noun(m.group(2))} ({m.group(4)})."
+        # the column's unit goes with the value: "the highest order value (920,000 INR)", not "(INR) (920,000)"
+        column, unit = re.match(r"(.*?)(?:\s*\(([^()]{1,12})\))?$", m.group(2)).groups()
+        value = f"{m.group(4)} {unit}" if unit and unit != "%" else f"{m.group(4)}{unit or ''}"
+        return f"{m.group(3)} has the {m.group(1).lower()} {_noun(column)} ({value})."
     if m := _OVER_ROWS.match(line):
         return f"The {m.group(1).lower()} {_noun(m.group(2))} over the {m.group(3)} rows is {m.group(4)}."
     if m := _MINUS.match(line):

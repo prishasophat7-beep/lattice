@@ -4,6 +4,16 @@ The version is set in `VERSION` (`set-version.ps1 <version>`). Every release bui
 `Lattice-share\builds\Lattice-<version>-setup.exe`, listed in `Lattice-share\builds\BUILDS.md`.
 Numbering: the last number for fixes (0.2.0 -> 0.2.1), the middle one for new features (0.3.0).
 
+## 0.2.7 - 28 Oct 2026
+
+Found by the last overnight runs (0.2.6, the second question set)
+- Tables: an amount written the Indian way ("8,40,000" INR) was read as 8, so a ranking, total or difference over
+  an order-value column was wrong. It is read as 840000, as the figure check already did.
+- Tables: a date ("27 May 2026") was read as the number 27: "Which purchase order had the biggest delay?" was
+  answered "PO-26-0538 has the highest due date (27)" instead of the model's right PO-26-0503 (14 days late).
+  Dates are not amounts.
+- A ranked value carries its column's unit: "the highest order value (920,000 INR)", not "(INR) (920,000)".
+
 ## 0.2.6 - 28 Oct 2026
 
 Found by the overnight tests (a second set of generated questions, two-turn conversations, MiniMax M3.1 Flash

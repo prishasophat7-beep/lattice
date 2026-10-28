@@ -1,6 +1,6 @@
 [project]
 name = "oasis-engine"
-version = "0.2.6"
+version = "0.2.7"
 description = "Offline vectorless-RAG engine for the Oasis assembly-line assistant"
 requires-python = ">=3.11"
 dependencies = [
