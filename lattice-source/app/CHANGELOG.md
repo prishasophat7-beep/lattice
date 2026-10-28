@@ -4,6 +4,14 @@ The version is set in `VERSION` (`set-version.ps1 <version>`). Every release bui
 `Lattice-share\builds\Lattice-<version>-setup.exe`, listed in `Lattice-share\builds\BUILDS.md`.
 Numbering: the last number for fixes (0.2.0 -> 0.2.1), the middle one for new features (0.3.0).
 
+## 0.2.8 - 28 Oct 2026
+
+Found by the last of the overnight runs (0.2.6 and 0.2.7, both question sets finished)
+- Manuals: "How long do project invitations remain valid?" was answered "The documents don't cover this" every
+  time (Chat answered "7 days"): the model picked no section and only the search's top one (Reports) was read.
+  When the model picks nothing, the search's best 3 sections are read.
+- "YES. Pin 7 is RLY_OB" reads "Yes. Pin 7 is RLY_OB".
+
 ## 0.2.7 - 28 Oct 2026
 
 Found by the last overnight runs (0.2.6, the second question set)

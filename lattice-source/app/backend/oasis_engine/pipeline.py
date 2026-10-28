@@ -1259,6 +1259,11 @@ class Pipeline:
             top_id = _short_id(ids.letters[top.doc_index], top.node_id)
             if top_id in ids.by_id and top_id not in chosen:
                 chosen.append(top_id)
+        # the model picked nothing: the searches' best sections, not the top one alone ("How long do project
+        # invitations remain valid?" read only Reports, ranked just above Adding Team Members; Nemotron, 28 Oct 2026)
+        # (a question in parts gets each part's best below)
+        if not choice.output.section_ids and not question_parts(standalone):
+            chosen += [g for g in guess if g not in chosen][:max(0, FALLBACK_SECTIONS - len(chosen))]
         # the sections holding a code the question names ("the price of part HX9-4471"): a manual
         # section mentioning the part ranked first and the parts list was never read (large-document
         # test). Whole codes only: "hx9" alone is in every row

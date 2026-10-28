@@ -482,6 +482,8 @@ def test_an_answer_does_not_repeat_the_question_or_the_label_of_worked_out_table
     ("No - only 45 days.", "No. Only 45 days."),
     ("Nothing is said about it.", "Nothing is said about it."),
     ("No. Contractors may not drive.", "No. Contractors may not drive."),
+    ("YES. Pin 7 is RLY_OB.", "Yes. Pin 7 is RLY_OB."),
+    ("NO.5 pump is fitted.", "NO.5 pump is fitted."),
 ])
 def test_a_shouted_yes_or_no_reads_as_a_sentence(said, shown):
     from oasis_engine.wording import tidy_verdict
@@ -563,3 +565,19 @@ def test_table_cells_with_dates_and_indian_grouping_are_read_right():
     assert as_sentence("Highest Order value (INR): PO-26-0503 (920,000)") == \
         "PO-26-0503 has the highest order value (920,000 INR)."
     assert as_sentence("Lowest OEE (%): Line C (58)") == "Line C has the lowest OEE (58%)."
+
+
+def test_when_the_model_picks_no_section_the_searchs_best_few_are_read(tmp_path):
+    # "How long do project invitations remain valid?": Nemotron picked no section and only the search's top
+    # one (Reports, on projects) was read, so "Invitations expire after 7 days" was never seen (28 Oct 2026)
+    (tmp_path / "manual.md").write_text(
+        "# Reports\n\nProject reports show how long each project task took, project by project, and how long "
+        "project sprints remain open.\n\n# Adding Team Members\n\nInvite people by email and pick a role. "
+        "Invitations expire after 7 days.\n\n# Billing\n\nInvoices are sent monthly.\n",
+        encoding="utf-8")
+    docs = load_markdown(tmp_path)
+    script = ScriptedModel(select=["NONE"], answer=["Invitations expire after 7 days.\nSOURCES: A2"])
+    asyncio.run(Pipeline(docs, script.model, output_mode="text", fast_path=False).ask(
+        "How long do project invitations remain valid?"))
+    shown = next(prompt for step, prompt in script.prompts if step == "answer")
+    assert "Invitations expire after 7 days" in shown

@@ -148,11 +148,13 @@ def lift_notes(answer: str) -> tuple[str, list[dict]]:
     return answer, notes
 
 
-_SHOUTED_VERDICT = re.compile(r"^(\**)(YES|NO|Yes|No)\1?\s*[:\-–—]\s*\1?\s*(?=\S)")
+# "YES." too, but not "No.5 pump": a full stop counts after capitals only, followed by a space
+_SHOUTED_VERDICT = re.compile(r"^(\**)(YES|NO|Yes|No)\1?(?:\s*[:\-–—]|(?<=[SO])\.(?=\s))\s*\1?\s*(?=\S)")
 
 
 def tidy_verdict(answer: str) -> str:
-    """"NO: The policy states a maximum of 45 days ..." (Nemotron, 27 Oct 2026) -> "No. The policy ..." """
+    """"NO: The policy states a maximum of 45 days ..." (Nemotron, 27 Oct 2026) -> "No. The policy ..."; "YES. Pin 7
+    is RLY_OB" (28 Oct 2026) -> "Yes. Pin 7 is RLY_OB" """
     m = _SHOUTED_VERDICT.match(answer.lstrip())
     if m is None:
         return answer
